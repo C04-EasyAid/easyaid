@@ -14,9 +14,9 @@ import java.util.Collection;
 
 import static model.dao.ConnectionPool.conn;
 
-public class UserBeanDAO {
+public class UserDAO {
   // Metodo che restituisce l'utente dal database
-  public static synchronized UserBean doRetrieve(UserBean b)
+  public synchronized UserBean doRetrieveUtente(UserBean b)
       throws SQLException, ClassNotFoundException {
     Connection conn = null;
     String query = "SELECT * FROM utente WHERE email = ? AND password = ?";
@@ -31,7 +31,7 @@ public class UserBeanDAO {
       ResultSet rs = stmt.executeQuery();
       // Se trova l'utente lo crea con tutti gli attributi
       if (rs.next()) {
-        user = UserBean.getInstance();
+        user = new UserBean();
         user.setNome(rs.getString("nome"));
         user.setCognome(rs.getString("cognome"));
         user.setEmail(rs.getString("email"));
@@ -196,7 +196,7 @@ public class UserBeanDAO {
       conn = conn();
       stmt = conn.prepareStatement(query);
       ResultSet rs = stmt.executeQuery();
-      UserBean bean = UserBean.getInstance();
+      UserBean bean = new UserBean();
       while (rs.next()) {
         bean.setNome(rs.getString("nome"));
         bean.setCognome(rs.getString("cognome"));

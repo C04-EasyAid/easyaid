@@ -17,7 +17,9 @@ public class UserBean {
     this.ruolo = ruolo.toUpperCase(Locale.ROOT);
   }
 
-  public UserBean() {}
+  private UserBean() {
+
+  }
 
   // Metodo per l'accesso all'istanza della classe
   public static UserBean getInstance() {

@@ -20,7 +20,7 @@ public class LoginServlet extends HttpServlet {
       throws ServletException, IOException {
     HttpSession session = request.getSession();
     try {
-      UserBean user = new UserBean();
+      UserBean user = UserBean.getInstance();
       user.setEmail(request.getParameter("Email"));
       user.setPassword(request.getParameter("Password"));
       user = null; // UserDAO.doRetrieve(user);

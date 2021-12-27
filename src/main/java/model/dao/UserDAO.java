@@ -14,9 +14,9 @@ import java.util.Collection;
 
 import static model.dao.ConnectionPool.conn;
 
-public class UserBeanDAO {
+public class UserDAO {
   // Metodo che restituisce l'utente dal database
-  public static synchronized UserBean doRetrieve(UserBean b)
+  public static synchronized UserBean doRetrieveUtente(UserBean b)
       throws SQLException, ClassNotFoundException {
     Connection conn = null;
     String query = "SELECT * FROM utente WHERE email = ? AND password = ?";

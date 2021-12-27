@@ -1,5 +1,6 @@
 package model.dao;
 
+import model.bean.ProfessoreReferenteBean;
 import model.bean.StudenteBean;
 import model.bean.TutorBean;
 import model.bean.UserBean;
@@ -8,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import static model.dao.ConnectionPool.conn;
 
@@ -79,11 +82,11 @@ public class UserBeanDAO {
     return utente;
   }
   // Metodo che restituisce true se è lo studente è stato inserito
-  public static synchronized boolean insertStudente(StudenteBean s,UserBean b)
+  public static synchronized boolean insertStudente(StudenteBean s, UserBean b)
       throws SQLException, ClassNotFoundException {
     boolean studente = false;
-    //Viene prima inserito l'utente generico (UserBean);
-    //Se il metodo restituisce true continua per inserire lo studente
+    // Viene prima inserito l'utente generico (UserBean);
+    // Se il metodo restituisce true continua per inserire lo studente
     if (insertUtente(b)) {
       Connection conn = null;
       String query = "INSERT INTO studente VALUES (?,?,?,?,?)";
@@ -115,11 +118,11 @@ public class UserBeanDAO {
     return studente;
   }
   // Metodo che restituisce true se il tutor è stato inserito
-  public static synchronized boolean insertTutor(TutorBean t,UserBean b) throws SQLException {
+  public static synchronized boolean insertTutor(TutorBean t, UserBean b) throws SQLException {
     boolean tutor = false;
-    //Viene prima inserito l'utente generico (UserBean);
-    //Se il metodo restituisce true continua per inserire il tutor
-    if(insertUtente(b)){
+    // Viene prima inserito l'utente generico (UserBean);
+    // Se il metodo restituisce true continua per inserire il tutor
+    if (insertUtente(b)) {
       Connection conn = null;
       String query = "INSERT INTO tutor VALUES (?,?,?,?,?)";
       PreparedStatement stmt = null;
@@ -149,5 +152,67 @@ public class UserBeanDAO {
     }
     return tutor;
   }
+  // Metodo che restituisce true se il tutor è stato inserito
+  public static synchronized boolean insertProfessoreReferente(
+      ProfessoreReferenteBean p, UserBean b) throws SQLException {
+    boolean prof = false;
+    // Viene prima inserito l'utente generico (UserBean);
+    // Se il metodo restituisce true continua per inserire il prof
+    if (insertUtente(b)) {
+      Connection conn = null;
+      String query = "INSERT INTO professore_referente VALUES (?,?)";
+      PreparedStatement stmt = null;
+      // Se riesce a connettersi, la connessione è != da null ed entra nello statement
+      try {
+        conn = conn();
+        stmt = conn.prepareStatement(query);
+        // Setta i paremetri nella query
+        stmt.setString(1, p.getEmail());
+        stmt.setString(2, p.getDipartimento());
+        // Esegue la query
+        ResultSet rs = null;
+        prof = stmt.executeUpdate() == 1;
+      } catch (SQLException | ClassNotFoundException e) {
+        prof = false;
+        e.printStackTrace();
+        // Chiude la connessione se è diverso da null
+      } finally {
+        stmt.close();
+        if (conn != null) {
+          conn.close();
+        }
+      }
+    }
+    return prof;
+  }
+  // Metodo che restituisce la lista degli utenti nel Database
+  public static synchronized Collection<UserBean> doRetrieveAll()
+      throws ClassNotFoundException, SQLException {
+    Collection<UserBean> utenti = new ArrayList<>();
+    Connection conn = null;
+    PreparedStatement stmt = null;
+    String query = "SELECT * FROM utente";
+    try {
+      conn = conn();
+      stmt = conn.prepareStatement(query);
+      ResultSet rs = stmt.executeQuery();
+      UserBean bean = UserBean.getInstance();
+      while (rs.next()) {
+        bean.setNome(rs.getString("nome"));
+        bean.setCognome(rs.getString("cognome"));
+        bean.setEmail(rs.getString("email"));
+        bean.setPassword(rs.getString("password"));
+        bean.setRuolo(rs.getString("ruolo"));
+        utenti.add(bean);
+      }
+    } catch (SQLException e) {
 
+    } finally {
+      stmt.close();
+      if (conn != null) {
+        conn.close();
+      }
+    }
+    return utenti;
+  }
 }

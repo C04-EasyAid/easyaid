@@ -1,2 +1,3 @@
 rootProject.name = 'easyaid'
+include 'java'
 

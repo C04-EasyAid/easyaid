@@ -13,7 +13,7 @@ import java.util.Collection;
 import static model.dao.ConnectionPool.conn;
 
 public class LezioneDAO {
-    public static synchronized Collection<LezioneBean> doRetrieveLezione(int id)
+    public synchronized Collection<LezioneBean> doRetrieveLezione(int id)
             throws ClassNotFoundException, SQLException {
         Collection<LezioneBean> lezioni = new ArrayList<>();
         Connection conn = null;

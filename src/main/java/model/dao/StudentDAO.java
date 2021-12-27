@@ -16,7 +16,7 @@ public class StudentDAO {
     Connection conn = null;
     PreparedStatement stmt = null;
     String query = "SELECT * FROM studente where = ?";
-    StudenteBean bean = StudenteBean.getInstance();
+    StudenteBean bean = new StudenteBean();
     //Se la connessione è != null, entra nello statement
     try {
       conn = conn();

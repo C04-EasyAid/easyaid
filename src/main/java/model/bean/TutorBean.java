@@ -6,24 +6,16 @@ public class TutorBean {
     private  String qualifica;
     private int oreSvolte;
     private int oreDisponibili;
-    private static TutorBean tutorBean = null;
-    private TutorBean() {
-    }
 
-    private TutorBean(String emailTutor, String dipartimento, String qualifica, int oreSvolte, int oreDisponibili) {
+    public TutorBean(String emailTutor, String dipartimento, String qualifica, int oreSvolte, int oreDisponibili) {
         this.emailTutor = emailTutor;
         this.dipartimento = dipartimento;
         this.qualifica = qualifica;
         this.oreSvolte = oreSvolte;
         this.oreDisponibili = oreDisponibili;
     }
+    public TutorBean(){
 
-    public static TutorBean getInstance() {
-        // Se l'istanza è nulla crea l'oggetto
-        if (tutorBean == null) {
-            tutorBean = new TutorBean();
-        }
-        return tutorBean;
     }
 
     public String getEmailTutor() {

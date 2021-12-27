@@ -1,13 +1,12 @@
 package model.bean;
 
 public class StudenteBean {
-  // Istanza della classe
-  private static StudenteBean studentBean = null;
+
   // Variabili dell'utente
   private String email, tipoDisabilita, specificheDisturbo;
   private int oreDisponibili, percentualeDisabilita;
   // Costruttore privato in accordo al Design Pattern Singleton
-  private StudenteBean(
+  public StudenteBean(
       String email,
       String tipoDisabilita,
       String specificheDisturbo,
@@ -20,24 +19,7 @@ public class StudenteBean {
     this.percentualeDisabilita = percentualeDisabilita;
   }
 
-  private StudenteBean() {}
-  // Metodo per l'accesso all'istanza della classe
-  public static StudenteBean getInstance() {
-    // Se l'istanza è nulla crea l'oggetto
-    if (studentBean == null) {
-      studentBean = new StudenteBean();
-    }
-    return studentBean;
-  }
-  // Getter and Setter
-
-  public static StudenteBean getStudentBean() {
-    return studentBean;
-  }
-
-  public static void setStudentBean(StudenteBean studentBean) {
-    StudenteBean.studentBean = studentBean;
-  }
+  public StudenteBean() {}
 
   public String getEmail() {
     return email;

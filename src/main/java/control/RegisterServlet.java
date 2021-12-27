@@ -55,7 +55,7 @@ public class RegisterServlet extends HttpServlet {
                     }
                     break;
                 case 3: utenteTemporaneo.setRuolo("PR");
-                    ProfessoreReferenteBean professoreReferente = ProfessoreReeferente.getInstance();
+                    ProfessoreReferenteBean professoreReferente = ProfessoreReferenteBean.getInstance();
                     if(!UserBeanDAO.insertProfessoreReferente(professoreReferente,utenteTemporaneo))
                     {
                         session.setAttribute("alertMsg","Errore nell'inserimento professore referente");

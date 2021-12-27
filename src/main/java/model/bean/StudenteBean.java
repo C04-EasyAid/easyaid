@@ -4,20 +4,20 @@ public class StudenteBean {
   // Istanza della classe
   private static StudenteBean studentBean = null;
   // Variabili dell'utente
-  private String email, tipoDisabilità, specificheDisturbo;
-  private int oreDisponibili, percentualeDisabilità;
+  private String email, tipoDisabilita, specificheDisturbo;
+  private int oreDisponibili, percentualeDisabilita;
   // Costruttore privato in accordo al Design Pattern Singleton
   private StudenteBean(
       String email,
-      String tipoDisabilità,
+      String tipoDisabilita,
       String specificheDisturbo,
       int oreDisponibili,
-      int percentualeDisabilità) {
+      int percentualeDisabilita) {
     this.email = email;
-    this.tipoDisabilità = tipoDisabilità;
+    this.tipoDisabilita = tipoDisabilita;
     this.specificheDisturbo = specificheDisturbo;
     this.oreDisponibili = oreDisponibili;
-    this.percentualeDisabilità = percentualeDisabilità;
+    this.percentualeDisabilita = percentualeDisabilita;
   }
 
   private StudenteBean() {}
@@ -39,12 +39,12 @@ public class StudenteBean {
     return this;
   }
 
-  public String getTipoDisabilità() {
-    return tipoDisabilità;
+  public String getTipoDisabilita() {
+    return tipoDisabilita;
   }
 
-  public StudenteBean setTipoDisabilità(String tipoDisabilità) {
-    this.tipoDisabilità = tipoDisabilità;
+  public StudenteBean setTipoDisabilita(String tipoDisabilita) {
+    this.tipoDisabilita = tipoDisabilita;
     return this;
   }
 
@@ -66,12 +66,12 @@ public class StudenteBean {
     return this;
   }
 
-  public int getPercentualeDisabilità() {
-    return percentualeDisabilità;
+  public int getPercentualeDisabilita() {
+    return percentualeDisabilita;
   }
 
-  public StudenteBean setPercentualeDisabilità(int percentualeDisabilità) {
-    this.percentualeDisabilità = percentualeDisabilità;
+  public StudenteBean setPercentualeDisabilita(int percentualeDisabilita) {
+    this.percentualeDisabilita = percentualeDisabilita;
     return this;
   }
 }

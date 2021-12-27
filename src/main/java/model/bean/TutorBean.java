@@ -3,17 +3,17 @@ package model.bean;
 public class TutorBean {
     private String emailTutor;
     private String dipartimento;
-    private  String qulifica;
+    private  String qualifica;
     private int oreSvolte;
     private int oreDisponibili;
     private static TutorBean tutorBean = null;
     private TutorBean() {
     }
 
-    private TutorBean(String emailTutor, String dipartimento, String qulifica, int oreSvolte, int oreDisponibili) {
+    private TutorBean(String emailTutor, String dipartimento, String qualifica, int oreSvolte, int oreDisponibili) {
         this.emailTutor = emailTutor;
         this.dipartimento = dipartimento;
-        this.qulifica = qulifica;
+        this.qualifica = qualifica;
         this.oreSvolte = oreSvolte;
         this.oreDisponibili = oreDisponibili;
     }
@@ -43,11 +43,11 @@ public class TutorBean {
     }
 
     public String getQulifica() {
-        return qulifica;
+        return qualifica;
     }
 
-    public void setQulifica(String qulifica) {
-        this.qulifica = qulifica;
+    public void setQualifica(String qualifica) {
+        this.qualifica = qualifica;
     }
 
     public int getOreSvolte() {

@@ -20,22 +20,27 @@ public class ProfessoreReferenteBean {
         return profBean;
     }
 
-    // Getter and Setter
+    public static ProfessoreReferenteBean getProfBean() {
+        return profBean;
+    }
+
+    public static void setProfBean(ProfessoreReferenteBean profBean) {
+        ProfessoreReferenteBean.profBean = profBean;
+    }
+
     public String getEmail() {
         return email;
     }
 
-    public ProfessoreReferenteBean setEmail(String email) {
+    public void setEmail(String email) {
         this.email = email;
-        return this;
     }
 
     public String getDipartimento() {
         return dipartimento;
     }
 
-    public ProfessoreReferenteBean setDipartimento(String dipartimento) {
+    public void setDipartimento(String dipartimento) {
         this.dipartimento = dipartimento;
-        return this;
     }
 }

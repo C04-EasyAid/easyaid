@@ -30,48 +30,52 @@ public class StudenteBean {
     return studentBean;
   }
   // Getter and Setter
+
+  public static StudenteBean getStudentBean() {
+    return studentBean;
+  }
+
+  public static void setStudentBean(StudenteBean studentBean) {
+    StudenteBean.studentBean = studentBean;
+  }
+
   public String getEmail() {
     return email;
   }
 
-  public StudenteBean setEmail(String email) {
+  public void setEmail(String email) {
     this.email = email;
-    return this;
   }
 
   public String getTipoDisabilita() {
     return tipoDisabilita;
   }
 
-  public StudenteBean setTipoDisabilita(String tipoDisabilita) {
+  public void setTipoDisabilita(String tipoDisabilita) {
     this.tipoDisabilita = tipoDisabilita;
-    return this;
   }
 
   public String getSpecificheDisturbo() {
     return specificheDisturbo;
   }
 
-  public StudenteBean setSpecificheDisturbo(String specificheDisturbo) {
+  public void setSpecificheDisturbo(String specificheDisturbo) {
     this.specificheDisturbo = specificheDisturbo;
-    return this;
   }
 
   public int getOreDisponibili() {
     return oreDisponibili;
   }
 
-  public StudenteBean setOreDisponibili(int oreDisponibili) {
+  public void setOreDisponibili(int oreDisponibili) {
     this.oreDisponibili = oreDisponibili;
-    return this;
   }
 
   public int getPercentualeDisabilita() {
     return percentualeDisabilita;
   }
 
-  public StudenteBean setPercentualeDisabilita(int percentualeDisabilita) {
+  public void setPercentualeDisabilita(int percentualeDisabilita) {
     this.percentualeDisabilita = percentualeDisabilita;
-    return this;
   }
 }

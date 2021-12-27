@@ -1,6 +1,6 @@
 package control;
 
-import model.UserBean;
+import model.bean.UserBean;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

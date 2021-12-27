@@ -42,7 +42,7 @@ public class TutorBean {
         this.dipartimento = dipartimento;
     }
 
-    public String getQulifica() {
+    public String getQualifica() {
         return qualifica;
     }
 

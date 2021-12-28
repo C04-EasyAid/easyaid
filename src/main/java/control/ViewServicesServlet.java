@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/**
+ * @author Riccardo Polidoro
+ * Servlet per restituire la lista dei servizi allo studente
+ */
 public class ViewServicesServlet extends HttpServlet
 {
 

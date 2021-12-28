@@ -3,6 +3,7 @@ package control;
 import model.bean.StudenteBean;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +14,7 @@ import java.io.IOException;
  * @author Riccardo Polidoro
  * Servlet per restituire la lista dei servizi allo studente
  */
+@WebServlet("/viewServices")
 public class ViewServicesServlet extends HttpServlet
 {
 
@@ -23,11 +25,11 @@ public class ViewServicesServlet extends HttpServlet
         StudenteBean bean= (StudenteBean) session.getAttribute("studente");
 
         if(bean!=null)
-        resp.sendRedirect("./viewservicesjsp");
+        resp.sendRedirect("view/viewservices.jsp");
         else
         {
             session.setAttribute("alertMsg","Permessi non concessi all'utente");
-            resp.sendRedirect("./Home.jsp");
+            resp.sendRedirect("view/Home.jsp");
         }
     }
 }

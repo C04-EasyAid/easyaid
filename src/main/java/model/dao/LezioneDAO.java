@@ -18,7 +18,7 @@ Classe LezioneDAO
  */
 public class LezioneDAO {
     //Metodo che restitiusce una lezione in base all'id passato come parametro
-    public synchronized Collection<LezioneBean> doRetrieveLezione(int id)
+    public static synchronized Collection<LezioneBean> doRetrieveLezione(int id)
             throws ClassNotFoundException, SQLException {
         Collection<LezioneBean> lezioni = new ArrayList<>();
         Connection conn = null;

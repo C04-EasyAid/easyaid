@@ -1,5 +1,9 @@
 package model.bean;
 
+/*
+@author Mariagiovanna Bianco
+Classe CommentoBean
+ */
 import java.util.Date;
 
 public class CommentoBean {

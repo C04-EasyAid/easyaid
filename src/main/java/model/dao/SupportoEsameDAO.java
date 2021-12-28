@@ -167,7 +167,7 @@ public class SupportoEsameDAO {
             }
 
         }
-        catch(SQLException | ClassNotFoundException e)
+        catch(SQLException e)
         {
             e.printStackTrace();
         }
@@ -223,7 +223,7 @@ public class SupportoEsameDAO {
             }
 
         }
-        catch(SQLException | ClassNotFoundException e)
+        catch(SQLException e)
         {
             e.printStackTrace();
         }
@@ -277,7 +277,7 @@ public class SupportoEsameDAO {
             }
 
         }
-        catch(SQLException | ClassNotFoundException e)
+        catch(SQLException e)
         {
             e.printStackTrace();
         }

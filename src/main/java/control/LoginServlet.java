@@ -29,8 +29,7 @@ public class LoginServlet extends HttpServlet {
       UserBean user = new UserBean();
       user.setEmail(request.getParameter("Email"));
       user.setPassword(request.getParameter("Password"));
-      UserDAO dao = new UserDAO();
-      user = dao.doRetrieveUtente(user);
+      user = UserDAO.doRetrieveUtente(user);
       if (user == null) {
         // Nessun utente nel sistema
         response.sendRedirect("./LoginPage.jsp");

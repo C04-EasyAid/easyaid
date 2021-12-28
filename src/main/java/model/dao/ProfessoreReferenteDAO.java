@@ -33,7 +33,8 @@ public class ProfessoreReferenteDAO {
         {
             e.printStackTrace();
         }finally {
-            stmt.close();
+            if(stmt!=null)
+                stmt.close();
             if (conn != null) {
                 conn.close();
             }

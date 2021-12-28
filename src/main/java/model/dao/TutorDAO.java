@@ -9,7 +9,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import static model.dao.ConnectionPool.conn;
-
+/**
+ * @author Roberto Tartaglia
+ * Classe TutorDAO
+ */
 public class TutorDAO {
     public static synchronized TutorBean doRetrieveByEmail(String email) throws SQLException, ClassNotFoundException {
         Connection conn = null;

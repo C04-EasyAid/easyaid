@@ -2,10 +2,22 @@ package model.bean;
 
 import java.util.Locale;
 
+/**
+ * @author Giovanni Toriello
+ * Classe UserBean
+ */
 public class UserBean {
   // Variabili dell'utente
   public String nome, cognome, email, password, ruolo;
 
+  /**
+   * Costruttore
+   * @param nome
+   * @param cognome
+   * @param email
+   * @param password
+   * @param ruolo
+   */
   public UserBean(String nome, String cognome, String email, String password, String ruolo) {
     this.nome = nome;
     this.cognome = cognome;
@@ -14,31 +26,56 @@ public class UserBean {
     this.ruolo = ruolo.toUpperCase(Locale.ROOT);
   }
 
+  /**
+   * Costruttore Vuoto
+   */
   public UserBean() {
   }
 
-  // Getter and Setter
-
+  /**
+   * Metodo che restituisce il nome dell'utente
+   * @return
+   */
   public String getNome() {
     return nome;
   }
 
+  /**
+   * Metodo che setta il nome dell'utente
+   * @param nome
+   */
   public void setNome(String nome) {
     this.nome = nome;
   }
 
+  /**
+   * Metodo che restituisce il cognome dell'utente
+   * @return
+   */
   public String getCognome() {
     return cognome;
   }
 
+  /**
+   * Metodo che setta il cognome dell'utente
+   * @param cognome
+   */
   public void setCognome(String cognome) {
     this.cognome = cognome;
   }
 
+  /**
+   * Metodo che restituisce l'email dello studente
+   * @return
+   */
   public String getEmail() {
     return email;
   }
 
+  /**
+   *
+   * @param email
+   */
   public void setEmail(String email) {
     this.email = email;
   }

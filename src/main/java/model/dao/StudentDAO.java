@@ -9,7 +9,10 @@ import java.sql.SQLException;
 import java.util.Locale;
 
 import static model.dao.ConnectionPool.conn;
-
+/**
+ * @author Giovanni Toriello
+ * Classe StudenteDAO
+ */
 public class StudentDAO {
   //Metodo che restituisce lo studente
   public synchronized StudenteBean doRetrieveByEmail(String email) throws SQLException {
@@ -32,7 +35,7 @@ public class StudentDAO {
         bean.setOreDisponibili(rs.getInt("ore_disponibili"));
       }
 
-    } catch (SQLException | ClassNotFoundException e) {
+    } catch (SQLException e) {
       e.printStackTrace();
       // Chiude la connessione se è diverso da null
     } finally {

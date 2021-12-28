@@ -3,7 +3,10 @@ package model.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
+/**
+ * @author Giovanni Toriello
+ * CLasse ConnectionPool
+ */
 public class ConnectionPool {
   // Url per la connessione al DataBase
   public static String url = "jdbc:mysql://localhost:3306/easyaid";

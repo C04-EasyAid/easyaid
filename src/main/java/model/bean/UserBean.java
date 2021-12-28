@@ -4,6 +4,7 @@ import java.util.Locale;
 
 /**
  * @author Giovanni Toriello
+ * Classe UserBean
  */
 public class UserBean {
   // Variabili dell'utente

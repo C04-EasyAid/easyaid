@@ -13,7 +13,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import static model.dao.ConnectionPool.conn;
-
+/**
+ * @author Giovanni Toriello
+ * Classe UserDAO
+ */
 public class UserDAO {
   // Metodo che restituisce l'utente dal database
   public static synchronized UserBean doRetrieveUtente(UserBean b)

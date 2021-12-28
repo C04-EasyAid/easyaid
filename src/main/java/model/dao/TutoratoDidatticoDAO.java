@@ -9,9 +9,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Martina Giugliano
+ * DAO Tutorato didattico per gestire i dati del Database relativo al tutorato didattico.
+ */
+
 public class TutoratoDidatticoDAO {
 
 
+    /**
+     * Metodo che restituisce tutte le richieste di Tutorato Didattico dal DB.
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public synchronized List<TutoratoDidatticoBean> doRetriveAll() throws SQLException,ClassNotFoundException{
         Connection conn=null;
         String query="SELECT * FROM tutorato_didattico";
@@ -55,6 +66,13 @@ public class TutoratoDidatticoDAO {
     }
 
 
+    /**
+     * Metodo che restituisce le richieste di Tutorato Didattico effettuate tramite e-mail studente.
+     * @param emailStudente
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public synchronized List<TutoratoDidatticoBean> doRetrieveAllByStudente(String emailStudente)  throws SQLException,ClassNotFoundException
     {
         Connection conn=null;

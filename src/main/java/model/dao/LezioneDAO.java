@@ -12,7 +12,12 @@ import java.util.Collection;
 
 import static model.dao.ConnectionPool.conn;
 
+/*
+@author Serena Liguori
+Classe LezioneDAO
+ */
 public class LezioneDAO {
+    //Metodo che restitiusce una lezione in base all'id passato come parametro
     public synchronized Collection<LezioneBean> doRetrieveLezione(int id)
             throws ClassNotFoundException, SQLException {
         Collection<LezioneBean> lezioni = new ArrayList<>();

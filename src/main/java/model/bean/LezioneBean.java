@@ -1,7 +1,10 @@
 package model.bean;
 
 import java.util.Date;
-
+/*
+@author Serena Liguori
+Classe LezioneBean
+ */
 public class LezioneBean {
   // Variabili d'istanza
   private int tutorato;

@@ -1,6 +1,7 @@
 package control;
 
-import model.bean.*;
+import model.bean.LezioneBean;
+import model.bean.TutoratoDidatticoBean;
 import model.dao.LezioneDAO;
 
 import javax.servlet.ServletException;
@@ -11,8 +12,11 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-public class LezioniStudenteServlet extends HttpServlet {
+/*
+@author Serena Liguori
+Servlet che permette di visualizzare le lezioni
+ */
+public class LezioniServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
@@ -22,7 +26,7 @@ public class LezioniStudenteServlet extends HttpServlet {
             try {
                 ArrayList<LezioneBean> lista= (ArrayList<LezioneBean>) dao.doRetrieveLezione(bean.getId());
                 session.setAttribute("listaLezioni", lista);
-                response.sendRedirect("viewLezioniStudente.jsp");
+                response.sendRedirect("viewLezioni.jsp");
 
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();

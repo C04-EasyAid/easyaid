@@ -1,13 +1,23 @@
 package model.bean;
-
+/**
+ * @author Giovanni Toriello
+ * Classe StudenteBean
+ */
 public class StudenteBean {
-  // Istanza della classe
-  private static StudenteBean studentBean = null;
+
   // Variabili dell'utente
   private String email, tipoDisabilita, specificheDisturbo;
   private int oreDisponibili, percentualeDisabilita;
-  // Costruttore privato in accordo al Design Pattern Singleton
-  private StudenteBean(
+
+  /**
+   * Costruttore
+   * @param email
+   * @param tipoDisabilita
+   * @param specificheDisturbo
+   * @param oreDisponibili
+   * @param percentualeDisabilita
+   */
+  public StudenteBean(
       String email,
       String tipoDisabilita,
       String specificheDisturbo,
@@ -20,61 +30,87 @@ public class StudenteBean {
     this.percentualeDisabilita = percentualeDisabilita;
   }
 
-  private StudenteBean() {}
-  // Metodo per l'accesso all'istanza della classe
-  public static StudenteBean getInstance() {
-    // Se l'istanza è nulla crea l'oggetto
-    if (studentBean == null) {
-      studentBean = new StudenteBean();
-    }
-    return studentBean;
-  }
-  // Getter and Setter
+  /**
+   * Costruttore vuoto
+   */
+  public StudenteBean() {}
 
-  public static StudenteBean getStudentBean() {
-    return studentBean;
-  }
-
-  public static void setStudentBean(StudenteBean studentBean) {
-    StudenteBean.studentBean = studentBean;
-  }
-
+  /**
+   * Metodo che restituisce l'email dello studente
+   * @return
+   */
   public String getEmail() {
     return email;
   }
 
+  /**
+   * Metodo che setta l'email dello studente
+   * @param email
+   */
   public void setEmail(String email) {
     this.email = email;
   }
 
+  /**
+   * Metodo che restituisce il tipo di disabilità dello studente
+   * @return
+   */
   public String getTipoDisabilita() {
     return tipoDisabilita;
   }
 
+  /**
+   * Metodo che setta il tipo di disabilità dello studente
+   * @param tipoDisabilita
+   */
   public void setTipoDisabilita(String tipoDisabilita) {
     this.tipoDisabilita = tipoDisabilita;
   }
 
+  /**
+   * Metodo Che restituisce le specifiche di disturbo dello studente
+   * @return
+   */
   public String getSpecificheDisturbo() {
     return specificheDisturbo;
   }
 
+  /**
+   * Metodo che setta le specifiche di disturbo dello studente
+   * @param specificheDisturbo
+   */
   public void setSpecificheDisturbo(String specificheDisturbo) {
     this.specificheDisturbo = specificheDisturbo;
   }
 
+  /**
+   * Metodo che restituisce le ore disponibili dello studente
+   * @return
+   */
   public int getOreDisponibili() {
     return oreDisponibili;
   }
 
+  /**
+   * Metodo he setta le ore disponibili dello studente
+   * @param oreDisponibili
+   */
   public void setOreDisponibili(int oreDisponibili) {
     this.oreDisponibili = oreDisponibili;
   }
 
+  /**
+   * Metodo che restituisce la percentuale di disabilità dello studente
+   * @return
+   */
   public int getPercentualeDisabilita() {
     return percentualeDisabilita;
   }
 
+  /**
+   * Metodo che setta la percentuale di disabilità dello studente
+   * @param percentualeDisabilita
+   */
   public void setPercentualeDisabilita(int percentualeDisabilita) {
     this.percentualeDisabilita = percentualeDisabilita;
   }

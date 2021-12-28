@@ -13,7 +13,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import static model.dao.ConnectionPool.conn;
-
+/**
+ * @author Giovanni Toriello
+ * Classe UserDAO
+ */
 public class UserDAO {
   // Metodo che restituisce l'utente dal database
   public static synchronized UserBean doRetrieveUtente(UserBean b)
@@ -31,7 +34,7 @@ public class UserDAO {
       ResultSet rs = stmt.executeQuery();
       // Se trova l'utente lo crea con tutti gli attributi
       if (rs.next()) {
-        user = UserBean.getInstance();
+        user = new UserBean();
         user.setNome(rs.getString("nome"));
         user.setCognome(rs.getString("cognome"));
         user.setEmail(rs.getString("email"));
@@ -69,7 +72,7 @@ public class UserDAO {
       // Esegue la query
       ResultSet rs = null;
       utente = stmt.executeUpdate() == 1;
-    } catch (SQLException | ClassNotFoundException e) {
+    } catch (SQLException e) {
       utente = false;
       e.printStackTrace();
       // Chiude la connessione se è diverso da null
@@ -139,7 +142,7 @@ public class UserDAO {
         // Esegue la query
         ResultSet rs = null;
         tutor = stmt.executeUpdate() == 1;
-      } catch (SQLException | ClassNotFoundException e) {
+      } catch (SQLException e) {
         tutor = false;
         e.printStackTrace();
         // Chiude la connessione se è diverso da null
@@ -172,7 +175,7 @@ public class UserDAO {
         // Esegue la query
         ResultSet rs = null;
         prof = stmt.executeUpdate() == 1;
-      } catch (SQLException | ClassNotFoundException e) {
+      } catch (SQLException e) {
         prof = false;
         e.printStackTrace();
         // Chiude la connessione se è diverso da null
@@ -196,8 +199,9 @@ public class UserDAO {
       conn = conn();
       stmt = conn.prepareStatement(query);
       ResultSet rs = stmt.executeQuery();
-      UserBean bean = UserBean.getInstance();
+      UserBean bean = null;
       while (rs.next()) {
+        bean = new UserBean();
         bean.setNome(rs.getString("nome"));
         bean.setCognome(rs.getString("cognome"));
         bean.setEmail(rs.getString("email"));
@@ -215,4 +219,5 @@ public class UserDAO {
     }
     return utenti;
   }
+
 }

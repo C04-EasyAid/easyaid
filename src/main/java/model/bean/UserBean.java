@@ -2,14 +2,23 @@ package model.bean;
 
 import java.util.Locale;
 
+/**
+ * @author Giovanni Toriello
+ * Classe UserBean
+ */
 public class UserBean {
-  // Istanza della classe
-  private static UserBean userBean = null;
   // Variabili dell'utente
   public String nome, cognome, email, password, ruolo;
 
-  // Costruttore privato in accordo al Design Pattern Singleton
-  private UserBean(String nome, String cognome, String email, String password, String ruolo) {
+  /**
+   * Costruttore
+   * @param nome
+   * @param cognome
+   * @param email
+   * @param password
+   * @param ruolo
+   */
+  public UserBean(String nome, String cognome, String email, String password, String ruolo) {
     this.nome = nome;
     this.cognome = cognome;
     this.email = email;
@@ -17,94 +26,94 @@ public class UserBean {
     this.ruolo = ruolo.toUpperCase(Locale.ROOT);
   }
 
-  private UserBean() {
-
+  /**
+   * Costruttore Vuoto
+   */
+  public UserBean() {
   }
 
-  // Metodo per l'accesso all'istanza della classe
-  public static UserBean getInstance() {
-    // Se l'istanza è nulla crea l'oggetto
-    if (userBean == null) {
-      userBean = new UserBean();
-    }
-    return userBean;
+  /**
+   * Metodo che restituisce il nome dell'utente
+   * @return
+   */
+  public String getNome() {
+    return nome;
   }
 
-  // Getter and Setter
-  public String getRuolo() {
-    return ruolo;
+  /**
+   * Metodo che setta il nome dell'utente
+   * @param nome
+   */
+  public void setNome(String nome) {
+    this.nome = nome;
   }
 
-  public UserBean setRuolo(String ruolo) {
-    this.ruolo = ruolo;
-    return this;
+  /**
+   * Metodo che restituisce il cognome dell'utente
+   * @return
+   */
+  public String getCognome() {
+    return cognome;
+  }
+
+  /**
+   * Metodo che setta il cognome dell'utente
+   * @param cognome
+   */
+  public void setCognome(String cognome) {
+    this.cognome = cognome;
+  }
+
+  /**
+   * Metodo che restituisce l'email dello studente
+   * @return
+   */
+  public String getEmail() {
+    return email;
+  }
+
+  /**
+   *
+   * @param email
+   */
+  public void setEmail(String email) {
+    this.email = email;
   }
 
   public String getPassword() {
     return password;
   }
 
-  public UserBean setPassword(String password) {
+  public void setPassword(String password) {
     this.password = password;
-    return this;
   }
 
-  public String getEmail() {
-    return email;
+  public String getRuolo() {
+    return ruolo;
   }
 
-  public UserBean setEmail(String email) {
-    this.email = email;
-    return this;
+  public void setRuolo(String ruolo) {
+    this.ruolo = ruolo;
   }
 
-  public String getNome() {
-    return nome;
-  }
-
-  public UserBean setNome(String nome) {
-    this.nome = nome;
-    return this;
-  }
-
-  public String getCognome() {
-    return cognome;
-  }
-
-  public UserBean setCognome(String cognome) {
-    this.cognome = cognome;
-    return this;
-  }
   // Restituisce vero se l'utente è uno Studente
   public boolean isStudente() {
-    boolean isStudent = false;
-    if (this.getRuolo().equals("S")) {
-      isStudent = true;
-    }
+    boolean isStudent = this.getRuolo().equals("S");
     return isStudent;
   }
   // Restituisce vero se l'utente è un Tutor
   public boolean isTutor() {
-    boolean isTutor = false;
-    if (this.getRuolo().equals("T")) {
-      isTutor = true;
-    }
+    boolean isTutor = this.getRuolo().equals("T");
     return isTutor;
   }
   // Restituisce vero se l'utente è un Professore Referente
   public boolean isProfessoreReferente() {
-    boolean isProf = false;
-    if (this.getRuolo().equals("P")) {
-      isProf = true;
-    }
+    boolean isProf = this.getRuolo().equals("P");
     return isProf;
   }
   // Restituisce vero se l'utente è un Personale Amministrativo
   public boolean isPersonaleAmministrativo() {
-    boolean isPers = false;
-    if (this.getRuolo().equals("PA")) {
-      isPers = true;
-    }
+    boolean isPers = this.getRuolo().equals("PA");
     return isPers;
   }
 

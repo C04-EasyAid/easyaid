@@ -238,7 +238,12 @@ public class SupportoEsameDAO {
     }
 
 
-
+    /**
+     * Metodo che restituisce la lista di tutte le richieste di supporto esame non ancora accettate da nessun tutor
+     * @return la lista di tutte le richieste di supporto esame non ancora accettate da nessun tutor
+     * @throws SQLException :Eccezione accesso al db
+     * @throws ClassNotFoundException:eccezione classe non trovata
+     */
     public synchronized List<SupportoEsameBean> doRetrieveRichiesteSupportoEsameNonAccettate() throws SQLException,ClassNotFoundException{
         Connection conn=null;
         String query="SELECT * FROM supporto_esame WHERE status=0";

@@ -69,7 +69,7 @@ public class UserDAO {
       // Esegue la query
       ResultSet rs = null;
       utente = stmt.executeUpdate() == 1;
-    } catch (SQLException | ClassNotFoundException e) {
+    } catch (SQLException e) {
       utente = false;
       e.printStackTrace();
       // Chiude la connessione se è diverso da null
@@ -139,7 +139,7 @@ public class UserDAO {
         // Esegue la query
         ResultSet rs = null;
         tutor = stmt.executeUpdate() == 1;
-      } catch (SQLException | ClassNotFoundException e) {
+      } catch (SQLException e) {
         tutor = false;
         e.printStackTrace();
         // Chiude la connessione se è diverso da null
@@ -172,7 +172,7 @@ public class UserDAO {
         // Esegue la query
         ResultSet rs = null;
         prof = stmt.executeUpdate() == 1;
-      } catch (SQLException | ClassNotFoundException e) {
+      } catch (SQLException e) {
         prof = false;
         e.printStackTrace();
         // Chiude la connessione se è diverso da null

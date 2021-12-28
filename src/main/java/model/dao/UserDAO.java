@@ -46,7 +46,9 @@ public class UserDAO {
       e.printStackTrace();
       // Chiude la connessione se è diverso da null
     } finally {
+      if(stmt!=null){
       stmt.close();
+      }
       if (conn != null) {
         conn.close();
       }
@@ -77,7 +79,9 @@ public class UserDAO {
       e.printStackTrace();
       // Chiude la connessione se è diverso da null
     } finally {
-      stmt.close();
+      if(stmt!=null){
+        stmt.close();
+      }
       if (conn != null) {
         conn.close();
       }
@@ -112,7 +116,9 @@ public class UserDAO {
         e.printStackTrace();
         // Chiude la connessione se è diverso da null
       } finally {
-        stmt.close();
+        if(stmt!=null){
+          stmt.close();
+        }
         if (conn != null) {
           conn.close();
         }
@@ -147,7 +153,9 @@ public class UserDAO {
         e.printStackTrace();
         // Chiude la connessione se è diverso da null
       } finally {
-        stmt.close();
+        if(stmt!=null){
+          stmt.close();
+        }
         if (conn != null) {
           conn.close();
         }
@@ -180,7 +188,9 @@ public class UserDAO {
         e.printStackTrace();
         // Chiude la connessione se è diverso da null
       } finally {
-        stmt.close();
+        if(stmt!=null){
+          stmt.close();
+        }
         if (conn != null) {
           conn.close();
         }
@@ -212,7 +222,9 @@ public class UserDAO {
     } catch (SQLException e) {
 
     } finally {
-      stmt.close();
+      if(stmt!=null){
+        stmt.close();
+      }
       if (conn != null) {
         conn.close();
       }

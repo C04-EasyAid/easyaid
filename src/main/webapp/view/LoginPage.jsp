@@ -10,8 +10,8 @@
 <head>
     <title>Login</title>
     <form action="../login" method="get" >
-        <input type="email" id="Email" name="email" placeholder="exemple@studenti.unisa.it">
-        <input type="password" id="Password" name="password">
+        <input type="email" id="Email" name="Email" placeholder="exemple@studenti.unisa.it">
+        <input type="password" id="Password" name="Password">
         <input type="submit" name="login">
     </form>
 </head>

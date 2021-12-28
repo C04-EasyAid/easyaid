@@ -9,9 +9,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Martina Giugliano
+ * DAO Supporto esame per gestire i dati del Database relativo al supporto esame.
+ */
+
 public class SupportoEsameDAO {
 
-
+    /**
+     * Metodo che restituisce tutte le richieste di Supporto Esame dal DB
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public synchronized List<SupportoEsameBean> doRetriveAll() throws SQLException,ClassNotFoundException{
         Connection conn=null;
         String query="SELECT * FROM supporto_esame";
@@ -60,6 +70,13 @@ public class SupportoEsameDAO {
     }
 
 
+    /**
+     * Metodo che restituisce le richieste di supporto esame effettuate tramite e-mail studente.
+     * @param emailStudente
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public synchronized List<SupportoEsameBean> doRetrieveAllByStudente(String emailStudente)  throws SQLException,ClassNotFoundException
     {
         Connection conn=null;

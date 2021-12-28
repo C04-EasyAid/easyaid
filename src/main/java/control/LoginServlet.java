@@ -1,6 +1,7 @@
 package control;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletRequest;
@@ -9,7 +10,11 @@ import java.io.IOException;
 import model.bean.UserBean;
 import model.dao.UserDAO;
 
-
+/**
+ * @author Roberto Tartaglia
+ * Servlet che permette di effettuare il login
+ */
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 

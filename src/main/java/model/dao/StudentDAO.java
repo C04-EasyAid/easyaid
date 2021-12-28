@@ -12,10 +12,10 @@ import static model.dao.ConnectionPool.conn;
 
 public class StudentDAO {
   //Metodo che restituisce lo studente
-  public static synchronized StudenteBean doRetrieveByEmail(String email) throws SQLException {
+  public synchronized StudenteBean doRetrieveByEmail(String email) throws SQLException {
     Connection conn = null;
     PreparedStatement stmt = null;
-    String query = "SELECT * FROM studente where = ?";
+    String query = "SELECT * FROM studente where email_studente = ?";
     StudenteBean bean = new StudenteBean();
     //Se la connessione è != null, entra nello statement
     try {
@@ -26,9 +26,9 @@ public class StudentDAO {
       // Se trova lo studente lo crea con tutti gli attributi
       if (rs.next()) {
         bean.setEmail(email);
+        bean.setTipoDisabilita(rs.getString("tipo_di_disabilita"));
         bean.setSpecificheDisturbo(rs.getString("specifiche_disturbo"));
-        bean.setPercentualeDisabilita(rs.getInt("percentuale_disabilità"));
-        bean.setTipoDisabilita(rs.getString("tipo_di_disabilità"));
+        bean.setPercentualeDisabilita(rs.getInt("percentuale_disabilita"));
         bean.setOreDisponibili(rs.getInt("ore_disponibili"));
       }
 

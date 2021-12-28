@@ -18,15 +18,13 @@
     UserBean bean = new UserBean();
     Collection<UserBean> utenti = UserDAO.doRetrieveAll();
     for(UserBean b : utenti){
-    String email = b.getEmail();
-    String ruolo = b.getRuolo();
     %>
 
 <fieldset>
     <label><p><%=b.getNome()%></p></label>
     <label><p><%=b.getCognome()%></p></label>
-    <label><p><%=email%></p></label>
-    <label><p><a href="UserProfile&usrEmail=<%=email%>&ruolo="<%=ruolo%>">Seleziona</a></p></label>
+    <label><p><%=b.getEmail()%></p></label>
+    <label><p><a href="../UserProfile?usrEmail=<%=b.getEmail()%>&ruolo=<%=b.getRuolo()%>">Seleziona</a></p></label>
 </fieldset><br>
 
 <% } %>

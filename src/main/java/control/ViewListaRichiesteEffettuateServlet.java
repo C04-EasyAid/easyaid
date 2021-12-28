@@ -15,8 +15,10 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-
-//Servlet che permette di restituire la lista delle richieste effettuate allo studente
+/**
+ * @author Riccardo Polidoro
+ * Servlet che permette di restituire la lista delle richieste effettuate allo studente
+ */
 public class ViewListaRichiesteEffettuateServlet extends HttpServlet
 {
 

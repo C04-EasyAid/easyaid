@@ -47,7 +47,7 @@ public class RegisterServlet extends HttpServlet {
                         StudenteBean studente = new StudenteBean();
                         if (!UserDAO.insertStudente(studente, utenteTemporaneo)) {
                             session.setAttribute("alertMsg", "Errore nell'inserimento studente");
-                            response.sendRedirect("./Registrazione.jsp");
+                            response.sendRedirect("view/Registrazione.jsp");
                         }
                     }
                     case 2 -> {
@@ -55,7 +55,7 @@ public class RegisterServlet extends HttpServlet {
                         TutorBean tutor = new TutorBean();
                         if (!UserDAO.insertTutor(tutor, utenteTemporaneo)) {
                             session.setAttribute("alertMsg", "Errore nell'inserimento tutor");
-                            response.sendRedirect("./Home.jsp");
+                            response.sendRedirect("view/Home.jsp");
                         }
                     }
                     case 3 -> {
@@ -63,7 +63,7 @@ public class RegisterServlet extends HttpServlet {
                         ProfessoreReferenteBean professoreReferente = new ProfessoreReferenteBean();
                         if (!UserDAO.insertProfessoreReferente(professoreReferente, utenteTemporaneo)) {
                             session.setAttribute("alertMsg", "Errore nell'inserimento professore referente");
-                            response.sendRedirect("./Home.jsp");
+                            response.sendRedirect("view/Home.jsp");
                         }
                     }
                 }
@@ -76,7 +76,7 @@ public class RegisterServlet extends HttpServlet {
         else
         {
             session.setAttribute("alertMsg","Permessi non concessi all'utente");
-            response.sendRedirect("./Home.jsp");
+            response.sendRedirect("view/Home.jsp");
         }
     }
 

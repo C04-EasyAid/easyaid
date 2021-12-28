@@ -30,9 +30,9 @@ public class LezioneDAO {
             stmt = conn.prepareStatement(query);
             stmt.setString(1,Integer.toString(id));
             ResultSet rs = stmt.executeQuery();
-            LezioneBean bean = new LezioneBean();
+            LezioneBean bean = null;
             while (rs.next()) {
-                bean=new LezioneBean(rs.getInt("tutorato"),rs.getString("ora_inizio"), rs.getString("ora_fine"), rs.getDate("data"), rs.getString("tutor"), rs.getBoolean("status"));
+                bean=new LezioneBean(rs.getInt("id"),rs.getInt("tutorato"),rs.getString("ora_inizio"), rs.getString("ora_fine"), rs.getDate("data"), rs.getString("tutor"), rs.getBoolean("status"));
                 lezioni.add(bean);
             }
         } catch (SQLException e) {

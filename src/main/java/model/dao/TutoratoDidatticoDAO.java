@@ -153,7 +153,7 @@ public class TutoratoDidatticoDAO {
             }
 
         }
-        catch(SQLException | ClassNotFoundException e)
+        catch(SQLException e)
         {
             e.printStackTrace();
         }
@@ -200,7 +200,7 @@ public class TutoratoDidatticoDAO {
             }
 
         }
-        catch(SQLException | ClassNotFoundException e)
+        catch(SQLException e)
         {
             e.printStackTrace();
         }
@@ -248,7 +248,7 @@ public class TutoratoDidatticoDAO {
             }
 
         }
-        catch(SQLException | ClassNotFoundException e)
+        catch(SQLException e)
         {
             e.printStackTrace();
         }

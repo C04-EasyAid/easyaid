@@ -1,5 +1,9 @@
 package model.dao;
 
+/*
+@author Mariagiovanna Bianco
+Classe CommentoDAO
+ */
 import model.bean.CommentoBean;
 
 

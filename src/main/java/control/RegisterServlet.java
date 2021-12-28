@@ -1,16 +1,14 @@
 package control;
 
 import model.bean.*;
-import model.dao.UserBeanDAO;
+import model.dao.UserDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.xml.registry.infomodel.User;
 import java.io.IOException;
-import java.sql.SQLException;
 
 public class RegisterServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -24,7 +22,7 @@ public class RegisterServlet extends HttpServlet {
         HttpSession session = request.getSession();
         PersonaleAmministrativoBean personaleAmministrativo= (PersonaleAmministrativoBean)session.getAttribute("admin");
         //Creo il bean dell utente che andrà inserito nel DB
-        UserBean utenteTemporaneo= UserBean.getInstance();
+        UserBean utenteTemporaneo= new UserBean();
         utenteTemporaneo.setNome(request.getParameter("nome"));
         utenteTemporaneo.setCognome(request.getParameter("cognome"));
         utenteTemporaneo.setEmail(request.getParameter("email"));
@@ -36,33 +34,32 @@ public class RegisterServlet extends HttpServlet {
             //1-studente 2-tutor 3-professore referente
             int tipoUtente= Integer.parseInt(request.getParameter("id"));
             try{
-            switch (tipoUtente)
-            {
-                case 1: utenteTemporaneo.setRuolo("S");
-                    StudenteBean studente =StudenteBean.getInstance();
-                    if(!UserBeanDAO.insertStudente(studente,utenteTemporaneo))
-                    {
-                        session.setAttribute("alertMsg","Errore nell'inserimento studente");
-                        response.sendRedirect("./Registrazione.jsp");
+                switch (tipoUtente) {
+                    case 1 -> {
+                        utenteTemporaneo.setRuolo("S");
+                        StudenteBean studente = new StudenteBean();
+                        if (!UserDAO.insertStudente(studente, utenteTemporaneo)) {
+                            session.setAttribute("alertMsg", "Errore nell'inserimento studente");
+                            response.sendRedirect("./Registrazione.jsp");
+                        }
                     }
-                    break;
-                case 2: utenteTemporaneo.setRuolo("T");
-                    TutorBean tutor = TutorBean.getInstance();
-                    if(!UserBeanDAO.insertTutor(tutor,utenteTemporaneo))
-                    {
-                        session.setAttribute("alertMsg","Errore nell'inserimento tutor");
-                        response.sendRedirect("./Home.jsp");
+                    case 2 -> {
+                        utenteTemporaneo.setRuolo("T");
+                        TutorBean tutor = new TutorBean();
+                        if (!UserDAO.insertTutor(tutor, utenteTemporaneo)) {
+                            session.setAttribute("alertMsg", "Errore nell'inserimento tutor");
+                            response.sendRedirect("./Home.jsp");
+                        }
                     }
-                    break;
-                case 3: utenteTemporaneo.setRuolo("PR");
-                    ProfessoreReferenteBean professoreReferente = ProfessoreReferenteBean.getInstance();
-                    if(!UserBeanDAO.insertProfessoreReferente(professoreReferente,utenteTemporaneo))
-                    {
-                        session.setAttribute("alertMsg","Errore nell'inserimento professore referente");
-                        response.sendRedirect("./Home.jsp");
+                    case 3 -> {
+                        utenteTemporaneo.setRuolo("PR");
+                        ProfessoreReferenteBean professoreReferente = new ProfessoreReferenteBean();
+                        if (!UserDAO.insertProfessoreReferente(professoreReferente, utenteTemporaneo)) {
+                            session.setAttribute("alertMsg", "Errore nell'inserimento professore referente");
+                            response.sendRedirect("./Home.jsp");
+                        }
                     }
-                    break;
-            }
+                }
             }
             catch (Exception e)
             {

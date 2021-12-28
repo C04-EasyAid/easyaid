@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import model.bean.UserBean;
+import model.dao.UserDAO;
 
 
 public class LoginServlet extends HttpServlet {
@@ -20,10 +21,11 @@ public class LoginServlet extends HttpServlet {
       throws ServletException, IOException {
     HttpSession session = request.getSession();
     try {
-      UserBean user = UserBean.getInstance();
+      UserBean user = new UserBean();
       user.setEmail(request.getParameter("Email"));
       user.setPassword(request.getParameter("Password"));
-      user = null; // UserDAO.doRetrieve(user);
+      UserDAO dao = new UserDAO();
+      user = dao.doRetrieveUtente(user);
       if (user == null) {
         // Nessun utente nel sistema
         response.sendRedirect("./LoginPage.jsp");

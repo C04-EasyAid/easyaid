@@ -15,7 +15,7 @@
         <h1>Richiedi uno dei seguenti servizi</h1><br><br>
         <fieldset>
             <h1>Tutorato didattico</h1><br>
-            <h2>Un tutor verrà assegnato per svolgere attività di tutorato</h2>
+            <h2>Un tutor verrà assegnato per svolgere l'attività di tutorato</h2>
             <div id="richiesta">
                 <input type=submit value="Richiedi">
             </div>

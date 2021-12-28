@@ -25,7 +25,7 @@ public class CommentoDAO {
             stmt = conn.prepareStatement(query);
             stmt.setString(1, Integer.toString(id));
             ResultSet rs = stmt.executeQuery();
-            CommentoBean bean = new CommentoBean();
+            CommentoBean bean = null;
             while (rs.next()) {
                 bean =
                         new CommentoBean(

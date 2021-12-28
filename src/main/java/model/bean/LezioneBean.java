@@ -1,14 +1,27 @@
 package model.bean;
 
 import java.util.Date;
-
+/*
+@author Serena Liguori
+Classe LezioneBean
+ */
 public class LezioneBean {
   // Variabili d'istanza
-  private int tutorato;
+  private int id,tutorato;
   private String oraInizio, oraFine, tutor;
   private Date data;
   private boolean status;
-
+ //Costruttore con id
+  public LezioneBean(
+          int id,int tutorato, String oraInizio, String oraFine, Date data, String tutor, boolean status) {
+    this.id = id;
+    this.tutorato = tutorato;
+    this.oraInizio = oraInizio;
+    this.oraFine = oraFine;
+    this.tutor = tutor;
+    this.data = data;
+    this.status = status;
+  }
   // Costruttore
   public LezioneBean(
       int tutorato, String oraInizio, String oraFine, Date data, String tutor, boolean status) {
@@ -26,6 +39,15 @@ public class LezioneBean {
   }
 
   // Metodi
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
   public int getTutorato() {
     return tutorato;
   }

@@ -29,8 +29,7 @@ public class ViewListaRichiesteEffettuateServlet extends HttpServlet
         StudenteBean bean= (StudenteBean) session.getAttribute("studente");
         SupportoEsameDAO esameDAO=new SupportoEsameDAO();
         TutoratoDidatticoDAO tutoratoDAO=new TutoratoDidatticoDAO();
-        if(bean!=null)//controllo sulla sessione:verifica che lo studente è loggato nel sistema
-        {
+
             try {
                 List<SupportoEsameBean> listRichiesteSupportoEsame=esameDAO.doRetrieveAllByStudente(bean.getEmail());
                 List<TutoratoDidatticoBean> listRichiesteTutoratoDidattico=tutoratoDAO.doRetrieveAllByStudente(bean.getEmail());
@@ -51,12 +50,8 @@ public class ViewListaRichiesteEffettuateServlet extends HttpServlet
 
 
         }
-        else
-        {//se lo studente non è loggato,non può vedere la lista delle richieste effettuate,viene reindirizzato alla home page
-            session.setAttribute("alertMsg","Permessi non concessi all'utente");
-            resp.sendRedirect("./Home.jsp");
-        }
+
 
 
     }
-}
+

@@ -1,6 +1,6 @@
 <%@ page import="model.bean.UserBean" %><%--
   Created by IntelliJ IDEA.
-  User: 130309
+  User: Giovanni Toriello
   Date: 28/12/2021
   Time: 21:33
   To change this template use File | Settings | File Templates.
@@ -9,15 +9,23 @@
          import="model.bean.UserBean" import="model.dao.UserDAO"
 %>
 <%@ page import="java.util.Collection" %>
+<%
+    UserBean bean = new UserBean();
+    Collection<UserBean> utenti = (Collection<UserBean>) session.getAttribute("usrList");
+    if(utenti == null) {
+        response.sendRedirect("../ViewListaUsers");
+        return;
+    }
+    %>
 <html>
 <head>
     <title>Utente</title>
 </head>
 <body>
+<h1>Lista degli utenti</h1>
 <%
-    UserBean bean = new UserBean();
-    Collection<UserBean> utenti = UserDAO.doRetrieveAll();
     for(UserBean b : utenti){
+        if(!b.isPersonaleAmministrativo()){
     %>
 
 <fieldset>
@@ -27,6 +35,6 @@
     <label><p><a href="../UserProfile?usrEmail=<%=b.getEmail()%>&ruolo=<%=b.getRuolo()%>">Seleziona</a></p></label>
 </fieldset><br>
 
-<% } %>
+<% }} %>
 </body>
 </html>

@@ -30,6 +30,9 @@
                 <input type="submit" value="Accedi"><br>
             </div>
         </div>
+        <div id="immagine2">
+            <img src="../image/PS-LOGO-DEFINITIVO-2.png" id="img2">
+        </div>
     </div>
 
 </form>

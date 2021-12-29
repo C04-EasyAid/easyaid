@@ -35,7 +35,8 @@ public class SingolaRichiestaServlet extends HttpServlet {
         HttpSession session = request.getSession();
         int idTutorato = 0;
         int idSupporto = 0;
-
+        session.removeAttribute("supporto");
+        session.removeAttribute("tutorato");
         if (request.getParameter("idTutorato") != null) {
             idTutorato = Integer.parseInt(request.getParameter("idTutorato"));
             TutoratoDidatticoDAO dao = new TutoratoDidatticoDAO();
@@ -49,7 +50,7 @@ public class SingolaRichiestaServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }
-        if (request.getParameter("idSupporto") != null) {
+       else if (request.getParameter("idSupporto") != null) {
             SupportoEsameDAO dao = new SupportoEsameDAO();
             idSupporto = Integer.parseInt(request.getParameter("idSupporto"));
             try {

@@ -27,7 +27,7 @@
 </fieldset>
 <%
     }
-    if(supporto==null){
+    if(supporto!=null){
 
 %>
 <fieldset>

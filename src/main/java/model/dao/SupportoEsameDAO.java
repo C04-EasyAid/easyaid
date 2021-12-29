@@ -300,6 +300,51 @@ public class SupportoEsameDAO {
 
 
     }
+    public synchronized SupportoEsameBean doRetriveById(int id) throws SQLException,ClassNotFoundException{
+        Connection conn=null;
+        String query="SELECT * FROM supporto_esame where id=?";
+        SupportoEsameBean bean = null;
+        PreparedStatement stmt=null;
+
+        try {
+            conn = ConnectionPool.conn();
+            stmt = conn.prepareStatement(query);
+            stmt.setInt(1,id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                bean = new SupportoEsameBean();
+                bean.setId(rs.getInt("id"));
+                bean.setData(rs.getString("data"));
+                bean.setOra(rs.getString("ora"));
+                bean.setDocente(rs.getString("docente"));
+                bean.setModalitaEsame(rs.getString("modalita_esame"));
+                bean.setEventualiAusili(rs.getString("eventuali_ausili"));
+                bean.setTipoAssistenza(rs.getString("tipo_di_assistenza"));
+                bean.setLuogo(rs.getString("luogo"));
+                bean.setOreRichieste(rs.getInt("ore_richieste"));
+                bean.setCommento(rs.getString("commento"));
+                bean.setStatus(rs.getInt("status"));
+                bean.setInsegnamento(rs.getString("insegnamento"));
+                bean.setDipartimento(rs.getString("dipartimento"));
+                bean.setStudenteEmail(rs.getString("studente_email"));
+                bean.setTutorEmail(rs.getString("tutor_email"));
+                bean.setProfEmail(rs.getString("prof_refe_email"));
+            }
+        }
+        catch(SQLException e)
+        {
+            e.printStackTrace();
+        }
+        finally{
+            if(stmt!=null)
+                stmt.close();
+            if(conn!=null)
+                conn.close();
+        }
+
+        return bean;
+
+    }
 
 
 

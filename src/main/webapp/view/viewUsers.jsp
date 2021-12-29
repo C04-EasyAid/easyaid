@@ -9,14 +9,20 @@
          import="model.bean.UserBean" import="model.dao.UserDAO"
 %>
 <%@ page import="java.util.Collection" %>
+<%
+    UserBean bean = new UserBean();
+    Collection<UserBean> utenti = (Collection<UserBean>) session.getAttribute("usrList");
+    if(utenti == null) {
+        response.sendRedirect("../ViewListaUsers");
+        return;
+    }
+    %>
 <html>
 <head>
     <title>Utente</title>
 </head>
 <body>
 <%
-    UserBean bean = new UserBean();
-    Collection<UserBean> utenti = UserDAO.doRetrieveAll();
     for(UserBean b : utenti){
     %>
 

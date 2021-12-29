@@ -72,8 +72,8 @@ public class UserDAO {
       stmt.setString(4, b.getPassword());
       stmt.setString(5, b.getRuolo());
       // Esegue la query
-      ResultSet rs = null;
      utente = stmt.executeUpdate()==1;
+     conn.commit();
     } catch (SQLException e) {
       utente = false;
       e.printStackTrace();
@@ -110,8 +110,8 @@ public class UserDAO {
         stmt.setInt(5, s.getOreDisponibili());
         // Esegue la query
         ResultSet rs = null;
-        stmt.executeUpdate();
-        studente = true;
+       studente = stmt.executeUpdate() == 1;
+        conn.commit();
       } catch (SQLException e) {
         studente = false;
         e.printStackTrace();
@@ -148,7 +148,8 @@ public class UserDAO {
         stmt.setInt(5, t.getOreDisponibili());
         // Esegue la query
         ResultSet rs = null;
-        stmt.executeUpdate();
+      tutor = stmt.executeUpdate() == 1;
+        conn.commit();
       } catch (SQLException e) {
         tutor = false;
         e.printStackTrace();
@@ -183,8 +184,8 @@ public class UserDAO {
         stmt.setString(2, p.getDipartimento());
         // Esegue la query
         ResultSet rs = null;
-        stmt.executeUpdate();
-        prof = true;
+        prof = stmt.executeUpdate() == 1;
+        conn.commit();
       } catch (SQLException e) {
         prof = false;
         e.printStackTrace();
@@ -269,4 +270,5 @@ public class UserDAO {
     }
     return user;
   }
+
 }

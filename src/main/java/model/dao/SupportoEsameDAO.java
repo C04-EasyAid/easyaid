@@ -34,8 +34,8 @@ public class SupportoEsameDAO {
             conn = ConnectionPool.conn();
             stmt = conn.prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
-            SupportoEsameBean bean = new SupportoEsameBean();
             while (rs.next()) {
+                SupportoEsameBean bean = new SupportoEsameBean();
                 bean.setId(rs.getInt("id"));
                 bean.setData(rs.getString("data"));
                 bean.setOra(rs.getString("ora"));
@@ -84,7 +84,6 @@ public class SupportoEsameDAO {
         String query="SELECT * FROM supporto_esame WHERE studente_email=?";
         PreparedStatement stmt=null;
         List<SupportoEsameBean> list=new ArrayList<>();
-        SupportoEsameBean bean = new SupportoEsameBean();
         try
         {
             conn=ConnectionPool.conn();
@@ -93,6 +92,7 @@ public class SupportoEsameDAO {
             ResultSet rs=stmt.executeQuery();
             while(rs.next())
             {
+                SupportoEsameBean bean = new SupportoEsameBean();
                 bean.setId(rs.getInt("id"));
                 bean.setData(rs.getString("data"));
                 bean.setOra(rs.getString("ora"));
@@ -140,7 +140,7 @@ public class SupportoEsameDAO {
         String query="SELECT * FROM supporto_esame WHERE tutor_email=?";
         PreparedStatement stmt=null;
         List<SupportoEsameBean> list=new ArrayList<>();
-        SupportoEsameBean bean = new SupportoEsameBean();
+
         try
         {
             conn=ConnectionPool.conn();
@@ -149,6 +149,7 @@ public class SupportoEsameDAO {
             ResultSet rs=stmt.executeQuery();
             while(rs.next())
             {
+                SupportoEsameBean bean = new SupportoEsameBean();
                 bean.setId(rs.getInt("id"));
                 bean.setData(rs.getString("data"));
                 bean.setOra(rs.getString("ora"));
@@ -198,7 +199,7 @@ public class SupportoEsameDAO {
         String query="SELECT * FROM supporto_esame WHERE status=2";
         PreparedStatement stmt=null;
         List<SupportoEsameBean> list=new ArrayList<>();
-        SupportoEsameBean bean = new SupportoEsameBean();
+
         try
         {
             conn=ConnectionPool.conn();
@@ -206,6 +207,7 @@ public class SupportoEsameDAO {
             ResultSet rs=stmt.executeQuery();
             while(rs.next())
             {
+                SupportoEsameBean bean = new SupportoEsameBean();
                 bean.setId(rs.getInt("id"));
                 bean.setData(rs.getString("data"));
                 bean.setOra(rs.getString("ora"));
@@ -253,7 +255,7 @@ public class SupportoEsameDAO {
         String query="SELECT * FROM supporto_esame WHERE status=0";
         PreparedStatement stmt=null;
         List<SupportoEsameBean> list=new ArrayList<>();
-        SupportoEsameBean bean = new SupportoEsameBean();
+
         try
         {
             conn=ConnectionPool.conn();
@@ -261,6 +263,7 @@ public class SupportoEsameDAO {
             ResultSet rs=stmt.executeQuery();
             while(rs.next())
             {
+                SupportoEsameBean bean = new SupportoEsameBean();
                 bean.setId(rs.getInt("id"));
                 bean.setData(rs.getString("data"));
                 bean.setOra(rs.getString("ora"));

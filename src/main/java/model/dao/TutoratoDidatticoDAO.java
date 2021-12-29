@@ -35,8 +35,9 @@ public class TutoratoDidatticoDAO {
             conn = ConnectionPool.conn();
             stmt = conn.prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
-            TutoratoDidatticoBean bean = new TutoratoDidatticoBean();
+
             while (rs.next()) {
+                TutoratoDidatticoBean bean = new TutoratoDidatticoBean();
                 bean.setId(rs.getInt("idtutorato_didattico"));
                 bean.setDateDisponibili(rs.getString("date_disponibili"));
                 bean.setOreDisponibili(rs.getString("ore_disponibili"));
@@ -80,7 +81,7 @@ public class TutoratoDidatticoDAO {
         String query="SELECT * FROM tutorato_didattico WHERE studente_email=?";
         PreparedStatement stmt=null;
         List<TutoratoDidatticoBean> list=new ArrayList<>();
-        TutoratoDidatticoBean bean = new TutoratoDidatticoBean();
+
         try
         {
             conn=ConnectionPool.conn();
@@ -89,6 +90,7 @@ public class TutoratoDidatticoDAO {
             ResultSet rs=stmt.executeQuery();
             while(rs.next())
             {
+                TutoratoDidatticoBean bean = new TutoratoDidatticoBean();
                 bean.setId(rs.getInt("idtutorato_didattico"));
                 bean.setDateDisponibili(rs.getString("date_disponibili"));
                 bean.setOreDisponibili(rs.getString("ore_disponibili"));
@@ -180,7 +182,7 @@ public class TutoratoDidatticoDAO {
         String query="SELECT * FROM tutorato_didattico WHERE status=2";
         PreparedStatement stmt=null;
         List<TutoratoDidatticoBean> list=new ArrayList<>();
-        TutoratoDidatticoBean bean = new TutoratoDidatticoBean();
+
         try
         {
             conn=ConnectionPool.conn();
@@ -188,6 +190,7 @@ public class TutoratoDidatticoDAO {
             ResultSet rs=stmt.executeQuery();
             while(rs.next())
             {
+                TutoratoDidatticoBean bean = new TutoratoDidatticoBean();
                 bean.setId(rs.getInt("idtutorato_didattico"));
                 bean.setDateDisponibili(rs.getString("date_disponibili"));
                 bean.setOreDisponibili(rs.getString("ore_disponibili"));
@@ -229,7 +232,7 @@ public class TutoratoDidatticoDAO {
         String query="SELECT * FROM tutorato_didattico WHERE status=0";
         PreparedStatement stmt=null;
         List<TutoratoDidatticoBean> list=new ArrayList<>();
-        TutoratoDidatticoBean bean = new TutoratoDidatticoBean();
+
         try
         {
             conn=ConnectionPool.conn();
@@ -237,6 +240,7 @@ public class TutoratoDidatticoDAO {
             ResultSet rs=stmt.executeQuery();
             while(rs.next())
             {
+                TutoratoDidatticoBean bean = new TutoratoDidatticoBean();
                 bean.setId(rs.getInt("idtutorato_didattico"));
                 bean.setDateDisponibili(rs.getString("date_disponibili"));
                 bean.setOreDisponibili(rs.getString("ore_disponibili"));

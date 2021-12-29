@@ -39,7 +39,8 @@ public class CommentoDAO {
         } catch (SQLException e) {
 
         } finally {
-            stmt.close();
+            if(stmt!=null)
+                stmt.close();
             if (conn != null) {
                 conn.close();
             }

@@ -22,22 +22,19 @@
     <table style="border-collapse: collapse; background-color: aqua;border: 1px solid black">
         <%  TutorBean bean = (TutorBean) session.getAttribute("tutor");
             Collection<TutoratoDidatticoBean> richiesteTutorato = new ArrayList<>();
-            TutoratoDidatticoDAO tutoratoDao = new TutoratoDidatticoDAO();
-            richiesteTutorato = tutoratoDao.doRetrieveAllRichiesteTutoratoDidatticoCompletate();
+            richiesteTutorato = (Collection<TutoratoDidatticoBean>) session.getAttribute("richiesteTutoratoCompletate");
             Collection<SupportoEsameBean> richesteSupporto = new ArrayList<>();
-            SupportoEsameDAO esameDAO = new SupportoEsameDAO();
-            richesteSupporto = esameDAO.doRetrieveAllRichiesteSupportoEsameCompletate();
+            richesteSupporto = (Collection<SupportoEsameBean>) session.getAttribute("richiesteEsamiCompletate");
             for(TutoratoDidatticoBean b : richiesteTutorato){
-                for (SupportoEsameBean s : richesteSupporto){
-
         %>
 
         <tr><td>Tutorato Didattico</td>
         <tr><td><%=b.getDateDisponibili()%></td></tr>
         <tr><td><%=b.getOreDisponibili()%></td></tr>
         <tr><td><%=Integer.toString(b.getOreRichieste())%></td></tr>
-        <tr><td><%=s.getDipartimento()%></td></tr><br><br>
-
+        <tr><td><%=b.getStudenteEmail()%></td></tr><br><br>
+        <%}%>
+        <% for(SupportoEsameBean s : richesteSupporto){%>
         <tr><td>Supporto Esame</td></tr>
         <tr><td><%=s.getData()%></td></tr>
         <tr><td><%=s.getOra()%></td></tr>
@@ -51,7 +48,7 @@
         <tr><td><%=s.getDipartimento()%></td></tr>
 
     </table>
-    <%}}%>
+    <%}%>
 </div>
 
 </body>

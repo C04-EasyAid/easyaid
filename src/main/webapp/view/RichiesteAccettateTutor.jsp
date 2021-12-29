@@ -29,16 +29,15 @@
             SupportoEsameDAO esameDAO = new SupportoEsameDAO();
             richesteSupporto = esameDAO.doRetrieveAllByTutor("lorenzorossi1@studenti.unisa.it");
             for(TutoratoDidatticoBean b : richiesteTutorato){
-                for (SupportoEsameBean s : richesteSupporto){
-
         %>
 
         <tr><td>Tutorato Didattico</td>
         <tr><td><%=b.getDateDisponibili()%></td></tr>
         <tr><td><%=b.getOreDisponibili()%></td></tr>
         <tr><td><%=Integer.toString(b.getOreRichieste())%></td></tr>
-        <tr><td><%=s.getDipartimento()%></td></tr><br><br>
-
+        <tr><td><%=b.getStudenteEmail()%></td></tr><br><br>
+        <%}%>
+        <% for(SupportoEsameBean s : richesteSupporto){%>
         <tr><td>Supporto Esame</td></tr>
         <tr><td><%=s.getData()%></td></tr>
         <tr><td><%=s.getOra()%></td></tr>
@@ -52,7 +51,7 @@
         <tr><td><%=s.getDipartimento()%></td></tr>
 
     </table>
-    <%}}%>
+    <%}%>
 </div>
 
 </body>

@@ -5,16 +5,17 @@
 <%@ page import="model.bean.TutorBean" %>
 <%@ page import="model.dao.SupportoEsameDAO" %>
 <%@ page import="model.bean.SupportoEsameBean" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Martina Giugliano
-  Date: 28/12/2021
-  Time: 22:24
+  Date: 29/12/2021
+  Time: 12:40
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>ListaRichieste</title>
+    <title>ListaRichiesteAccettate</title>
 </head>
 <body>
 <div id="corpo">
@@ -22,9 +23,11 @@
     <table style="border-collapse: collapse; background-color: aqua;border: 1px solid black">
         <%  TutorBean bean = (TutorBean) session.getAttribute("tutor");
             Collection<TutoratoDidatticoBean> richiesteTutorato = new ArrayList<>();
-            richiesteTutorato = (Collection<TutoratoDidatticoBean>) session.getAttribute("richiesteTutoratoCompletate");
+            TutoratoDidatticoDAO tutoratoDao = new TutoratoDidatticoDAO();
+            richiesteTutorato = tutoratoDao.doRetrieveAllByTutor("lorenzorossi1@studenti.unisa.it");
             Collection<SupportoEsameBean> richesteSupporto = new ArrayList<>();
-            richesteSupporto = (Collection<SupportoEsameBean>) session.getAttribute("richiesteEsamiCompletate");
+            SupportoEsameDAO esameDAO = new SupportoEsameDAO();
+            richesteSupporto = esameDAO.doRetrieveAllByTutor("lorenzorossi1@studenti.unisa.it");
             for(TutoratoDidatticoBean b : richiesteTutorato){
         %>
 

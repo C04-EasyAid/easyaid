@@ -5,10 +5,11 @@
 <%@ page import="model.bean.TutorBean" %>
 <%@ page import="model.dao.SupportoEsameDAO" %>
 <%@ page import="model.bean.SupportoEsameBean" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Martina Giugliano
-  Date: 28/12/2021
-  Time: 22:24
+  Date: 29/12/2021
+  Time: 15:03
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -22,10 +23,11 @@
     <table style="border-collapse: collapse; background-color: aqua;border: 1px solid black">
         <%  TutorBean bean = (TutorBean) session.getAttribute("tutor");
             Collection<TutoratoDidatticoBean> richiesteTutorato = new ArrayList<>();
-            richiesteTutorato = (Collection<TutoratoDidatticoBean>) session.getAttribute("richiesteTutoratoCompletate");
+            richiesteTutorato = (Collection<TutoratoDidatticoBean>) session.getAttribute("richiesteTutoratoNonAccettate");
             Collection<SupportoEsameBean> richesteSupporto = new ArrayList<>();
-            richesteSupporto = (Collection<SupportoEsameBean>) session.getAttribute("richiesteEsamiCompletate");
+            richesteSupporto = (Collection<SupportoEsameBean>) session.getAttribute("richiesteEsamiNonAccettate");
             for(TutoratoDidatticoBean b : richiesteTutorato){
+
         %>
 
         <tr><td>Tutorato Didattico</td>
@@ -34,7 +36,7 @@
         <tr><td><%=Integer.toString(b.getOreRichieste())%></td></tr>
         <tr><td><%=b.getStudenteEmail()%></td></tr><br><br>
         <%}%>
-        <% for(SupportoEsameBean s : richesteSupporto){%>
+        <%  for(SupportoEsameBean s : richesteSupporto){%>
         <tr><td>Supporto Esame</td></tr>
         <tr><td><%=s.getData()%></td></tr>
         <tr><td><%=s.getOra()%></td></tr>

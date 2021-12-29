@@ -40,7 +40,7 @@ public class SupportoEsameDAO {
                 bean.setData(rs.getString("data"));
                 bean.setOra(rs.getString("ora"));
                 bean.setDocente(rs.getString("docente"));
-                bean.setModalitaEsame(rs.getString("modalità_esame"));
+                bean.setModalitaEsame(rs.getString("modalita_esame"));
                 bean.setEventualiAusili(rs.getString("eventuali_ausili"));
                 bean.setTipoAssistenza(rs.getString("tipo_di_assistenza"));
                 bean.setLuogo(rs.getString("luogo"));
@@ -97,7 +97,7 @@ public class SupportoEsameDAO {
                 bean.setData(rs.getString("data"));
                 bean.setOra(rs.getString("ora"));
                 bean.setDocente(rs.getString("docente"));
-                bean.setModalitaEsame(rs.getString("modalità_esame"));
+                bean.setModalitaEsame(rs.getString("modalita_esame"));
                 bean.setEventualiAusili(rs.getString("eventuali_ausili"));
                 bean.setTipoAssistenza(rs.getString("tipo_di_assistenza"));
                 bean.setLuogo(rs.getString("luogo"));
@@ -154,7 +154,7 @@ public class SupportoEsameDAO {
                 bean.setData(rs.getString("data"));
                 bean.setOra(rs.getString("ora"));
                 bean.setDocente(rs.getString("docente"));
-                bean.setModalitaEsame(rs.getString("modalità_esame"));
+                bean.setModalitaEsame(rs.getString("modalita_esame"));
                 bean.setEventualiAusili(rs.getString("eventuali_ausili"));
                 bean.setTipoAssistenza(rs.getString("tipo_di_assistenza"));
                 bean.setLuogo(rs.getString("luogo"));
@@ -212,7 +212,7 @@ public class SupportoEsameDAO {
                 bean.setData(rs.getString("data"));
                 bean.setOra(rs.getString("ora"));
                 bean.setDocente(rs.getString("docente"));
-                bean.setModalitaEsame(rs.getString("modalità_esame"));
+                bean.setModalitaEsame(rs.getString("modalita_esame"));
                 bean.setEventualiAusili(rs.getString("eventuali_ausili"));
                 bean.setTipoAssistenza(rs.getString("tipo_di_assistenza"));
                 bean.setLuogo(rs.getString("luogo"));
@@ -268,7 +268,7 @@ public class SupportoEsameDAO {
                 bean.setData(rs.getString("data"));
                 bean.setOra(rs.getString("ora"));
                 bean.setDocente(rs.getString("docente"));
-                bean.setModalitaEsame(rs.getString("modalità_esame"));
+                bean.setModalitaEsame(rs.getString("modalita_esame"));
                 bean.setEventualiAusili(rs.getString("eventuali_ausili"));
                 bean.setTipoAssistenza(rs.getString("tipo_di_assistenza"));
                 bean.setLuogo(rs.getString("luogo"));

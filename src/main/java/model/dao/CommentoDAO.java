@@ -22,28 +22,27 @@ public class CommentoDAO {
         Collection<CommentoBean> commenti = new ArrayList<>();
         Connection conn = null;
         PreparedStatement stmt = null;
-        String query = "SELECT * FROM lezione WHERE lezione=?";
-
+        String query = "SELECT * FROM commento WHERE lezione=?";
         try {
             conn = conn();
             stmt = conn.prepareStatement(query);
-            stmt.setString(1, Integer.toString(id));
+            stmt.setInt(1,id);
             ResultSet rs = stmt.executeQuery();
             CommentoBean bean = null;
             while (rs.next()) {
-                bean =
-                        new CommentoBean(
-                                rs.getInt("lezione"), rs.getInt("tutorato"), rs.getString("testo"), rs.getDate("data"), rs.getString("ora"), rs.getString("studente"), rs.getString("tutor"));
+                bean = new CommentoBean(rs.getInt("lezione"), rs.getInt("tutorato"), rs.getString("testo"), rs.getDate("data"), rs.getString("ora"), rs.getString("studente"), rs.getString("tutor"));
                 commenti.add(bean);
             }
         } catch (SQLException e) {
 
         } finally {
-            stmt.close();
+            if(stmt!=null)
+                stmt.close();
             if (conn != null) {
                 conn.close();
             }
         }
         return commenti;
     }
+
 }

@@ -38,13 +38,38 @@ public class LezioneDAO {
         } catch (SQLException e) {
 
         } finally {
-            stmt.close();
+            if(stmt!=null)
+                stmt.close();
             if (conn != null) {
                 conn.close();
             }
         }
         return lezioni;
     }
+    public static synchronized LezioneBean doRetrieveLezioneById(int id)
+            throws ClassNotFoundException, SQLException {
+        Connection conn = null;
+        LezioneBean bean = null;
+        PreparedStatement stmt = null;
+        String query = "SELECT * FROM lezione WHERE id=?";
+        try {
+            conn = conn();
+            stmt = conn.prepareStatement(query);
+            stmt.setInt(1,id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                bean=new LezioneBean(rs.getInt("id"),rs.getInt("tutorato"),rs.getString("ora_inizio"), rs.getString("ora_fine"), rs.getDate("data"), rs.getString("tutor"), rs.getBoolean("status"));
+            }
+        } catch (SQLException e) {
 
+        } finally {
+            if(stmt!=null)
+                stmt.close();
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return bean;
+    }
 
 }

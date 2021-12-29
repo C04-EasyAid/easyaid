@@ -1,22 +1,50 @@
-
-#corpo{
-    margin-top: -16em;
-    margin-left: 45em;
+#immagine{
+    background-color: #59cfcd;
+    width: 32em;
+    margin-left: 33em;
+    height: 27em;
+    margin-top: 16em;
+}
+#immagine> #corpo{
+    margin-top: -19em;
+    margin-left: 17em;
     background-color: white;
     border-radius: 13%;
     font-size: 23px;
+    margin-right: 26em;
+    padding: 2em 5em 5em 10em;
 }
-#img{
+#immagine > #img{
     height: 24em;
-    margin-top: 16em;
-    margin-left: 30em;
-    background-color: #59cfcd;
+    margin-top: 3em;
+    margin-left: -3em;
 }
 #corpo > #accedi > input{
     font-family: Garamond;
-    font-size: 0.7em;
+    font-size: 0.8em;
     border-radius: 15%;
-    width: 2.8em;
+    width: 5em;
     background-color: #59cfcd;
     border-color: #59cfcd;
+    margin-left: -5.3em;
 }
+
+#corpo > #password > input{
+    font-size: 0.8em;
+    border-radius: 10%;
+    margin-bottom: 1em;
+    margin-left: -9em;
+}
+
+#corpo > #email > input{
+    font-size: 0.8em;
+    border-radius: 10%;
+    margin-bottom: 1em;
+    margin-left: -9em;
+}
+
+#corpo> h1{
+    margin-left: -2.5em;
+}
+
+

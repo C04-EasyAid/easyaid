@@ -27,7 +27,7 @@ public class RegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        PersonaleAmministrativoBean personaleAmministrativo= (PersonaleAmministrativoBean)session.getAttribute("admin");
+        UserBean utenteLoggato= (UserBean)session.getAttribute("admin");
         //Creo il bean dell utente che andrà inserito nel DB
         UserBean utenteTemporaneo= new UserBean();
         utenteTemporaneo.setNome(request.getParameter("nome"));
@@ -49,9 +49,8 @@ public class RegisterServlet extends HttpServlet {
             tipoUtente = 3;
         }
         //Se l'utente loggato è personale amministrativo allora procedo all inserimento dell utente
-        //if(personaleAmministrativo!=null)
-        //{
-            System.out.println("ueueueue");
+        if(utenteLoggato!=null)
+        {
             //PROVVISORIO TIPO INTERO!! Dalla request prendo il parametro id ed in base al valore registro l utente
             //1-studente 2-tutor 3-professore referente
             try{
@@ -60,17 +59,14 @@ public class RegisterServlet extends HttpServlet {
                         System.out.println(utenteTemporaneo);
                         StudenteBean studente = new StudenteBean();
                         studente.setOreDisponibili(Integer.parseInt(request.getParameter("oreDisponibiliStudente")));
-                        int percentuale = Integer.parseInt(request.getParameter("percentualeDisabilita"));
-                        studente.setPercentualeDisabilita(percentuale);
+                        studente.setPercentualeDisabilita(Integer.parseInt(request.getParameter("percentualeDisabilita")));
                         studente.setEmail(utenteTemporaneo.getEmail());
                         studente.setTipoDisabilita(request.getParameter("tipoDisabilita"));
                         studente.setSpecificheDisturbo(request.getParameter("specificheDisturbo"));
-                        boolean result = UserDAO.insertStudente(studente,utenteTemporaneo);
-                        if (!result) {
+                        if (!UserDAO.insertStudente(studente,utenteTemporaneo)) {
                             session.setAttribute("alertMsg", "Errore nell'inserimento studente");
                             response.sendRedirect("view/Home.jsp");
                         }
-                        break;
                     }
                     case 2 -> {
                         TutorBean tutor = new TutorBean();
@@ -83,7 +79,6 @@ public class RegisterServlet extends HttpServlet {
                             session.setAttribute("alertMsg", "Errore nell'inserimento tutor");
                             response.sendRedirect("view/Home.jsp");
                         }
-                        break;
                     }
                     case 3 -> {
                         ProfessoreReferenteBean professoreReferente = new ProfessoreReferenteBean();
@@ -93,7 +88,6 @@ public class RegisterServlet extends HttpServlet {
                             session.setAttribute("alertMsg", "Errore nell'inserimento professore referente");
                             response.sendRedirect("view/Home.jsp");
                         }
-                        break;
                     }
                     default -> throw new IllegalStateException("Unexpected value: " + tipoUtente);
                 }
@@ -102,12 +96,9 @@ public class RegisterServlet extends HttpServlet {
             {
                 e.printStackTrace();
             }
-       // }
-        //else
-        //{
-            session.setAttribute("alertMsg","Permessi non concessi all'utente");
-            response.sendRedirect("view/Home.jsp");
-       // }
+        }
+        session.setAttribute("alertMsg","Permessi non concessi all'utente");
+        response.sendRedirect("view/Home.jsp");
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

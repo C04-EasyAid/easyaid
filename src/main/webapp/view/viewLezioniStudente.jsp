@@ -22,22 +22,23 @@
     <h1>Lezioni programmate</h1> <br><br>
     <div id="lezione">
         <form method="get" action="../SingolaLezioneServlet">
-        <%
-            TutoratoDidatticoBean bean = (TutoratoDidatticoBean) session.getAttribute("tutorato");
-            Collection<LezioneBean> lezioni = new ArrayList<>();
-            lezioni = LezioneDAO.doRetrieveLezione(15);
-                        for (LezioneBean x : lezioni){
-            String data = new SimpleDateFormat("dd-MM-yyyy").format(x.getData());
+            <%
+                TutoratoDidatticoBean bean = (TutoratoDidatticoBean) session.getAttribute("tutorato");
+                Collection<LezioneBean> lezioni = new ArrayList<>();
+                lezioni = LezioneDAO.doRetrieveLezione(15);
+                for (LezioneBean x : lezioni){
+                    String data = new SimpleDateFormat("dd-MM-yyyy").format(x.getData());
 
-        %>
-        <fieldset>
-            <label><p><%=x.getOraInizio()%></p></label>
-            <label><p><%=x.getOraFine()%></p></label>
-            <label><p><%=data%></p></label>
-            <label><p><%=x.getTutor()%></p></label>
-        </fieldset>
-        <br>
-        <% } %>
+            %>
+            <fieldset>
+                <label><p><%=x.getOraInizio()%></p></label>
+                <label><p><%=x.getOraFine()%></p></label>
+                <label><p><%=data%></p></label>
+                <label><p><%=x.getTutor()%></p></label>
+                <label><p><a href="../SingolaLezione?lezione=<%=x.getId()%>">Seleziona</a></p></label>
+            </fieldset>
+            <br>
+            <% } %>
         </form>
     </div>
 </div>

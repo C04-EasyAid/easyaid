@@ -17,7 +17,6 @@
 <div id="corpo">
     <h1>Lezioni programmate</h1> <br><br>
     <div id="lezione">
-        <form method="get" action="../SingolaLezioneServlet">
         <%
             TutoratoDidatticoBean bean = (TutoratoDidatticoBean) session.getAttribute("tutorato");
             Collection<LezioneBean> lezioni = new ArrayList<>();
@@ -31,12 +30,11 @@
             <label><p><%=x.getOraFine()%></p></label>
             <label><p><%=data%></p></label>
             <label><p><%=x.getTutor()%></p></label>
-            <input type="submit" value="Seleziona">
+            <label><p><a href="../SingolaLezione?lezione=<%=x.getId()%>">Seleziona</a></p></label>
         </fieldset>
         <br>
         <% } %>
         <input type="submit" value="Aggiungi Lezione">
-        </form>
     </div>
 </div>
 </body>

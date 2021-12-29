@@ -24,7 +24,7 @@ public class CommentoDAO {
         PreparedStatement stmt = null;
         String query = "SELECT * FROM commento WHERE lezione=?";
         try {
-            conn = conn();
+            conn = ConnectionPool.conn();
             stmt = conn.prepareStatement(query);
             stmt.setInt(1,id);
             ResultSet rs = stmt.executeQuery();

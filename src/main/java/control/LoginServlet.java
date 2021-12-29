@@ -23,33 +23,33 @@ public class LoginServlet extends HttpServlet {
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+      throws IOException {
     HttpSession session = request.getSession();
+    UserBean user = new UserBean();
+    user.setEmail(request.getParameter("Email"));
+    user.setPassword(request.getParameter("Password"));
     try {
-      UserBean user = new UserBean();
-      user.setEmail(request.getParameter("Email"));
-      user.setPassword(request.getParameter("Password"));
       user = UserDAO.doRetrieveUtente(user);
       if (user == null) {
         // Nessun utente nel sistema
-        response.sendRedirect("./LoginPage.jsp");
+        response.sendRedirect("view/LoginPage.jsp");
       }
       if (user.isStudente()) {
         session.setAttribute("studente", user);
-        response.sendRedirect("./Home.jsp");
+        response.sendRedirect("view/Home.jsp");
       } else if (user.isTutor()) {
         session.setAttribute("tutor", user);
-        response.sendRedirect("./Home.jsp");
+        response.sendRedirect("view/Home.jsp");
       } else if (user.isProfessoreReferente()) {
         session.setAttribute("professore", user);
-        response.sendRedirect("./Home.jsp");
+        response.sendRedirect("view/Home.jsp");
       } else if (user.isPersonaleAmministrativo()) {
         session.setAttribute("admin", user);
-        response.sendRedirect("./Home.jsp");
+        response.sendRedirect("view/Home.jsp");
       }
     } catch (Throwable e) {
       session.setAttribute("alertMsg", "Errore, ritorno alla Login Page");
-      response.sendRedirect("./LoginPage.jsp");
+      response.sendRedirect("view/LoginPage.jsp");
     }
   }
 

@@ -29,7 +29,7 @@ public class ProfiloUtenteServlet extends HttpServlet {
                 case "T":
                     try {
                         session.setAttribute("usrProfile", TutorDAO.doRetrieveByEmail(email));
-                        session.setAttribute("utente", UserDAO.doRetrieveByEmail(email));
+                        session.setAttribute("utente", UserDAO.doRetrieveUtenteByEmail(email));
                         session.setAttribute("ruolo",ruolo);
                         response.sendRedirect("view/UserViewPage.jsp");
                     } catch (Exception e) {
@@ -39,17 +39,17 @@ public class ProfiloUtenteServlet extends HttpServlet {
                 case "S":
                     try {
                         session.setAttribute("usrProfile", StudentDAO.doRetrieveByEmail(email));
-                        session.setAttribute("utente", UserDAO.doRetrieveByEmail(email));
+                        session.setAttribute("utente", UserDAO.doRetrieveUtenteByEmail(email));
                         session.setAttribute("ruolo",ruolo);
                         response.sendRedirect("view/UserViewPage.jsp");
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
-                case "PR":
+                case "P":
                     try {
                         session.setAttribute("usrProfile", ProfessoreReferenteDAO.doRetrieveByEmail(email));
-                        session.setAttribute("utente", UserDAO.doRetrieveByEmail(email));
+                        session.setAttribute("utente", UserDAO.doRetrieveUtenteByEmail(email));
                         session.setAttribute("ruolo",ruolo);
                         response.sendRedirect("view/UserViewPage.jsp");
                     } catch (Exception e) {

@@ -22,8 +22,10 @@
     <title>Utente</title>
 </head>
 <body>
+<h1>Lista degli utenti</h1>
 <%
     for(UserBean b : utenti){
+        if(!b.isPersonaleAmministrativo()){
     %>
 
 <fieldset>
@@ -33,6 +35,6 @@
     <label><p><a href="../UserProfile?usrEmail=<%=b.getEmail()%>&ruolo=<%=b.getRuolo()%>">Seleziona</a></p></label>
 </fieldset><br>
 
-<% } %>
+<% }} %>
 </body>
 </html>

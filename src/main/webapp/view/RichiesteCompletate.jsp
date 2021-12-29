@@ -19,7 +19,7 @@
 <body>
 <div id="corpo">
     <h1>Elenco Richieste</h1>
-    <table>
+    <table style="border-collapse: collapse; background-color: aqua;border: 1px solid black">
         <%  TutorBean bean = (TutorBean) session.getAttribute("tutor");
             Collection<TutoratoDidatticoBean> richiesteTutorato = new ArrayList<>();
             TutoratoDidatticoDAO tutoratoDao = new TutoratoDidatticoDAO();
@@ -28,23 +28,30 @@
             SupportoEsameDAO esameDAO = new SupportoEsameDAO();
             richesteSupporto = esameDAO.doRetrieveAllRichiesteSupportoEsameCompletate();
             for(TutoratoDidatticoBean b : richiesteTutorato){
-                if(b.getStatus()==0){
-                    for (SupportoEsameBean s : richesteSupporto){
-                        if(s.getStatus()==0){
+                for (SupportoEsameBean s : richesteSupporto){
 
         %>
-        <tr><td>Tutorato Didattico</td><tr><td><%=b.getDateDisponibili()%></td><td><%=b.getOreDisponibili()%></td><td><%=Integer.toString(b.getOreRichieste())%>
-        <td><%=s.getDipartimento()%></td>
-    </tr>
 
+        <tr><td>Tutorato Didattico</td>
+        <tr><td><%=b.getDateDisponibili()%></td></tr>
+        <tr><td><%=b.getOreDisponibili()%></td></tr>
+        <tr><td><%=Integer.toString(b.getOreRichieste())%></td></tr>
+        <tr><td><%=s.getDipartimento()%></td></tr><br><br>
 
-        <tr><td>Supporto Esame</td> <tr><td><%=s.getData()%></td><td><%=s.getOra()%></td><td><%=s.getOreRichieste()%></td><td><%=s.getDocente()%></td>
-        <td><%=s.getModalitaEsame()%></td><td><%=s.getEventualiAusili()%></td><td><%=s.getTipoAssistenza()%></td><td><%=s.getInsegnamento()%></td>
-        <td><%=s.getLuogo()%></td><td><%=s.getDipartimento()%></td>
-    </tr>
+        <tr><td>Supporto Esame</td></tr>
+        <tr><td><%=s.getData()%></td></tr>
+        <tr><td><%=s.getOra()%></td></tr>
+        <tr><td><%=s.getOreRichieste()%></td></tr>
+        <tr><td><%=s.getDocente()%></td></tr>
+        <tr><td><%=s.getModalitaEsame()%></td></tr>
+        <tr><td><%=s.getEventualiAusili()%></td></tr>
+        <tr><td><%=s.getTipoAssistenza()%></td></tr>
+        <tr><td><%=s.getInsegnamento()%></td></tr>
+        <tr> <td><%=s.getLuogo()%></td></tr>
+        <tr><td><%=s.getDipartimento()%></td></tr>
 
     </table>
-    <%}}}}%>
+    <%}}%>
 </div>
 
 </body>

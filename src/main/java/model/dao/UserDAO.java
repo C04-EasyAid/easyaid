@@ -27,7 +27,7 @@ public class UserDAO {
     PreparedStatement stmt = null;
     // Se riesce a connettersi, la connessione è != da null ed entra nello statement
     try {
-      conn = conn();
+      conn = ConnectionPool.conn();
       stmt = conn.prepareStatement(query);
       stmt.setString(1, b.getEmail());
       stmt.setString(2, b.getPassword());
@@ -63,7 +63,7 @@ public class UserDAO {
     PreparedStatement stmt = null;
     // Se riesce a connettersi, la connessione è != da null ed entra nello statement
     try {
-      conn = conn();
+      conn = ConnectionPool.conn();
       stmt = conn.prepareStatement(query);
       // Setta i paremetri nella query
       stmt.setString(1, b.getNome());
@@ -100,7 +100,7 @@ public class UserDAO {
       PreparedStatement stmt = null;
       // Se riesce a connettersi, la connessione è != da null ed entra nello statement
       try {
-        conn = conn();
+        conn = ConnectionPool.conn();
         stmt = conn.prepareStatement(query);
         // Setta i paremetri nella query
         stmt.setString(1, s.getEmail());
@@ -137,7 +137,7 @@ public class UserDAO {
       PreparedStatement stmt = null;
       // Se riesce a connettersi, la connessione è != da null ed entra nello statement
       try {
-        conn = conn();
+        conn = ConnectionPool.conn();
         stmt = conn.prepareStatement(query);
         // Setta i paremetri nella query
         stmt.setString(1, t.getEmailTutor());
@@ -175,7 +175,7 @@ public class UserDAO {
       PreparedStatement stmt = null;
       // Se riesce a connettersi, la connessione è != da null ed entra nello statement
       try {
-        conn = conn();
+        conn = ConnectionPool.conn();
         stmt = conn.prepareStatement(query);
         // Setta i paremetri nella query
         stmt.setString(1, p.getEmail());
@@ -206,7 +206,7 @@ public class UserDAO {
     PreparedStatement stmt = null;
     String query = "SELECT * FROM utente";
     try {
-      conn = conn();
+      conn = ConnectionPool.conn();
       stmt = conn.prepareStatement(query);
       ResultSet rs = stmt.executeQuery();
       UserBean bean = null;
@@ -240,7 +240,7 @@ public class UserDAO {
     PreparedStatement stmt = null;
     // Se riesce a connettersi, la connessione è != da null ed entra nello statement
     try {
-      conn = conn();
+      conn = ConnectionPool.conn();
       stmt = conn.prepareStatement(query);
       stmt.setString(1, email);
       ResultSet rs = stmt.executeQuery();

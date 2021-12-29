@@ -25,7 +25,7 @@ public class CommentoDAO {
         String query = "SELECT * FROM lezione WHERE lezione=?";
 
         try {
-            conn = conn();
+            conn = ConnectionPool.conn();
             stmt = conn.prepareStatement(query);
             stmt.setString(1, Integer.toString(id));
             ResultSet rs = stmt.executeQuery();
@@ -39,7 +39,8 @@ public class CommentoDAO {
         } catch (SQLException e) {
 
         } finally {
-            stmt.close();
+            if(stmt!=null)
+                stmt.close();
             if (conn != null) {
                 conn.close();
             }

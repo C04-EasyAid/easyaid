@@ -20,7 +20,7 @@ public class ProfessoreReferenteDAO {
         ProfessoreReferenteBean tutor = new ProfessoreReferenteBean();
         PreparedStatement stmt = null;
         try{
-            conn = conn();
+            conn = ConnectionPool.conn();
             stmt = conn.prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
             if(rs.next())
@@ -33,7 +33,8 @@ public class ProfessoreReferenteDAO {
         {
             e.printStackTrace();
         }finally {
-            stmt.close();
+            if(stmt!=null)
+                stmt.close();
             if (conn != null) {
                 conn.close();
             }

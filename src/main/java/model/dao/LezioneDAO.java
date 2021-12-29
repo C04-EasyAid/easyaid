@@ -38,7 +38,8 @@ public class LezioneDAO {
         } catch (SQLException e) {
 
         } finally {
-            stmt.close();
+            if(stmt!=null)
+                stmt.close();
             if (conn != null) {
                 conn.close();
             }

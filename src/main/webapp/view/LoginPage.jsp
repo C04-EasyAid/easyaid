@@ -27,7 +27,7 @@
             <input type="password" name="Password" placeholder="Password"><br><br>
             </div>
             <div id="accedi">
-                <input type="submit" value="Accedi"><br>
+                <input type="submit" value="ACCEDI"><br>
             </div>
         </div>
         <div id="immagine2">

@@ -20,9 +20,9 @@
 <html>
 <head>
     <title>Utente</title>
+    <link type="text/css" rel="stylesheet" href="../css/bootstrap.css">
 </head>
 <body>
-<link type="text/css" rel="stylesheet" href="../css/bootstrap.css">
 <h3>
     Lista
     <small class="text-muted">

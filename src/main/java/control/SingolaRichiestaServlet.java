@@ -43,7 +43,7 @@ public class SingolaRichiestaServlet extends HttpServlet {
             try {
                 TutoratoDidatticoBean tutorato = dao.doRetriveById(idTutorato);
                 session.setAttribute("tutorato",tutorato);
-                response.sendRedirect("view/viewSingolaRichiesta.jsp");
+                response.sendRedirect("view/RichiestaTutorPage.jsp");
             } catch (SQLException e) {
                 e.printStackTrace();
             } catch (ClassNotFoundException e) {
@@ -56,7 +56,7 @@ public class SingolaRichiestaServlet extends HttpServlet {
             try {
                 SupportoEsameBean supporto = dao.doRetriveById(idSupporto);
                 session.setAttribute("supporto",supporto);
-                response.sendRedirect("view/viewSingolaRichiesta.jsp");
+                response.sendRedirect("view/RichiestaTutorPage.jsp");
             } catch (SQLException e) {
                 e.printStackTrace();
             } catch (ClassNotFoundException e) {
@@ -65,7 +65,7 @@ public class SingolaRichiestaServlet extends HttpServlet {
         }
         else{
             session.setAttribute("alertMsg","Impossibile aprire il richiesta");
-            response.sendRedirect("view/viewRichiesteServizio.jsp");
+            response.sendRedirect("view/BachecaTutorPage.jsp");
         }
     }
 

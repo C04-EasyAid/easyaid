@@ -32,7 +32,7 @@ public class ViewRichiesteCompletateServlet extends HttpServlet
             session.setAttribute("richiesteEsamiCompletate",listRichiesteSupportoEsame);
             session.setAttribute("richiesteTutoratoCompletate",listRichiesteTutoratoDidattico);
 
-            resp.sendRedirect("view/RichiesteCompletate.jsp");
+            resp.sendRedirect("view/RichiesteCompletatePage.jsp");
 
         }
         catch (SQLException e)

@@ -24,7 +24,7 @@ public class ViewListaUtentiServlet extends HttpServlet {
         HttpSession session = request.getSession();
         try {
             session.setAttribute("usrList", UserDAO.doRetrieveAll());
-            response.sendRedirect("view/viewUsers.jsp");
+            response.sendRedirect("view/ListaUtentiPage.jsp");
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -37,7 +37,7 @@ public class SingolaLezioneServlet extends HttpServlet {
                 commenti = daoC.doRetrieveCommento(id);
                 session.setAttribute("lezione", lezione);
                 session.setAttribute("listaCommenti", commenti);
-                response.sendRedirect("view/viewLezioneSingola.jsp");
+                response.sendRedirect("view/LezionePage.jsp");
 
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();

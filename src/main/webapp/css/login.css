@@ -46,7 +46,7 @@
 #corpo> h1{
     margin-left: -2.5em;
 }
-#immagine > #immagine2{
+#immagine > #immagine2 > #img2{
     height: 9em;
     margin-left: 33em;
     margin-top: -7em;

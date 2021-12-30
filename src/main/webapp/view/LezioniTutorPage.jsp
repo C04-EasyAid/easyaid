@@ -13,29 +13,53 @@
 <html>
 <head>
     <title>Elenco lezioni</title>
+    <link type="text/css" rel="stylesheet" href="../css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="../css/viewLezioniST.css">
 </head>
 <body>
 <div id="corpo">
-    <h1>Lezioni programmate</h1> <br><br>
+    <h1 class="testo">Lezioni programmate</h1> <br><br>
     <div id="lezione">
+        <form method="get" action="../SingolaLezioneServlet">
         <%
             TutorBean tutor = (TutorBean) session.getAttribute("tutor");
             TutoratoDidatticoBean bean = (TutoratoDidatticoBean) session.getAttribute("tutorato");
             Collection<LezioneBean> lezioni = new ArrayList<>();
-            lezioni = LezioneDAO.doRetrieveLezioneByTutor(tutor.getEmailTutor());
+            lezioni = LezioneDAO.doRetrieveLezioneByTutor("adebiase41@studenti.unisa.it");
             for (LezioneBean x : lezioni){
                 String data = new SimpleDateFormat("dd-MM-yyyy").format(x.getData());
         %>
         <fieldset>
-            <label><p><%=x.getOraInizio()%></p></label>
-            <label><p><%=x.getOraFine()%></p></label>
-            <label><p><%=data%></p></label>
-            <label><p><%=x.getTutor()%></p></label>
-            <label><p><a href="../SingolaLezione?lezione=<%=x.getId()%>">Seleziona</a></p></label>
+            <div class="table-responsive pt-3">
+                <table class="table table-bordered" >
+                    <thead>
+                    <tr>
+                        <th>Ora inizio</th>
+                        <th>Ora fine</th>
+                        <th>Data</th>
+                        <th>Insegnamento</th>
+                        <th>Tutor</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="table-info">
+                        <td><%=x.getOraInizio()%></td>
+                        <td><%=x.getOraFine()%></td>
+                        <td><%=data%></td>
+                        <td><%=x.getInsegnamento()%></td>
+                        <td><%=x.getTutor()%> <a href="../SingolaLezione?lezione=<%=x.getId()%>" class="btn btn-info btn-rounded btn-fw" style="background: #59cfcd" >Seleziona</a></td>
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </fieldset>
         <br>
         <% } %>
-        <input type="submit" value="Aggiungi Lezione">
+            <div id="bottone">
+                <input type="submit" value="Aggiungi Lezione" class="btn btn-info btn-rounded btn-fw" style="background: #59cfcd" >
+            </div>
+
     </div>
 </div>
 </body>

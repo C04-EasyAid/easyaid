@@ -1,3 +1,11 @@
-a.btn-light{
-    margin-left: 100px;
+a.btn-rounded{
+    margin-left: 150px;
+}
+
+h1.testo{
+    text-align: center;
+    color: #59cfcd;
+}
+#bottone>input{
+    margin-left: 45em;
 }

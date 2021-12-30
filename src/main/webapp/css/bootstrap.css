@@ -134,7 +134,9 @@
         opacity: 1;
     }
 }
-
+#nome{
+    margin-top: 12px;
+}
 @-webkit-keyframes flash {
     0% {
         opacity: 1;

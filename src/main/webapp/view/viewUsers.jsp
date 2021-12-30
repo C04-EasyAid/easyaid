@@ -23,7 +23,12 @@
 </head>
 <body>
 <link type="text/css" rel="stylesheet" href="../css/bootstrap.css">
-<h1>Lista degli utenti</h1>
+<h3>
+    Lista
+    <small class="text-muted">
+        degli utenti
+    </small>
+</h3>
 
 <div class="table-responsive  mt-1">
     <table class="table select-table">
@@ -32,6 +37,7 @@
             <th>Nome</th>
             <th>E-mail</th>
             <th>Ruolo</th>
+            <th></th>
         </tr>
         </thead>
             <%
@@ -52,8 +58,16 @@
         <tr>
             <td>
                 <div class="d-flex ">
-                    <img src="images/faces/face1.jpg" alt="">
-                    <div>
+                    <% if (ruolo.equals("Professore Referente")){ %>
+                    <img src="https://cdn-icons-png.flaticon.com/128/4645/4645208.png" data-src="https://cdn-icons-png.flaticon.com/128/4645/4645208.png" alt="Briefcase icon" title="Briefcase icon" width="44" height="44" class="lzy lazyload--done" srcset="https://cdn-icons-png.flaticon.com/128/4645/4645208.png 4x">
+                    <%}
+                    else if (ruolo.equals("Studente")){%>
+                    <img src="https://cdn-icons.flaticon.com/png/128/4645/premium/4645290.png?token=exp=1640875737~hmac=67099a32079fc0f48f15fa13d338118a" data-src="https://cdn-icons.flaticon.com/png/128/4645/premium/4645290.png?token=exp=1640875737~hmac=67099a32079fc0f48f15fa13d338118a" alt="Books icon" title="Books icon" width="44" height="44" class="lzy lazyload--done" srcset="https://cdn-icons.flaticon.com/png/128/4645/premium/4645290.png?token=exp=1640875737~hmac=67099a32079fc0f48f15fa13d338118a 4x">
+                    <%}
+                    else if (ruolo.equals("Tutor")){%>
+                    <img src="https://cdn-icons-png.flaticon.com/128/4645/4645232.png" data-src="https://cdn-icons-png.flaticon.com/128/4645/4645232.png" alt="Graduation hat icon" title="Graduation hat icon" width="44" height="44" class="lzy lazyload--done" srcset="https://cdn-icons-png.flaticon.com/128/4645/4645232.png 4x">
+                    <%}%>
+                    <div id="nome">
                         <h6><%=nome%>
                         </h6>
                     </div>

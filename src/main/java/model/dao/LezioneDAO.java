@@ -71,5 +71,60 @@ public class LezioneDAO {
         }
         return bean;
     }
+    public static synchronized Collection<LezioneBean> doRetrieveLezioneByStudente(String studente)
+            throws ClassNotFoundException, SQLException {
+        Connection conn = null;
+        Collection<LezioneBean> lezioni = new ArrayList<>();
+        PreparedStatement stmt = null;
+        String query = "SELECT * from lezione L inner join tutorato_didattico T inner join studente s where L.tutorato = T.idtutorato_didattico AND s.email_studente = ?";
+        try {
+            conn = conn();
+            stmt = conn.prepareStatement(query);
+            stmt.setString(1,studente);
+            LezioneBean lezione = new LezioneBean();
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                lezione = new LezioneBean(rs.getInt("id"),rs.getInt("tutorato"),rs.getString("ora_inizio"), rs.getString("ora_fine"), rs.getDate("data"), rs.getString("tutor"), rs.getBoolean("status"));
+                lezione.setInsegnamento(rs.getString("insegnamento"));
+                lezioni.add(lezione);
+            }
+        } catch (SQLException e) {
 
+        } finally {
+            if(stmt!=null)
+                stmt.close();
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return lezioni;
+    }
+    public static synchronized Collection<LezioneBean> doRetrieveLezioneByTutor(String tutor)
+            throws ClassNotFoundException, SQLException {
+        Connection conn = null;
+        Collection<LezioneBean> lezioni = new ArrayList<>();
+        PreparedStatement stmt = null;
+        String query = "SELECT * from lezione L inner join tutorato_didattico T inner join tutor v where L.tutorato = T.idtutorato_didattico AND v.email_tutor = ?";
+        try {
+            conn = conn();
+            stmt = conn.prepareStatement(query);
+            stmt.setString(1,tutor);
+            LezioneBean lezione = new LezioneBean();
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                lezione = new LezioneBean(rs.getInt("id"),rs.getInt("tutorato"),rs.getString("ora_inizio"), rs.getString("ora_fine"), rs.getDate("data"), rs.getString("tutor"), rs.getBoolean("status"));
+                lezione.setInsegnamento(rs.getString("insegnamento"));
+                lezioni.add(lezione);
+            }
+        } catch (SQLException e) {
+
+        } finally {
+            if(stmt!=null)
+                stmt.close();
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return lezioni;
+    }
 }

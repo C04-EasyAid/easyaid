@@ -11,6 +11,9 @@
     <title>Home</title>
 </head>
 <body>
+<header>
+    <%@ include file="../fragment/navbar.jsp" %>
+</header>
 <a href="RegisterUtente.jsp?inserimento=Studente">Inserisci Studente</a>
 <a href="RegisterUtente.jsp?inserimento=Tutor">Inserisci Tutor</a>
 <a href="RegisterUtente.jsp?inserimento=ProfessoreReferente">Inserisci Professore Referente</a>

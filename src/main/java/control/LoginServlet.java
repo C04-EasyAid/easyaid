@@ -36,16 +36,16 @@ public class LoginServlet extends HttpServlet {
       }
       if (user.isStudente()) {
         session.setAttribute("studente", user);
-        response.sendRedirect("view/Home.jsp");
+        response.sendRedirect("view/HomePage.jsp");
       } else if (user.isTutor()) {
         session.setAttribute("tutor", user);
-        response.sendRedirect("view/Home.jsp");
+        response.sendRedirect("view/HomePage.jsp");
       } else if (user.isProfessoreReferente()) {
         session.setAttribute("professore", user);
-        response.sendRedirect("view/Home.jsp");
+        response.sendRedirect("view/HomePage.jsp");
       } else if (user.isPersonaleAmministrativo()) {
         session.setAttribute("admin", user);
-        response.sendRedirect("view/Home.jsp");
+        response.sendRedirect("view/HomePage.jsp");
       }
     } catch (Throwable e) {
       session.setAttribute("alertMsg", "Errore, ritorno alla Login Page");

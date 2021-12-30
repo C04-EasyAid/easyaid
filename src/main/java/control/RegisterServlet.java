@@ -65,7 +65,7 @@ public class RegisterServlet extends HttpServlet {
                         studente.setSpecificheDisturbo(request.getParameter("specificheDisturbo"));
                         if (!UserDAO.insertStudente(studente,utenteTemporaneo)) {
                             session.setAttribute("alertMsg", "Errore nell'inserimento studente");
-                            response.sendRedirect("view/Home.jsp");
+                            response.sendRedirect("view/HomePage.jsp");
                         }
                     }
                     case 2 -> {
@@ -77,7 +77,7 @@ public class RegisterServlet extends HttpServlet {
                         tutor.setOreSvolte(0);
                         if (!UserDAO.insertTutor(tutor, utenteTemporaneo)) {
                             session.setAttribute("alertMsg", "Errore nell'inserimento tutor");
-                            response.sendRedirect("view/Home.jsp");
+                            response.sendRedirect("view/HomePage.jsp");
                         }
                     }
                     case 3 -> {
@@ -86,7 +86,7 @@ public class RegisterServlet extends HttpServlet {
                         professoreReferente.setDipartimento(request.getParameter("dipartimentoProf"));
                         if (!UserDAO.insertProfessoreReferente(professoreReferente, utenteTemporaneo)) {
                             session.setAttribute("alertMsg", "Errore nell'inserimento professore referente");
-                            response.sendRedirect("view/Home.jsp");
+                            response.sendRedirect("view/HomePage.jsp");
                         }
                     }
                     default -> throw new IllegalStateException("Unexpected value: " + tipoUtente);
@@ -98,7 +98,7 @@ public class RegisterServlet extends HttpServlet {
             }
         }
         session.setAttribute("alertMsg","Permessi non concessi all'utente");
-        response.sendRedirect("view/Home.jsp");
+        response.sendRedirect("view/HomePage.jsp");
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

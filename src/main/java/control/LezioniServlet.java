@@ -31,10 +31,10 @@ public class LezioniServlet extends HttpServlet {
               (ArrayList<LezioneBean>) dao.doRetrieveLezione(bean.getId());
           session.setAttribute("listaLezioni", lista);
         if (user != null) {
-          response.sendRedirect("viewLezioniStudente.jsp");
+          response.sendRedirect("LezioniStudentePage.jsp");
           }
         else{
-            response.sendRedirect("viewLezioniTutor.jsp");
+            response.sendRedirect("LezioniTutorPage.jsp");
         }
         } catch (ClassNotFoundException e) {
           e.printStackTrace();

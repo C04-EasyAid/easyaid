@@ -9,13 +9,14 @@
 <html>
 <head>
     <title>Home</title>
+    <link type="text/css" rel="stylesheet" href="../css/bootstrap.css">
 </head>
 <body>
 <header>
     <%@ include file="../fragment/navbar.jsp" %>
 </header>
-<a href="RegisterUtente.jsp?inserimento=Studente">Inserisci Studente</a>
-<a href="RegisterUtente.jsp?inserimento=Tutor">Inserisci Tutor</a>
-<a href="RegisterUtente.jsp?inserimento=ProfessoreReferente">Inserisci Professore Referente</a>
+<a href="RegistraUtentePage.jsp?inserimento=Studente">Inserisci Studente</a>
+<a href="RegistraUtentePage.jsp?inserimento=Tutor">Inserisci Tutor</a>
+<a href="RegistraUtentePage.jsp?inserimento=ProfessoreReferente">Inserisci Professore Referente</a>
 </body>
 </html>

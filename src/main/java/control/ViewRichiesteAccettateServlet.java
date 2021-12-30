@@ -33,7 +33,7 @@ public class ViewRichiesteAccettateServlet extends HttpServlet
             session.setAttribute("richiesteEsamiAccettate",listRichiesteSupportoEsame);
             session.setAttribute("richiesteTutoratoAccettate",listRichiesteTutoratoDidattico);
 
-            resp.sendRedirect("view/RichiesteAccettateTutor.jsp");
+            resp.sendRedirect("view/RichiesteAccettatePage.jsp");
 
         }
         catch (SQLException e)

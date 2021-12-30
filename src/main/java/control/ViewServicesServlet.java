@@ -25,11 +25,11 @@ public class ViewServicesServlet extends HttpServlet
         StudenteBean bean= (StudenteBean) session.getAttribute("studente");
 
         if(bean!=null)
-        resp.sendRedirect("view/viewservices.jsp");
+        resp.sendRedirect("view/RichiediServizioPage.jsp");
         else
         {
             session.setAttribute("alertMsg","Permessi non concessi all'utente");
-            resp.sendRedirect("view/Home.jsp");
+            resp.sendRedirect("view/HomePage.jsp");
         }
     }
 }

@@ -37,6 +37,7 @@
             <th>Nome</th>
             <th>E-mail</th>
             <th>Ruolo</th>
+            <th></th>
         </tr>
         </thead>
             <%
@@ -61,11 +62,10 @@
                     <img src="https://cdn-icons-png.flaticon.com/128/4645/4645208.png" data-src="https://cdn-icons-png.flaticon.com/128/4645/4645208.png" alt="Briefcase icon" title="Briefcase icon" width="44" height="44" class="lzy lazyload--done" srcset="https://cdn-icons-png.flaticon.com/128/4645/4645208.png 4x">
                     <%}
                     else if (ruolo.equals("Studente")){%>
-                    <img src="https://cdn-icons-png.flaticon.com/128/4645/4645232.png" data-src="https://cdn-icons-png.flaticon.com/128/4645/4645232.png" alt="Graduation hat icon" title="Graduation hat icon" width="44" height="44" class="lzy lazyload--done" srcset="https://cdn-icons-png.flaticon.com/128/4645/4645232.png 4x">
-
+                    <img src="https://cdn-icons.flaticon.com/png/128/4645/premium/4645290.png?token=exp=1640875737~hmac=67099a32079fc0f48f15fa13d338118a" data-src="https://cdn-icons.flaticon.com/png/128/4645/premium/4645290.png?token=exp=1640875737~hmac=67099a32079fc0f48f15fa13d338118a" alt="Books icon" title="Books icon" width="44" height="44" class="lzy lazyload--done" srcset="https://cdn-icons.flaticon.com/png/128/4645/premium/4645290.png?token=exp=1640875737~hmac=67099a32079fc0f48f15fa13d338118a 4x">
                     <%}
                     else if (ruolo.equals("Tutor")){%>
-                    <img src="https://cdn-icons.flaticon.com/png/128/4645/premium/4645261.png?token=exp=1640866875~hmac=50b532eb48dbe978954f5469142cccaa" data-src="https://cdn-icons.flaticon.com/png/128/4645/premium/4645261.png?token=exp=1640866875~hmac=50b532eb48dbe978954f5469142cccaa" alt="Ebook icon" title="Ebook icon" width="44" height="44" class="lzy lazyload--done" srcset="https://cdn-icons.flaticon.com/png/128/4645/premium/4645261.png?token=exp=1640866875~hmac=50b532eb48dbe978954f5469142cccaa 4x">
+                    <img src="https://cdn-icons-png.flaticon.com/128/4645/4645232.png" data-src="https://cdn-icons-png.flaticon.com/128/4645/4645232.png" alt="Graduation hat icon" title="Graduation hat icon" width="44" height="44" class="lzy lazyload--done" srcset="https://cdn-icons-png.flaticon.com/128/4645/4645232.png 4x">
                     <%}%>
                     <div id="nome">
                         <h6><%=nome%>

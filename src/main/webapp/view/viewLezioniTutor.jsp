@@ -9,6 +9,7 @@
          import="model.dao.LezioneDAO" import="model.bean.TutoratoDidatticoBean" import="java.util.Collection" import="model.bean.LezioneBean"%>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="model.bean.TutorBean" %>
 <html>
 <head>
     <title>Elenco lezioni</title>
@@ -18,12 +19,12 @@
     <h1>Lezioni programmate</h1> <br><br>
     <div id="lezione">
         <%
+            TutorBean tutor = (TutorBean) session.getAttribute("tutor");
             TutoratoDidatticoBean bean = (TutoratoDidatticoBean) session.getAttribute("tutorato");
             Collection<LezioneBean> lezioni = new ArrayList<>();
-            lezioni = LezioneDAO.doRetrieveLezione(15);
+            lezioni = LezioneDAO.doRetrieveLezioneByTutor(tutor.getEmailTutor());
             for (LezioneBean x : lezioni){
                 String data = new SimpleDateFormat("dd-MM-yyyy").format(x.getData());
-
         %>
         <fieldset>
             <label><p><%=x.getOraInizio()%></p></label>

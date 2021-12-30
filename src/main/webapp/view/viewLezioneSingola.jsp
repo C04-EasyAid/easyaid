@@ -20,7 +20,7 @@
     String data = new SimpleDateFormat("dd-MM-yyyy").format(lezione.getData());
 %>
 <fieldset>
-    <label><p><%=data%</p></label>
+    <label><p><%=data%></p></label>
             <label><p><%=lezione.getOraInizio()%></p></label>
     <label><p><%=lezione.getOraFine()%></p></label>
     <label><p><%=lezione.getTutor()%></p></label>

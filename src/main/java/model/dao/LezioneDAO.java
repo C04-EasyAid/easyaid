@@ -76,7 +76,7 @@ public class LezioneDAO {
         Connection conn = null;
         Collection<LezioneBean> lezioni = new ArrayList<>();
         PreparedStatement stmt = null;
-        String query = "SELECT * from lezione L inner join tutorato_didattico T inner join studente s where L.tutorato = T.idtutorato_didattico AND s.email_studente = ?";
+        String query = "SELECT * from lezione L inner join tutorato_didattico T inner join studente s where L.tutorato = T.idtutorato_didattico AND s.email_studente = T.studente_email AND s.email_studente =?";
         try {
             conn = conn();
             stmt = conn.prepareStatement(query);
@@ -104,7 +104,7 @@ public class LezioneDAO {
         Connection conn = null;
         Collection<LezioneBean> lezioni = new ArrayList<>();
         PreparedStatement stmt = null;
-        String query = "SELECT * from lezione L inner join tutorato_didattico T inner join tutor v where L.tutorato = T.idtutorato_didattico AND v.email_tutor = ?";
+        String query = "SELECT * from lezione L inner join tutorato_didattico T inner join tutor v where L.tutorato = T.idtutorato_didattico AND v.email_tutor = T.tutor_email AND v.email_tutor=? ";
         try {
             conn = conn();
             stmt = conn.prepareStatement(query);
@@ -127,4 +127,5 @@ public class LezioneDAO {
         }
         return lezioni;
     }
+
 }

@@ -16,44 +16,97 @@
 <html>
 <head>
     <title>ListaRichieste</title>
+    <link type="text/css" rel="stylesheet" href="../css/bootstrap.css">
 </head>
 <body>
-<div id="corpo">
-    <h1>Elenco Richieste</h1>
-    <table style="border-collapse: collapse; background-color: aqua;border: 1px solid black">
-        <%  TutoratoDidatticoDAO daoT = new TutoratoDidatticoDAO();
-            SupportoEsameDAO daoS = new SupportoEsameDAO();
-            Collection<TutoratoDidatticoBean> richiesteTutorato = new ArrayList<>();
-            richiesteTutorato = daoT.doRetrieveRichiesteTutoratoDidatticoNonAccettate();
-            Collection<SupportoEsameBean> richesteSupporto = new ArrayList<>();
-            richesteSupporto = daoS.doRetrieveRichiesteSupportoEsameNonAccettate();
-            for(TutoratoDidatticoBean b : richiesteTutorato){
+<div class="col-lg-12 stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Elenco Richieste</h4>
+            <div class="table-responsive pt-3">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            Data
+                        </th>
+                        <th>
+                            Servizio
+                        </th>
+                        <th>
+                            Dipartimento
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% TutoratoDidatticoDAO daoT = new TutoratoDidatticoDAO();
+                        SupportoEsameDAO daoS = new SupportoEsameDAO();
+                        Collection<TutoratoDidatticoBean> richiesteTutorato = new ArrayList<>();
+                        richiesteTutorato = daoT.doRetrieveRichiesteTutoratoDidatticoNonAccettate();
+                        Collection<SupportoEsameBean> richesteSupporto = new ArrayList<>();
+                        richesteSupporto = daoS.doRetrieveRichiesteSupportoEsameNonAccettate();
+                        for (TutoratoDidatticoBean b : richiesteTutorato) {
 
-        %>
+                    %>
+                    <tr class="table-info">
+                        <td>
+                            Tutorato Didattico
+                        </td>
+                        <td>
+                            <%=b.getDateDisponibili()%>
+                        </td>
+                        <td>
+                            <%=b.getOreDisponibili()%>
+                        </td>
+                        <td>
+                            <%=Integer.toString(b.getOreRichieste())%>
+                        </td>
+                        <td>
+                            <%=b.getStudenteEmail()%>
+                        </td>
+                        <td>
+                            <a href="../SingolaRichiestaServlet?idTutorato=<%=b.getId()%>">Seleziona</a>
+                        </td>
+                    </tr>
+                    <%}%>
+                    <% for (SupportoEsameBean s : richesteSupporto) {%>
+                    <tr>
+                        <td>Supporto Esame</td>
+                        <td><%=s.getData()%>
+                        </td>
+                        <td><%=s.getOra()%>
+                        </td>
+                        <td><%=s.getOreRichieste()%>
+                        </td>
+                        <td><%=s.getDocente()%>
+                        </td>
+                        <td><%=s.getModalitaEsame()%>
+                        </td>
+                        <td><%=s.getEventualiAusili()%>
+                        </td>
+                        <td><%=s.getTipoAssistenza()%>
+                        </td>
+                        <td><%=s.getInsegnamento()%>
+                        </td>
+                        <td><%=s.getLuogo()%>
+                        </td>
+                        <td><%=s.getDipartimento()%>
+                        </td>
+                        <td><a href="../SingolaRichiestaServlet?idSupporto=<%=s.getId()%>">Seleziona</a></td>
+                    </tr>
+                    </tbody>
 
-        <tr><td>Tutorato Didattico</td>
-        <tr><td><%=b.getDateDisponibili()%></td></tr>
-        <tr><td><%=b.getOreDisponibili()%></td></tr>
-        <tr><td><%=Integer.toString(b.getOreRichieste())%></td></tr>
-        <tr><td><%=b.getStudenteEmail()%></td></tr><br><br>
-        <a href="../SingolaRichiestaServlet?idTutorato=<%=b.getId()%>">Seleziona</a>
-        <%}%>
-        <%  for(SupportoEsameBean s : richesteSupporto){%>
-        <tr><td>Supporto Esame</td></tr>
-        <tr><td><%=s.getData()%></td></tr>
-        <tr><td><%=s.getOra()%></td></tr>
-        <tr><td><%=s.getOreRichieste()%></td></tr>
-        <tr><td><%=s.getDocente()%></td></tr>
-        <tr><td><%=s.getModalitaEsame()%></td></tr>
-        <tr><td><%=s.getEventualiAusili()%></td></tr>
-        <tr><td><%=s.getTipoAssistenza()%></td></tr>
-        <tr><td><%=s.getInsegnamento()%></td></tr>
-        <tr> <td><%=s.getLuogo()%></td></tr>
-        <tr><td><%=s.getDipartimento()%></td></tr>
-        <a href="../SingolaRichiestaServlet?idSupporto=<%=s.getId()%>">Seleziona</a>
-
-    </table>
-    <%}%>
+                </table>
+                <%}%>
+            </div>
+        </div>
+    </div>
 </div>
 
 </body>

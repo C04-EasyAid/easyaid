@@ -10,6 +10,7 @@
 <head>
     <title>Richieste di servizio</title>
     <link type="text/css" rel="stylesheet" href="../css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="../css/richiediservizio.css">
 </head>
 <body>
 
@@ -17,21 +18,21 @@
 
 <div class="container-fluid d-flex align-items-center justify-content-center">
 <div class="row">
-    <div class="col-sm-6" style="width: 18rem;">
-        <div class="card text-center"  style="background: linear-gradient(rgb(132, 250, 176), rgb(143, 211, 244));" >
-            <div class="card-body" style="height:20rem;">
-                <h4 class="card-title ">Tutorato Didattico</h4>
+    <div class="col-sm-6">
+        <div  id="card-tutorato" class="card text-center">
+            <div class="card-body">
+                <h3 class="card-title ">Tutorato Didattico</h3>
                 <p class="card-text text-light">Un tutor verrà assegnato per svolgere l'attività di tutorato</p>
-                <a href="#" class="btn btn-light mt-5 text-success">Richiedi</a>
+                <a href="#" class="btn btn-light text-success" >Richiedi</a>
             </div>
         </div>
     </div>
-    <div class="col-sm-6" style="width: 18rem;">
-        <div class="card text-center" style="background: linear-gradient(rgb(132, 250, 176), rgb(143, 211, 244));">
-            <div class="card-body" style="height:20rem;">
+    <div class="col-sm-6" >
+        <div id="card-supporto" class="card text-center" >
+            <div class="card-body">
                 <h4 class="card-title">Supporto Esame</h4>
                 <p class="card-text text-light">Un tutor verrà assegnato per dare supporto per l'esame</p>
-                <a href="#" class="btn btn-light mt-5 text-success">Richiedi</a>
+                <a href="#" class="btn btn-light  text-success">Richiedi</a>
             </div>
         </div>
     </div>

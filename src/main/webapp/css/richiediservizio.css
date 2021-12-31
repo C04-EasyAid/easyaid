@@ -1,0 +1,24 @@
+#card-tutorato{
+    background: linear-gradient(rgb(128, 204, 178), rgb(104, 199, 203));
+}
+
+#card-supporto{
+    background: linear-gradient(rgb(128, 204, 178), rgb(104, 199, 203));
+}
+
+.btn {
+    margin-top: 7rem;
+}
+
+.col-sm-6{
+    width:18rem;
+    margin-top:1rem;
+}
+
+.card-body{
+    height:20rem;
+}
+
+.card-text{
+    font-size: 1rem;
+}

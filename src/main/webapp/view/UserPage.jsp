@@ -15,9 +15,11 @@
     <title>Profilo Utente</title>
 </head>
 <body>
-<% UserBean user = (UserBean) session.getAttribute("utente");
-    String ruolo = (String) session.getAttribute("ruolo");
-    if(ruolo.equals("T")) {
+<header>
+    <%@ include file="../fragment/navbar.jsp" %>
+</header>
+<%
+    if(user.isTutor()) {
         TutorBean bean = (TutorBean) session.getAttribute("usrProfile");
 %>
 <fieldset>
@@ -31,7 +33,7 @@
 </fieldset>
     <%}%>
 <%
-    if(ruolo.equals("S")) {
+    else if(user.isStudente()) {
         StudenteBean bean = (StudenteBean) session.getAttribute("usrProfile");
         %>
 <fieldset>
@@ -43,9 +45,8 @@
     <label><p><%=Integer.toString(bean.getPercentualeDisabilita())%></p></label>
     <label><p><%=Integer.toString(bean.getOreDisponibili())%></p></label>
 </fieldset>
-    <%}%>
-<%
-    if(ruolo.equals("P")) {
+    <%}
+    else if(user.isProfessoreReferente()) {
         ProfessoreReferenteBean bean = (ProfessoreReferenteBean) session.getAttribute("usrProfile");
         %>
 <fieldset>

@@ -31,9 +31,7 @@
     <label><p><%=Integer.toString(bean.getOreDisponibili())%></p></label>
     <label><p><%=Integer.toString(bean.getOreSvolte())%></p></label>
 </fieldset>
-    <%}%>
-<%
-    else if(user.isStudente()) {
+    <%}else if(user.isStudente()) {
         StudenteBean bean = (StudenteBean) session.getAttribute("usrProfile");
         %>
 <fieldset>

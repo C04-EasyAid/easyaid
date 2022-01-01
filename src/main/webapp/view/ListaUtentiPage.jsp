@@ -23,24 +23,29 @@
     <link type="text/css" rel="stylesheet" href="../css/bootstrap.css">
 </head>
 <body>
-<h3>
-    Lista
-    <small class="text-muted">
-        degli utenti
-    </small>
-</h3>
+<div class="content-wrapper flex align-self-center">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6 grid-margin align-self-center">
+            <div class="card">
+                <div class="card-body">
+                    <h3>
+                        Lista
+                        <small class="text-muted">
+                            degli utenti
+                        </small>
+                    </h3>
 
-<div class="table-responsive  mt-1">
-    <table class="table select-table">
-        <thead>
-        <tr>
-            <th>Nome</th>
-            <th>E-mail</th>
-            <th>Ruolo</th>
-            <th></th>
-        </tr>
-        </thead>
-            <%
+                    <div class="table-responsive  mt-1">
+                        <table class="table select-table">
+                            <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>E-mail</th>
+                                <th>Ruolo</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                                <%
     for(UserBean b : utenti){
         if(!b.isPersonaleAmministrativo()){
             String nome = ""+b.getNome()+" "+b.getCognome();
@@ -55,40 +60,45 @@
                 ruolo = "Professore Referente";
             }
     %>
-        <tr>
-            <td>
-                <div class="d-flex ">
-                    <% if (ruolo.equals("Professore Referente")){ %>
-                    <img src="https://cdn-icons-png.flaticon.com/128/4645/4645208.png" data-src="https://cdn-icons-png.flaticon.com/128/4645/4645208.png" alt="Briefcase icon" title="Briefcase icon" width="44" height="44" class="lzy lazyload--done" srcset="https://cdn-icons-png.flaticon.com/128/4645/4645208.png 4x">
-                    <%}
-                    else if (ruolo.equals("Studente")){%>
-                    <img src="https://cdn-icons.flaticon.com/png/128/4645/premium/4645290.png?token=exp=1640875737~hmac=67099a32079fc0f48f15fa13d338118a" data-src="https://cdn-icons.flaticon.com/png/128/4645/premium/4645290.png?token=exp=1640875737~hmac=67099a32079fc0f48f15fa13d338118a" alt="Books icon" title="Books icon" width="44" height="44" class="lzy lazyload--done" srcset="https://cdn-icons.flaticon.com/png/128/4645/premium/4645290.png?token=exp=1640875737~hmac=67099a32079fc0f48f15fa13d338118a 4x">
-                    <%}
-                    else if (ruolo.equals("Tutor")){%>
-                    <img src="https://cdn-icons-png.flaticon.com/128/4645/4645232.png" data-src="https://cdn-icons-png.flaticon.com/128/4645/4645232.png" alt="Graduation hat icon" title="Graduation hat icon" width="44" height="44" class="lzy lazyload--done" srcset="https://cdn-icons-png.flaticon.com/128/4645/4645232.png 4x">
-                    <%}%>
-                    <div id="nome">
-                        <h6><%=nome%>
-                        </h6>
+                            <tr>
+                                <td>
+                                    <div class="d-flex ">
+                                        <% if (ruolo.equals("Professore Referente")) { %>
+                                        <img src="../icon/briefcase.png" alt="teacher" height="44" width="44">
+                                        <%} else if (ruolo.equals("Studente")) {%>
+                                        <img src="../icon/books.png" alt="student" height="44" width="44">
+                                        <%} else if (ruolo.equals("Tutor")) {%>
+                                        <img src="../icon/graduation-hat.png" alt="tutor" height="44" width="44">
+                                        <%}%>
+                                        <div id="nome">
+                                            <h6><%=nome%>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h6><%=b.getEmail()%>
+                                    </h6>
+                                </td>
+                                <td>
+                                    <div class="badge badge-opacity-warning"><%=ruolo%>
+                                    </div>
+                                </td>
+                                <td>
+                                    <form action="../UserProfile?usrEmail=<%=b.getEmail()%>&ruolo=<%=b.getRuolo()%>"
+                                          method="post">
+                                        <button type="submit" class="btn btn-success btn-rounded btn-fw">Visualizza
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                                <% }} %>
+
                     </div>
                 </div>
-            </td>
-            <td>
-                <h6><%=b.getEmail()%>
-                </h6>
-            </td>
-            <td>
-                <div class="badge badge-opacity-warning"><%=ruolo%>
-                </div>
-            </td>
-            <td>
-                <form action="../UserProfile?usrEmail=<%=b.getEmail()%>&ruolo=<%=b.getRuolo()%>" method="post">
-                    <button type="submit" class="btn btn-success btn-rounded btn-fw">Visualizza</button>
-                </form>
-            </td>
-        </tr>
-            <% }} %>
-
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

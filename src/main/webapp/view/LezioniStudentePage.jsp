@@ -20,26 +20,27 @@
 </head>
 <body>
 <div id="corpo">
-    <h1>Lezioni programmate</h1> <br><br>
+    <h1 class="testo">Lezioni programmate</h1> <br><br>
     <div id="lezione">
         <form method="get" action="../SingolaLezioneServlet">
             <%
-                StudenteBean studente = (StudenteBean) session.getAttribute("studente");
+                UserBean studente = (UserBean) session.getAttribute("studente");
                 TutoratoDidatticoBean bean = (TutoratoDidatticoBean) session.getAttribute("tutorato");
                 Collection<LezioneBean> lezioni = new ArrayList<>();
-                lezioni = LezioneDAO.doRetrieveLezioneByStudente(studente.getEmail());
+                lezioni = LezioneDAO.doRetrieveLezioneByStudente("marcoverdi4@studenti.unisa.it");
                 for (LezioneBean x : lezioni){
                     String data = new SimpleDateFormat("dd-MM-yyyy").format(x.getData());
 
             %>
             <fieldset>
                 <div class="table-responsive pt-3">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" >
                         <thead>
                         <tr>
                             <th>Ora inizio</th>
                             <th>Ora fine</th>
                             <th>Data</th>
+                            <th>Insegnamento</th>
                             <th>Tutor</th>
 
                         </tr>
@@ -49,8 +50,8 @@
                             <td><%=x.getOraInizio()%></td>
                             <td><%=x.getOraFine()%></td>
                             <td><%=data%></td>
-                            <td><%=x.getTutor()%> <a href="../SingolaLezione?lezione=<%=x.getId()%>" class="btn btn-light" style="background: #59cfcd" >Seleziona</a></td>
-
+                            <td><%=x.getInsegnamento()%></td>
+                            <td><%=x.getTutor()%> <a href="../SingolaLezione?lezione=<%=x.getId()%>" class="btn btn-info btn-rounded btn-fw" style="background: #59cfcd" >Seleziona</a></td>
 
                         </tr>
 
@@ -67,3 +68,4 @@
 </div>
 </body>
 </html>
+

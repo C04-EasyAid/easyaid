@@ -21,7 +21,8 @@
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap">
 
     <!-- Plugins CSS -->
     <link rel="stylesheet" type="text/css" href="../assets/vendor/font-awesome/css/all.min.css">
@@ -38,9 +39,36 @@
 <header>
     <%@ include file="../fragment/navbar.jsp" %>
 </header>
-<a href="RegistraUtentePage.jsp?inserimento=Studente">Inserisci Studente</a>
-<a href="RegistraUtentePage.jsp?inserimento=Tutor">Inserisci Tutor</a>
-<a href="RegistraUtentePage.jsp?inserimento=ProfessoreReferente">Inserisci Professore Referente</a>
+
+<main>
+    <section class="position-relative overflow-hidden pt-5 pt-lg-8 bg-info h-75">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5 col-xl-6 position-relative z-index-1 text-center text-lg-start mb-5 mb-sm-0">
+                    <h1 class="mb-0 display-6 text-light">
+                        EasyAid UniSa
+                    </h1>
+                    <p class="my-4 lead text-light">
+                        Piattaforma online di supporto per studenti con disabilità e DSA
+                    </p>
+                    <div class="d-sm-flex align-items-center justify-content-center justify-content-lg-start">
+                        <a href="#" class="btn btn-lg btn-blue me-2 mb-4 mb-sm-0">
+                            About
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-xl-6 text-center position-relative">
+                    <div class="position-relative">
+                        <img src="../image/home-ill.svg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<footer>
+    <%@include file="../fragment/footer.html"%>
+</footer>
 <!-- Back to top -->
 <div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
 

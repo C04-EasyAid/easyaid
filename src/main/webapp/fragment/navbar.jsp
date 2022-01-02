@@ -11,8 +11,8 @@
 <nav class="navbar navbar-expand-xl">
     <div class="container-fluid px-3 px-xl-5">
         <!-- Logo START -->
-        <a class="navbar-brand" href="#">
-            <img class="light-mode-item navbar-brand-item" src="../image/PS-LOGO-DEFINITIVO-2.png" alt="logo">
+        <a class="navbar-brand pt-0 pb-0 w-50" href="#">
+            <img style="width: auto !important; height:60px !important;" src="../image/PS-LOGO-DEFINITIVO-2.png" alt="logo">
         </a>
         <!-- Logo END -->
 
@@ -37,33 +37,33 @@
             <ul class="navbar-nav navbar-nav-scroll me-5">
                 <!-- Nav Home -->
                 <li class="nav-item">
-                    <a class="nav-link active" href="HomePage.jsp" id="demoMenu" aria-haspopup="true" aria-expanded="false">Home</a>
+                    <a class="nav-link active text-black" href="HomePage.jsp" id="demoMenu" aria-haspopup="true" aria-expanded="false">Home</a>
                 </li>
                 <%if(user!=null){%>
                 <!-- Nav Servizi -->
                 <li class="nav-item dropdown">
 
-                    <a class="nav-link " href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Servizi</a>
+                    <a class="nav-link text-black" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Servizi</a>
                     <ul class="dropdown-menu" aria-labelledby="pagesMenu">
                         <%if(!user.isPersonaleAmministrativo()){%>
-                        <li> <a class="dropdown-item" href="RichiediServizioPage.jsp">Richiedi Servizio</a></li>
-                        <li> <a class="dropdown-item" href="../ListaRichieste">Elenco Richieste</a></li>
+                        <li> <a class="dropdown-item text-black" href="RichiediServizioPage.jsp">Richiedi Servizio</a></li>
+                        <li> <a class="dropdown-item text-black" href="../ListaRichieste">Elenco Richieste</a></li>
                         <%}else{%>
-                        <li> <a class="dropdown-item" href="../admin">Management</a></li>
+                        <li> <a class="dropdown-item text-black" href="../admin">Management</a></li>
                         <%}%>
                     </ul>
                 </li>
                 <!-- Nav About -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#" id="demoMenu" aria-haspopup="true" aria-expanded="false">About</a>
+                    <a class="nav-link text-black" href="#" id="demoMenu" aria-haspopup="true" aria-expanded="false">About</a>
                 </li>
                 <!-- Nav Nome Cognome -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#" id="demoMenu" aria-haspopup="true" aria-expanded="false"><%=user.getNome()+" "+user.getCognome()%></a>
+                    <a class="nav-link text-black" href="#" id="demoMenu" aria-haspopup="true" aria-expanded="false"><%=user.getNome()+" "+user.getCognome()%></a>
                 </li>
                 <%}else{%>
                 <li class="nav-item">
-                    <a class="nav-link" href="LoginPage.jsp" id="demoMenu" aria-haspopup="true" aria-expanded="false">Login</a>
+                    <a class="nav-link text-black text-black" href="LoginPage.jsp" id="demoMenu" aria-haspopup="true" aria-expanded="false">Login</a>
                 </li>
                 <%}%>
             </ul>
@@ -74,7 +74,7 @@
     <%if(user!=null){%>
         <!-- Profile START -->
         <div class="dropdown ms-1 ms-lg-0">
-            <a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="avatar avatar-sm p-0 text-black" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="avatar-img rounded-circle bg-info"><span class="text-white position-absolute top-50 start-50 translate-middle fw-bold"><%=user.getNome().substring(0,1)+user.getCognome().substring(0,1)%></span></div>
             </a>
             <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
@@ -86,15 +86,15 @@
                             <div class="avatar-img rounded-circle bg-info"><span class="text-white position-absolute top-50 start-50 translate-middle fw-bold"><%=user.getNome().substring(0,1)+user.getCognome().substring(0,1)%></span></div>
                         </div>
                         <div>
-                            <a class="h6" href="#"><%=user.getNome()+" "+user.getCognome()%></a>
-                            <p class="small m-0"><%=user.getEmail()%></p>
+                            <a class="h6 text-black" href="#"><%=user.getNome()+" "+user.getCognome()%></a>
+                            <p class="small m-0 text-black"><%=user.getEmail()%></p>
                         </div>
                     </div>
                     <hr>
                 </li>
                 <!-- Links -->
-                <li><a class="dropdown-item" href="ProfilePage.jsp"><i class="bi fa-fw me-2"></i>Account Settings</a></li>
-                <li><a class="dropdown-item bg-danger-soft-hover" href="../logout"><i class="bi fa-fw me-2"></i>Logout</a></li>
+                <li><a class="dropdown-item text-black" href="ProfilePage.jsp"><i class="bi fa-fw me-2"></i>Account Settings</a></li>
+                <li><a class="dropdown-item bg-danger-soft-hover text-black" href="../logout"><i class="bi fa-fw me-2"></i>Logout</a></li>
                 <li>
                     <hr class="dropdown-divider">
                 </li>

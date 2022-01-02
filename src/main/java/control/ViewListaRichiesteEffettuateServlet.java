@@ -3,10 +3,12 @@ package control;
 import model.bean.StudenteBean;
 import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
+import model.bean.UserBean;
 import model.dao.SupportoEsameDAO;
 import model.dao.TutoratoDidatticoDAO;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +21,7 @@ import java.util.List;
  * @author Riccardo Polidoro
  * Servlet che permette di restituire la lista delle richieste effettuate allo studente
  */
+@WebServlet("/ListaRichieste")
 public class ViewListaRichiesteEffettuateServlet extends HttpServlet
 {
 
@@ -26,7 +29,9 @@ public class ViewListaRichiesteEffettuateServlet extends HttpServlet
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException  {
         HttpSession session=req.getSession();
-        StudenteBean bean= (StudenteBean) session.getAttribute("studente");
+        UserBean bean= (UserBean) session.getAttribute("utente");
+        if (bean!=null){
+
         SupportoEsameDAO esameDAO=new SupportoEsameDAO();
         TutoratoDidatticoDAO tutoratoDAO=new TutoratoDidatticoDAO();
 
@@ -36,7 +41,7 @@ public class ViewListaRichiesteEffettuateServlet extends HttpServlet
                 session.setAttribute("richiesteEsami",listRichiesteSupportoEsame);
                 session.setAttribute("richiesteTutorato",listRichiesteTutoratoDidattico);
 
-                resp.sendRedirect("./richiesteeffettuate.jsp");
+                resp.sendRedirect("../ListaRichiesteEffettuatePage.jsp");
 
             }
             catch (SQLException e)
@@ -47,7 +52,9 @@ public class ViewListaRichiesteEffettuateServlet extends HttpServlet
             {
                 e.printStackTrace();
             }
-
+        } else {
+            resp.sendRedirect("../LoginPage.jsp");
+        }
 
         }
 

@@ -26,7 +26,7 @@ public class ProfiloUtenteServlet extends HttpServlet {
         case "T":
           try {
             session.setAttribute("usrProfile", TutorDAO.doRetrieveByEmail(email));
-            session.setAttribute("utente", UserDAO.doRetrieveUtenteByEmail(email));
+            session.setAttribute("utenteSelezionato", UserDAO.doRetrieveUtenteByEmail(email));
             session.setAttribute("ruolo", ruolo);
             response.sendRedirect("view/UserPage.jsp");
           } catch (Exception e) {
@@ -36,7 +36,7 @@ public class ProfiloUtenteServlet extends HttpServlet {
         case "S":
           try {
             session.setAttribute("usrProfile", StudentDAO.doRetrieveByEmail(email));
-            session.setAttribute("utente", UserDAO.doRetrieveUtenteByEmail(email));
+            session.setAttribute("utenteSelezionato", UserDAO.doRetrieveUtenteByEmail(email));
             session.setAttribute("ruolo", ruolo);
             response.sendRedirect("view/UserPage.jsp");
           } catch (Exception e) {
@@ -46,7 +46,7 @@ public class ProfiloUtenteServlet extends HttpServlet {
         case "P":
           try {
             session.setAttribute("usrProfile", ProfessoreReferenteDAO.doRetrieveByEmail(email));
-            session.setAttribute("utente", UserDAO.doRetrieveUtenteByEmail(email));
+            session.setAttribute("utenteSelezionato", UserDAO.doRetrieveUtenteByEmail(email));
             session.setAttribute("ruolo", ruolo);
             response.sendRedirect("view/UserPage.jsp");
           } catch (Exception e) {
@@ -54,7 +54,7 @@ public class ProfiloUtenteServlet extends HttpServlet {
           }
           break;
       }
-    } else response.sendRedirect("view/viewUserPage.jsp");
+    } else response.sendRedirect("view/ListaUtentiPage.jsp");
   }
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response)

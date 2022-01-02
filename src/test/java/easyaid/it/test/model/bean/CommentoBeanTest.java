@@ -7,6 +7,10 @@ import model.bean.CommentoBean;
 
 import java.util.Date;
 
+/**
+ * @author Riccardo Polidoro
+ * Classe di test pe la classe CommentoBean
+ */
 public class CommentoBeanTest
 {
     private final int lezione=1;

@@ -3,6 +3,7 @@ package control;
 import model.bean.StudenteBean;
 import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
+import model.bean.UserBean;
 import model.dao.SupportoEsameDAO;
 import model.dao.TutoratoDidatticoDAO;
 
@@ -17,32 +18,37 @@ import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet("/viewRichiesteCompletate")
-public class ViewRichiesteCompletateServlet extends HttpServlet
-{
+public class ViewRichiesteCompletateServlet extends HttpServlet {
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session=req.getSession();
-        SupportoEsameDAO esameDAO=new SupportoEsameDAO();
-        TutoratoDidatticoDAO tutoratoDAO=new TutoratoDidatticoDAO();
-
+  @Override
+  protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+      throws ServletException, IOException {
+    HttpSession session = req.getSession();
+    UserBean userLoggato = (UserBean) session.getAttribute("utente");
+    if (userLoggato != null) {
+      if (userLoggato.isPersonaleAmministrativo()) {
+        SupportoEsameDAO esameDAO = new SupportoEsameDAO();
+        TutoratoDidatticoDAO tutoratoDAO = new TutoratoDidatticoDAO();
         try {
-            List<SupportoEsameBean> listRichiesteSupportoEsame=esameDAO.doRetrieveAllRichiesteSupportoEsameCompletate();
-            List<TutoratoDidatticoBean> listRichiesteTutoratoDidattico=tutoratoDAO.doRetrieveAllRichiesteTutoratoDidatticoCompletate();
-            session.setAttribute("richiesteEsamiCompletate",listRichiesteSupportoEsame);
-            session.setAttribute("richiesteTutoratoCompletate",listRichiesteTutoratoDidattico);
+          List<SupportoEsameBean> listRichiesteSupportoEsame =
+              esameDAO.doRetrieveAllRichiesteSupportoEsameCompletate();
+          List<TutoratoDidatticoBean> listRichiesteTutoratoDidattico =
+              tutoratoDAO.doRetrieveAllRichiesteTutoratoDidatticoCompletate();
+          session.setAttribute("richiesteEsamiCompletate", listRichiesteSupportoEsame);
+          session.setAttribute("richiesteTutoratoCompletate", listRichiesteTutoratoDidattico);
 
-            resp.sendRedirect("view/RichiesteCompletatePage.jsp");
+          resp.sendRedirect("view/RichiesteCompletatePage.jsp");
 
+        } catch (SQLException e) {
+          e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+          e.printStackTrace();
         }
-        catch (SQLException e)
-        {
-            e.printStackTrace();
-        }
-        catch (ClassNotFoundException e)
-        {
-            e.printStackTrace();
-        }
-
+      } else {
+        resp.sendRedirect("view/HomePage.jsp");
+      }
+    } else {
+      resp.sendRedirect("view/LoginPage.jsp");
     }
+  }
 }

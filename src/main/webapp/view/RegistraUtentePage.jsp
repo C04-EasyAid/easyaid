@@ -8,116 +8,240 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String inserimento = (String) request.getParameter("inserimento");
+
 %>
 <html>
 <head>
-    <title>Inserimento Utente</title>
+    <title>EasyAid</title>
     <link type="text/css" rel="stylesheet" href="../css/inserimento.css">
     <link type="text/css" rel="stylesheet" href="../css/bootstrap.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Webestica.com">
+    <meta name="description" content="Eduport- LMS, Education and Course Theme">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../assets/images/favicon.ico">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E%22%3E">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&amp;family=Roboto:wght@400;500;700&amp;display=swap%22%3E%22%3E">
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" type="text/css" href="../assets/vendor/font-awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/vendor/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="../assets/vendor/tiny-slider/tiny-slider.css">
+    <link rel="stylesheet" type="text/css" href="../assets/vendor/glightbox/css/glightbox.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7N7LGGGWT1%22%3E%22%3E"></script>
 
 </head>
 <body>
-<section class="vh-100 bg-image">
-    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
-        <div class="container h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-12 col-md-9 col-lg-7 col-xl-6 contenitore">
-                    <div class="card" style="border-radius: 15px;">
-                        <div class="card-body p-5">
-                            <h2 class="text-uppercase text-center mb-5">Inserimento</h2>
-<form action="../register" method="get">
-    <fieldset>
-        <input type="hidden" name="ruolo" value=<%=inserimento%> />
-
-        <div class="form-outline mb-4 ">
-            <label class="form-label" for="nome">Nome</label>
-            <input type="text" id="nome" class="form-control form-control-lg bordo" />
-        </div>
-
-        <div class="form-outline mb-4">
-            <label class="form-label" for="cognome">Cognome</label>
-            <input type="text" id="cognome" class="form-control form-control-lg" />
-        </div>
-
-        <div class="form-outline mb-4">
-            <label class="form-label" for="email">Email</label>
-            <input type="email" id="email" class="form-control form-control-lg" />
-        </div>
-
-        <div class="form-outline mb-4">
-            <label class="form-label" for="pw">Password</label>
-            <input type="password" id="pw" class="form-control form-control-lg" />
-        </div>
-
-        <%
-            if(inserimento.equals("Studente")){
-        %>
-        <div class="form-outline mb-4">
-            <label class="form-label" for="tipoDisabilità">Tipo Disabilità</label>
-            <input type="text" id="tipoDisabilità" class="form-control form-control-lg" />
-        </div>
-
-        <div class="form-outline mb-4">
-            <label class="form-label" for="specificheDisturbo">Specifiche Disturbo</label>
-            <input type="text" id="specificheDisturbo" class="form-control form-control-lg" />
-        </div>
-
-        <div class="form-outline mb-4">
-            <label class="form-label" for="percentualeDisabilita">Percentuale Disabilità</label>
-            <input type="text" id="percentualeDisabilita" class="form-control form-control-lg" />
-        </div>
-
-        <div class="form-outline mb-4">
-            <label class="form-label" for="oreDisponibiliStudente">Ore Disponibili</label>
-            <input type="text" id="oreDisponibiliStudente" class="form-control form-control-lg" />
-        </div>
-
-        <%}%>
-        <%
-            if(inserimento.equals("Tutor")){
-        %>
-        <div class="form-outline mb-4">
-            <label class="form-label" for="dipartimentoTutor">Dipartimento</label>
-            <input type="text" id="dipartimentoTutor" class="form-control form-control-lg" />
-        </div>
-
-        <div class="form-outline mb-4">
-            <label class="form-label" for="qualifica">Qualifica</label>
-            <input type="text" id="qualifica" class="form-control form-control-lg" />
-        </div>
-
-        <div class="form-outline mb-4">
-            <label class="form-label" for="oreDisponibiliTutor">Ore Disponibili</label>
-            <input type="text" id="oreDisponibiliTutor" class="form-control form-control-lg" />
-        </div>
-
-        <div class="form-outline mb-4">
-            <label class="form-label" for="oreSvolte">Ore Svolte</label>
-            <input type="text" id="oreSvolte" class="form-control form-control-lg" />
-        </div>
-
-        <%}%>
-        <%
-            if(inserimento.equals("ProfessoreReferente")){
-        %>
-        <div class="form-outline mb-4">
-            <label class="form-label" for="dipartimentoProf">Dipartimento</label>
-            <input type="text" id="dipartimentoProf" class="form-control form-control-lg" />
-        </div>
-        <%}%>
-    </fieldset>
-
-    <div class="d-flex justify-content-center">
-        <button type="button" name="register" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Inserisci</button>
+<header>
+    <%@ include file="../fragment/navbar.jsp" %>
+</header>
+<div class="container-fluid px-0">
+    <%@ include file="../fragment/UserSection.jsp" %>
     </div>
+    <div class="content-wrapper align-self-center">
+        <div class="row d-flex justify-content-center">
+            <%@ include file="../fragment/DashboardAdmin.jsp" %>
+            <div class="col-md-6 grid-margin stretch-card align-self-center">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="../register" method="get" class="row g-4 align-items-center">
 
-</form>
-                        </div>
+                            <p class="card-description"><h5 class="card-header-title titolo">
+                            Registrazione <%=inserimento%>
+                        </h5></p>
+                            <input type="hidden" name="ruolo" value="<%=inserimento%>"/>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <address>
+                                        <p class="fw-bold">Nome:</p>
+                                        <input type="text" name="nome" class="form-control" placeholder="Nome">
+                                        <p class="fw-bold">Cognome:</p>
+                                        <input type="text" name="cognome" class="form-control" placeholder="Cognome">
+                                        <p class="fw-bold">Email:</p>
+                                        <input type="email" name="email" class="form-control" placeholder="Email">
+                                        <p class="fw-bold">Password:</p>
+                                        <input type="password" name="password" class="form-control"
+                                               placeholder="Password">
+                                    </address>
+                                </div>
+
+                                <%
+                                    if (inserimento.equals("Studente")) {
+                                %>
+                                <div class="col-md-6">
+                                    <address>
+                                        <p class="fw-bold">Tipo Disabilità:</p>
+                                        <div>
+                                            <div class="form-check">
+                                                <input name="tipoDisabilita" value="Disabile" type="radio" id="disabile"
+                                                       checked>
+                                                <label for="disabile">Disabile</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input name="tipoDisabilita" value="Dsa" type="radio" id="dsa">
+                                                <label for="dsa">DSA</label>
+                                            </div>
+                                        </div>
+                                        </p>
+                                        <p class="fw-bold">Specifiche Disturbo:</p>
+                                        <input type="text" name="specificheDisturbo" class="form-control"
+                                               placeholder="Specifiche Disturbo">
+                                        </p>
+                                        <p class="fw-bold">Percentuale Disabilità:</p>
+                                        <input type="text" name="percentualeDisabilita" class="form-control"
+                                               placeholder="Percentuale Disabilità">
+                                        </p>
+                                        <p class="fw-bold">Ore Disponibili:</p>
+                                        <input type="text" name="oreDisponibiliStudente" class="form-control"
+                                               placeholder="Ore Disponibili">
+                                        </p>
+                                    </address>
+                                </div>
+
+                                <%}%>
+                                <%
+                                    if (inserimento.equals("Tutor")) {
+                                %>
+                                <div class="col-md-6">
+                                    <address>
+                                        <p class="fw-bold">Dipartimento:</p>
+                                        <select name="dipartimentoTutor" style=" width:19.6em" class="form-control">
+                                            <option value="Fisica/DIF"> Fisica/DIF</option>
+                                            <option value="Chimica e Biologia/DICB"> Chimica e Biologia/DICB</option>
+                                            <option value="Farmacia/DIFARM"> Farmacia/DIFARM</option>
+                                            <option value="Informatica/DI"> Informatica/DI</option>
+                                            <option value="Ingegneria Civile/DICIV"> Ingegneria Civile/DICIV</option>
+                                            <option value="Ingegneria dell'Informazione ed Elettrica e Matematica applicata/DIEM">
+                                                Ingegneria dell'Informazione ed Elettrica e Matematica applicata/DIEM
+                                            </option>
+                                            <option value="Ingegneria Industriale/DIIN"> Ingegneria Industriale/DIIN
+                                            </option>
+                                            <option value="Matematica/DIPMAT"> Matematica/DIPMAT</option>
+                                            <option value="Medicina, Chirurgia e Odontoiatria/DIPMED"> Medicina,
+                                                Chirurgia e Odontoiatria/DIPMED
+                                            </option>
+                                            <option value="Scienze Aziendali-Managment & Innovation Systems/DISA-MIS">
+                                                Scienze Aziendali-Managment & Innovation Systems/DISA-MIS
+                                            </option>
+                                            <option value="Scienze del Patrimonio Culturale/DISPAT"> Scienze del
+                                                Patrimonio Culturale/DISPAT
+                                            </option>
+                                            <option value="Scienza Economia e Statistiche/DISES"> Scienza Economia e
+                                                Statistiche/DISES
+                                            </option>
+                                            <option value="Scienze Giuridiche"> Scienze Giuridiche</option>
+                                            <option value="Scienze Politiche e della Comunicazione/DISPC"> Scienze
+                                                Politiche e della Comunicazione/DISPC
+                                            </option>
+                                            <option value="Scienze Umane, Filosofiche e della Formazione/DISUFF">
+                                                Scienze Umane, Filosofiche e della Formazione/DISUFF
+                                            </option>
+                                            <option value="Studi Politici e Sociali/DISPS"> Studi Politici e
+                                                Sociali/DISPS
+                                            </option>
+                                            <option value="Studi Umanistici/DIPSUM"> Studi Umanistici/DIPSUM</option>
+                                        </select>
+                                        </p>
+                                        <p class="fw-bold">Qualifica:</p>
+                                        <input type="text" name="qualifica" class="form-control"
+                                               placeholder="Qualifica">
+                                        </p>
+                                        <p class="fw-bold">Ore Disponibili:</p>
+                                        <input type="text" nam="dipartimentoTutor" class="form-control"
+                                               placeholder="Ore Disponibili">
+                                        </p>
+                                        <p class="fw-bold">Ore Svolte:</p>
+                                        <input type="text" name="oreDisponibiliTutor" class="form-control"
+                                               placeholder="Ore Svolte">
+                                        </p>
+                                    </address>
+                                </div>
+
+                                <%}%>
+                                <%
+                                    if (inserimento.equals("Professore Referente")) {
+                                %>
+                                <div class="col-md-6">
+                                    <address>
+                                        <p class="fw-bold">Dipartimento:</p>
+                                        <select name="dipartimentoProf" style=" width:19.6em" class="form-control">
+                                            <option value="Fisica/DIF"> Fisica/DIF</option>
+                                            <option value="Chimica e Biologia/DICB"> Chimica e Biologia/DICB</option>
+                                            <option value="Farmacia/DIFARM"> Farmacia/DIFARM</option>
+                                            <option value="Informatica/DI"> Informatica/DI</option>
+                                            <option value="Ingegneria Civile/DICIV"> Ingegneria Civile/DICIV</option>
+                                            <option value="Ingegneria dell'Informazione ed Elettrica e Matematica applicata/DIEM">
+                                                Ingegneria dell'Informazione ed Elettrica e Matematica applicata/DIEM
+                                            </option>
+                                            <option value="Ingegneria Industriale/DIIN"> Ingegneria Industriale/DIIN
+                                            </option>
+                                            <option value="Matematica/DIPMAT"> Matematica/DIPMAT</option>
+                                            <option value="Medicina, Chirurgia e Odontoiatria/DIPMED"> Medicina,
+                                                Chirurgia e Odontoiatria/DIPMED
+                                            </option>
+                                            <option value="Scienze Aziendali-Managment & Innovation Systems/DISA-MIS">
+                                                Scienze Aziendali-Managment & Innovation Systems/DISA-MIS
+                                            </option>
+                                            <option value="Scienze del Patrimonio Culturale/DISPAT"> Scienze del
+                                                Patrimonio Culturale/DISPAT
+                                            </option>
+                                            <option value="Scienza Economia e Statistiche/DISES"> Scienza Economia e
+                                                Statistiche/DISES
+                                            </option>
+                                            <option value="Scienze Giuridiche"> Scienze Giuridiche</option>
+                                            <option value="Scienze Politiche e della Comunicazione/DISPC"> Scienze
+                                                Politiche e della Comunicazione/DISPC
+                                            </option>
+                                            <option value="Scienze Umane, Filosofiche e della Formazione/DISUFF">
+                                                Scienze Umane, Filosofiche e della Formazione/DISUFF
+                                            </option>
+                                            <option value="Studi Politici e Sociali/DISPS"> Studi Politici e
+                                                Sociali/DISPS
+                                            </option>
+                                            <option value="Studi Umanistici/DIPSUM"> Studi Umanistici/DIPSUM</option>
+                                        </select>
+                                    </address>
+                                </div>
+
+                                <%}%>
+                            </div>
+                            <div class="d-sm-flex justify-content-end">
+                                <button type="submit" class="btn btn-outline-info">Inserisci</button>
+                            </div>
+
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+
+    <!-- Back to top -->
+    <div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
+
+    <!-- Bootstrap JS -->
+    <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Vendors -->
+    <script src="../assets/vendor/tiny-slider/tiny-slider.js"></script>
+    <script src="../assets/vendor/glightbox/js/glightbox.js"></script>
+    <script src="../assets/vendor/purecounterjs/dist/purecounter_vanilla.js"></script>
+
+    <!-- Template Functions -->
+    <script src="../assets/js/functions.js"></script>
+    <footer>
+        <%@include file="../fragment/footer.html" %>
+    </footer>
 </body>
 </html>

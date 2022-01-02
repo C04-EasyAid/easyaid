@@ -24,7 +24,7 @@ public class ViewRichiesteAccettateServlet extends HttpServlet
         HttpSession session=req.getSession();
         SupportoEsameDAO esameDAO=new SupportoEsameDAO();
         TutoratoDidatticoDAO tutoratoDAO=new TutoratoDidatticoDAO();
-        //questo verrà poi preso dalla sessione
+        //questo verrà poi preso dalla sessione con TutorBean bean=(TutorBean) session.getAttribute("tutor")
         String email="lorenzorossi1@studenti.unisa.it";
 
         try {

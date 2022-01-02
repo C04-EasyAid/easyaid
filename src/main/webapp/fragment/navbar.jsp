@@ -47,15 +47,21 @@
                     <%if(!user.isPersonaleAmministrativo()){%>
                     <a class="nav-link text-black" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Servizi</a>
                     <ul class="dropdown-menu" aria-labelledby="pagesMenu">
+                        <% if(user.isStudente()){%>
                         <li> <a class="dropdown-item text-black" href="RichiediServizioPage.jsp">Richiedi Servizio</a></li>
                         <li> <a class="dropdown-item text-black" href="../ListaRichieste">Elenco Richieste</a></li>
                         <li> <a class="dropdown-item text-black" href="../LezioniServlet">Elenco Lezioni</a></li>
+                        <%}else if(user.isTutor()){%>
+                        <li> <a class="dropdown-item text-black" href="../viewRichiesteServizio">Bacheca Richieste</a></li>
+                        <li> <a class="dropdown-item text-black" href="../viewRichiesteAccettate">Elenco Richieste Accettate</a></li>
+                        <li> <a class="dropdown-item text-black" href="../LezioniServlet">Elenco Lezioni</a></li>
+                        <%}%>
                     </ul>
                         <%}else{%>
                         <a class="nav-link text-black" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Management</a>
                         <ul class="dropdown-menu" aria-labelledby="pagesMenu">
                         <li> <a class="dropdown-item text-black" href="../ViewListaUsers">Elenco Utenti</a></li>
-                        <li> <a class="dropdown-item text-black" href="../register">Inserisci Utenti</a></li>
+                        <li> <a class="dropdown-item text-black" href="../viewRichiesteCompletate">Elenco Richieste Completate</a></li>
                         </ul>
                         <%}%>
                 </li>

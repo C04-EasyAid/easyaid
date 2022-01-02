@@ -2,6 +2,7 @@ package control;
 
 import model.bean.CommentoBean;
 import model.bean.LezioneBean;
+import model.bean.UserBean;
 import model.dao.CommentoDAO;
 import model.dao.LezioneDAO;
 
@@ -22,33 +23,38 @@ Servlet che permette di visualizzare la singola lezione
  */
 @WebServlet("/SingolaLezione")
 public class SingolaLezioneServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        if (request.getParameter("lezione") != null) {
-            String idLezione = request.getParameter("lezione");
-            int id = Integer.parseInt(idLezione);
-            LezioneDAO daoL = new LezioneDAO();
-            CommentoDAO daoC = new CommentoDAO();
-            try {
-                LezioneBean lezione = new LezioneBean();
-                lezione = LezioneDAO.doRetrieveLezioneById(id);
-                Collection<CommentoBean> commenti = new ArrayList<>();
-                commenti = daoC.doRetrieveCommento(id);
-                session.setAttribute("lezione", lezione);
-                session.setAttribute("listaCommenti", commenti);
-                response.sendRedirect("view/LezionePage.jsp");
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    HttpSession session = request.getSession();
+    UserBean userLoggato = (UserBean) session.getAttribute("utente");
+    if (userLoggato != null) {
+      if (request.getParameter("lezione") != null) {
+        String idLezione = request.getParameter("lezione");
+        int id = Integer.parseInt(idLezione);
+        LezioneDAO daoL = new LezioneDAO();
+        CommentoDAO daoC = new CommentoDAO();
+        try {
+          LezioneBean lezione = new LezioneBean();
+          lezione = LezioneDAO.doRetrieveLezioneById(id);
+          Collection<CommentoBean> commenti = new ArrayList<>();
+          commenti = daoC.doRetrieveCommento(id);
+          session.setAttribute("lezione", lezione);
+          session.setAttribute("listaCommenti", commenti);
+          response.sendRedirect("view/LezionePage.jsp");
 
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+        } catch (ClassNotFoundException e) {
+          e.printStackTrace();
+        } catch (SQLException e) {
+          e.printStackTrace();
         }
+      }
+    } else {
+      response.sendRedirect("view/LoginPage.jsp");
     }
+  }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        doGet(request, response);
-    }
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    doGet(request, response);
+  }
 }

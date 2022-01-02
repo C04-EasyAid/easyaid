@@ -50,9 +50,10 @@
 <%
     Collection<LezioneBean> lezioni = (Collection<LezioneBean>) session.getAttribute("listaLezioni");
 %>
-
+<main>
+    <section class="pt-0">
 <div class="container">
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-xl-9">
             <!-- Counter boxes START -->
             <div class="row mb-4">
@@ -117,6 +118,8 @@
         </div>
     </div>
 </div>
+<section>
+</main>
 <!-- Back to top -->
 <div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
 

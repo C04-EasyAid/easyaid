@@ -7,8 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    String nome = ""+ user.getNome()+" "+ user.getCognome();
-    String iniziale = user.getNome().substring(0,1)+ user.getCognome().substring(0,1);
     String ruolo = user.getRuolo();
     if(ruolo.equals("S")){
         ruolo = "Studente";
@@ -19,12 +17,14 @@
     else if(ruolo.equals("P")){
         ruolo = "Professore Referente";
     }
+    else if(ruolo.equals("PA"))
+    {
+        ruolo = "Admin";
+    }
 %>
-<section class="pt-0">
     <!-- Main banner background image -->
     <div class="container-fluid px-0">
-        <div class="bg-bg-info h-100px h-md-200px rounded-0" style="background:#0a966c no-repeat center center; background-size:cover;">
-        </div>
+        <div class="bg-bg-info h-100px h-md-200px rounded-0" style="background:#59cfcd no-repeat center center; background-size:cover;">
     </div>
     <div class="container mt-n4">
         <div class="row">
@@ -35,14 +35,19 @@
                         <!-- Avatar -->
                         <div class="col-auto mt-4 mt-md-0">
                             <div class="avatar avatar-xxl mt-n3">
-                                <div class="avatar-img rounded-circle bg-info"><span class="text-white position-absolute top-50 start-50 translate-middle fw-bold fs-1"><%=iniziale%></span></div>
-                                <span class="badge bg-success text-white rounded-pill position-absolute top-50 start-100 translate-middle mt-4 mt-md-5 ms-n3 px-md-3"><%=ruolo%></span>
+                                <%if(ruolo.equals("Studente")){%>
+                                <div class="avatar-img rounded-circle bg-info"><span class="text-white position-absolute top-50 start-50 translate-middle fw-bold fs-1"><%=user.getNome().substring(0,1)+ user.getCognome().substring(0,1)%></span></div><%}%>
+                                <%if(ruolo.equals("Tutor")){%>
+                                <div class="avatar-img rounded-circle bg-success"><span class="text-white position-absolute top-50 start-50 translate-middle fw-bold fs-1"><%=user.getNome().substring(0,1)+ user.getCognome().substring(0,1)%></span></div><%}%>
+                                <%if(ruolo.equals("Professore Referente")){%>
+                                <div class="avatar-img rounded-circle bg-warning"><span class="text-white position-absolute top-50 start-50 translate-middle fw-bold fs-1"><%=user.getNome().substring(0,1)+ user.getCognome().substring(0,1)%></span></div><%}%>
+                                <span class="badge bg-success text-white rounded-pill position-absolute top-50 start-100 translate-middle mt-4 mt-md-5 ms-n3 px-md-3" style="background:#59cfcd !important;"><%=ruolo%></span>
                             </div>
                         </div>
                         <!-- Profile info -->
                         <div class="col d-md-flex justify-content-between align-items-center mt-4">
                             <div>
-                                <h1 class="my-1 fs-4"><%=nome%></h1>
+                                <h1 class="my-1 fs-4"><%=user.getNome()+" "+ user.getCognome()%></h1>
                                 <ul class="list-inline mb-0">
                                     <li class="list-inline-item h6 fw-light me-3 mb-1 mb-sm-0"><%=user.getEmail()%></li>
 
@@ -68,4 +73,3 @@
             </div>
         </div>
     </div>
-</section>

@@ -7,6 +7,7 @@ import model.dao.SupportoEsameDAO;
 import model.dao.TutoratoDidatticoDAO;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +20,7 @@ import java.util.List;
  * @author Riccardo Polidoro
  * Servlet che permette di restituire la lista delle richieste effettuate allo studente
  */
+@WebServlet("/ListaRichieste")
 public class ViewListaRichiesteEffettuateServlet extends HttpServlet
 {
 

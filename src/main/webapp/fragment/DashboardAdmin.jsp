@@ -24,7 +24,7 @@
                                 class="bi bi-person-fill fa-fw me-2"></i>Inserimento Studente</a>
                         <a class="list-group-item" href="RegistraUtentePage.jsp?inserimento=Tutor"><i
                                 class="bi bi-mortarboard-fill fa-fw me-2"></i>Inserimento Tutor</a>
-                        <a class="list-group-item" href="RegistraUtentePage.jsp?inserimento=ProfessoreReferente"><i
+                        <a class="list-group-item" href="RegistraUtentePage.jsp?inserimento=Professore Referente"><i
                                 class="bi bi-pencil-fill fa-fw me-2"></i>Inserimento Professore</a>
                     </div>
                 </div>

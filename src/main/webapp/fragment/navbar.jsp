@@ -44,17 +44,20 @@
                    %>
                 <!-- Nav Servizi -->
                 <li class="nav-item dropdown">
-
+                    <%if(!user.isPersonaleAmministrativo()){%>
                     <a class="nav-link text-black" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Servizi</a>
                     <ul class="dropdown-menu" aria-labelledby="pagesMenu">
-                        <%if(!user.isPersonaleAmministrativo()){%>
                         <li> <a class="dropdown-item text-black" href="RichiediServizioPage.jsp">Richiedi Servizio</a></li>
                         <li> <a class="dropdown-item text-black" href="../ListaRichieste">Elenco Richieste</a></li>
                         <li> <a class="dropdown-item text-black" href="../LezioniServlet">Elenco Lezioni</a></li>
-                        <%}else{%>
-                        <li> <a class="dropdown-item text-black" href="../admin">Management</a></li>
-                        <%}%>
                     </ul>
+                        <%}else{%>
+                        <a class="nav-link text-black" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Management</a>
+                        <ul class="dropdown-menu" aria-labelledby="pagesMenu">
+                        <li> <a class="dropdown-item text-black" href="../ViewListaUsers">Elenco Utenti</a></li>
+                        <li> <a class="dropdown-item text-black" href="../register">Inserisci Utenti</a></li>
+                        </ul>
+                        <%}%>
                 </li>
                 <!-- Nav About -->
                 <li class="nav-item">
@@ -74,28 +77,24 @@
 
         </div>
         <!-- Main navbar END -->
-    <%if(user!=null){
-        String ruolo = user.getRuolo();
-        if (ruolo.equals("S")) {
-            ruolo = "Studente";
-        } else if (ruolo.equals("T")) {
-            ruolo = "Tutor";
-        } else if (ruolo.equals("P")) {
-            ruolo = "Professore Referente";
-        }%>
+    <%if(user!=null){%>
         <!-- Profile START -->
         <div class="dropdown ms-1 ms-lg-0">
             <a class="avatar avatar-sm p-0 text-black" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-                <% if (ruolo.equals("Professore Referente")) { %>
+                <% if (user.isProfessoreReferente()) { %>
                 <div class="avatar-img rounded-circle bg-warning"><span
                         class="text-white position-absolute top-50 start-50 translate-middle fw-bold"><%=user.getNome().substring(0,1)+ user.getCognome().substring(0,1)%></span>
                 </div>
-                <%} else if (ruolo.equals("Studente")) {%>
+                <%} else if (user.isStudente()) {%>
                 <div class="avatar-img rounded-circle bg-info"><span
                         class="text-white position-absolute top-50 start-50 translate-middle fw-bold"><%=user.getNome().substring(0,1)+ user.getCognome().substring(0,1)%></span>
                 </div>
-                <%} else if (ruolo.equals("Tutor")) {%>
+                <%} else if (user.isTutor()) {%>
                 <div class="avatar-img rounded-circle bg-success"><span
+                        class="text-white position-absolute top-50 start-50 translate-middle fw-bold"><%=user.getNome().substring(0,1)+ user.getCognome().substring(0,1)%></span>
+                </div>
+                <%} else if(user.isPersonaleAmministrativo()){%>
+                <div class="avatar-img rounded-circle bg-blue"><span
                         class="text-white position-absolute top-50 start-50 translate-middle fw-bold"><%=user.getNome().substring(0,1)+ user.getCognome().substring(0,1)%></span>
                 </div>
                 <%}%>

@@ -5,6 +5,9 @@ import model.bean.StudenteBean;
 import model.bean.TutorBean;
 import model.bean.UserBean;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,6 +16,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import static model.dao.ConnectionPool.conn;
+import static other.Utils.generatePwd;
+
 /**
  * @author Giovanni Toriello
  * Classe UserDAO
@@ -22,6 +27,7 @@ public class UserDAO {
   public static synchronized UserBean doRetrieveUtente(UserBean b)
       throws SQLException, ClassNotFoundException {
     Connection conn = null;
+    String pwd = generatePwd(b.getPassword());
     String query = "SELECT * FROM utente WHERE email = ? AND password = ?";
     UserBean user = null;
     PreparedStatement stmt = null;
@@ -30,7 +36,7 @@ public class UserDAO {
       conn = ConnectionPool.conn();
       stmt = conn.prepareStatement(query);
       stmt.setString(1, b.getEmail());
-      stmt.setString(2, b.getPassword());
+      stmt.setString(2, pwd);
       ResultSet rs = stmt.executeQuery();
       // Se trova l'utente lo crea con tutti gli attributi
       if (rs.next()) {
@@ -59,6 +65,7 @@ public class UserDAO {
   public static synchronized boolean insertUtente(UserBean b) throws SQLException {
     boolean utente = false;
     Connection conn = null;
+    String pwd = generatePwd(b.getPassword());
     String query = "INSERT INTO utente VALUES (?,?,?,?,?)";
     PreparedStatement stmt = null;
     // Se riesce a connettersi, la connessione è != da null ed entra nello statement
@@ -69,7 +76,7 @@ public class UserDAO {
       stmt.setString(1, b.getNome());
       stmt.setString(2, b.getCognome());
       stmt.setString(3, b.getEmail());
-      stmt.setString(4, b.getPassword());
+      stmt.setString(4, pwd);
       stmt.setString(5, b.getRuolo());
       // Esegue la query
      utente = stmt.executeUpdate()==1;
@@ -271,4 +278,12 @@ public class UserDAO {
     return user;
   }
 
+  public static void main(String[] args) throws SQLException, ClassNotFoundException {
+    System.out.println(generatePwd("Aldo#Baglio45"));
+    UserBean b = new UserBean();
+    b.setEmail("abaglio9@studenti.unisa.it");
+    b.setPassword("Aldo#Baglior45");
+    b = doRetrieveUtente(b);
+    System.out.println(b);
+  }
 }

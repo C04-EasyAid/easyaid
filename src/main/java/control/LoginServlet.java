@@ -34,17 +34,9 @@ public class LoginServlet extends HttpServlet {
         // Nessun utente nel sistema
         response.sendRedirect("view/LoginPage.jsp");
       }
-      if (user.isStudente()) {
-        session.setAttribute("studente", user);
-        response.sendRedirect("view/HomePage.jsp");
-      } else if (user.isTutor()) {
-        session.setAttribute("tutor", user);
-        response.sendRedirect("view/HomePage.jsp");
-      } else if (user.isProfessoreReferente()) {
-        session.setAttribute("professore", user);
-        response.sendRedirect("view/HomePage.jsp");
-      } else if (user.isPersonaleAmministrativo()) {
-        session.setAttribute("admin", user);
+      else
+      {
+        session.setAttribute("utente", user);
         response.sendRedirect("view/HomePage.jsp");
       }
     } catch (Throwable e) {

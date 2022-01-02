@@ -105,7 +105,23 @@
                     <div class="d-flex align-items-center">
                         <!-- Avatar -->
                         <div class="avatar me-3">
-                            <div class="avatar-img rounded-circle bg-info"><span class="text-white position-absolute top-50 start-50 translate-middle fw-bold"><%=user.getNome().substring(0,1)+user.getCognome().substring(0,1)%></span></div>
+                            <% if (user.isProfessoreReferente()) { %>
+                            <div class="avatar-img rounded-circle bg-warning"><span
+                                    class="text-white position-absolute top-50 start-50 translate-middle fw-bold"><%=user.getNome().substring(0,1)+ user.getCognome().substring(0,1)%></span>
+                            </div>
+                            <%} else if (user.isStudente()) {%>
+                            <div class="avatar-img rounded-circle bg-info"><span
+                                    class="text-white position-absolute top-50 start-50 translate-middle fw-bold"><%=user.getNome().substring(0,1)+ user.getCognome().substring(0,1)%></span>
+                            </div>
+                            <%} else if (user.isTutor()) {%>
+                            <div class="avatar-img rounded-circle bg-success"><span
+                                    class="text-white position-absolute top-50 start-50 translate-middle fw-bold"><%=user.getNome().substring(0,1)+ user.getCognome().substring(0,1)%></span>
+                            </div>
+                            <%} else if(user.isPersonaleAmministrativo()){%>
+                            <div class="avatar-img rounded-circle bg-blue"><span
+                                    class="text-white position-absolute top-50 start-50 translate-middle fw-bold"><%=user.getNome().substring(0,1)+ user.getCognome().substring(0,1)%></span>
+                            </div>
+                            <%}%>
                         </div>
                         <div>
                             <a class="h6 text-black" href="#"><%=user.getNome()+" "+user.getCognome()%></a>

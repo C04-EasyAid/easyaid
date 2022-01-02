@@ -279,11 +279,7 @@ public class UserDAO {
   }
 
   public static void main(String[] args) throws SQLException, ClassNotFoundException {
-    System.out.println(generatePwd("Aldo#Baglio45"));
-    UserBean b = new UserBean();
-    b.setEmail("abaglio9@studenti.unisa.it");
-    b.setPassword("Aldo#Baglior45");
-    b = doRetrieveUtente(b);
-    System.out.println(b);
+    System.out.println(generatePwd("qwerty"));
+
   }
 }

@@ -6,7 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%UserBean user = (UserBean) session.getAttribute("utente");%>
+<%UserBean user = (UserBean) session.getAttribute("utente");
+    %>
 <!-- Logo Nav START -->
 <nav class="navbar navbar-expand-xl">
     <div class="container-fluid px-3 px-xl-5">
@@ -39,7 +40,8 @@
                 <li class="nav-item">
                     <a class="nav-link active text-black" href="HomePage.jsp" id="demoMenu" aria-haspopup="true" aria-expanded="false">Home</a>
                 </li>
-                <%if(user!=null){%>
+                <%if(user!=null){
+                   %>
                 <!-- Nav Servizi -->
                 <li class="nav-item dropdown">
 
@@ -71,11 +73,31 @@
 
         </div>
         <!-- Main navbar END -->
-    <%if(user!=null){%>
+    <%if(user!=null){
+        String ruolo = user.getRuolo();
+        if (ruolo.equals("S")) {
+            ruolo = "Studente";
+        } else if (ruolo.equals("T")) {
+            ruolo = "Tutor";
+        } else if (ruolo.equals("P")) {
+            ruolo = "Professore Referente";
+        }%>
         <!-- Profile START -->
         <div class="dropdown ms-1 ms-lg-0">
             <a class="avatar avatar-sm p-0 text-black" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-                <div class="avatar-img rounded-circle bg-info"><span class="text-white position-absolute top-50 start-50 translate-middle fw-bold"><%=user.getNome().substring(0,1)+user.getCognome().substring(0,1)%></span></div>
+                <% if (ruolo.equals("Professore Referente")) { %>
+                <div class="avatar-img rounded-circle bg-warning"><span
+                        class="text-white position-absolute top-50 start-50 translate-middle fw-bold"><%=user.getNome().substring(0,1)+ user.getCognome().substring(0,1)%></span>
+                </div>
+                <%} else if (ruolo.equals("Studente")) {%>
+                <div class="avatar-img rounded-circle bg-info"><span
+                        class="text-white position-absolute top-50 start-50 translate-middle fw-bold"><%=user.getNome().substring(0,1)+ user.getCognome().substring(0,1)%></span>
+                </div>
+                <%} else if (ruolo.equals("Tutor")) {%>
+                <div class="avatar-img rounded-circle bg-success"><span
+                        class="text-white position-absolute top-50 start-50 translate-middle fw-bold"><%=user.getNome().substring(0,1)+ user.getCognome().substring(0,1)%></span>
+                </div>
+                <%}%>
             </a>
             <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
                 <!-- Profile info -->

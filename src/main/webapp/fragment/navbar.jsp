@@ -50,6 +50,7 @@
                         <%if(!user.isPersonaleAmministrativo()){%>
                         <li> <a class="dropdown-item text-black" href="RichiediServizioPage.jsp">Richiedi Servizio</a></li>
                         <li> <a class="dropdown-item text-black" href="../ListaRichieste">Elenco Richieste</a></li>
+                        <li> <a class="dropdown-item text-black" href="../LezioniServlet">Elenco Lezioni</a></li>
                         <%}else{%>
                         <li> <a class="dropdown-item text-black" href="../admin">Management</a></li>
                         <%}%>

@@ -13,21 +13,20 @@
 <html>
 <head>
     <title>EasyAid</title>
-    <link type="text/css" rel="stylesheet" href="../css/inserimento.css">
-    <link type="text/css" rel="stylesheet" href="../css/bootstrap.css">
+    <!-- Meta Tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Webestica.com">
     <meta name="description" content="Eduport- LMS, Education and Course Theme">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="../assets/images/favicon.ico">
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
 
     <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E%22%3E">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&amp;family=Roboto:wght@400;500;700&amp;display=swap%22%3E%22%3E">
+          href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap">
 
     <!-- Plugins CSS -->
     <link rel="stylesheet" type="text/css" href="../assets/vendor/font-awesome/css/all.min.css">
@@ -38,7 +37,7 @@
     <!-- Theme CSS -->
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7N7LGGGWT1%22%3E%22%3E"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7N7LGGGWT1"></script>
 
 </head>
 <body>
@@ -226,22 +225,21 @@
             </div>
         </div>
     </div>
-
+<footer>
+    <%@include file="../fragment/footer.html" %>
+</footer>
     <!-- Back to top -->
     <div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
 
-    <!-- Bootstrap JS -->
-    <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Vendors -->
-    <script src="../assets/vendor/tiny-slider/tiny-slider.js"></script>
-    <script src="../assets/vendor/glightbox/js/glightbox.js"></script>
-    <script src="../assets/vendor/purecounterjs/dist/purecounter_vanilla.js"></script>
+<!-- Vendors -->
+<script src="../assets/vendor/tiny-slider/tiny-slider.js"></script>
+<script src="../assets/vendor/glightbox/js/glightbox.js"></script>
+<script src="../assets/vendor/purecounterjs/dist/purecounter_vanilla.js"></script>
 
-    <!-- Template Functions -->
-    <script src="../assets/js/functions.js"></script>
-    <footer>
-        <%@include file="../fragment/footer.html" %>
-    </footer>
+<!-- Template Functions -->
+<script src="../assets/js/functions.js"></script>
 </body>
 </html>

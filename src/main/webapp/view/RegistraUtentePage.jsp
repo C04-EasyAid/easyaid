@@ -69,7 +69,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <form action="../register" method="get" class="row g-4 align-items-center">
+                                    <form action="../register" method="post" class="row g-4 align-items-center" autocomplete="off" onsubmit="return validateInserimento();">
                                     </h5></p>
                                         <input type="hidden" name="ruolo" value="<%=inserimento%>"/>
 
@@ -78,16 +78,16 @@
                                                 <address>
                                                     <p class="fw-bold">Nome:</p>
                                                     <input type="text" name="nome" class="form-control"
-                                                           placeholder="Nome">
+                                                           placeholder="Nome" required>
                                                     <p class="fw-bold">Cognome:</p>
                                                     <input type="text" name="cognome" class="form-control"
-                                                           placeholder="Cognome">
+                                                           placeholder="Cognome" required>
                                                     <p class="fw-bold">Email:</p>
                                                     <input type="email" name="email" class="form-control"
-                                                           placeholder="Email">
+                                                           placeholder="Email" id="email"required>
                                                     <p class="fw-bold">Password:</p>
                                                     <input type="password" name="password" class="form-control"
-                                                           placeholder="Password">
+                                                           placeholder="Password" id="password" required>
                                                 </address>
                                             </div>
 
@@ -101,28 +101,28 @@
                                                         <div class="form-check">
                                                             <input name="tipoDisabilita" value="Disabile" type="radio"
                                                                    id="disabile"
-                                                                   checked>
+                                                                   checked onclick="changeInput()">
                                                             <label for="disabile">Disabile</label>
                                                         </div>
                                                         <div class="form-check">
                                                             <input name="tipoDisabilita" value="Dsa" type="radio"
-                                                                   id="dsa">
+                                                                   id="dsa" onclick="changeInput()">
                                                             <label for="dsa">DSA</label>
                                                         </div>
                                                     </div>
                                                     </p>
                                                     <p class="fw-bold">Specifiche Disturbo:</p>
                                                     <input type="text" name="specificheDisturbo" class="form-control"
-                                                           placeholder="Specifiche Disturbo">
+                                                           placeholder="Specifiche Disturbo" value="nessuno" id="specifica" required>
                                                     </p>
                                                     <p class="fw-bold">Percentuale Disabilità:</p>
                                                     <input type="text" name="percentualeDisabilita" class="form-control"
-                                                           placeholder="Percentuale Disabilità">
+                                                           placeholder="Percentuale Disabilità" required>
                                                     </p>
                                                     <p class="fw-bold">Ore Disponibili:</p>
                                                     <input type="text" name="oreDisponibiliStudente"
                                                            class="form-control"
-                                                           placeholder="Ore Disponibili">
+                                                           placeholder="Ore Disponibili" required>
                                                     </p>
                                                 </address>
                                             </div>
@@ -183,15 +183,15 @@
                                                     </p>
                                                     <p class="fw-bold">Qualifica:</p>
                                                     <input type="text" name="qualifica" class="form-control"
-                                                           placeholder="Qualifica">
+                                                           placeholder="Qualifica" required>
                                                     </p>
                                                     <p class="fw-bold">Ore Disponibili:</p>
                                                     <input type="text" nam="dipartimentoTutor" class="form-control"
-                                                           placeholder="Ore Disponibili">
+                                                           placeholder="Ore Disponibili" required>
                                                     </p>
                                                     <p class="fw-bold">Ore Svolte:</p>
                                                     <input type="text" name="oreDisponibiliTutor" class="form-control"
-                                                           placeholder="Ore Svolte">
+                                                           placeholder="Ore Svolte" required>
                                                     </p>
                                                 </address>
                                             </div>
@@ -284,5 +284,6 @@
 
 <!-- Template Functions -->
 <script src="../assets/js/functions.js"></script>
+<script src="../js/validazioneInput.js"></script>
 </body>
 </html>

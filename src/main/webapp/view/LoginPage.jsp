@@ -53,9 +53,9 @@
                     <div class="row my-5">
                         <div class="col-sm-10 col-xl-8 m-auto">
                             <h1 class="fs-2 text-info">Accedi su EasyAid</h1>
-                            <form action="../login" method="get">
+                            <form action="../login" method="post" onsubmit="return validate();">
                                 <div class="mb-4">
-                                    <label for="exampleInputEmail1" class="form-label">Email</label>
+                                    <label for="email" class="form-label">Email</label>
                                     <div class="input-group input-group-lg">
                                         <span class="input-group-text bg-light rounded-start border-0 text-secondary px-3">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -65,7 +65,7 @@
                                         </span>
                                         <input type="email" name="Email"
                                                class="form-control border-0 bg-light rounded-end ps-1"
-                                               placeholder="E-mail" id="exampleInputEmail1">
+                                               placeholder="E-mail" id="email">
                                     </div>
                                 </div>
                                 <div class="mb-4">
@@ -104,5 +104,6 @@
 
 <!-- Template Functions -->
 <script src="../assets/js/functions.js"></script>
+<script src="../js/validazioneInput.js"></script>
 </body>
 </html>

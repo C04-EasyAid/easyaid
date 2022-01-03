@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>EasyAid</title>
     <!-- Meta Tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -90,7 +90,7 @@
                                             <%}else{%>
                                             <td><a href="#" class="badge bg-success"><i class="fas fa-circle me-2 small fw-bold"></i>Accettata</a></td>
                                             <% } %>
-                                            <td><a class="btn btn-outline-info" href="" role="button">Visualizza</a> </td>
+                                            <td><a class="btn btn-outline-info" href="../SingolaRichiestaServlet?idTutorato=<%=b.getId()%>" role="button">Visualizza</a> </td>
                                         </tr>
                                         <%}%>
                                         </tbody>
@@ -139,7 +139,7 @@
                                             <%}else{%>
                                             <td><a href="#" class="badge bg-success"><i class="fas fa-circle me-2 small fw-bold"></i>Accettata</a></td>
                                             <% } %>
-                                            <td ><a class="btn btn-outline-info" href="" role="button">Visualizza</a> </td>
+                                            <td ><a class="btn btn-outline-info" href="../SingolaRichiestaServlet?idSupporto=<%=b.getId()%>" role="button">Visualizza</a> </td>
                                         </tr>
                                         <%}%>
                                         </tbody>

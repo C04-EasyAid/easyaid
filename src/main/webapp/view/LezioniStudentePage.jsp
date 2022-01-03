@@ -40,7 +40,7 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7N7LGGGWT1%22%3E"></script>
-    <title></title>
+    <title>EasyAid</title>
 </head>
 <body>
 <header>
@@ -98,7 +98,7 @@
                                 </td>
                                 <td><%=lezione.getInsegnamento()%>
                                 </td>
-                                <td><a class="btn btn-outline-info" href="../SingolaLezione?lezione=<%=lezione.getId()%>" role="button">Visualizza</a> </td>
+                                <td><a class="btn btn-outline-info" href="../SingolaLezione?lezione=<%=lezione.getTutorato()%>" role="button">Visualizza</a> </td>
                             </tr>
                             <%}%>
                             </tbody>

@@ -31,13 +31,11 @@ public class SingolaLezioneServlet extends HttpServlet {
       if (request.getParameter("lezione") != null) {
         String idLezione = request.getParameter("lezione");
         int id = Integer.parseInt(idLezione);
-        LezioneDAO daoL = new LezioneDAO();
-        CommentoDAO daoC = new CommentoDAO();
         try {
           LezioneBean lezione = new LezioneBean();
           lezione = LezioneDAO.doRetrieveLezioneById(id);
           Collection<CommentoBean> commenti = new ArrayList<>();
-          commenti = daoC.doRetrieveCommento(id);
+          commenti = CommentoDAO.doRetrieveCommento(id);
           session.setAttribute("lezione", lezione);
           session.setAttribute("listaCommenti", commenti);
           response.sendRedirect("view/LezionePage.jsp");

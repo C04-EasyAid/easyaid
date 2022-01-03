@@ -1,4 +1,6 @@
-<%--
+<%@ page import="model.bean.SupportoEsameBean" %>
+<%@ page import="java.util.List" %>
+<%@ page import="model.bean.TutoratoDidatticoBean" %><%--
   Created by IntelliJ IDEA.
   User: Riccardo
   Date: 27/12/2021
@@ -65,7 +67,9 @@
                                         </thead>
                                         <tbody>
                                         <%
-
+                                            List<SupportoEsameBean> richiesteSupporto = (List<SupportoEsameBean>) session.getAttribute("richiesteEsami");
+                                            List<TutoratoDidatticoBean> richiesteTutorato = (List<TutoratoDidatticoBean>) session.getAttribute("richiesteTutorato");
+                                            for(TutoratoDidatticoBean b:richiesteTutorato){
                                         %>
                                         <tr>
                                             <td>
@@ -74,16 +78,21 @@
                                                         <img src="../assets/images/courses/4by3/08.jpg" class="rounded" alt="">
                                                     </div>
                                                     <div class="mb-0 ms-2">
-                                                        <h6><p class="card-description"><br><code>&lt;lorenzorossi1@studenti.unisa.it&gt;</code></p></h6>
+                                                        <h6><p class="card-description"><br><code>&lt;<%=b.getTutorEmail()%>&gt;</code></p></h6>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>15/02/2022</td>
-                                            <td>10</td>
-                                            <td>12</td>
+                                            <td><%=b.getDateDisponibili()%></td>
+                                            <td><%=b.getOreDisponibili()%></td>
+                                            <td><%=b.getOreRichieste()%></td>
+                                            <%if(b.getStatus()==0){  %>
                                             <td><a href="#" class="badge bg-danger"><i class="fas fa-circle me-2 small fw-bold"></i>Non accettata</a></td>
+                                            <%}else{%>
+                                            <td><a href="#" class="badge bg-success"><i class="fas fa-circle me-2 small fw-bold"></i>Accettata</a></td>
+                                            <% } %>
                                             <td><a class="btn btn-outline-info" href="" role="button">Visualizza</a> </td>
                                         </tr>
+                                        <%}%>
                                         </tbody>
                                     </table>
                                 </div>
@@ -106,7 +115,7 @@
                                         </thead>
                                         <tbody>
                                         <%
-
+                                          for(SupportoEsameBean b:richiesteSupporto){
                                         %>
                                         <tr>
                                             <td>
@@ -115,18 +124,24 @@
                                                         <img src="../assets/images/courses/4by3/08.jpg" class="rounded" alt="">
                                                     </div>
                                                     <div class="mb-0 ms-2">
-                                                        <h6><p class="card-description"><br><code>&lt;lorenzorossi1@studenti.unisa.it&gt;</code></p></h6>
+                                                        <h6><p class="card-description"><br><code>&lt;<%=b.getTutorEmail()%>&gt;</code></p></h6>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>17/02/2022</td>
-                                            <td>12:00</td>
-                                            <td>Filomena Ferrucci</td>
-                                            <td>Scritto</td>
-                                            <td>Ingegneria del Software</td>
+
+                                            <td><%=b.getData()%></td>
+                                            <td><%=b.getOra()%></td>
+                                            <td><%=b.getDocente()%></td>
+                                            <td><%=b.getModalitaEsame()%></td>
+                                            <td><%=b.getInsegnamento()%></td>
+                                            <%if(b.getStatus()==0){  %>
+                                            <td><a href="#" class="badge bg-danger"><i class="fas fa-circle me-2 small fw-bold"></i>Non accettata</a></td>
+                                            <%}else{%>
                                             <td><a href="#" class="badge bg-success"><i class="fas fa-circle me-2 small fw-bold"></i>Accettata</a></td>
-                                            <td><a class="btn btn-outline-info" href="" role="button">Visualizza</a> </td>
+                                            <% } %>
+                                            <td ><a class="btn btn-outline-info" href="" role="button">Visualizza</a> </td>
                                         </tr>
+                                        <%}%>
                                         </tbody>
                                     </table>
                                 </div>
@@ -152,5 +167,8 @@
 
 <!-- Template Functions -->
 <script src="../assets/js/functions.js"></script>
+<footer>
+    <%@include file="../fragment/footer.html" %>
+</footer>
 </body>
 </html>

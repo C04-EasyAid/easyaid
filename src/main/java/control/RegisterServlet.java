@@ -27,7 +27,7 @@ public class RegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        UserBean utenteLoggato= (UserBean)session.getAttribute("admin");
+        UserBean utenteLoggato= (UserBean)session.getAttribute("utente");
         //Creo il bean dell utente che andrà inserito nel DB
         UserBean utenteTemporaneo= new UserBean();
         utenteTemporaneo.setNome(request.getParameter("nome"));
@@ -42,11 +42,11 @@ public class RegisterServlet extends HttpServlet {
         }
         if(ruolo.equals("Professore Referente")){
             utenteTemporaneo.setRuolo("P");
-            tipoUtente = 2;
+            tipoUtente = 3;
         }
         if(ruolo.equals("Tutor")){
             utenteTemporaneo.setRuolo("T");
-            tipoUtente = 3;
+            tipoUtente = 2;
         }
         //Se l'utente loggato è personale amministrativo allora procedo all inserimento dell utente
         if(utenteLoggato!=null)
@@ -70,6 +70,7 @@ public class RegisterServlet extends HttpServlet {
                     }
                     case 2 -> {
                         TutorBean tutor = new TutorBean();
+                        System.out.println("tutor");
                         tutor.setQualifica(request.getParameter("qualifica"));
                         tutor.setDipartimento(request.getParameter("dipartimentoTutor"));
                         tutor.setEmailTutor(utenteTemporaneo.getEmail());
@@ -82,6 +83,7 @@ public class RegisterServlet extends HttpServlet {
                     }
                     case 3 -> {
                         ProfessoreReferenteBean professoreReferente = new ProfessoreReferenteBean();
+                        System.out.println("prof");
                         professoreReferente.setEmail(utenteTemporaneo.getEmail());
                         professoreReferente.setDipartimento(request.getParameter("dipartimentoProf"));
                         if (!UserDAO.insertProfessoreReferente(professoreReferente, utenteTemporaneo)) {

@@ -277,9 +277,4 @@ public class UserDAO {
     }
     return user;
   }
-
-  public static void main(String[] args) throws SQLException, ClassNotFoundException {
-    System.out.println(generatePwd("qwerty"));
-
-  }
 }

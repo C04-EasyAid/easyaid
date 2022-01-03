@@ -12,9 +12,10 @@
 <%
     UserBean bean = new UserBean();
     Collection<UserBean> utenti = (Collection<UserBean>) session.getAttribute("usrList");
-    int studenti = 1;
-    int tutor = 1;
-    int users = 1;
+    int studenti = 0;
+    int tutor = 0;
+    int professori= 0;
+    int users = 0;
     if (utenti == null) {
         response.sendRedirect("../ViewListaUsers");
         return;
@@ -25,8 +26,11 @@
         if (s.isTutor()) {
             tutor++;
         }
-        if (s.isStudente()) {
+        else if (s.isStudente()) {
             studenti++;
+        }
+        else if (s.isProfessoreReferente()){
+            professori++;
         }
     }
 %>
@@ -64,9 +68,10 @@
     <title></title>
 </head>
 <body>
-<div class="bg-info h-100px h-md-200px rounded-0"
-     style="background-size:cover;">
-</div>
+<main>
+<section class="pt-0">
+    <%@ include file="../fragment/UserSection.jsp" %>
+<div class="container">
 <div class="row">
     <!-- Dashboard Laterale -->
     <div class="col-3">
@@ -76,7 +81,7 @@
     </div>
     <div class="col-9">
         <br>
-        <div class="page-content-wrapper border">
+        <div class="page-content-wrapper border rounded-3">
             <div class="container">
                 <div class="card bg-transparent">
                     <div class="row">
@@ -134,6 +139,24 @@
                                     </div>
                                     <!-- Icon -->
                                     <div class="icon-lg rounded-circle bg-success text-white mb-0"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xxl-3">
+                            <div class="card card-body bg-warning bg-opacity-10 p-4 h-100">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <!-- Tutor -->
+                                    <div>
+                                        <div class="d-flex">
+                                            <h2 class="purecounter mb-0 fw-bold" data-purecounter-start="0"
+                                                data-purecounter-end="845" data-purecounter-delay="200"
+                                                data-purecounter-duration="0"><%=professori%>
+                                            </h2>
+                                        </div>
+                                        <span class="mb-0 h6 fw-light">Professori</span>
+                                    </div>
+                                    <!-- Icon -->
+                                    <div class="icon-lg rounded-circle bg-warning text-white mb-0"></div>
                                 </div>
                             </div>
                         </div>
@@ -338,7 +361,10 @@
         </div>
     </div>
 </div>
-
+</div>
+</section>
+</main>
+<footer><%@ include file="../fragment/footer.html"%></footer>
 <div class="back-top"><i
         class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
 
@@ -352,6 +378,5 @@
 
 <!-- Template Functions -->
 <script src="../assets/js/functions.js"></script>
-<footer><%@ include file="../fragment/footer.html"%></footer>
 </body>
 </html>

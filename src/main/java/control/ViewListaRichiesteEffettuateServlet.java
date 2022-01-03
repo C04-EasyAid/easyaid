@@ -18,47 +18,35 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * @author Riccardo Polidoro
- * Servlet che permette di restituire la lista delle richieste effettuate allo studente
+ * @author Riccardo Polidoro Servlet che permette di restituire la lista delle richieste effettuate
+ *     allo studente
  */
 @WebServlet("/ListaRichieste")
-public class ViewListaRichiesteEffettuateServlet extends HttpServlet
-{
+public class ViewListaRichiesteEffettuateServlet extends HttpServlet {
 
+  @Override
+  protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+      throws ServletException, IOException {
+    HttpSession session = req.getSession();
+    UserBean bean = (UserBean) session.getAttribute("utente");
+    if (bean != null) {
+      try {
+        List<SupportoEsameBean> listRichiesteSupportoEsame =
+            SupportoEsameDAO.doRetrieveAllByStudente(bean.getEmail());
+        List<TutoratoDidatticoBean> listRichiesteTutoratoDidattico =
+            TutoratoDidatticoDAO.doRetrieveAllByStudente(bean.getEmail());
+        session.setAttribute("richiesteEsami", listRichiesteSupportoEsame);
+        session.setAttribute("richiesteTutorato", listRichiesteTutoratoDidattico);
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException  {
-        HttpSession session=req.getSession();
-        UserBean bean= (UserBean) session.getAttribute("utente");
-        if (bean!=null){
+        resp.sendRedirect("../ListaRichiesteEffettuatePage.jsp");
 
-        SupportoEsameDAO esameDAO=new SupportoEsameDAO();
-        TutoratoDidatticoDAO tutoratoDAO=new TutoratoDidatticoDAO();
-
-            try {
-                List<SupportoEsameBean> listRichiesteSupportoEsame=esameDAO.doRetrieveAllByStudente(bean.getEmail());
-                List<TutoratoDidatticoBean> listRichiesteTutoratoDidattico=tutoratoDAO.doRetrieveAllByStudente(bean.getEmail());
-                session.setAttribute("richiesteEsami",listRichiesteSupportoEsame);
-                session.setAttribute("richiesteTutorato",listRichiesteTutoratoDidattico);
-
-                resp.sendRedirect("../ListaRichiesteEffettuatePage.jsp");
-
-            }
-            catch (SQLException e)
-            {
-                e.printStackTrace();
-            }
-            catch (ClassNotFoundException e)
-            {
-                e.printStackTrace();
-            }
-        } else {
-            resp.sendRedirect("../LoginPage.jsp");
-        }
-
-        }
-
-
-
+      } catch (SQLException e) {
+        e.printStackTrace();
+      } catch (ClassNotFoundException e) {
+        e.printStackTrace();
+      }
+    } else {
+      resp.sendRedirect("../LoginPage.jsp");
     }
-
+  }
+}

@@ -6,107 +6,113 @@ import java.util.Date;
 Classe LezioneBean
  */
 public class LezioneBean {
-    // Variabili d'istanza
-    private int id, tutorato;
-    private String oraInizio, oraFine, tutor, insegnamento;
-    private Date data;
-    private boolean status;
-    // Costruttore con id
-    public LezioneBean(
-            int id,
-            int tutorato,
-            String oraInizio,
-            String oraFine,
-            Date data,
-            String tutor,
-            boolean status) {
-        this.id = id;
-        this.tutorato = tutorato;
-        this.oraInizio = oraInizio;
-        this.oraFine = oraFine;
-        this.tutor = tutor;
-        this.data = data;
-        this.status = status;
-    }
-    // Costruttore
-    public LezioneBean(
-            int tutorato, String oraInizio, String oraFine, Date data, String tutor, boolean status) {
-        this.tutorato = tutorato;
-        this.oraInizio = oraInizio;
-        this.oraFine = oraFine;
-        this.tutor = tutor;
-        this.data = data;
-        this.status = status;
-    }
-    // Costruttore vuoto
+  // Variabili d'istanza
+  private int id, tutorato;
+  private String oraInizio, oraFine, tutor, insegnamento, emailStudente;
+  private Date data;
+  private boolean status;
+  // Costruttore con id
+  public LezioneBean(
+      int id,
+      int tutorato,
+      String oraInizio,
+      String oraFine,
+      Date data,
+      String tutor,
+      boolean status) {
+    this.id = id;
+    this.tutorato = tutorato;
+    this.oraInizio = oraInizio;
+    this.oraFine = oraFine;
+    this.tutor = tutor;
+    this.data = data;
+    this.status = status;
+  }
+  // Costruttore
+  public LezioneBean(
+      int tutorato, String oraInizio, String oraFine, Date data, String tutor, boolean status) {
+    this.tutorato = tutorato;
+    this.oraInizio = oraInizio;
+    this.oraFine = oraFine;
+    this.tutor = tutor;
+    this.data = data;
+    this.status = status;
+  }
+  // Costruttore vuoto
 
-    public LezioneBean() {}
+  public LezioneBean() {}
 
-    // Metodi
+  // Metodi
 
-    public String getInsegnamento() {
-        return insegnamento;
-    }
+  public String getInsegnamento() {
+    return insegnamento;
+  }
 
-    public void setInsegnamento(String insegnamento) {
-        this.insegnamento = insegnamento;
-    }
+  public void setInsegnamento(String insegnamento) {
+    this.insegnamento = insegnamento;
+  }
 
-    public int getId() {
-        return id;
-    }
+  public int getId() {
+    return id;
+  }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+  public void setId(int id) {
+    this.id = id;
+  }
 
-    public int getTutorato() {
-        return tutorato;
-    }
+  public int getTutorato() {
+    return tutorato;
+  }
 
-    public void setTutorato(int tutorato) {
-        this.tutorato = tutorato;
-    }
+  public void setTutorato(int tutorato) {
+    this.tutorato = tutorato;
+  }
 
-    public String getOraInizio() {
-        return oraInizio;
-    }
+  public String getOraInizio() {
+    return oraInizio;
+  }
 
-    public void setOraInizio(String oraInizio) {
-        this.oraInizio = oraInizio;
-    }
+  public void setOraInizio(String oraInizio) {
+    this.oraInizio = oraInizio;
+  }
 
-    public String getOraFine() {
-        return oraFine;
-    }
+  public String getOraFine() {
+    return oraFine;
+  }
 
-    public void setOraFine(String oraFine) {
-        this.oraFine = oraFine;
-    }
+  public void setOraFine(String oraFine) {
+    this.oraFine = oraFine;
+  }
 
-    public String getTutor() {
-        return tutor;
-    }
+  public String getTutor() {
+    return tutor;
+  }
 
-    public void setTutor(String tutor) {
-        this.tutor = tutor;
-    }
+  public void setTutor(String tutor) {
+    this.tutor = tutor;
+  }
 
-    public Date getData() {
-        return data;
-    }
+  public Date getData() {
+    return data;
+  }
 
-    public void setData(Date data) {
-        this.data = data;
-    }
+  public void setData(Date data) {
+    this.data = data;
+  }
 
-    public boolean isStatus() {
-        return status;
-    }
+  public boolean isStatus() {
+    return status;
+  }
 
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
+  public void setStatus(boolean status) {
+    this.status = status;
+  }
 
+  public void setEmailStudente(String emailStudente) {
+    this.emailStudente = emailStudente;
+  }
 
+  public String getEmailStudente() {
+    return this.emailStudente;
+  }
 }

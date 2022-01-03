@@ -24,7 +24,7 @@ public class LezioneDAO {
     LezioneBean bean = null;
     PreparedStatement stmt = null;
     String query =
-        "SELECT * from easyaid.lezione L inner join tutorato_didattico T where L.tutorato = " + id;
+        "SELECT * from easyaid.lezione L inner join tutorato_didattico T where L.tutorato = T.idtutorato_didattico AND L.tutorato =" + id;
     try {
       conn = conn();
       stmt = conn.prepareStatement(query);

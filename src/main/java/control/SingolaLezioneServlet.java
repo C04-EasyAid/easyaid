@@ -35,7 +35,7 @@ public class SingolaLezioneServlet extends HttpServlet {
           LezioneBean lezione = new LezioneBean();
           lezione = LezioneDAO.doRetrieveLezioneById(id);
           Collection<CommentoBean> commenti = new ArrayList<>();
-          commenti = CommentoDAO.doRetrieveCommento(id);
+          commenti = CommentoDAO.doRetrieveCommento(lezione.getId());
           session.setAttribute("lezione", lezione);
           session.setAttribute("listaCommenti", commenti);
           response.sendRedirect("view/LezionePage.jsp");

@@ -57,7 +57,7 @@
         <div class="row g-3 align-items-center mb-4">
             <!-- Content -->
             <div class="col-md-4">
-                <h4 class="mb-0">Elenco Richieste Effettuate</h4>
+                <h4 class="mb-0">Elenco Richieste Accettate</h4>
             </div>
         </div>
         <!-- Title and select END -->

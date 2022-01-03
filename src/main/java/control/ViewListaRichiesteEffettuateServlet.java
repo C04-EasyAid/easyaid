@@ -38,7 +38,7 @@ public class ViewListaRichiesteEffettuateServlet extends HttpServlet {
         session.setAttribute("richiesteEsami", listRichiesteSupportoEsame);
         session.setAttribute("richiesteTutorato", listRichiesteTutoratoDidattico);
 
-        resp.sendRedirect("../ListaRichiesteEffettuatePage.jsp");
+        resp.sendRedirect("view/ListaRichiesteEffettuatePage.jsp");
 
       } catch (SQLException e) {
         e.printStackTrace();
@@ -46,7 +46,7 @@ public class ViewListaRichiesteEffettuateServlet extends HttpServlet {
         e.printStackTrace();
       }
     } else {
-      resp.sendRedirect("../LoginPage.jsp");
+      resp.sendRedirect("view/LoginPage.jsp");
     }
   }
 }

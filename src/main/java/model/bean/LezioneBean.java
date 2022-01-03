@@ -6,12 +6,12 @@ import java.util.Date;
 Classe LezioneBean
  */
 public class LezioneBean {
-  // Variabili d'istanza
+  //Variabili d'istanza
   private int id, tutorato;
   private String oraInizio, oraFine, tutor, insegnamento, emailStudente;
   private Date data;
   private boolean status;
-  // Costruttore con id
+  //Costruttore con id
   public LezioneBean(
       int id,
       int tutorato,
@@ -28,7 +28,7 @@ public class LezioneBean {
     this.data = data;
     this.status = status;
   }
-  // Costruttore
+  //Costruttore
   public LezioneBean(
       int tutorato, String oraInizio, String oraFine, Date data, String tutor, boolean status) {
     this.tutorato = tutorato;
@@ -38,11 +38,11 @@ public class LezioneBean {
     this.data = data;
     this.status = status;
   }
-  // Costruttore vuoto
+  //Costruttore vuoto
 
   public LezioneBean() {}
 
-  // Metodi
+  //Metodi
 
   public String getInsegnamento() {
     return insegnamento;

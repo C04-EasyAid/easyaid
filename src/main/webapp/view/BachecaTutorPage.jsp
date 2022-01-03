@@ -17,16 +17,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <header>
-        <%@ include file="../fragment/navbar.jsp" %>
-    </header>
+    <!-- Meta Tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Webestica.com">
     <meta name="description" content="Eduport- LMS, Education and Course Theme">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3mipmap34MD+dH/1fQ784/j6cY/iQUITOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="../assets/images/favicon.ico">
 
@@ -49,6 +45,9 @@
     <title>EasyAid</title>
 </head>
 <body>
+<header>
+    <%@ include file="../fragment/navbar.jsp" %>
+</header>
 <%@ include file="../fragment/UserSection.jsp" %>
 <div class="content-wrapper align-self-center">
     <% TutoratoDidatticoDAO daoT = new TutoratoDidatticoDAO();

@@ -75,7 +75,7 @@ public class TutoratoDidatticoDAO {
      * @throws SQLException
      * @throws ClassNotFoundException
      */
-    public static synchronized List<TutoratoDidatticoBean> doRetrieveAllByStudente(String emailStudente)  throws SQLException,ClassNotFoundException
+    public synchronized List<TutoratoDidatticoBean> doRetrieveAllByStudente(String emailStudente)  throws SQLException,ClassNotFoundException
     {
         Connection conn=null;
         String query="SELECT * FROM tutorato_didattico WHERE studente_email=?";
@@ -127,7 +127,7 @@ public class TutoratoDidatticoDAO {
      * @throws SQLException:Eccezione accesso al db
      * @throws ClassNotFoundException:eccezione classe non trovata
      */
-    public static synchronized List<TutoratoDidatticoBean> doRetrieveAllByTutor(String emailTutor) throws SQLException,ClassNotFoundException
+    public synchronized List<TutoratoDidatticoBean> doRetrieveAllByTutor(String emailTutor) throws SQLException,ClassNotFoundException
     {
         Connection conn=null;
         String query="SELECT * FROM tutorato_didattico WHERE tutor_email=?";

@@ -18,7 +18,7 @@ Classe LezioneDAO
  */
 public class LezioneDAO {
   // Metodo che restitiusce una lezione in base all'id passato come parametro
-  public static synchronized LezioneBean doRetrieveLezioneById(int id)
+  public synchronized LezioneBean doRetrieveLezioneById(int id)
       throws ClassNotFoundException, SQLException {
     Connection conn = null;
     LezioneBean bean = null;
@@ -54,7 +54,7 @@ public class LezioneDAO {
   }
 
   //Metodo che restituisce tutte le lezioni di un determinato studente il quale è stato passato come parametro
-  public static synchronized Collection<LezioneBean> doRetrieveLezioneByStudente(String studente)
+  public synchronized Collection<LezioneBean> doRetrieveLezioneByStudente(String studente)
       throws ClassNotFoundException, SQLException {
     Connection conn = null;
     Collection<LezioneBean> lezioni = new ArrayList<>();
@@ -93,7 +93,7 @@ public class LezioneDAO {
   }
 
   //Metodo che restituisce tutte le lezioni di un determinato tutor il quale è stato passato come parametro
-  public static synchronized Collection<LezioneBean> doRetrieveLezioneByTutor(String tutor)
+  public synchronized Collection<LezioneBean> doRetrieveLezioneByTutor(String tutor)
       throws ClassNotFoundException, SQLException {
     Connection conn = null;
     Collection<LezioneBean> lezioni = new ArrayList<>();

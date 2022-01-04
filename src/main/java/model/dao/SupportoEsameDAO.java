@@ -78,7 +78,7 @@ public class SupportoEsameDAO {
      * @throws SQLException
      * @throws ClassNotFoundException
      */
-    public static synchronized List<SupportoEsameBean> doRetrieveAllByStudente(String emailStudente)  throws SQLException,ClassNotFoundException
+    public synchronized List<SupportoEsameBean> doRetrieveAllByStudente(String emailStudente)  throws SQLException,ClassNotFoundException
     {
         Connection conn=null;
         String query="SELECT * FROM supporto_esame WHERE studente_email=?";
@@ -134,7 +134,7 @@ public class SupportoEsameDAO {
      * @throws SQLException:Eccezione accesso al db
      * @throws ClassNotFoundException:eccezione classe non trovata
      */
-    public static synchronized List<SupportoEsameBean> doRetrieveAllByTutor(String emailTutor) throws SQLException,ClassNotFoundException
+    public synchronized List<SupportoEsameBean> doRetrieveAllByTutor(String emailTutor) throws SQLException,ClassNotFoundException
     {
         Connection conn=null;
         String query="SELECT * FROM supporto_esame WHERE tutor_email=?";

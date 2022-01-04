@@ -17,7 +17,7 @@ import java.util.Collection;
 import static model.dao.ConnectionPool.conn;
 
 public class CommentoDAO {
-    public static synchronized Collection<CommentoBean> doRetrieveCommento(int id)
+    public synchronized Collection<CommentoBean> doRetrieveCommento(int id)
             throws ClassNotFoundException, SQLException {
         Collection<CommentoBean> commenti = new ArrayList<>();
         Connection conn = null;

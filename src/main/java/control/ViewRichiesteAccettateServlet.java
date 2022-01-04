@@ -23,12 +23,13 @@ public class ViewRichiesteAccettateServlet extends HttpServlet {
       throws ServletException, IOException {
     HttpSession session = req.getSession();
     UserBean userLoggato = (UserBean) session.getAttribute("utente");
+    SupportoEsameDAO supportoDao=new SupportoEsameDAO();
+    TutoratoDidatticoDAO tutoratoDao=new TutoratoDidatticoDAO();
     if (userLoggato != null && userLoggato.isTutor()) {
       try {
         List<SupportoEsameBean> listRichiesteSupportoEsame =
-            SupportoEsameDAO.doRetrieveAllByTutor(userLoggato.getEmail());
-        List<TutoratoDidatticoBean> listRichiesteTutoratoDidattico =
-            TutoratoDidatticoDAO.doRetrieveAllByTutor(userLoggato.getEmail());
+            supportoDao.doRetrieveAllByTutor(userLoggato.getEmail());
+        List<TutoratoDidatticoBean> listRichiesteTutoratoDidattico = tutoratoDao.doRetrieveAllByTutor(userLoggato.getEmail());
         session.setAttribute("richiesteEsamiAccettate", listRichiesteSupportoEsame);
         session.setAttribute("richiesteTutoratoAccettate", listRichiesteTutoratoDidattico);
 

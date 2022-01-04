@@ -29,12 +29,14 @@ public class ViewListaRichiesteEffettuateServlet extends HttpServlet {
       throws ServletException, IOException {
     HttpSession session = req.getSession();
     UserBean bean = (UserBean) session.getAttribute("utente");
+    SupportoEsameDAO supportoDao=new SupportoEsameDAO();
+    TutoratoDidatticoDAO tutoratoDao=new TutoratoDidatticoDAO();
     if (bean != null) {
       try {
         List<SupportoEsameBean> listRichiesteSupportoEsame =
-            SupportoEsameDAO.doRetrieveAllByStudente(bean.getEmail());
+           supportoDao.doRetrieveAllByStudente(bean.getEmail());
         List<TutoratoDidatticoBean> listRichiesteTutoratoDidattico =
-            TutoratoDidatticoDAO.doRetrieveAllByStudente(bean.getEmail());
+            tutoratoDao.doRetrieveAllByStudente(bean.getEmail());
         session.setAttribute("richiesteEsami", listRichiesteSupportoEsame);
         session.setAttribute("richiesteTutorato", listRichiesteTutoratoDidattico);
 

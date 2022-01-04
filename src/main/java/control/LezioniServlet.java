@@ -27,18 +27,21 @@ public class LezioniServlet extends HttpServlet {
       throws ServletException, IOException {
     HttpSession session = request.getSession();
     UserBean user = (UserBean) session.getAttribute("utente");
+    LezioneDAO lezioneDao=new LezioneDAO();
+    StudentDAO studenteDao=new StudentDAO();
+    TutorDAO tutorDao=new TutorDAO();
     if (user != null) {
       if (user.isStudente()) {
         StudenteBean bean = null;
         try {
-          bean = StudentDAO.doRetrieveByEmail(user.getEmail());
+          bean = studenteDao.doRetrieveByEmail(user.getEmail());
         } catch (SQLException e) {
           e.printStackTrace();
         }
         if (bean != null) {
           try {
             ArrayList<LezioneBean> lista =
-                (ArrayList<LezioneBean>) LezioneDAO.doRetrieveLezioneByStudente(bean.getEmail());
+                (ArrayList<LezioneBean>) lezioneDao.doRetrieveLezioneByStudente(bean.getEmail());
             session.setAttribute("listaLezioni", lista);
             response.sendRedirect("view/LezioniStudentePage.jsp");
           } catch (ClassNotFoundException e) {
@@ -50,7 +53,7 @@ public class LezioniServlet extends HttpServlet {
       } else if (user.isTutor()) {
         TutorBean bean = null;
         try {
-          bean = TutorDAO.doRetrieveByEmail(user.getEmail());
+          bean = tutorDao.doRetrieveByEmail(user.getEmail());
         } catch (SQLException e) {
           e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -59,7 +62,7 @@ public class LezioniServlet extends HttpServlet {
         if (bean != null) {
           try {
             ArrayList<LezioneBean> lista =
-                (ArrayList<LezioneBean>) LezioneDAO.doRetrieveLezioneByTutor(bean.getEmailTutor());
+                (ArrayList<LezioneBean>) lezioneDao.doRetrieveLezioneByTutor(bean.getEmailTutor());
             session.setAttribute("listaLezioni", lista);
             response.sendRedirect("view/LezioniTutorPage.jsp");
           } catch (ClassNotFoundException e) {

@@ -21,6 +21,9 @@ public class ProfiloUtenteServlet extends HttpServlet {
       throws ServletException, IOException {
     HttpSession session = request.getSession();
     UserBean userLoggato = (UserBean) session.getAttribute("utente");
+    ProfessoreReferenteDAO professoreDao=new ProfessoreReferenteDAO();
+    TutorDAO tutorDao=new TutorDAO();
+    StudentDAO studenteDao=new StudentDAO();
     if (userLoggato != null && userLoggato.isPersonaleAmministrativo()) {
       if (request.getParameter("usrEmail") != null && request.getParameter("ruolo") != null) {
         String email = request.getParameter("usrEmail");
@@ -28,7 +31,7 @@ public class ProfiloUtenteServlet extends HttpServlet {
         switch (ruolo) {
           case "T":
             try {
-              session.setAttribute("usrProfile", TutorDAO.doRetrieveByEmail(email));
+              session.setAttribute("usrProfile", tutorDao.doRetrieveByEmail(email));
               session.setAttribute("utenteSelezionato", UserDAO.doRetrieveUtenteByEmail(email));
               session.setAttribute("ruolo", ruolo);
               response.sendRedirect("view/UserPage.jsp");
@@ -38,7 +41,7 @@ public class ProfiloUtenteServlet extends HttpServlet {
             break;
           case "S":
             try {
-              session.setAttribute("usrProfile", StudentDAO.doRetrieveByEmail(email));
+              session.setAttribute("usrProfile",studenteDao.doRetrieveByEmail(email));
               session.setAttribute("utenteSelezionato", UserDAO.doRetrieveUtenteByEmail(email));
               session.setAttribute("ruolo", ruolo);
               response.sendRedirect("view/UserPage.jsp");
@@ -48,7 +51,7 @@ public class ProfiloUtenteServlet extends HttpServlet {
             break;
           case "P":
             try {
-              session.setAttribute("usrProfile", ProfessoreReferenteDAO.doRetrieveByEmail(email));
+              session.setAttribute("usrProfile", professoreDao.doRetrieveByEmail(email));
               session.setAttribute("utenteSelezionato", UserDAO.doRetrieveUtenteByEmail(email));
               session.setAttribute("ruolo", ruolo);
               response.sendRedirect("view/UserPage.jsp");

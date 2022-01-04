@@ -9,10 +9,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Profilo Utente</title>
+    <title>EasyAid</title>
   <link type="text/css" rel="stylesheet" href="../css/bootstrap.css">
 </head>
 <body>
+
+<header>
+    <%@ include file="../fragment/navbar.jsp" %>
+
+</header>
 <main>
 
     <!-- =======================
@@ -26,15 +31,15 @@
                     <div class="row">
                         <div class="col-md-6 col-lg-12">
                             <!-- Instructor image START -->
-                            <div class="card shadow p-2 mb-4 text-center">
-                                <div class="rounded-3">
-                                    <!-- Image -->
-                                    <img src="../image/PS-LOGO-DEFINITIVO.png" class="card-img" alt="course image">
-                                </div>
 
-                                <!-- Card body -->
+                            <div class="rounded-3">
+                                <!-- Image -->
+                                <img src="../image/PS-LOGO-DEFINITIVO.png" class="card-img" alt="course image">
+                            </div><br><br>
 
-                            </div>
+                            <!-- Card body -->
+
+
                             <!-- Instructor image END -->
                         </div>
 
@@ -43,14 +48,14 @@
 
                                 <!-- Education START -->
                                 <!-- Title -->
-                                <h4 class="mb-3">Education</h4>
+
 
                                 <!-- Education item -->
                                 <div class="d-flex align-items-center mb-4">
                                     <span class="icon-md text-dark mb-0 bg-light rounded-3"><i class="fas fa-graduation-cap"></i></span>
                                     <div class="ms-3">
-                                        <h6 class="mb-0">Harvard University</h6>
-                                        <p class="mb-0 small">Bachelor in Computer Graphics</p>
+                                        <h6 class="mb-0">Project Manager</h6>
+                                        <p class="mb-0 small">Sabato Nocera e Giusy Annunziata</p>
                                     </div>
                                 </div>
 
@@ -58,8 +63,15 @@
                                 <div class="d-flex align-items-center mb-4">
                                     <span class="icon-md text-dark mb-0 bg-light rounded-3"><i class="fas fa-graduation-cap"></i></span>
                                     <div class="ms-3">
-                                        <h6 class="mb-0">University of Toronto</h6>
-                                        <p class="mb-0 small">Master in Computer Graphics</p>
+
+                                        <p class="mb-0 small">Giovanni Toriello</p><br>
+                                        <p class="mb-0 small">Riccardo Polidoro</p><br>
+                                        <p class="mb-0 small">Roberto Tartaglia</p><br>
+                                        <p class="mb-0 small">Martina Giugliano</p><br>
+                                        <p class="mb-0 small">Serena Liguori</p><br>
+                                        <p class="mb-0 small">Mariagiovanna Bianco</p><br>
+                                        <p class="mb-0 small">Stefano Marciano</p> <br><br>
+                                        <h4 class="mb-3">Professoressa Filomena Ferrucci</h4><br>
                                     </div>
                                 </div>
 
@@ -67,8 +79,8 @@
                                 <div class="d-flex align-items-center mb-4">
                                     <span class="icon-md text-dark mb-0 bg-light rounded-3"><i class="fas fa-graduation-cap"></i></span>
                                     <div class="ms-3">
-                                        <h6 class="mb-0">East Ray University</h6>
-                                        <p class="mb-0 small">Bachelor in Computer Graphics</p>
+                                        <h6 class="mb-0">Università degli Studi Salerno</h6>
+                                        <p class="mb-0 small">Ingegneria del Software | Gestione Progetti Software</p>
                                     </div>
                                 </div>
                                 <!-- Education END -->
@@ -89,9 +101,20 @@
                     <h1 class="mb-0">About EasyAid</h1>
 
                     <!-- Content -->
-                    <p class="mt-4">Satisfied conveying a dependent contented he gentleman agreeable do be. Warrant private blushes removed an in equally totally if. Delivered dejection necessary objection do Mr prevailed. Mr feeling does chiefly cordial in do.</p>
-                    <p>We focus a great deal on the understanding of behavioral psychology and influence triggers which are crucial for becoming a well-rounded Digital Marketer. We understand that theory is important to build a solid foundation, we understand that theory alone isn’t going to get the job done so that’s why this course is packed with practical hands-on examples that you can follow step by step.</p>
-                    <!-- Personal info -->
+                    <p class="mt-4 fw-8">Il progetto «EasyAid» è nato con l’obiettivo di fornire servizi agli studenti con disabilità e DSA, forniti dall’Ufficio Diritto allo Studio.
+
+                        Lo scopo che vogliamo raggiungere è quello di realizzare un sistema che vada ad automatizzare l’accesso a tali servizi e a coordinare le persone coinvolte.
+
+                        Tale idea nasce dall’esigenza di soddisfare i bisogni di molti studenti con disabilità e DSA, che ogni anno si iscrivono all’università.
+                    </p> <br><br>
+
+                    <h4 class="mb-3">Tutorato Didattico</h4>
+                    <p>Gli studenti saranno supportati con dei tutorati didattici. Le lezioni saranno con un tutor che aiuterà lo studente nel percorso di apprendimento</p><br><br><h4 class="mb-3">Supporto Esame</h4>
+
+                    <p>Il supporto per gli esami sarà un servizio con lo scopo di aiutare gli studenti  durante lo svolgimento di esami, supportati da tutor ed eventuali ausili se fossero necessari.
+                    </p><br><p class="quotes fs-2 text-center">
+                    United we stand, divided we fall.
+                </p><br><!-- Personal info -->
                     <ul class="list-group list-group-borderless">
 
 
@@ -104,5 +127,7 @@
         </div>
     </section>
 </main>
+
+
 </body>
 </html>

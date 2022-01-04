@@ -257,13 +257,6 @@
                                                 <input type="number" name="ore_richieste" class="form-control"
                                                        id="message-text"></input>
                                             </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label for="message-text" class="col-form-label">Docente:</label>
-                                                <input type="text" name="docente" class="form-control"
-                                                       id="message-text"></input>
-                                            </div>
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Dipartimento:</label>
                                                 <select name="dipartimento" style=" width:19.6em"
@@ -314,6 +307,14 @@
                                                     </option>
                                                 </select>
                                             </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="message-text" class="col-form-label">Docente:</label>
+                                                <input type="text" name="docente" class="form-control"
+                                                       id="message-text"></input>
+                                            </div>
+
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Date disponibili:</label>
                                                 <input type="text" name="date_disponibili" class="form-control"

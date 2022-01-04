@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
-/** @author Roberto Tartaglia Servlet che permette di effettuare il logout */
+/** @author Roberto Tartaglia Servlet che permette di visualizzare la lista di utenti */
 @WebServlet(name = "ViewListaUsers", urlPatterns = "/ViewListaUsers")
 public class ViewListaUtentiServlet extends HttpServlet {
   public ViewListaUtentiServlet() {

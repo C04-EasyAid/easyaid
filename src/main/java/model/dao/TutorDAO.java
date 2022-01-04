@@ -9,15 +9,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import static model.dao.ConnectionPool.conn;
-
+/**
+ * @author Roberto Tartaglia
+ * Classe TutorDAO
+ */
 public class TutorDAO {
     public static synchronized TutorBean doRetrieveByEmail(String email) throws SQLException, ClassNotFoundException {
         Connection conn = null;
         String query = "SELECT * FROM tutor WHERE email_tutor = '"+email+"'";
-        TutorBean tutor = null;
+        TutorBean tutor = new TutorBean();
         PreparedStatement stmt = null;
         try{
-            conn = conn();
+            conn = ConnectionPool.conn();
             stmt = conn.prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
             if(rs.next())
@@ -33,7 +36,8 @@ public class TutorDAO {
         {
             e.printStackTrace();
         }finally {
-            stmt.close();
+            if(stmt!=null)
+                stmt.close();
             if (conn != null) {
                 conn.close();
             }

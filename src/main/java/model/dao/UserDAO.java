@@ -5,6 +5,9 @@ import model.bean.StudenteBean;
 import model.bean.TutorBean;
 import model.bean.UserBean;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,25 +16,31 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import static model.dao.ConnectionPool.conn;
+import static other.Utils.generatePwd;
 
-public class UserBeanDAO {
+/**
+ * @author Giovanni Toriello
+ * Classe UserDAO
+ */
+public class UserDAO {
   // Metodo che restituisce l'utente dal database
-  public static synchronized UserBean doRetrieve(UserBean b)
+  public static synchronized UserBean doRetrieveUtente(UserBean b)
       throws SQLException, ClassNotFoundException {
     Connection conn = null;
+    String pwd = generatePwd(b.getPassword());
     String query = "SELECT * FROM utente WHERE email = ? AND password = ?";
     UserBean user = null;
     PreparedStatement stmt = null;
     // Se riesce a connettersi, la connessione è != da null ed entra nello statement
     try {
-      conn = conn();
+      conn = ConnectionPool.conn();
       stmt = conn.prepareStatement(query);
       stmt.setString(1, b.getEmail());
-      stmt.setString(2, b.getPassword());
+      stmt.setString(2, pwd);
       ResultSet rs = stmt.executeQuery();
       // Se trova l'utente lo crea con tutti gli attributi
       if (rs.next()) {
-        user = UserBean.getInstance();
+        user = new UserBean();
         user.setNome(rs.getString("nome"));
         user.setCognome(rs.getString("cognome"));
         user.setEmail(rs.getString("email"));
@@ -43,7 +52,9 @@ public class UserBeanDAO {
       e.printStackTrace();
       // Chiude la connessione se è diverso da null
     } finally {
+      if(stmt!=null){
       stmt.close();
+      }
       if (conn != null) {
         conn.close();
       }
@@ -54,27 +65,30 @@ public class UserBeanDAO {
   public static synchronized boolean insertUtente(UserBean b) throws SQLException {
     boolean utente = false;
     Connection conn = null;
+    String pwd = generatePwd(b.getPassword());
     String query = "INSERT INTO utente VALUES (?,?,?,?,?)";
     PreparedStatement stmt = null;
     // Se riesce a connettersi, la connessione è != da null ed entra nello statement
     try {
-      conn = conn();
+      conn = ConnectionPool.conn();
       stmt = conn.prepareStatement(query);
       // Setta i paremetri nella query
       stmt.setString(1, b.getNome());
       stmt.setString(2, b.getCognome());
       stmt.setString(3, b.getEmail());
-      stmt.setString(4, b.getPassword());
+      stmt.setString(4, pwd);
       stmt.setString(5, b.getRuolo());
       // Esegue la query
-      ResultSet rs = null;
-      utente = stmt.executeUpdate() == 1;
-    } catch (SQLException | ClassNotFoundException e) {
+     utente = stmt.executeUpdate()==1;
+     conn.commit();
+    } catch (SQLException e) {
       utente = false;
       e.printStackTrace();
       // Chiude la connessione se è diverso da null
     } finally {
-      stmt.close();
+      if(stmt!=null){
+        stmt.close();
+      }
       if (conn != null) {
         conn.close();
       }
@@ -93,7 +107,7 @@ public class UserBeanDAO {
       PreparedStatement stmt = null;
       // Se riesce a connettersi, la connessione è != da null ed entra nello statement
       try {
-        conn = conn();
+        conn = ConnectionPool.conn();
         stmt = conn.prepareStatement(query);
         // Setta i paremetri nella query
         stmt.setString(1, s.getEmail());
@@ -103,13 +117,16 @@ public class UserBeanDAO {
         stmt.setInt(5, s.getOreDisponibili());
         // Esegue la query
         ResultSet rs = null;
-        studente = stmt.executeUpdate() == 1;
+       studente = stmt.executeUpdate() == 1;
+        conn.commit();
       } catch (SQLException e) {
         studente = false;
         e.printStackTrace();
         // Chiude la connessione se è diverso da null
       } finally {
-        stmt.close();
+        if(stmt!=null){
+          stmt.close();
+        }
         if (conn != null) {
           conn.close();
         }
@@ -128,7 +145,7 @@ public class UserBeanDAO {
       PreparedStatement stmt = null;
       // Se riesce a connettersi, la connessione è != da null ed entra nello statement
       try {
-        conn = conn();
+        conn = ConnectionPool.conn();
         stmt = conn.prepareStatement(query);
         // Setta i paremetri nella query
         stmt.setString(1, t.getEmailTutor());
@@ -138,13 +155,16 @@ public class UserBeanDAO {
         stmt.setInt(5, t.getOreDisponibili());
         // Esegue la query
         ResultSet rs = null;
-        tutor = stmt.executeUpdate() == 1;
-      } catch (SQLException | ClassNotFoundException e) {
+      tutor = stmt.executeUpdate() == 1;
+        conn.commit();
+      } catch (SQLException e) {
         tutor = false;
         e.printStackTrace();
         // Chiude la connessione se è diverso da null
       } finally {
-        stmt.close();
+        if(stmt!=null){
+          stmt.close();
+        }
         if (conn != null) {
           conn.close();
         }
@@ -164,7 +184,7 @@ public class UserBeanDAO {
       PreparedStatement stmt = null;
       // Se riesce a connettersi, la connessione è != da null ed entra nello statement
       try {
-        conn = conn();
+        conn = ConnectionPool.conn();
         stmt = conn.prepareStatement(query);
         // Setta i paremetri nella query
         stmt.setString(1, p.getEmail());
@@ -172,12 +192,15 @@ public class UserBeanDAO {
         // Esegue la query
         ResultSet rs = null;
         prof = stmt.executeUpdate() == 1;
-      } catch (SQLException | ClassNotFoundException e) {
+        conn.commit();
+      } catch (SQLException e) {
         prof = false;
         e.printStackTrace();
         // Chiude la connessione se è diverso da null
       } finally {
-        stmt.close();
+        if(stmt!=null){
+          stmt.close();
+        }
         if (conn != null) {
           conn.close();
         }
@@ -193,11 +216,12 @@ public class UserBeanDAO {
     PreparedStatement stmt = null;
     String query = "SELECT * FROM utente";
     try {
-      conn = conn();
+      conn = ConnectionPool.conn();
       stmt = conn.prepareStatement(query);
       ResultSet rs = stmt.executeQuery();
-      UserBean bean = UserBean.getInstance();
+      UserBean bean = null;
       while (rs.next()) {
+        bean = new UserBean();
         bean.setNome(rs.getString("nome"));
         bean.setCognome(rs.getString("cognome"));
         bean.setEmail(rs.getString("email"));
@@ -208,11 +232,49 @@ public class UserBeanDAO {
     } catch (SQLException e) {
 
     } finally {
-      stmt.close();
+      if(stmt!=null){
+        stmt.close();
+      }
       if (conn != null) {
         conn.close();
       }
     }
     return utenti;
+  }
+  // Metodo che restituisce l'utente dal database tramite Email
+  public static synchronized UserBean doRetrieveUtenteByEmail(String email)
+          throws SQLException, ClassNotFoundException {
+    Connection conn = null;
+    String query = "SELECT * FROM utente WHERE email = ?";
+    UserBean user = null;
+    PreparedStatement stmt = null;
+    // Se riesce a connettersi, la connessione è != da null ed entra nello statement
+    try {
+      conn = ConnectionPool.conn();
+      stmt = conn.prepareStatement(query);
+      stmt.setString(1, email);
+      ResultSet rs = stmt.executeQuery();
+      // Se trova l'utente lo crea con tutti gli attributi
+      if (rs.next()) {
+        user = new UserBean();
+        user.setNome(rs.getString("nome"));
+        user.setCognome(rs.getString("cognome"));
+        user.setEmail(rs.getString("email"));
+        user.setPassword(rs.getString("nome"));
+        user.setRuolo(rs.getString("ruolo"));
+      }
+
+    } catch (SQLException e) {
+      e.printStackTrace();
+      // Chiude la connessione se è diverso da null
+    } finally {
+      if(stmt!=null){
+        stmt.close();
+      }
+      if (conn != null) {
+        conn.close();
+      }
+    }
+    return user;
   }
 }

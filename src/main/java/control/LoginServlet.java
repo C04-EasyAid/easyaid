@@ -26,10 +26,11 @@ public class LoginServlet extends HttpServlet {
       throws IOException {
     HttpSession session = request.getSession();
     UserBean user = new UserBean();
+    UserDAO dao=new UserDAO();
     user.setEmail(request.getParameter("Email"));
     user.setPassword(request.getParameter("Password"));
     try {
-      user = UserDAO.doRetrieveUtente(user);
+      user = dao.doRetrieveUtente(user);
       if (user == null) {
         // Nessun utente nel sistema
         response.sendRedirect("view/LoginPage.jsp");

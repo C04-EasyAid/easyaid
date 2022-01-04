@@ -24,7 +24,7 @@ import static other.Utils.generatePwd;
  */
 public class UserDAO {
   // Metodo che restituisce l'utente dal database
-  public static synchronized UserBean doRetrieveUtente(UserBean b)
+  public  synchronized UserBean doRetrieveUtente(UserBean b)
       throws SQLException, ClassNotFoundException {
     Connection conn = null;
     String pwd = generatePwd(b.getPassword());
@@ -62,7 +62,7 @@ public class UserDAO {
     return user;
   }
   // Metodo che restituisce true se è l'utente è stato inserito
-  public static synchronized boolean insertUtente(UserBean b) throws SQLException {
+  public synchronized boolean insertUtente(UserBean b) throws SQLException {
     boolean utente = false;
     Connection conn = null;
     String pwd = generatePwd(b.getPassword());
@@ -96,7 +96,7 @@ public class UserDAO {
     return utente;
   }
   // Metodo che restituisce true se è lo studente è stato inserito
-  public static synchronized boolean insertStudente(StudenteBean s, UserBean b)
+  public synchronized boolean insertStudente(StudenteBean s, UserBean b)
       throws SQLException, ClassNotFoundException {
     boolean studente = false;
     // Viene prima inserito l'utente generico (UserBean);
@@ -135,7 +135,7 @@ public class UserDAO {
     return studente;
   }
   // Metodo che restituisce true se il tutor è stato inserito
-  public static synchronized boolean insertTutor(TutorBean t, UserBean b) throws SQLException {
+  public synchronized boolean insertTutor(TutorBean t, UserBean b) throws SQLException {
     boolean tutor = false;
     // Viene prima inserito l'utente generico (UserBean);
     // Se il metodo restituisce true continua per inserire il tutor
@@ -173,7 +173,7 @@ public class UserDAO {
     return tutor;
   }
   // Metodo che restituisce true se il tutor è stato inserito
-  public static synchronized boolean insertProfessoreReferente(
+  public synchronized boolean insertProfessoreReferente(
       ProfessoreReferenteBean p, UserBean b) throws SQLException {
     boolean prof = false;
     // Viene prima inserito l'utente generico (UserBean);
@@ -209,7 +209,7 @@ public class UserDAO {
     return prof;
   }
   // Metodo che restituisce la lista degli utenti nel Database
-  public static synchronized Collection<UserBean> doRetrieveAll()
+  public synchronized Collection<UserBean> doRetrieveAll()
       throws ClassNotFoundException, SQLException {
     Collection<UserBean> utenti = new ArrayList<>();
     Connection conn = null;
@@ -276,10 +276,5 @@ public class UserDAO {
       }
     }
     return user;
-  }
-
-  public static void main(String[] args) throws SQLException, ClassNotFoundException {
-    System.out.println(generatePwd("qwerty"));
-
   }
 }

@@ -2,6 +2,7 @@ package control;
 
 import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
+import model.bean.UserBean;
 import model.dao.SupportoEsameDAO;
 import model.dao.TutoratoDidatticoDAO;
 
@@ -15,36 +16,32 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-
 @WebServlet("/viewRichiesteAccettate")
-public class ViewRichiesteAccettateServlet extends HttpServlet
-{
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session=req.getSession();
-        SupportoEsameDAO esameDAO=new SupportoEsameDAO();
-        TutoratoDidatticoDAO tutoratoDAO=new TutoratoDidatticoDAO();
-        //questo verrà poi preso dalla sessione con TutorBean bean=(TutorBean) session.getAttribute("tutor")
-        String email="lorenzorossi1@studenti.unisa.it";
+public class ViewRichiesteAccettateServlet extends HttpServlet {
+  @Override
+  protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+      throws ServletException, IOException {
+    HttpSession session = req.getSession();
+    UserBean userLoggato = (UserBean) session.getAttribute("utente");
+    SupportoEsameDAO supportoDao=new SupportoEsameDAO();
+    TutoratoDidatticoDAO tutoratoDao=new TutoratoDidatticoDAO();
+    if (userLoggato != null && userLoggato.isTutor()) {
+      try {
+        List<SupportoEsameBean> listRichiesteSupportoEsame =
+            supportoDao.doRetrieveAllByTutor(userLoggato.getEmail());
+        List<TutoratoDidatticoBean> listRichiesteTutoratoDidattico = tutoratoDao.doRetrieveAllByTutor(userLoggato.getEmail());
+        session.setAttribute("richiesteEsamiAccettate", listRichiesteSupportoEsame);
+        session.setAttribute("richiesteTutoratoAccettate", listRichiesteTutoratoDidattico);
 
-        try {
-            List<SupportoEsameBean> listRichiesteSupportoEsame=esameDAO.doRetrieveAllByTutor(email);
-            List<TutoratoDidatticoBean> listRichiesteTutoratoDidattico=tutoratoDAO.doRetrieveAllByTutor(email);
-            session.setAttribute("richiesteEsamiAccettate",listRichiesteSupportoEsame);
-            session.setAttribute("richiesteTutoratoAccettate",listRichiesteTutoratoDidattico);
+        resp.sendRedirect("view/RichiesteAccettatePage.jsp");
 
-            resp.sendRedirect("view/RichiesteAccettatePage.jsp");
-
-        }
-        catch (SQLException e)
-        {
-            e.printStackTrace();
-        }
-        catch (ClassNotFoundException e)
-        {
-            e.printStackTrace();
-        }
-
+      } catch (SQLException e) {
+        e.printStackTrace();
+      } catch (ClassNotFoundException e) {
+        e.printStackTrace();
+      }
+    } else {
+      resp.sendRedirect("view/HomePage.jsp");
     }
-
+  }
 }

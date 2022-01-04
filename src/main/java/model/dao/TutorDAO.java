@@ -14,7 +14,7 @@ import static model.dao.ConnectionPool.conn;
  * Classe TutorDAO
  */
 public class TutorDAO {
-    public static synchronized TutorBean doRetrieveByEmail(String email) throws SQLException, ClassNotFoundException {
+    public synchronized TutorBean doRetrieveByEmail(String email) throws SQLException, ClassNotFoundException {
         Connection conn = null;
         String query = "SELECT * FROM tutor WHERE email_tutor = '"+email+"'";
         TutorBean tutor = new TutorBean();

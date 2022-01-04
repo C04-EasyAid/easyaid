@@ -43,6 +43,7 @@
     <%@ include file="../fragment/navbar.jsp" %>
 </header>
 <main>
+    <%@ include file="../fragment/UserSection.jsp" %>
     <section class="pt-0">
         <div class="container">
             <div class="row">
@@ -54,7 +55,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive border-0">
-                                    <table class="table table-dark-gray align-self-center p-4 mb-0 table-hover">
+                                    <table class="table table-dark-gray align-middle p-4 mb-0 table-hover">
                                         <thead style="background-color: #17a2b8 !important;">
                                         <tr class="text-center">
                                             <th scope="col" class="border-0 rounded-start" style="">Tutorato Didattico</th>
@@ -100,7 +101,7 @@
 
                             <div class="card-body p-4 mb-4">
                                 <div class="table-responsive border-0">
-                                    <table class="table table-dark-gray align-self-center p-4 mb-0 table-hover">
+                                    <table class="table table-dark-gray align-middle p-4 mb-0 table-hover">
                                         <thead style="background-color: #17a2b8 !important;">
                                         <tr class="text-center">
                                             <th scope="col" class="border-0 rounded-start" style="">Supporto Esame</th>
@@ -119,7 +120,7 @@
                                         %>
                                         <tr>
                                             <td>
-                                                <div class="d-flex ">
+                                                <div class="d-flex align-items-center">
                                                     <div class="w-100px">
                                                         <img src="../assets/images/courses/4by3/08.jpg" class="rounded" alt="">
                                                     </div>

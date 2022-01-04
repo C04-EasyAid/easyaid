@@ -97,16 +97,17 @@
                                     </div>
                                 </div>
                                 <br>
-                                <%
-                                    String mittente = null;
-                                    for (CommentoBean bean : commenti) {
-                                        if (bean.getStudente() != null) {
-                                            mittente = bean.getStudente();
-                                        } else if(bean.getStudente() != null){
-                                            mittente = bean.getTutor();
-                                        }
-                                %>
                                 <div class="row">
+                                    <%
+                                        String mittente = null;
+                                        for (CommentoBean bean : commenti) {
+                                            if (bean.getStudente() != null) {
+                                                mittente = bean.getStudente();
+                                            } else if(bean.getStudente() != null){
+                                                mittente = bean.getTutor();
+                                            }
+                                    %>
+
                                     <ul class="media-list">
                                         <li class="media">
 
@@ -127,10 +128,13 @@
                                     </ul>
                                     <%}%>
                                     <div class="panel-body">
-                                        <input type="text" class="form-control" placeholder="scrivi un commento..."
-                                               rows="3">
-                                        <br>
-                                        <button type="button" class="btn btn-outline-info">Commenta</button>
+                                        <form action="../CommentoServlet" method="get">
+                                            <input type="text" name="commento" class="form-control" placeholder="scrivi un commento..."
+                                                   rows="3">
+                                            <br>
+
+                                            <button type="submit" class="btn btn-outline-info">Commenta</button>
+                                        </form>
                                         <div class="clearfix"></div>
                                     </div>
                                 </div>

@@ -130,4 +130,27 @@ public class LezioneDAO {
     }
     return lezioni;
   }
+  public synchronized int doRetrieveTutoratoByLezione(int lezione) throws SQLException {
+    int idTutorato = 0;
+    Connection conn = null;
+    PreparedStatement stmt = null;
+    String query = "SELECT tutorato FROM lezione WHERE id = ?";
+    try {
+      conn = conn();
+      stmt = conn.prepareStatement(query);
+      stmt.setInt(1, lezione);
+      ResultSet rs = stmt.executeQuery();
+      if (rs.next()) {
+        idTutorato = rs.getInt("tutorato");
+      }
+    } catch (SQLException e) {
+
+    } finally {
+      if (stmt != null) stmt.close();
+      if (conn != null) {
+        conn.close();
+      }
+    }
+    return idTutorato;
+  }
 }

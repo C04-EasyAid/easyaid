@@ -13,7 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-
+/**
+ * @author Giovanni Toriello
+ * Servlet che permette di visualizzare il profilo utente
+ */
 @WebServlet(name = "UserProfile", urlPatterns = "/UserProfile")
 public class ProfiloUtenteServlet extends HttpServlet {
 

@@ -1,6 +1,7 @@
 package model.dao;
 
 import model.bean.SupportoEsameBean;
+import model.bean.TutoratoDidatticoBean;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -344,6 +345,42 @@ public class SupportoEsameDAO {
 
         return bean;
 
+    }
+    public boolean InserimentoSupportoEsame (SupportoEsameBean Bean) throws SQLException{
+        boolean inserimento = false;
+        Connection con = null;
+        String query = "INSERT INTO supporto_esame(data, ora, ore_richieste, docente, modalita_esame, eventuali_ausili, tipo_di_assistenza, insegnamento, luogo, dipartimento, studente_email, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement stmt = null;
+        try {
+            con = ConnectionPool.conn();
+            stmt = con.prepareStatement(query);
+            stmt.setString(1, Bean.getData());
+            stmt.setString(2, Bean.getOra());
+            stmt.setInt(3, Bean.getOreRichieste());
+            stmt.setString(4, Bean.getDocente());
+            stmt.setString(5, Bean.getModalitaEsame());
+            stmt.setString(6, Bean.getEventualiAusili());
+            stmt.setString(7, Bean.getTipoAssistenza());
+            stmt.setString(8, Bean.getInsegnamento());
+            stmt.setString(9, Bean.getLuogo());
+            stmt.setString(10, Bean.getDipartimento());
+            stmt.setString(11, Bean.getStudenteEmail());
+            stmt.setInt(12, 0);
+            inserimento = stmt.executeUpdate() == 1;
+            con.commit();
+        }
+        catch(SQLException e)
+        {
+            e.printStackTrace();
+            inserimento = false;
+        }
+        finally{
+            if(stmt!=null)
+                stmt.close();
+            if(con!=null)
+                con.close();
+        }
+        return inserimento;
     }
 
 

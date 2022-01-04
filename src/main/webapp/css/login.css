@@ -1,0 +1,55 @@
+#immagine{
+    background-color: #59cfcd;
+    width: 32em;
+    margin-left: 33em;
+    height: 27em;
+    margin-top: 16em;
+}
+#immagine> #corpo{
+    margin-top: -19em;
+    margin-left: 17em;
+    background-color: white;
+    border-radius: 13%;
+    font-size: 23px;
+    margin-right: 26em;
+    padding: 2em 5em 5em 10em;
+}
+#immagine > #img{
+    height: 24em;
+    margin-top: 3em;
+    margin-left: -3em;
+}
+#corpo > #accedi > input{
+    font-family: Garamond;
+    font-size: 0.8em;
+    border-radius: 5%;
+    width: 8em;
+    background-color: #59cfcd;
+    border-color: #59cfcd;
+    margin-left: -6.6em;
+}
+
+#corpo > #password > input{
+    font-size: 0.8em;
+    margin-bottom: 1em;
+    margin-left: -9em;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+#corpo > #email > input{
+    font-size: 0.8em;
+    margin-bottom: 1em;
+    margin-left: -9em;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+#corpo> h1{
+    margin-left: -2.5em;
+}
+#immagine > #immagine2 > #img2{
+    height: 9em;
+    margin-left: 33em;
+    margin-top: -7em;
+}

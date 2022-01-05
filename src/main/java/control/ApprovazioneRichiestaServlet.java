@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.SQLException;
 
 /**
  *@author Martina Giugliano
@@ -34,12 +35,20 @@ public class ApprovazioneRichiestaServlet extends HttpServlet {
         TutoratoDidatticoDAO tutoratodao = new TutoratoDidatticoDAO();
         SupportoEsameDAO supportodao = new SupportoEsameDAO();
         if (tutorato != null){
-             tutoratodao.approvaRichiesta(tutorato.getId(), tutor.getEmail());
-             resp.sendRedirect("view/HomePage.jsp");
+            try {
+                tutoratodao.approvaRichiesta(tutorato.getId(),prof.getEmail());
+                resp.sendRedirect("view/HomePage.jsp");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         else if (supporto != null){
-             supportodao.approvaRichiesta(supporto.getId(), supporto.getEmail());
-             resp.sendRedirect("view/HomePage.jsp");
+            try {
+                supportodao.approvaRichiesta(supporto.getId(),prof.getEmail());
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            resp.sendRedirect("view/HomePage.jsp");
         }
         else {
             session.setAttribute("alertMsg", "L'operazione non è andata a buon fine");

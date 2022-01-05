@@ -6,6 +6,7 @@ import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
 import model.dao.SupportoEsameDAO;
 import model.dao.TutoratoDidatticoDAO;
+import other.MyLogger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,10 +20,13 @@ import java.util.List;
 
 @WebServlet("/viewRichiesteCompletate")
 public class ViewRichiesteCompletateServlet extends HttpServlet {
+  private static MyLogger log = MyLogger.getInstance();
+  private static String myClass = "ViewRichiesteCompletateServlet";
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
           throws ServletException, IOException {
+    log.info(myClass,"Collegamento alla Servlet...");
     HttpSession session = req.getSession();
     UserBean userLoggato = (UserBean) session.getAttribute("utente");
     if (userLoggato != null) {
@@ -40,8 +44,10 @@ public class ViewRichiesteCompletateServlet extends HttpServlet {
           resp.sendRedirect("view/RichiesteCompletatePage.jsp");
 
         } catch (SQLException e) {
+          log.error(myClass,"Catturata eccezione nella Servlet", e);
           e.printStackTrace();
         } catch (ClassNotFoundException e) {
+          log.error(myClass,"Catturata eccezione nella Servlet", e);
           e.printStackTrace();
         }
       } else {

@@ -7,6 +7,7 @@ import model.bean.UserBean;
 import model.dao.CommentoDAO;
 import model.dao.StudentDAO;
 import model.dao.TutorDAO;
+import other.MyLogger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,8 +23,11 @@ import java.sql.SQLException;
  */
 @WebServlet("/CommentoServlet")
 public class CommentoServlet extends HttpServlet {
+    private static MyLogger log = MyLogger.getInstance();
+    private static String myClass = "CommentoServlet";
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        log.info(myClass, "Collegamento alla Servlet...");
         HttpSession session = request.getSession();
         UserBean user = (UserBean) session.getAttribute("utente");
         session.removeAttribute("commento");
@@ -59,6 +63,7 @@ public class CommentoServlet extends HttpServlet {
                     try {
                         bean = daoT.doRetrieveByEmail(user.getEmail());
                     } catch (SQLException | ClassNotFoundException e) {
+                        log.error(myClass,"Catturata eccezione nella Servlet", e);
                         e.printStackTrace();
                     }
                     if (bean != null) {
@@ -68,8 +73,10 @@ public class CommentoServlet extends HttpServlet {
                             session.setAttribute("alertMsg", "Commento inserito con successo");
                             response.sendRedirect("view/LezionePage.jsp");
                         } catch (SQLException e) {
+                            log.error(myClass,"Catturata eccezione nella Servlet", e);
                             e.printStackTrace();
                         } catch (ClassNotFoundException e) {
+                            log.error(myClass,"Catturata eccezione nella Servlet", e);
                             e.printStackTrace();
                         }
                     }

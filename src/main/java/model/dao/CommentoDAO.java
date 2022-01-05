@@ -4,8 +4,8 @@ package model.dao;
 @author Mariagiovanna Bianco
 Classe CommentoDAO
  */
-import model.bean.CommentoBean;
 
+import model.bean.CommentoBean;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -59,10 +59,9 @@ public class CommentoDAO {
         LezioneDAO dao = new LezioneDAO();
         Connection conn = null;
         PreparedStatement stmt = null;
-        GregorianCalendar today = new GregorianCalendar();
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
-        String ora = dtf.format(LocalDateTime.now());
-        String data = String.valueOf(LocalDate.now());
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
+    String ora = dtf.format(LocalDateTime.now());
+    String data = String.valueOf(LocalDate.now());
         int idTutorato = dao.doRetrieveTutoratoByLezione(lezione);
         String query = "INSERT INTO easyaid.commento (lezione, tutorato, testo, data, ora, tutor) VALUES (?,?,?,?,?,?);";
         try {

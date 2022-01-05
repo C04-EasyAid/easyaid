@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.SQLException;
 
 /**
  *@author Martina Giugliano
@@ -29,17 +30,26 @@ public class AccettazioneRichiestaServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         UserBean tutor = (UserBean) session.getAttribute("utente");
+        String commento=req.getParameter("commento");
         TutoratoDidatticoBean tutorato = (TutoratoDidatticoBean) session.getAttribute("tutorato");
         SupportoEsameBean supporto = (SupportoEsameBean) session.getAttribute("supporto");
         TutoratoDidatticoDAO tutoratodao = new TutoratoDidatticoDAO();
         SupportoEsameDAO supportodao = new SupportoEsameDAO();
         if (tutorato != null){
-            // tutoratodao.accettaRichiesta(tutorato.getId(), tutor.getEmail());
-            // resp.sendRedirect("view/HomePage.jsp");
+            try {
+                tutoratodao.accettaRichiesta(tutorato.getId(), tutor.getEmail(),commento);
+                resp.sendRedirect("view/HomePage.jsp");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
        else if (supporto != null){
-           // supportodao.accettaRichiesta(supporto.getId(), supporto.getEmail());
-            // resp.sendRedirect("view/HomePage.jsp");
+            try {
+                supportodao.accettaRichiesta(supporto.getId(), tutor.getEmail(),commento);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            resp.sendRedirect("view/HomePage.jsp");
         }
        else {
            session.setAttribute("alertMsg", "L'operazione non è andata a buon fine");

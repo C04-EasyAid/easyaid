@@ -344,5 +344,66 @@ public class TutoratoDidatticoDAO {
                 return inserimento;
     }
 
+    public synchronized boolean accettaRichiesta(int idSupporto,String emailTutor,String commento) throws SQLException
+    {
+        boolean isUpdated=false;
+        Connection conn=null;
+        String query="UPDATE tutorato_didattico SET status=1,commento=?,tutor_email=? WHERE id=?";
+        PreparedStatement stmt=null;
+        try{
+            conn=ConnectionPool.conn();
+            stmt=conn.prepareStatement(query);
+            stmt.setString(1,commento);
+            stmt.setString(2,emailTutor);
+            stmt.setInt(3,idSupporto);
+            isUpdated=stmt.executeUpdate()==1;
+            conn.commit();
+        }
+        catch(SQLException e)
+        {
+            e.printStackTrace();
+        }
+        finally{
+            if(stmt!=null)
+                stmt.close();
+            if(conn!=null)
+                conn.close();
+        }
+
+        return isUpdated;
+    }
+
+
+    public synchronized boolean approvaRichiesta(int idSupporto,String emailProf) throws SQLException
+    {
+        boolean isUpdated=false;
+        Connection conn=null;
+        String query="UPDATE tutorato_didattico SET status=3,prof_refe_email=? WHERE id=?";
+        PreparedStatement stmt=null;
+        try{
+            conn=ConnectionPool.conn();
+            stmt=conn.prepareStatement(query);
+            stmt.setString(1,emailProf);
+            stmt.setInt(2,idSupporto);
+            isUpdated=stmt.executeUpdate()==1;
+            conn.commit();
+        }
+        catch(SQLException e)
+        {
+            e.printStackTrace();
+        }
+        finally{
+            if(stmt!=null)
+                stmt.close();
+            if(conn!=null)
+                conn.close();
+        }
+
+        return isUpdated;
+    }
+
+
+
+
 }
 

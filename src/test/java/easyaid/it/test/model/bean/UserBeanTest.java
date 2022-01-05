@@ -1,6 +1,7 @@
 package easyaid.it.test.model.bean;
 import static org.junit.jupiter.api.Assertions.*;
-
+import javax.servlet.http.HttpSessionBindingEvent;
+import javax.servlet.http.HttpSessionBindingListener;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import model.bean.UserBean;
@@ -20,7 +21,7 @@ public class UserBeanTest
 
 
     @BeforeEach
-   public void beforeEach()
+    public void beforeEach()
     {
         bean.setNome(nome);
         bean.setCognome(cognome);
@@ -32,7 +33,7 @@ public class UserBeanTest
     @Test
     public void getNome()
     {
-       assertEquals(nome,bean.getNome());
+        assertEquals(nome,bean.getNome());
     }
 
     @Test
@@ -50,7 +51,7 @@ public class UserBeanTest
     @Test
     public void getPassword()
     {
-       assertEquals(password,bean.getPassword());
+        assertEquals(password,bean.getPassword());
     }
 
     @Test
@@ -70,9 +71,9 @@ public class UserBeanTest
     @Test
     public void setCognome()
     {
-      String cognome="cognome";
-      bean.setCognome(cognome);
-      assertEquals(cognome,bean.getCognome());
+        String cognome="cognome";
+        bean.setCognome(cognome);
+        assertEquals(cognome,bean.getCognome());
     }
 
     @Test
@@ -94,9 +95,9 @@ public class UserBeanTest
     @Test
     public void setRuolo()
     {
-      String ruolo="ruolo";
-      bean.setRuolo(ruolo);
-      assertEquals(ruolo,bean.getRuolo());
+        String ruolo="ruolo";
+        bean.setRuolo(ruolo);
+        assertEquals(ruolo,bean.getRuolo());
     }
 
     @Test
@@ -110,9 +111,9 @@ public class UserBeanTest
     @Test
     public void isTutor()
     {
-       String ruolo="T";
-       bean.setRuolo(ruolo);
-       assertEquals(true,bean.isTutor());
+        String ruolo="T";
+        bean.setRuolo(ruolo);
+        assertEquals(true,bean.isTutor());
     }
 
     @Test

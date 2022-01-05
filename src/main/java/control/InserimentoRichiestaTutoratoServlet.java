@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet("/inserisciTutorato")
 /**
@@ -23,6 +24,7 @@ public class InserimentoRichiestaTutoratoServlet extends HttpServlet {
       throws ServletException, IOException {
     HttpSession session = req.getSession();
     UserBean user = (UserBean) session.getAttribute("utente");
+    TutoratoDidatticoDAO dao=new TutoratoDidatticoDAO();
     if (user.isStudente()) {
       TutoratoDidatticoBean bean = new TutoratoDidatticoBean();
       bean.setDateDisponibili(req.getParameter("date_disponibili"));
@@ -32,10 +34,14 @@ public class InserimentoRichiestaTutoratoServlet extends HttpServlet {
       bean.setDipartimento(req.getParameter("dipartimento"));
       bean.setStudenteEmail(user.getEmail());
       // bean.setDocente(req.getParameter("docente");
-      // if (!TutoratoDidatticoDAO.inserimentoTutorato(bean)) {
-      // session.setAttribute("alertMsg", "L’operazione non è andata a buon fine.");
-      // resp.sendRedirect("view/HomePage.jsp");
-      // }
+      try {
+        if (!dao.InserimentoTutoratoDidattico(bean)) {
+        session.setAttribute("alertMsg", "L’operazione non è andata a buon fine.");
+        resp.sendRedirect("view/HomePage.jsp");
+        }
+      } catch (SQLException e) {
+        e.printStackTrace();
+      }
     } else {
       session.setAttribute("alertMsg", "Permessi non concessi all'utente");
       resp.sendRedirect("view/HomePage.jsp");

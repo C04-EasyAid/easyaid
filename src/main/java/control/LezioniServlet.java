@@ -7,6 +7,7 @@ import model.bean.UserBean;
 import model.dao.LezioneDAO;
 import model.dao.StudentDAO;
 import model.dao.TutorDAO;
+import other.MyLogger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,8 +24,11 @@ Servlet che permette di visualizzare le lezioni
  */
 @WebServlet("/LezioniServlet")
 public class LezioniServlet extends HttpServlet {
+  private static MyLogger log = MyLogger.getInstance();
+  private static String myClass = "LezioniServlet";
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+    log.info(myClass,"Collegamento alla Servlet...");
     HttpSession session = request.getSession();
     UserBean user = (UserBean) session.getAttribute("utente");
     LezioneDAO lezioneDao=new LezioneDAO();
@@ -45,8 +49,10 @@ public class LezioniServlet extends HttpServlet {
             session.setAttribute("listaLezioni", lista);
             response.sendRedirect("view/LezioniStudentePage.jsp");
           } catch (ClassNotFoundException e) {
+            log.error(myClass,"Catturata eccezione nella Servlet", e);
             e.printStackTrace();
           } catch (SQLException e) {
+            log.error(myClass,"Catturata eccezione nella Servlet", e);
             e.printStackTrace();
           }
         }
@@ -66,8 +72,10 @@ public class LezioniServlet extends HttpServlet {
             session.setAttribute("listaLezioni", lista);
             response.sendRedirect("view/LezioniTutorPage.jsp");
           } catch (ClassNotFoundException e) {
+            log.error(myClass,"Catturata eccezione nella Servlet", e);
             e.printStackTrace();
           } catch (SQLException e) {
+            log.error(myClass,"Catturata eccezione nella Servlet", e);
             e.printStackTrace();
           }
         }

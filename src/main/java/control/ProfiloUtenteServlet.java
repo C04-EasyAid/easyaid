@@ -30,6 +30,7 @@ public class ProfiloUtenteServlet extends HttpServlet {
     ProfessoreReferenteDAO professoreDao=new ProfessoreReferenteDAO();
     TutorDAO tutorDao=new TutorDAO();
     StudenteDAO studenteDao=new StudenteDAO();
+    UserDAO userdao = new UserDAO();
     if (userLoggato != null && userLoggato.isPersonaleAmministrativo()) {
       if (request.getParameter("usrEmail") != null && request.getParameter("ruolo") != null) {
         String email = request.getParameter("usrEmail");
@@ -38,7 +39,7 @@ public class ProfiloUtenteServlet extends HttpServlet {
           case "T":
             try {
               session.setAttribute("usrProfile", tutorDao.doRetrieveByEmail(email));
-              session.setAttribute("utenteSelezionato", UserDAO.doRetrieveUtenteByEmail(email));
+              session.setAttribute("utenteSelezionato", userdao.doRetrieveUtenteByEmail(email));
               session.setAttribute("ruolo", ruolo);
               response.sendRedirect("view/UserPage.jsp");
             } catch (Exception e) {
@@ -49,7 +50,7 @@ public class ProfiloUtenteServlet extends HttpServlet {
           case "S":
             try {
               session.setAttribute("usrProfile",studenteDao.doRetrieveByEmail(email));
-              session.setAttribute("utenteSelezionato", UserDAO.doRetrieveUtenteByEmail(email));
+              session.setAttribute("utenteSelezionato", userdao.doRetrieveUtenteByEmail(email));
               session.setAttribute("ruolo", ruolo);
               response.sendRedirect("view/UserPage.jsp");
             } catch (Exception e) {
@@ -60,7 +61,7 @@ public class ProfiloUtenteServlet extends HttpServlet {
           case "P":
             try {
               session.setAttribute("usrProfile", professoreDao.doRetrieveByEmail(email));
-              session.setAttribute("utenteSelezionato", UserDAO.doRetrieveUtenteByEmail(email));
+              session.setAttribute("utenteSelezionato", userdao.doRetrieveUtenteByEmail(email));
               session.setAttribute("ruolo", ruolo);
               response.sendRedirect("view/UserPage.jsp");
             } catch (Exception e) {

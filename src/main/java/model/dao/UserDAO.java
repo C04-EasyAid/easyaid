@@ -242,7 +242,7 @@ public class UserDAO {
     return utenti;
   }
   // Metodo che restituisce l'utente dal database tramite Email
-  public static synchronized UserBean doRetrieveUtenteByEmail(String email)
+  public synchronized UserBean doRetrieveUtenteByEmail(String email)
           throws SQLException, ClassNotFoundException {
     Connection conn = null;
     String query = "SELECT * FROM utente WHERE email = ?";

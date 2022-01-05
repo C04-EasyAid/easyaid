@@ -2,6 +2,7 @@ package control;
 
 import model.bean.*;
 import model.dao.UserDAO;
+import other.MyLogger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,6 +19,8 @@ import java.io.IOException;
  */
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
+    private static MyLogger log = MyLogger.getInstance();
+    private static String myClass = "RegisterServlet";
     private static final long serialVersionUID = 1L;
 
     public RegisterServlet() {
@@ -26,6 +29,7 @@ public class RegisterServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        log.info(myClass,"Collegamento alla Servlet...");
         HttpSession session = request.getSession();
         UserBean utenteLoggato= (UserBean)session.getAttribute("utente");
         //Creo il bean dell utente che andrà inserito nel DB
@@ -97,6 +101,7 @@ public class RegisterServlet extends HttpServlet {
             }
             catch (Exception e)
             {
+                log.error(myClass,"Catturata eccezione nella Servlet", e);
                 e.printStackTrace();
             }
         }

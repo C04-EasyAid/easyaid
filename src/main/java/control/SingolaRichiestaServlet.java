@@ -8,6 +8,7 @@ import model.dao.SupportoEsameDAO;
 import model.dao.TutorDAO;
 import model.dao.TutoratoDidatticoDAO;
 import model.dao.UserDAO;
+import other.MyLogger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,6 +24,8 @@ import java.sql.SQLException;
  */
 @WebServlet("/SingolaRichiestaServlet")
 public class SingolaRichiestaServlet extends HttpServlet {
+  private static MyLogger log = MyLogger.getInstance();
+  private static String myClass = "SingolaRichiestaServlet";
   private static final long serialVersionUID = 1L;
 
   public SingolaRichiestaServlet() {
@@ -31,6 +34,7 @@ public class SingolaRichiestaServlet extends HttpServlet {
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws IOException {
+    log.info(myClass,"Collegamento alla Servlet...");
     HttpSession session = request.getSession();
     int idTutorato = 0;
     int idSupporto = 0;
@@ -58,8 +62,10 @@ public class SingolaRichiestaServlet extends HttpServlet {
           session.setAttribute("supporto", supporto);
           response.sendRedirect("view/RichiestaPage.jsp");
         } catch (SQLException e) {
+          log.error(myClass,"Catturata eccezione nella Servlet", e);
           e.printStackTrace();
         } catch (ClassNotFoundException e) {
+          log.error(myClass,"Catturata eccezione nella Servlet", e);
           e.printStackTrace();
         }
       } else {

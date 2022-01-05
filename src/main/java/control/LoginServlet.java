@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import model.bean.UserBean;
 import model.dao.UserDAO;
+import other.MyLogger;
 
 /**
  * @author Roberto Tartaglia
@@ -17,13 +18,15 @@ import model.dao.UserDAO;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
-
+private static MyLogger log = MyLogger.getInstance();
+private static String myClass = "LoginServlet";
   public LoginServlet() {
     super();
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws IOException {
+    log.info(myClass,"Collegamento alla Servlet...");
     HttpSession session = request.getSession();
     UserBean user = new UserBean();
     UserDAO dao=new UserDAO();
@@ -41,6 +44,7 @@ public class LoginServlet extends HttpServlet {
         response.sendRedirect("view/HomePage.jsp");
       }
     } catch (Throwable e) {
+      log.error(myClass,"Catturata eccezione nella Servlet", (Exception) e);
       session.setAttribute("alertMsg", "Errore, ritorno alla Login Page");
       response.sendRedirect("view/LoginPage.jsp");
     }

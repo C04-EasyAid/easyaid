@@ -16,10 +16,10 @@ import java.io.IOException;
 
 /**
  *@author Martina Giugliano
- *Servlet che permette di accettare una richiesta di servizio
+ *Servlet che permette di approvare una richiesta di servizio
  */
-@WebServlet("/AccettazioneRichiesta")
-public class AccettazioneRichiestaServlet extends HttpServlet {
+@WebServlet("/ApprovazioneRichiesta")
+public class ApprovazioneRichiestaServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doPost(req, resp);
@@ -34,16 +34,16 @@ public class AccettazioneRichiestaServlet extends HttpServlet {
         TutoratoDidatticoDAO tutoratodao = new TutoratoDidatticoDAO();
         SupportoEsameDAO supportodao = new SupportoEsameDAO();
         if (tutorato != null){
-            // tutoratodao.accettaRichiesta(tutorato.getId(), tutor.getEmail());
+            // tutoratodao.approvaRichiesta(tutorato.getId(), tutor.getEmail());
             // resp.sendRedirect("view/HomePage.jsp");
         }
-       else if (supporto != null){
-           // supportodao.accettaRichiesta(supporto.getId(), supporto.getEmail());
+        else if (supporto != null){
+            // supportodao.approvaRichiesta(supporto.getId(), supporto.getEmail());
             // resp.sendRedirect("view/HomePage.jsp");
         }
-       else {
-           session.setAttribute("alertMsg", "L'operazione non è andata a buon fine");
-           resp.sendRedirect("view/HomePage.jsp");
+        else {
+            session.setAttribute("alertMsg", "L'operazione non è andata a buon fine");
+            resp.sendRedirect("view/HomePage.jsp");
         }
 
     }

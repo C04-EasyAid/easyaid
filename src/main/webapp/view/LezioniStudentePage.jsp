@@ -85,7 +85,7 @@
                                     <div class="d-flex align-items-center">
                                         <!-- Image -->
                                         <div class="w-100px">
-                                            <img src="../assets/images/courses/4by3/08.jpg" class="rounded" alt="">
+                                            <img src="../image/lavagna.png" class="rounded" alt="">
                                         </div>
                                         <div class="mb-0 ms-2">
                                             <h6><p class="card-description"><br><code>&lt;<%=lezione.getTutor()%>&gt;</code>

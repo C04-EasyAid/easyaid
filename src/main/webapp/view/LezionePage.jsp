@@ -102,7 +102,7 @@
                                     for (CommentoBean bean : commenti) {
                                         if (bean.getStudente() != null) {
                                             mittente = bean.getStudente();
-                                        } else {
+                                        } else if(bean.getStudente() != null){
                                             mittente = bean.getTutor();
                                         }
                                 %>

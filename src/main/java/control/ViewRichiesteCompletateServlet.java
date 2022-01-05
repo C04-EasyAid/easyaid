@@ -22,18 +22,18 @@ public class ViewRichiesteCompletateServlet extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-      throws ServletException, IOException {
+          throws ServletException, IOException {
     HttpSession session = req.getSession();
     UserBean userLoggato = (UserBean) session.getAttribute("utente");
     if (userLoggato != null) {
-      if (userLoggato.isPersonaleAmministrativo()) {
+      if (userLoggato.isProfessoreReferente()) {
         SupportoEsameDAO esameDAO = new SupportoEsameDAO();
         TutoratoDidatticoDAO tutoratoDAO = new TutoratoDidatticoDAO();
         try {
           List<SupportoEsameBean> listRichiesteSupportoEsame =
-              esameDAO.doRetrieveAllRichiesteSupportoEsameCompletate();
+                  esameDAO.doRetrieveAllRichiesteSupportoEsameCompletate();
           List<TutoratoDidatticoBean> listRichiesteTutoratoDidattico =
-              tutoratoDAO.doRetrieveAllRichiesteTutoratoDidatticoCompletate();
+                  tutoratoDAO.doRetrieveAllRichiesteTutoratoDidatticoCompletate();
           session.setAttribute("richiesteEsamiCompletate", listRichiesteSupportoEsame);
           session.setAttribute("richiesteTutoratoCompletate", listRichiesteTutoratoDidattico);
 

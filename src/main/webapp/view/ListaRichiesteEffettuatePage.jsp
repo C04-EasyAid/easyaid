@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>EasyAid</title>
     <!-- Meta Tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -86,11 +86,11 @@
                                             <td><%=b.getOreDisponibili()%></td>
                                             <td><%=b.getOreRichieste()%></td>
                                             <%if(b.getStatus()==0){  %>
-                                            <td><a href="#" class="badge bg-danger"><i class="fas fa-circle me-2 small fw-bold"></i>Non accettata</a></td>
+                                            <td><a href="#" class="badge bg-danger">Non accettata</a></td>
                                             <%}else{%>
-                                            <td><a href="#" class="badge bg-success"><i class="fas fa-circle me-2 small fw-bold"></i>Accettata</a></td>
+                                            <td><a href="#" class="badge bg-success">Accettata</a></td>
                                             <% } %>
-                                            <td><a class="btn btn-outline-info" href="" role="button">Visualizza</a> </td>
+                                            <td><a class="btn btn-outline-info" href="../SingolaRichiestaServlet?idTutorato=<%=b.getId()%>" role="button">Visualizza</a> </td>
                                         </tr>
                                         <%}%>
                                         </tbody>
@@ -119,12 +119,15 @@
                                         %>
                                         <tr>
                                             <td>
-                                                <div class="d-flex align-items-center">
+                                                <div class="d-flex ">
                                                     <div class="w-100px">
                                                         <img src="../assets/images/courses/4by3/08.jpg" class="rounded" alt="">
                                                     </div>
                                                     <div class="mb-0 ms-2">
-                                                        <h6><p class="card-description"><br><code>&lt;<%=b.getTutorEmail()%>&gt;</code></p></h6>
+                                                        <%if(b.getTutorEmail()==null){%>
+                                                        <h6><p class="card-description"><br><code>&lt;non assegnato&gt;</code></p></h6>
+                                                        <%}else{%>
+                                                        <h6><p class="card-description"><br><code>&lt;<%=b.getTutorEmail()%>&gt;</code></p></h6><%}%>
                                                     </div>
                                                 </div>
                                             </td>
@@ -135,11 +138,11 @@
                                             <td><%=b.getModalitaEsame()%></td>
                                             <td><%=b.getInsegnamento()%></td>
                                             <%if(b.getStatus()==0){  %>
-                                            <td><a href="#" class="badge bg-danger"><i class="fas fa-circle me-2 small fw-bold"></i>Non accettata</a></td>
+                                            <td><a href="#" class="badge bg-danger">Non accettata</a></td>
                                             <%}else{%>
                                             <td><a href="#" class="badge bg-success"><i class="fas fa-circle me-2 small fw-bold"></i>Accettata</a></td>
                                             <% } %>
-                                            <td ><a class="btn btn-outline-info" href="" role="button">Visualizza</a> </td>
+                                            <td ><a class="btn btn-outline-info" href="../SingolaRichiestaServlet?idSupporto=<%=b.getId()%>" role="button">Visualizza</a> </td>
                                         </tr>
                                         <%}%>
                                         </tbody>

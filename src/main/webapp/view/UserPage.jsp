@@ -181,7 +181,7 @@
                         </li>
                         <li class="list-group-item">
                             <span>Percentuale disabilità:</span>
-                            <span class="h6 mb-0"><%=bean.getTipoDisabilita()%></span>
+                            <span class="h6 mb-0"><%=bean.getPercentualeDisabilita()%></span>
                         </li>
                     </ul>
                 </div>

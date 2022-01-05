@@ -40,11 +40,11 @@
                                 <%if(ruolo.equals("Tutor")){%>
                                 <div class="avatar-img rounded-circle bg-success"><span class="text-white position-absolute top-50 start-50 translate-middle fw-bold fs-1"><%=user.getNome().substring(0,1)+ user.getCognome().substring(0,1)%></span></div><%}%>
                                 <%if(ruolo.equals("Professore Referente")){%>
-                                <div class="avatar-img rounded-circle bg-warning"><span class="text-white position-absolute top-50 start-50 translate-middle fw-bold fs-1"><%=user.getNome().substring(0,1)+ user.getCognome().substring(0,1)%></span></div><%}%>
-                                <span class="badge bg-success text-white rounded-pill position-absolute top-50 start-100 translate-middle mt-4 mt-md-5 ms-n3 px-md-3" style="background:#59cfcd !important;"><%=ruolo%></span>
+                                <div class="avatar-img rounded-circle bg-warning"><span class="text-white position-absolute top-50 start-50 translate-middle fw-bold fs-1"><%=user.getNome().substring(0,1)+ user.getCognome().substring(0,1)%></span></div>
+                                <span class="badge bg-success text-white rounded-pill position-absolute top-50 start-100 translate-middle mt-4 mt-md-5 ms-n3 px-md-3" style="background:#59cfcd !important;">Professore</span><%}%>
                                 <%if(ruolo.equals("Admin")){%>
-                                <div class="avatar-img rounded-circle bg-blue"><span class="text-white position-absolute top-50 start-50 translate-middle fw-bold fs-1"><%=user.getNome().substring(0,1)+ user.getCognome().substring(0,1)%></span></div><%}%>
-                                <span class="badge bg-success text-white rounded-pill position-absolute top-50 start-100 translate-middle mt-4 mt-md-5 ms-n3 px-md-3" style="background:#59cfcd !important;"><%=ruolo%></span>
+                                <div class="avatar-img rounded-circle bg-blue"><span class="text-white position-absolute top-50 start-50 translate-middle fw-bold fs-1"><%=user.getNome().substring(0,1)+ user.getCognome().substring(0,1)%></span></div>
+                                <span class="badge bg-success text-white rounded-pill position-absolute top-50 start-100 translate-middle mt-4 mt-md-5 ms-n3 px-md-3" style="background:#59cfcd !important;"><%=ruolo%></span><%}%>
                             </div>
                         </div>
                         <!-- Profile info -->

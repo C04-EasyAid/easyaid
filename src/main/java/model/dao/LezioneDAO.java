@@ -70,13 +70,13 @@ public class LezioneDAO {
       while (rs.next()) {
         lezione =
             new LezioneBean(
-                rs.getInt("id"),
-                rs.getInt("tutorato"),
-                rs.getString("ora_inizio"),
-                rs.getString("ora_fine"),
-                rs.getDate("data"),
-                rs.getString("tutor"),
-                rs.getBoolean("status"));
+                    rs.getInt("id"),
+                    rs.getInt("tutorato"),
+                    rs.getString("ora_inizio").substring(0,5),
+                    rs.getString("ora_fine").substring(0,5),
+                    rs.getDate("data"),
+                    rs.getString("tutor"),
+                    rs.getBoolean("status"));
         lezione.setInsegnamento(rs.getString("insegnamento"));
         lezione.setEmailStudente(rs.getString("studente_email"));
         lezioni.add(lezione);
@@ -111,8 +111,8 @@ public class LezioneDAO {
             new LezioneBean(
                 rs.getInt("id"),
                 rs.getInt("tutorato"),
-                rs.getString("ora_inizio"),
-                rs.getString("ora_fine"),
+                rs.getString("ora_inizio").substring(0,5),
+                rs.getString("ora_fine").substring(0,5),
                 rs.getDate("data"),
                 rs.getString("tutor"),
                 rs.getBoolean("status"));

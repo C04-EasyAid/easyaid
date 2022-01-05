@@ -41,7 +41,7 @@
 </header>
 
 <main>
-    <section class="position-relative overflow-hidden pt-5 pt-lg-8 bg-info h-75">
+    <section class="position-relative overflow-hidden pt-5 pt-lg-8 bg-info h-75" style="margin-top: 3em;">
         <div class="container">
             <div class="row align-items-center g-5">
                 <div class="col-lg-5 col-xl-6 position-relative z-index-1 text-center text-lg-start mb-5 mb-sm-0">

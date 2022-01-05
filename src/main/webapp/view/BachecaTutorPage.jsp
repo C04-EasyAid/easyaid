@@ -1,12 +1,6 @@
 <%@ page import="java.util.Collection" %>
 <%@ page import="model.bean.TutoratoDidatticoBean" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="model.dao.TutoratoDidatticoDAO" %>
-<%@ page import="model.bean.TutorBean" %>
-<%@ page import="model.dao.SupportoEsameDAO" %>
 <%@ page import="model.bean.SupportoEsameBean" %>
-<%@ page import="javax.swing.text.html.HTMLDocument" %>
-<%@ page import="java.util.Iterator" %><%--
 <%--
   Created by IntelliJ IDEA.
   User: Martina Giugliano
@@ -14,7 +8,7 @@
   Time: 15:03
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <!-- Meta Tags -->
@@ -23,8 +17,6 @@
     <meta name="author" content="Webestica.com">
     <meta name="description" content="Eduport- LMS, Education and Course Theme">
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="../assets/images/favicon.ico">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
@@ -50,12 +42,9 @@
 </header>
 <%@ include file="../fragment/UserSection.jsp" %>
 <div class="content-wrapper align-self-center">
-    <% TutoratoDidatticoDAO daoT = new TutoratoDidatticoDAO();
-        SupportoEsameDAO daoS = new SupportoEsameDAO();
-        Collection<TutoratoDidatticoBean> richiesteTutorato = new ArrayList<>();
-        richiesteTutorato = daoT.doRetrieveRichiesteTutoratoDidatticoNonAccettate();
-        Collection<SupportoEsameBean> richesteSupporto = new ArrayList<>();
-        richesteSupporto = daoS.doRetrieveRichiesteSupportoEsameNonAccettate();
+    <%
+        Collection<TutoratoDidatticoBean> richiesteTutorato = (Collection<TutoratoDidatticoBean>) session.getAttribute("richiesteTutoratoNonAccettate");
+        Collection<SupportoEsameBean> richesteSupporto = (Collection<SupportoEsameBean>) session.getAttribute("richiesteEsamiNonAccettate");
     %>
 
     <% for (TutoratoDidatticoBean b : richiesteTutorato) {

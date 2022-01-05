@@ -57,7 +57,9 @@ public class LezioneDAO {
     return bean;
   }
 
-  public synchronized Collection<LezioneBean> doRetrieveLezioniById(int id)
+
+  //Metodo che restituisce le lezione tramite l'id del tutorato
+  public synchronized Collection<LezioneBean> doRetrieveAllLezioniById(int id)
       throws ClassNotFoundException, SQLException {
     Connection conn = null;
     LezioneBean bean = null;
@@ -174,6 +176,7 @@ public class LezioneDAO {
     return lezioni;
   }
 
+  //Metodi che restituisce l'id del tutorato dalla lezione
   public synchronized int doRetrieveTutoratoByLezione(int lezione) throws SQLException {
     int idTutorato = 0;
     Connection conn = null;
@@ -198,8 +201,8 @@ public class LezioneDAO {
     return idTutorato;
   }
 //Metodo che restituisce un booleano
-// true = Se la somma delle ore delle lezioni sono uguali alle ore richieste
-// false = Se la somma delle ore delle lezioni non sono uguali alle ore richieste
+// true = Se la somma delle ore delle lezioni è uguali alle ore richieste
+// false = Se la somma delle ore delle lezioni non è uguali alle ore richieste
   private synchronized boolean countOre(Collection<LezioneBean> lezioni) throws SQLException, ClassNotFoundException {
     boolean uguale = false;
     int count = 0;

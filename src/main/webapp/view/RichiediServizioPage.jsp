@@ -434,28 +434,7 @@
         </div>
     </div>
 </div>
-<footer>
-    <div class="container">
-        <div class="py-1">
-            <div class="container px-0">
-                <div class="d-md-flex justify-content-between align-items-center py-3 text-center text-center text-md-left">
-                    <div class="text-primary-hover">
-                        <a href="#" class="text-body">Copyrights©2021 EasyAid All rights reserved.</a>
-                    </div>
-                    <div class="mt-3 mt-md-0">
-                        <ul class="list-inline-item">
-                            <li class="list-inline-item">
-                                <a class="nav-link pe-0" href="#">
-                                    Privacy policy
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
+
 <!-- Back to top -->
 <div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
 
@@ -470,6 +449,9 @@
 <!-- Template Functions -->
 <script src="../assets/js/functions.js"></script>
 
+<footer>
+    <%@ include file="../fragment/footer.html" %>
+</footer>
 
 </body>
 </html>

@@ -103,7 +103,7 @@
                                         for (CommentoBean bean : commenti) {
                                             if (bean.getStudente() != null) {
                                                 mittente = bean.getStudente();
-                                            } else if(bean.getStudente() != null){
+                                            } else if(bean.getTutor() != null){
                                                 mittente = bean.getTutor();
                                             }
                                     %>
@@ -145,7 +145,6 @@
             </div>
         </div>
     </div>
-</div>
 </div>
 
 <div class="back-top"><i

@@ -6,13 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-<%@ page import="model.bean.UserBean" %>
-<%@ page import="model.bean.TutoratoDidatticoBean" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page import="model.bean.LezioneBean" %>
-<%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Collection" %>
-<%@ page import="model.dao.LezioneDAO" %>
 <html>
 <head>
     <!-- Meta Tags -->
@@ -20,9 +15,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Webestica.com">
     <meta name="description" content="Eduport- LMS, Education and Course Theme">
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="../assets/images/favicon.ico">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">

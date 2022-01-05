@@ -73,8 +73,8 @@ public class CommentoDAO {
             stmt.setString(4,data);
             stmt.setString(5,ora);
             stmt.setString(6,emailMittente);
-            System.out.println(""+stmt);
             result = stmt.executeUpdate() == 1 ;
+            System.out.println(""+stmt);
             conn.commit();
         } catch (SQLException e) {
             result = false;

@@ -37,6 +37,7 @@ private static String myClass = "LoginServlet";
       if (user == null) {
         // Nessun utente nel sistema
         response.sendRedirect("view/LoginPage.jsp");
+        session.setAttribute("alertMsg", "L'operazione non e' andata a buon fine");
       }
       else
       {
@@ -45,7 +46,7 @@ private static String myClass = "LoginServlet";
       }
     } catch (Throwable e) {
       log.error(myClass,"Catturata eccezione nella Servlet", (Exception) e);
-      session.setAttribute("alertMsg", "Errore, ritorno alla Login Page");
+      session.setAttribute("alertMsg", "L'operazione non e' andata a buon fine");
       response.sendRedirect("view/LoginPage.jsp");
     }
   }

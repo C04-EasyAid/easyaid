@@ -196,7 +196,7 @@
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Insegnamento:</label>
-                                                <input type="text" name="insegnamento" class="form-control" id="recipient-name">
+                                                <input type="text" name="insegnamento" class="form-control" id="recipient-name"  required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Modalità di
@@ -255,13 +255,13 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Ore Richieste:</label>
-                                                <input type="number" name="ore_richieste" class="form-control" id="message-text">
+                                                <input type="number" name="ore_richieste" class="form-control" id="message-text"  required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Docente:</label>
-                                                <input type="text" name="docente" class="form-control" id="message-text">
+                                                <input type="text" name="docente" class="form-control" id="message-text" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Dipartimento:</label>
@@ -314,15 +314,15 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Data:</label>
-                                                <input type="date" name="data" class="form-control" id="message-text">
+                                                <input type="date" name="data" class="form-control" id="message-text"  required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Ora:</label>
-                                                <input type="time" name="ora" class="form-control" id="message-text">
+                                                <input type="time" name="ora" class="form-control" id="message-text"  required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Luogo:</label>
-                                                <input type="text" name="luogo" class="form-control" id="message-text">
+                                                <input type="text" name="luogo" class="form-control" id="message-text"  required>
                                             </div>
                                         </div>
                                     </div>
@@ -348,12 +348,12 @@
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Insegnamento:</label>
-                                                <input type="text" name="insegnamento" class="form-control" id="recipient-name">
+                                                <input type="text" name="insegnamento" class="form-control" id="recipient-name"  required>
                                             </div>
 
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Ore Richieste:</label>
-                                                <input type="number" name="ore_richieste" class="form-control" id="message-text">
+                                                <input type="number" name="ore_richieste" class="form-control" id="message-text"  required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Dipartimento:</label>
@@ -408,16 +408,16 @@
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Docente:</label>
-                                                <input type="text" name="docente" class="form-control" id="message-text">
+                                                <input type="text" name="docente" class="form-control" id="message-text"  required>
                                             </div>
 
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Date disponibili:</label>
-                                                <input type="text" name="date_disponibili" class="form-control" id="message-text">
+                                                <input type="text" name="date_disponibili" class="form-control" id="message-text"  required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Ore disponibili:</label>
-                                                <input type="text" name="ore_disponibili" class="form-control" id="message-text">
+                                                <input type="text" name="ore_disponibili" class="form-control" id="message-text"  required>
                                             </div>
                                         </div>
                                     </div>
@@ -435,26 +435,7 @@
     </div>
 </div>
 <footer>
-    <div class="container">
-        <div class="py-1">
-            <div class="container px-0">
-                <div class="d-md-flex justify-content-between align-items-center py-3 text-center text-center text-md-left">
-                    <div class="text-primary-hover">
-                        <a href="#" class="text-body">Copyrights©2021 EasyAid All rights reserved.</a>
-                    </div>
-                    <div class="mt-3 mt-md-0">
-                        <ul class="list-inline-item">
-                            <li class="list-inline-item">
-                                <a class="nav-link pe-0" href="#">
-                                    Privacy policy
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <%@include file="../fragment/footer.html"%>
 </footer>
 <!-- Back to top -->
 <div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>

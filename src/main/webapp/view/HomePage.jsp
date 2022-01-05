@@ -5,7 +5,7 @@
   Time: 15:57
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <title>Home</title>
@@ -15,8 +15,6 @@
     <meta name="author" content="Webestica.com">
     <meta name="description" content="Eduport- LMS, Education and Course Theme">
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -59,7 +57,7 @@
                 </div>
                 <div class="col-lg-7 col-xl-6 text-center position-relative">
                     <div class="position-relative">
-                        <img src="../image/home-ill.svg">
+                        <img src="../image/home-ill.svg" alt="">
                     </div>
                 </div>
             </div>

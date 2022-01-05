@@ -162,7 +162,7 @@
 <!-- Template Functions -->
 <script src="../assets/js/functions.js"></script>
 <footer>
-    <%@ include file="../fragment/footer.html" %>
+    <%@include file="../fragment/footer.html" %>
 </footer>
 </body>
 </html>

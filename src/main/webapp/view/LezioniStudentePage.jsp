@@ -118,7 +118,7 @@
         </div>
     </div>
 </div>
-<section>
+</section>
 </main>
 <!-- Back to top -->
 <div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
@@ -133,6 +133,9 @@
 
 <!-- Template Functions -->
 <script src="../assets/js/functions.js"></script>
+<footer>
+    <%@include file="../fragment/footer.html" %>
+</footer>
 </body>
 </html>
 

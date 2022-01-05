@@ -147,7 +147,7 @@
     </nav>
     <!-- Logo Nav END -->
 </header>
-<div class="bg-info rounded-3 p-4 p-sm-5" style="margin-top: 8em;margin-bottom: 16em;">
+<div class="bg-info rounded-3 p-4 p-sm-8" style="margin-top: 8em;margin-bottom: 9em;">
     <!-- Title -->
     <h2 class="mb-3 text-center text-light ">Richiedi uno dei seguenti servizi</h2>
     <div class="container-fluid d-flex align-items-center justify-content-center">

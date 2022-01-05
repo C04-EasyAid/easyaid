@@ -7,6 +7,7 @@ import model.bean.UserBean;
 import model.dao.LezioneDAO;
 import model.dao.StudenteDAO;
 import model.dao.TutorDAO;
+import model.dao.TutoratoDidatticoDAO;
 import other.MyLogger;
 
 import javax.servlet.ServletException;
@@ -33,6 +34,7 @@ public class LezioniServlet extends HttpServlet {
     UserBean user = (UserBean) session.getAttribute("utente");
     LezioneDAO lezioneDao=new LezioneDAO();
     StudenteDAO studenteDao=new StudenteDAO();
+    TutoratoDidatticoDAO tutoratoDidatticoDAO = new TutoratoDidatticoDAO();
     TutorDAO tutorDao=new TutorDAO();
     if (user != null) {
       if (user.isStudente()) {
@@ -70,6 +72,9 @@ public class LezioniServlet extends HttpServlet {
             ArrayList<LezioneBean> lista =
                 (ArrayList<LezioneBean>) lezioneDao.doRetrieveLezioneByTutor(bean.getEmailTutor());
             session.setAttribute("listaLezioni", lista);
+            session.setAttribute(
+                    "richiesteTutorato",
+                    tutoratoDidatticoDAO.doRetrieveAllByTutor(bean.getEmailTutor()));
             response.sendRedirect("view/LezioniTutorPage.jsp");
           } catch (ClassNotFoundException e) {
             log.error(myClass,"Catturata eccezione nella Servlet", e);

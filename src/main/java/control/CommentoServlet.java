@@ -5,7 +5,7 @@ import model.bean.StudenteBean;
 import model.bean.TutorBean;
 import model.bean.UserBean;
 import model.dao.CommentoDAO;
-import model.dao.StudentDAO;
+import model.dao.StudenteDAO;
 import model.dao.TutorDAO;
 import other.MyLogger;
 
@@ -36,7 +36,7 @@ public class CommentoServlet extends HttpServlet {
             String msg = request.getParameter("commento");
             LezioneBean lezione = (LezioneBean) session.getAttribute("lezione");
             if (msg != null && lezione.getId() != 0) {
-                StudentDAO daoS = new StudentDAO();
+                StudenteDAO daoS = new StudenteDAO();
                 TutorDAO daoT = new TutorDAO();
 
                 if (user.isStudente()) {

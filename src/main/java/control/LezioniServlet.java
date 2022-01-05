@@ -5,7 +5,7 @@ import model.bean.StudenteBean;
 import model.bean.TutorBean;
 import model.bean.UserBean;
 import model.dao.LezioneDAO;
-import model.dao.StudentDAO;
+import model.dao.StudenteDAO;
 import model.dao.TutorDAO;
 import other.MyLogger;
 
@@ -32,7 +32,7 @@ public class LezioniServlet extends HttpServlet {
     HttpSession session = request.getSession();
     UserBean user = (UserBean) session.getAttribute("utente");
     LezioneDAO lezioneDao=new LezioneDAO();
-    StudentDAO studenteDao=new StudentDAO();
+    StudenteDAO studenteDao=new StudenteDAO();
     TutorDAO tutorDao=new TutorDAO();
     if (user != null) {
       if (user.isStudente()) {

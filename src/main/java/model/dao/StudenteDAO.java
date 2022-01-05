@@ -13,7 +13,7 @@ import static model.dao.ConnectionPool.conn;
  * @author Giovanni Toriello
  * Classe StudenteDAO
  */
-public class StudentDAO {
+public class StudenteDAO {
   //Metodo che restituisce lo studente
   public synchronized StudenteBean doRetrieveByEmail(String email) throws SQLException {
     Connection conn = null;

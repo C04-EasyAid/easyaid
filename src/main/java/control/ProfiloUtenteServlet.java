@@ -2,7 +2,7 @@ package control;
 
 import model.bean.UserBean;
 import model.dao.ProfessoreReferenteDAO;
-import model.dao.StudentDAO;
+import model.dao.StudenteDAO;
 import model.dao.TutorDAO;
 import model.dao.UserDAO;
 import other.MyLogger;
@@ -29,7 +29,7 @@ public class ProfiloUtenteServlet extends HttpServlet {
     UserBean userLoggato = (UserBean) session.getAttribute("utente");
     ProfessoreReferenteDAO professoreDao=new ProfessoreReferenteDAO();
     TutorDAO tutorDao=new TutorDAO();
-    StudentDAO studenteDao=new StudentDAO();
+    StudenteDAO studenteDao=new StudenteDAO();
     if (userLoggato != null && userLoggato.isPersonaleAmministrativo()) {
       if (request.getParameter("usrEmail") != null && request.getParameter("ruolo") != null) {
         String email = request.getParameter("usrEmail");

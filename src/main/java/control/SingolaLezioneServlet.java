@@ -5,6 +5,7 @@ import model.bean.LezioneBean;
 import model.bean.UserBean;
 import model.dao.CommentoDAO;
 import model.dao.LezioneDAO;
+import other.MyLogger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,8 +24,11 @@ Servlet che permette di visualizzare la singola lezione
  */
 @WebServlet("/SingolaLezione")
 public class SingolaLezioneServlet extends HttpServlet {
+  private static MyLogger log = MyLogger.getInstance();
+  private static String myClass = "SingolaLezioneServlet";
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+    log.info(myClass,"Collegamento alla Servlet...");
     HttpSession session = request.getSession();
     UserBean userLoggato = (UserBean) session.getAttribute("utente");
     LezioneDAO lezioneDao=new LezioneDAO();
@@ -43,8 +47,10 @@ public class SingolaLezioneServlet extends HttpServlet {
           response.sendRedirect("view/LezionePage.jsp");
 
         } catch (ClassNotFoundException e) {
+          log.error(myClass,"Catturata eccezione nella Servlet", e);
           e.printStackTrace();
         } catch (SQLException e) {
+          log.error(myClass,"Catturata eccezione nella Servlet", e);
           e.printStackTrace();
         }
       }

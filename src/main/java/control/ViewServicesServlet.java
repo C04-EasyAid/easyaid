@@ -1,6 +1,7 @@
 package control;
 
 import model.bean.StudenteBean;
+import other.MyLogger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,10 +18,12 @@ import java.io.IOException;
 @WebServlet("/viewServices")
 public class ViewServicesServlet extends HttpServlet
 {
-
+    private static MyLogger log = MyLogger.getInstance();
+    private static String myClass = "ViewServicesServlet";
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
     {
+        log.info(myClass,"Collegamento alla Servlet...");
         HttpSession session=req.getSession();
         StudenteBean bean= (StudenteBean) session.getAttribute("studente");
 

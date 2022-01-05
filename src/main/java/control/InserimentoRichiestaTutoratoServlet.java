@@ -3,6 +3,7 @@ package control;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
 import model.dao.TutoratoDidatticoDAO;
+import other.MyLogger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,9 +20,12 @@ import java.sql.SQLException;
  *     didattico nel DB
  */
 public class InserimentoRichiestaTutoratoServlet extends HttpServlet {
+  private static MyLogger log = MyLogger.getInstance();
+  private static String myClass = "InserimentoRichiestaTutoratoServlet";
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
+    log.info(myClass,"Collegamento alla Servlet...");
     HttpSession session = req.getSession();
     UserBean user = (UserBean) session.getAttribute("utente");
     TutoratoDidatticoDAO dao=new TutoratoDidatticoDAO();
@@ -40,6 +44,7 @@ public class InserimentoRichiestaTutoratoServlet extends HttpServlet {
         resp.sendRedirect("view/HomePage.jsp");
         }
       } catch (SQLException e) {
+        log.error(myClass,"Catturata eccezione nella Servlet", e);
         e.printStackTrace();
       }
     } else {

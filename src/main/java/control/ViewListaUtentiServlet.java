@@ -2,6 +2,7 @@ package control;
 
 import model.bean.UserBean;
 import model.dao.UserDAO;
+import other.MyLogger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,15 +13,18 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
-/** @author Roberto Tartaglia Servlet che permette di effettuare il logout */
+/** @author Roberto Tartaglia Servlet che permette di visualizzare la lista di utenti */
 @WebServlet(name = "ViewListaUsers", urlPatterns = "/ViewListaUsers")
 public class ViewListaUtentiServlet extends HttpServlet {
+  private static MyLogger log = MyLogger.getInstance();
+  private static String myClass = "ViewListaUtentiServlet";
   public ViewListaUtentiServlet() {
     super();
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+    log.info(myClass,"Collegamento alla Servlet...");
     HttpSession session = request.getSession();
     UserBean userLoggato = (UserBean) session.getAttribute("utente");
     UserDAO userDao=new UserDAO();
@@ -29,6 +33,7 @@ public class ViewListaUtentiServlet extends HttpServlet {
         session.setAttribute("usrList",userDao.doRetrieveAll());
         response.sendRedirect("view/ListaUtentiPage.jsp");
       } catch (Exception e) {
+        log.error(myClass,"Catturata eccezione nella Servlet", e);
         e.printStackTrace();
       }
     } else {

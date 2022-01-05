@@ -1,6 +1,7 @@
 package control;
 
 import model.bean.UserBean;
+import other.MyLogger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +18,8 @@ import java.io.IOException;
 @WebServlet("/logout")
 public class LogoutServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    private static MyLogger log = MyLogger.getInstance();
+    private static String myClass = "LogoutServlet";
 
     public LogoutServlet() {
         super();
@@ -24,6 +27,7 @@ public class LogoutServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        log.info(myClass,"Collegamento alla Servlet...");
         HttpSession session = request.getSession();
         session.invalidate();
         response.sendRedirect("view/LoginPage.jsp");

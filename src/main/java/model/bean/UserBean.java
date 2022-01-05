@@ -1,12 +1,14 @@
 package model.bean;
 
+import javax.servlet.http.HttpSessionBindingEvent;
+import javax.servlet.http.HttpSessionBindingListener;
 import java.util.Locale;
 
 /**
  * @author Giovanni Toriello
  * Classe UserBean
  */
-public class UserBean {
+public class UserBean implements HttpSessionBindingListener {
   // Variabili dell'utente
   private String nome, cognome, email, password, ruolo;
 
@@ -136,5 +138,18 @@ public class UserBean {
         + ruolo
         + '\''
         + '}';
+  }
+  @Override
+  public void valueBound(HttpSessionBindingEvent event) {
+    System.out.println("-- HttpSessionBindingListener#valueBound() --");
+    System.out.printf("Aggiunto attributo alla sessione con il nome : %s, valore:%s %n",
+            event.getName(), event.getValue());
+  }
+
+  @Override
+  public void valueUnbound(HttpSessionBindingEvent event) {
+    System.out.println("-- HttpSessionBindingEvent#valueUnbound() --");
+    System.out.printf("Rimosso attributo alla sessione con il nome : %s, valore:%s %n",
+            event.getName(), event.getValue());
   }
 }

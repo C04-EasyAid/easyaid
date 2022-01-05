@@ -28,18 +28,18 @@ public class ApprovazioneRichiestaServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        UserBean tutor = (UserBean) session.getAttribute("utente");
+        UserBean prof = (UserBean) session.getAttribute("utente");
         TutoratoDidatticoBean tutorato = (TutoratoDidatticoBean) session.getAttribute("tutorato");
         SupportoEsameBean supporto = (SupportoEsameBean) session.getAttribute("supporto");
         TutoratoDidatticoDAO tutoratodao = new TutoratoDidatticoDAO();
         SupportoEsameDAO supportodao = new SupportoEsameDAO();
         if (tutorato != null){
-            // tutoratodao.approvaRichiesta(tutorato.getId(), tutor.getEmail());
-            // resp.sendRedirect("view/HomePage.jsp");
+             tutoratodao.approvaRichiesta(tutorato.getId(), tutor.getEmail());
+             resp.sendRedirect("view/HomePage.jsp");
         }
         else if (supporto != null){
-            // supportodao.approvaRichiesta(supporto.getId(), supporto.getEmail());
-            // resp.sendRedirect("view/HomePage.jsp");
+             supportodao.approvaRichiesta(supporto.getId(), supporto.getEmail());
+             resp.sendRedirect("view/HomePage.jsp");
         }
         else {
             session.setAttribute("alertMsg", "L'operazione non è andata a buon fine");

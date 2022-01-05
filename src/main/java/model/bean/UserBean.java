@@ -8,7 +8,7 @@ import java.util.Locale;
  */
 public class UserBean {
   // Variabili dell'utente
-  public String nome, cognome, email, password, ruolo;
+  private String nome, cognome, email, password, ruolo;
 
   /**
    * Costruttore

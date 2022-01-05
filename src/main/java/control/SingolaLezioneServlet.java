@@ -27,15 +27,17 @@ public class SingolaLezioneServlet extends HttpServlet {
       throws ServletException, IOException {
     HttpSession session = request.getSession();
     UserBean userLoggato = (UserBean) session.getAttribute("utente");
+    LezioneDAO lezioneDao=new LezioneDAO();
+    CommentoDAO commentiDao=new CommentoDAO();
     if (userLoggato != null) {
       if (request.getParameter("lezione") != null) {
         String idLezione = request.getParameter("lezione");
         int id = Integer.parseInt(idLezione);
         try {
           LezioneBean lezione = new LezioneBean();
-          lezione = LezioneDAO.doRetrieveLezioneById(id);
+          lezione = lezioneDao.doRetrieveLezioneById(id);
           Collection<CommentoBean> commenti = new ArrayList<>();
-          commenti = CommentoDAO.doRetrieveCommento(lezione.getId());
+          commenti = commentiDao.doRetrieveCommento(lezione.getId());
           session.setAttribute("lezione", lezione);
           session.setAttribute("listaCommenti", commenti);
           response.sendRedirect("view/LezionePage.jsp");

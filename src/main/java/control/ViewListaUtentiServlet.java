@@ -23,9 +23,10 @@ public class ViewListaUtentiServlet extends HttpServlet {
       throws ServletException, IOException {
     HttpSession session = request.getSession();
     UserBean userLoggato = (UserBean) session.getAttribute("utente");
+    UserDAO userDao=new UserDAO();
     if (userLoggato != null && userLoggato.isPersonaleAmministrativo()) {
       try {
-        session.setAttribute("usrList", UserDAO.doRetrieveAll());
+        session.setAttribute("usrList",userDao.doRetrieveAll());
         response.sendRedirect("view/ListaUtentiPage.jsp");
       } catch (Exception e) {
         e.printStackTrace();

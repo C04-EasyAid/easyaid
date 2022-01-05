@@ -30,6 +30,7 @@ public class RegisterServlet extends HttpServlet {
         UserBean utenteLoggato= (UserBean)session.getAttribute("utente");
         //Creo il bean dell utente che andrà inserito nel DB
         UserBean utenteTemporaneo= new UserBean();
+        UserDAO dao=new UserDAO();
         utenteTemporaneo.setNome(request.getParameter("nome"));
         utenteTemporaneo.setCognome(request.getParameter("cognome"));
         utenteTemporaneo.setEmail(request.getParameter("email"));
@@ -63,7 +64,7 @@ public class RegisterServlet extends HttpServlet {
                         studente.setEmail(utenteTemporaneo.getEmail());
                         studente.setTipoDisabilita(request.getParameter("tipoDisabilita"));
                         studente.setSpecificheDisturbo(request.getParameter("specificheDisturbo"));
-                        if (!UserDAO.insertStudente(studente,utenteTemporaneo)) {
+                        if (!dao.insertStudente(studente,utenteTemporaneo)) {
                             session.setAttribute("alertMsg", "Errore nell'inserimento studente");
                             response.sendRedirect("view/HomePage.jsp");
                         }
@@ -76,7 +77,7 @@ public class RegisterServlet extends HttpServlet {
                         tutor.setEmailTutor(utenteTemporaneo.getEmail());
                         tutor.setOreDisponibili(Integer.parseInt(request.getParameter("oreDisponibiliTutor")));
                         tutor.setOreSvolte(0);
-                        if (!UserDAO.insertTutor(tutor, utenteTemporaneo)) {
+                        if (!dao.insertTutor(tutor, utenteTemporaneo)) {
                             session.setAttribute("alertMsg", "Errore nell'inserimento tutor");
                             response.sendRedirect("view/HomePage.jsp");
                         }
@@ -86,7 +87,7 @@ public class RegisterServlet extends HttpServlet {
                         System.out.println("prof");
                         professoreReferente.setEmail(utenteTemporaneo.getEmail());
                         professoreReferente.setDipartimento(request.getParameter("dipartimentoProf"));
-                        if (!UserDAO.insertProfessoreReferente(professoreReferente, utenteTemporaneo)) {
+                        if (!dao.insertProfessoreReferente(professoreReferente, utenteTemporaneo)) {
                             session.setAttribute("alertMsg", "Errore nell'inserimento professore referente");
                             response.sendRedirect("view/HomePage.jsp");
                         }

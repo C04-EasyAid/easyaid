@@ -75,7 +75,7 @@ public class TutoratoDidatticoDAO {
      * @throws SQLException
      * @throws ClassNotFoundException
      */
-    public static synchronized List<TutoratoDidatticoBean> doRetrieveAllByStudente(String emailStudente)  throws SQLException,ClassNotFoundException
+    public synchronized List<TutoratoDidatticoBean> doRetrieveAllByStudente(String emailStudente)  throws SQLException,ClassNotFoundException
     {
         Connection conn=null;
         String query="SELECT * FROM tutorato_didattico WHERE studente_email=?";
@@ -127,7 +127,7 @@ public class TutoratoDidatticoDAO {
      * @throws SQLException:Eccezione accesso al db
      * @throws ClassNotFoundException:eccezione classe non trovata
      */
-    public static synchronized List<TutoratoDidatticoBean> doRetrieveAllByTutor(String emailTutor) throws SQLException,ClassNotFoundException
+    public synchronized List<TutoratoDidatticoBean> doRetrieveAllByTutor(String emailTutor) throws SQLException,ClassNotFoundException
     {
         Connection conn=null;
         String query="SELECT * FROM tutorato_didattico WHERE tutor_email=?";
@@ -310,6 +310,38 @@ public class TutoratoDidatticoDAO {
 
         return bean;
 
+    }
+
+    public boolean InserimentoTutoratoDidattico (TutoratoDidatticoBean Bean) throws SQLException{
+        boolean inserimento = false;
+        Connection con = null;
+        String query = "INSERT INTO tutorato_didattico(date_disponibili, ore_disponibili, ore_richieste, insegnamento, dipartimento, studente_email, status) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                PreparedStatement stmt = null;
+                try {
+                    con = ConnectionPool.conn();
+                    stmt = con.prepareStatement(query);
+                    stmt.setString(1, Bean.getDateDisponibili());
+                    stmt.setString(2, Bean.getOreDisponibili());
+                    stmt.setInt(3, Bean.getOreRichieste());
+                    stmt.setString(4, Bean.getInsegnamento());
+                    stmt.setString(5, Bean.getDipartimento());
+                    stmt.setString(6, Bean.getStudenteEmail());
+                    stmt.setInt(7, 0);
+                    inserimento = stmt.executeUpdate() == 1;
+                    con.commit();
+                }
+                catch(SQLException e)
+                {
+                    e.printStackTrace();
+                    inserimento = false;
+                }
+                finally{
+                    if(stmt!=null)
+                        stmt.close();
+                    if(con!=null)
+                        con.close();
+                }
+                return inserimento;
     }
 
 }

@@ -7,7 +7,7 @@
   Time: 22:24
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -17,8 +17,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3mipmap34MD+dH/1fQ784/j6cY/iQUITOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="../assets/images/favicon.ico">
+
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
@@ -67,8 +66,10 @@
                                 <p class="fw-bold">Ore Disponibili:</p>
                                 <p><%=tutorato.getOreDisponibili()%>
                                 </p>
+                            </address>
                         </div>
                         <div class="col-md-6">
+                            <address>
                             <p class="fw-bold">Insegnamento:</p>
                             <p><%=tutorato.getInsegnamento()%>
                             </p>
@@ -111,8 +112,10 @@
                                 <p class="fw-bold">Ora:</p>
                                 <p><%=supporto.getOra()%>
                                 </p>
+                            </address>
                         </div>
                         <div class="col-md-6">
+                            <address>
                             <p class="fw-bold">Luogo:</p>
                             <p><%=supporto.getLuogo()%>
                             </p>

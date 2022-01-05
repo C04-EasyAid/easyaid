@@ -1,16 +1,15 @@
 <%@ page import="model.bean.UserBean" %>
 <%@ page import="model.bean.TutorBean" %>
-<%@ page import="model.dao.UserDAO" %>
 <%@ page import="model.bean.StudenteBean" %>
 <%@ page import="model.bean.ProfessoreReferenteBean" %>
-<%@ page import="model.dao.TutorDAO" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Giovanni Toriello
   Date: 29/12/2021
   Time: 09:27
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -20,8 +19,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3mipmap34MD+dH/1fQ784/j6cY/iQUITOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="../assets/images/favicon.ico">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
@@ -52,8 +49,9 @@
         <%
             UserBean utente = (UserBean) session.getAttribute("utenteSelezionato");
             String nome = "" + utente.getNome() + " " + utente.getCognome();
-            String iniziale = utente.getNome().substring(0, 1) + utente.getCognome().substring(0, 1);
+            String iniziale = utente.getNome().charAt(0) + utente.getCognome().substring(0, 1);
             String ruoloUtenteSelezionato = utente.getRuolo();
+
             if (ruoloUtenteSelezionato.equals("S")) {
                 ruoloUtenteSelezionato = "Studente";
             } else if (ruoloUtenteSelezionato.equals("T")) {

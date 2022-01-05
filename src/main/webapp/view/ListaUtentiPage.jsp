@@ -5,12 +5,9 @@
   Time: 21:33
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java"
-         import="model.bean.UserBean" import="model.dao.UserDAO"
-%>
+<%@ page contentType="text/html;charset=UTF-8" import="model.bean.UserBean" %>
 <%@ page import="java.util.Collection" %>
 <%
-    UserBean bean = new UserBean();
     Collection<UserBean> utenti = (Collection<UserBean>) session.getAttribute("usrList");
     int studenti = 0;
     int tutor = 0;
@@ -42,8 +39,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3mipmap34MD+dH/1fQ784/j6cY/iQUITOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="../assets/images/favicon.ico">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
@@ -107,9 +102,9 @@
                                                 <!-- Icon -->
                                                 <div class="icon-lg rounded-circle bg-instagram text-white mb-0">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill mt-3" viewBox="0 0 16 16">
-                                                        <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                                                        <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
-                                                        <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                                                        <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                                                        <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"></path>
+                                                        <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"></path>
                                                     </svg>
                                                 </div>
                                             </div>
@@ -130,7 +125,7 @@
                                                 <!-- Cerchi -->
                                                 <div class="icon-lg rounded-circle bg-primary text-white mb-0">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill mt-3" viewBox="0 0 16 16">
-                                                        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
+                                                        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"></path>
                                                     </svg>
                                                 </div>
                                             </div>
@@ -152,8 +147,8 @@
                                                 <!-- Icon -->
                                                 <div class="icon-lg rounded-circle bg-success text-white mb-0">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mortarboard-fill mt-3" viewBox="0 0 16 16">
-                                                        <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5Z"/>
-                                                        <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Z"/>
+                                                        <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5Z"></path>
+                                                        <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Z"></path>
                                                     </svg>
                                                 </div>
                                             </div>
@@ -175,7 +170,7 @@
                                                 <!-- Icon -->
                                                 <div class="icon-lg rounded-circle bg-warning text-white mb-0">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-check-fill mt-3" viewBox="0 0 16 16">
-                                                        <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+                                                        <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"></path>
                                                     </svg>
                                                 </div>
                                             </div>
@@ -238,13 +233,11 @@
                                                         if (!b.isPersonaleAmministrativo()) {
                                                             String nome = "" + b.getNome() + " " + b.getCognome();
                                                             String ruoloUsr = b.getRuolo();
-                                                            String iniziale = b.getNome().substring(0, 1) + b.getCognome().substring(0, 1);
-                                                            if (ruoloUsr.equals("S")) {
-                                                                ruoloUsr = "Studente";
-                                                            } else if (ruoloUsr.equals("T")) {
-                                                                ruoloUsr = "Tutor";
-                                                            } else if (ruoloUsr.equals("P")) {
-                                                                ruoloUsr = "Professore Referente";
+                                                            String iniziale = b.getNome().charAt(0) + b.getCognome().substring(0, 1);
+                                                            switch (ruoloUsr) {
+                                                                case "S" -> ruoloUsr = "Studente";
+                                                                case "T" -> ruoloUsr = "Tutor";
+                                                                case "P" -> ruoloUsr = "Professore Referente";
                                                             }
                                                 %>
                                                 <!-- Card item START -->
@@ -326,13 +319,11 @@
                                                         if (!b.isPersonaleAmministrativo()) {
                                                             String nome = "" + b.getNome() + " " + b.getCognome();
                                                             String ruoloUsr = b.getRuolo();
-                                                            String iniziale = b.getNome().substring(0, 1) + b.getCognome().substring(0, 1);
-                                                            if (ruoloUsr.equals("S")) {
-                                                                ruoloUsr = "Studente";
-                                                            } else if (ruoloUsr.equals("T")) {
-                                                                ruoloUsr = "Tutor";
-                                                            } else if (ruoloUsr.equals("P")) {
-                                                                ruoloUsr = "Professore Referente";
+                                                            String iniziale = b.getNome().charAt(0) + b.getCognome().substring(0, 1);
+                                                            switch (ruoloUsr) {
+                                                                case "S" -> ruoloUsr = "Studente";
+                                                                case "T" -> ruoloUsr = "Tutor";
+                                                                case "P" -> ruoloUsr = "Professore Referente";
                                                             }
                                                     %>
                                                     <tr>

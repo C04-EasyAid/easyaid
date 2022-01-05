@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     UserBean user = (UserBean) session.getAttribute("utente");
+    String alert= (String) session.getAttribute("alertMsg");
 %>
 <!-- Logo Nav START -->
 <nav class="navbar navbar-expand-xl">

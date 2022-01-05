@@ -33,7 +33,7 @@ public class CommentoServlet extends HttpServlet {
         session.removeAttribute("commento");
         CommentoDAO daoC = new CommentoDAO();
         if (user != null) {
-            String msg = (String) request.getParameter("commento");
+            String msg = request.getParameter("commento");
             LezioneBean lezione = (LezioneBean) session.getAttribute("lezione");
             if (msg != null && lezione.getId() != 0) {
                 StudenteDAO daoS = new StudenteDAO();
@@ -52,9 +52,7 @@ public class CommentoServlet extends HttpServlet {
                             session.setAttribute("listaCommenti", daoC.doRetrieveCommento(lezione.getId()));
                             session.setAttribute("alertMsg", "Commento inserito con successo");
                             response.sendRedirect("view/LezionePage.jsp");
-                        } catch (SQLException e) {
-                            e.printStackTrace();
-                        } catch (ClassNotFoundException e) {
+                        } catch (SQLException | ClassNotFoundException e) {
                             e.printStackTrace();
                         }
                     }
@@ -72,10 +70,7 @@ public class CommentoServlet extends HttpServlet {
                             session.setAttribute("listaCommenti", daoC.doRetrieveCommento(lezione.getId()));
                             session.setAttribute("alertMsg", "Commento inserito con successo");
                             response.sendRedirect("view/LezionePage.jsp");
-                        } catch (SQLException e) {
-                            log.error(myClass,"Catturata eccezione nella Servlet", e);
-                            e.printStackTrace();
-                        } catch (ClassNotFoundException e) {
+                        } catch (SQLException | ClassNotFoundException e) {
                             log.error(myClass,"Catturata eccezione nella Servlet", e);
                             e.printStackTrace();
                         }
@@ -86,13 +81,11 @@ public class CommentoServlet extends HttpServlet {
                 try {
                     session.setAttribute("alertMsg","Operazione non andata a buon fine");
                     session.setAttribute("listaCommenti", daoC.doRetrieveCommento(lezione.getId()));
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                } catch (SQLException e) {
+                } catch (ClassNotFoundException | SQLException e) {
                     e.printStackTrace();
                 }
                 response.sendRedirect("view/LezionePage.jsp");
-            } else if (user == null) {
+            } else {
                 response.sendRedirect("view/LoginPage.jsp");
             }
         }

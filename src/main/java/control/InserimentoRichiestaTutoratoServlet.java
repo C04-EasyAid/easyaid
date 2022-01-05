@@ -43,6 +43,10 @@ public class InserimentoRichiestaTutoratoServlet extends HttpServlet {
         session.setAttribute("alertMsg", "L’operazione non è andata a buon fine.");
         resp.sendRedirect("view/HomePage.jsp");
         }
+        else{
+          session.setAttribute("alertMsg","Richiesta di servizio di tutorato didattico inserita con successo!");
+          resp.sendRedirect("view/HomePage.jsp");
+        }
       } catch (SQLException e) {
         log.error(myClass,"Catturata eccezione nella Servlet", e);
         e.printStackTrace();

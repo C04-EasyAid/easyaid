@@ -93,7 +93,7 @@
                                 </td>
                                 <td><%=lezione.getInsegnamento()%>
                                 </td>
-                                <td><a class="btn btn-outline-info" href="../SingolaLezione?lezione=<%=lezione.getTutorato()%>" role="button">Visualizza</a> </td>
+                                <td><a class="btn btn-outline-info" href="../SingolaLezione?lezione=<%=lezione.getId()%>" role="button">Visualizza</a> </td>
                             </tr>
                             <%}%>
                             </tbody>

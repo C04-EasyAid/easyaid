@@ -49,7 +49,7 @@ public class InserimentoNuovaLezioneServlet extends HttpServlet {
                 lezioneBean.setData(date);
                 lezioneDAO.insertNewLezione(lezioneBean);
                 session.setAttribute("alertMsg","Lezione Inserita");
-                response.sendRedirect("view/LezioniTutorPage.jsp");
+                response.sendRedirect(request.getContextPath()+"/LezioniServlet");
             } catch (ParseException | SQLException e) {
                 log.error(myClass, "Collegamento alla Servlet...",e);
                 e.printStackTrace();

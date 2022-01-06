@@ -182,18 +182,17 @@
                                     <div class="row g-3 align-items-center justify-content-between">
 
                                         <!-- Search bar -->
-                                        <div class="col-md-8">
-                                            <form class="rounded position-relative">
-                                                <input class="form-control bg-transparent" type="search"
+                                        <div class="col-md-5">
+                                            <input class="form-control bg-transparent" type="search" id="searchUser" onkeyup="searchUserTable()"
                                                        placeholder="Search"
-                                                       aria-label="Search">
-                                                <button class="btn bg-transparent px-2 py-0 position-absolute top-50 end-0 translate-middle-y"
-                                                        type="submit"><i class="bi bi-search"></i></button>
-                                            </form>
+                                                   aria-label="Search"></div>
+                                        <div class="col-md-7">
+                                                <button class="btn bg-transparent top"
+                                                        type="submit"><i class="bi bi-search"></i></button></div>
                                         </div>
 
                                         <!-- Tab button -->
-                                        <div class="col-md-3">
+                                        <div class="col-xl-11">
                                             <!-- Tabs START -->
                                             <ul class="list-inline mb-0 nav nav-pills nav-pill-dark-soft border-0 justify-content-end"
                                                 id="pills-tab" role="tablist">
@@ -220,7 +219,7 @@
                                 <!-- Card header END -->
 
                                 <!-- Card body START -->
-                                <div class="card-body px-0">
+                                <div class="card-body px-0 overflow-auto">
 
                                     <!-- Tabs content START -->
                                     <div class="tab-content">
@@ -235,9 +234,9 @@
                                                             String ruoloUsr = b.getRuolo();
                                                             String iniziale = b.getNome().charAt(0) + b.getCognome().substring(0, 1);
                                                             switch (ruoloUsr) {
-                                                                case "S" -> ruoloUsr = "Studente";
-                                                                case "T" -> ruoloUsr = "Tutor";
-                                                                case "P" -> ruoloUsr = "Professore Referente";
+                                                                case "S" : ruoloUsr = "Studente"; break;
+                                                                case "T" : ruoloUsr = "Tutor"; break;
+                                                                case "P" : ruoloUsr = "Professore Referente"; break;
                                                             }
                                                 %>
                                                 <!-- Card item START -->
@@ -304,7 +303,7 @@
 
                                         <div class="tab-pane fade active show" id="nav-html-tab-1">
                                             <div class="table-responsive border-0">
-                                                <table class="table table-dark-gray align-middle p-4 mb-0 table-hover">
+                                                <table class="table table-dark-gray align-middle p-4 mb-0 table-hover" id="listUser">
                                                     <!-- Table head -->
                                                     <thead style="background-color: #17a2b8 !important;">
                                                     <tr>
@@ -321,9 +320,9 @@
                                                             String ruoloUsr = b.getRuolo();
                                                             String iniziale = b.getNome().charAt(0) + b.getCognome().substring(0, 1);
                                                             switch (ruoloUsr) {
-                                                                case "S" -> ruoloUsr = "Studente";
-                                                                case "T" -> ruoloUsr = "Tutor";
-                                                                case "P" -> ruoloUsr = "Professore Referente";
+                                                                case "S" : ruoloUsr = "Studente"; break;
+                                                                case "T" : ruoloUsr = "Tutor"; break;
+                                                                case "P" : ruoloUsr = "Professore Referente"; break;
                                                             }
                                                     %>
                                                     <tr>
@@ -372,6 +371,7 @@
                                                     } %>
                                                     </tbody>
                                                 </table>
+                                                <script src="../js/searchUser.js"></script>
                                             </div>
                                         </div>
                                     </div>

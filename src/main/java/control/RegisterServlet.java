@@ -1,6 +1,9 @@
 package control;
 
 import model.bean.*;
+import model.dao.ProfessoreReferenteDAO;
+import model.dao.StudenteDAO;
+import model.dao.TutorDAO;
 import model.dao.UserDAO;
 import other.MyLogger;
 
@@ -32,9 +35,7 @@ public class RegisterServlet extends HttpServlet {
         log.info(myClass,"Collegamento alla Servlet...");
         HttpSession session = request.getSession();
         UserBean utenteLoggato= (UserBean)session.getAttribute("utente");
-        //Creo il bean dell utente che andrà inserito nel DB
         UserBean utenteTemporaneo= new UserBean();
-        UserDAO dao=new UserDAO();
         utenteTemporaneo.setNome(request.getParameter("nome"));
         utenteTemporaneo.setCognome(request.getParameter("cognome"));
         utenteTemporaneo.setEmail(request.getParameter("email"));
@@ -53,7 +54,6 @@ public class RegisterServlet extends HttpServlet {
             utenteTemporaneo.setRuolo("T");
             tipoUtente = 2;
         }
-        //Se l'utente loggato è personale amministrativo allora procedo all inserimento dell utente
         if(utenteLoggato!=null)
         {
             //PROVVISORIO TIPO INTERO!! Dalla request prendo il parametro id ed in base al valore registro l utente
@@ -68,12 +68,13 @@ public class RegisterServlet extends HttpServlet {
                         studente.setEmail(utenteTemporaneo.getEmail());
                         studente.setTipoDisabilita(request.getParameter("tipoDisabilita"));
                         studente.setSpecificheDisturbo(request.getParameter("specificheDisturbo"));
+                        StudenteDAO dao=new StudenteDAO();
                         if (!dao.insertStudente(studente,utenteTemporaneo)) {
                             session.setAttribute("alertMsg", "Errore nell'inserimento studente");
                             response.sendRedirect("view/HomePage.jsp");
                         }
                         else{
-                            session.setAttribute("alertMsg", "Utente inserito con successo");
+                            session.setAttribute("alertMsg", "Studente inserito con successo");
                             response.sendRedirect("view/RegistraUtentePage.jsp?inserimento=Studente");
                         }
                     }
@@ -84,12 +85,13 @@ public class RegisterServlet extends HttpServlet {
                         tutor.setEmailTutor(utenteTemporaneo.getEmail());
                         tutor.setOreDisponibili(Integer.parseInt(request.getParameter("oreDisponibiliTutor")));
                         tutor.setOreSvolte(0);
+                        TutorDAO dao=new TutorDAO();
                         if (!dao.insertTutor(tutor, utenteTemporaneo)) {
                             session.setAttribute("alertMsg", "Errore nell'inserimento tutor");
                             response.sendRedirect("view/HomePage.jsp");
                         }
                         else{
-                            session.setAttribute("alertMsg", "Utente inserito con successo");
+                            session.setAttribute("alertMsg", "Tutor inserito con successo");
                             response.sendRedirect("view/RegistraUtentePage.jsp?inserimento=Tutor");
                         }
                     }
@@ -97,12 +99,13 @@ public class RegisterServlet extends HttpServlet {
                         ProfessoreReferenteBean professoreReferente = new ProfessoreReferenteBean();
                         professoreReferente.setEmail(utenteTemporaneo.getEmail());
                         professoreReferente.setDipartimento(request.getParameter("dipartimentoProf"));
+                        ProfessoreReferenteDAO dao=new ProfessoreReferenteDAO();
                         if (!dao.insertProfessoreReferente(professoreReferente, utenteTemporaneo)) {
                             session.setAttribute("alertMsg", "Errore nell'inserimento professore referente");
                             response.sendRedirect("view/HomePage.jsp");
                         }
                         else{
-                            session.setAttribute("alertMsg", "Utente inserito con successo");
+                            session.setAttribute("alertMsg", "Professore Referente inserito con successo");
                             response.sendRedirect("view/RegistraUtentePage.jsp?inserimento=Professore Referente");
                         }
                     }

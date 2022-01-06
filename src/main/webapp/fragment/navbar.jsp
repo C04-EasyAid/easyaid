@@ -75,8 +75,6 @@
                        aria-haspopup="true" aria-expanded="false">Management</a>
                     <ul class="dropdown-menu" aria-labelledby="pagesMenu">
                         <li><a class="dropdown-item text-black" href="../ViewListaUsers">Elenco Utenti</a></li>
-                        <li><a class="dropdown-item text-black" href="../viewRichiesteCompletate">Elenco Richieste
-                            Completate</a></li>
                     </ul>
                     <%}%>
                 </li>

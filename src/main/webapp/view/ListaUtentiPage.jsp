@@ -78,7 +78,7 @@
                     <br>
                     <div class="page-content-wrapper border rounded-3">
                         <div class="container">
-                            <div class="card bg-transparent">
+                            <div class="card bg-transparent h-50">
                                 <div class="row">
                                     <div class="col-12">
                                         <br>
@@ -220,7 +220,7 @@
                                 <!-- Card header END -->
 
                                 <!-- Card body START -->
-                                <div class="card-body px-0">
+                                <div class="card-body px-0 overflow-auto">
 
                                     <!-- Tabs content START -->
                                     <div class="tab-content">
@@ -235,9 +235,9 @@
                                                             String ruoloUsr = b.getRuolo();
                                                             String iniziale = b.getNome().charAt(0) + b.getCognome().substring(0, 1);
                                                             switch (ruoloUsr) {
-                                                                case "S" -> ruoloUsr = "Studente";
-                                                                case "T" -> ruoloUsr = "Tutor";
-                                                                case "P" -> ruoloUsr = "Professore Referente";
+                                                                case "S" : ruoloUsr = "Studente"; break;
+                                                                case "T" : ruoloUsr = "Tutor"; break;
+                                                                case "P" : ruoloUsr = "Professore Referente"; break;
                                                             }
                                                 %>
                                                 <!-- Card item START -->
@@ -321,9 +321,9 @@
                                                             String ruoloUsr = b.getRuolo();
                                                             String iniziale = b.getNome().charAt(0) + b.getCognome().substring(0, 1);
                                                             switch (ruoloUsr) {
-                                                                case "S" -> ruoloUsr = "Studente";
-                                                                case "T" -> ruoloUsr = "Tutor";
-                                                                case "P" -> ruoloUsr = "Professore Referente";
+                                                                case "S" : ruoloUsr = "Studente"; break;
+                                                                case "T" : ruoloUsr = "Tutor"; break;
+                                                                case "P" : ruoloUsr = "Professore Referente"; break;
                                                             }
                                                     %>
                                                     <tr>

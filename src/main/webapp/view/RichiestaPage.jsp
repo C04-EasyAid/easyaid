@@ -53,24 +53,23 @@
             <div class="col-lg-8">
                 <!-- Badge -->
                 <%if(user.isTutor() && tutorato.getStatus()==0){%>
-                <h6 class="mb-3 font-base bg-warning text-white py-2 px-4 rounded-2 d-inline-block">Disponibile</h6><%}%>
-                <%if(user.isTutor() && tutorato.getStatus()==1){%>
-                <h6 class="mb-3 font-base bg-dark text-white py-2 px-4 rounded-2 d-inline-block">Accettata</h6><%}%>
-                <%if(user.isTutor() && tutorato.getStatus()==2){%>
-                <h6 class="mb-3 font-base bg-primary text-white py-2 px-4 rounded-2 d-inline-block">Completata (in attesa di approvazione)</h6><%}%>
-                <%if(user.isTutor() && tutorato.getStatus()==3){%>
-                <h6 class="mb-3 font-base bg-success text-white py-2 px-4 rounded-2 d-inline-block">Approvata</h6><%}%>
-                <!-- Studente -->
-                <%if(user.isStudente() && tutorato.getStatus()==0){%>
-                <h6 class="mb-3 font-base bg-warning text-white py-2 px-4 rounded-2 d-inline-block">In attesa</h6><%}%>
-                <%if(user.isTutor() && tutorato.getStatus()==3){%>
+                <h6 class="mb-3 font-base bg-warning text-white py-2 px-4 rounded-2 d-inline-block">Disponibile</h6>
+                <%}else if(user.isTutor() || user.isProfessoreReferente() && tutorato.getStatus()==1){%>
+                <h6 class="mb-3 font-base bg-dark text-white py-2 px-4 rounded-2 d-inline-block">Accettata</h6>
+                <%}else if((user.isTutor() || user.isProfessoreReferente()) && tutorato.getStatus()==2){%>
+                <h6 class="mb-3 font-base bg-primary text-white py-2 px-4 rounded-2 d-inline-block">Completata (in attesa di approvazione)</h6>
+                <%}else if((user.isTutor() || user.isProfessoreReferente()) && tutorato.getStatus()==3){%>
+                <h6 class="mb-3 font-base bg-success text-white py-2 px-4 rounded-2 d-inline-block">Approvata</h6>
+                <%}else if(user.isStudente() && tutorato.getStatus()==0){%>
+                <h6 class="mb-3 font-base bg-warning text-white py-2 px-4 rounded-2 d-inline-block">In attesa</h6>
+                <%}else if(user.isStudente() && tutorato.getStatus()!=0){%>
                 <h6 class="mb-3 font-base bg-success text-white py-2 px-4 rounded-2 d-inline-block">Completata</h6><%}%>
                 <h1 class="text-light">Tutorato Didattico</h1>
                 <div class="mb-0 ms-2">
                     <h6><p class="card-description text-light">Email Studente: <%=tutorato.getStudenteEmail()%></p></h6>
                 </div>
                 <!-- Content -->
-                <ul class="list-inline mb-0">
+                <ul class="list-inline mb-4">
                     <li class="list-inline-item h6 me-3 mb-1 mb-sm-0 text-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
                         <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"></path>
                     </svg>
@@ -88,6 +87,10 @@
                         <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"></path>
                     </svg><%=tutorato.getDipartimento().toUpperCase(java.util.Locale.ROOT)%></li>
                 </ul>
+                <%if(user.isTutor() && tutorato.getStatus()==0){%>
+                <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#accettaRichiesta">Accetta</button><%}%>
+                <%if(user.isProfessoreReferente() && tutorato.getStatus()==2){%>
+                <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#approvaRichiesta">Approva</button><%}%>
             </div>
             <div class="col-lg-4 col-sm-1">
                 <div class="position-relative">
@@ -109,24 +112,23 @@ else if(supporto!=null){
             <div class="col-lg-8">
                 <!-- Badge -->
                 <%if(user.isTutor() && supporto.getStatus()==0){%>
-                <h6 class="mb-3 font-base bg-warning text-white py-2 px-4 rounded-2 d-inline-block">Disponibile</h6><%}%>
-                <%if(user.isTutor() && supporto.getStatus()==1){%>
-                <h6 class="mb-3 font-base bg-dark text-white py-2 px-4 rounded-2 d-inline-block">Accettata</h6><%}%>
-                <%if(user.isTutor() && supporto.getStatus()==2){%>
-                <h6 class="mb-3 font-base bg-primary text-white py-2 px-4 rounded-2 d-inline-block">Completata (in attesa di approvazione)</h6><%}%>
-                <%if(user.isTutor() && supporto.getStatus()==3){%>
-                <h6 class="mb-3 font-base bg-success text-white py-2 px-4 rounded-2 d-inline-block">Approvata</h6><%}%>
-                <!-- Studente -->
-                <%if(user.isStudente() && supporto.getStatus()==0){%>
-                <h6 class="mb-3 font-base bg-warning text-white py-2 px-4 rounded-2 d-inline-block">In attesa</h6><%}%>
-                <%if(user.isStudente() && supporto.getStatus()!=0){%>
+                <h6 class="mb-3 font-base bg-warning text-white py-2 px-4 rounded-2 d-inline-block">Disponibile</h6>
+                <%}else if(user.isTutor() && supporto.getStatus()==1){%>
+                <h6 class="mb-3 font-base bg-dark text-white py-2 px-4 rounded-2 d-inline-block">Accettata</h6>
+                <%}else if((user.isTutor() || user.isProfessoreReferente()) && supporto.getStatus()==2){%>
+                <h6 class="mb-3 font-base bg-primary text-white py-2 px-4 rounded-2 d-inline-block">Completata (in attesa di approvazione)</h6>
+                <%}else if(user.isTutor() && supporto.getStatus()==3){%>
+                <h6 class="mb-3 font-base bg-success text-white py-2 px-4 rounded-2 d-inline-block">Approvata</h6>
+                <%}else if(user.isStudente() && supporto.getStatus()==0){%>
+                <h6 class="mb-3 font-base bg-warning text-white py-2 px-4 rounded-2 d-inline-block">In attesa</h6>
+                <%}else if(user.isStudente() && supporto.getStatus()!=0){%>
                 <h6 class="mb-3 font-base bg-success text-white py-2 px-4 rounded-2 d-inline-block">Completata</h6><%}%>
                 <h1 class="text-light">Supporto Esame</h1>
                 <div class="mb-0 ms-2">
                     <h6><p class="card-description text-light">Email Studente: <%=supporto.getStudenteEmail()%></p></h6>
                 </div>
                 <!-- Content -->
-                <ul class="list-inline mb-1">
+                <ul class="list-inline mb-4">
                     <li class="list-inline-item h6 me-3 mb-1 mb-sm-0 text-light"> <li class="list-inline-item h6 me-3 mb-1 mb-sm-0 text-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
                     <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"></path>
                 </svg>Data Esame: <%=supporto.getData().toUpperCase(java.util.Locale.ROOT)%></li>
@@ -162,6 +164,10 @@ else if(supporto!=null){
                         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
                     </svg><%=supporto.getEventualiAusili().toUpperCase(java.util.Locale.ROOT)%></li>
                 </ul>
+                <%if(user.isTutor() && supporto.getStatus()==0){%>
+                <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#accettaRichiesta">Accetta</button><%}%>
+                <%if(user.isProfessoreReferente() && supporto.getStatus()==2){%>
+                <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#approvaRichiesta">Approva</button><%}%>
             </div>
             <div class="col-lg-4 col-sm-1">
                 <div class="position-relative">
@@ -172,6 +178,45 @@ else if(supporto!=null){
     </div>
 </section>
 <%}%>
+<div class="modal fade" id="accettaRichiesta" tabindex="-1" aria-labelledby="accettaRichiesta" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Accetta Richiesta</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">Vuoi accettare la richiesta?
+                <form action="../AccettazioneRichiesta" method="get">
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Commento:</label>
+                        <textarea class="form-control" name="commento" id="message-text"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-outline-info">Conferma</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="approvaRichiesta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Approva Richiesta</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">Vuoi approvare la richiesta?</div>
+            <div class="modal-footer">
+                <form action="../ApprovazioneRichiesta" method="get">
+                    <button type="submit" class="btn btn-outline-info">Approva</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <footer>
     <%@ include file="../fragment/footer.html" %>
 </footer>

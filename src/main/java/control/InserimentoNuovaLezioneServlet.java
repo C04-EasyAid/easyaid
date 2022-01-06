@@ -18,7 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /*
-@author Mriagiovanna Bianco
+@author Mariagiovanna Bianco
 Servlet che permette di inserire una nuova lezione
 */
 

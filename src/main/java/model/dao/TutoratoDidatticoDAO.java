@@ -18,57 +18,6 @@ public class TutoratoDidatticoDAO {
 
 
     /**
-     * Metodo che restituisce tutte le richieste di Tutorato Didattico dal DB.
-     * @return
-     * @throws SQLException
-     * @throws ClassNotFoundException
-     */
-    public synchronized List<TutoratoDidatticoBean> doRetriveAll() throws SQLException,ClassNotFoundException{
-        Connection conn=null;
-        String query="SELECT * FROM tutorato_didattico";
-        List<TutoratoDidatticoBean> list=new ArrayList<>();
-
-
-        PreparedStatement stmt=null;
-
-        try {
-            conn = ConnectionPool.conn();
-            stmt = conn.prepareStatement(query);
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                TutoratoDidatticoBean bean = new TutoratoDidatticoBean();
-                bean.setId(rs.getInt("idtutorato_didattico"));
-                bean.setDateDisponibili(rs.getString("date_disponibili"));
-                bean.setOreDisponibili(rs.getString("ore_disponibili"));
-                bean.setOreRichieste(rs.getInt("ore_richieste"));
-                bean.setCommento(rs.getString("commento"));
-                bean.setStatus(rs.getInt("status"));
-                bean.setInsegnamento(rs.getString("insegnamento"));
-                bean.setDipartimento(rs.getString("dipartimento"));
-                bean.setStudenteEmail(rs.getString("studente_email"));
-                bean.setTutorEmail(rs.getString("tutor_email"));
-                bean.setProfEmail(rs.getString("prof_refe_email"));
-                list.add(bean);
-            }
-        }
-        catch(SQLException e)
-        {
-            e.printStackTrace();
-        }
-        finally{
-            if(stmt!=null)
-                stmt.close();
-            if(conn!=null)
-                conn.close();
-        }
-
-        return list;
-
-    }
-
-
-    /**
      * Metodo che restituisce le richieste di Tutorato Didattico effettuate tramite e-mail studente.
      * @param emailStudente
      * @return

@@ -43,10 +43,7 @@ public class ViewRichiesteCompletateServlet extends HttpServlet {
 
           resp.sendRedirect("view/RichiesteCompletatePage.jsp");
 
-        } catch (SQLException e) {
-          log.error(myClass,"Catturata eccezione nella Servlet", e);
-          e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
           log.error(myClass,"Catturata eccezione nella Servlet", e);
           e.printStackTrace();
         }

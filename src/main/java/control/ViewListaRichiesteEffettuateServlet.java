@@ -1,6 +1,5 @@
 package control;
 
-import model.bean.StudenteBean;
 import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
@@ -24,20 +23,21 @@ import java.util.List;
  */
 @WebServlet("/ListaRichieste")
 public class ViewListaRichiesteEffettuateServlet extends HttpServlet {
-  private static MyLogger log = MyLogger.getInstance();
-  private static String myClass = "ListaRichiesteServlet";
+  private static final MyLogger log = MyLogger.getInstance();
+  private static final String myClass = "ListaRichiesteServlet";
+
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
-    log.info(myClass,"Collegamento alla Servlet...");
+    log.info(myClass, "Collegamento alla Servlet...");
     HttpSession session = req.getSession();
     UserBean bean = (UserBean) session.getAttribute("utente");
-    SupportoEsameDAO supportoDao=new SupportoEsameDAO();
-    TutoratoDidatticoDAO tutoratoDao=new TutoratoDidatticoDAO();
+    SupportoEsameDAO supportoDao = new SupportoEsameDAO();
+    TutoratoDidatticoDAO tutoratoDao = new TutoratoDidatticoDAO();
     if (bean != null) {
       try {
         List<SupportoEsameBean> listRichiesteSupportoEsame =
-           supportoDao.doRetrieveAllByStudente(bean.getEmail());
+            supportoDao.doRetrieveAllByStudente(bean.getEmail());
         List<TutoratoDidatticoBean> listRichiesteTutoratoDidattico =
             tutoratoDao.doRetrieveAllByStudente(bean.getEmail());
         session.setAttribute("richiesteEsami", listRichiesteSupportoEsame);
@@ -45,11 +45,8 @@ public class ViewListaRichiesteEffettuateServlet extends HttpServlet {
 
         resp.sendRedirect("view/ListaRichiesteEffettuatePage.jsp");
 
-      } catch (SQLException e) {
-        log.error(myClass,"Catturata eccezione nella Servlet", e);
-        e.printStackTrace();
-      } catch (ClassNotFoundException e) {
-        log.error(myClass,"Catturata eccezione nella Servlet", e);
+      } catch (SQLException | ClassNotFoundException e) {
+        log.error(myClass, "Catturata eccezione nella Servlet", e);
         e.printStackTrace();
       }
     } else {

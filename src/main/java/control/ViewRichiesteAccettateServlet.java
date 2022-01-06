@@ -19,31 +19,30 @@ import java.util.List;
 
 @WebServlet("/viewRichiesteAccettate")
 public class ViewRichiesteAccettateServlet extends HttpServlet {
-  private static MyLogger log = MyLogger.getInstance();
-  private static String myClass = "ViewRichiesteAccettateServlet";
+  private static final MyLogger log = MyLogger.getInstance();
+  private static final String myClass = "ViewRichiesteAccettateServlet";
+
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
-    log.info(myClass,"Collegamento alla Servlet...");
+    log.info(myClass, "Collegamento alla Servlet...");
     HttpSession session = req.getSession();
     UserBean userLoggato = (UserBean) session.getAttribute("utente");
-    SupportoEsameDAO supportoDao=new SupportoEsameDAO();
-    TutoratoDidatticoDAO tutoratoDao=new TutoratoDidatticoDAO();
+    SupportoEsameDAO supportoDao = new SupportoEsameDAO();
+    TutoratoDidatticoDAO tutoratoDao = new TutoratoDidatticoDAO();
     if (userLoggato != null && userLoggato.isTutor()) {
       try {
         List<SupportoEsameBean> listRichiesteSupportoEsame =
             supportoDao.doRetrieveAllByTutor(userLoggato.getEmail());
-        List<TutoratoDidatticoBean> listRichiesteTutoratoDidattico = tutoratoDao.doRetrieveAllByTutor(userLoggato.getEmail());
+        List<TutoratoDidatticoBean> listRichiesteTutoratoDidattico =
+            tutoratoDao.doRetrieveAllByTutor(userLoggato.getEmail());
         session.setAttribute("richiesteEsamiAccettate", listRichiesteSupportoEsame);
         session.setAttribute("richiesteTutoratoAccettate", listRichiesteTutoratoDidattico);
 
         resp.sendRedirect("view/RichiesteAccettatePage.jsp");
 
-      } catch (SQLException e) {
-        log.error(myClass,"Catturata eccezione nella Servlet", e);
-        e.printStackTrace();
-      } catch (ClassNotFoundException e) {
-        log.error(myClass,"Catturata eccezione nella Servlet", e);
+      } catch (SQLException | ClassNotFoundException e) {
+        log.error(myClass, "Catturata eccezione nella Servlet", e);
         e.printStackTrace();
       }
     } else {

@@ -1,13 +1,10 @@
 package control;
 
 import model.bean.SupportoEsameBean;
-import model.bean.TutorBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
 import model.dao.SupportoEsameDAO;
-import model.dao.TutorDAO;
 import model.dao.TutoratoDidatticoDAO;
-import model.dao.UserDAO;
 import other.MyLogger;
 
 import javax.servlet.ServletException;
@@ -17,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.Serial;
 import java.sql.SQLException;
 
 /**
@@ -24,8 +22,9 @@ import java.sql.SQLException;
  */
 @WebServlet("/SingolaRichiestaServlet")
 public class SingolaRichiestaServlet extends HttpServlet {
-  private static MyLogger log = MyLogger.getInstance();
-  private static String myClass = "SingolaRichiestaServlet";
+  private static final MyLogger log = MyLogger.getInstance();
+  private static final String myClass = "SingolaRichiestaServlet";
+  @Serial
   private static final long serialVersionUID = 1L;
 
   public SingolaRichiestaServlet() {
@@ -34,10 +33,10 @@ public class SingolaRichiestaServlet extends HttpServlet {
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws IOException {
-    log.info(myClass,"Collegamento alla Servlet...");
+    log.info(myClass, "Collegamento alla Servlet...");
     HttpSession session = request.getSession();
-    int idTutorato = 0;
-    int idSupporto = 0;
+    int idTutorato;
+    int idSupporto;
     session.removeAttribute("supporto");
     session.removeAttribute("tutorato");
     UserBean userLoggato = (UserBean) session.getAttribute("utente");
@@ -49,9 +48,7 @@ public class SingolaRichiestaServlet extends HttpServlet {
           TutoratoDidatticoBean tutorato = dao.doRetriveById(idTutorato);
           session.setAttribute("tutorato", tutorato);
           response.sendRedirect("view/RichiestaPage.jsp");
-        } catch (SQLException e) {
-          e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
           e.printStackTrace();
         }
       } else if (request.getParameter("idSupporto") != null) {
@@ -61,11 +58,8 @@ public class SingolaRichiestaServlet extends HttpServlet {
           SupportoEsameBean supporto = dao.doRetriveById(idSupporto);
           session.setAttribute("supporto", supporto);
           response.sendRedirect("view/RichiestaPage.jsp");
-        } catch (SQLException e) {
-          log.error(myClass,"Catturata eccezione nella Servlet", e);
-          e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-          log.error(myClass,"Catturata eccezione nella Servlet", e);
+        } catch (SQLException | ClassNotFoundException e) {
+          log.error(myClass, "Catturata eccezione nella Servlet", e);
           e.printStackTrace();
         }
       } else {

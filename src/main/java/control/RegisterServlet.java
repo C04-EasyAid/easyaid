@@ -4,9 +4,7 @@ import model.bean.*;
 import model.dao.ProfessoreReferenteDAO;
 import model.dao.StudenteDAO;
 import model.dao.TutorDAO;
-import model.dao.UserDAO;
 import other.MyLogger;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.Serial;
 
 /**
  * @author Roberto Tartaglia
@@ -22,8 +21,9 @@ import java.io.IOException;
  */
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
-    private static MyLogger log = MyLogger.getInstance();
-    private static String myClass = "RegisterServlet";
+    private static final MyLogger log = MyLogger.getInstance();
+    private static final String myClass = "RegisterServlet";
+    @Serial
     private static final long serialVersionUID = 1L;
 
     public RegisterServlet() {

@@ -25,17 +25,18 @@ Servlet che permette di visualizzare le lezioni
  */
 @WebServlet(name = "LezioniServlet", urlPatterns = "/LezioniServlet")
 public class LezioniServlet extends HttpServlet {
-  private static MyLogger log = MyLogger.getInstance();
-  private static String myClass = "LezioniServlet";
+  private static final MyLogger log = MyLogger.getInstance();
+  private static final String myClass = "LezioniServlet";
+
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    log.info(myClass,"Collegamento alla Servlet...");
+    log.info(myClass, "Collegamento alla Servlet...");
     HttpSession session = request.getSession();
     UserBean user = (UserBean) session.getAttribute("utente");
-    LezioneDAO lezioneDao=new LezioneDAO();
-    StudenteDAO studenteDao=new StudenteDAO();
+    LezioneDAO lezioneDao = new LezioneDAO();
+    StudenteDAO studenteDao = new StudenteDAO();
     TutoratoDidatticoDAO tutoratoDidatticoDAO = new TutoratoDidatticoDAO();
-    TutorDAO tutorDao=new TutorDAO();
+    TutorDAO tutorDao = new TutorDAO();
     if (user != null) {
       if (user.isStudente()) {
         StudenteBean bean = null;
@@ -51,7 +52,7 @@ public class LezioniServlet extends HttpServlet {
             session.setAttribute("listaLezioni", lista);
             response.sendRedirect("view/LezioniStudentePage.jsp");
           } catch (ClassNotFoundException | SQLException e) {
-            log.error(myClass,"Catturata eccezione nella Servlet", e);
+            log.error(myClass, "Catturata eccezione nella Servlet", e);
             e.printStackTrace();
           }
         }
@@ -59,9 +60,7 @@ public class LezioniServlet extends HttpServlet {
         TutorBean bean = null;
         try {
           bean = tutorDao.doRetrieveByEmail(user.getEmail());
-        } catch (SQLException e) {
-          e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
           e.printStackTrace();
         }
         if (bean != null) {
@@ -70,19 +69,16 @@ public class LezioniServlet extends HttpServlet {
                 (ArrayList<LezioneBean>) lezioneDao.doRetrieveLezioneByTutor(bean.getEmailTutor());
             session.setAttribute("listaLezioni", lista);
             session.setAttribute(
-                    "richiesteTutorato",
-                    tutoratoDidatticoDAO.doRetrieveAllByTutor(bean.getEmailTutor()));
+                "richiesteTutorato",
+                tutoratoDidatticoDAO.doRetrieveAllByTutor(bean.getEmailTutor()));
             response.sendRedirect("view/LezioniTutorPage.jsp");
-          } catch (ClassNotFoundException e) {
-            log.error(myClass,"Catturata eccezione nella Servlet", e);
-            e.printStackTrace();
-          } catch (SQLException e) {
-            log.error(myClass,"Catturata eccezione nella Servlet", e);
+          } catch (ClassNotFoundException | SQLException e) {
+            log.error(myClass, "Catturata eccezione nella Servlet", e);
             e.printStackTrace();
           }
         }
       }
-    } else if (user == null) {
+    } else {
       response.sendRedirect("view/LoginPage.jsp");
     }
   }

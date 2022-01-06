@@ -14,22 +14,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-/**
- * @author Giovanni Toriello
- * Servlet che permette di visualizzare il profilo utente
- */
+/** @author Giovanni Toriello Servlet che permette di visualizzare il profilo utente */
 @WebServlet(name = "UserProfile", urlPatterns = "/UserProfile")
 public class ProfiloUtenteServlet extends HttpServlet {
-  private static MyLogger log = MyLogger.getInstance();
-  private static String myClass = "ProfiloUtenteServlet";
+  private static final MyLogger log = MyLogger.getInstance();
+  private static final String myClass = "ProfiloUtenteServlet";
+
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    log.info(myClass,"Collegamento alla Servlet...");
+    log.info(myClass, "Collegamento alla Servlet...");
     HttpSession session = request.getSession();
     UserBean userLoggato = (UserBean) session.getAttribute("utente");
-    ProfessoreReferenteDAO professoreDao=new ProfessoreReferenteDAO();
-    TutorDAO tutorDao=new TutorDAO();
-    StudenteDAO studenteDao=new StudenteDAO();
+    ProfessoreReferenteDAO professoreDao = new ProfessoreReferenteDAO();
+    TutorDAO tutorDao = new TutorDAO();
+    StudenteDAO studenteDao = new StudenteDAO();
     UserDAO userdao = new UserDAO();
     if (userLoggato != null && userLoggato.isPersonaleAmministrativo()) {
       if (request.getParameter("usrEmail") != null && request.getParameter("ruolo") != null) {
@@ -43,18 +41,18 @@ public class ProfiloUtenteServlet extends HttpServlet {
               session.setAttribute("ruolo", ruolo);
               response.sendRedirect("view/UserPage.jsp");
             } catch (Exception e) {
-              log.error(myClass,"Catturata eccezione nella Servlet", e);
+              log.error(myClass, "Catturata eccezione nella Servlet", e);
               e.printStackTrace();
             }
             break;
           case "S":
             try {
-              session.setAttribute("usrProfile",studenteDao.doRetrieveByEmail(email));
+              session.setAttribute("usrProfile", studenteDao.doRetrieveByEmail(email));
               session.setAttribute("utenteSelezionato", userdao.doRetrieveUtenteByEmail(email));
               session.setAttribute("ruolo", ruolo);
               response.sendRedirect("view/UserPage.jsp");
             } catch (Exception e) {
-              log.error(myClass,"Catturata eccezione nella Servlet", e);
+              log.error(myClass, "Catturata eccezione nella Servlet", e);
               e.printStackTrace();
             }
             break;
@@ -65,14 +63,14 @@ public class ProfiloUtenteServlet extends HttpServlet {
               session.setAttribute("ruolo", ruolo);
               response.sendRedirect("view/UserPage.jsp");
             } catch (Exception e) {
-              log.error(myClass,"Catturata eccezione nella Servlet", e);
+              log.error(myClass, "Catturata eccezione nella Servlet", e);
               e.printStackTrace();
             }
             break;
         }
       } else response.sendRedirect("view/ListaUtentiPage.jsp");
-    }else{
-        response.sendRedirect("view/HomePage.jsp");
+    } else {
+      response.sendRedirect("view/HomePage.jsp");
     }
   }
 

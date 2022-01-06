@@ -157,7 +157,7 @@
                     <hr>
                 </li>
                 <!-- Links -->
-                <li><a class="dropdown-item text-black" href="ProfilePage.jsp"><i class="bi fa-fw me-2"></i>Account
+                <li><a class="dropdown-item text-black" href="ProfiloPage.jsp"><i class="bi fa-fw me-2"></i>Account
                     Settings</a></li>
                 <li><a class="dropdown-item bg-danger-soft-hover text-black" href="../logout"><i
                         class="bi fa-fw me-2"></i>Logout</a></li>

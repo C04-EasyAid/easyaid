@@ -122,10 +122,12 @@
                 <!-- Main content END -->
             </div>
         </div>
-        <div class="col-sm-1">
-            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#nuovaLezione" style="margin-top: 9.2em; width: 8em;">Aggiungi</button>
-        </div>
     </div>
+</div>
+<div class="col-sm-1">
+    <button type="button" class="btn btn-primary btn-round zoom-hover me-3" data-bs-toggle="modal" data-bs-target="#nuovaLezione" style="position: absolute;left: 1000px;right: 20px;background: #59cfcd;"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+    </svg> </button>
 </div>
 <form action="../InserimentoLezione" method="get">
     <div class="modal fade" id="nuovaLezione" tabindex="-1" aria-labelledby="nuovaLezione" aria-hidden="true">
@@ -141,7 +143,7 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="tutorato" class="col-form-label">Seleziona Richiesta:</label>
-                                    <select name="idTutorato" style=" width:19.6em" class="form-control" id="tutorato">
+                                    <select name="idTutorato" style=" width:36em" class="form-control" id="tutorato">
                                         <option value="">Seleziona Richiesta</option>
                                         <%for (TutoratoDidatticoBean tutoratoDidatticoBean : tutorati){%>
                                         <option value="<%=tutoratoDidatticoBean.getId()%>"><%="Email: "+tutoratoDidatticoBean.getStudenteEmail()+" Insegnamento: "+tutoratoDidatticoBean.getInsegnamento()%></option><%}%>

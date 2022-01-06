@@ -1,19 +1,16 @@
 <%@ page import="model.bean.LezioneBean" %>
 <%@ page import="java.util.Collection" %>
 <%@ page import="model.bean.CommentoBean" %>
-<%@ page import="java.text.SimpleDateFormat" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Mariagiovanna
   Date: 29/12/2021
   Time: 12:42
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <header>
-        <%@ include file="../fragment/navbar.jsp" %>
-    </header>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Webestica.com">
@@ -21,8 +18,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3mipmap34MD+dH/1fQ784/j6cY/iQUITOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="../assets/images/favicon.ico">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
@@ -43,6 +38,9 @@
     <title>EasyAid</title>
 </head>
 <body>
+<header>
+    <%@ include file="../fragment/navbar.jsp" %>
+</header>
 <%@ include file="../fragment/UserSection.jsp" %>
 
 <%
@@ -103,7 +101,7 @@
                                         for (CommentoBean bean : commenti) {
                                             if (bean.getStudente() != null) {
                                                 mittente = bean.getStudente();
-                                            } else if(bean.getStudente() != null){
+                                            } else if(bean.getTutor() != null){
                                                 mittente = bean.getTutor();
                                             }
                                     %>
@@ -124,6 +122,7 @@
                                                     </p>
                                                     <span class="text-muted pull-right"></span>
                                                 </div>
+                                            </div>
                                         </li>
                                     </ul>
                                     <%}%>
@@ -146,7 +145,6 @@
         </div>
     </div>
 </div>
-</div>
 
 <div class="back-top"><i
         class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
@@ -162,7 +160,7 @@
 <!-- Template Functions -->
 <script src="../assets/js/functions.js"></script>
 <footer>
-    <%@ include file="../fragment/footer.html" %>
+    <%@include file="../fragment/footer.html" %>
 </footer>
 </body>
 </html>

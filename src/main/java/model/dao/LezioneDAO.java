@@ -311,4 +311,26 @@ public class LezioneDAO {
     return utente;
   }
 
+  //Metodo che conferma la lezione avvenuta
+  public synchronized boolean confermaLezione(int idLezione) throws SQLException {
+    boolean isUpdated = false;
+    Connection conn = null;
+    String query = "UPDATE easyaid.lezione SET status = 1 WHERE id = ?;";
+    PreparedStatement stmt = null;
+    try {
+      conn = ConnectionPool.conn();
+      stmt = conn.prepareStatement(query);
+      stmt.setInt(1, idLezione);
+      isUpdated = stmt.executeUpdate() == 1;
+      conn.commit();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } finally {
+      if (stmt != null) stmt.close();
+      if (conn != null) conn.close();
+    }
+
+    return isUpdated;
+  }
+
 }

@@ -363,7 +363,7 @@
                                                         </td>
                                                         <td>
                                                             <a class="btn btn-outline-info"
-                                                               href="../UserProfile?usrEmail=<%=b.getEmail()%>&ruolo=<%=b.getRuolo()%>"
+                                                               href="../UserProfile?usrEmail=<%=b.getEmail()%>"
                                                                role="button">Visualizza</a>
                                                         </td>
                                                     </tr>

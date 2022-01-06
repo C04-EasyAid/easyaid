@@ -75,6 +75,9 @@
                                 <p class="fw-bold">Insegnamento:</p>
                                 <p><%=lezione.getInsegnamento()%>
                                 </p>
+                                <!-- Button trigger modal -->
+                                <% if(user.isTutor() && !lezione.isStatus()){%>
+                                <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#confermaLezione">Conferma Lezione</button><%}%>
                             </address>
                         </div>
                     </div>
@@ -145,7 +148,23 @@
         </div>
     </div>
 </div>
-
+<!-- Modal -->
+<div class="modal fade" id="confermaLezione" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Conferma Lezione</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">Vuoi confermare la lezione?</div>
+            <div class="modal-footer">
+                <form action="../ConfermaLezioneServlet" method="get">
+                    <button type="submit" class="btn btn-outline-info">Conferma</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="back-top"><i
         class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
 

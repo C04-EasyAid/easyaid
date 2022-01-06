@@ -1,6 +1,7 @@
 <%@ page import="model.bean.SupportoEsameBean" %>
 <%@ page import="java.util.List" %>
-<%@ page import="model.bean.TutoratoDidatticoBean" %><%--
+<%@ page import="model.bean.TutoratoDidatticoBean" %>
+<%@ page import="java.util.Random" %><%--
   Created by IntelliJ IDEA.
   User: Riccardo
   Date: 27/12/2021
@@ -68,13 +69,15 @@
                                         <%
                                             List<SupportoEsameBean> richiesteSupporto = (List<SupportoEsameBean>) session.getAttribute("richiesteEsami");
                                             List<TutoratoDidatticoBean> richiesteTutorato = (List<TutoratoDidatticoBean>) session.getAttribute("richiesteTutorato");
+                                            Random rnd = new Random();
                                             for(TutoratoDidatticoBean b:richiesteTutorato){
+                                                int x = rnd.nextInt(4);
                                         %>
                                         <tr>
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div class="w-100px">
-                                                        <img src="../assets/images/courses/4by3/08.jpg" class="rounded" alt="">
+                                                        <img src="../image/<%=x%>.jpg" class="rounded" alt="">
                                                     </div>
                                                     <div class="mb-0 ms-2">
                                                         <h6><p class="card-description"><br><code>&lt;<%=b.getTutorEmail()%>&gt;</code></p></h6>
@@ -115,12 +118,13 @@
                                         <tbody>
                                         <%
                                           for(SupportoEsameBean b:richiesteSupporto){
+                                              int x = rnd.nextInt(5);
                                         %>
                                         <tr>
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div class="w-100px">
-                                                        <img src="../assets/images/courses/4by3/08.jpg" class="rounded" alt="">
+                                                        <img src="../image/<%=x%>.jpg" class="rounded" alt="">
                                                     </div>
                                                     <div class="mb-0 ms-2">
                                                         <%if(b.getTutorEmail()==null){%>

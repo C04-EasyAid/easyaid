@@ -297,7 +297,7 @@ public class TutoratoDidatticoDAO {
     {
         boolean isUpdated=false;
         Connection conn=null;
-        String query="UPDATE tutorato_didattico SET status=1,commento=?,tutor_email=? WHERE id=?";
+        String query="UPDATE tutorato_didattico SET status=1,commento=?,tutor_email=? WHERE idtutorato_didattico=?";
         PreparedStatement stmt=null;
         try{
             conn=ConnectionPool.conn();

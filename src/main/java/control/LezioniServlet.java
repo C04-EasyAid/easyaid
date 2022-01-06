@@ -23,7 +23,7 @@ import java.util.ArrayList;
 @author Serena Liguori
 Servlet che permette di visualizzare le lezioni
  */
-@WebServlet("/LezioniServlet")
+@WebServlet(name = "LezioniServlet", urlPatterns = "/LezioniServlet")
 public class LezioniServlet extends HttpServlet {
   private static MyLogger log = MyLogger.getInstance();
   private static String myClass = "LezioniServlet";
@@ -50,10 +50,7 @@ public class LezioniServlet extends HttpServlet {
                 (ArrayList<LezioneBean>) lezioneDao.doRetrieveLezioneByStudente(bean.getEmail());
             session.setAttribute("listaLezioni", lista);
             response.sendRedirect("view/LezioniStudentePage.jsp");
-          } catch (ClassNotFoundException e) {
-            log.error(myClass,"Catturata eccezione nella Servlet", e);
-            e.printStackTrace();
-          } catch (SQLException e) {
+          } catch (ClassNotFoundException | SQLException e) {
             log.error(myClass,"Catturata eccezione nella Servlet", e);
             e.printStackTrace();
           }

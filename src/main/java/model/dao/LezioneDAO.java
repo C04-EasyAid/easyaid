@@ -28,7 +28,7 @@ public class LezioneDAO {
     LezioneBean bean = null;
     PreparedStatement stmt = null;
     String query =
-            "SELECT * from easyaid.lezione L inner join tutorato_didattico T where L.tutorato = T.idtutorato_didattico AND L.tutorato ="
+            "SELECT * from easyaid.lezione L inner join tutorato_didattico T where L.tutorato = T.idtutorato_didattico AND L.id ="
                     + id;
     try {
       conn = conn();
@@ -65,7 +65,7 @@ public class LezioneDAO {
     PreparedStatement stmt = null;
     Collection<LezioneBean> lezioni = new ArrayList<>();
     String query =
-            "SELECT * from easyaid.lezione L inner join tutorato_didattico T where L.tutorato = T.idtutorato_didattico AND L.id ="
+            "SELECT * from easyaid.lezione L inner join tutorato_didattico T where L.tutorato = T.idtutorato_didattico AND L.tutorato ="
                     + id;
     try {
       conn = conn();

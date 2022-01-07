@@ -13,7 +13,7 @@ import java.util.List;
  * @author Martina Giugliano DAO Tutorato didattico per gestire i dati del Database relativo al
  *     tutorato didattico.
  */
-public class TutoratoDidatticoDAO {
+public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
 
   /**
    * Metodo che restituisce le richieste di Tutorato Didattico effettuate tramite e-mail studente.
@@ -23,6 +23,7 @@ public class TutoratoDidatticoDAO {
    * @throws SQLException
    * @throws ClassNotFoundException
    */
+  @Override
   public synchronized List<TutoratoDidatticoBean> doRetrieveAllByStudente(String emailStudente)
       throws SQLException, ClassNotFoundException {
     Connection conn = null;
@@ -69,6 +70,7 @@ public class TutoratoDidatticoDAO {
    * @throws SQLException:Eccezione accesso al db
    * @throws ClassNotFoundException:eccezione classe non trovata
    */
+  @Override
   public synchronized List<TutoratoDidatticoBean> doRetrieveAllByTutor(String emailTutor)
       throws SQLException, ClassNotFoundException {
     Connection conn = null;
@@ -114,6 +116,7 @@ public class TutoratoDidatticoDAO {
    * @throws SQLException::Eccezione accesso al db
    * @throws ClassNotFoundException:eccezione classe non trovata
    */
+  @Override
   public synchronized List<TutoratoDidatticoBean>
       doRetrieveAllRichiesteTutoratoDidatticoCompletate()
           throws SQLException, ClassNotFoundException {
@@ -161,6 +164,7 @@ public class TutoratoDidatticoDAO {
    * @throws SQLException :Eccezione accesso al db
    * @throws ClassNotFoundException:eccezione classe non trovata
    */
+  @Override
   public synchronized List<TutoratoDidatticoBean> doRetrieveRichiesteTutoratoDidatticoNonAccettate()
       throws SQLException, ClassNotFoundException {
     Connection conn = null;
@@ -198,6 +202,7 @@ public class TutoratoDidatticoDAO {
     return list;
   }
 
+  @Override
   public synchronized TutoratoDidatticoBean doRetriveById(int id)
       throws SQLException, ClassNotFoundException {
     Connection conn = null;
@@ -234,6 +239,7 @@ public class TutoratoDidatticoDAO {
     return bean;
   }
 
+  @Override
   public boolean InserimentoTutoratoDidattico(TutoratoDidatticoBean Bean) throws SQLException {
     boolean inserimento = false;
     Connection con = null;
@@ -262,6 +268,7 @@ public class TutoratoDidatticoDAO {
     return inserimento;
   }
 
+  @Override
   public synchronized boolean accettaRichiesta(int idSupporto, String emailTutor, String commento)
       throws SQLException {
     boolean isUpdated = false;
@@ -287,6 +294,7 @@ public class TutoratoDidatticoDAO {
     return isUpdated;
   }
 
+  @Override
   public synchronized boolean approvaRichiesta(int idTutorato, String emailProf)
       throws SQLException {
     boolean isUpdated = false;
@@ -311,6 +319,7 @@ public class TutoratoDidatticoDAO {
     return isUpdated;
   }
 
+  @Override
   public synchronized boolean completaRichiesta(int idTutorato, String emailTutor)
       throws SQLException {
     boolean isUpdated = false;

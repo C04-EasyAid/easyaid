@@ -17,11 +17,11 @@ dependencies {
     compileOnly('javax:javaee-web-api:8.0.1')
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.0")
-    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.15'
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.25'
     implementation group: 'org.apache.tomcat', name: 'tomcat-catalina', version: '8.0.46'
-    testImplementation group: 'org.mockito', name: 'mockito-core', version: '2.1.0'
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: '4.2.0'
     implementation group: 'org.springframework', name: 'spring-web', version: '5.3.9'
-    compileOnly group: 'org.springframework', name: 'spring-test', version: '5.1.6.RELEASE'
+    testImplementation group: 'org.springframework', name: 'spring-test', version: '5.1.6.RELEASE'
     implementation group: 'log4j', name: 'log4j', version: '1.2.17'
 
 

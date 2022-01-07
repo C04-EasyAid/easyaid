@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Collection;
 import java.util.Date;
 
 /*
@@ -47,10 +48,17 @@ public class InserimentoNuovaLezioneServlet extends HttpServlet {
         lezioneBean.setOraInizio(oraInizio);
         lezioneBean.setOraFine(oraFine);
         lezioneBean.setData(date);
-        lezioneDAO.insertNewLezione(lezioneBean);
-        session.setAttribute("alertMsg", "Lezione Inserita");
-        response.sendRedirect(request.getContextPath() + "/LezioniServlet");
-      } catch (ParseException | SQLException e) {
+        Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
+        lezioni.add(lezioneBean);
+        if (lezioneDAO.countOre(lezioni,idTutorato) < 1) {
+          lezioneDAO.insertNewLezione(lezioneBean);
+          session.setAttribute("alertMsg", "Lezione Inserita");
+          response.sendRedirect(request.getContextPath() + "/LezioniServlet");
+        } else if (lezioneDAO.countOre(lezioni,idTutorato) == 2) {
+          session.setAttribute("alertMsg", "La lezione supera le ore richieste");
+          response.sendRedirect("view/LezioniTutorPage.jsp");
+        }
+      } catch (ParseException | SQLException | ClassNotFoundException e) {
         log.error(myClass, "Collegamento alla Servlet...", e);
         e.printStackTrace();
       }

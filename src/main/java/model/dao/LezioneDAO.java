@@ -238,13 +238,15 @@ public class LezioneDAO {
   // Metodo che restituisce un booleano
   // true = Se la somma delle ore delle lezioni sono uguali alle ore richieste
   // false = Se la somma delle ore delle lezioni non sono uguali alle ore richieste
-  public synchronized int countOre(Collection<LezioneBean> lezioni)
+  public synchronized int countOre(Collection<LezioneBean> lezioni, int idTutorato)
       throws SQLException, ClassNotFoundException {
     int uguale = -1;
     int count = 0;
     List<LezioneBean> lezioniS = (List<LezioneBean>) lezioni;
     TutoratoDidatticoDAO dao = new TutoratoDidatticoDAO();
-    int idTutorato = doRetrieveTutoratoByLezione(lezioniS.get(0).getId());
+    if (idTutorato == 0) {
+      idTutorato = doRetrieveTutoratoByLezione(lezioniS.get(0).getId());
+    }
     int oreRichieste = dao.doRetriveById(idTutorato).getOreRichieste();
     for (LezioneBean x : lezioni) {
       String oraInizio = x.getOraInizio();

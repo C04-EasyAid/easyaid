@@ -55,6 +55,10 @@ private IUserDAO dao=new UserDAO();
       session.setAttribute("alertMsg", "L'operazione non e' andata a buon fine");
       response.sendRedirect("view/LoginPage.jsp");
     }
-  }
 
+  }
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+          throws ServletException, IOException {
+    doGet(request, response);
+  }
 }

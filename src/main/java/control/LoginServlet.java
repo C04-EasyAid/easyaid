@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import model.bean.UserBean;
+import model.dao.IUserDAO;
 import model.dao.UserDAO;
 import other.MyLogger;
 
@@ -20,6 +21,12 @@ public class LoginServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 private static MyLogger log = MyLogger.getInstance();
 private static String myClass = "LoginServlet";
+private IUserDAO dao=new UserDAO();
+
+  public void setDao(IUserDAO dao) {
+    this.dao = dao;
+  }
+
   public LoginServlet() {
     super();
   }
@@ -29,7 +36,6 @@ private static String myClass = "LoginServlet";
     log.info(myClass,"Collegamento alla Servlet...");
     HttpSession session = request.getSession();
     UserBean user = new UserBean();
-    UserDAO dao=new UserDAO();
     user.setEmail(request.getParameter("Email"));
     user.setPassword(request.getParameter("Password"));
     try {

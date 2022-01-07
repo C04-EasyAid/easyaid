@@ -22,8 +22,9 @@ import static other.Utils.generatePwd;
  * @author Giovanni Toriello
  * Classe UserDAO
  */
-public class UserDAO {
+public class UserDAO implements IUserDAO {
   // Metodo che restituisce l'utente dal database
+  @Override
   public  synchronized UserBean doRetrieveUtente(UserBean b)
       throws SQLException, ClassNotFoundException {
     Connection conn = null;
@@ -62,6 +63,7 @@ public class UserDAO {
     return user;
   }
   // Metodo che restituisce true se è l'utente è stato inserito
+  @Override
   public synchronized boolean insertUtente(UserBean b) throws SQLException {
     boolean utente = false;
     Connection conn = null;
@@ -96,6 +98,7 @@ public class UserDAO {
     return utente;
   }
   // Metodo che restituisce true se è lo studente è stato inserito
+  @Override
   public synchronized boolean insertStudente(StudenteBean s, UserBean b)
       throws SQLException, ClassNotFoundException {
     boolean studente = false;
@@ -135,6 +138,7 @@ public class UserDAO {
     return studente;
   }
   // Metodo che restituisce true se il tutor è stato inserito
+  @Override
   public synchronized boolean insertTutor(TutorBean t, UserBean b) throws SQLException {
     boolean tutor = false;
     // Viene prima inserito l'utente generico (UserBean);
@@ -173,8 +177,9 @@ public class UserDAO {
     return tutor;
   }
   // Metodo che restituisce true se il tutor è stato inserito
+  @Override
   public synchronized boolean insertProfessoreReferente(
-      ProfessoreReferenteBean p, UserBean b) throws SQLException {
+          ProfessoreReferenteBean p, UserBean b) throws SQLException {
     boolean prof = false;
     // Viene prima inserito l'utente generico (UserBean);
     // Se il metodo restituisce true continua per inserire il prof
@@ -209,6 +214,7 @@ public class UserDAO {
     return prof;
   }
   // Metodo che restituisce la lista degli utenti nel Database
+  @Override
   public synchronized Collection<UserBean> doRetrieveAll()
       throws ClassNotFoundException, SQLException {
     Collection<UserBean> utenti = new ArrayList<>();
@@ -242,6 +248,7 @@ public class UserDAO {
     return utenti;
   }
   // Metodo che restituisce l'utente dal database tramite Email
+  @Override
   public synchronized UserBean doRetrieveUtenteByEmail(String email)
           throws SQLException, ClassNotFoundException {
     Connection conn = null;

@@ -4,9 +4,7 @@ import model.bean.LezioneBean;
 import model.bean.StudenteBean;
 import model.bean.TutorBean;
 import model.bean.UserBean;
-import model.dao.CommentoDAO;
-import model.dao.StudenteDAO;
-import model.dao.TutorDAO;
+import model.dao.*;
 import other.MyLogger;
 
 import javax.servlet.ServletException;
@@ -22,6 +20,21 @@ import java.sql.SQLException;
 public class CommentoServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "CommentoServlet";
+  private ICommentoDAO daoC= new CommentoDAO();
+  private ITutorDAO  daoT= new TutorDAO();
+  private IStudenteDAO daoS= new StudenteDAO();
+
+  public void setDaoC(ICommentoDAO daoC) {
+    this.daoC = daoC;
+  }
+
+  public void setDaoT(ITutorDAO daoT) {
+    this.daoT = daoT;
+  }
+
+  public void setDaoS(IStudenteDAO daoS) {
+    this.daoS = daoS;
+  }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
@@ -29,14 +42,11 @@ public class CommentoServlet extends HttpServlet {
     HttpSession session = request.getSession();
     UserBean user = (UserBean) session.getAttribute("utente");
     session.removeAttribute("commento");
-    CommentoDAO daoC = new CommentoDAO();
+
     if (user != null) {
       String msg = request.getParameter("commento");
       LezioneBean lezione = (LezioneBean) session.getAttribute("lezione");
       if (msg != null && lezione.getId() != 0) {
-        StudenteDAO daoS = new StudenteDAO();
-        TutorDAO daoT = new TutorDAO();
-
         if (user.isStudente()) {
           StudenteBean bean = null;
           try {

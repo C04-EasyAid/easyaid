@@ -13,7 +13,8 @@ import static model.dao.ConnectionPool.conn;
  * @author Roberto Tartaglia
  * Classe ProfessoreReferenteDAO
  */
-public class ProfessoreReferenteDAO {
+public class ProfessoreReferenteDAO implements IProfessoreReferenteDAO {
+    @Override
     public synchronized ProfessoreReferenteBean doRetrieveByEmail(String email) throws SQLException, ClassNotFoundException {
         Connection conn = null;
         String query = "SELECT * FROM professore_referente WHERE email_prof_refe = '"+email+"'";

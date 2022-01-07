@@ -13,7 +13,8 @@ import static model.dao.ConnectionPool.conn;
  * @author Roberto Tartaglia
  * Classe TutorDAO
  */
-public class TutorDAO {
+public class TutorDAO implements ITutorDAO {
+    @Override
     public synchronized TutorBean doRetrieveByEmail(String email) throws SQLException, ClassNotFoundException {
         Connection conn = null;
         String query = "SELECT * FROM tutor WHERE email_tutor = '"+email+"'";

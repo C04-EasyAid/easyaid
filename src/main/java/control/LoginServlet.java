@@ -57,8 +57,4 @@ private IUserDAO dao=new UserDAO();
     }
   }
 
-  protected void doPost(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
-    doGet(request, response);
-  }
 }

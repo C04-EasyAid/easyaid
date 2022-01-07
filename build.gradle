@@ -23,6 +23,10 @@ dependencies {
     implementation group: 'org.springframework', name: 'spring-web', version: '5.3.9'
     testImplementation group: 'org.springframework', name: 'spring-test', version: '5.1.6.RELEASE'
     implementation group: 'log4j', name: 'log4j', version: '1.2.17'
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+    testCompileOnly 'org.projectlombok:lombok:1.18.20'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
 
 
 }

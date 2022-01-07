@@ -1,6 +1,7 @@
 package control;
 
 import model.bean.*;
+import model.dao.IUserDAO;
 import model.dao.UserDAO;
 import other.MyLogger;
 
@@ -23,6 +24,11 @@ public class RegisterServlet extends HttpServlet {
     private static String myClass = "RegisterServlet";
     private static final long serialVersionUID = 1L;
 
+    public void setDao(IUserDAO dao) {
+        this.dao = dao;
+    }
+
+    private IUserDAO dao = new UserDAO();
     public RegisterServlet() {
         super();
     }
@@ -34,7 +40,6 @@ public class RegisterServlet extends HttpServlet {
         UserBean utenteLoggato= (UserBean)session.getAttribute("utente");
         //Creo il bean dell utente che andrà inserito nel DB
         UserBean utenteTemporaneo= new UserBean();
-        UserDAO dao=new UserDAO();
         utenteTemporaneo.setNome(request.getParameter("nome"));
         utenteTemporaneo.setCognome(request.getParameter("cognome"));
         utenteTemporaneo.setEmail(request.getParameter("email"));
@@ -61,20 +66,24 @@ public class RegisterServlet extends HttpServlet {
             try{
                 switch (tipoUtente) {
                     case 1 -> {
-                        System.out.println(utenteTemporaneo);
                         StudenteBean studente = new StudenteBean();
                         studente.setOreDisponibili(Integer.parseInt(request.getParameter("oreDisponibiliStudente")));
                         studente.setPercentualeDisabilita(Integer.parseInt(request.getParameter("percentualeDisabilita")));
                         studente.setEmail(utenteTemporaneo.getEmail());
                         studente.setTipoDisabilita(request.getParameter("tipoDisabilita"));
                         studente.setSpecificheDisturbo(request.getParameter("specificheDisturbo"));
+                        System.out.println(studente);
+                        System.out.println(utenteTemporaneo);
+                        System.out.println(dao.insertStudente(studente,utenteTemporaneo));
                         if (!dao.insertStudente(studente,utenteTemporaneo)) {
                             session.setAttribute("alertMsg", "Errore nell'inserimento studente");
                             response.sendRedirect("view/HomePage.jsp");
+                            return ;
                         }
                         else{
                             session.setAttribute("alertMsg", "Utente inserito con successo");
                             response.sendRedirect("view/RegistraUtentePage.jsp?inserimento=Studente");
+                            return ;
                         }
                     }
                     case 2 -> {
@@ -123,8 +132,4 @@ public class RegisterServlet extends HttpServlet {
         }
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        doGet(request, response);
-    }
 }

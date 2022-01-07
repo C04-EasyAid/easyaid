@@ -4,8 +4,11 @@ package model.bean;
 @author Mariagiovanna Bianco
 Classe CommentoBean
  */
+import lombok.*;
+
 import java.util.Date;
 
+@Data
 public class CommentoBean {
     //variabili di istanza
     private int lezione, tutorato;
@@ -28,60 +31,4 @@ public class CommentoBean {
     public CommentoBean() {
     }
 
-    //Metodi
-    public int getLezione() {
-        return lezione;
-    }
-
-    public void setLezione(int lezione) {
-        this.lezione = lezione;
-    }
-
-    public int getTutorato() {
-        return tutorato;
-    }
-
-    public void setTutorato(int tutorato) {
-        this.tutorato = tutorato;
-    }
-
-    public String getTesto() {
-        return testo;
-    }
-
-    public void setTesto(String testo) {
-        this.testo = testo;
-    }
-
-    public String getOra() {
-        return ora;
-    }
-
-    public void setOra(String ora) {
-        this.ora = ora;
-    }
-
-    public String getStudente() {
-        return studente;
-    }
-
-    public void setStudente(String studente) {
-        this.studente = studente;
-    }
-
-    public String getTutor() {
-        return tutor;
-    }
-
-    public void setTutor(String tutor) {
-        this.tutor = tutor;
-    }
-
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(Date data) {
-        this.data = data;
-    }
 }

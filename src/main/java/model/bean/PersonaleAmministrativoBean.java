@@ -1,9 +1,12 @@
 package model.bean;
 
+import lombok.*;
+
 /**
  * @author Roberto Tartaglia
  * Classe PersonaleAmministrativoBean
  */
+@Data
 public class PersonaleAmministrativoBean {
     private String emailPersonaleAmministrativo;
 
@@ -21,20 +24,4 @@ public class PersonaleAmministrativoBean {
     public PersonaleAmministrativoBean() {
     }
 
-    /**
-     * Metodo che restituisce l'email del personale amministrativo
-     * @return
-     */
-
-    public String getEmailPersonaleAmministrativo() {
-        return emailPersonaleAmministrativo;
-    }
-
-    /**
-     * Metodo che setta l'email del personale amministrativo
-     * @param emailPersonaleAmministrativo
-     */
-    public void setEmailPersonaleAmministrativo(String emailPersonaleAmministrativo) {
-        this.emailPersonaleAmministrativo = emailPersonaleAmministrativo;
-    }
 }

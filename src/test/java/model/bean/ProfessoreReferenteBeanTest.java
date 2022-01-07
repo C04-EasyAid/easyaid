@@ -1,4 +1,4 @@
-package easyaid.it.test.model.bean;
+package model.bean;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;

@@ -34,14 +34,16 @@ public class ConfermaLezioneServlet extends HttpServlet {
             try {
                 lezioneDAO.confermaLezione(lezioneBean.getId());
                 Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(lezioneBean.getTutorato());
-                if(lezioneDAO.countOre(lezioni)==0){
-                    tutoratoDidatticoDAO.completaRichiesta(lezioneBean.getId(),user.getEmail());
+                if(lezioneDAO.countOre(lezioni,0)==0){
+          System.out.println("ueueue");
+                    tutoratoDidatticoDAO.completaRichiesta(lezioneBean.getTutorato(),user.getEmail());
+                    session.setAttribute("alertMsg","Richiesta Confermata");
+                    resp.sendRedirect("view/LezioniTutorPage.jsp");
                 }else{
+                    session.setAttribute("alertMsg","Lezione Confermata");
                     resp.sendRedirect("view/LezioniTutorPage.jsp");
                 }
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (SQLException e) {
+            } catch (ClassNotFoundException | SQLException e) {
                 e.printStackTrace();
             }
             try {

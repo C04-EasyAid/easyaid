@@ -4,10 +4,10 @@ package control;
 import model.bean.ProfessoreReferenteBean;
 import model.bean.StudenteBean;
 import model.bean.TutorBean;
-import model.dao.IUserDAO;
-import org.junit.jupiter.api.BeforeEach;
 import model.bean.UserBean;
+import model.dao.IUserDAO;
 import model.dao.UserDAO;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -20,7 +20,6 @@ import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 /**
@@ -1653,6 +1652,28 @@ class RegisterTest {
   }
 
 
+  @Test
+  void testPermessiNonConcessi() throws ServletException, IOException {
+    MockitoAnnotations.initMocks(this);
+    IUserDAO userDAO = mock(UserDAO.class);
+    String nome="Lorenzo";
+    String cognome="Rossi";
+    String email="l.rossi@studenti.unisa.it";
+    String password="Lorenzo#rossi1";
+    String ruolo="Professore Referente";
+    String dipartimento = "Informatica";
+    request.setParameter("nome",nome);
+    request.setParameter("cognome",cognome);
+    request.setParameter("email",email);
+    request.setParameter("password",password);
+    request.setParameter("ruolo",ruolo);
+    request.setParameter("dipartimentoProf",dipartimento);
+    servlet.setDao(userDAO);
+
+    servlet.doGet(request,response);
+
+    assertEquals("Permessi non concessi all'utente",request.getSession().getAttribute("alertMsg"));
+  }
 
 
 

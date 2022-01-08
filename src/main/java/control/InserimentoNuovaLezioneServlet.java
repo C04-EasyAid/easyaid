@@ -50,11 +50,11 @@ public class InserimentoNuovaLezioneServlet extends HttpServlet {
         lezioneBean.setData(date);
         Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
         lezioni.add(lezioneBean);
-        if (lezioneDAO.countOre(lezioni,idTutorato) < 1) {
+        if (lezioneDAO.countOre(lezioni, idTutorato) < 1) {
           lezioneDAO.insertNewLezione(lezioneBean);
           session.setAttribute("alertMsg", "Lezione Inserita");
           response.sendRedirect(request.getContextPath() + "/LezioniServlet");
-        } else if (lezioneDAO.countOre(lezioni,idTutorato) == 2) {
+        } else if (lezioneDAO.countOre(lezioni, idTutorato) == 2) {
           session.setAttribute("alertMsg", "La lezione supera le ore richieste");
           response.sendRedirect("view/LezioniTutorPage.jsp");
         }

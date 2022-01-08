@@ -10,19 +10,16 @@ import java.sql.SQLException;
 import java.util.Locale;
 
 import static model.dao.ConnectionPool.conn;
-/**
- * @author Giovanni Toriello
- * Classe StudenteDAO
- */
+/** @author Giovanni Toriello Classe StudenteDAO */
 public class StudenteDAO implements IStudenteDAO {
-  //Metodo che restituisce lo studente
+  // Metodo che restituisce lo studente
   @Override
   public synchronized StudenteBean doRetrieveByEmail(String email) throws SQLException {
     Connection conn = null;
     PreparedStatement stmt = null;
     String query = "SELECT * FROM studente where email_studente = ?";
     StudenteBean bean = new StudenteBean();
-    //Se la connessione è != null, entra nello statement
+    // Se la connessione è != null, entra nello statement
     try {
       conn = conn();
       stmt = conn.prepareStatement(query);
@@ -41,8 +38,7 @@ public class StudenteDAO implements IStudenteDAO {
       e.printStackTrace();
       // Chiude la connessione se è diverso da null
     } finally {
-      if(stmt!=null)
-        stmt.close();
+      if (stmt != null) stmt.close();
       if (conn != null) {
         conn.close();
       }
@@ -51,10 +47,9 @@ public class StudenteDAO implements IStudenteDAO {
   }
 
   // Metodo che restituisce true se è lo studente è stato inserito
-  public synchronized boolean insertStudente(StudenteBean s, UserBean b)
-          throws SQLException {
+  public synchronized boolean insertStudente(StudenteBean s, UserBean b) throws SQLException {
     boolean studente = false;
-    UserDAO userDao=new UserDAO();
+    UserDAO userDao = new UserDAO();
     if (userDao.insertUtente(b)) {
       Connection conn = null;
       String query = "INSERT INTO studente VALUES (?,?,?,?,?)";
@@ -77,7 +72,7 @@ public class StudenteDAO implements IStudenteDAO {
         e.printStackTrace();
         // Chiude la connessione se è diverso da null
       } finally {
-        if(stmt!=null){
+        if (stmt != null) {
           stmt.close();
         }
         if (conn != null) {

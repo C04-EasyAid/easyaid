@@ -20,9 +20,9 @@ import java.sql.SQLException;
 public class CommentoServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "CommentoServlet";
-  private ICommentoDAO daoC= new CommentoDAO();
-  private ITutorDAO  daoT= new TutorDAO();
-  private IStudenteDAO daoS= new StudenteDAO();
+  private ICommentoDAO daoC = new CommentoDAO();
+  private ITutorDAO daoT = new TutorDAO();
+  private IStudenteDAO daoS = new StudenteDAO();
 
   public void setDaoC(ICommentoDAO daoC) {
     this.daoC = daoC;

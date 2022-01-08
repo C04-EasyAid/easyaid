@@ -15,20 +15,21 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 @WebServlet("/inserisciTutorato")
-/**
-  @author Riccardo Polidoro Servlet che permette l'inserimento di una richiesta di tutorato
+/*
+ * @author Riccardo Polidoro Servlet che permette l'inserimento di una richiesta di tutorato
  *     didattico nel DB
  */
 public class InserimentoRichiestaTutoratoServlet extends HttpServlet {
   private static MyLogger log = MyLogger.getInstance();
   private static String myClass = "InserimentoRichiestaTutoratoServlet";
+
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
-    log.info(myClass,"Collegamento alla Servlet...");
+    log.info(myClass, "Collegamento alla Servlet...");
     HttpSession session = req.getSession();
     UserBean user = (UserBean) session.getAttribute("utente");
-    TutoratoDidatticoDAO dao=new TutoratoDidatticoDAO();
+    TutoratoDidatticoDAO dao = new TutoratoDidatticoDAO();
     if (user.isStudente()) {
       TutoratoDidatticoBean bean = new TutoratoDidatticoBean();
       bean.setDateDisponibili(req.getParameter("date_disponibili"));
@@ -40,15 +41,15 @@ public class InserimentoRichiestaTutoratoServlet extends HttpServlet {
       // bean.setDocente(req.getParameter("docente");
       try {
         if (!dao.InserimentoTutoratoDidattico(bean)) {
-        session.setAttribute("alertMsg", "L’operazione non è andata a buon fine.");
-        resp.sendRedirect("view/HomePage.jsp");
-        }
-        else{
-          session.setAttribute("alertMsg","Richiesta di servizio di tutorato didattico inserita con successo!");
+          session.setAttribute("alertMsg", "L’operazione non è andata a buon fine.");
+          resp.sendRedirect("view/HomePage.jsp");
+        } else {
+          session.setAttribute(
+              "alertMsg", "Richiesta di servizio di tutorato didattico inserita con successo!");
           resp.sendRedirect("view/HomePage.jsp");
         }
       } catch (SQLException e) {
-        log.error(myClass,"Catturata eccezione nella Servlet", e);
+        log.error(myClass, "Catturata eccezione nella Servlet", e);
         e.printStackTrace();
       }
     } else {

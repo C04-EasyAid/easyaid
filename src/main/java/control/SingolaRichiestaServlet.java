@@ -24,8 +24,7 @@ import java.sql.SQLException;
 public class SingolaRichiestaServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "SingolaRichiestaServlet";
-  @Serial
-  private static final long serialVersionUID = 1L;
+  @Serial private static final long serialVersionUID = 1L;
 
   public SingolaRichiestaServlet() {
     super();

@@ -143,7 +143,7 @@ public class UserDAO implements IUserDAO {
     boolean tutor = false;
     // Viene prima inserito l'utente generico (UserBean);
     // Se il metodo restituisce true continua per inserire il tutor
-    if (insertUtente(b)) {
+    if (insertUtente(b) && t.getOreDisponibili()<100) {
       Connection conn = null;
       String query = "INSERT INTO tutor VALUES (?,?,?,?,?)";
       PreparedStatement stmt = null;

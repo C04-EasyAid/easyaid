@@ -1,4 +1,3 @@
-
 package control;
 
 import model.bean.SupportoEsameBean;
@@ -23,6 +22,7 @@ import java.sql.SQLException;
 public class AccettazioneRichiestaServlet extends HttpServlet {
   private ITutoratoDidatticoDAO tutoratodao = new TutoratoDidatticoDAO();
   private ISupportoEsameDAO supportodao = new SupportoEsameDAO();
+
   public void setTutoratodao(ITutoratoDidatticoDAO tutoratodao) {
     this.tutoratodao = tutoratodao;
   }
@@ -33,13 +33,13 @@ public class AccettazioneRichiestaServlet extends HttpServlet {
 
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-          throws ServletException, IOException {
+      throws ServletException, IOException {
     super.doPost(req, resp);
   }
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-          throws ServletException, IOException {
+      throws ServletException, IOException {
     HttpSession session = req.getSession();
     UserBean tutor = (UserBean) session.getAttribute("utente");
     String commento = req.getParameter("commento");
@@ -72,9 +72,3 @@ public class AccettazioneRichiestaServlet extends HttpServlet {
     }
   }
 }
-
-
-
-
-
-

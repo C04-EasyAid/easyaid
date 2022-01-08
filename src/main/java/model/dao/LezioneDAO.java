@@ -313,7 +313,7 @@ public class LezioneDAO {
     return utente;
   }
 
-  //Metodo che conferma la lezione avvenuta
+  // Metodo che conferma la lezione avvenuta
   public synchronized boolean confermaLezione(int idLezione) throws SQLException {
     boolean isUpdated = false;
     Connection conn = null;
@@ -334,5 +334,4 @@ public class LezioneDAO {
 
     return isUpdated;
   }
-
 }

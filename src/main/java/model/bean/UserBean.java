@@ -1,5 +1,7 @@
 package model.bean;
 
+import lombok.*;
+
 import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionBindingListener;
 import java.util.Locale;
@@ -8,6 +10,7 @@ import java.util.Locale;
  * @author Giovanni Toriello
  * Classe UserBean
  */
+@Data
 public class UserBean implements HttpSessionBindingListener {
   // Variabili dell'utente
   private String nome, cognome, email, password, ruolo;
@@ -34,70 +37,6 @@ public class UserBean implements HttpSessionBindingListener {
   public UserBean() {
   }
 
-  /**
-   * Metodo che restituisce il nome dell'utente
-   * @return
-   */
-  public String getNome() {
-    return nome;
-  }
-
-  /**
-   * Metodo che setta il nome dell'utente
-   * @param nome
-   */
-  public void setNome(String nome) {
-    this.nome = nome;
-  }
-
-  /**
-   * Metodo che restituisce il cognome dell'utente
-   * @return
-   */
-  public String getCognome() {
-    return cognome;
-  }
-
-  /**
-   * Metodo che setta il cognome dell'utente
-   * @param cognome
-   */
-  public void setCognome(String cognome) {
-    this.cognome = cognome;
-  }
-
-  /**
-   * Metodo che restituisce l'email dello studente
-   * @return
-   */
-  public String getEmail() {
-    return email;
-  }
-
-  /**
-   *
-   * @param email
-   */
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-  public String getPassword() {
-    return password;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
-  }
-
-  public String getRuolo() {
-    return ruolo;
-  }
-
-  public void setRuolo(String ruolo) {
-    this.ruolo = ruolo;
-  }
-
   // Restituisce vero se l'utente è uno Studente
   public boolean isStudente() {
     boolean isStudent = this.getRuolo().equals("S");
@@ -119,26 +58,6 @@ public class UserBean implements HttpSessionBindingListener {
     return isPers;
   }
 
-  @Override
-  public String toString() {
-    return "UserBean{"
-        + "nome='"
-        + nome
-        + '\''
-        + ", cognome='"
-        + cognome
-        + '\''
-        + ", email='"
-        + email
-        + '\''
-        + ", password='"
-        + password
-        + '\''
-        + ", ruolo='"
-        + ruolo
-        + '\''
-        + '}';
-  }
   @Override
   public void valueBound(HttpSessionBindingEvent event) {
     System.out.println("-- HttpSessionBindingListener#valueBound() --");

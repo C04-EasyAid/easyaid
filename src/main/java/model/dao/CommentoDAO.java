@@ -21,8 +21,9 @@ import java.util.GregorianCalendar;
 import static model.dao.ConnectionPool.conn;
 
 
-public class CommentoDAO {
+public class CommentoDAO implements ICommentoDAO {
     //Metodo che restituisce il commento
+    @Override
     public synchronized Collection<CommentoBean> doRetrieveCommento(int id)
             throws ClassNotFoundException, SQLException {
         Collection<CommentoBean> commenti = new ArrayList<>();
@@ -54,6 +55,7 @@ public class CommentoDAO {
     //Metodo che restituisce un booleano
     //true=commento inserito
     //false=commento non inserito
+    @Override
     public synchronized boolean insertCommentoTutor(int lezione, String msg, String emailMittente) throws SQLException {
         boolean result = false;
         LezioneDAO dao = new LezioneDAO();
@@ -91,6 +93,7 @@ public class CommentoDAO {
     //Metodo che restituisce un booleano
     //true=commento inserito
     //false=commento non inserito
+    @Override
     public synchronized boolean insertCommentoStudente(int lezione, String msg, String emailMittente) throws SQLException {
         boolean result = false;
         LezioneDAO dao = new LezioneDAO();

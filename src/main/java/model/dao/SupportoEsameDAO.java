@@ -15,7 +15,7 @@ import java.util.List;
  * DAO Supporto esame per gestire i dati del Database relativo al supporto esame.
  */
 
-public class SupportoEsameDAO {
+public class SupportoEsameDAO implements ISupportoEsameDAO {
 
     /**
      * Metodo che restituisce le richieste di supporto esame effettuate tramite e-mail studente.
@@ -24,6 +24,7 @@ public class SupportoEsameDAO {
      * @throws SQLException
      * @throws ClassNotFoundException
      */
+    @Override
     public synchronized List<SupportoEsameBean> doRetrieveAllByStudente(String emailStudente)  throws SQLException,ClassNotFoundException
     {
         Connection conn=null;
@@ -80,6 +81,7 @@ public class SupportoEsameDAO {
      * @throws SQLException:Eccezione accesso al db
      * @throws ClassNotFoundException:eccezione classe non trovata
      */
+    @Override
     public synchronized List<SupportoEsameBean> doRetrieveAllByTutor(String emailTutor) throws SQLException,ClassNotFoundException
     {
         Connection conn=null;
@@ -140,6 +142,7 @@ public class SupportoEsameDAO {
      * @throws SQLException::Eccezione accesso al db
      * @throws ClassNotFoundException:eccezione classe non trovata
      */
+    @Override
     public synchronized List<SupportoEsameBean> doRetrieveAllRichiesteSupportoEsameCompletate() throws SQLException,ClassNotFoundException{
         Connection conn=null;
         String query="SELECT * FROM supporto_esame WHERE status=2";
@@ -196,6 +199,7 @@ public class SupportoEsameDAO {
      * @throws SQLException :Eccezione accesso al db
      * @throws ClassNotFoundException:eccezione classe non trovata
      */
+    @Override
     public synchronized List<SupportoEsameBean> doRetrieveRichiesteSupportoEsameNonAccettate() throws SQLException,ClassNotFoundException{
         Connection conn=null;
         String query="SELECT * FROM supporto_esame WHERE status=0";
@@ -246,6 +250,7 @@ public class SupportoEsameDAO {
 
 
     }
+    @Override
     public synchronized SupportoEsameBean doRetriveById(int id) throws SQLException,ClassNotFoundException{
         Connection conn=null;
         String query="SELECT * FROM supporto_esame where id=?";
@@ -291,7 +296,8 @@ public class SupportoEsameDAO {
         return bean;
 
     }
-    public synchronized boolean InserimentoSupportoEsame (SupportoEsameBean Bean) throws SQLException{
+    @Override
+    public synchronized boolean InserimentoSupportoEsame(SupportoEsameBean Bean) throws SQLException{
         boolean inserimento = false;
         Connection con = null;
         String query = "INSERT INTO supporto_esame(data, ora, ore_richieste, docente, modalita_esame, eventuali_ausili, tipo_di_assistenza, insegnamento, luogo, dipartimento, studente_email, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -329,7 +335,8 @@ public class SupportoEsameDAO {
     }
 
 
-    public synchronized boolean accettaRichiesta(int idSupporto,String emailTutor,String commento) throws SQLException
+    @Override
+    public synchronized boolean accettaRichiesta(int idSupporto, String emailTutor, String commento) throws SQLException
     {
         boolean isUpdated=false;
         Connection conn=null;
@@ -359,7 +366,8 @@ public class SupportoEsameDAO {
     }
 
 
-    public synchronized boolean approvaRichiesta(int idSupporto,String emailProf) throws SQLException
+    @Override
+    public synchronized boolean approvaRichiesta(int idSupporto, String emailProf) throws SQLException
     {
         boolean isUpdated=false;
         Connection conn=null;

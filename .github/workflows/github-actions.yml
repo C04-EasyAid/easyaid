@@ -10,14 +10,19 @@ jobs:
       mydb:
         image: mysql:8.0.18
         env:
-          MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: easyaid
+          DB_DATABASE: easyaid
+          DB_USER: root
+          DB_PASSWORD: root
         ports:
             - 3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
       - uses: actions/checkout@v2
+      - name: Set up MySQL
+        run: |
+          sudo /etc/init.d/mysql start
+          mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
       - name: Set up JDK 16.0.2
         uses: actions/setup-java@v2
         with:

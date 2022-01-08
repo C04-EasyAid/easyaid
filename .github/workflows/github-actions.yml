@@ -10,7 +10,7 @@ jobs:
       mydb:
         image: mysql:8.0.18
         env:
-          DB_DATABASE: easyaid
+          MYSQL_DATABASE: easyaid
           DB_USER: root
           DB_PASSWORD: root
         ports:
@@ -22,7 +22,7 @@ jobs:
       - name: Set up MySQL
         run: |
           sudo /etc/init.d/mysql start
-          mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
+          mysql -e 'CREATE DATABASE ${{ env.MYSQL_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
       - name: Set up JDK 16.0.2
         uses: actions/setup-java@v2
         with:

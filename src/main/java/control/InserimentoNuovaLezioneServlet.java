@@ -1,10 +1,5 @@
 package control;
 
-import model.bean.LezioneBean;
-import model.bean.UserBean;
-import model.dao.LezioneDAO;
-import other.MyLogger;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +12,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
+import model.bean.LezioneBean;
+import model.bean.UserBean;
+import model.dao.LezioneDAO;
+import other.MyLogger;
+
+
 
 /*
 @author Mariagiovanna Bianco

@@ -5,9 +5,6 @@ import model.bean.StudenteBean;
 import model.bean.TutorBean;
 import model.bean.UserBean;
 
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,10 +12,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import static model.dao.ConnectionPool.conn;
 import static other.Utils.generatePwd;
 
-/** @author Giovanni Toriello Classe UserDAO */
+/**
+ *
+ * @author Giovanni Toriello Classe UserDAO
+ *
+ */
+
 public class UserDAO implements IUserDAO {
   // Metodo che restituisce l'utente dal database
   @Override
@@ -95,6 +96,7 @@ public class UserDAO implements IUserDAO {
     return utente;
   }
   // Metodo che restituisce true se è lo studente è stato inserito
+
   @Override
   public synchronized boolean insertStudente(StudenteBean s, UserBean b)
       throws SQLException, ClassNotFoundException {
@@ -134,7 +136,9 @@ public class UserDAO implements IUserDAO {
     }
     return studente;
   }
+
   // Metodo che restituisce true se il tutor è stato inserito
+
   @Override
   public synchronized boolean insertTutor(TutorBean t, UserBean b) throws SQLException {
     boolean tutor = false;
@@ -174,6 +178,7 @@ public class UserDAO implements IUserDAO {
     return tutor;
   }
   // Metodo che restituisce true se il tutor è stato inserito
+
   @Override
   public synchronized boolean insertProfessoreReferente(ProfessoreReferenteBean p, UserBean b)
       throws SQLException {
@@ -210,7 +215,9 @@ public class UserDAO implements IUserDAO {
     }
     return prof;
   }
+
   // Metodo che restituisce la lista degli utenti nel Database
+
   @Override
   public synchronized Collection<UserBean> doRetrieveAll()
       throws ClassNotFoundException, SQLException {
@@ -233,7 +240,7 @@ public class UserDAO implements IUserDAO {
         utenti.add(bean);
       }
     } catch (SQLException e) {
-
+      e.printStackTrace();
     } finally {
       if (stmt != null) {
         stmt.close();
@@ -245,6 +252,7 @@ public class UserDAO implements IUserDAO {
     return utenti;
   }
   // Metodo che restituisce l'utente dal database tramite Email
+
   @Override
   public synchronized UserBean doRetrieveUtenteByEmail(String email)
       throws SQLException, ClassNotFoundException {

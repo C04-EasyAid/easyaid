@@ -3,7 +3,13 @@ package other;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-/** @author Giovanni Toriello Classe Utils */
+
+/**
+ *
+ * @author Giovanni Toriello Classe Utils
+ *
+ */
+
 public class Utils {
   // Algoritmo di criptazione della password
   public static String generatePwd(String passwordToHash) {

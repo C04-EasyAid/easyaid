@@ -1,13 +1,5 @@
 package control;
 
-import model.bean.SupportoEsameBean;
-import model.bean.TutoratoDidatticoBean;
-import model.bean.UserBean;
-import model.dao.ISupportoEsameDAO;
-import model.dao.ITutoratoDidatticoDAO;
-import model.dao.SupportoEsameDAO;
-import model.dao.TutoratoDidatticoDAO;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,6 +8,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
+import model.bean.SupportoEsameBean;
+import model.bean.TutoratoDidatticoBean;
+import model.bean.UserBean;
+import model.dao.ISupportoEsameDAO;
+import model.dao.ITutoratoDidatticoDAO;
+import model.dao.SupportoEsameDAO;
+import model.dao.TutoratoDidatticoDAO;
+
 
 /** @author Martina Giugliano Servlet che permette di accettare una richiesta di servizio */
 @WebServlet("/AccettazioneRichiesta")

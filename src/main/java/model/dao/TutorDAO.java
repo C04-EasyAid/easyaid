@@ -1,15 +1,16 @@
 package model.dao;
 
-import model.bean.TutorBean;
-import model.bean.UserBean;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import model.bean.TutorBean;
 
-import static model.dao.ConnectionPool.conn;
-/** @author Roberto Tartaglia Classe TutorDAO */
+/**
+ *
+ * @author Roberto Tartaglia Classe TutorDAO
+ *
+ */
 public class TutorDAO implements ITutorDAO {
   @Override
   public synchronized TutorBean doRetrieveByEmail(String email)

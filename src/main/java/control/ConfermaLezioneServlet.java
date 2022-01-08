@@ -1,10 +1,5 @@
 package control;
 
-import model.bean.LezioneBean;
-import model.bean.UserBean;
-import model.dao.LezioneDAO;
-import model.dao.TutoratoDidatticoDAO;
-import other.MyLogger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,10 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Collection;
-import java.util.Date;
+import model.bean.LezioneBean;
+import model.bean.UserBean;
+import model.dao.LezioneDAO;
+import model.dao.TutoratoDidatticoDAO;
+import other.MyLogger;
+
 
 @WebServlet("/ConfermaLezioneServlet")
 public class ConfermaLezioneServlet extends HttpServlet {

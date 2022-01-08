@@ -1,16 +1,21 @@
 package model.dao;
 
-import model.bean.StudenteBean;
-import model.bean.UserBean;
-
+import static model.dao.ConnectionPool.conn;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Locale;
+import model.bean.StudenteBean;
+import model.bean.UserBean;
 
-import static model.dao.ConnectionPool.conn;
-/** @author Giovanni Toriello Classe StudenteDAO */
+
+
+/**
+ *  @author Giovanni Toriello Classe StudenteDAO
+ *
+ */
+
 public class StudenteDAO implements IStudenteDAO {
   // Metodo che restituisce lo studente
   @Override

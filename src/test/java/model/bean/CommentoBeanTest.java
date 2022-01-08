@@ -1,14 +1,18 @@
 package model.bean;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.BeforeEach;
-import model.bean.CommentoBean;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Date;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-/** @author Riccardo Polidoro Classe di test pe la classe CommentoBean */
+/**
+ * Classe di test pe la classe CommentoBean.
+ *
+ *  @author Riccardo Polidoro
+ *  
+ */
+
 public class CommentoBeanTest {
   private final int lezione = 1;
   private final int tutorato = 1;
@@ -19,6 +23,9 @@ public class CommentoBeanTest {
   private final Date data = new Date();
   private final CommentoBean bean = new CommentoBean();
 
+  /**
+   * Setting delle variabili per ogni test.
+   */
   @BeforeEach
   public void beforeEach() {
     bean.setLezione(lezione);
@@ -110,7 +117,7 @@ public class CommentoBeanTest {
   }
 
   @Test
-  public void CommentoBean() {
+  public void commentoBean() {
     int lezione = 1;
     int tutorato = 1;
     String testo = "commento";

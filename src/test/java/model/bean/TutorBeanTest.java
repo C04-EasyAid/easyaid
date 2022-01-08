@@ -1,12 +1,18 @@
 package model.bean;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
-import model.bean.TutorBean;
+import org.junit.jupiter.api.Test;
 
-/** @author Riccardo Polidoro Classe di test per la classe TutorBean */
+
+
+/**
+ *Classe di test per la classe TutorBean.
+ *
+ * @author Riccardo Polidoro
+ *
+ */
 public class TutorBeanTest {
   private final String emailTutor = "email@prova.unisa.it";
   private final String dipartimento = "dipartimento";
@@ -15,6 +21,9 @@ public class TutorBeanTest {
   private final int oreDisponibili = 10;
   private final TutorBean bean = new TutorBean();
 
+  /**
+   * Setting delle variabili per ogni test.
+   */
   @BeforeEach
   public void beforeEach() {
     bean.setEmailTutor(emailTutor);
@@ -85,7 +94,7 @@ public class TutorBeanTest {
   }
 
   @Test
-  public void TutorBean() {
+  public void tutorBean() {
     String emailTutor = "email@prova.unisa.it";
     String dipartimento = "dipartimento";
     String qualifica = "qualifica";

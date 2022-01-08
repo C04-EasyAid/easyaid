@@ -1,26 +1,35 @@
 package control;
-/** @author Serena Liguori Testing per l'inserimento di un commento */
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Objects;
+import javax.servlet.ServletException;
 import model.bean.LezioneBean;
-import model.bean.StudenteBean;
 import model.bean.TutorBean;
-import model.dao.*;
-import org.junit.jupiter.api.BeforeEach;
 import model.bean.UserBean;
+import model.dao.CommentoDAO;
+import model.dao.ICommentoDAO;
+import model.dao.ITutorDAO;
+import model.dao.IUserDAO;
+import model.dao.TutorDAO;
+import model.dao.UserDAO;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-import javax.servlet.ServletException;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.Objects;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+/**
+ *Testing per l'inserimento di un commento.
+ *
+ * @author Serena Liguori
+ *
+ */
 
 class CommentoTest {
   private CommentoServlet servlet;
@@ -35,13 +44,9 @@ class CommentoTest {
   }
 
   @Test
-  void TestInserimentoCommento1() throws ServletException, IOException {
+  void testInserimentoCommento1() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
-
-    ICommentoDAO commentoDAO = mock(CommentoDAO.class);
-    ITutorDAO tutorDao = mock(TutorDAO.class);
-
+    IUserDAO userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
 
@@ -55,11 +60,14 @@ class CommentoTest {
     request.getSession().setAttribute("lezione", lezione);
     String msg = null;
     request.setParameter("commento", msg);
-    servlet.setDaoC(commentoDAO);
+
+    ICommentoDAO commentoDao = mock(CommentoDAO.class);
+    ITutorDAO tutorDao = mock(TutorDAO.class);
+    servlet.setDaoC(commentoDao);
     servlet.setDaoT(tutorDao);
     try {
       when(tutorDao.doRetrieveByEmail(userBean.getEmail())).thenReturn(tutorBean);
-      when(commentoDAO.insertCommentoTutor(lezione.getId(), msg, tutorBean.getEmailTutor()))
+      when(commentoDao.insertCommentoTutor(lezione.getId(), msg, tutorBean.getEmailTutor()))
           .thenReturn(false);
     } catch (SQLException | ClassNotFoundException e) {
       e.printStackTrace();
@@ -72,12 +80,9 @@ class CommentoTest {
   }
 
   @Test
-  void TestInserimentoCommento2() throws ServletException, IOException {
+  void testInserimentoCommento2() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
-
-    ICommentoDAO commentoDAO = mock(CommentoDAO.class);
-    ITutorDAO tutorDao = mock(TutorDAO.class);
+    IUserDAO userDao = mock(UserDAO.class);
 
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
@@ -99,11 +104,15 @@ class CommentoTest {
             + "KEUwYx1tiOc79U28NVA9t9cr6psAMdsOu5syHkenamjUTafSTVC4u5PQWC7denLZO99i5lkzy"
             + "uoNwaR71TJt0KtgL3jFdt565NjencLofL5rDRP1GYsAitGLG572jTKFKTCbTa";
     request.setParameter("commento", msg);
-    servlet.setDaoC(commentoDAO);
+
+    ICommentoDAO commentoDao = mock(CommentoDAO.class);
+    ITutorDAO tutorDao = mock(TutorDAO.class);
+
+    servlet.setDaoC(commentoDao);
     servlet.setDaoT(tutorDao);
     try {
       when(tutorDao.doRetrieveByEmail(userBean.getEmail())).thenReturn(tutorBean);
-      when(commentoDAO.insertCommentoTutor(lezione.getId(), msg, tutorBean.getEmailTutor()))
+      when(commentoDao.insertCommentoTutor(lezione.getId(), msg, tutorBean.getEmailTutor()))
           .thenThrow(new SQLException());
     } catch (SQLException | ClassNotFoundException e) {
       e.printStackTrace();
@@ -116,13 +125,9 @@ class CommentoTest {
   }
 
   @Test
-  void TestInserimentoCommento3() throws ServletException, IOException {
+  void testInserimentoCommento3() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
-
-    ICommentoDAO commentoDAO = mock(CommentoDAO.class);
-    ITutorDAO tutorDao = mock(TutorDAO.class);
-
+    IUserDAO userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
 
@@ -136,11 +141,14 @@ class CommentoTest {
     request.getSession().setAttribute("lezione", lezione);
     String msg = "Ok,Ci sarò!";
     request.setParameter("commento", msg);
-    servlet.setDaoC(commentoDAO);
+
+    ICommentoDAO commentoDao = mock(CommentoDAO.class);
+    ITutorDAO tutorDao = mock(TutorDAO.class);
+    servlet.setDaoC(commentoDao);
     servlet.setDaoT(tutorDao);
     try {
       when(tutorDao.doRetrieveByEmail(userBean.getEmail())).thenReturn(tutorBean);
-      when(commentoDAO.insertCommentoTutor(lezione.getId(), msg, tutorBean.getEmailTutor()))
+      when(commentoDao.insertCommentoTutor(lezione.getId(), msg, tutorBean.getEmailTutor()))
           .thenReturn(true);
     } catch (SQLException | ClassNotFoundException e) {
       e.printStackTrace();

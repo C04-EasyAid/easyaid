@@ -1,12 +1,17 @@
 package model.bean;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
-import model.bean.StudenteBean;
+import org.junit.jupiter.api.Test;
 
-/** @author Riccardo Polidoro Classe di test per la classe StudenteBean */
+/**
+ * Classe di test per la classe StudenteBean.
+ *
+ * @author Riccardo Polidoro
+ *
+ */
+
 public class StudenteBeanTest {
   private final String email = "email@prova.unisa.it";
   private final String tipoDisabilita = "tipoDisabilita";
@@ -15,6 +20,9 @@ public class StudenteBeanTest {
   private final int percentualeDisabilita = 60;
   private final StudenteBean bean = new StudenteBean();
 
+  /**
+   *Setting delle variabili per ogni test.
+   */
   @BeforeEach
   public void beforeEach() {
     bean.setEmail(email);
@@ -85,7 +93,7 @@ public class StudenteBeanTest {
   }
 
   @Test
-  public void StudenteBean() {
+  public void studenteBean() {
     String email = "email@prova.unisa.it";
     String tipoDisabilita = "tipoDisabilita";
     String specificheDisturbo = "specificheDisturbo";

@@ -1,12 +1,17 @@
 package model.bean;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
-import model.bean.ProfessoreReferenteBean;
+import org.junit.jupiter.api.Test;
 
-/** @author Riccardo Polidoro Classe di test per la classe ProfessoreReferenteBean */
+/**
+ * Classe di test per la classe ProfessoreReferenteBean.
+ *
+ *  @author Riccardo Polidoro
+ *
+ */
+
 public class ProfessoreReferenteBeanTest {
   private final String email = "email@prova.unisa.it";
   private final String dipartimento = "dipartimento";
@@ -43,7 +48,7 @@ public class ProfessoreReferenteBeanTest {
   }
 
   @Test
-  public void ProfessoreReferenteBean() {
+  public void professoreReferenteBean() {
     String email = "email@prova.unisa.it";
     String dipartimento = "dipartimento";
     ProfessoreReferenteBean bean = new ProfessoreReferenteBean(email, dipartimento);

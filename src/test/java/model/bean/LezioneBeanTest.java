@@ -1,14 +1,18 @@
 package model.bean;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.BeforeEach;
-import model.bean.LezioneBean;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Date;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-/** @author Riccardo Polidoro Classe di test per la classe LezioneBean */
+/**
+ * Classe di test per la classe LezioneBean.
+ *
+ * @author Riccardo Polidoro
+ *
+ */
+
 public class LezioneBeanTest {
   private final int id = 1;
   private final int tutorato = 1;
@@ -20,6 +24,9 @@ public class LezioneBeanTest {
   private final boolean status = true;
   private final LezioneBean bean = new LezioneBean();
 
+  /**
+   * Setting delle variabili per ogni test.
+   */
   @BeforeEach
   public void beforeEach() {
     bean.setId(id);
@@ -129,7 +136,7 @@ public class LezioneBeanTest {
   }
 
   @Test
-  public void LezioneBean() {
+  public void lezioneBean() {
     int id = 1;
     int tutorato = 1;
     String oraInizio = "10:00";
@@ -148,7 +155,7 @@ public class LezioneBeanTest {
   }
 
   @Test
-  public void LezioneBean1() {
+  public void lezioneBean1() {
     int id = 1;
     int tutorato = 1;
     String oraInizio = "10:00";

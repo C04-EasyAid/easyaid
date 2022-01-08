@@ -1,26 +1,31 @@
 package control;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Objects;
+import javax.servlet.ServletException;
 import model.bean.StudenteBean;
-import model.dao.IUserDAO;
-import org.junit.jupiter.api.BeforeEach;
 import model.bean.UserBean;
+import model.dao.IUserDAO;
 import model.dao.UserDAO;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-import javax.servlet.ServletException;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.Objects;
+/**
+ *Testing per l'inserimento di uno Studente.
+ *
+ * @author Giovanni Toriello
+ *
+ */
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-/** @author Giovanni Toriello Testing per l'inserimento di uno Studente */
 class RegisterTest {
   private RegisterServlet servlet;
   private MockHttpServletRequest request;
@@ -34,9 +39,8 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoStudente1() throws ServletException, IOException {
+  void testInserimentoStudente1() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
     persAdmin.setPassword("C#Gigli#9109");
@@ -70,9 +74,10 @@ class RegisterTest {
     request.setParameter("specificheDisturbo", specificheDisturbo);
     request.setParameter("percentualeDisabilita", percentualeDisabilita);
 
-    servlet.setDao(userDAO);
+    IUserDAO userDao = mock(UserDAO.class);
+    servlet.setDao(userDao);
     try {
-      when(userDAO.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (ClassNotFoundException e) {
@@ -86,10 +91,8 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoStudente2() throws ServletException, IOException {
+  void testInserimentoStudente2() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
-
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
     persAdmin.setPassword("C#Gigli#9109");
@@ -123,9 +126,10 @@ class RegisterTest {
     request.setParameter("specificheDisturbo", specificheDisturbo);
     request.setParameter("percentualeDisabilita", percentualeDisabilita);
 
-    servlet.setDao(userDAO);
+    IUserDAO userDao = mock(UserDAO.class);
+    servlet.setDao(userDao);
     try {
-      when(userDAO.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (ClassNotFoundException e) {
@@ -139,10 +143,8 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoStudente3() throws ServletException, IOException {
+  void testInserimentoStudente3() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
-
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
     persAdmin.setPassword("C#Gigli#9109");
@@ -176,9 +178,10 @@ class RegisterTest {
     request.setParameter("specificheDisturbo", specificheDisturbo);
     request.setParameter("percentualeDisabilita", percentualeDisabilita);
 
-    servlet.setDao(userDAO);
+    IUserDAO userDao = mock(UserDAO.class);
+    servlet.setDao(userDao);
     try {
-      when(userDAO.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (ClassNotFoundException e) {
@@ -192,10 +195,8 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoStudente4() throws ServletException, IOException {
+  void testInserimentoStudente4() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
-
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
     persAdmin.setPassword("C#Gigli#9109");
@@ -229,9 +230,10 @@ class RegisterTest {
     request.setParameter("specificheDisturbo", specificheDisturbo);
     request.setParameter("percentualeDisabilita", percentualeDisabilita);
 
-    servlet.setDao(userDAO);
+    IUserDAO userDao = mock(UserDAO.class);
+    servlet.setDao(userDao);
     try {
-      when(userDAO.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (ClassNotFoundException e) {
@@ -245,10 +247,8 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoStudente5() throws ServletException, IOException {
+  void testInserimentoStudente5() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
-
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
     persAdmin.setPassword("C#Gigli#9109");
@@ -282,9 +282,10 @@ class RegisterTest {
     request.setParameter("specificheDisturbo", specificheDisturbo);
     request.setParameter("percentualeDisabilita", percentualeDisabilita);
 
-    servlet.setDao(userDAO);
+    IUserDAO userDao = mock(UserDAO.class);
+    servlet.setDao(userDao);
     try {
-      when(userDAO.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (ClassNotFoundException e) {
@@ -298,10 +299,8 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoStudente6() throws ServletException, IOException {
+  void testInserimentoStudente6() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
-
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
     persAdmin.setPassword("C#Gigli#9109");
@@ -335,9 +334,10 @@ class RegisterTest {
     request.setParameter("specificheDisturbo", specificheDisturbo);
     request.setParameter("percentualeDisabilita", percentualeDisabilita);
 
-    servlet.setDao(userDAO);
+    IUserDAO userDao = mock(UserDAO.class);
+    servlet.setDao(userDao);
     try {
-      when(userDAO.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (ClassNotFoundException e) {
@@ -351,10 +351,8 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoStudente7() throws ServletException, IOException {
+  void testInserimentoStudente7() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
-
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
     persAdmin.setPassword("C#Gigli#9109");
@@ -388,9 +386,10 @@ class RegisterTest {
     request.setParameter("specificheDisturbo", specificheDisturbo);
     request.setParameter("percentualeDisabilita", percentualeDisabilita);
 
-    servlet.setDao(userDAO);
+    IUserDAO userDao = mock(UserDAO.class);
+    servlet.setDao(userDao);
     try {
-      when(userDAO.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (ClassNotFoundException e) {
@@ -404,10 +403,8 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoStudente8() throws ServletException, IOException {
+  void testInserimentoStudente8() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
-
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
     persAdmin.setPassword("C#Gigli#9109");
@@ -441,9 +438,10 @@ class RegisterTest {
     request.setParameter("specificheDisturbo", specificheDisturbo);
     request.setParameter("percentualeDisabilita", percentualeDisabilita);
 
-    servlet.setDao(userDAO);
+    IUserDAO userDao = mock(UserDAO.class);
+    servlet.setDao(userDao);
     try {
-      when(userDAO.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (ClassNotFoundException e) {
@@ -457,10 +455,8 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoStudente9() throws ServletException, IOException {
+  void testInserimentoStudente9() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
-
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
     persAdmin.setPassword("C#Gigli#9109");
@@ -494,9 +490,10 @@ class RegisterTest {
     request.setParameter("specificheDisturbo", specificheDisturbo);
     request.setParameter("percentualeDisabilita", percentualeDisabilita);
 
-    servlet.setDao(userDAO);
+    IUserDAO userDao = mock(UserDAO.class);
+    servlet.setDao(userDao);
     try {
-      when(userDAO.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (ClassNotFoundException e) {
@@ -510,10 +507,8 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoStudente10() throws ServletException, IOException {
+  void testInserimentoStudente10() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
-
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
     persAdmin.setPassword("C#Gigli#9109");
@@ -547,9 +542,10 @@ class RegisterTest {
     request.setParameter("specificheDisturbo", specificheDisturbo);
     request.setParameter("percentualeDisabilita", percentualeDisabilita);
 
-    servlet.setDao(userDAO);
+    IUserDAO userDao = mock(UserDAO.class);
+    servlet.setDao(userDao);
     try {
-      when(userDAO.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (ClassNotFoundException e) {
@@ -563,10 +559,8 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoStudente12() throws ServletException, IOException {
+  void testInserimentoStudente12() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
-
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
     persAdmin.setPassword("C#Gigli#9109");
@@ -600,9 +594,10 @@ class RegisterTest {
     request.setParameter("specificheDisturbo", specificheDisturbo);
     request.setParameter("percentualeDisabilita", percentualeDisabilita);
 
-    servlet.setDao(userDAO);
+    IUserDAO userDao = mock(UserDAO.class);
+    servlet.setDao(userDao);
     try {
-      when(userDAO.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (ClassNotFoundException e) {
@@ -616,10 +611,8 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoStudente14() throws ServletException, IOException {
+  void testInserimentoStudente14() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
-
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
     persAdmin.setPassword("C#Gigli#9109");
@@ -653,9 +646,10 @@ class RegisterTest {
     request.setParameter("specificheDisturbo", specificheDisturbo);
     request.setParameter("percentualeDisabilita", percentualeDisabilita);
 
-    servlet.setDao(userDAO);
+    IUserDAO userDao = mock(UserDAO.class);
+    servlet.setDao(userDao);
     try {
-      when(userDAO.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (ClassNotFoundException e) {
@@ -669,9 +663,9 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoStudente15() throws ServletException, IOException {
+  void testInserimentoStudente15() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IUserDAO userDao = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -709,13 +703,13 @@ class RegisterTest {
     System.out.println("TEST" + utenteTemporaneo);
 
     try {
-      when(userDAO.insertStudente(studente, utenteTemporaneo)).thenReturn(true);
+      when(userDao.insertStudente(studente, utenteTemporaneo)).thenReturn(true);
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (ClassNotFoundException e) {
       e.printStackTrace();
     }
-    servlet.setDao(userDAO);
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertEquals(
@@ -723,25 +717,4 @@ class RegisterTest {
         Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
   }
 
-  public static void main(String[] args) throws SQLException, ClassNotFoundException {
-    UserDAO dao = new UserDAO();
-    String nome = "Lorenzo";
-    String cognome = "Rossi";
-    String email = "l.rossi@studenti.unisa.it";
-    String password = "Lorenzo#rossi1";
-    String ruolo = "Studente";
-    String tipoDisabilita = "DSA";
-    String oreDisponibiliStudente = "25";
-    String specificheDisturbo = "Dislessia";
-    String percentualeDisabilita = "30";
-    StudenteBean studente =
-        new StudenteBean(
-            email,
-            tipoDisabilita,
-            specificheDisturbo,
-            Integer.parseInt(oreDisponibiliStudente),
-            Integer.parseInt(percentualeDisabilita));
-    UserBean utenteTemporaneo = new UserBean(nome, cognome, email, password, "S");
-    dao.insertStudente(studente, utenteTemporaneo);
-  }
 }

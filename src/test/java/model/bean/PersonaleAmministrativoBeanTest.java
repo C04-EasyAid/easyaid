@@ -1,12 +1,17 @@
 package model.bean;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
-import model.bean.PersonaleAmministrativoBean;
+import org.junit.jupiter.api.Test;
 
-/** @author Riccardo Polidoro Classe di test per la classe PersonaleAmministrativoBean */
+/**
+ *Classe di test per la classe PersonaleAmministrativoBean.
+ *
+ * @author Riccardo Polidoro
+ *
+ */
+
 public class PersonaleAmministrativoBeanTest {
   private final String email = "email@prova.unisa.it";
   private final PersonaleAmministrativoBean bean = new PersonaleAmministrativoBean();
@@ -29,7 +34,7 @@ public class PersonaleAmministrativoBeanTest {
   }
 
   @Test
-  public void PersonaleAmministrativoBean() {
+  public void personaleAmministrativoBean() {
     String email = "email@prova.unisa.it";
     PersonaleAmministrativoBean bean = new PersonaleAmministrativoBean(email);
     assertEquals(email, bean.getEmailPersonaleAmministrativo());

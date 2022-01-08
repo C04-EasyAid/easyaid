@@ -1,22 +1,28 @@
 package control;
 
-import model.dao.IUserDAO;
-import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Objects;
 import model.bean.UserBean;
+import model.dao.IUserDAO;
 import model.dao.UserDAO;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.Objects;
+/**
+ *Testing per il Login.
+ *
+ * @author Giovanni Toriello
+ *
+ */
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-/** @author Giovanni Toriello Testing per il Login */
 class LoginTest {
 
   private LoginServlet servlet;
@@ -34,7 +40,6 @@ class LoginTest {
   @Test
   void testLogin1() throws IOException, SQLException, ClassNotFoundException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
 
     String email = "prova@email.it";
     request.setParameter("Email", email);
@@ -44,8 +49,9 @@ class LoginTest {
     bean.setEmail(email);
     bean.setPassword(password);
 
-    when(userDAO.doRetrieveUtente(bean)).thenReturn(bean);
-    servlet.setDao(userDAO);
+    IUserDAO userDao = mock(UserDAO.class);
+    when(userDao.doRetrieveUtente(bean)).thenReturn(bean);
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertEquals(
@@ -57,7 +63,7 @@ class LoginTest {
   @Test
   void testLogin2() throws IOException, SQLException, ClassNotFoundException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+
     String email = "abaglio9@studenti.unisa.it";
     request.setParameter("Email", email);
     String password = "admin";
@@ -66,8 +72,9 @@ class LoginTest {
     bean.setEmail(email);
     bean.setPassword(password);
 
-    when(userDAO.doRetrieveUtente(bean)).thenReturn(bean);
-    servlet.setDao(userDAO);
+    IUserDAO userDao = mock(UserDAO.class);
+    when(userDao.doRetrieveUtente(bean)).thenReturn(bean);
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
     assertEquals(
         "L'operazione non e' andata a buon fine",
@@ -78,7 +85,7 @@ class LoginTest {
   @Test
   void testLogin3() throws IOException, SQLException, ClassNotFoundException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IUserDAO userDao = mock(UserDAO.class);
 
     String email = "abaglio9@studenti.unisa.it";
     request.setParameter("Email", email);

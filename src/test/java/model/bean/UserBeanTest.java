@@ -1,13 +1,16 @@
 package model.bean;
 
-import static org.junit.jupiter.api.Assertions.*;
-import javax.servlet.http.HttpSessionBindingEvent;
-import javax.servlet.http.HttpSessionBindingListener;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.BeforeEach;
-import model.bean.UserBean;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/** @author Riccardo Polidoro Classe di test per la classe UserBean */
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Classe di test per la classe UserBean.
+ *
+ * @author Riccardo Polidoro
+ */
+
 public class UserBeanTest {
   private final String nome = "Aldo";
   private final String cognome = "Baglio";
@@ -16,6 +19,9 @@ public class UserBeanTest {
   private final String ruolo = "ruolo";
   private final UserBean bean = new UserBean();
 
+  /**
+   * Setting delle variabili per ogni test.
+   */
   @BeforeEach
   public void beforeEach() {
     bean.setNome(nome);
@@ -114,7 +120,7 @@ public class UserBeanTest {
   }
 
   @Test
-  public void UserBean() {
+  public void userBean() {
     String nome = "nome";
     String cognome = "cognome";
     String email = "email@prova.unisa.it";

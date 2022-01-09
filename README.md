@@ -14,7 +14,7 @@ It was created during the Software Project Management and Software Engineering e
 ## Stakeholder	 
 <div align="center">
   
-|Name|Position|Role|Contact Information|
+|Name|Position|Project Role|Contact Information|
 |:-: |:-: |:-: |:-: |
 |Filomena Ferrucci|Full Professor|Sponsor / Top Manager|<a href="https://docenti.unisa.it/001775/en/home">UNISA</a>|
 |Giusy Annunziata|MSc student|Project Manager|<a href="https://github.com/GiusyAnn">GitHub</a>|

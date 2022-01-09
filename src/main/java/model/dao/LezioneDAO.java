@@ -19,8 +19,9 @@ import static model.dao.ConnectionPool.conn;
 @author Serena Liguori
 Classe LezioneDAO
  */
-public class LezioneDAO {
+public class LezioneDAO implements ILezioneDAO {
   // Metodo che restitiusce una lezione in base all'id passato come parametro
+  @Override
   public synchronized LezioneBean doRetrieveLezioneById(int id)
           throws ClassNotFoundException, SQLException {
     Connection conn = null;
@@ -58,6 +59,7 @@ public class LezioneDAO {
     return bean;
   }
 
+  @Override
   public synchronized Collection<LezioneBean> doRetrieveLezioniById(int id)
           throws ClassNotFoundException, SQLException {
     Connection conn = null;
@@ -97,6 +99,7 @@ public class LezioneDAO {
     return lezioni;
   }
 
+  @Override
   public synchronized Collection<LezioneBean> doRetrieveLezioniCompletateById(int id)
           throws ClassNotFoundException, SQLException {
     Connection conn = null;
@@ -137,6 +140,7 @@ public class LezioneDAO {
   }
   // Metodo che restituisce tutte le lezioni di un determinato studente il quale è stato passato
   // come parametro
+  @Override
   public synchronized Collection<LezioneBean> doRetrieveLezioneByStudente(String studente)
           throws ClassNotFoundException, SQLException {
     Connection conn = null;
@@ -178,6 +182,7 @@ public class LezioneDAO {
 
   // Metodo che restituisce tutte le lezioni di un determinato tutor il quale è stato passato come
   // parametro
+  @Override
   public synchronized Collection<LezioneBean> doRetrieveLezioneByTutor(String tutor)
           throws ClassNotFoundException, SQLException {
     Connection conn = null;
@@ -217,6 +222,7 @@ public class LezioneDAO {
     return lezioni;
   }
 
+  @Override
   public synchronized int doRetrieveTutoratoByLezione(int lezione) throws SQLException {
     int idTutorato = 0;
     Connection conn = null;
@@ -243,6 +249,7 @@ public class LezioneDAO {
   // Metodo che restituisce un booleano
   // true = Se la somma delle ore delle lezioni sono uguali alle ore richieste
   // false = Se la somma delle ore delle lezioni non sono uguali alle ore richieste
+  @Override
   public synchronized int countOre(Collection<LezioneBean> lezioni, int idTutorato)
           throws SQLException, ClassNotFoundException {
     int uguale = -1;
@@ -283,6 +290,7 @@ public class LezioneDAO {
     return uguale;
   }
 
+  @Override
   public synchronized boolean insertNewLezione(LezioneBean lezione) throws SQLException {
     boolean utente = false;
     Connection conn = null;
@@ -320,6 +328,7 @@ public class LezioneDAO {
   }
 
   // Metodo che conferma la lezione avvenuta
+  @Override
   public synchronized boolean confermaLezione(int idLezione) throws SQLException {
     boolean isUpdated = false;
     Connection conn = null;

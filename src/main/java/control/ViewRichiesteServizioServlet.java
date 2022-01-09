@@ -3,6 +3,8 @@ package control;
 import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
+import model.dao.ISupportoEsameDAO;
+import model.dao.ITutoratoDidatticoDAO;
 import model.dao.SupportoEsameDAO;
 import model.dao.TutoratoDidatticoDAO;
 import other.MyLogger;
@@ -21,6 +23,16 @@ import java.util.List;
 public class ViewRichiesteServizioServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "ViewRichiesteServizioServlet";
+  private ISupportoEsameDAO esameDAO = new SupportoEsameDAO();
+  private ITutoratoDidatticoDAO tutoratoDAO = new TutoratoDidatticoDAO();
+
+  public void setEsameDAO(ISupportoEsameDAO esameDAO) {
+    this.esameDAO = esameDAO;
+  }
+
+  public void setTutoratoDAO(ITutoratoDidatticoDAO tutoratoDAO) {
+    this.tutoratoDAO = tutoratoDAO;
+  }
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -28,8 +40,6 @@ public class ViewRichiesteServizioServlet extends HttpServlet {
     log.info(myClass, "Collegamento alla Servlet...");
     HttpSession session = req.getSession();
     UserBean userLoggato = (UserBean) session.getAttribute("utente");
-    SupportoEsameDAO esameDAO = new SupportoEsameDAO();
-    TutoratoDidatticoDAO tutoratoDAO = new TutoratoDidatticoDAO();
     if (userLoggato != null) {
       if (userLoggato.isTutor()) {
         try {
@@ -47,9 +57,11 @@ public class ViewRichiesteServizioServlet extends HttpServlet {
           e.printStackTrace();
         }
       } else {
+        session.setAttribute("alertMsg","Permessi non concessi all'utente");
         resp.sendRedirect("view/HomePage.jsp");
       }
     } else {
+      session.setAttribute("alertMsg","Permessi non concessi all'utente");
       resp.sendRedirect("view/LoginPage.jsp");
     }
   }

@@ -2,10 +2,7 @@ package model.bean;
 
 import lombok.*;
 
-/**
- * @author Giovanni Toriello
- * Classe StudenteBean
- */
+/** @author Giovanni Toriello Classe StudenteBean */
 @Data
 public class StudenteBean {
 
@@ -15,6 +12,7 @@ public class StudenteBean {
 
   /**
    * Costruttore
+   *
    * @param email
    * @param tipoDisabilita
    * @param specificheDisturbo
@@ -34,9 +32,6 @@ public class StudenteBean {
     this.percentualeDisabilita = percentualeDisabilita;
   }
 
-  /**
-   * Costruttore vuoto
-   */
+  /** Costruttore vuoto */
   public StudenteBean() {}
-
 }

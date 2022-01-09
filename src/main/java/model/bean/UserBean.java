@@ -6,10 +6,7 @@ import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionBindingListener;
 import java.util.Locale;
 
-/**
- * @author Giovanni Toriello
- * Classe UserBean
- */
+/** @author Giovanni Toriello Classe UserBean */
 @Data
 public class UserBean implements HttpSessionBindingListener {
   // Variabili dell'utente
@@ -17,6 +14,7 @@ public class UserBean implements HttpSessionBindingListener {
 
   /**
    * Costruttore
+   *
    * @param nome
    * @param cognome
    * @param email
@@ -31,11 +29,8 @@ public class UserBean implements HttpSessionBindingListener {
     this.ruolo = ruolo.toUpperCase(Locale.ROOT);
   }
 
-  /**
-   * Costruttore Vuoto
-   */
-  public UserBean() {
-  }
+  /** Costruttore Vuoto */
+  public UserBean() {}
 
   // Restituisce vero se l'utente è uno Studente
   public boolean isStudente() {
@@ -61,14 +56,16 @@ public class UserBean implements HttpSessionBindingListener {
   @Override
   public void valueBound(HttpSessionBindingEvent event) {
     System.out.println("-- HttpSessionBindingListener#valueBound() --");
-    System.out.printf("Aggiunto attributo alla sessione con il nome : %s, valore:%s %n",
-            event.getName(), event.getValue());
+    System.out.printf(
+        "Aggiunto attributo alla sessione con il nome : %s, valore:%s %n",
+        event.getName(), event.getValue());
   }
 
   @Override
   public void valueUnbound(HttpSessionBindingEvent event) {
     System.out.println("-- HttpSessionBindingEvent#valueUnbound() --");
-    System.out.printf("Rimosso attributo alla sessione con il nome : %s, valore:%s %n",
-            event.getName(), event.getValue());
+    System.out.printf(
+        "Rimosso attributo alla sessione con il nome : %s, valore:%s %n",
+        event.getName(), event.getValue());
   }
 }

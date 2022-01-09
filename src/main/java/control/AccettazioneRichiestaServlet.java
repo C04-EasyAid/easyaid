@@ -56,22 +56,20 @@ public class AccettazioneRichiestaServlet extends HttpServlet {
         resp.sendRedirect("view/HomePage.jsp");
         e.printStackTrace();
       }
-    } else if (supporto != null) {
+    }if (supporto != null) {
       try {
         supportodao.accettaRichiesta(supporto.getId(), tutor.getEmail(), commento);
-        session.setAttribute("alertMsg", "L'operazione non è andata a buon fine");
+        session.setAttribute("alertMsg", "Richiesta accettata con successo");
         resp.sendRedirect("view/HomePage.jsp");
       } catch (SQLException e) {
         session.setAttribute("alertMsg", "L'operazione non è andata a buon fine");
         resp.sendRedirect("view/HomePage.jsp");
         e.printStackTrace();
       }
-    } else {
-      session.setAttribute("alertMsg", "L'operazione non è andata a buon fine");
-      resp.sendRedirect("view/HomePage.jsp");
+      }
     }
   }
-}
+
 
 
 

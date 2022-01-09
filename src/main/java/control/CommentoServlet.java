@@ -1,12 +1,5 @@
 package control;
 
-import model.bean.LezioneBean;
-import model.bean.StudenteBean;
-import model.bean.TutorBean;
-import model.bean.UserBean;
-import model.dao.*;
-import other.MyLogger;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,15 +7,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import model.bean.LezioneBean;
+import model.bean.StudenteBean;
+import model.bean.TutorBean;
+import model.bean.UserBean;
+import model.dao.*;
+import other.MyLogger;
+
 import java.sql.SQLException;
 /** @author Serena Liguori Servlet che permette di inserire i commenti per una lezione */
 @WebServlet("/CommentoServlet")
 public class CommentoServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "CommentoServlet";
-  private ICommentoDAO daoC= new CommentoDAO();
-  private ITutorDAO  daoT= new TutorDAO();
-  private IStudenteDAO daoS= new StudenteDAO();
+  private ICommentoDAO daoC = new CommentoDAO();
+  private ITutorDAO daoT = new TutorDAO();
+  private IStudenteDAO daoS = new StudenteDAO();
 
   public void setDaoC(ICommentoDAO daoC) {
     this.daoC = daoC;

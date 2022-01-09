@@ -1,10 +1,5 @@
 package control;
 
-import model.bean.LezioneBean;
-import model.bean.UserBean;
-import model.dao.LezioneDAO;
-import other.MyLogger;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +12,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
+import model.bean.LezioneBean;
+import model.bean.UserBean;
+import model.dao.LezioneDAO;
+import other.MyLogger;
+
+
 
 /*
 @author Mariagiovanna Bianco
@@ -50,11 +51,11 @@ public class InserimentoNuovaLezioneServlet extends HttpServlet {
         lezioneBean.setData(date);
         Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
         lezioni.add(lezioneBean);
-        if (lezioneDAO.countOre(lezioni,idTutorato) < 1) {
+        if (lezioneDAO.countOre(lezioni, idTutorato) < 1) {
           lezioneDAO.insertNewLezione(lezioneBean);
           session.setAttribute("alertMsg", "Lezione Inserita");
           response.sendRedirect(request.getContextPath() + "/LezioniServlet");
-        } else if (lezioneDAO.countOre(lezioni,idTutorato) == 2) {
+        } else if (lezioneDAO.countOre(lezioni, idTutorato) == 2) {
           session.setAttribute("alertMsg", "La lezione supera le ore richieste");
           response.sendRedirect("view/LezioniTutorPage.jsp");
         }

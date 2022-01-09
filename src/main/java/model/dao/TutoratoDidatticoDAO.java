@@ -1,18 +1,19 @@
 package model.dao;
 
-import model.bean.TutoratoDidatticoBean;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import model.bean.TutoratoDidatticoBean;
 
 /**
+ *
  * @author Martina Giugliano DAO Tutorato didattico per gestire i dati del Database relativo al
  *     tutorato didattico.
  */
+
 public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
 
   /**

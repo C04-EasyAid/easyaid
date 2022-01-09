@@ -681,52 +681,52 @@ class RegisterTest {
     servlet.doGet(request,response);
 
     assertNotEquals("Utente inserito con successo", Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
+  }
+  @Test
+  void TestInserimentoTutor2() throws ServletException, IOException {MockitoAnnotations.initMocks(this);
+    IUserDAO userDAO = mock(UserDAO.class);
+
+    UserBean persAdmin = new UserBean();
+    UserBean bean = new UserBean();
+    persAdmin.setEmail("cgigli91@unisa.it");
+    persAdmin.setPassword("C#Gigli#9109");
+    persAdmin.setRuolo("PA");
+    request.getSession().setAttribute("utente",persAdmin);
+    String nome="Lorenzo Franco Antonio Rossi";
+    String cognome="Rossi";
+    String email="l.rossi@studenti.unisa.it";
+    String password="Lorenzo#rossi1";
+    String ruolo="Tutor";
+    String dipartimento = "Informatica";
+    String qualifica = "Laurea Triennale";
+    String oreDisponibili = "25";
+    request.setParameter("nome",nome);
+    request.setParameter("cognome",cognome);
+    request.setParameter("email",email);
+    request.setParameter("password",password);
+    request.setParameter("ruolo",ruolo);
+    request.setParameter("dipartimentoTutor",dipartimento);
+    request.setParameter("qualifica",qualifica);
+    request.setParameter("oreDisponibiliTutor",oreDisponibili);
+    UserBean utenteTemporaneo=new UserBean(nome,cognome,email,password,"T");
+    TutorBean tutor = new TutorBean();
+    tutor.setEmailTutor(email);
+    tutor.setOreSvolte(0);
+    tutor.setDipartimento(dipartimento);
+    tutor.setQualifica(qualifica);
+    tutor.setOreDisponibili(Integer.parseInt(oreDisponibili));
+
+
+    try {
+      when(userDAO.insertTutor(tutor,utenteTemporaneo)).thenReturn(false);
+    } catch (SQLException e) {
+      e.printStackTrace();
     }
-    @Test
-    void TestInserimentoTutor2() throws ServletException, IOException {MockitoAnnotations.initMocks(this);
-      IUserDAO userDAO = mock(UserDAO.class);
+    servlet.setDao(userDAO);
+    servlet.doGet(request,response);
 
-      UserBean persAdmin = new UserBean();
-      UserBean bean = new UserBean();
-      persAdmin.setEmail("cgigli91@unisa.it");
-      persAdmin.setPassword("C#Gigli#9109");
-      persAdmin.setRuolo("PA");
-      request.getSession().setAttribute("utente",persAdmin);
-      String nome="Lorenzo Franco Antonio Rossi";
-      String cognome="Rossi";
-      String email="l.rossi@studenti.unisa.it";
-      String password="Lorenzo#rossi1";
-      String ruolo="Tutor";
-      String dipartimento = "Informatica";
-      String qualifica = "Laurea Triennale";
-      String oreDisponibili = "25";
-      request.setParameter("nome",nome);
-      request.setParameter("cognome",cognome);
-      request.setParameter("email",email);
-      request.setParameter("password",password);
-      request.setParameter("ruolo",ruolo);
-      request.setParameter("dipartimentoTutor",dipartimento);
-      request.setParameter("qualifica",qualifica);
-      request.setParameter("oreDisponibiliTutor",oreDisponibili);
-      UserBean utenteTemporaneo=new UserBean(nome,cognome,email,password,"T");
-      TutorBean tutor = new TutorBean();
-      tutor.setEmailTutor(email);
-      tutor.setOreSvolte(0);
-      tutor.setDipartimento(dipartimento);
-      tutor.setQualifica(qualifica);
-      tutor.setOreDisponibili(Integer.parseInt(oreDisponibili));
-
-
-      try {
-        when(userDAO.insertTutor(tutor,utenteTemporaneo)).thenReturn(false);
-      } catch (SQLException e) {
-        e.printStackTrace();
-      }
-      servlet.setDao(userDAO);
-      servlet.doGet(request,response);
-
-      assertNotEquals("Utente inserito con successo", Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
-    }
+    assertNotEquals("Utente inserito con successo", Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
+  }
   @Test
   void TestInserimentoTutor3() throws ServletException, IOException {MockitoAnnotations.initMocks(this);
     IUserDAO userDAO = mock(UserDAO.class);

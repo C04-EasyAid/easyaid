@@ -5,7 +5,7 @@
   </h3>
 </div>
 
-#  Introduction
+##  Introduction
 
 Easy Aid is a web application that aims to facilitate the provision of specific services for university students with disabilities and SLD, through the automation of long bureaucratic procedures.
 

@@ -11,7 +11,7 @@ Easy Aid is a web application that aims to facilitate the provision of specific 
 
 It was created during the Software Project Management and Software Engineering exams of the University of Salerno.
 
-## Authors
+## Stakeholder	 
 <div align="center">
   
 |Name|Position|Role|Contact Information|

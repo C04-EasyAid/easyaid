@@ -1653,7 +1653,26 @@ class RegisterTest {
   }
 
 
+   @Test
+  void permessiNonConcessi() throws ServletException, IOException {
+    MockitoAnnotations.initMocks(this);
+     String nome="Lorenzo";
+     String cognome="Rossi";
+     String email="l.rossi@studenti.unisa.it";
+     String password="Lorenzo#rossi1";
+     String ruolo="Professore Referente";
+     String dipartimento = "Informatica";
+     request.setParameter("nome",nome);
+     request.setParameter("cognome",cognome);
+     request.setParameter("email",email);
+     request.setParameter("password",password);
+     request.setParameter("ruolo",ruolo);
+     request.setParameter("dipartimentoProf",dipartimento);
+     servlet.doGet(request,response);
 
+    assertEquals("Permessi non concessi all'utente",request.getSession().getAttribute("alertMsg"));
+
+   }
 
 
 

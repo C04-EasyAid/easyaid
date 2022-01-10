@@ -33,3 +33,10 @@ It was created during the Software Project Management and Software Engineering e
 
 * The javadoc of the project (both product and management) is contained in the _doc_ folder
 * The project documentation (both product and management) is contained in the _deliverables_ folder
+
+## Main technologies used
+
+* <a href="https://www.oracle.com/java/technologies/javase/16-0-2-relnotes.html">Java™ SE Development Kit 16.0.2 (JDK 16.0.2)</a>
+* <a href="https://getbootstrap.com/">Bootstrap</a>
+* <a href="https://junit.org/junit5/">JUnit 5</a>
+* <a href="https://gradle.org/">Gradle</a>

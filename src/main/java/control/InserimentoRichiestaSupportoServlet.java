@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import model.bean.SupportoEsameBean;
 import model.bean.UserBean;
+import model.dao.ISupportoEsameDAO;
 import model.dao.SupportoEsameDAO;
 import other.MyLogger;
 
@@ -22,13 +23,17 @@ public class InserimentoRichiestaSupportoServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "InserimentoRichiestaSupportoServlet";
 
+  public void setSupportoEsameDAO(ISupportoEsameDAO dao) {
+    this.dao = dao;
+  }
+
+  private ISupportoEsameDAO dao = new SupportoEsameDAO();
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-      throws ServletException, IOException {
+          throws ServletException, IOException {
     log.info(myClass, "Collegamento alla Servlet...");
     HttpSession session = req.getSession();
     UserBean user = (UserBean) session.getAttribute("utente");
-    SupportoEsameDAO dao = new SupportoEsameDAO();
     if (user.isStudente()) {
       SupportoEsameBean bean = new SupportoEsameBean();
       bean.setDipartimento(req.getParameter("dipartimento"));
@@ -48,7 +53,7 @@ public class InserimentoRichiestaSupportoServlet extends HttpServlet {
           resp.sendRedirect("view/HomePage.jsp");
         } else {
           session.setAttribute(
-              "alertMsg", "Richiesta di servizio di supporto esame inserita con successo!");
+                  "alertMsg", "Richiesta di servizio di supporto esame inserita con successo!");
           resp.sendRedirect("view/HomePage.jsp");
         }
       } catch (SQLException e) {
@@ -63,7 +68,7 @@ public class InserimentoRichiestaSupportoServlet extends HttpServlet {
 
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-      throws ServletException, IOException {
+          throws ServletException, IOException {
     super.doPost(req, resp);
   }
 }

@@ -26,7 +26,7 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
    */
   @Override
   public synchronized List<TutoratoDidatticoBean> doRetrieveAllByStudente(String emailStudente)
-      throws SQLException, ClassNotFoundException {
+          throws SQLException, ClassNotFoundException {
     Connection conn = null;
     String query = "SELECT * FROM tutorato_didattico WHERE studente_email=?";
     PreparedStatement stmt = null;
@@ -50,6 +50,7 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
         bean.setStudenteEmail(rs.getString("studente_email"));
         bean.setTutorEmail(rs.getString("tutor_email"));
         bean.setProfEmail(rs.getString("prof_refe_email"));
+        bean.setDocente(rs.getString("docente"));
         list.add(bean);
       }
 
@@ -73,7 +74,7 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
    */
   @Override
   public synchronized List<TutoratoDidatticoBean> doRetrieveAllByTutor(String emailTutor)
-      throws SQLException, ClassNotFoundException {
+          throws SQLException, ClassNotFoundException {
     Connection conn = null;
     String query = "SELECT * FROM tutorato_didattico WHERE tutor_email=?";
     PreparedStatement stmt = null;
@@ -96,6 +97,7 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
         bean.setStudenteEmail(rs.getString("studente_email"));
         bean.setTutorEmail(rs.getString("tutor_email"));
         bean.setProfEmail(rs.getString("prof_refe_email"));
+        bean.setDocente(rs.getString("docente"));
         list.add(bean);
       }
 
@@ -119,7 +121,7 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
    */
   @Override
   public synchronized List<TutoratoDidatticoBean>
-      doRetrieveAllRichiesteTutoratoDidatticoCompletate()
+  doRetrieveAllRichiesteTutoratoDidatticoCompletate()
           throws SQLException, ClassNotFoundException {
     Connection conn = null;
     String query = "SELECT * FROM tutorato_didattico WHERE status=2";
@@ -143,6 +145,7 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
         bean.setStudenteEmail(rs.getString("studente_email"));
         bean.setTutorEmail(rs.getString("tutor_email"));
         bean.setProfEmail(rs.getString("prof_refe_email"));
+        bean.setDocente(rs.getString("docente"));
         list.add(bean);
       }
 
@@ -167,7 +170,7 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
    */
   @Override
   public synchronized List<TutoratoDidatticoBean> doRetrieveRichiesteTutoratoDidatticoNonAccettate()
-      throws SQLException, ClassNotFoundException {
+          throws SQLException, ClassNotFoundException {
     Connection conn = null;
     String query = "SELECT * FROM tutorato_didattico WHERE status=0";
     PreparedStatement stmt = null;
@@ -190,6 +193,7 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
         bean.setStudenteEmail(rs.getString("studente_email"));
         bean.setTutorEmail(rs.getString("tutor_email"));
         bean.setProfEmail(rs.getString("prof_refe_email"));
+        bean.setDocente(rs.getString("docente"));
         list.add(bean);
       }
 
@@ -205,7 +209,7 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
 
   @Override
   public synchronized TutoratoDidatticoBean doRetriveById(int id)
-      throws SQLException, ClassNotFoundException {
+          throws SQLException, ClassNotFoundException {
     Connection conn = null;
     String query = "SELECT * FROM tutorato_didattico where idtutorato_didattico=?";
     PreparedStatement stmt = null;
@@ -218,6 +222,7 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
       if (rs.next()) {
         bean = new TutoratoDidatticoBean();
         bean.setId(id);
+        bean.setId(rs.getInt("idtutorato_didattico"));
         bean.setDateDisponibili(rs.getString("date_disponibili"));
         bean.setOreDisponibili(rs.getString("ore_disponibili"));
         bean.setOreRichieste(rs.getInt("ore_richieste"));
@@ -228,6 +233,7 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
         bean.setStudenteEmail(rs.getString("studente_email"));
         bean.setTutorEmail(rs.getString("tutor_email"));
         bean.setProfEmail(rs.getString("prof_refe_email"));
+        bean.setDocente(rs.getString("docente"));
       }
       conn.commit();
     } catch (SQLException e) {
@@ -245,7 +251,7 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
     boolean inserimento = false;
     Connection con = null;
     String query =
-        "INSERT INTO tutorato_didattico(date_disponibili, ore_disponibili, ore_richieste, insegnamento, dipartimento, studente_email, status) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            "INSERT INTO tutorato_didattico(date_disponibili, ore_disponibili, ore_richieste, insegnamento, dipartimento, studente_email, status, docente) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     PreparedStatement stmt = null;
     try {
       con = ConnectionPool.conn();
@@ -257,6 +263,7 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
       stmt.setString(5, Bean.getDipartimento());
       stmt.setString(6, Bean.getStudenteEmail());
       stmt.setInt(7, 0);
+      stmt.setString(8,Bean.getDocente());
       inserimento = stmt.executeUpdate() == 1;
       con.commit();
     } catch (SQLException e) {
@@ -271,11 +278,11 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
 
   @Override
   public synchronized boolean accettaRichiesta(int idSupporto, String emailTutor, String commento)
-      throws SQLException {
+          throws SQLException {
     boolean isUpdated = false;
     Connection conn = null;
     String query =
-        "UPDATE tutorato_didattico SET status=1,commento=?,tutor_email=? WHERE idtutorato_didattico=?";
+            "UPDATE tutorato_didattico SET status=1,commento=?,tutor_email=? WHERE idtutorato_didattico=?";
     PreparedStatement stmt = null;
     try {
       conn = ConnectionPool.conn();
@@ -297,11 +304,11 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
 
   @Override
   public synchronized boolean approvaRichiesta(int idTutorato, String emailProf)
-      throws SQLException {
+          throws SQLException {
     boolean isUpdated = false;
     Connection conn = null;
     String query =
-        "UPDATE tutorato_didattico SET status=3,prof_refe_email=? WHERE idtutorato_didattico=?";
+            "UPDATE tutorato_didattico SET status=3,prof_refe_email=? WHERE idtutorato_didattico=?";
     PreparedStatement stmt = null;
     try {
       conn = ConnectionPool.conn();
@@ -322,11 +329,11 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
 
   @Override
   public synchronized boolean completaRichiesta(int idTutorato, String emailTutor)
-      throws SQLException {
+          throws SQLException {
     boolean isUpdated = false;
     Connection conn = null;
     String query =
-        "UPDATE tutorato_didattico SET status=2,tutor_email=? WHERE idtutorato_didattico=?";
+            "UPDATE tutorato_didattico SET status=2,tutor_email=? WHERE idtutorato_didattico=?";
     PreparedStatement stmt = null;
     try {
       conn = ConnectionPool.conn();

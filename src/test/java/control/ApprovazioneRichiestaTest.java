@@ -35,7 +35,7 @@ class ApprovazioneRichiestaTest {
         response = new MockHttpServletResponse();
     }
     @Test
-    void TestApprovazioneRichiestaTutorato1() throws ServletException, IOException {
+    void TestApprovazioneRichiesta1() throws ServletException, IOException {
         MockitoAnnotations.initMocks(this);
 
         ITutoratoDidatticoDAO tutoratoDAO = mock(TutoratoDidatticoDAO.class);
@@ -60,7 +60,7 @@ class ApprovazioneRichiestaTest {
         assertNotEquals("Richiesta approvata con successo", Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
     }
     @Test
-    void TestApprovazioneRichiestaTutorato2() throws ServletException, IOException {
+    void TestApprovazioneRichiesta2() throws ServletException, IOException {
         MockitoAnnotations.initMocks(this);
 
         ITutoratoDidatticoDAO tutoratoDAO = mock(TutoratoDidatticoDAO.class);
@@ -85,7 +85,7 @@ class ApprovazioneRichiestaTest {
         assertEquals("Richiesta approvata con successo", Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
     }
     @Test
-    void TestApprovazioneRichiestaSupporto1() throws ServletException, IOException {
+    void TestApprovazioneRichiesta3() throws ServletException, IOException {
         MockitoAnnotations.initMocks(this);
 
         ISupportoEsameDAO supportoDAO = mock(SupportoEsameDAO.class);
@@ -110,7 +110,7 @@ class ApprovazioneRichiestaTest {
         assertNotEquals("Richiesta approvata con successo", Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
     }
     @Test
-    void TestApprovazioneRichiestaSupporto2() throws ServletException, IOException {
+    void TestApprovazioneRichiesta4() throws ServletException, IOException {
         MockitoAnnotations.initMocks(this);
 
         ISupportoEsameDAO supportoDAO = mock(SupportoEsameDAO.class);
@@ -134,5 +134,15 @@ class ApprovazioneRichiestaTest {
 
         assertEquals("Richiesta approvata con successo", Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
     }
+
+    @Test
+    void testApprovazioneRichiesta5() throws ServletException, IOException {
+        MockitoAnnotations.initMocks(this);
+
+        servlet.doGet(request,response);
+
+        assertEquals("view/HomePage.jsp",response.getRedirectedUrl());
+    }
+
 
 }

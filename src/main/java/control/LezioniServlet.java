@@ -52,7 +52,7 @@ public class LezioniServlet extends HttpServlet {
     log.info(myClass, "Collegamento alla Servlet...");
     HttpSession session = request.getSession();
     UserBean user = (UserBean) session.getAttribute("utente");
-    if (user != null) {
+    if (user != null && (user.isStudente()||user.isTutor())) {
       if (user.isStudente()) {
         StudenteBean bean = null;
         try {
@@ -60,7 +60,6 @@ public class LezioniServlet extends HttpServlet {
         } catch (SQLException e) {
           e.printStackTrace();
         }
-        if (bean != null) {
           try {
             Collection<LezioneBean> lista = lezioneDao.doRetrieveLezioneByStudente(bean.getEmail());
             session.setAttribute("listaLezioni", lista);
@@ -69,18 +68,16 @@ public class LezioniServlet extends HttpServlet {
             log.error(myClass, "Catturata eccezione nella Servlet", e);
             e.printStackTrace();
           }
-        }
-      } else if (user.isTutor()) {
+        } if (user.isTutor()) {
         TutorBean bean = null;
         try {
           bean = tutorDao.doRetrieveByEmail(user.getEmail());
         } catch (SQLException | ClassNotFoundException e) {
           e.printStackTrace();
         }
-        if (bean != null) {
           try {
-            ArrayList<LezioneBean> lista =
-                (ArrayList<LezioneBean>) lezioneDao.doRetrieveLezioneByTutor(bean.getEmailTutor());
+            Collection<LezioneBean> lista =
+                 lezioneDao.doRetrieveLezioneByTutor(bean.getEmailTutor());
             session.setAttribute("listaLezioni", lista);
             session.setAttribute(
                 "richiesteTutorato",
@@ -90,9 +87,10 @@ public class LezioniServlet extends HttpServlet {
             log.error(myClass, "Catturata eccezione nella Servlet", e);
             e.printStackTrace();
           }
-        }
+
       }
     } else {
+      request.getSession().setAttribute("alertMsg","L'utente non ha i permessi necessari per accedere alla pagina!");
       response.sendRedirect("view/LoginPage.jsp");
     }
   }

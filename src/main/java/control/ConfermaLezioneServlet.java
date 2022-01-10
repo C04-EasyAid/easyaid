@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.util.Collection;
 import model.bean.LezioneBean;
 import model.bean.UserBean;
+import model.dao.ILezioneDAO;
+import model.dao.ITutoratoDidatticoDAO;
 import model.dao.LezioneDAO;
 import model.dao.TutoratoDidatticoDAO;
 import other.MyLogger;
@@ -21,6 +23,16 @@ import other.MyLogger;
 public class ConfermaLezioneServlet extends HttpServlet {
   private static MyLogger log = MyLogger.getInstance();
   private static String myClass = "ConfermaLezioneServlet";
+  private ILezioneDAO lezioneDAO = new LezioneDAO();
+  private ITutoratoDidatticoDAO tutoratoDidatticoDAO = new TutoratoDidatticoDAO();
+
+  public void setLezioneDAO(ILezioneDAO lezioneDAO) {
+    this.lezioneDAO = lezioneDAO;
+  }
+
+  public void setTutoratoDidatticoDAO(ITutoratoDidatticoDAO tutoratoDidatticoDAO) {
+    this.tutoratoDidatticoDAO = tutoratoDidatticoDAO;
+  }
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -29,9 +41,7 @@ public class ConfermaLezioneServlet extends HttpServlet {
     HttpSession session = req.getSession();
     LezioneBean lezioneBean = (LezioneBean) session.getAttribute("lezione");
     UserBean user = (UserBean) session.getAttribute("utente");
-    if (user != null) {
-      LezioneDAO lezioneDAO = new LezioneDAO();
-      TutoratoDidatticoDAO tutoratoDidatticoDAO = new TutoratoDidatticoDAO();
+    if (user != null&& user.isTutor()) {
       try {
         lezioneDAO.confermaLezione(lezioneBean.getId());
         Collection<LezioneBean> lezioni =

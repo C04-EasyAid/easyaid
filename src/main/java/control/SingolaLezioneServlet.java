@@ -4,6 +4,8 @@ import model.bean.CommentoBean;
 import model.bean.LezioneBean;
 import model.bean.UserBean;
 import model.dao.CommentoDAO;
+import model.dao.ICommentoDAO;
+import model.dao.ILezioneDAO;
 import model.dao.LezioneDAO;
 import other.MyLogger;
 
@@ -25,16 +27,23 @@ Servlet che permette di visualizzare la singola lezione
 public class SingolaLezioneServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "SingolaLezioneServlet";
+  private ILezioneDAO lezioneDao = new LezioneDAO();
+  private ICommentoDAO commentiDao = new CommentoDAO();
+
+  public void setLezioneDao(ILezioneDAO lezioneDao) {
+    this.lezioneDao = lezioneDao;
+  }
+
+  public void setCommentiDao(ICommentoDAO commentiDao) {
+    this.commentiDao = commentiDao;
+  }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     log.info(myClass, "Collegamento alla Servlet...");
     HttpSession session = request.getSession();
     UserBean userLoggato = (UserBean) session.getAttribute("utente");
-    LezioneDAO lezioneDao = new LezioneDAO();
-    CommentoDAO commentiDao = new CommentoDAO();
-    if (userLoggato != null) {
-      if (request.getParameter("lezione") != null) {
+    if (userLoggato != null && (userLoggato.isStudente()|| userLoggato.isTutor())) {
         String idLezione = request.getParameter("lezione");
         int id = Integer.parseInt(idLezione);
         try {
@@ -48,8 +57,8 @@ public class SingolaLezioneServlet extends HttpServlet {
           log.error(myClass, "Catturata eccezione nella Servlet", e);
           e.printStackTrace();
         }
-      }
     } else {
+      request.getSession().setAttribute("alertMsg","Permessi non concessi all'utente");
       response.sendRedirect("view/LoginPage.jsp");
     }
   }

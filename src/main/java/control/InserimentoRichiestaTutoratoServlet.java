@@ -1,5 +1,11 @@
 package control;
 
+import model.bean.TutoratoDidatticoBean;
+import model.bean.UserBean;
+import model.dao.ITutoratoDidatticoDAO;
+import model.dao.TutoratoDidatticoDAO;
+import other.MyLogger;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,12 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
-import model.bean.TutoratoDidatticoBean;
-import model.bean.UserBean;
-import model.dao.TutoratoDidatticoDAO;
-import other.MyLogger;
-
-
 
 @WebServlet("/inserisciTutorato")
 /*
@@ -24,13 +24,18 @@ public class InserimentoRichiestaTutoratoServlet extends HttpServlet {
   private static MyLogger log = MyLogger.getInstance();
   private static String myClass = "InserimentoRichiestaTutoratoServlet";
 
+  public void setDao(ITutoratoDidatticoDAO dao) {
+    this.dao = dao;
+  }
+
+  private ITutoratoDidatticoDAO dao = new TutoratoDidatticoDAO();
+
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-      throws ServletException, IOException {
+          throws ServletException, IOException {
     log.info(myClass, "Collegamento alla Servlet...");
     HttpSession session = req.getSession();
     UserBean user = (UserBean) session.getAttribute("utente");
-    TutoratoDidatticoDAO dao = new TutoratoDidatticoDAO();
     if (user.isStudente()) {
       TutoratoDidatticoBean bean = new TutoratoDidatticoBean();
       bean.setDateDisponibili(req.getParameter("date_disponibili"));
@@ -38,6 +43,7 @@ public class InserimentoRichiestaTutoratoServlet extends HttpServlet {
       bean.setOreRichieste(Integer.parseInt(req.getParameter("ore_richieste")));
       bean.setInsegnamento(req.getParameter("insegnamento"));
       bean.setDipartimento(req.getParameter("dipartimento"));
+      bean.setDocente(req.getParameter("docente"));
       bean.setStudenteEmail(user.getEmail());
       // bean.setDocente(req.getParameter("docente");
       try {
@@ -46,7 +52,7 @@ public class InserimentoRichiestaTutoratoServlet extends HttpServlet {
           resp.sendRedirect("view/HomePage.jsp");
         } else {
           session.setAttribute(
-              "alertMsg", "Richiesta di servizio di tutorato didattico inserita con successo!");
+                  "alertMsg", "Richiesta di servizio di tutorato didattico inserita con successo!");
           resp.sendRedirect("view/HomePage.jsp");
         }
       } catch (SQLException e) {
@@ -61,7 +67,7 @@ public class InserimentoRichiestaTutoratoServlet extends HttpServlet {
 
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-      throws ServletException, IOException {
+          throws ServletException, IOException {
     super.doPost(req, resp);
   }
 }

@@ -2,10 +2,11 @@ package model.bean;
 
 import lombok.*;
 
-/** @author Martina Giugliano Classe Tutorato Didattico */
+/* @author Martina Giugliano Classe Tutorato Didattico */
 @Data
 public class TutoratoDidatticoBean {
   private int id;
+  private String docente;
   private String dateDisponibili;
   private String oreDisponibili;
   private int oreRichieste;
@@ -17,7 +18,7 @@ public class TutoratoDidatticoBean {
   private String tutorEmail;
   private String profEmail;
 
-  /** Costruttore vuoto. */
+  /* Costruttore vuoto. */
   public TutoratoDidatticoBean() {}
 
   /**
@@ -36,17 +37,18 @@ public class TutoratoDidatticoBean {
    * @param profEmail l'e-mail del professore referente che approvato la richiesta
    */
   public TutoratoDidatticoBean(
-      int id,
-      String dateDisponibili,
-      String oreDisponibili,
-      int oreRichieste,
-      String commento,
-      int status,
-      String insegnamento,
-      String dipartimento,
-      String studenteEmail,
-      String tutorEmail,
-      String profEmail) {
+          int id,
+          String dateDisponibili,
+          String oreDisponibili,
+          int oreRichieste,
+          String commento,
+          int status,
+          String insegnamento,
+          String dipartimento,
+          String studenteEmail,
+          String tutorEmail,
+          String profEmail,
+          String docente) {
     this.id = id;
     this.dateDisponibili = dateDisponibili;
     this.oreDisponibili = oreDisponibili;
@@ -58,5 +60,6 @@ public class TutoratoDidatticoBean {
     this.studenteEmail = studenteEmail;
     this.tutorEmail = tutorEmail;
     this.profEmail = profEmail;
+    this.docente = docente;
   }
 }

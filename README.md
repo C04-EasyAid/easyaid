@@ -29,4 +29,7 @@ It was created during the Software Project Management and Software Engineering e
   
 </div>
 
+## Documentation
 
+* The javadoc of the project (both product and management) is contained in the _doc_ folder
+* The project documentation (both product and management) is contained in the _deliverables_ folder

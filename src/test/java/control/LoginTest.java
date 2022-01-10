@@ -91,7 +91,13 @@ class LoginTest {
     request.setParameter("Email", email);
     String password = "Aldo#Baglio45";
     request.setParameter("Password", password);
+    UserBean bean=new UserBean();
+    bean.setEmail(email);
+    bean.setPassword(password);
 
+    when(userDao.doRetrieveUtente(bean)).thenReturn(bean);
+
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertEquals("view/HomePage.jsp", response.getRedirectedUrl());

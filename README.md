@@ -37,7 +37,7 @@ It was created during the Software Project Management and Software Engineering e
 ## Main technologies used
 
 * <a href="https://www.oracle.com/java/technologies/javase/16-0-2-relnotes.html">Java™ SE Development Kit 16.0.2 (JDK 16.0.2)</a>
-* <a href="https://getbootstrap.com/">Bootstrap</a>
+* <a href="https://themes.getbootstrap.com/preview/?theme_id=103332">Eduport – LMS, Education and Course Theme - Bootstrap Themes</a>
 * <a href="https://junit.org/junit5/">JUnit 5</a>
 * <a href="https://gradle.org/">Gradle</a>
 

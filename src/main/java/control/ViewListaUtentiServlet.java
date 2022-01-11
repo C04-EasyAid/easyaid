@@ -1,6 +1,7 @@
 package control;
 
 import model.bean.UserBean;
+import model.dao.IUserDAO;
 import model.dao.UserDAO;
 import other.MyLogger;
 
@@ -17,6 +18,11 @@ import java.io.IOException;
 public class ViewListaUtentiServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "ViewListaUtentiServlet";
+  private IUserDAO userDao = new UserDAO();
+
+  public void setUserDao(IUserDAO userDao) {
+    this.userDao = userDao;
+  }
 
   public ViewListaUtentiServlet() {
     super();
@@ -27,7 +33,7 @@ public class ViewListaUtentiServlet extends HttpServlet {
     log.info(myClass, "Collegamento alla Servlet...");
     HttpSession session = request.getSession();
     UserBean userLoggato = (UserBean) session.getAttribute("utente");
-    UserDAO userDao = new UserDAO();
+
     if (userLoggato != null && userLoggato.isPersonaleAmministrativo()) {
       try {
         session.setAttribute("usrList", userDao.doRetrieveAll());
@@ -37,7 +43,8 @@ public class ViewListaUtentiServlet extends HttpServlet {
         e.printStackTrace();
       }
     } else {
-      response.sendRedirect("view/HomePage.jsp");
+      request.getSession().setAttribute("alertMsg","Permessi non concessi all'utente");
+      response.sendRedirect("view/LoginPage.jsp");
     }
   }
 

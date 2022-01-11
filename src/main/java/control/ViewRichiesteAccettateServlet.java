@@ -3,6 +3,8 @@ package control;
 import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
+import model.dao.ISupportoEsameDAO;
+import model.dao.ITutoratoDidatticoDAO;
 import model.dao.SupportoEsameDAO;
 import model.dao.TutoratoDidatticoDAO;
 import other.MyLogger;
@@ -21,6 +23,16 @@ import java.util.List;
 public class ViewRichiesteAccettateServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "ViewRichiesteAccettateServlet";
+  private ISupportoEsameDAO supportoDao = new SupportoEsameDAO();
+  private ITutoratoDidatticoDAO tutoratoDao = new TutoratoDidatticoDAO();
+
+  public void setSupportoDao(ISupportoEsameDAO supportoDao) {
+    this.supportoDao = supportoDao;
+  }
+
+  public void setTutoratoDao(ITutoratoDidatticoDAO tutoratoDao) {
+    this.tutoratoDao = tutoratoDao;
+  }
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -28,8 +40,7 @@ public class ViewRichiesteAccettateServlet extends HttpServlet {
     log.info(myClass, "Collegamento alla Servlet...");
     HttpSession session = req.getSession();
     UserBean userLoggato = (UserBean) session.getAttribute("utente");
-    SupportoEsameDAO supportoDao = new SupportoEsameDAO();
-    TutoratoDidatticoDAO tutoratoDao = new TutoratoDidatticoDAO();
+
     if (userLoggato != null && userLoggato.isTutor()) {
       try {
         List<SupportoEsameBean> listRichiesteSupportoEsame =
@@ -39,6 +50,7 @@ public class ViewRichiesteAccettateServlet extends HttpServlet {
         session.setAttribute("richiesteEsamiAccettate", listRichiesteSupportoEsame);
         session.setAttribute("richiesteTutoratoAccettate", listRichiesteTutoratoDidattico);
 
+        session.setAttribute("alertMsg","Operazione riuscita con successo!");
         resp.sendRedirect("view/RichiesteAccettatePage.jsp");
 
       } catch (SQLException | ClassNotFoundException e) {
@@ -46,6 +58,7 @@ public class ViewRichiesteAccettateServlet extends HttpServlet {
         e.printStackTrace();
       }
     } else {
+      session.setAttribute("alertMsg","Permessi non concessi all'utente");
       resp.sendRedirect("view/HomePage.jsp");
     }
   }

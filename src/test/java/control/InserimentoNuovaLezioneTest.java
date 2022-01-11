@@ -648,5 +648,65 @@ class InserimentoNuovaLezioneTest {
     }
   }
 
+  //L'utente non ha ipermessi necessari
+  @Test
+  void testInserimentoNuovaLezione13() throws ServletException, IOException {
+    MockitoAnnotations.initMocks(this);
+
+    servlet.doGet(request,response);
+
+   assertEquals("view/LoginPage.jsp",response.getRedirectedUrl());
+  }
+
+
+  //Errore nel metodo countOre per le lezioni
+  @Test
+  void testInserimentoNuovaLezione14() throws ParseException, ServletException, IOException {
+    MockitoAnnotations.initMocks(this);
+    IUserDAO userDao = mock(UserDAO.class);
+    UserBean userBean = new UserBean();
+    TutorBean tutorBean = new TutorBean();
+    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    userBean.setEmail("lorenzorossi1@studenti.unisa.it");
+    userBean.setPassword("Lorenzo#rossi1");
+    userBean.setRuolo("T");
+    request.getSession().setAttribute("utente", userBean);
+    int idTutorato = 18;
+    String oraInizio = "14:00";
+    String oraFine = "16:00";
+    String data = "2022-01-25";
+    String luogo = "Edificio F3 aula 404####";
+    SimpleDateFormat dateParser = new SimpleDateFormat("yyyy-MM-dd");
+    request.setParameter("oraInizio",oraInizio);
+    request.setParameter("oraFine",oraFine);
+    request.setParameter("idTutorato", String.valueOf(idTutorato));
+    request.setParameter("data",data);
+    request.setParameter("luogo",luogo);
+    try {
+      Date date = dateParser.parse(data);
+      LezioneBean lezioneBean = new LezioneBean();
+      lezioneBean.setTutorato(idTutorato);
+      lezioneBean.setTutor(userBean.getEmail());
+      lezioneBean.setOraInizio(oraInizio);
+      lezioneBean.setOraFine(oraFine);
+      lezioneBean.setData(date);
+      Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
+      lezioni.add(lezioneBean);
+      try {
+        when(lezioneDAO.countOre(lezioni, idTutorato)).thenReturn(2);
+      } catch (SQLException | ClassNotFoundException e) {
+        e.printStackTrace();
+      }
+      servlet.setLezioneDAO(lezioneDAO);
+      servlet.doGet(request, response);
+      assertEquals("view/LezioniTutorPage.jsp",response.getRedirectedUrl());
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } catch (ClassNotFoundException e) {
+      e.printStackTrace();
+    } catch (ParseException e) {
+      e.printStackTrace();
+    }
+  }
 
 }

@@ -680,6 +680,19 @@ class InserimentoRichiestaTutoratoTest {
                 Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
     }
 
+    //Permessi non concessi all'utente
+   @Test
+    void TestInserimentoRichiestaTutorato16() throws ServletException, IOException {
+        MockitoAnnotations.initMocks(this);
+       UserBean bean = new UserBean();
+       bean.setEmail("paolorossi10@studenti.unisa.it");
+       bean.setPassword("Paolo#Rossi10");
+       bean.setRuolo("T");
+       request.getSession().setAttribute("utente", bean);
 
+       servlet.doGet(request,response);
+
+       assertEquals("view/HomePage.jsp",response.getRedirectedUrl());
+   }
 
 }

@@ -38,114 +38,7 @@
 <body>
 
 <header>
-
-
-
-    <!-- Logo Nav START -->
-    <nav class="navbar navbar-expand-xl">
-        <div class="container-fluid px-3 px-xl-5">
-            <!-- Logo START -->
-            <a class="navbar-brand pt-0 pb-0 w-50" href="#">
-                <img style="width: auto !important; height:60px !important;" src="../image/PS-LOGO-DEFINITIVO-2.png" alt="logo">
-            </a>
-            <!-- Logo END -->
-
-            <!-- Responsive navbar toggler -->
-            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-animation">
-					<span></span>
-					<span></span>
-					<span></span>
-				</span>
-            </button>
-
-            <!-- Main navbar START -->
-            <div class="navbar-collapse w-100 collapse" id="navbarCollapse">
-
-                <!-- Nav category menu START -->
-                <ul class="navbar-nav navbar-nav-scroll me-auto">
-                </ul>
-                <!-- Nav category menu END -->
-
-                <!-- Nav Main menu START -->
-                <ul class="navbar-nav navbar-nav-scroll me-5">
-                    <!-- Nav Home -->
-                    <li class="nav-item">
-                        <a class="nav-link active text-black" href="HomePage.jsp" id="demoMenu" aria-haspopup="true" aria-expanded="false">Home</a>
-                    </li>
-
-                    <!-- Nav Servizi -->
-                    <li class="nav-item dropdown">
-
-                        <a class="nav-link text-black" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Servizi</a>
-                        <ul class="dropdown-menu" aria-labelledby="pagesMenu">
-
-                            <li><a class="dropdown-item text-black" href="RichiediServizioPage.jsp">Richiedi Servizio</a>
-                            </li>
-                            <li><a class="dropdown-item text-black" href="../ListaRichieste">Elenco Richieste</a></li>
-                            <li><a class="dropdown-item text-black" href="../LezioniServlet">Elenco Lezioni</a></li>
-
-                        </ul>
-
-                    </li>
-                    <!-- Nav About -->
-                    <li class="nav-item">
-                        <a class="nav-link text-black" href="#" id="demoMenu" aria-haspopup="true" aria-expanded="false">About</a>
-                    </li>
-                    <!-- Nav Nome Cognome -->
-                    <li class="nav-item">
-                        <a class="nav-link text-black" href="#" id="demoMenu" aria-haspopup="true" aria-expanded="false">Aldo Baglio
-                        </a>
-                    </li>
-
-                </ul>
-                <!-- Nav Main menu END -->
-
-            </div>
-            <!-- Main navbar END -->
-
-            <!-- Profile START -->
-            <div class="dropdown ms-1 ms-lg-0">
-                <a class="avatar avatar-sm p-0 text-black" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-
-                    <div class="avatar-img rounded-circle bg-info"><span class="text-white position-absolute top-50 start-50 translate-middle fw-bold">AB</span>
-                    </div>
-
-                </a>
-                <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
-                    <!-- Profile info -->
-                    <li class="px-3">
-                        <div class="d-flex align-items-center">
-                            <!-- Avatar -->
-                            <div class="avatar me-3">
-
-                                <div class="avatar-img rounded-circle bg-info"><span class="text-white position-absolute top-50 start-50 translate-middle fw-bold">AB</span>
-                                </div>
-
-                            </div>
-                            <div>
-                                <a class="h6 text-black" href="#">Aldo Baglio
-                                </a>
-                                <p class="small m-0 text-black">abaglio9@studenti.unisa.it
-                                </p>
-                            </div>
-                        </div>
-                        <hr>
-                    </li>
-                    <!-- Links -->
-                    <li><a class="dropdown-item text-black" href="ProfilePage.jsp"><i class="bi fa-fw me-2"></i>Account
-                        Settings</a></li>
-                    <li><a class="dropdown-item bg-danger-soft-hover text-black" href="../logout"><i class="bi fa-fw me-2"></i>Logout</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                </ul>
-            </div>
-            <!-- Profile START -->
-
-        </div>
-    </nav>
-    <!-- Logo Nav END -->
+    <%@include file="../fragment/navbar.jsp"%>
 </header>
 <div class="bg-info rounded-3 p-4 p-sm-5" style="margin-top: 10em;margin-bottom: 14em;">
     <!-- Title -->
@@ -184,7 +77,7 @@
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Insegnamento:</label>
-                                                <input type="text" name="insegnamento" class="form-control" id="recipient-name">
+                                                <input type="text" name="insegnamento" class="form-control" id="recipient-name" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Modalità di
@@ -243,13 +136,13 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Ore Richieste:</label>
-                                                <input type="number" name="ore_richieste" class="form-control" id="message-text">
+                                                <input type="number" name="ore_richieste" class="form-control" id="message-text" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Docente:</label>
-                                                <input type="text" name="docente" class="form-control" id="message-text">
+                                                <input type="text" name="docente" class="form-control" id="message-text" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Dipartimento:</label>
@@ -302,15 +195,15 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Data:</label>
-                                                <input type="date" name="data" class="form-control" id="message-text">
+                                                <input type="date" name="data" class="form-control" id="message-text" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Ora:</label>
-                                                <input type="time" name="ora" class="form-control" id="message-text">
+                                                <input type="time" name="ora" class="form-control" id="message-text" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Luogo:</label>
-                                                <input type="text" name="luogo" class="form-control" id="message-text">
+                                                <input type="text" name="luogo" class="form-control" id="message-text" required>
                                             </div>
                                         </div>
                                     </div>
@@ -336,12 +229,12 @@
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Insegnamento:</label>
-                                                <input type="text" name="insegnamento" class="form-control" id="recipient-name">
+                                                <input type="text" name="insegnamento" class="form-control" id="recipient-name" required>
                                             </div>
 
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Ore Richieste:</label>
-                                                <input type="number" name="ore_richieste" class="form-control" id="message-text">
+                                                <input type="number" name="ore_richieste" class="form-control" id="message-text" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Dipartimento:</label>
@@ -396,16 +289,16 @@
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Docente:</label>
-                                                <input type="text" name="docente" class="form-control" id="message-text">
+                                                <input type="text" name="docente" class="form-control" id="message-text" required>
                                             </div>
 
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Date disponibili:</label>
-                                                <input type="text" name="date_disponibili" class="form-control" id="message-text">
+                                                <input type="text" name="date_disponibili" class="form-control" id="message-text" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Ore disponibili:</label>
-                                                <input type="text" name="ore_disponibili" class="form-control" id="message-text">
+                                                <input type="text" name="ore_disponibili" class="form-control" id="message-text" required>
                                             </div>
                                         </div>
                                     </div>

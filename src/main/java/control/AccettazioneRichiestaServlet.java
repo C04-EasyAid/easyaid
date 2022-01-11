@@ -8,6 +8,7 @@ import model.dao.ISupportoEsameDAO;
 import model.dao.ITutoratoDidatticoDAO;
 import model.dao.SupportoEsameDAO;
 import model.dao.TutoratoDidatticoDAO;
+import other.MyLogger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,6 +24,8 @@ import java.sql.SQLException;
 public class AccettazioneRichiestaServlet extends HttpServlet {
   private ITutoratoDidatticoDAO tutoratodao = new TutoratoDidatticoDAO();
   private ISupportoEsameDAO supportodao = new SupportoEsameDAO();
+  private static final MyLogger log = MyLogger.getInstance();
+  private static final String myClass = "AccettazioneRichiestaServlet";
   public void setTutoratodao(ITutoratoDidatticoDAO tutoratodao) {
     this.tutoratodao = tutoratodao;
   }
@@ -40,6 +43,7 @@ public class AccettazioneRichiestaServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
           throws ServletException, IOException {
+    log.info(myClass, "Collegamento alla Servlet...");
     HttpSession session = req.getSession();
     UserBean tutor = (UserBean) session.getAttribute("utente");
     String commento = req.getParameter("commento");
@@ -52,6 +56,7 @@ public class AccettazioneRichiestaServlet extends HttpServlet {
         session.setAttribute("alertMsg", "Richiesta accettata con successo");
         resp.sendRedirect("view/HomePage.jsp");
       } catch (SQLException e) {
+        log.error(myClass, "Catturata eccezione nella Servlet", e);
         session.setAttribute("alertMsg", "L'operazione non è andata a buon fine");
         resp.sendRedirect("view/HomePage.jsp");
         e.printStackTrace();
@@ -62,6 +67,7 @@ public class AccettazioneRichiestaServlet extends HttpServlet {
         session.setAttribute("alertMsg", "Richiesta accettata con successo");
         resp.sendRedirect("view/HomePage.jsp");
       } catch (SQLException e) {
+        log.error(myClass, "Catturata eccezione nella Servlet", e);
         session.setAttribute("alertMsg", "L'operazione non è andata a buon fine");
         resp.sendRedirect("view/HomePage.jsp");
         e.printStackTrace();

@@ -4,6 +4,7 @@
 <%@ page import="model.bean.StudenteBean" %>
 <%@ page import="model.bean.ProfessoreReferenteBean" %>
 <%@ page import="model.dao.TutorDAO" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Giovanni Toriello
   Date: 29/12/2021
@@ -11,6 +12,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -54,6 +56,7 @@
             String nome = "" + utente.getNome() + " " + utente.getCognome();
             String iniziale = utente.getNome().substring(0, 1) + utente.getCognome().substring(0, 1);
             String ruoloUtenteSelezionato = utente.getRuolo();
+
             if (ruoloUtenteSelezionato.equals("S")) {
                 ruoloUtenteSelezionato = "Studente";
             } else if (ruoloUtenteSelezionato.equals("T")) {
@@ -216,3 +219,4 @@
 <script src="../assets/js/functions.js"></script>
 </body>
 </html>
+

@@ -6,13 +6,8 @@
   Time: 17:52
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="model.bean.UserBean" %>
-<%@ page import="model.bean.TutoratoDidatticoBean" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page import="model.bean.LezioneBean" %>
-<%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Collection" %>
-<%@ page import="model.dao.LezioneDAO" %>
 <html>
 <head>
     <!-- Meta Tags -->
@@ -98,7 +93,7 @@
                                 </td>
                                 <td><%=lezione.getInsegnamento()%>
                                 </td>
-                                <td><a class="btn btn-outline-info" href="../SingolaLezione?lezione=<%=lezione.getTutorato()%>" role="button">Visualizza</a> </td>
+                                <td><a class="btn btn-outline-info" href="../SingolaLezione?lezione=<%=lezione.getId()%>" role="button">Visualizza</a> </td>
                             </tr>
                             <%}%>
                             </tbody>
@@ -118,7 +113,7 @@
         </div>
     </div>
 </div>
-<section>
+</section>
 </main>
 <!-- Back to top -->
 <div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
@@ -133,6 +128,9 @@
 
 <!-- Template Functions -->
 <script src="../assets/js/functions.js"></script>
+<footer>
+    <%@include file="../fragment/footer.html" %>
+</footer>
 </body>
 </html>
 

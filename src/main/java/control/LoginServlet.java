@@ -8,15 +8,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import model.bean.UserBean;
+import model.dao.IUserDAO;
 import model.dao.UserDAO;
+import other.MyLogger;
 
-/**
- * @author Roberto Tartaglia
- * Servlet che permette di effettuare il login
- */
+/** @author Roberto Tartaglia Servlet che permette di effettuare il login */
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
+  private static MyLogger log = MyLogger.getInstance();
+  private static String myClass = "LoginServlet";
+  private IUserDAO dao = new UserDAO();
+
+  public void setDao(IUserDAO dao) {
+    this.dao = dao;
+  }
 
   public LoginServlet() {
     super();
@@ -24,23 +30,24 @@ public class LoginServlet extends HttpServlet {
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws IOException {
+    log.info(myClass, "Collegamento alla Servlet...");
     HttpSession session = request.getSession();
     UserBean user = new UserBean();
     user.setEmail(request.getParameter("Email"));
     user.setPassword(request.getParameter("Password"));
     try {
-      user = UserDAO.doRetrieveUtente(user);
+      user = dao.doRetrieveUtente(user);
       if (user == null) {
         // Nessun utente nel sistema
         response.sendRedirect("view/LoginPage.jsp");
-      }
-      else
-      {
+        session.setAttribute("alertMsg", "L'operazione non e' andata a buon fine");
+      } else {
         session.setAttribute("utente", user);
         response.sendRedirect("view/HomePage.jsp");
       }
     } catch (Throwable e) {
-      session.setAttribute("alertMsg", "Errore, ritorno alla Login Page");
+      log.error(myClass, "Catturata eccezione nella Servlet", (Exception) e);
+      session.setAttribute("alertMsg", "L'operazione non e' andata a buon fine");
       response.sendRedirect("view/LoginPage.jsp");
     }
   }

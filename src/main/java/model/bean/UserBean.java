@@ -1,17 +1,20 @@
 package model.bean;
 
+import lombok.*;
+
+import javax.servlet.http.HttpSessionBindingEvent;
+import javax.servlet.http.HttpSessionBindingListener;
 import java.util.Locale;
 
-/**
- * @author Giovanni Toriello
- * Classe UserBean
- */
-public class UserBean {
+/** @author Giovanni Toriello Classe UserBean */
+@Data
+public class UserBean implements HttpSessionBindingListener {
   // Variabili dell'utente
-  public String nome, cognome, email, password, ruolo;
+  private String nome, cognome, email, password, ruolo;
 
   /**
    * Costruttore
+   *
    * @param nome
    * @param cognome
    * @param email
@@ -26,75 +29,8 @@ public class UserBean {
     this.ruolo = ruolo.toUpperCase(Locale.ROOT);
   }
 
-  /**
-   * Costruttore Vuoto
-   */
-  public UserBean() {
-  }
-
-  /**
-   * Metodo che restituisce il nome dell'utente
-   * @return
-   */
-  public String getNome() {
-    return nome;
-  }
-
-  /**
-   * Metodo che setta il nome dell'utente
-   * @param nome
-   */
-  public void setNome(String nome) {
-    this.nome = nome;
-  }
-
-  /**
-   * Metodo che restituisce il cognome dell'utente
-   * @return
-   */
-  public String getCognome() {
-    return cognome;
-  }
-
-  /**
-   * Metodo che setta il cognome dell'utente
-   * @param cognome
-   */
-  public void setCognome(String cognome) {
-    this.cognome = cognome;
-  }
-
-  /**
-   * Metodo che restituisce l'email dello studente
-   * @return
-   */
-  public String getEmail() {
-    return email;
-  }
-
-  /**
-   *
-   * @param email
-   */
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-  public String getPassword() {
-    return password;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
-  }
-
-  public String getRuolo() {
-    return ruolo;
-  }
-
-  public void setRuolo(String ruolo) {
-    this.ruolo = ruolo;
-  }
+  /** Costruttore Vuoto */
+  public UserBean() {}
 
   // Restituisce vero se l'utente è uno Studente
   public boolean isStudente() {
@@ -118,23 +54,18 @@ public class UserBean {
   }
 
   @Override
-  public String toString() {
-    return "UserBean{"
-        + "nome='"
-        + nome
-        + '\''
-        + ", cognome='"
-        + cognome
-        + '\''
-        + ", email='"
-        + email
-        + '\''
-        + ", password='"
-        + password
-        + '\''
-        + ", ruolo='"
-        + ruolo
-        + '\''
-        + '}';
+  public void valueBound(HttpSessionBindingEvent event) {
+    System.out.println("-- HttpSessionBindingListener#valueBound() --");
+    System.out.printf(
+        "Aggiunto attributo alla sessione con il nome : %s, valore:%s %n",
+        event.getName(), event.getValue());
+  }
+
+  @Override
+  public void valueUnbound(HttpSessionBindingEvent event) {
+    System.out.println("-- HttpSessionBindingEvent#valueUnbound() --");
+    System.out.printf(
+        "Rimosso attributo alla sessione con il nome : %s, valore:%s %n",
+        event.getName(), event.getValue());
   }
 }

@@ -5,9 +5,6 @@ import model.bean.StudenteBean;
 import model.bean.TutorBean;
 import model.bean.UserBean;
 
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,16 +12,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import static model.dao.ConnectionPool.conn;
 import static other.Utils.generatePwd;
 
 /**
- * @author Giovanni Toriello
- * Classe UserDAO
+ *
+ * @author Giovanni Toriello Classe UserDAO
+ *
  */
-public class UserDAO {
+
+public class UserDAO implements IUserDAO {
   // Metodo che restituisce l'utente dal database
-  public static synchronized UserBean doRetrieveUtente(UserBean b)
+  @Override
+  public synchronized UserBean doRetrieveUtente(UserBean b)
       throws SQLException, ClassNotFoundException {
     Connection conn = null;
     String pwd = generatePwd(b.getPassword());
@@ -52,8 +51,8 @@ public class UserDAO {
       e.printStackTrace();
       // Chiude la connessione se è diverso da null
     } finally {
-      if(stmt!=null){
-      stmt.close();
+      if (stmt != null) {
+        stmt.close();
       }
       if (conn != null) {
         conn.close();
@@ -62,7 +61,8 @@ public class UserDAO {
     return user;
   }
   // Metodo che restituisce true se è l'utente è stato inserito
-  public static synchronized boolean insertUtente(UserBean b) throws SQLException {
+  @Override
+  public synchronized boolean insertUtente(UserBean b) throws SQLException {
     boolean utente = false;
     Connection conn = null;
     String pwd = generatePwd(b.getPassword());
@@ -79,14 +79,14 @@ public class UserDAO {
       stmt.setString(4, pwd);
       stmt.setString(5, b.getRuolo());
       // Esegue la query
-     utente = stmt.executeUpdate()==1;
-     conn.commit();
+      utente = stmt.executeUpdate() == 1;
+      conn.commit();
     } catch (SQLException e) {
       utente = false;
       e.printStackTrace();
       // Chiude la connessione se è diverso da null
     } finally {
-      if(stmt!=null){
+      if (stmt != null) {
         stmt.close();
       }
       if (conn != null) {
@@ -96,7 +96,9 @@ public class UserDAO {
     return utente;
   }
   // Metodo che restituisce true se è lo studente è stato inserito
-  public static synchronized boolean insertStudente(StudenteBean s, UserBean b)
+
+  @Override
+  public synchronized boolean insertStudente(StudenteBean s, UserBean b)
       throws SQLException, ClassNotFoundException {
     boolean studente = false;
     // Viene prima inserito l'utente generico (UserBean);
@@ -117,14 +119,14 @@ public class UserDAO {
         stmt.setInt(5, s.getOreDisponibili());
         // Esegue la query
         ResultSet rs = null;
-       studente = stmt.executeUpdate() == 1;
+        studente = stmt.executeUpdate() == 1;
         conn.commit();
       } catch (SQLException e) {
         studente = false;
         e.printStackTrace();
         // Chiude la connessione se è diverso da null
       } finally {
-        if(stmt!=null){
+        if (stmt != null) {
           stmt.close();
         }
         if (conn != null) {
@@ -134,12 +136,15 @@ public class UserDAO {
     }
     return studente;
   }
+
   // Metodo che restituisce true se il tutor è stato inserito
-  public static synchronized boolean insertTutor(TutorBean t, UserBean b) throws SQLException {
+
+  @Override
+  public synchronized boolean insertTutor(TutorBean t, UserBean b) throws SQLException {
     boolean tutor = false;
     // Viene prima inserito l'utente generico (UserBean);
     // Se il metodo restituisce true continua per inserire il tutor
-    if (insertUtente(b)) {
+    if (insertUtente(b) && t.getOreDisponibili()<100) {
       Connection conn = null;
       String query = "INSERT INTO tutor VALUES (?,?,?,?,?)";
       PreparedStatement stmt = null;
@@ -155,14 +160,14 @@ public class UserDAO {
         stmt.setInt(5, t.getOreDisponibili());
         // Esegue la query
         ResultSet rs = null;
-      tutor = stmt.executeUpdate() == 1;
+        tutor = stmt.executeUpdate() == 1;
         conn.commit();
       } catch (SQLException e) {
         tutor = false;
         e.printStackTrace();
         // Chiude la connessione se è diverso da null
       } finally {
-        if(stmt!=null){
+        if (stmt != null) {
           stmt.close();
         }
         if (conn != null) {
@@ -173,8 +178,10 @@ public class UserDAO {
     return tutor;
   }
   // Metodo che restituisce true se il tutor è stato inserito
-  public static synchronized boolean insertProfessoreReferente(
-      ProfessoreReferenteBean p, UserBean b) throws SQLException {
+
+  @Override
+  public synchronized boolean insertProfessoreReferente(ProfessoreReferenteBean p, UserBean b)
+      throws SQLException {
     boolean prof = false;
     // Viene prima inserito l'utente generico (UserBean);
     // Se il metodo restituisce true continua per inserire il prof
@@ -198,7 +205,7 @@ public class UserDAO {
         e.printStackTrace();
         // Chiude la connessione se è diverso da null
       } finally {
-        if(stmt!=null){
+        if (stmt != null) {
           stmt.close();
         }
         if (conn != null) {
@@ -208,8 +215,11 @@ public class UserDAO {
     }
     return prof;
   }
+
   // Metodo che restituisce la lista degli utenti nel Database
-  public static synchronized Collection<UserBean> doRetrieveAll()
+
+  @Override
+  public synchronized Collection<UserBean> doRetrieveAll()
       throws ClassNotFoundException, SQLException {
     Collection<UserBean> utenti = new ArrayList<>();
     Connection conn = null;
@@ -230,9 +240,9 @@ public class UserDAO {
         utenti.add(bean);
       }
     } catch (SQLException e) {
-
+      e.printStackTrace();
     } finally {
-      if(stmt!=null){
+      if (stmt != null) {
         stmt.close();
       }
       if (conn != null) {
@@ -242,8 +252,10 @@ public class UserDAO {
     return utenti;
   }
   // Metodo che restituisce l'utente dal database tramite Email
-  public static synchronized UserBean doRetrieveUtenteByEmail(String email)
-          throws SQLException, ClassNotFoundException {
+
+  @Override
+  public synchronized UserBean doRetrieveUtenteByEmail(String email)
+      throws SQLException, ClassNotFoundException {
     Connection conn = null;
     String query = "SELECT * FROM utente WHERE email = ?";
     UserBean user = null;
@@ -268,7 +280,7 @@ public class UserDAO {
       e.printStackTrace();
       // Chiude la connessione se è diverso da null
     } finally {
-      if(stmt!=null){
+      if (stmt != null) {
         stmt.close();
       }
       if (conn != null) {

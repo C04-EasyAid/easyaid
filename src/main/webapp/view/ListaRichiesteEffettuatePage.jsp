@@ -1,13 +1,14 @@
 <%@ page import="model.bean.SupportoEsameBean" %>
 <%@ page import="java.util.List" %>
-<%@ page import="model.bean.TutoratoDidatticoBean" %><%--
+<%@ page import="model.bean.TutoratoDidatticoBean" %>
+<%@ page import="java.util.Random" %><%--
   Created by IntelliJ IDEA.
   User: Riccardo
   Date: 27/12/2021
   Time: 17:06
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <html>
 <head>
     <title>EasyAid</title>
@@ -17,8 +18,6 @@
     <meta name="author" content="Webestica.com">
     <meta name="description" content="Eduport- LMS, Education and Course Theme">
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="../assets/images/favicon.ico">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
@@ -43,6 +42,7 @@
     <%@ include file="../fragment/navbar.jsp" %>
 </header>
 <main>
+    <%@ include file="../fragment/UserSection.jsp" %>
     <section class="pt-0">
         <div class="container">
             <div class="row">
@@ -54,7 +54,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive border-0">
-                                    <table class="table table-dark-gray align-self-center p-4 mb-0 table-hover">
+                                    <table class="table table-dark-gray align-middle p-4 mb-0 table-hover">
                                         <thead style="background-color: #17a2b8 !important;">
                                         <tr class="text-center">
                                             <th scope="col" class="border-0 rounded-start" style="">Tutorato Didattico</th>
@@ -69,13 +69,15 @@
                                         <%
                                             List<SupportoEsameBean> richiesteSupporto = (List<SupportoEsameBean>) session.getAttribute("richiesteEsami");
                                             List<TutoratoDidatticoBean> richiesteTutorato = (List<TutoratoDidatticoBean>) session.getAttribute("richiesteTutorato");
+                                            Random rnd = new Random();
                                             for(TutoratoDidatticoBean b:richiesteTutorato){
+                                                int x = rnd.nextInt(4);
                                         %>
                                         <tr>
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div class="w-100px">
-                                                        <img src="../assets/images/courses/4by3/08.jpg" class="rounded" alt="">
+                                                        <img src="../image/<%=x%>.jpg" class="rounded" alt="">
                                                     </div>
                                                     <div class="mb-0 ms-2">
                                                         <h6><p class="card-description"><br><code>&lt;<%=b.getTutorEmail()%>&gt;</code></p></h6>
@@ -100,7 +102,7 @@
 
                             <div class="card-body p-4 mb-4">
                                 <div class="table-responsive border-0">
-                                    <table class="table table-dark-gray align-self-center p-4 mb-0 table-hover">
+                                    <table class="table table-dark-gray align-middle p-4 mb-0 table-hover">
                                         <thead style="background-color: #17a2b8 !important;">
                                         <tr class="text-center">
                                             <th scope="col" class="border-0 rounded-start" style="">Supporto Esame</th>
@@ -116,12 +118,13 @@
                                         <tbody>
                                         <%
                                           for(SupportoEsameBean b:richiesteSupporto){
+                                              int x = rnd.nextInt(5);
                                         %>
                                         <tr>
                                             <td>
-                                                <div class="d-flex ">
+                                                <div class="d-flex align-items-center">
                                                     <div class="w-100px">
-                                                        <img src="../assets/images/courses/4by3/08.jpg" class="rounded" alt="">
+                                                        <img src="../image/<%=x%>.jpg" class="rounded" alt="">
                                                     </div>
                                                     <div class="mb-0 ms-2">
                                                         <%if(b.getTutorEmail()==null){%>

@@ -49,6 +49,7 @@
 <%@ include file="../fragment/UserSection.jsp" %>
 <%
     Collection<LezioneBean> lezioni = (Collection<LezioneBean>) session.getAttribute("listaLezioni");
+    Collection<TutoratoDidatticoBean> tutorati = (Collection<TutoratoDidatticoBean>) session.getAttribute("richiesteTutorato");
 %>
 
 <div class="container">
@@ -61,6 +62,18 @@
                     <!-- Card header START -->
                     <div class="card-header bg-transparent border-bottom">
                         <h3 class="mb-0">Lista Delle Lezioni</h3>
+                        <div class="col-sm-6"><%if(alert!=null) {%>
+                            <!-- Toast Alert Message -->
+                            <div class="alert alert-primary d-flex align-items-center" role="alert">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                </svg>
+                                <div>
+                                    <%=alert%>
+                                </div>
+                            </div>
+                            <!-- End Toast Alert Message -->
+                            <% session.removeAttribute("alertMsg");}%></div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive border-0">
@@ -100,7 +113,7 @@
                                     <td><%=lezione.getInsegnamento()%>
                                     </td>
                                     <td><a class="btn btn-outline-info"
-                                           href="../SingolaLezione?lezione=<%=lezione.getTutorato()%>" role="button">Visualizza</a>
+                                           href="../SingolaLezione?lezione=<%=lezione.getId()%>" role="button">Visualizza</a>
                                     </td>
                                 </tr>
                                 <%}%>
@@ -123,19 +136,74 @@
         </div>
     </div>
 </div>
-<!-- Back to top -->
-<div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
+<div class="col-sm-1">
+    <button type="button" class="btn btn-primary btn-round zoom-hover me-3" data-bs-toggle="modal" data-bs-target="#nuovaLezione" style="position: absolute;left: 1000px;right: 20px;background: #59cfcd;"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+    </svg> </button>
+</div>
+<form action="../InserimentoLezione" onsubmit="return inserimentoLezione();" method="post">
+    <div class="modal fade" id="nuovaLezione" tabindex="-1" aria-labelledby="nuovaLezione" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="nuovaLezione">Inserimento Nuova Lezione</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="../inserisciSupporto" method="get">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="tutorato" class="col-form-label">Seleziona Richiesta:</label>
+                                    <select name="idTutorato" style=" width:36em" class="form-control" id="tutorato">
+                                        <option value="">Seleziona Richiesta</option>
+                                        <%for (TutoratoDidatticoBean tutoratoDidatticoBean : tutorati){ if(tutoratoDidatticoBean.getStatus() == 1){%>
+                                        <option value="<%=tutoratoDidatticoBean.getId()%>"><%="Email: "+tutoratoDidatticoBean.getStudenteEmail()+" Insegnamento: "+tutoratoDidatticoBean.getInsegnamento()%></option><%}}%>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="oraInizio" class="col-form-label">Ora Inizio:</label>
+                                    <input type="time" name="oraInizio" class="form-control" id="oraInizio">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="ora" class="col-form-label">Ora Fine:</label>
+                                    <input type="time" name="oraFine" class="form-control" id="ora">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="data" class="col-form-label">Data:</label>
+                                    <input type="date" name="data" class="form-control" id="data">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="luogo" class="col-form-label">Luogo:</label>
+                                    <input type="text" name="luogo" class="form-control" id="luogo" minlength="2" maxlength="250">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-outline-info">Inserisci</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Back to top -->
+    <div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
 
-<!-- Bootstrap JS -->
-<script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Vendors -->
-<script src="../assets/vendor/tiny-slider/tiny-slider.js"></script>
-<script src="../assets/vendor/glightbox/js/glightbox.js"></script>
-<script src="../assets/vendor/purecounterjs/dist/purecounter_vanilla.js"></script>
+    <!-- Vendors -->
+    <script src="../assets/vendor/tiny-slider/tiny-slider.js"></script>
+    <script src="../assets/vendor/glightbox/js/glightbox.js"></script>
+    <script src="../assets/vendor/purecounterjs/dist/purecounter_vanilla.js"></script>
 
-<!-- Template Functions -->
-<script src="../assets/js/functions.js"></script>
+    <!-- Template Functions -->
+    <script src="../assets/js/functions.js"></script>
+    <script src="../js/validazioneInput.js"></script>
 </body>
 </html>
 

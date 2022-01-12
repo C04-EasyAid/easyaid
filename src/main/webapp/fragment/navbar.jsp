@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     UserBean user = (UserBean) session.getAttribute("utente");
+    String alert= (String) session.getAttribute("alertMsg");
 %>
 <!-- Logo Nav START -->
 <nav class="navbar navbar-expand-xl">
@@ -74,8 +75,6 @@
                        aria-haspopup="true" aria-expanded="false">Management</a>
                     <ul class="dropdown-menu" aria-labelledby="pagesMenu">
                         <li><a class="dropdown-item text-black" href="../ViewListaUsers">Elenco Utenti</a></li>
-                        <li><a class="dropdown-item text-black" href="../viewRichiesteCompletate">Elenco Richieste
-                            Completate</a></li>
                     </ul>
                     <%}%>
                 </li>
@@ -158,7 +157,7 @@
                     <hr>
                 </li>
                 <!-- Links -->
-                <li><a class="dropdown-item text-black" href="ProfilePage.jsp"><i class="bi fa-fw me-2"></i>Account
+                <li><a class="dropdown-item text-black" href="ProfiloPage.jsp"><i class="bi fa-fw me-2"></i>Account
                     Settings</a></li>
                 <li><a class="dropdown-item bg-danger-soft-hover text-black" href="../logout"><i
                         class="bi fa-fw me-2"></i>Logout</a></li>

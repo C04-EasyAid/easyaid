@@ -130,7 +130,7 @@
                                     </ul>
                                     <%}%>
                                     <div class="panel-body">
-                                        <form action="../CommentoServlet" method="get">
+                                        <form action="../CommentoServlet" onsubmit="inserimentoCommento();" method="get">
                                             <input type="text" name="commento" class="form-control" placeholder="scrivi un commento..."
                                                    rows="3">
                                             <br>

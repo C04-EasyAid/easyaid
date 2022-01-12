@@ -141,7 +141,7 @@
         <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
     </svg> </button>
 </div>
-<form action="../InserimentoLezione" method="get">
+<form action="../InserimentoLezione" onsubmit="return inserimentoLezione();" method="post">
     <div class="modal fade" id="nuovaLezione" tabindex="-1" aria-labelledby="nuovaLezione" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
@@ -175,6 +175,10 @@
                                     <label for="data" class="col-form-label">Data:</label>
                                     <input type="date" name="data" class="form-control" id="data">
                                 </div>
+                                <div class="mb-3">
+                                    <label for="luogo" class="col-form-label">Luogo:</label>
+                                    <input type="text" name="luogo" class="form-control" id="luogo">
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -199,6 +203,7 @@
 
     <!-- Template Functions -->
     <script src="../assets/js/functions.js"></script>
+    <script src="../js/validazioneInput.js"></script>
 </body>
 </html>
 

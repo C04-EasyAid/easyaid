@@ -70,3 +70,19 @@ function inserimentoCommento(){
     }
     return (true);
 }
+
+function inserimentoLezione() {
+    var lezione_check = true;
+    var luogo_valid = /^[a-zA-Z][-_a-zA-Z0-9]{2,250}$/;
+    var luogo_form = document.getElementById("luogo");
+    if(!luogo_valid.test(luogo_form.value) || luogo_form.value==''){
+        lezione_check = false;
+        luogo_form.focus();
+        luogo_form.style.background = '#f08080';
+    }
+    if(!lezione_check){
+        return false;
+    }
+
+    return true;
+}

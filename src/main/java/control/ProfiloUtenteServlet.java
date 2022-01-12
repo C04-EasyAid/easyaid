@@ -1,10 +1,7 @@
 package control;
 
 import model.bean.UserBean;
-import model.dao.ProfessoreReferenteDAO;
-import model.dao.StudenteDAO;
-import model.dao.TutorDAO;
-import model.dao.UserDAO;
+import model.dao.*;
 import other.MyLogger;
 
 import javax.servlet.ServletException;
@@ -21,16 +18,33 @@ import java.sql.SQLException;
 public class ProfiloUtenteServlet extends HttpServlet {
   private static MyLogger log = MyLogger.getInstance();
   private static String myClass = "ProfiloUtenteServlet";
+  private ITutorDAO tutorDao = new TutorDAO();
+  private IStudenteDAO studenteDao = new StudenteDAO();
+  private IUserDAO userdao = new UserDAO();
+  private IProfessoreReferenteDAO professoreDao = new ProfessoreReferenteDAO();
+
+  public void setTutorDao(ITutorDAO tutorDao) {
+    this.tutorDao = tutorDao;
+  }
+
+  public void setStudenteDao(IStudenteDAO studenteDao) {
+    this.studenteDao = studenteDao;
+  }
+
+  public void setUserdao(IUserDAO userdao) {
+    this.userdao = userdao;
+  }
+
+  public void setProfessoreDao(IProfessoreReferenteDAO professoreDao) {
+    this.professoreDao = professoreDao;
+  }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     log.info(myClass, "Collegamento alla Servlet...");
     HttpSession session = request.getSession();
     UserBean userLoggato = (UserBean) session.getAttribute("utente");
-    ProfessoreReferenteDAO professoreDao = new ProfessoreReferenteDAO();
-    TutorDAO tutorDao = new TutorDAO();
-    StudenteDAO studenteDao = new StudenteDAO();
-    UserDAO userdao = new UserDAO();
+
     if (userLoggato != null && userLoggato.isPersonaleAmministrativo()) {
       if (request.getParameter("usrEmail") != null) {
         String email = request.getParameter("usrEmail");
@@ -76,8 +90,12 @@ public class ProfiloUtenteServlet extends HttpServlet {
           e.printStackTrace();
         }
 
-      } else response.sendRedirect("view/ListaUtentiPage.jsp");
+      } else {
+        request.getSession().setAttribute("alertMsg","Operazione non andata a buon fine");
+        response.sendRedirect("view/ListaUtentiPage.jsp");
+        }
     } else {
+      request.getSession().setAttribute("alertMsg","Permessi non concessi all'utente");
       response.sendRedirect("view/HomePage.jsp");
     }
   }

@@ -3,6 +3,8 @@ package control;
 import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
+import model.dao.ISupportoEsameDAO;
+import model.dao.ITutoratoDidatticoDAO;
 import model.dao.SupportoEsameDAO;
 import model.dao.TutoratoDidatticoDAO;
 import other.MyLogger;
@@ -25,6 +27,16 @@ public class SingolaRichiestaServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "SingolaRichiestaServlet";
   @Serial private static final long serialVersionUID = 1L;
+  private ITutoratoDidatticoDAO tutoratoDao = new TutoratoDidatticoDAO();
+  private ISupportoEsameDAO supportoDao = new SupportoEsameDAO();
+
+  public void setTutoratoDao(ITutoratoDidatticoDAO tutoratoDao) {
+    this.tutoratoDao = tutoratoDao;
+  }
+
+  public void setSupportoDao(ISupportoEsameDAO supportoDao) {
+    this.supportoDao = supportoDao;
+  }
 
   public SingolaRichiestaServlet() {
     super();
@@ -42,30 +54,28 @@ public class SingolaRichiestaServlet extends HttpServlet {
     if (userLoggato != null) {
       if (request.getParameter("idTutorato") != null) {
         idTutorato = Integer.parseInt(request.getParameter("idTutorato"));
-        TutoratoDidatticoDAO dao = new TutoratoDidatticoDAO();
+
         try {
-          TutoratoDidatticoBean tutorato = dao.doRetriveById(idTutorato);
+          TutoratoDidatticoBean tutorato = tutoratoDao.doRetriveById(idTutorato);
           session.setAttribute("tutorato", tutorato);
           response.sendRedirect("view/RichiestaPage.jsp");
         } catch (SQLException | ClassNotFoundException e) {
           e.printStackTrace();
         }
-      } else if (request.getParameter("idSupporto") != null) {
-        SupportoEsameDAO dao = new SupportoEsameDAO();
+      } if (request.getParameter("idSupporto") != null) {
+
         idSupporto = Integer.parseInt(request.getParameter("idSupporto"));
         try {
-          SupportoEsameBean supporto = dao.doRetriveById(idSupporto);
+          SupportoEsameBean supporto = supportoDao.doRetriveById(idSupporto);
           session.setAttribute("supporto", supporto);
           response.sendRedirect("view/RichiestaPage.jsp");
         } catch (SQLException | ClassNotFoundException e) {
           log.error(myClass, "Catturata eccezione nella Servlet", e);
           e.printStackTrace();
         }
-      } else {
-        session.setAttribute("alertMsg", "Impossibile aprire il richiesta");
-        response.sendRedirect("view/BachecaTutorPage.jsp");
       }
     } else {
+      session.setAttribute("alertMsg","Permessi non concessi all'utente");
       response.sendRedirect("view/LoginPage.jsp");
     }
   }

@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.Date;
 import model.bean.LezioneBean;
 import model.bean.UserBean;
+import model.dao.ILezioneDAO;
 import model.dao.LezioneDAO;
 import other.MyLogger;
 
@@ -28,6 +29,11 @@ Servlet che permette di inserire una nuova lezione
 public class InserimentoNuovaLezioneServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "InserimentoLezioneServlet";
+  private ILezioneDAO lezioneDAO=new LezioneDAO();
+
+  public void setLezioneDAO(ILezioneDAO lezioneDAO) {
+    this.lezioneDAO = lezioneDAO;
+  }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
@@ -35,7 +41,6 @@ public class InserimentoNuovaLezioneServlet extends HttpServlet {
     HttpSession session = request.getSession();
     UserBean user = (UserBean) session.getAttribute("utente");
     if (user != null) {
-      LezioneDAO lezioneDAO = new LezioneDAO();
       int idTutorato = Integer.parseInt(request.getParameter("idTutorato"));
       String oraInizio = request.getParameter("oraInizio");
       String oraFine = request.getParameter("oraFine");
@@ -51,11 +56,11 @@ public class InserimentoNuovaLezioneServlet extends HttpServlet {
         lezioneBean.setData(date);
         Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
         lezioni.add(lezioneBean);
-        if (lezioneDAO.countOre(lezioni, idTutorato) < 1) {
+        if (lezioneDAO.countOre(lezioni, idTutorato) <= 1) {
           lezioneDAO.insertNewLezione(lezioneBean);
           session.setAttribute("alertMsg", "Lezione Inserita");
           response.sendRedirect(request.getContextPath() + "/LezioniServlet");
-        } else if (lezioneDAO.countOre(lezioni, idTutorato) == 2) {
+        } if (lezioneDAO.countOre(lezioni, idTutorato) == 2) {
           session.setAttribute("alertMsg", "La lezione supera le ore richieste");
           response.sendRedirect("view/LezioniTutorPage.jsp");
         }
@@ -63,6 +68,9 @@ public class InserimentoNuovaLezioneServlet extends HttpServlet {
         log.error(myClass, "Collegamento alla Servlet...", e);
         e.printStackTrace();
       }
+    } else {
+      request.getSession().setAttribute("alertMsg","Permessi non concessi all'utente");
+      response.sendRedirect("view/LoginPage.jsp");
     }
   }
 

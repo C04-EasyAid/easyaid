@@ -15,10 +15,13 @@ import model.dao.ISupportoEsameDAO;
 import model.dao.ITutoratoDidatticoDAO;
 import model.dao.SupportoEsameDAO;
 import model.dao.TutoratoDidatticoDAO;
+import other.MyLogger;
 
 /** @author Martina Giugliano Servlet che permette di approvare una richiesta di servizio */
 @WebServlet("/ApprovazioneRichiesta")
 public class ApprovazioneRichiestaServlet extends HttpServlet {
+  private static final MyLogger log = MyLogger.getInstance();
+  private static final String myClass = "ApprovazioneRichiestaServlet";
   ITutoratoDidatticoDAO tutoratodao = new TutoratoDidatticoDAO();
   ISupportoEsameDAO supportodao = new SupportoEsameDAO();
   @Override
@@ -38,6 +41,7 @@ public class ApprovazioneRichiestaServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
           throws ServletException, IOException {
+    log.info(myClass, "Collegamento alla Servlet...");
     HttpSession session = req.getSession();
     UserBean prof = (UserBean) session.getAttribute("utente");
     TutoratoDidatticoBean tutorato = (TutoratoDidatticoBean) session.getAttribute("tutorato");
@@ -48,6 +52,7 @@ public class ApprovazioneRichiestaServlet extends HttpServlet {
         session.setAttribute("alertMsg", "Richiesta approvata con successo");
         resp.sendRedirect("view/HomePage.jsp");
       } catch (SQLException e) {
+        log.error(myClass, "Catturata eccezione nella Servlet", e);
         e.printStackTrace();
       }
     } else if (supporto != null) {
@@ -56,6 +61,7 @@ public class ApprovazioneRichiestaServlet extends HttpServlet {
         session.setAttribute("alertMsg", "Richiesta approvata con successo");
         resp.sendRedirect("view/HomePage.jsp");
       } catch (SQLException e) {
+        log.error(myClass, "Catturata eccezione nella Servlet", e);
         e.printStackTrace();
       }
 

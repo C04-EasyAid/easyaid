@@ -36,7 +36,7 @@ public class InserimentoNuovaLezioneServlet extends HttpServlet {
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+          throws ServletException, IOException {
     log.info(myClass, "Collegamento alla Servlet...");
     HttpSession session = request.getSession();
     UserBean user = (UserBean) session.getAttribute("utente");
@@ -45,6 +45,7 @@ public class InserimentoNuovaLezioneServlet extends HttpServlet {
       String oraInizio = request.getParameter("oraInizio");
       String oraFine = request.getParameter("oraFine");
       String data = request.getParameter("data");
+      String luogo = request.getParameter("luogo");
       SimpleDateFormat dateParser = new SimpleDateFormat("yyyy-MM-dd");
       try {
         Date date = dateParser.parse(data);
@@ -54,6 +55,7 @@ public class InserimentoNuovaLezioneServlet extends HttpServlet {
         lezioneBean.setOraInizio(oraInizio);
         lezioneBean.setOraFine(oraFine);
         lezioneBean.setData(date);
+        lezioneBean.setLuogo(luogo);
         Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
         lezioni.add(lezioneBean);
         if (lezioneDAO.countOre(lezioni, idTutorato) <= 1) {
@@ -75,7 +77,7 @@ public class InserimentoNuovaLezioneServlet extends HttpServlet {
   }
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+          throws ServletException, IOException {
     doGet(request, response);
   }
 }

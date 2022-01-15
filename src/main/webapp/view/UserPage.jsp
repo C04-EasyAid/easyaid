@@ -13,7 +13,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
-<html>
+<!DOCTYPE html>
+<html lang="it">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -48,7 +49,7 @@
 <header>
     <%@ include file="../fragment/navbar.jsp" %>
 </header>
-<main>
+<main role="main">
     <section class="pt-0">
         <%@ include file="../fragment/UserSection.jsp" %>
         <%

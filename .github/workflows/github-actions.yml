@@ -16,8 +16,7 @@ jobs:
         
       - name: Setup MySQL
         run: |
-          mysql -u root --default-character-set=utf8 easyaid< db/EasyAid.sql
-          mysql -u root --default-character-set=utf8 easyaid< db/populateDB.sql  
+          mysql -e 'CREATE DATABASE easyaid;'
           
       - name: Set up JDK 16.0.2
         uses: actions/setup-java@v2

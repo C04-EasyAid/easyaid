@@ -16,8 +16,8 @@ jobs:
         
       - name: Setup MySQL
         run: |
-          mysql -e 'DROP DATABASE IF EXISTS easyaid'
-          mysql -e 'CREATE DATABASE IF NOT EXISTS easyaid;'  
+          mysql -e 'DROP DATABASE IF EXISTS easyaid;' -uroot -proot
+          mysql -e 'CREATE DATABASE IF NOT EXISTS easyaid;' -uroot -proot
           mysql -uroot -proot --default-character-set=utf8 easyaid< db/EasyAid.sql
           mysql -uroot -proot --default-character-set=utf8 easyaid< db/populateDB.sql  
           

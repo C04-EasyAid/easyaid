@@ -11,6 +11,8 @@ jobs:
       - uses: shogo82148/actions-setup-mysql@v1
         with:
           mysql-version: '8.0'
+      - run: mysql -e 'DROP DATABASE IF EXISTS easyaid'
+      - run: mysql -e 'CREATE DATABASE IF NOT EXISTS easyaid;'  
       - run: mysql -u root --default-character-set=utf8 easyaid< db/EasyAid.sql
       - run: mysql -u root --default-character-set=utf8 easyaid< db/populateDB.sql          
       - name: Set up JDK 16.0.2

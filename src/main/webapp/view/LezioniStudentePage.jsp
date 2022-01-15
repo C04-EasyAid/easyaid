@@ -8,7 +8,8 @@
 --%>
 <%@ page import="model.bean.LezioneBean" %>
 <%@ page import="java.util.Collection" %>
-<html>
+<!DOCTYPE html>
+<html lang="it">
 <head>
     <!-- Meta Tags -->
     <meta charset="utf-8">
@@ -45,7 +46,7 @@
 <%
     Collection<LezioneBean> lezioni = (Collection<LezioneBean>) session.getAttribute("listaLezioni");
 %>
-<main>
+<main role="main">
     <section class="pt-0">
 <div class="container">
     <div class="row justify-content-center">

@@ -5,18 +5,15 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    
-    services:
-      mydb:
-        image: mysql:8.0.18
-        env:
-          MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: easyaid
-        ports:
-            - 3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
+      - uses: mirromutth/mysql-action@v1.1
+        with:
+          mysql version: '8.0.18'
+          mysql database: 'easyaid' # Optional, default value is "test". The specified database which will be create
+          mysql root password: 'root'
+          mysql user: 'root'
+          mysql password: 'root'
       - uses: actions/checkout@v2
       - name: Set up JDK 16.0.2
         uses: actions/setup-java@v2

@@ -55,7 +55,7 @@ function changeInput()
 }
 
 function inserimentoCommento(){
-    var commentovalid = /^[a-zA-Z][-_a-zA-Z0-9]{1,250}$/
+    var commentovalid = /^[a-zA-Z][-_a-zA-Z0-9]{2,250}$/
     var commento_form = document.getElementById("commento");
     var commento_check = true;
     if(!commento_valid.test(commento_form.value) || commento_form.value=='')

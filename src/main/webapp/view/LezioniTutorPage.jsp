@@ -177,7 +177,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="luogo" class="col-form-label">Luogo:</label>
-                                    <input type="text" name="luogo" class="form-control" id="luogo">
+                                    <input type="text" name="luogo" class="form-control" id="luogo" minlength="2" maxlength="250">
                                 </div>
                             </div>
                         </div>

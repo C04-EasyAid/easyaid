@@ -55,7 +55,7 @@ function changeInput()
 }
 
 function inserimentoCommento(){
-    var commentovalid = /^[a-zA-Z][-_a-zA-Z0-9]{1,250}$/
+    var commentovalid = /^[a-zA-Z][-_a-zA-Z0-9]{2,250}$/
     var commento_form = document.getElementById("commento");
     var commento_check = true;
     if(!commento_valid.test(commento_form.value) || commento_form.value=='')
@@ -84,5 +84,40 @@ function inserimentoLezione() {
         return false;
     }
 
+    return true;
+}
+function validazioneRichiestaSupporto(){
+    var insegnamento = document.getElementById();
+    var oreRichieste = document.getElementById();
+    var docente = document.getElementById();
+    var luogo = document.getElementById();
+    var check = true;
+    var insegnamentoreg = /^[A-Za-z]+$/;
+    var oreRichiestereg = /^[1-9][0-9]?$|^100$/;
+    var docentereg = /^[A-Za-z]+$/;
+    var luogoreg = /^[a-zA-Z0-9_.-]*$/;
+    if(!insegnamentoreg.test(insegnamento.value)){
+        check = false;
+        insegnamento.focus();
+    }
+
+    if(!oreRichiestereg.test(oreRichieste.value)){
+        check = false;
+        oreRichieste.focus();
+    }
+
+    if(!docentereg.test(docente.value)){
+        check = false;
+        docente.focus();
+    }
+
+    if(!luogoreg.test(luogo.value)){
+        check = false;
+        luogo.focus();
+    }
+
+    if(!check){
+        return false;
+    }
     return true;
 }

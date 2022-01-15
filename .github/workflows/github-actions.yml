@@ -5,26 +5,27 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: root
+          MYSQL_USER: root
+          MYSQL_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
 
     steps:
       - uses: actions/checkout@v2
       
-      - name: Shutdown existing MySQL
+      - name: Shutdown Ubuntu MySQL (SUDO)
         run: sudo service mysql stop
         
-      - name: Set up MySQL
-        uses: mirromutth/mysql-action@v1.1
-        with:
-          version: 8.0
-          hostPort: 33069
-          containerPort: 3306
-          rootPassword: root
-          user: root
-          password: root
-          database: root
-          characterSet: root
-          collation: utf8mb4_general_ci
-          sqlMode: NO_ENGINE_SUBSTITUTION
+      - name: Start Ubuntu MySQL (SUDO)
+        run: sudo service mysql start
       
       - name: Setup MySQL
         run: |

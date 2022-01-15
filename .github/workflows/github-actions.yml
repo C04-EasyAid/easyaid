@@ -8,6 +8,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
   
+      - name: Shutdown Ubuntu MySQL (SUDO)
+        run: sudo service mysql stop
+        
+      - name: Start Ubuntu MySQL (SUDO)
+        run: sudo service mysql start
+        
       - name: Setup MySQL
         run: |
           mysql -e 'DROP DATABASE IF EXISTS easyaid'

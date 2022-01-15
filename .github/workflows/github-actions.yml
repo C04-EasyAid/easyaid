@@ -16,7 +16,9 @@ jobs:
         
       - name: Setup MySQL
         run: |
-          mysql -uroot -proot --default-character-set=utf8 db/EasyAid.sql
+          mysql -e 'DROP DATABASE IF EXISTS easyaid'
+          mysql -e 'CREATE DATABASE IF NOT EXISTS easyaid;'  
+          mysql -uroot -proot --default-character-set=utf8 easyaid< db/EasyAid.sql
           mysql -uroot -proot --default-character-set=utf8 easyaid< db/populateDB.sql  
           
       - name: Set up JDK 16.0.2

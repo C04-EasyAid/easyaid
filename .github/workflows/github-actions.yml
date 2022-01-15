@@ -5,21 +5,13 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    
-    services:
-      mysql:
-        image: mysql:8.0.18
-        env:
-          MYSQL_HOST: 127.0.0.1
-          MYSQL_USER: root
-          MYSQL_PASSWORD: root
-          MYSQL_ROOT_PASSWORD: root
-        ports:
-            - 3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
-      - uses: actions/checkout@v2   
+      - uses: actions/checkout@v2
+      - name: actions-setup-mysql
+        uses: shogo82148/actions-setup-mysql@v1.5.0
+        with:
+          mysql-version: '8.0'
       - run: mysql -e 'DROP DATABASE IF EXISTS easyaid'
       - run: mysql -e 'CREATE DATABASE IF NOT EXISTS easyaid;'  
       - run: mysql -u root --default-character-set=utf8 easyaid< db/EasyAid.sql

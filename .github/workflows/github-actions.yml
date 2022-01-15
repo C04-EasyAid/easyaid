@@ -16,7 +16,6 @@ jobs:
         
       - name: Setup MySQL
         run: |
-          sudo /etc/init.d/mysql start
           mysql -u root --default-character-set=utf8 easyaid< db/EasyAid.sql
           mysql -u root --default-character-set=utf8 easyaid< db/populateDB.sql  
           

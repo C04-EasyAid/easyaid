@@ -86,3 +86,38 @@ function inserimentoLezione() {
 
     return true;
 }
+function validazioneRichiestaSupporto(){
+    var insegnamento = document.getElementById();
+    var oreRichieste = document.getElementById();
+    var docente = document.getElementById();
+    var luogo = document.getElementById();
+    var check = true;
+    var insegnamentoreg = /^[A-Za-z]+$/;
+    var oreRichiestereg = /^[1-9][0-9]?$|^100$/;
+    var docentereg = /^[A-Za-z]+$/;
+    var luogoreg = /^[a-zA-Z0-9_.-]*$/;
+    if(!insegnamentoreg.test(insegnamento.value)){
+        check = false;
+        insegnamento.focus();
+    }
+
+    if(!oreRichiestereg.test(oreRichieste.value)){
+        check = false;
+        oreRichieste.focus();
+    }
+
+    if(!docentereg.test(docente.value)){
+        check = false;
+        docente.focus();
+    }
+
+    if(!luogoreg.test(luogo.value)){
+        check = false;
+        luogo.focus();
+    }
+
+    if(!check){
+        return false;
+    }
+    return true;
+}

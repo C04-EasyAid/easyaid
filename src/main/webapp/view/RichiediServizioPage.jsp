@@ -72,7 +72,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="../inserisciSupporto" method="get">
+                                <form action="../inserisciSupporto" method="get" onsubmit="return validazioneRichiestaSupporto();">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3">

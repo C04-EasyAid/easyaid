@@ -136,7 +136,6 @@ public class UserDAO implements IUserDAO {
       return false;
     if(s.getPercentualeDisabilita()>100)
       return false;
-
     // Viene prima inserito l'utente generico (UserBean);
     // Se il metodo restituisce true continua per inserire lo studente
     if (insertUtente(b)) {
@@ -184,6 +183,22 @@ public class UserDAO implements IUserDAO {
       Connection conn = null;
       String query = "INSERT INTO tutor VALUES (?,?,?,?,?)";
       PreparedStatement stmt = null;
+      String dipartimento = t.getDipartimento();
+      String qualifica = t.getQualifica();
+      Integer oreSvolte = t.getOreSvolte();
+      Integer oreDisponbili = t.getOreDisponibili();
+      if(dipartimento==null){
+        return false;
+      }
+      if(qualifica.length()<2 || qualifica.length()>50){
+        return false;
+      }
+      if(oreSvolte instanceof Integer){
+        return false;
+      }
+      if(oreDisponbili instanceof Integer){
+        return false;
+      }
       // Se riesce a connettersi, la connessione è != da null ed entra nello statement
       try {
         conn = ConnectionPool.conn();
@@ -217,7 +232,7 @@ public class UserDAO implements IUserDAO {
 
   @Override
   public synchronized boolean insertProfessoreReferente(ProfessoreReferenteBean p, UserBean b)
-      throws SQLException {
+          throws SQLException {
     boolean prof = false;
     // Viene prima inserito l'utente generico (UserBean);
     // Se il metodo restituisce true continua per inserire il prof
@@ -225,6 +240,10 @@ public class UserDAO implements IUserDAO {
       Connection conn = null;
       String query = "INSERT INTO professore_referente VALUES (?,?)";
       PreparedStatement stmt = null;
+      String dipartimento = p.getDipartimento();
+      if(dipartimento==null){
+        return false;
+      }
       // Se riesce a connettersi, la connessione è != da null ed entra nello statement
       try {
         conn = ConnectionPool.conn();
@@ -251,7 +270,6 @@ public class UserDAO implements IUserDAO {
     }
     return prof;
   }
-
   // Metodo che restituisce la lista degli utenti nel Database
 
   @Override

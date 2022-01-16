@@ -125,6 +125,18 @@ public class UserDAO implements IUserDAO {
   public synchronized boolean insertStudente(StudenteBean s, UserBean b)
       throws SQLException {
     boolean studente = false;
+    String  expressionPlus="^[\\w\\-]([\\.\\w])+[\\w]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+    Pattern pPlus = Pattern.compile(expressionPlus, Pattern.CASE_INSENSITIVE);
+    Matcher mPlus = pPlus.matcher(s.getEmail());
+    boolean matchFoundPlus = mPlus.matches();
+    if(!matchFoundPlus){
+      return false;
+    }
+    if(!s.getTipoDisabilita().matches("[a-zA-Z]+") || !s.getSpecificheDisturbo().matches("[a-zA-Z]+"))
+      return false;
+    if(s.getPercentualeDisabilita()>100)
+      return false;
+
     // Viene prima inserito l'utente generico (UserBean);
     // Se il metodo restituisce true continua per inserire lo studente
     if (insertUtente(b)) {

@@ -7,7 +7,8 @@
   ..
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="it">
 <head>
     <title>EasyAid</title>
   <link type="text/css" rel="stylesheet" href="../css/bootstrap.css">
@@ -18,7 +19,7 @@
     <%@ include file="../fragment/navbar.jsp" %>
 
 </header>
-<main>
+<main role="main">
 
     <!-- =======================
     Page content START -->

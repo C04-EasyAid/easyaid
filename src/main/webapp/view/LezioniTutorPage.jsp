@@ -13,7 +13,8 @@
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Collection" %>
 <%@ page import="model.dao.LezioneDAO" %>
-<html>
+<!DOCTYPE html>
+<html lang="it">
 <head>
     <!-- Meta Tags -->
     <meta charset="utf-8">

@@ -10,7 +10,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <html>
-<head>
+<!DOCTYPE html>
+<html lang="it">
     <title>EasyAid</title>
     <!-- Meta Tags -->
     <meta charset="utf-8">
@@ -41,7 +42,7 @@
 <header>
     <%@ include file="../fragment/navbar.jsp" %>
 </header>
-<main>
+<main role="main">
     <%@ include file="../fragment/UserSection.jsp" %>
     <section class="pt-0">
         <div class="container">

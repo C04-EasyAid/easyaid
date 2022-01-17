@@ -83,7 +83,7 @@
                                 </div>
                                 <div class="card-body">
                                     <form action="../register" method="post" class="row g-4 align-items-center" autocomplete="off" onsubmit="return validateInserimento();">
-                                    </h5></p>
+                                    
                                         <input type="hidden" name="ruolo" value="<%=inserimento%>"/>
 
                                         <div class="row">
@@ -91,7 +91,7 @@
                                                 <address>
                                                     <p class="fw-bold">Nome:</p>
                                                     <input type="text" name="nome" class="form-control"
-                                                           placeholder="Nome" required>
+                                                           placeholder="Nome" minlength="3" required>
                                                     <p class="fw-bold">Cognome:</p>
                                                     <input type="text" name="cognome" class="form-control"
                                                            placeholder="Cognome" required>

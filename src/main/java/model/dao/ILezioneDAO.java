@@ -38,4 +38,5 @@ public interface ILezioneDAO {
 
     // Metodo che conferma la lezione avvenuta
     boolean confermaLezione(int idLezione) throws SQLException;
+    boolean deleteLezione(LezioneBean l) throws SQLException;
 }

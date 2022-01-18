@@ -7,7 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%String alert= (String) session.getAttribute("alertMsg");%>
-<html>
+<!DOCTYPE html>
+<html lang="it">
 <head>
     <title>EasyAid Login</title>
     <!-- Meta Tags -->
@@ -38,7 +39,7 @@
 </head>
 <body>
 
-<main>
+<main role="main">
     <section class="p-0 d-flex align-items-center position-relative overflow-hidden">
         <div class="container-fluid">
             <div class="row">

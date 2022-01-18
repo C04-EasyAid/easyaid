@@ -29,7 +29,8 @@
         }
     }
 %>
-<html>
+<!DOCTYPE html>
+<html lang="it">
 <head>
     <title>EasyAid</title>
     <meta charset="utf-8">
@@ -61,7 +62,7 @@
 <header>
     <%@ include file="../fragment/navbar.jsp" %>
 </header>
-<main>
+<main role="main">
     <section class="pt-0">
         <%@ include file="../fragment/UserSection.jsp" %>
     </section>

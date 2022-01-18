@@ -46,7 +46,7 @@ public class CommentoServlet extends HttpServlet {
     if (user != null) {
       String msg = request.getParameter("commento");
       LezioneBean lezione = (LezioneBean) session.getAttribute("lezione");
-      if (msg != null && lezione.getId() != 0) {
+      if (msg != null && msg.length()<250 && msg.length()>1 && lezione.getId() != 0) {
         if (user.isStudente()) {
           StudenteBean bean = null;
           try {
@@ -84,7 +84,7 @@ public class CommentoServlet extends HttpServlet {
             }
           }
         }
-      } else if (msg == null && lezione.getId() == 0) {
+      } else if (msg == null || lezione.getId() == 0) {
 
         try {
           session.setAttribute("alertMsg", "Operazione non andata a buon fine");

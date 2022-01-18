@@ -16,6 +16,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="easyaid.main" options="--add-modules java.base,java.sql" />
+      <module name="easyaid.test" options="--add-modules java.base,java.sql" />
     </option>
   </component>
 </project>

@@ -46,7 +46,7 @@ public class UserDAO implements IUserDAO {
         user.setNome(rs.getString("nome"));
         user.setCognome(rs.getString("cognome"));
         user.setEmail(rs.getString("email"));
-        user.setPassword(rs.getString("nome"));
+        user.setPassword(rs.getString("password"));
         user.setRuolo(rs.getString("ruolo"));
       }
 
@@ -326,7 +326,7 @@ public class UserDAO implements IUserDAO {
         user.setNome(rs.getString("nome"));
         user.setCognome(rs.getString("cognome"));
         user.setEmail(rs.getString("email"));
-        user.setPassword(rs.getString("nome"));
+        user.setPassword(rs.getString("password"));
         user.setRuolo(rs.getString("ruolo"));
       }
 
@@ -343,4 +343,37 @@ public class UserDAO implements IUserDAO {
     }
     return user;
   }
-}
+
+  public synchronized boolean deleteUtente(UserBean b)
+          throws SQLException {
+     boolean delete = false;
+
+      Connection conn = null;
+      String query = "DELETE FROM utente WHERE email=?";
+      PreparedStatement stmt = null;
+
+      try {
+        conn = ConnectionPool.conn();
+        stmt = conn.prepareStatement(query);
+        stmt.setString(1, b.getEmail());
+
+        ResultSet rs = null;
+        delete = stmt.executeUpdate()==1;
+        conn.commit();
+      } catch (SQLException e) {
+        e.printStackTrace();
+      } finally {
+        if (stmt != null) {
+          stmt.close();
+        }
+        if (conn != null) {
+          conn.close();
+        }
+      }
+      return delete;
+    }
+
+  }
+
+
+

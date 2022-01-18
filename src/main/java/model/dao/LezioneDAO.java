@@ -1,6 +1,7 @@
 package model.dao;
 
 import model.bean.LezioneBean;
+import model.bean.SupportoEsameBean;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -348,5 +349,25 @@ public class LezioneDAO implements ILezioneDAO {
     }
 
     return isUpdated;
+  }
+  @Override
+  public synchronized boolean deleteLezione(LezioneBean l) throws SQLException {
+    boolean delete = false;
+    Connection conn = null;
+    String query = "DELETE FROM lezione WHERE id = ?";
+    PreparedStatement stmt = null;
+    try {
+      conn = ConnectionPool.conn();
+      stmt = conn.prepareStatement(query);
+      stmt.setInt(1, l.getId());
+      delete = stmt.executeUpdate() == 1;
+      conn.commit();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } finally {
+      if (stmt != null) stmt.close();
+      if (conn != null) conn.close();
+    }
+    return delete;
   }
 }

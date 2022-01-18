@@ -25,4 +25,6 @@ public interface ISupportoEsameDAO {
   boolean accettaRichiesta(int idSupporto, String emailTutor, String commento) throws SQLException;
 
   boolean approvaRichiesta(int idSupporto, String emailProf) throws SQLException;
+
+  boolean deleteSupporto(SupportoEsameBean s) throws SQLException;
 }

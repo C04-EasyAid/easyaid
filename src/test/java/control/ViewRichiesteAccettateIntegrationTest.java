@@ -36,7 +36,7 @@ class ViewRichiesteAccettateIntegrationTest {
 
     @Test
     void viewRichiesteAccettateTest3() throws ServletException, IOException, SQLException, ClassNotFoundException {
-        MockitoAnnotations.initMocks(this);
+
         ISupportoEsameDAO supportoEsameDao = new SupportoEsameDAO();
         ITutoratoDidatticoDAO tutoratoDidatticoDao = new TutoratoDidatticoDAO();
         UserBean bean=new UserBean();

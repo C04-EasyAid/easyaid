@@ -50,6 +50,6 @@ class ViewRichiesteAccettateIntegrationTest {
         servlet.setTutoratoDao(tutoratoDidatticoDao);
         servlet.doGet(request, response);
 
-        assertEquals("Operazione riuscita con successo!", request.getSession().getAttribute("alertMsg"));
+        assertEquals("view/RichiesteAccettatePage.jsp",response.getRedirectedUrl());
     }
 }

@@ -1,7 +1,5 @@
 package control;
 
-import model.bean.SupportoEsameBean;
-import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
 import model.dao.ISupportoEsameDAO;
 import model.dao.ITutoratoDidatticoDAO;
@@ -9,21 +7,17 @@ import model.dao.SupportoEsameDAO;
 import model.dao.TutoratoDidatticoDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
 import javax.servlet.ServletException;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
-class ViewRchiesteCompletateIntegrationTest {
+class ViewRichiesteCompletateIntegrationTest {
     private ViewRichiesteCompletateServlet servlet;
     private MockHttpServletRequest request;
     private MockHttpServletResponse response;
@@ -37,7 +31,7 @@ class ViewRchiesteCompletateIntegrationTest {
     @Test
     void testVisualizzaRichiesteServizio3()
             throws SQLException, ClassNotFoundException, ServletException, IOException {
-        MockitoAnnotations.initMocks(this);
+
         ISupportoEsameDAO supportoEsameDao = new SupportoEsameDAO();
         ITutoratoDidatticoDAO tutoratoDidatticoDao = new TutoratoDidatticoDAO();
         UserBean bean = new UserBean();

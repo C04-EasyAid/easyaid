@@ -77,7 +77,7 @@ public class RegisterServlet extends HttpServlet {
                         System.out.println(dao.insertStudente(studente,utenteTemporaneo));
                         if (!dao.insertStudente(studente,utenteTemporaneo)) {
                             session.setAttribute("alertMsg", "Errore nell'inserimento studente");
-                            response.sendRedirect("view/HomePage.jsp");
+                            response.sendRedirect("view/RegistraUtentePage.jsp?inserimento=Studente");
                             return ;
                         }
                         else{
@@ -95,7 +95,7 @@ public class RegisterServlet extends HttpServlet {
                         tutor.setOreSvolte(0);
                         if (!dao.insertTutor(tutor, utenteTemporaneo)) {
                             session.setAttribute("alertMsg", "Errore nell'inserimento tutor");
-                            response.sendRedirect("view/HomePage.jsp");
+                            response.sendRedirect("view/RegistraUtentePage.jsp?inserimento=Tutor");
                         }
                         else{
                             session.setAttribute("alertMsg", "Utente inserito con successo");
@@ -108,7 +108,7 @@ public class RegisterServlet extends HttpServlet {
                         professoreReferente.setDipartimento(request.getParameter("dipartimentoProf"));
                         if (!dao.insertProfessoreReferente(professoreReferente, utenteTemporaneo)) {
                             session.setAttribute("alertMsg", "Errore nell'inserimento professore referente");
-                            response.sendRedirect("view/HomePage.jsp");
+                            response.sendRedirect("view/RegistraUtentePage.jsp?inserimento=Professore Referente");
                         }
                         else{
                             session.setAttribute("alertMsg", "Utente inserito con successo");

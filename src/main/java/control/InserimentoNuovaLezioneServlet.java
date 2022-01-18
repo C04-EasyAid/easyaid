@@ -36,7 +36,7 @@ public class InserimentoNuovaLezioneServlet extends HttpServlet {
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+          throws ServletException, IOException {
     log.info(myClass, "Collegamento alla Servlet...");
     HttpSession session = request.getSession();
     UserBean user = (UserBean) session.getAttribute("utente");
@@ -75,7 +75,8 @@ public class InserimentoNuovaLezioneServlet extends HttpServlet {
   }
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+          throws ServletException, IOException {
     doGet(request, response);
   }
 }
+

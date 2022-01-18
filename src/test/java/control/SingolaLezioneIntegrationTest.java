@@ -36,13 +36,40 @@ class SingolaLezioneIntegrationTest {
         }
 
     @Test
-    void testsingolaLezione() throws ServletException, IOException, SQLException, ClassNotFoundException {
+    void testsingolaLezione1() throws ServletException, IOException, SQLException, ClassNotFoundException {
         UserBean bean = new UserBean();
         bean.setNome("Aldo");
         bean.setCognome("Baglio");
         bean.setEmail("abaglio9@studenti.unisa.it");
         bean.setPassword("Aldo#Baglio45");
         bean.setRuolo("S");
+        request.getSession().setAttribute("utente",bean);
+
+        LezioneBean lezione = new LezioneBean();
+        lezione.setId(11);
+        request.setParameter("lezione", String.valueOf(lezione.getId()));
+
+        ILezioneDAO lezioneDao = new LezioneDAO();
+        ICommentoDAO commentoDao = new CommentoDAO();
+        servlet.setLezioneDao(lezioneDao);
+        servlet.setCommentiDao(commentoDao);
+        lezione= lezioneDao.doRetrieveLezioneById(lezione.getId());
+        Collection<CommentoBean> listCommenti = new ArrayList<>();
+        listCommenti=commentoDao.doRetrieveCommento(lezione.getId());
+        request.getSession().setAttribute("lezione",lezione);
+        request.getSession().setAttribute("listaCommenti",listCommenti);
+        servlet.doGet(request,response);
+        assertEquals("view/LezionePage.jsp",response.getRedirectedUrl());
+    }
+
+    @Test
+    void testsingolaLezione2() throws ServletException, IOException, SQLException, ClassNotFoundException {
+        UserBean bean = new UserBean();
+        bean.setNome("Antonio");
+        bean.setCognome("De Biase");
+        bean.setEmail("adebiase41@studenti.unisa.it");
+        bean.setPassword("Antonio#DB123");
+        bean.setRuolo("T");
         request.getSession().setAttribute("utente",bean);
 
         LezioneBean lezione = new LezioneBean();

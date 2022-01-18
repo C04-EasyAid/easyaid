@@ -5,12 +5,15 @@ import model.bean.StudenteBean;
 import model.bean.TutorBean;
 import model.bean.UserBean;
 
+import javax.validation.constraints.Email;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static other.Utils.generatePwd;
 
@@ -70,6 +73,27 @@ public class UserDAO implements IUserDAO {
     PreparedStatement stmt = null;
     // Se riesce a connettersi, la connessione è != da null ed entra nello statement
     try {
+      String nome = b.getNome();
+      String cognome = b.getCognome();
+      String email = b.getEmail();
+      String password = b.getPassword();
+      if(nome.length()>26 || nome.length()<2){
+        return false;
+      }
+      String  expressionPlus="^[\\w\\-]([\\.\\w])+[\\w]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+      Pattern pPlus = Pattern.compile(expressionPlus, Pattern.CASE_INSENSITIVE);
+      Matcher mPlus = pPlus.matcher(email);
+      boolean matchFoundPlus = mPlus.matches();
+      if(!matchFoundPlus){
+        return false;
+      }
+      if(cognome.length()>26 || cognome.length()<2){
+        return false;
+      }
+
+      if(password.length()<12){
+        return false;
+      }
       conn = ConnectionPool.conn();
       stmt = conn.prepareStatement(query);
       // Setta i paremetri nella query
@@ -99,8 +123,19 @@ public class UserDAO implements IUserDAO {
 
   @Override
   public synchronized boolean insertStudente(StudenteBean s, UserBean b)
-      throws SQLException, ClassNotFoundException {
+      throws SQLException {
     boolean studente = false;
+    String  expressionPlus="^[\\w\\-]([\\.\\w])+[\\w]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+    Pattern pPlus = Pattern.compile(expressionPlus, Pattern.CASE_INSENSITIVE);
+    Matcher mPlus = pPlus.matcher(s.getEmail());
+    boolean matchFoundPlus = mPlus.matches();
+    if(!matchFoundPlus){
+      return false;
+    }
+    if(!s.getTipoDisabilita().matches("[a-zA-Z]+") || !s.getSpecificheDisturbo().matches("[a-zA-Z]+"))
+      return false;
+    if(s.getPercentualeDisabilita()>100)
+      return false;
     // Viene prima inserito l'utente generico (UserBean);
     // Se il metodo restituisce true continua per inserire lo studente
     if (insertUtente(b)) {
@@ -148,6 +183,22 @@ public class UserDAO implements IUserDAO {
       Connection conn = null;
       String query = "INSERT INTO tutor VALUES (?,?,?,?,?)";
       PreparedStatement stmt = null;
+      String dipartimento = t.getDipartimento();
+      String qualifica = t.getQualifica();
+      Integer oreSvolte = t.getOreSvolte();
+      Integer oreDisponbili = t.getOreDisponibili();
+      if(dipartimento==null){
+        return false;
+      }
+      if(qualifica.length()<2 || qualifica.length()>50){
+        return false;
+      }
+      if(oreSvolte instanceof Integer){
+        return false;
+      }
+      if(oreDisponbili instanceof Integer){
+        return false;
+      }
       // Se riesce a connettersi, la connessione è != da null ed entra nello statement
       try {
         conn = ConnectionPool.conn();
@@ -181,7 +232,7 @@ public class UserDAO implements IUserDAO {
 
   @Override
   public synchronized boolean insertProfessoreReferente(ProfessoreReferenteBean p, UserBean b)
-      throws SQLException {
+          throws SQLException {
     boolean prof = false;
     // Viene prima inserito l'utente generico (UserBean);
     // Se il metodo restituisce true continua per inserire il prof
@@ -189,6 +240,10 @@ public class UserDAO implements IUserDAO {
       Connection conn = null;
       String query = "INSERT INTO professore_referente VALUES (?,?)";
       PreparedStatement stmt = null;
+      String dipartimento = p.getDipartimento();
+      if(dipartimento==null){
+        return false;
+      }
       // Se riesce a connettersi, la connessione è != da null ed entra nello statement
       try {
         conn = ConnectionPool.conn();
@@ -215,7 +270,6 @@ public class UserDAO implements IUserDAO {
     }
     return prof;
   }
-
   // Metodo che restituisce la lista degli utenti nel Database
 
   @Override

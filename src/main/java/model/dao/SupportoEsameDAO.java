@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.bean.SupportoEsameBean;
+import model.bean.TutoratoDidatticoBean;
 
 /**
  * @author Martina Giugliano DAO Supporto esame per gestire i dati del Database relativo al supporto
@@ -362,5 +363,25 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
     }
 
     return isUpdated;
+  }
+  @Override
+  public synchronized boolean deleteSupporto(SupportoEsameBean s) throws SQLException {
+    boolean delete = false;
+    Connection conn = null;
+    String query = "DELETE FROM supporto_esame WHERE id = ?";
+    PreparedStatement stmt = null;
+    try {
+      conn = ConnectionPool.conn();
+      stmt = conn.prepareStatement(query);
+      stmt.setInt(1, s.getId());
+      delete = stmt.executeUpdate() == 1;
+      conn.commit();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } finally {
+      if (stmt != null) stmt.close();
+      if (conn != null) conn.close();
+    }
+    return delete;
   }
 }

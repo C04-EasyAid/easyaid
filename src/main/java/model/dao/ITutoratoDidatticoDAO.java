@@ -27,4 +27,7 @@ public interface ITutoratoDidatticoDAO {
   boolean approvaRichiesta(int idTutorato, String emailProf) throws SQLException;
 
   boolean completaRichiesta(int idTutorato, String emailTutor) throws SQLException;
+
+  boolean deleteTutorato(TutoratoDidatticoBean t) throws SQLException;
+
 }

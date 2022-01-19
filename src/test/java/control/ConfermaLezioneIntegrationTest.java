@@ -42,8 +42,8 @@ class ConfermaLezioneIntegrationTest {
 
         request.getSession().setAttribute("utente",user);
         LezioneBean lezione = new LezioneBean();
-        lezione.setId(5);
-        lezione.setTutorato(24);
+        lezione.setId(11);
+        lezione.setTutorato(18);
         request.getSession().setAttribute("lezione",lezione);
 
         ILezioneDAO lezioneDao = new LezioneDAO();
@@ -65,8 +65,8 @@ class ConfermaLezioneIntegrationTest {
         request.getSession().setAttribute("utente",user);
 
         LezioneBean lezione = new LezioneBean();
-        lezione.setId(5);
-        lezione.setTutorato(24);
+        lezione.setId(11);
+        lezione.setTutorato(18);
         request.getSession().setAttribute("lezione",lezione);
 
         ILezioneDAO lezioneDao = new LezioneDAO();

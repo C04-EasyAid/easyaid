@@ -305,7 +305,7 @@ class CommentoTest {
   }
 
   @Test
-  void testInserimentoCommentoStudente5() throws ServletException, IOException {
+  void testInserimentoCommentoStudente4() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
     IUserDAO userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
@@ -344,7 +344,7 @@ class CommentoTest {
   }
 
   @Test
-  void testInserimentoCommentoStudente6() throws ServletException, IOException {
+  void testInserimentoCommentoStudente5() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
     IUserDAO userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();

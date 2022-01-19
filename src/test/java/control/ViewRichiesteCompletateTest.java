@@ -49,7 +49,7 @@ class ViewRichiesteCompletateTest {
   // richieste di
   // servizio completate
   @Test
-  void testVisualizzaRichiesteServizio2() throws ServletException, IOException {
+  void testVisualizzaRichiesteCompletate2() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
     UserBean bean = new UserBean();
     bean.setRuolo("S");
@@ -62,7 +62,7 @@ class ViewRichiesteCompletateTest {
 
   // Il tutor è loggato e può visualizzare le richieste di servizio completate
   @Test
-  void testVisualizzaRichiesteServizio3()
+  void testVisualizzaRichiesteCompletate3()
       throws SQLException, ClassNotFoundException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
     ISupportoEsameDAO supportoEsameDao = mock(SupportoEsameDAO.class);

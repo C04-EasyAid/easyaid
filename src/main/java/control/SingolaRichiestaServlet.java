@@ -62,7 +62,8 @@ public class SingolaRichiestaServlet extends HttpServlet {
         } catch (SQLException | ClassNotFoundException e) {
           e.printStackTrace();
         }
-      } if (request.getParameter("idSupporto") != null) {
+      }
+      if (request.getParameter("idSupporto") != null) {
 
         idSupporto = Integer.parseInt(request.getParameter("idSupporto"));
         try {
@@ -75,7 +76,7 @@ public class SingolaRichiestaServlet extends HttpServlet {
         }
       }
     } else {
-      session.setAttribute("alertMsg","Permessi non concessi all'utente");
+      session.setAttribute("alertMsg", "Permessi non concessi all'utente");
       response.sendRedirect("view/LoginPage.jsp");
     }
   }

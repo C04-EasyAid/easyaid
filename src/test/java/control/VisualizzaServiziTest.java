@@ -12,44 +12,37 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
 class VisualizzaServiziTest {
   private ViewServicesServlet servlet;
   private MockHttpServletRequest request;
   private MockHttpServletResponse response;
 
-    @BeforeEach
-    void setUp()
-    {
-      servlet = new ViewServicesServlet();
-      request = new MockHttpServletRequest();
-      response = new MockHttpServletResponse();
-    }
+  @BeforeEach
+  void setUp() {
+    servlet = new ViewServicesServlet();
+    request = new MockHttpServletRequest();
+    response = new MockHttpServletResponse();
+  }
 
-    @Test
-    void testVisualizzaServizi1() throws ServletException, IOException {
-      MockitoAnnotations.initMocks(this);
-      StudenteBean bean=new StudenteBean();
+  @Test
+  void testVisualizzaServizi1() throws ServletException, IOException {
+    MockitoAnnotations.initMocks(this);
+    StudenteBean bean = new StudenteBean();
 
-      request.getSession().setAttribute("studente",bean);
+    request.getSession().setAttribute("studente", bean);
 
-      servlet.doGet(request,response);
+    servlet.doGet(request, response);
 
+    assertEquals("view/RichiediServizioPage.jsp", response.getRedirectedUrl());
+  }
 
-      assertEquals("view/RichiediServizioPage.jsp",response.getRedirectedUrl());
-    }
+  @Test
+  void testVisualizzaServizi2() throws ServletException, IOException {
+    MockitoAnnotations.initMocks(this);
+    StudenteBean bean = new StudenteBean();
 
-    @Test
-    void testVisualizzaServizi2() throws ServletException, IOException {
-      MockitoAnnotations.initMocks(this);
-      StudenteBean bean=new StudenteBean();
+    servlet.doGet(request, response);
 
-      servlet.doGet(request,response);
-
-
-      assertEquals("Permessi non concessi all'utente",request.getSession().getAttribute("alertMsg"));
-
-
-    }
-
+    assertEquals("Permessi non concessi all'utente", request.getSession().getAttribute("alertMsg"));
+  }
 }

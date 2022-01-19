@@ -56,7 +56,7 @@ public class ViewRichiesteAccettateServlet extends HttpServlet {
         e.printStackTrace();
       }
     } else {
-      session.setAttribute("alertMsg","Permessi non concessi all'utente");
+      session.setAttribute("alertMsg", "Permessi non concessi all'utente");
       resp.sendRedirect("view/HomePage.jsp");
     }
   }

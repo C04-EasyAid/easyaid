@@ -29,4 +29,6 @@ public interface IUserDAO {
 
   // Metodo che restituisce l'utente dal database tramite Email
   UserBean doRetrieveUtenteByEmail(String email) throws SQLException, ClassNotFoundException;
+
+  boolean deleteUtente(UserBean b) throws SQLException;
 }

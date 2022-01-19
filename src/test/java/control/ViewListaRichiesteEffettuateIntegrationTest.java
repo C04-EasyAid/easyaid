@@ -27,33 +27,35 @@ import static org.mockito.Mockito.when;
 @author Martina Giugliano
  */
 class ViewListaRichiesteEffettuateIntegrationTest {
-        private ViewListaRichiesteEffettuateServlet servlet;
-        private MockHttpServletRequest request;
-        private MockHttpServletResponse response;
+  private ViewListaRichiesteEffettuateServlet servlet;
+  private MockHttpServletRequest request;
+  private MockHttpServletResponse response;
 
-        @BeforeEach
-        void setUp(){
-        servlet = new ViewListaRichiesteEffettuateServlet();
-        request = new MockHttpServletRequest();
-        response = new MockHttpServletResponse();
-    }
+  @BeforeEach
+  void setUp() {
+    servlet = new ViewListaRichiesteEffettuateServlet();
+    request = new MockHttpServletRequest();
+    response = new MockHttpServletResponse();
+  }
 
-    //L'utente loggato alla piattaforma è uno studente e può vedere la lista delle richieste effettuate
-    @Test
-    void testViewListarichiesteEffettuate1() throws SQLException, ClassNotFoundException, ServletException, IOException {
-        ITutoratoDidatticoDAO tutoratoDao = new TutoratoDidatticoDAO();
-        ISupportoEsameDAO supportoDao = new SupportoEsameDAO();
+  // L'utente loggato alla piattaforma è uno studente e può vedere la lista delle richieste
+  // effettuate
+  @Test
+  void testViewListarichiesteEffettuate1()
+      throws SQLException, ClassNotFoundException, ServletException, IOException {
+    ITutoratoDidatticoDAO tutoratoDao = new TutoratoDidatticoDAO();
+    ISupportoEsameDAO supportoDao = new SupportoEsameDAO();
 
-        servlet.setSupportoDao(supportoDao);
-        servlet.setTutoratoDao(tutoratoDao);
+    servlet.setSupportoDao(supportoDao);
+    servlet.setTutoratoDao(tutoratoDao);
 
-        UserBean studente = new UserBean();
-        studente.setEmail("abaglio9@studenti.unisa.it");
-        studente.setRuolo("S");
-        request.getSession().setAttribute("utente",studente);
+    UserBean studente = new UserBean();
+    studente.setEmail("abaglio9@studenti.unisa.it");
+    studente.setRuolo("S");
+    request.getSession().setAttribute("utente", studente);
 
-        servlet.doGet(request,response);
+    servlet.doGet(request, response);
 
-        assertEquals("view/ListaRichiesteEffettuatePage.jsp",response.getRedirectedUrl());
-    }
+    assertEquals("view/ListaRichiesteEffettuatePage.jsp", response.getRedirectedUrl());
+  }
 }

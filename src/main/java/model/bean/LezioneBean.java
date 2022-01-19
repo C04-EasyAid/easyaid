@@ -17,14 +17,14 @@ public class LezioneBean {
   private boolean status;
   // Costruttore con id
   public LezioneBean(
-          int id,
-          int tutorato,
-          String oraInizio,
-          String oraFine,
-          Date data,
-          String tutor,
-          String luogo,
-          boolean status) {
+      int id,
+      int tutorato,
+      String oraInizio,
+      String oraFine,
+      Date data,
+      String tutor,
+      String luogo,
+      boolean status) {
     this.id = id;
     this.tutorato = tutorato;
     this.oraInizio = oraInizio;
@@ -35,13 +35,13 @@ public class LezioneBean {
   }
   // Costruttore
   public LezioneBean(
-          int tutorato,
-          String oraInizio,
-          String oraFine,
-          Date data,
-          String tutor,
-          String luogo,
-          boolean status) {
+      int tutorato,
+      String oraInizio,
+      String oraFine,
+      Date data,
+      String tutor,
+      String luogo,
+      boolean status) {
     this.tutorato = tutorato;
     this.oraInizio = oraInizio;
     this.oraFine = oraFine;

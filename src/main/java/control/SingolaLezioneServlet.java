@@ -43,22 +43,22 @@ public class SingolaLezioneServlet extends HttpServlet {
     log.info(myClass, "Collegamento alla Servlet...");
     HttpSession session = request.getSession();
     UserBean userLoggato = (UserBean) session.getAttribute("utente");
-    if (userLoggato != null && (userLoggato.isStudente()|| userLoggato.isTutor())) {
-        String idLezione = request.getParameter("lezione");
-        int id = Integer.parseInt(idLezione);
-        try {
-          LezioneBean lezione = lezioneDao.doRetrieveLezioneById(id);
-          Collection<CommentoBean> commenti = commentiDao.doRetrieveCommento(lezione.getId());
-          session.setAttribute("lezione", lezione);
-          session.setAttribute("listaCommenti", commenti);
-          response.sendRedirect("view/LezionePage.jsp");
+    if (userLoggato != null && (userLoggato.isStudente() || userLoggato.isTutor())) {
+      String idLezione = request.getParameter("lezione");
+      int id = Integer.parseInt(idLezione);
+      try {
+        LezioneBean lezione = lezioneDao.doRetrieveLezioneById(id);
+        Collection<CommentoBean> commenti = commentiDao.doRetrieveCommento(lezione.getId());
+        session.setAttribute("lezione", lezione);
+        session.setAttribute("listaCommenti", commenti);
+        response.sendRedirect("view/LezionePage.jsp");
 
-        } catch (ClassNotFoundException | SQLException e) {
-          log.error(myClass, "Catturata eccezione nella Servlet", e);
-          e.printStackTrace();
-        }
+      } catch (ClassNotFoundException | SQLException e) {
+        log.error(myClass, "Catturata eccezione nella Servlet", e);
+        e.printStackTrace();
+      }
     } else {
-      request.getSession().setAttribute("alertMsg","Permessi non concessi all'utente");
+      request.getSession().setAttribute("alertMsg", "Permessi non concessi all'utente");
       response.sendRedirect("view/LoginPage.jsp");
     }
   }

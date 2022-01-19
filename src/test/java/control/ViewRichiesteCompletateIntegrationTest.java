@@ -18,34 +18,35 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 //@author Serena Liguori
 class ViewRichiesteCompletateIntegrationTest {
-    private ViewRichiesteCompletateServlet servlet;
-    private MockHttpServletRequest request;
-    private MockHttpServletResponse response;
+  private ViewRichiesteCompletateServlet servlet;
+  private MockHttpServletRequest request;
+  private MockHttpServletResponse response;
 
-    @BeforeEach
-    void setUp() {
-        servlet = new ViewRichiesteCompletateServlet();
-        request = new MockHttpServletRequest();
-        response = new MockHttpServletResponse();
-    }
-    @Test
-    void testVisualizzaRichiesteServizio3()
-            throws SQLException, ClassNotFoundException, ServletException, IOException {
+  @BeforeEach
+  void setUp() {
+    servlet = new ViewRichiesteCompletateServlet();
+    request = new MockHttpServletRequest();
+    response = new MockHttpServletResponse();
+  }
 
-        ISupportoEsameDAO supportoEsameDao = new SupportoEsameDAO();
-        ITutoratoDidatticoDAO tutoratoDidatticoDao = new TutoratoDidatticoDAO();
-        UserBean bean = new UserBean();
-        bean.setNome("Aldo");
-        bean.setCognome("De Vito");
-        bean.setEmail("adevito11@unisa.it");
-        bean.setPassword("Aldo#Dev#1103");
-        bean.setRuolo("P");
-        request.getSession().setAttribute("utente", bean);
-        servlet.setEsameDAO(supportoEsameDao);
-        servlet.setTutoratoDAO(tutoratoDidatticoDao);
+  @Test
+  void testVisualizzaRichiesteServizio3()
+      throws SQLException, ClassNotFoundException, ServletException, IOException {
 
-        servlet.doGet(request, response);
+    ISupportoEsameDAO supportoEsameDao = new SupportoEsameDAO();
+    ITutoratoDidatticoDAO tutoratoDidatticoDao = new TutoratoDidatticoDAO();
+    UserBean bean = new UserBean();
+    bean.setNome("Aldo");
+    bean.setCognome("De Vito");
+    bean.setEmail("adevito11@unisa.it");
+    bean.setPassword("Aldo#Dev#1103");
+    bean.setRuolo("P");
+    request.getSession().setAttribute("utente", bean);
+    servlet.setEsameDAO(supportoEsameDao);
+    servlet.setTutoratoDAO(tutoratoDidatticoDao);
 
-        assertEquals("view/RichiesteCompletatePage.jsp", response.getRedirectedUrl());
-    }
+    servlet.doGet(request, response);
+
+    assertEquals("view/RichiesteCompletatePage.jsp", response.getRedirectedUrl());
+  }
 }

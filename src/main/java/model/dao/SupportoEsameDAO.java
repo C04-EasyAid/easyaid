@@ -59,10 +59,10 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
     } catch (SQLException e) {
       e.printStackTrace();
     } finally {
-      if (stmt != null){
+      if (stmt != null) {
         stmt.close();
       }
-      if (conn != null){
+      if (conn != null) {
         conn.close();
       }
     }
@@ -166,10 +166,10 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
     } catch (SQLException e) {
       e.printStackTrace();
     } finally {
-      if (stmt != null){
+      if (stmt != null) {
         stmt.close();
       }
-      if (conn != null){
+      if (conn != null) {
         conn.close();
       }
     }
@@ -263,10 +263,10 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
     } catch (SQLException e) {
       e.printStackTrace();
     } finally {
-      if (stmt != null){
+      if (stmt != null) {
         stmt.close();
       }
-      if (conn != null){
+      if (conn != null) {
         conn.close();
       }
     }
@@ -302,10 +302,10 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
       e.printStackTrace();
       inserimento = false;
     } finally {
-      if (stmt != null){
+      if (stmt != null) {
         stmt.close();
       }
-      if (con != null){
+      if (con != null) {
         con.close();
       }
     }
@@ -330,10 +330,10 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
     } catch (SQLException e) {
       e.printStackTrace();
     } finally {
-      if (stmt != null){
+      if (stmt != null) {
         stmt.close();
       }
-      if (conn != null){
+      if (conn != null) {
         conn.close();
       }
     }
@@ -364,6 +364,7 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
 
     return isUpdated;
   }
+
   @Override
   public synchronized boolean deleteSupporto(SupportoEsameBean s) throws SQLException {
     boolean delete = false;

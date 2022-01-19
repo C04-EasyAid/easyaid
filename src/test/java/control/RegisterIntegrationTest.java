@@ -25,111 +25,120 @@ import static org.mockito.Mockito.when;
 @author Martina GiuglianO
  */
 class RegisterIntegrationTest {
-    private RegisterServlet servlet;
-    private MockHttpServletRequest request;
-    private MockHttpServletResponse response;
+  private RegisterServlet servlet;
+  private MockHttpServletRequest request;
+  private MockHttpServletResponse response;
 
-    @BeforeEach
-    void setUp() {
-        servlet = new RegisterServlet();
-        request = new MockHttpServletRequest();
-        response = new MockHttpServletResponse();
-    }
+  @BeforeEach
+  void setUp() {
+    servlet = new RegisterServlet();
+    request = new MockHttpServletRequest();
+    response = new MockHttpServletResponse();
+  }
 
-    @Test
-    void TestInserimentoStudente15() throws ServletException, IOException {
-        IUserDAO userDAO = new UserDAO();
+  @Test
+  void TestInserimentoStudente15() throws ServletException, IOException, SQLException {
+    IUserDAO userDAO = new UserDAO();
 
-        UserBean persAdmin = new UserBean();
-        persAdmin.setEmail("cgigli91@unisa.it");
-        persAdmin.setPassword("C#Gigli#9109");
-        persAdmin.setRuolo("PA");
-        request.getSession().setAttribute("utente",persAdmin);
-        String nome="Lorenzo";
-        String cognome="Rossi";
-        String email="l.rossi@studenti.unisa.it";
-        String password="Lorenzo#rossi1";
-        String ruolo="Studente";
-        String tipoDisabilita="DSA";
-        String oreDisponibiliStudente="25";
-        String specificheDisturbo="Dislessia";
-        String percentualeDisabilita="30";
-        request.setParameter("nome",nome);
-        request.setParameter("cognome",cognome);
-        request.setParameter("email",email);
-        request.setParameter("password",password);
-        request.setParameter("ruolo",ruolo);
-        request.setParameter("tipoDisabilita",tipoDisabilita);
-        request.setParameter("oreDisponibiliStudente",oreDisponibiliStudente);
-        request.setParameter("specificheDisturbo",specificheDisturbo);
-        request.setParameter("percentualeDisabilita",percentualeDisabilita);
+    UserBean persAdmin = new UserBean();
+    persAdmin.setEmail("cgigli91@unisa.it");
+    persAdmin.setPassword("C#Gigli#9109");
+    persAdmin.setRuolo("PA");
+    request.getSession().setAttribute("utente", persAdmin);
+    String nome = "Lorenzo";
+    String cognome = "Rossi";
+    String email = "l.rossi1@studenti.unisa.it";
+    String password = "Lorenzo#rossi1";
+    String ruolo = "Studente";
+    String tipoDisabilita = "DSA";
+    String oreDisponibiliStudente = "25";
+    String specificheDisturbo = "Dislessia";
+    String percentualeDisabilita = "30";
+    request.setParameter("nome", nome);
+    request.setParameter("cognome", cognome);
+    request.setParameter("email", email);
+    request.setParameter("password", password);
+    request.setParameter("ruolo", ruolo);
+    request.setParameter("tipoDisabilita", tipoDisabilita);
+    request.setParameter("oreDisponibiliStudente", oreDisponibiliStudente);
+    request.setParameter("specificheDisturbo", specificheDisturbo);
+    request.setParameter("percentualeDisabilita", percentualeDisabilita);
 
-        servlet.setDao(userDAO);
-        servlet.doGet(request,response);
+    servlet.setDao(userDAO);
+    servlet.doGet(request, response);
 
-        assertEquals("Utente inserito con successo", Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
-    }
+    assertEquals(
+        "Studente con disabilità/DSA inserito con successo.",
+        Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
+    userDAO.deleteUtente(new UserBean(nome, cognome, email, password, ruolo));
+  }
 
-    @Test
-    void TestInserimentoTutor13() throws ServletException, IOException {MockitoAnnotations.initMocks(this);
-        IUserDAO userDAO = new UserDAO();
+  @Test
+  void TestInserimentoTutor13() throws ServletException, IOException, SQLException {
+    IUserDAO userDAO = new UserDAO();
 
-        UserBean persAdmin = new UserBean();
-        persAdmin.setEmail("cgigli91@unisa.it");
-        persAdmin.setPassword("C#Gigli#9109");
-        persAdmin.setRuolo("PA");
-        request.getSession().setAttribute("utente",persAdmin);
-        String nome="Lorenzo";
-        String cognome="Rossi";
-        String email="l.rossi@studenti.unisa.it";
-        String password="Lorenzo#rossi1";
-        String ruolo="Tutor";
-        String dipartimento = "Informatica";
-        String qualifica = "Laurea Triennale";
-        String oreDisponibili = "25";
-        request.setParameter("nome",nome);
-        request.setParameter("cognome",cognome);
-        request.setParameter("email",email);
-        request.setParameter("password",password);
-        request.setParameter("ruolo",ruolo);
-        request.setParameter("dipartimentoTutor",dipartimento);
-        request.setParameter("qualifica",qualifica);
-        request.setParameter("oreDisponibiliTutor",oreDisponibili);
+    UserBean persAdmin = new UserBean();
+    persAdmin.setEmail("cgigli91@unisa.it");
+    persAdmin.setPassword("C#Gigli#9109");
+    persAdmin.setRuolo("PA");
+    request.getSession().setAttribute("utente", persAdmin);
+    String nome = "Lorenzo";
+    String cognome = "Rossi";
+    String email = "l.rossi1@studenti.unisa.it";
+    String password = "Lorenzo#rossi1";
+    String ruolo = "Tutor";
+    String dipartimento = "Informatica";
+    String qualifica = "Laurea Triennale";
+    String oreDisponibili = "25";
+    request.setParameter("nome", nome);
+    request.setParameter("cognome", cognome);
+    request.setParameter("email", email);
+    request.setParameter("password", password);
+    request.setParameter("ruolo", ruolo);
+    request.setParameter("dipartimentoTutor", dipartimento);
+    request.setParameter("qualifica", qualifica);
+    request.setParameter("oreDisponibiliTutor", oreDisponibili);
 
+    servlet.setDao(userDAO);
+    servlet.doGet(request, response);
 
-        servlet.setDao(userDAO);
-        servlet.doGet(request,response);
+    assertEquals(
+        "Utente inserito con successo",
+        Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
+    userDAO.deleteUtente(new UserBean(nome, cognome, email, password, ruolo));
+  }
 
-        assertEquals("Utente inserito con successo", Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
-    }
+  @Test
+  void TestInserimentoProfessoreReferente11() throws ServletException, IOException, SQLException {
+    MockitoAnnotations.initMocks(this);
+    IUserDAO userDAO = new UserDAO();
 
-    @Test
-    void TestInserimentoProfessoreReferente11() throws ServletException, IOException {MockitoAnnotations.initMocks(this);
-        IUserDAO userDAO = new UserDAO();
+    UserBean persAdmin = new UserBean();
 
-        UserBean persAdmin = new UserBean();
+    persAdmin.setEmail("cgigli91@unisa.it");
+    persAdmin.setPassword("C#Gigli#9109");
+    persAdmin.setRuolo("PA");
+    request.getSession().setAttribute("utente", persAdmin);
+    String nome = "Lorenzo";
+    String cognome = "Rossi";
+    String email = "l.rossi1@studenti.unisa.it";
+    String password = "Lorenzo#rossi1";
+    String ruolo = "Professore Referente";
+    String dipartimento = "Informatica";
+    request.setParameter("nome", nome);
+    request.setParameter("cognome", cognome);
+    request.setParameter("email", email);
+    request.setParameter("password", password);
+    request.setParameter("ruolo", ruolo);
+    request.setParameter("dipartimentoProf", dipartimento);
 
-        persAdmin.setEmail("cgigli91@unisa.it");
-        persAdmin.setPassword("C#Gigli#9109");
-        persAdmin.setRuolo("PA");
-        request.getSession().setAttribute("utente",persAdmin);
-        String nome="Lorenzo";
-        String cognome="Rossi";
-        String email="l.rossi@studenti.unisa.it";
-        String password="Lorenzo#rossi1";
-        String ruolo="Professore Referente";
-        String dipartimento = "Informatica";
-        request.setParameter("nome",nome);
-        request.setParameter("cognome",cognome);
-        request.setParameter("email",email);
-        request.setParameter("password",password);
-        request.setParameter("ruolo",ruolo);
-        request.setParameter("dipartimentoProf",dipartimento);
+    servlet.setDao(userDAO);
+    servlet.doGet(request, response);
 
-        servlet.setDao(userDAO);
-        servlet.doGet(request,response);
+    assertEquals(
+        "Utente inserito con successo",
+        Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
 
-        assertEquals("Utente inserito con successo", Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
-    }
-
+    userDAO.deleteUtente(new UserBean(nome, cognome, email, password, ruolo));
+  }
 }

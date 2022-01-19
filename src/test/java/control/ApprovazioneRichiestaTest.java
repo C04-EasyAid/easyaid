@@ -36,7 +36,7 @@ class ApprovazioneRichiestaTest {
   }
 
   @Test
-  void TestApprovazioneRichiesta1() throws ServletException, IOException {
+  void testApprovazioneRichiesta1() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
 
     ITutoratoDidatticoDAO tutoratoDAO = mock(TutoratoDidatticoDAO.class);
@@ -65,7 +65,7 @@ class ApprovazioneRichiestaTest {
   }
 
   @Test
-  void TestApprovazioneRichiesta2() throws ServletException, IOException {
+  void testApprovazioneRichiesta2() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
 
     ITutoratoDidatticoDAO tutoratoDAO = mock(TutoratoDidatticoDAO.class);
@@ -94,7 +94,7 @@ class ApprovazioneRichiestaTest {
   }
 
   @Test
-  void TestApprovazioneRichiesta3() throws ServletException, IOException {
+  void testApprovazioneRichiesta3() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
 
     ISupportoEsameDAO supportoDAO = mock(SupportoEsameDAO.class);
@@ -123,7 +123,7 @@ class ApprovazioneRichiestaTest {
   }
 
   @Test
-  void TestApprovazioneRichiesta4() throws ServletException, IOException {
+  void testApprovazioneRichiesta4() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
 
     ISupportoEsameDAO supportoDAO = mock(SupportoEsameDAO.class);

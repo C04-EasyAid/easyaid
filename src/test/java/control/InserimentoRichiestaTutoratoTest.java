@@ -44,7 +44,7 @@ class InserimentoRichiestaTutoratoTest {
     bean.setPassword("Paolo#Rossi10");
     bean.setRuolo("S");
     request.getSession().setAttribute("utente", bean);
-    String dipartimento = "Informarica";
+    String dipartimento = "Informatica";
     String insegnamento = "Programmazione I";
     String dateDisponibili = "Martedi,Mercoledì";
     String oreDisponibili = "14:00-16:00,18:00-20:00";

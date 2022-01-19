@@ -8,12 +8,12 @@ import model.dao.TutoratoDidatticoDAO;
 import model.dao.UserDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
 import javax.servlet.ServletException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Objects;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -33,7 +33,7 @@ class InserimentoRichiestaTutoratoIntegrationTest {
     }
 
     @Test
-    void TestInserimentoRichiestaTutorato1() throws ServletException, IOException {
+    void TestInserimentoRichiestaTutorato1() throws ServletException, IOException, SQLException {
 
         IUserDAO userDao = new UserDAO();
         ITutoratoDidatticoDAO tutoratoDidatticoDAO = new TutoratoDidatticoDAO();
@@ -44,7 +44,7 @@ class InserimentoRichiestaTutoratoIntegrationTest {
         bean.setPassword("Paolo#Rossi10");
         bean.setRuolo("S");
         request.getSession().setAttribute("utente", bean);
-        String dipartimento = "Informarica";
+        String dipartimento = "Informatica";
         String insegnamento = "Programmazione I";
         String dateDisponibili = "Martedi,Mercoledì";
         String oreDisponibili = "14:00-16:00,18:00-20:00";
@@ -72,5 +72,6 @@ class InserimentoRichiestaTutoratoIntegrationTest {
         assertEquals(
                 "Richiesta di servizio di tutorato didattico inserita con successo!",
                 Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
+        tutoratoDidatticoDAO.deleteTutorato(tutoratoDidatticoBean);
     }
 }

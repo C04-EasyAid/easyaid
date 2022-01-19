@@ -117,8 +117,7 @@
                                                     <div>
                                                         <div class="form-check">
                                                             <input name="tipoDisabilita" value="Disabile" type="radio"
-                                                                   id="disabile"
-                                                                   checked>
+                                                                   id="disabile">
                                                             <label for="disabile">Disabile</label>
                                                         </div>
                                                         <div class="form-check">

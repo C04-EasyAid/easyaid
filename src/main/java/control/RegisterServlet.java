@@ -80,7 +80,7 @@ public class RegisterServlet extends HttpServlet {
                             return ;
                         }
                         else{
-                            session.setAttribute("alertMsg", "Utente inserito con successo");
+                            session.setAttribute("alertMsg", "Studente con disabilità/DSA inserito con successo.");
                             response.sendRedirect("view/RegistraUtentePage.jsp?inserimento=Studente");
                             return ;
                         }

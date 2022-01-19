@@ -6,11 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import model.bean.TutorBean;
 
-/**
- *
- * @author Roberto Tartaglia Classe TutorDAO
- *
- */
+/** @author Roberto Tartaglia Classe TutorDAO */
 public class TutorDAO implements ITutorDAO {
   @Override
   public synchronized TutorBean doRetrieveByEmail(String email)

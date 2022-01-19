@@ -22,71 +22,66 @@ import static org.mockito.Mockito.when;
 
 class SingolaRichiestaTest {
 
-    private SingolaRichiestaServlet servlet;
-    private MockHttpServletRequest request;
-    private MockHttpServletResponse response;
+  private SingolaRichiestaServlet servlet;
+  private MockHttpServletRequest request;
+  private MockHttpServletResponse response;
 
+  @BeforeEach
+  void setUp() {
+    servlet = new SingolaRichiestaServlet();
+    request = new MockHttpServletRequest();
+    response = new MockHttpServletResponse();
+  }
 
-    @BeforeEach
-    void setUp(){
-        servlet = new SingolaRichiestaServlet();
-        request = new MockHttpServletRequest();
-        response = new MockHttpServletResponse();
-    }
+  // L'utente non è loggato
+  @Test
+  void testSingolaRichiesta1() throws IOException {
+    MockitoAnnotations.initMocks(this);
 
-    //L'utente non è loggato
-    @Test
-    void testSingolaRichiesta1() throws IOException {
-        MockitoAnnotations.initMocks(this);
+    servlet.doGet(request, response);
 
-        servlet.doGet(request,response);
+    assertEquals("view/LoginPage.jsp", response.getRedirectedUrl());
+  }
 
-        assertEquals("view/LoginPage.jsp",response.getRedirectedUrl());
+  // L'utente è loggato,può visualizzare le informazioni relative alla richiesta di supporto esame
+  @Test
+  void testSingolaRichiesta2() throws IOException, SQLException, ClassNotFoundException {
+    MockitoAnnotations.initMocks(this);
+    UserBean bean = new UserBean();
+    request.getSession().setAttribute("utente", bean);
 
-    }
+    ISupportoEsameDAO supportoDao = mock(SupportoEsameDAO.class);
+    servlet.setSupportoDao(supportoDao);
 
-    //L'utente è loggato,può visualizzare le informazioni relative alla richiesta di supporto esame
-    @Test
-    void testSingolaRichiesta2() throws IOException, SQLException, ClassNotFoundException {
-        MockitoAnnotations.initMocks(this);
-        UserBean bean = new UserBean();
-        request.getSession().setAttribute("utente",bean);
+    SupportoEsameBean esameBean = new SupportoEsameBean();
+    esameBean.setId(5);
+    request.setParameter("idSupporto", String.valueOf(esameBean.getId()));
 
-        ISupportoEsameDAO supportoDao = mock(SupportoEsameDAO.class);
-        servlet.setSupportoDao(supportoDao);
+    when(supportoDao.doRetriveById(esameBean.getId())).thenReturn(esameBean);
 
-        SupportoEsameBean esameBean = new SupportoEsameBean();
-        esameBean.setId(5);
-        request.setParameter("idSupporto", String.valueOf(esameBean.getId()));
+    servlet.doGet(request, response);
 
-        when(supportoDao.doRetriveById(esameBean.getId())).thenReturn(esameBean);
+    assertEquals("view/RichiestaPage.jsp", response.getRedirectedUrl());
+  }
 
-        servlet.doGet(request,response);
+  // L'utente è loggato,può visualizzare le informazioni relative alla richiesta di supporto esame
+  @Test
+  void testSingolaRichiesta3() throws IOException, SQLException, ClassNotFoundException {
+    MockitoAnnotations.initMocks(this);
+    UserBean bean = new UserBean();
+    request.getSession().setAttribute("utente", bean);
 
-        assertEquals("view/RichiestaPage.jsp",response.getRedirectedUrl());
+    ITutoratoDidatticoDAO tutoratoDao = mock(TutoratoDidatticoDAO.class);
+    servlet.setTutoratoDao(tutoratoDao);
 
-    }
+    TutoratoDidatticoBean esameBean = new TutoratoDidatticoBean();
+    esameBean.setId(5);
+    request.setParameter("idTutorato", String.valueOf(esameBean.getId()));
 
-    //L'utente è loggato,può visualizzare le informazioni relative alla richiesta di supporto esame
-    @Test
-    void testSingolaRichiesta3() throws IOException, SQLException, ClassNotFoundException {
-        MockitoAnnotations.initMocks(this);
-        UserBean bean = new UserBean();
-        request.getSession().setAttribute("utente",bean);
+    when(tutoratoDao.doRetriveById(esameBean.getId())).thenReturn(esameBean);
 
-        ITutoratoDidatticoDAO tutoratoDao = mock(TutoratoDidatticoDAO.class);
-        servlet.setTutoratoDao(tutoratoDao);
+    servlet.doGet(request, response);
 
-        TutoratoDidatticoBean esameBean = new TutoratoDidatticoBean();
-        esameBean.setId(5);
-        request.setParameter("idTutorato", String.valueOf(esameBean.getId()));
-
-        when(tutoratoDao.doRetriveById(esameBean.getId())).thenReturn(esameBean);
-
-        servlet.doGet(request,response);
-
-        assertEquals("view/RichiestaPage.jsp",response.getRedirectedUrl());
-
-    }
-
+    assertEquals("view/RichiestaPage.jsp", response.getRedirectedUrl());
+  }
 }

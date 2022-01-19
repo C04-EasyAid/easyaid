@@ -6,15 +6,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CommentoDAOTest {
 
-    @Test
-    void doRetrieveCommento() {
-    }
+  @Test
+  void doRetrieveCommento() {}
 
-    @Test
-    void insertCommentoTutor() {
-    }
+  @Test
+  void insertCommentoTutor() {}
 
-    @Test
-    void insertCommentoStudente() {
-    }
+  @Test
+  void insertCommentoStudente() {}
 }

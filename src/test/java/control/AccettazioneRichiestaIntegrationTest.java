@@ -19,39 +19,38 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-    class AccettazioneRichiestaIntegrationTest {
-    private AccettazioneRichiestaServlet servlet;
-    private MockHttpServletRequest request;
-    private MockHttpServletResponse response;
+class AccettazioneRichiestaIntegrationTest {
+  private AccettazioneRichiestaServlet servlet;
+  private MockHttpServletRequest request;
+  private MockHttpServletResponse response;
 
-    @BeforeEach
-    void setUp() {
-      servlet = new AccettazioneRichiestaServlet();
-      request = new MockHttpServletRequest();
-      response = new MockHttpServletResponse();
-    }
-
-    @Test
-    void testAccettazioneRichiesta6() throws ServletException, IOException {
-      ISupportoEsameDAO supportoDao = new SupportoEsameDAO();
-      UserBean bean = new UserBean();
-      bean.setNome("Lorenzo");
-      bean.setCognome("Rossi");
-      bean.setEmail("lorenzorossi1@studenti.unisa.it");
-      bean.setPassword("Lorenzo#rossi1");
-      bean.setRuolo("S");
-      SupportoEsameBean supportoEsameBean = new SupportoEsameBean();
-      supportoEsameBean.setId(5);
-      request.getSession().setAttribute("utente", bean);
-      request.getSession().setAttribute("supporto", supportoEsameBean);
-      String msg = "ok va bene";
-      request.setParameter("commento", msg);
-      servlet.setSupportodao(supportoDao);
-      servlet.doGet(request, response);
-
-      assertEquals(
-          "Richiesta accettata con successo",
-          Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
-        }
+  @BeforeEach
+  void setUp() {
+    servlet = new AccettazioneRichiestaServlet();
+    request = new MockHttpServletRequest();
+    response = new MockHttpServletResponse();
   }
 
+  @Test
+  void testAccettazioneRichiesta6() throws ServletException, IOException {
+    ISupportoEsameDAO supportoDao = new SupportoEsameDAO();
+    UserBean bean = new UserBean();
+    bean.setNome("Lorenzo");
+    bean.setCognome("Rossi");
+    bean.setEmail("lorenzorossi1@studenti.unisa.it");
+    bean.setPassword("Lorenzo#rossi1");
+    bean.setRuolo("S");
+    SupportoEsameBean supportoEsameBean = new SupportoEsameBean();
+    supportoEsameBean.setId(5);
+    request.getSession().setAttribute("utente", bean);
+    request.getSession().setAttribute("supporto", supportoEsameBean);
+    String msg = "ok va bene";
+    request.setParameter("commento", msg);
+    servlet.setSupportodao(supportoDao);
+    servlet.doGet(request, response);
+
+    assertEquals(
+        "Richiesta accettata con successo",
+        Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
+  }
+}

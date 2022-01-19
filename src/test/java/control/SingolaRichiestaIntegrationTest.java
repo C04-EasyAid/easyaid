@@ -22,39 +22,33 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 class SingolaRichiestaIntegrationTest {
-    private SingolaRichiestaServlet servlet;
-    private MockHttpServletRequest request;
-    private MockHttpServletResponse response;
+  private SingolaRichiestaServlet servlet;
+  private MockHttpServletRequest request;
+  private MockHttpServletResponse response;
 
+  @BeforeEach
+  void setUp() {
+    servlet = new SingolaRichiestaServlet();
+    request = new MockHttpServletRequest();
+    response = new MockHttpServletResponse();
+  }
 
-    @BeforeEach
-    void setUp(){
-        servlet = new SingolaRichiestaServlet();
-        request = new MockHttpServletRequest();
-        response = new MockHttpServletResponse();
-    }
+  // L'utente è loggato,può visualizzare le informazioni relative alla richiesta di supporto esame
+  @Test
+  void testSingolaRichiesta3() throws IOException, SQLException, ClassNotFoundException {
 
-    //L'utente è loggato,può visualizzare le informazioni relative alla richiesta di supporto esame
-    @Test
-    void testSingolaRichiesta3() throws IOException, SQLException, ClassNotFoundException {
+    UserBean bean = new UserBean();
+    request.getSession().setAttribute("utente", bean);
 
-        UserBean bean = new UserBean();
-        request.getSession().setAttribute("utente",bean);
+    ITutoratoDidatticoDAO tutoratoDao = new TutoratoDidatticoDAO();
+    servlet.setTutoratoDao(tutoratoDao);
 
-        ITutoratoDidatticoDAO tutoratoDao = new TutoratoDidatticoDAO();
-        servlet.setTutoratoDao(tutoratoDao);
+    TutoratoDidatticoBean esameBean = new TutoratoDidatticoBean();
+    esameBean.setId(24);
+    request.setParameter("idTutorato", String.valueOf(esameBean.getId()));
 
-        TutoratoDidatticoBean esameBean = new TutoratoDidatticoBean();
-        esameBean.setId(24);
-        request.setParameter("idTutorato", String.valueOf(esameBean.getId()));
+    servlet.doGet(request, response);
 
-
-        servlet.doGet(request,response);
-
-        assertEquals("view/RichiestaPage.jsp",response.getRedirectedUrl());
-
-    }
-
-
-
+    assertEquals("view/RichiestaPage.jsp", response.getRedirectedUrl());
+  }
 }

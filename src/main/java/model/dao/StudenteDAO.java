@@ -10,13 +10,7 @@ import java.util.Locale;
 
 import static model.dao.ConnectionPool.conn;
 
-
-
-/**
- *  @author Giovanni Toriello Classe StudenteDAO
- *
- */
-
+/** @author Giovanni Toriello Classe StudenteDAO */
 public class StudenteDAO implements IStudenteDAO {
   // Metodo che restituisce lo studente
   @Override
@@ -51,6 +45,4 @@ public class StudenteDAO implements IStudenteDAO {
     }
     return bean;
   }
-
-
 }

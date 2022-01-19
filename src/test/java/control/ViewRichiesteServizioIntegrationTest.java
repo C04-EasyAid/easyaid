@@ -16,20 +16,21 @@ import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
- class ViewRichiesteServizioIntegrationTest {
-    private ViewRichiesteServizioServlet servlet;
-    private MockHttpServletRequest request;
-    private MockHttpServletResponse response;
+class ViewRichiesteServizioIntegrationTest {
+  private ViewRichiesteServizioServlet servlet;
+  private MockHttpServletRequest request;
+  private MockHttpServletResponse response;
 
-    @BeforeEach
-    void setUp() {
-        servlet = new ViewRichiesteServizioServlet();
-        request = new MockHttpServletRequest();
-        response = new MockHttpServletResponse();
-    }
+  @BeforeEach
+  void setUp() {
+    servlet = new ViewRichiesteServizioServlet();
+    request = new MockHttpServletRequest();
+    response = new MockHttpServletResponse();
+  }
 
-    @Test
-    void testVisualizzaRichiesteServizio() throws SQLException, ClassNotFoundException, ServletException, IOException {
+  @Test
+  void testVisualizzaRichiesteServizio()
+      throws SQLException, ClassNotFoundException, ServletException, IOException {
 
     ISupportoEsameDAO supportoEsameDao = new SupportoEsameDAO();
     ITutoratoDidatticoDAO tutoratoDidatticoDao = new TutoratoDidatticoDAO();
@@ -45,5 +46,5 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
     servlet.doGet(request, response);
 
     assertEquals("view/BachecaTutorPage.jsp", response.getRedirectedUrl());
-        }
+  }
 }

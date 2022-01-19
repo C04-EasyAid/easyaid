@@ -19,40 +19,39 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-/**
- * @author Martina Giugliano
- */
-
+/** @author Martina Giugliano */
 class ViewListaUtentiIntegrationTest {
-    private ViewListaUtentiServlet servlet;
-    private MockHttpServletRequest request;
-    private MockHttpServletResponse response;
+  private ViewListaUtentiServlet servlet;
+  private MockHttpServletRequest request;
+  private MockHttpServletResponse response;
 
-    @BeforeEach
-    void setUp(){
-        servlet = new ViewListaUtentiServlet();
-        request = new MockHttpServletRequest();
-        response = new MockHttpServletResponse();
-    }
+  @BeforeEach
+  void setUp() {
+    servlet = new ViewListaUtentiServlet();
+    request = new MockHttpServletRequest();
+    response = new MockHttpServletResponse();
+  }
 
-    //L'utente loggato è un personale amministrativo,dunque può vedere la lista degli utenti del sistema
-    @Test
-    void testViewListaUtenti1() throws SQLException, ClassNotFoundException, ServletException, IOException {
+  // L'utente loggato è un personale amministrativo,dunque può vedere la lista degli utenti del
+  // sistema
+  @Test
+  void testViewListaUtenti1()
+      throws SQLException, ClassNotFoundException, ServletException, IOException {
 
-        IUserDAO userDao = new UserDAO();
+    IUserDAO userDao = new UserDAO();
 
-        servlet.setUserDao(userDao);
-        UserBean personaleAdm = new UserBean();
-        personaleAdm.setNome("Carla");
-        personaleAdm.setCognome("Gigli");
-        personaleAdm.setEmail("cgigli91@unisa.it");
-        personaleAdm.setPassword("C#Gigli#9109");
-        personaleAdm.setRuolo("PA");
+    servlet.setUserDao(userDao);
+    UserBean personaleAdm = new UserBean();
+    personaleAdm.setNome("Carla");
+    personaleAdm.setCognome("Gigli");
+    personaleAdm.setEmail("cgigli91@unisa.it");
+    personaleAdm.setPassword("C#Gigli#9109");
+    personaleAdm.setRuolo("PA");
 
-        request.getSession().setAttribute("utente",personaleAdm);
+    request.getSession().setAttribute("utente", personaleAdm);
 
-        servlet.doGet(request,response);
+    servlet.doGet(request, response);
 
-        assertEquals("view/ListaUtentiPage.jsp",response.getRedirectedUrl());
-    }
+    assertEquals("view/ListaUtentiPage.jsp", response.getRedirectedUrl());
+  }
 }

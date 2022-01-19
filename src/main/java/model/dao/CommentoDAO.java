@@ -139,6 +139,7 @@ public class CommentoDAO implements ICommentoDAO {
 
     return result;
   }
+
   @Override
   public synchronized boolean deleteCommento(CommentoBean b) throws SQLException {
     boolean delete = false;
@@ -159,5 +160,4 @@ public class CommentoDAO implements ICommentoDAO {
     }
     return delete;
   }
-
 }

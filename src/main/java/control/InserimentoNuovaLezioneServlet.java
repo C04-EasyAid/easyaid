@@ -18,8 +18,6 @@ import model.dao.ILezioneDAO;
 import model.dao.LezioneDAO;
 import other.MyLogger;
 
-
-
 /*
 @author Mariagiovanna Bianco
 Servlet che permette di inserire una nuova lezione
@@ -29,14 +27,14 @@ Servlet che permette di inserire una nuova lezione
 public class InserimentoNuovaLezioneServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "InserimentoLezioneServlet";
-  private ILezioneDAO lezioneDAO=new LezioneDAO();
+  private ILezioneDAO lezioneDAO = new LezioneDAO();
 
   public void setLezioneDAO(ILezioneDAO lezioneDAO) {
     this.lezioneDAO = lezioneDAO;
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
-          throws ServletException, IOException {
+      throws ServletException, IOException {
     log.info(myClass, "Collegamento alla Servlet...");
     HttpSession session = request.getSession();
     UserBean user = (UserBean) session.getAttribute("utente");
@@ -60,7 +58,8 @@ public class InserimentoNuovaLezioneServlet extends HttpServlet {
           lezioneDAO.insertNewLezione(lezioneBean);
           session.setAttribute("alertMsg", "Lezione Inserita");
           response.sendRedirect(request.getContextPath() + "/LezioniServlet");
-        } if (lezioneDAO.countOre(lezioni, idTutorato) == 2) {
+        }
+        if (lezioneDAO.countOre(lezioni, idTutorato) == 2) {
           session.setAttribute("alertMsg", "La lezione supera le ore richieste");
           response.sendRedirect("view/LezioniTutorPage.jsp");
         }
@@ -69,14 +68,13 @@ public class InserimentoNuovaLezioneServlet extends HttpServlet {
         e.printStackTrace();
       }
     } else {
-      request.getSession().setAttribute("alertMsg","Permessi non concessi all'utente");
+      request.getSession().setAttribute("alertMsg", "Permessi non concessi all'utente");
       response.sendRedirect("view/LoginPage.jsp");
     }
   }
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
-          throws ServletException, IOException {
+      throws ServletException, IOException {
     doGet(request, response);
   }
 }
-

@@ -17,12 +17,7 @@ import java.util.regex.Pattern;
 
 import static other.Utils.generatePwd;
 
-/**
- *
- * @author Giovanni Toriello Classe UserDAO
- *
- */
-
+/** @author Giovanni Toriello Classe UserDAO */
 public class UserDAO implements IUserDAO {
   // Metodo che restituisce l'utente dal database
   @Override
@@ -77,21 +72,21 @@ public class UserDAO implements IUserDAO {
       String cognome = b.getCognome();
       String email = b.getEmail();
       String password = b.getPassword();
-      if(nome.length()>26 || nome.length()<2){
+      if (nome.length() > 26 || nome.length() < 2) {
         return false;
       }
-      String  expressionPlus="^[\\w\\-]([\\.\\w])+[\\w]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+      String expressionPlus = "^[\\w\\-]([\\.\\w])+[\\w]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
       Pattern pPlus = Pattern.compile(expressionPlus, Pattern.CASE_INSENSITIVE);
       Matcher mPlus = pPlus.matcher(email);
       boolean matchFoundPlus = mPlus.matches();
-      if(!matchFoundPlus){
+      if (!matchFoundPlus) {
         return false;
       }
-      if(cognome.length()>26 || cognome.length()<2){
+      if (cognome.length() > 26 || cognome.length() < 2) {
         return false;
       }
 
-      if(password.length()<12){
+      if (password.length() < 12) {
         return false;
       }
       conn = ConnectionPool.conn();
@@ -122,20 +117,18 @@ public class UserDAO implements IUserDAO {
   // Metodo che restituisce true se è lo studente è stato inserito
 
   @Override
-  public synchronized boolean insertStudente(StudenteBean s, UserBean b)
-      throws SQLException {
+  public synchronized boolean insertStudente(StudenteBean s, UserBean b) throws SQLException {
     boolean studente = false;
-    String  expressionPlus="^[\\w\\-]([\\.\\w])+[\\w]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+    String expressionPlus = "^[\\w\\-]([\\.\\w])+[\\w]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
     Pattern pPlus = Pattern.compile(expressionPlus, Pattern.CASE_INSENSITIVE);
     Matcher mPlus = pPlus.matcher(s.getEmail());
     boolean matchFoundPlus = mPlus.matches();
-    if(!matchFoundPlus){
+    if (!matchFoundPlus) {
       return false;
     }
-    if(!s.getTipoDisabilita().matches("[a-zA-Z]+") || !s.getSpecificheDisturbo().matches("[a-zA-Z]+"))
-      return false;
-    if(s.getPercentualeDisabilita()>100)
-      return false;
+    if (!s.getTipoDisabilita().matches("[a-zA-Z]+")
+        || !s.getSpecificheDisturbo().matches("[a-zA-Z]+")) return false;
+    if (s.getPercentualeDisabilita() > 100) return false;
     // Viene prima inserito l'utente generico (UserBean);
     // Se il metodo restituisce true continua per inserire lo studente
     if (insertUtente(b)) {
@@ -179,7 +172,7 @@ public class UserDAO implements IUserDAO {
     boolean tutor = false;
     // Viene prima inserito l'utente generico (UserBean);
     // Se il metodo restituisce true continua per inserire il tutor
-    if (insertUtente(b) && t.getOreDisponibili()<100) {
+    if (insertUtente(b) && t.getOreDisponibili() < 100) {
       Connection conn = null;
       String query = "INSERT INTO tutor VALUES (?,?,?,?,?)";
       PreparedStatement stmt = null;
@@ -187,10 +180,10 @@ public class UserDAO implements IUserDAO {
       String qualifica = t.getQualifica();
       Integer oreSvolte = t.getOreSvolte();
       Integer oreDisponbili = t.getOreDisponibili();
-      if(dipartimento==null){
+      if (dipartimento == null) {
         return false;
       }
-      if(qualifica.length()<2 || qualifica.length()>50){
+      if (qualifica.length() < 2 || qualifica.length() > 50) {
         return false;
       }
 
@@ -227,7 +220,7 @@ public class UserDAO implements IUserDAO {
 
   @Override
   public synchronized boolean insertProfessoreReferente(ProfessoreReferenteBean p, UserBean b)
-          throws SQLException {
+      throws SQLException {
     boolean prof = false;
     // Viene prima inserito l'utente generico (UserBean);
     // Se il metodo restituisce true continua per inserire il prof
@@ -236,7 +229,7 @@ public class UserDAO implements IUserDAO {
       String query = "INSERT INTO professore_referente VALUES (?,?)";
       PreparedStatement stmt = null;
       String dipartimento = p.getDipartimento();
-      if(dipartimento==null){
+      if (dipartimento == null) {
         return false;
       }
       // Se riesce a connettersi, la connessione è != da null ed entra nello statement
@@ -340,37 +333,32 @@ public class UserDAO implements IUserDAO {
   }
 
   @Override
-  public synchronized boolean deleteUtente(UserBean b)
-          throws SQLException {
-     boolean delete = false;
+  public synchronized boolean deleteUtente(UserBean b) throws SQLException {
+    boolean delete = false;
 
-      Connection conn = null;
-      String query = "DELETE FROM utente WHERE email=?";
-      PreparedStatement stmt = null;
+    Connection conn = null;
+    String query = "DELETE FROM utente WHERE email=?";
+    PreparedStatement stmt = null;
 
-      try {
-        conn = ConnectionPool.conn();
-        stmt = conn.prepareStatement(query);
-        stmt.setString(1, b.getEmail());
-        System.out.println(stmt);
+    try {
+      conn = ConnectionPool.conn();
+      stmt = conn.prepareStatement(query);
+      stmt.setString(1, b.getEmail());
+      System.out.println(stmt);
 
-        ResultSet rs = null;
-        delete = stmt.executeUpdate()==1;
-        conn.commit();
-      } catch (SQLException e) {
-        e.printStackTrace();
-      } finally {
-        if (stmt != null) {
-          stmt.close();
-        }
-        if (conn != null) {
-          conn.close();
-        }
+      ResultSet rs = null;
+      delete = stmt.executeUpdate() == 1;
+      conn.commit();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } finally {
+      if (stmt != null) {
+        stmt.close();
       }
-      return delete;
+      if (conn != null) {
+        conn.close();
+      }
     }
-
+    return delete;
   }
-
-
-
+}

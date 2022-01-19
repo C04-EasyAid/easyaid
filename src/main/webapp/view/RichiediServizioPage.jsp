@@ -46,6 +46,20 @@
     <h2 class="mb-3 text-center text-light ">Richiedi uno dei seguenti servizi</h2>
     <div class="container-fluid d-flex align-items-center justify-content-center">
         <div class="row">
+            <%if (alert != null) {%>
+            <!-- Toast Alert Message -->
+            <div class="alert alert-info d-flex align-items-center" role="alert">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                     class="bi bi-arrow-up-circle-fill flex-shrink-0 me-2" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+                </svg>
+                <div>
+                    <%=alert%>
+                </div>
+            </div>
+            <!-- End Toast Alert Message -->
+            <% session.removeAttribute("alertMsg");
+            }%>
             <div class="col-sm-6">
                 <div id="card-tutorato" class="card text-center" style="background: linear-gradient(rgb(15, 169, 231), rgb(6, 106, 147)); ">
                     <div class="card-body" style="height: 20em;">
@@ -240,7 +254,7 @@
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Dipartimento:</label>
                                                 <select name="dipartimento" style=" width:19.6em" class="form-control">
-                                                    <option value=""> Seleziona Dipartimento</option>
+                                                    <option value=null> Seleziona Dipartimento</option>
                                                     <option value="Fisica/DIF"> Fisica/DIF</option>
                                                     <option value="Chimica e Biologia/DICB"> Chimica e Biologia/DICB
                                                     </option>

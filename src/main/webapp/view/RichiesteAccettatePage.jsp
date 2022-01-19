@@ -112,7 +112,7 @@
                                         </ul>
                                         <div class="d-sm-flex justify-content-sm-between align-items-center">
                                             <div class="mt-3 mt-sm-0">
-                                                <a href="../SingolaRichiestaServlet?idTutorato=<%=tutorato.getId()%>" class="btn btn-outline-info">Selezionato</a>
+                                                <a href="../SingolaRichiestaServlet?idTutorato=<%=tutorato.getId()%>" class="btn btn-outline-info">Seleziona</a>
                                             </div>
                                         </div>
                                     </div>
@@ -176,7 +176,7 @@
                                         </ul>
                                         <div class="d-sm-flex justify-content-sm-between align-items-center">
                                             <div class="mt-3 mt-sm-0">
-                                                <a href="../SingolaRichiestaServlet?idSupporto=<%=supporto.getId()%>" class="btn btn-outline-info">Selezionato</a>
+                                                <a href="../SingolaRichiestaServlet?idSupporto=<%=supporto.getId()%>" class="btn btn-outline-info">Seleziona</a>
                                             </div>
                                         </div>
                                     </div>

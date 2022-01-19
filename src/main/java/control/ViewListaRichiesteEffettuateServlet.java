@@ -61,7 +61,7 @@ public class ViewListaRichiesteEffettuateServlet extends HttpServlet {
         e.printStackTrace();
       }
     } else {
-      req.getSession().setAttribute("alertMsg","Permessi non concessi all'utente");
+      req.getSession().setAttribute("alertMsg", "Permessi non concessi all'utente");
       resp.sendRedirect("view/LoginPage.jsp");
     }
   }

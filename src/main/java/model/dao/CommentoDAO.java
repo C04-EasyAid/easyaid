@@ -6,6 +6,7 @@ Classe CommentoDAO
  */
 
 import model.bean.CommentoBean;
+import model.bean.LezioneBean;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -137,5 +138,26 @@ public class CommentoDAO implements ICommentoDAO {
     }
 
     return result;
+  }
+
+  @Override
+  public synchronized boolean deleteCommento(CommentoBean b) throws SQLException {
+    boolean delete = false;
+    Connection conn = null;
+    String query = "DELETE FROM commento WHERE id = ?";
+    PreparedStatement stmt = null;
+    try {
+      conn = ConnectionPool.conn();
+      stmt = conn.prepareStatement(query);
+      stmt.setInt(1, b.getId());
+      delete = stmt.executeUpdate() == 1;
+      conn.commit();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } finally {
+      if (stmt != null) stmt.close();
+      if (conn != null) conn.close();
+    }
+    return delete;
   }
 }

@@ -49,8 +49,6 @@ public class ViewRichiesteAccettateServlet extends HttpServlet {
             tutoratoDao.doRetrieveAllByTutor(userLoggato.getEmail());
         session.setAttribute("richiesteEsamiAccettate", listRichiesteSupportoEsame);
         session.setAttribute("richiesteTutoratoAccettate", listRichiesteTutoratoDidattico);
-
-        session.setAttribute("alertMsg","Operazione riuscita con successo!");
         resp.sendRedirect("view/RichiesteAccettatePage.jsp");
 
       } catch (SQLException | ClassNotFoundException e) {
@@ -58,7 +56,7 @@ public class ViewRichiesteAccettateServlet extends HttpServlet {
         e.printStackTrace();
       }
     } else {
-      session.setAttribute("alertMsg","Permessi non concessi all'utente");
+      session.setAttribute("alertMsg", "Permessi non concessi all'utente");
       resp.sendRedirect("view/HomePage.jsp");
     }
   }

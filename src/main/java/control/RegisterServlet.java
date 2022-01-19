@@ -74,14 +74,13 @@ public class RegisterServlet extends HttpServlet {
                         studente.setSpecificheDisturbo(request.getParameter("specificheDisturbo"));
                         System.out.println(studente);
                         System.out.println(utenteTemporaneo);
-                        System.out.println(dao.insertStudente(studente,utenteTemporaneo));
                         if (!dao.insertStudente(studente,utenteTemporaneo)) {
                             session.setAttribute("alertMsg", "Errore nell'inserimento studente");
-                            response.sendRedirect("view/HomePage.jsp");
+                            response.sendRedirect("view/RegistraUtentePage.jsp?inserimento=Studente");
                             return ;
                         }
                         else{
-                            session.setAttribute("alertMsg", "Utente inserito con successo");
+                            session.setAttribute("alertMsg", "Studente con disabilità/DSA inserito con successo.");
                             response.sendRedirect("view/RegistraUtentePage.jsp?inserimento=Studente");
                             return ;
                         }
@@ -95,7 +94,7 @@ public class RegisterServlet extends HttpServlet {
                         tutor.setOreSvolte(0);
                         if (!dao.insertTutor(tutor, utenteTemporaneo)) {
                             session.setAttribute("alertMsg", "Errore nell'inserimento tutor");
-                            response.sendRedirect("view/HomePage.jsp");
+                            response.sendRedirect("view/RegistraUtentePage.jsp?inserimento=Tutor");
                         }
                         else{
                             session.setAttribute("alertMsg", "Utente inserito con successo");
@@ -108,7 +107,7 @@ public class RegisterServlet extends HttpServlet {
                         professoreReferente.setDipartimento(request.getParameter("dipartimentoProf"));
                         if (!dao.insertProfessoreReferente(professoreReferente, utenteTemporaneo)) {
                             session.setAttribute("alertMsg", "Errore nell'inserimento professore referente");
-                            response.sendRedirect("view/HomePage.jsp");
+                            response.sendRedirect("view/RegistraUtentePage.jsp?inserimento=Professore Referente");
                         }
                         else{
                             session.setAttribute("alertMsg", "Utente inserito con successo");
@@ -121,9 +120,12 @@ public class RegisterServlet extends HttpServlet {
             catch (Exception e)
             {
                 log.error(myClass,"Catturata eccezione nella Servlet", e);
-                session.setAttribute("alertMsg", "Errore nell'inserimento professore referente");
-                response.sendRedirect("view/HomePage.jsp");
-                e.printStackTrace();
+                session.setAttribute("alertMsg", "Errore nell'inserimento dell'utente");
+                switch (tipoUtente) {
+                    case 1 -> response.sendRedirect("view/RegistraUtentePage.jsp?inserimento=Studente");
+                    case 2 -> response.sendRedirect("view/RegistraUtentePage.jsp?inserimento=Tutor");
+                    case 3 -> response.sendRedirect("view/RegistraUtentePage.jsp?inserimento=Professore Referente");
+                }
             }
         }
         else{
@@ -132,4 +134,8 @@ public class RegisterServlet extends HttpServlet {
         }
     }
 
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        doGet(request, response);
+    }
 }

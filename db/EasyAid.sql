@@ -1,4 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `easyaid` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
+CREATE DATABASE  IF NOT EXISTS `easyaid` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `easyaid`;
 -- MySQL dump 10.13  Distrib 8.0.27, for Win64 (x86_64)
 --
@@ -42,17 +42,8 @@ CREATE TABLE `commento` (
   CONSTRAINT `idtutorato` FOREIGN KEY (`tutorato`) REFERENCES `lezione` (`tutorato`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `studente` FOREIGN KEY (`studente`) REFERENCES `studente` (`email_studente`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tutore` FOREIGN KEY (`tutor`) REFERENCES `tutor` (`email_tutor`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `commento`
---
-
-LOCK TABLES `commento` WRITE;
-/*!40000 ALTER TABLE `commento` DISABLE KEYS */;
-/*!40000 ALTER TABLE `commento` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `lezione`
@@ -69,23 +60,15 @@ CREATE TABLE `lezione` (
   `data` date NOT NULL,
   `tutor` varchar(100) NOT NULL,
   `status` tinyint NOT NULL,
+  `luogo` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `e-mail_idx` (`tutor`),
   KEY `id_idx` (`tutorato`),
   KEY `idtutorato_didattico_idx` (`tutorato`),
   CONSTRAINT `idtutorato_didattico` FOREIGN KEY (`tutorato`) REFERENCES `tutorato_didattico` (`idtutorato_didattico`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tutor` FOREIGN KEY (`tutor`) REFERENCES `tutorato_didattico` (`tutor_email`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `lezione`
---
-
-LOCK TABLES `lezione` WRITE;
-/*!40000 ALTER TABLE `lezione` DISABLE KEYS */;
-/*!40000 ALTER TABLE `lezione` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `personale_amministrativo`
@@ -100,16 +83,6 @@ CREATE TABLE `personale_amministrativo` (
   CONSTRAINT `personale_amministrativo_ibfk_1` FOREIGN KEY (`email_pers_admin`) REFERENCES `utente` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `personale_amministrativo`
---
-
-LOCK TABLES `personale_amministrativo` WRITE;
-/*!40000 ALTER TABLE `personale_amministrativo` DISABLE KEYS */;
-INSERT INTO `personale_amministrativo` VALUES ('gfalchi67@unisa.it'),('gstorti67@unisa.it'),('paoloneri45@unisa.it');
-/*!40000 ALTER TABLE `personale_amministrativo` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `professore_referente`
@@ -128,16 +101,6 @@ CREATE TABLE `professore_referente` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `professore_referente`
---
-
-LOCK TABLES `professore_referente` WRITE;
-/*!40000 ALTER TABLE `professore_referente` DISABLE KEYS */;
-INSERT INTO `professore_referente` VALUES ('gporetti89@unisa.it','farmacia'),('mlamberti78@unisa.it','economia'),('rdistasi@unisa.it','informatica');
-/*!40000 ALTER TABLE `professore_referente` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `studente`
 --
 
@@ -146,25 +109,15 @@ DROP TABLE IF EXISTS `studente`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `studente` (
   `email_studente` varchar(100) NOT NULL,
-  `tipo_di_disabilità` varchar(100) NOT NULL,
+  `tipo_di_disabilita` varchar(100) NOT NULL,
   `specifiche_disturbo` varchar(100) DEFAULT NULL,
-  `percentuale_disabilità` int DEFAULT NULL,
+  `percentuale_disabilita` int DEFAULT NULL,
   `ore_disponibili` int NOT NULL,
   PRIMARY KEY (`email_studente`),
   KEY `email_idx` (`email_studente`),
   CONSTRAINT `email` FOREIGN KEY (`email_studente`) REFERENCES `utente` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `studente`
---
-
-LOCK TABLES `studente` WRITE;
-/*!40000 ALTER TABLE `studente` DISABLE KEYS */;
-INSERT INTO `studente` VALUES ('abaglio9@studenti.unisa.it','DSA','dislessia',15,22),('fneri34@studenti.unisa.it','DSA','discalculia',15,14),('marcoverdi4@studenti.unisa.it','disabile','motorie',50,30);
-/*!40000 ALTER TABLE `studente` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `supporto_esame`
@@ -179,7 +132,7 @@ CREATE TABLE `supporto_esame` (
   `ora` varchar(45) NOT NULL,
   `ore_richieste` int NOT NULL,
   `docente` varchar(100) NOT NULL,
-  `modalità_esame` varchar(100) NOT NULL,
+  `modalita_esame` varchar(100) NOT NULL,
   `eventuali_ausili` varchar(100) NOT NULL,
   `tipo_di_assistenza` varchar(100) NOT NULL,
   `status` tinyint NOT NULL,
@@ -197,18 +150,8 @@ CREATE TABLE `supporto_esame` (
   CONSTRAINT `prof_refe_key` FOREIGN KEY (`prof_refe_email`) REFERENCES `professore_referente` (`email_prof_refe`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `studente_key` FOREIGN KEY (`studente_email`) REFERENCES `studente` (`email_studente`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tutor_key` FOREIGN KEY (`tutor_email`) REFERENCES `tutor` (`email_tutor`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `supporto_esame`
---
-
-LOCK TABLES `supporto_esame` WRITE;
-/*!40000 ALTER TABLE `supporto_esame` DISABLE KEYS */;
-INSERT INTO `supporto_esame` VALUES (15,'2021-08-11','10:00',5,'del vecchio','scritto e orale','nessuno','tutor lettore',2,'Analisi 1','Ti aspetto all edificio E2','Edificio E2 aula e8','economia','fneri34@studenti.unisa.it',NULL,NULL),(16,'2022-01-18','9:30',3,'ferrucci','scritto','tempo aggiuntivo','tutor scrittore',0,'Ingegneria del Software','','Edificio F3 aula p4','informatica','marcoverdi4@studenti.unisa.it',NULL,NULL);
-/*!40000 ALTER TABLE `supporto_esame` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tutor`
@@ -222,21 +165,11 @@ CREATE TABLE `tutor` (
   `dipartimento` varchar(100) NOT NULL,
   `qualifica` varchar(100) NOT NULL,
   `ore_svolte` int NOT NULL,
-  `ore disponibili` int NOT NULL,
+  `ore_disponibili` int NOT NULL,
   PRIMARY KEY (`email_tutor`),
   CONSTRAINT `tutor_ibfk_1` FOREIGN KEY (`email_tutor`) REFERENCES `utente` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tutor`
---
-
-LOCK TABLES `tutor` WRITE;
-/*!40000 ALTER TABLE `tutor` DISABLE KEYS */;
-INSERT INTO `tutor` VALUES ('lorenzorossi1@studenti.unisa.it','informatica','Laurea Triennale',3,17),('mdibianco45@studenti.unisa.it','economia','Laurea Triennale',0,20),('paoloserrati23@studenti.unisa.it','informatica','Laurea Triennale',16,4);
-/*!40000 ALTER TABLE `tutor` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tutorato_didattico`
@@ -257,6 +190,7 @@ CREATE TABLE `tutorato_didattico` (
   `studente_email` varchar(100) NOT NULL,
   `tutor_email` varchar(100) DEFAULT NULL,
   `prof_refe_email` varchar(100) DEFAULT NULL,
+  `docente` varchar(100) NOT NULL,
   PRIMARY KEY (`idtutorato_didattico`),
   KEY `e-mail_idx` (`studente_email`),
   KEY `e-mail_tutor_idx` (`tutor_email`),
@@ -264,18 +198,8 @@ CREATE TABLE `tutorato_didattico` (
   CONSTRAINT `e-mail_prof_refe` FOREIGN KEY (`prof_refe_email`) REFERENCES `professore_referente` (`email_prof_refe`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `e-mail_studente` FOREIGN KEY (`studente_email`) REFERENCES `studente` (`email_studente`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `e-mail_tutor` FOREIGN KEY (`tutor_email`) REFERENCES `tutor` (`email_tutor`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tutorato_didattico`
---
-
-LOCK TABLES `tutorato_didattico` WRITE;
-/*!40000 ALTER TABLE `tutorato_didattico` DISABLE KEYS */;
-INSERT INTO `tutorato_didattico` VALUES (14,'Lunedì,Martedì','Lunedì:16:30,Martedì:17:30',7,NULL,0,'Reti di calcolatori','informatica','marcoverdi4@studenti.unisa.it',NULL,NULL),(15,'Mercoledì,Giovedì','Mercoledì:16:30,Giovedì:09:30',4,'Ci vediamo mercoledì!',1,'Programmazione 1','informatica','abaglio9@studenti.unisa.it','lorenzorossi1@studenti.unisa.it',NULL);
-/*!40000 ALTER TABLE `tutorato_didattico` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `utente`
@@ -293,20 +217,6 @@ CREATE TABLE `utente` (
   PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `utente`
---
-
-LOCK TABLES `utente` WRITE;
-/*!40000 ALTER TABLE `utente` DISABLE KEYS */;
-INSERT INTO `utente` VALUES ('Aldo','Baglio','abaglio9@studenti.unisa.it','Aldo#Baglio45','S'),('Francesco','Neri','fneri34@studenti.unisa.it','Franc3#Ner154','S'),('Giuseppe','Falchi','gfalchi67@unisa.it','Giu@Falchi895','PA'),('Giacomo','Poretti','gporetti89@unisa.it','G#Poretti9083','P'),('Giovanni','Storti','gstorti67@unisa.it','Gio#Storti786','PA'),('Lorenzo','Rossi','lorenzorossi1@studenti.unisa.it','Lorenzo#rossi1','T'),('Marco','Verdi','marcoverdi4@studenti.unisa.it','Mark#Verdi45','S'),('Marco','Di Bianco','mdibianco45@studenti.unisa.it','MarcoD#B1anc0','T'),('Maurizio','lamberti','mlamberti78@unisa.it','M#Lamberti890','P'),('Paolo','Neri','paoloneri45@unisa.it','Paolo#Neri892','PA'),('Paolo','Serrati','paoloserrati23@studenti.unisa.it','Paolo#Serrati23','T'),('Riccardo','Distasi','rdistasi@unisa.it','R#Distasi#908','P');
-/*!40000 ALTER TABLE `utente` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Dumping events for database 'easyaid'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -317,4 +227,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-27 10:06:43
+-- Dump completed on 2022-01-19 16:22:15

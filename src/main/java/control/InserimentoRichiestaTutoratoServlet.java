@@ -32,7 +32,7 @@ public class InserimentoRichiestaTutoratoServlet extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-          throws ServletException, IOException {
+      throws ServletException, IOException {
     log.info(myClass, "Collegamento alla Servlet...");
     HttpSession session = req.getSession();
     UserBean user = (UserBean) session.getAttribute("utente");
@@ -52,7 +52,7 @@ public class InserimentoRichiestaTutoratoServlet extends HttpServlet {
           resp.sendRedirect("view/HomePage.jsp");
         } else {
           session.setAttribute(
-                  "alertMsg", "Richiesta di servizio di tutorato didattico inserita con successo!");
+              "alertMsg", "Richiesta di servizio di tutorato didattico inserita con successo!");
           resp.sendRedirect("view/HomePage.jsp");
         }
       } catch (SQLException e) {
@@ -67,7 +67,7 @@ public class InserimentoRichiestaTutoratoServlet extends HttpServlet {
 
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-          throws ServletException, IOException {
+      throws ServletException, IOException {
     super.doPost(req, resp);
   }
 }

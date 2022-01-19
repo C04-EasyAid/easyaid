@@ -1,19 +1,18 @@
 package model.dao;
 
+import model.bean.TutoratoDidatticoBean;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import model.bean.TutoratoDidatticoBean;
 
 /**
- *
  * @author Martina Giugliano DAO Tutorato didattico per gestire i dati del Database relativo al
  *     tutorato didattico.
  */
-
 public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
 
   /**
@@ -26,7 +25,7 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
    */
   @Override
   public synchronized List<TutoratoDidatticoBean> doRetrieveAllByStudente(String emailStudente)
-          throws SQLException, ClassNotFoundException {
+      throws SQLException, ClassNotFoundException {
     Connection conn = null;
     String query = "SELECT * FROM tutorato_didattico WHERE studente_email=?";
     PreparedStatement stmt = null;
@@ -74,7 +73,7 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
    */
   @Override
   public synchronized List<TutoratoDidatticoBean> doRetrieveAllByTutor(String emailTutor)
-          throws SQLException, ClassNotFoundException {
+      throws SQLException, ClassNotFoundException {
     Connection conn = null;
     String query = "SELECT * FROM tutorato_didattico WHERE tutor_email=?";
     PreparedStatement stmt = null;
@@ -121,7 +120,7 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
    */
   @Override
   public synchronized List<TutoratoDidatticoBean>
-  doRetrieveAllRichiesteTutoratoDidatticoCompletate()
+      doRetrieveAllRichiesteTutoratoDidatticoCompletate()
           throws SQLException, ClassNotFoundException {
     Connection conn = null;
     String query = "SELECT * FROM tutorato_didattico WHERE status=2";
@@ -170,7 +169,7 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
    */
   @Override
   public synchronized List<TutoratoDidatticoBean> doRetrieveRichiesteTutoratoDidatticoNonAccettate()
-          throws SQLException, ClassNotFoundException {
+      throws SQLException, ClassNotFoundException {
     Connection conn = null;
     String query = "SELECT * FROM tutorato_didattico WHERE status=0";
     PreparedStatement stmt = null;
@@ -209,7 +208,7 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
 
   @Override
   public synchronized TutoratoDidatticoBean doRetriveById(int id)
-          throws SQLException, ClassNotFoundException {
+      throws SQLException, ClassNotFoundException {
     Connection conn = null;
     String query = "SELECT * FROM tutorato_didattico where idtutorato_didattico=?";
     PreparedStatement stmt = null;
@@ -251,7 +250,7 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
     boolean inserimento = false;
     Connection con = null;
     String query =
-            "INSERT INTO tutorato_didattico(date_disponibili, ore_disponibili, ore_richieste, insegnamento, dipartimento, studente_email, status, docente) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        "INSERT INTO tutorato_didattico(date_disponibili, ore_disponibili, ore_richieste, insegnamento, dipartimento, studente_email, status, docente) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     PreparedStatement stmt = null;
     try {
       con = ConnectionPool.conn();
@@ -263,7 +262,7 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
       stmt.setString(5, Bean.getDipartimento());
       stmt.setString(6, Bean.getStudenteEmail());
       stmt.setInt(7, 0);
-      stmt.setString(8,Bean.getDocente());
+      stmt.setString(8, Bean.getDocente());
       inserimento = stmt.executeUpdate() == 1;
       con.commit();
     } catch (SQLException e) {
@@ -278,11 +277,11 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
 
   @Override
   public synchronized boolean accettaRichiesta(int idSupporto, String emailTutor, String commento)
-          throws SQLException {
+      throws SQLException {
     boolean isUpdated = false;
     Connection conn = null;
     String query =
-            "UPDATE tutorato_didattico SET status=1,commento=?,tutor_email=? WHERE idtutorato_didattico=?";
+        "UPDATE tutorato_didattico SET status=1,commento=?,tutor_email=? WHERE idtutorato_didattico=?";
     PreparedStatement stmt = null;
     try {
       conn = ConnectionPool.conn();
@@ -304,11 +303,11 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
 
   @Override
   public synchronized boolean approvaRichiesta(int idTutorato, String emailProf)
-          throws SQLException {
+      throws SQLException {
     boolean isUpdated = false;
     Connection conn = null;
     String query =
-            "UPDATE tutorato_didattico SET status=3,prof_refe_email=? WHERE idtutorato_didattico=?";
+        "UPDATE tutorato_didattico SET status=3,prof_refe_email=? WHERE idtutorato_didattico=?";
     PreparedStatement stmt = null;
     try {
       conn = ConnectionPool.conn();
@@ -329,11 +328,11 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
 
   @Override
   public synchronized boolean completaRichiesta(int idTutorato, String emailTutor)
-          throws SQLException {
+      throws SQLException {
     boolean isUpdated = false;
     Connection conn = null;
     String query =
-            "UPDATE tutorato_didattico SET status=2,tutor_email=? WHERE idtutorato_didattico=?";
+        "UPDATE tutorato_didattico SET status=2,tutor_email=? WHERE idtutorato_didattico=?";
     PreparedStatement stmt = null;
     try {
       conn = ConnectionPool.conn();
@@ -350,5 +349,26 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
     }
 
     return isUpdated;
+  }
+
+  @Override
+  public synchronized boolean deleteTutorato(TutoratoDidatticoBean t) throws SQLException {
+    boolean delete = false;
+    Connection conn = null;
+    String query = "DELETE FROM tutorato_didattico WHERE idtutorato_didattico = ?";
+    PreparedStatement stmt = null;
+    try {
+      conn = ConnectionPool.conn();
+      stmt = conn.prepareStatement(query);
+      stmt.setInt(1, t.getId());
+      delete = stmt.executeUpdate() == 1;
+      conn.commit();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } finally {
+      if (stmt != null) stmt.close();
+      if (conn != null) conn.close();
+    }
+    return delete;
   }
 }

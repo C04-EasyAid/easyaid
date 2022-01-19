@@ -91,11 +91,11 @@ public class ProfiloUtenteServlet extends HttpServlet {
         }
 
       } else {
-        request.getSession().setAttribute("alertMsg","Operazione non andata a buon fine");
+        request.getSession().setAttribute("alertMsg", "Operazione non andata a buon fine");
         response.sendRedirect("view/ListaUtentiPage.jsp");
-        }
+      }
     } else {
-      request.getSession().setAttribute("alertMsg","Permessi non concessi all'utente");
+      request.getSession().setAttribute("alertMsg", "Permessi non concessi all'utente");
       response.sendRedirect("view/HomePage.jsp");
     }
   }

@@ -1,6 +1,5 @@
 package control;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +16,6 @@ import model.dao.ITutoratoDidatticoDAO;
 import model.dao.LezioneDAO;
 import model.dao.TutoratoDidatticoDAO;
 import other.MyLogger;
-
 
 @WebServlet("/ConfermaLezioneServlet")
 public class ConfermaLezioneServlet extends HttpServlet {
@@ -41,7 +39,7 @@ public class ConfermaLezioneServlet extends HttpServlet {
     HttpSession session = req.getSession();
     LezioneBean lezioneBean = (LezioneBean) session.getAttribute("lezione");
     UserBean user = (UserBean) session.getAttribute("utente");
-    if (user != null&& user.isTutor()) {
+    if (user != null && user.isTutor()) {
       try {
         lezioneDAO.confermaLezione(lezioneBean.getId());
         Collection<LezioneBean> lezioni =

@@ -11,7 +11,7 @@ import java.util.Date;
 @Data
 public class CommentoBean {
   // variabili di istanza
-  private int lezione, tutorato;
+  private int lezione, tutorato, id;
   private String testo, ora, studente, tutor;
   private Date data;
 

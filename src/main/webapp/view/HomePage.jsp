@@ -6,7 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
-<html>
+<!DOCTYPE html>
+<html lang="it">
 <head>
     <title>EasyAid</title>
     <!-- Meta Tags -->
@@ -38,7 +39,7 @@
     <%@ include file="../fragment/navbar.jsp" %>
 </header>
 
-<main>
+<main role="main">
     <section class="position-relative overflow-hidden pt-5 pt-lg-8 bg-info h-75" style="margin-top: 3em;">
         <div class="container">
             <div class="row align-items-center g-5">

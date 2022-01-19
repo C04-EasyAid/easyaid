@@ -9,13 +9,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-
 import javax.servlet.ServletException;
 import java.io.IOException;
 import java.sql.SQLException;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+//@author Serena Liguori
  class ViewRichiesteServizioIntegrationTest {
     private ViewRichiesteServizioServlet servlet;
     private MockHttpServletRequest request;

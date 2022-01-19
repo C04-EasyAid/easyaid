@@ -6,19 +6,14 @@ import model.dao.ISupportoEsameDAO;
 import model.dao.SupportoEsameDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-
 import javax.servlet.ServletException;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Objects;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
+//@author Serena Liguori
     class AccettazioneRichiestaIntegrationTest {
     private AccettazioneRichiestaServlet servlet;
     private MockHttpServletRequest request;
@@ -32,7 +27,7 @@ import static org.mockito.Mockito.when;
     }
 
     @Test
-    void testAccettazioneRichiesta6() throws ServletException, IOException {
+    void testAccettazioneRichiesta() throws ServletException, IOException {
       ISupportoEsameDAO supportoDao = new SupportoEsameDAO();
       UserBean bean = new UserBean();
       bean.setNome("Lorenzo");

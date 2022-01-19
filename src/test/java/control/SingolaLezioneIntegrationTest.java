@@ -9,20 +9,16 @@ import model.dao.ILezioneDAO;
 import model.dao.LezioneDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-
 import javax.servlet.ServletException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
+//@author Serena Liguori
 class SingolaLezioneIntegrationTest {
     private SingolaLezioneServlet servlet;
     private MockHttpServletRequest request;

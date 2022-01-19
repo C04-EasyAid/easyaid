@@ -1,9 +1,6 @@
 package model.dao;
 
-/**
- *  @author Giovanni Toriello Test ProfessoreReferenteDAO
- *
- */
+/** @author Giovanni Toriello Test ProfessoreReferenteDAO */
 import model.bean.ProfessoreReferenteBean;
 import org.junit.jupiter.api.Test;
 
@@ -23,6 +20,7 @@ class ProfessoreReferenteDAOTest {
     assertEquals(email, professore.getEmail());
     assertEquals("informatica", professore.getDipartimento());
   }
+
   @Test
   void doRetrieveByEmail2() throws SQLException, ClassNotFoundException {
     String email = "dbelli01p@unisa.it";

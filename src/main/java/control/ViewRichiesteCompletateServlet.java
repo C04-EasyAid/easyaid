@@ -58,11 +58,11 @@ public class ViewRichiesteCompletateServlet extends HttpServlet {
           e.printStackTrace();
         }
       } else {
-        session.setAttribute("alertMsg","Permessi non concessi all'utente");
+        session.setAttribute("alertMsg", "Permessi non concessi all'utente");
         resp.sendRedirect("view/HomePage.jsp");
       }
     } else {
-      session.setAttribute("alertMsg","Permessi non concessi all'utente");
+      session.setAttribute("alertMsg", "Permessi non concessi all'utente");
       resp.sendRedirect("view/LoginPage.jsp");
     }
   }

@@ -24,9 +24,10 @@ public class ApprovazioneRichiestaServlet extends HttpServlet {
   private static final String myClass = "ApprovazioneRichiestaServlet";
   ITutoratoDidatticoDAO tutoratodao = new TutoratoDidatticoDAO();
   ISupportoEsameDAO supportodao = new SupportoEsameDAO();
+
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-          throws ServletException, IOException {
+      throws ServletException, IOException {
     super.doPost(req, resp);
   }
 
@@ -40,7 +41,7 @@ public class ApprovazioneRichiestaServlet extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-          throws ServletException, IOException {
+      throws ServletException, IOException {
     log.info(myClass, "Collegamento alla Servlet...");
     HttpSession session = req.getSession();
     UserBean prof = (UserBean) session.getAttribute("utente");

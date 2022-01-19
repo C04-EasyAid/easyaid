@@ -12,8 +12,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <title>ListaRichiesteAccettate</title>
-    <title>Inserimento Utente</title>
+    <title>EasyAid</title>
     <!-- Meta Tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -112,7 +111,7 @@
                                         </ul>
                                         <div class="d-sm-flex justify-content-sm-between align-items-center">
                                             <div class="mt-3 mt-sm-0">
-                                                <a href="../SingolaRichiestaServlet?idTutorato=<%=tutorato.getId()%>" class="btn btn-outline-info">Selezionato</a>
+                                                <a href="../SingolaRichiestaServlet?idTutorato=<%=tutorato.getId()%>" class="btn btn-outline-info">Seleziona</a>
                                             </div>
                                         </div>
                                     </div>
@@ -176,7 +175,7 @@
                                         </ul>
                                         <div class="d-sm-flex justify-content-sm-between align-items-center">
                                             <div class="mt-3 mt-sm-0">
-                                                <a href="../SingolaRichiestaServlet?idSupporto=<%=supporto.getId()%>" class="btn btn-outline-info">Selezionato</a>
+                                                <a href="../SingolaRichiestaServlet?idSupporto=<%=supporto.getId()%>" class="btn btn-outline-info">Seleziona</a>
                                             </div>
                                         </div>
                                     </div>

@@ -1,6 +1,7 @@
 package model.dao;
 
 import model.bean.LezioneBean;
+import model.bean.SupportoEsameBean;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,28 +24,28 @@ public class LezioneDAO implements ILezioneDAO {
   // Metodo che restitiusce una lezione in base all'id passato come parametro
   @Override
   public synchronized LezioneBean doRetrieveLezioneById(int id)
-          throws ClassNotFoundException, SQLException {
+      throws ClassNotFoundException, SQLException {
     Connection conn = null;
     LezioneBean bean = null;
     PreparedStatement stmt = null;
     String query =
-            "SELECT * from easyaid.lezione L inner join tutorato_didattico T where L.tutorato = T.idtutorato_didattico AND L.id ="
-                    + id;
+        "SELECT * from easyaid.lezione L inner join tutorato_didattico T where L.tutorato = T.idtutorato_didattico AND L.id ="
+            + id;
     try {
       conn = conn();
       stmt = conn.prepareStatement(query);
       ResultSet rs = stmt.executeQuery();
       if (rs.next()) {
         bean =
-                new LezioneBean(
-                        rs.getInt("id"),
-                        rs.getInt("tutorato"),
-                        rs.getString("ora_inizio").substring(0, 5),
-                        rs.getString("ora_fine").substring(0, 5),
-                        rs.getDate("data"),
-                        rs.getString("tutor"),
-                        rs.getString("luogo"),
-                        rs.getBoolean("status"));
+            new LezioneBean(
+                rs.getInt("id"),
+                rs.getInt("tutorato"),
+                rs.getString("ora_inizio").substring(0, 5),
+                rs.getString("ora_fine").substring(0, 5),
+                rs.getDate("data"),
+                rs.getString("tutor"),
+                rs.getString("luogo"),
+                rs.getBoolean("status"));
         bean.setInsegnamento(rs.getString("insegnamento"));
         bean.setEmailStudente(rs.getString("studente_email"));
       }
@@ -61,29 +62,29 @@ public class LezioneDAO implements ILezioneDAO {
 
   @Override
   public synchronized Collection<LezioneBean> doRetrieveLezioniById(int id)
-          throws ClassNotFoundException, SQLException {
+      throws ClassNotFoundException, SQLException {
     Connection conn = null;
     LezioneBean bean = null;
     PreparedStatement stmt = null;
     Collection<LezioneBean> lezioni = new ArrayList<>();
     String query =
-            "SELECT * from easyaid.lezione L inner join tutorato_didattico T where L.tutorato = T.idtutorato_didattico AND L.tutorato ="
-                    + id;
+        "SELECT * from easyaid.lezione L inner join tutorato_didattico T where L.tutorato = T.idtutorato_didattico AND L.tutorato ="
+            + id;
     try {
       conn = conn();
       stmt = conn.prepareStatement(query);
       ResultSet rs = stmt.executeQuery();
       while (rs.next()) {
         bean =
-                new LezioneBean(
-                        rs.getInt("id"),
-                        rs.getInt("tutorato"),
-                        rs.getString("ora_inizio").substring(0, 5),
-                        rs.getString("ora_fine").substring(0, 5),
-                        rs.getDate("data"),
-                        rs.getString("tutor"),
-                        rs.getString("luogo"),
-                        rs.getBoolean("status"));
+            new LezioneBean(
+                rs.getInt("id"),
+                rs.getInt("tutorato"),
+                rs.getString("ora_inizio").substring(0, 5),
+                rs.getString("ora_fine").substring(0, 5),
+                rs.getDate("data"),
+                rs.getString("tutor"),
+                rs.getString("luogo"),
+                rs.getBoolean("status"));
         bean.setInsegnamento(rs.getString("insegnamento"));
         bean.setEmailStudente(rs.getString("studente_email"));
         lezioni.add(bean);
@@ -101,13 +102,13 @@ public class LezioneDAO implements ILezioneDAO {
 
   @Override
   public synchronized Collection<LezioneBean> doRetrieveLezioniCompletateById(int id)
-          throws ClassNotFoundException, SQLException {
+      throws ClassNotFoundException, SQLException {
     Connection conn = null;
     LezioneBean bean = null;
     PreparedStatement stmt = null;
     Collection<LezioneBean> lezioni = new ArrayList<>();
     String query =
-            "SELECT * from easyaid.lezione L inner join tutorato_didattico T where L.tutorato = T.idtutorato_didattico AND T.idtutorato_didattico = ? AND L.status = 1";
+        "SELECT * from easyaid.lezione L inner join tutorato_didattico T where L.tutorato = T.idtutorato_didattico AND T.idtutorato_didattico = ? AND L.status = 1";
     try {
       conn = conn();
       stmt = conn.prepareStatement(query);
@@ -115,15 +116,15 @@ public class LezioneDAO implements ILezioneDAO {
       ResultSet rs = stmt.executeQuery();
       while (rs.next()) {
         bean =
-                new LezioneBean(
-                        rs.getInt("id"),
-                        rs.getInt("tutorato"),
-                        rs.getString("ora_inizio").substring(0, 5),
-                        rs.getString("ora_fine").substring(0, 5),
-                        rs.getDate("data"),
-                        rs.getString("tutor"),
-                        rs.getString("luogo"),
-                        rs.getBoolean("status"));
+            new LezioneBean(
+                rs.getInt("id"),
+                rs.getInt("tutorato"),
+                rs.getString("ora_inizio").substring(0, 5),
+                rs.getString("ora_fine").substring(0, 5),
+                rs.getDate("data"),
+                rs.getString("tutor"),
+                rs.getString("luogo"),
+                rs.getBoolean("status"));
         bean.setInsegnamento(rs.getString("insegnamento"));
         bean.setEmailStudente(rs.getString("studente_email"));
         lezioni.add(bean);
@@ -142,12 +143,12 @@ public class LezioneDAO implements ILezioneDAO {
   // come parametro
   @Override
   public synchronized Collection<LezioneBean> doRetrieveLezioneByStudente(String studente)
-          throws ClassNotFoundException, SQLException {
+      throws ClassNotFoundException, SQLException {
     Connection conn = null;
     Collection<LezioneBean> lezioni = new ArrayList<>();
     PreparedStatement stmt = null;
     String query =
-            "SELECT * from lezione L inner join tutorato_didattico T inner join studente s where L.tutorato = T.idtutorato_didattico AND s.email_studente = T.studente_email AND s.email_studente =?";
+        "SELECT * from lezione L inner join tutorato_didattico T inner join studente s where L.tutorato = T.idtutorato_didattico AND s.email_studente = T.studente_email AND s.email_studente =?";
     try {
       conn = conn();
       stmt = conn.prepareStatement(query);
@@ -156,15 +157,15 @@ public class LezioneDAO implements ILezioneDAO {
       ResultSet rs = stmt.executeQuery();
       while (rs.next()) {
         lezione =
-                new LezioneBean(
-                        rs.getInt("id"),
-                        rs.getInt("tutorato"),
-                        rs.getString("ora_inizio").substring(0, 5),
-                        rs.getString("ora_fine").substring(0, 5),
-                        rs.getDate("data"),
-                        rs.getString("tutor"),
-                        rs.getString("luogo"),
-                        rs.getBoolean("status"));
+            new LezioneBean(
+                rs.getInt("id"),
+                rs.getInt("tutorato"),
+                rs.getString("ora_inizio").substring(0, 5),
+                rs.getString("ora_fine").substring(0, 5),
+                rs.getDate("data"),
+                rs.getString("tutor"),
+                rs.getString("luogo"),
+                rs.getBoolean("status"));
         lezione.setInsegnamento(rs.getString("insegnamento"));
         lezione.setEmailStudente(rs.getString("studente_email"));
         lezioni.add(lezione);
@@ -184,12 +185,12 @@ public class LezioneDAO implements ILezioneDAO {
   // parametro
   @Override
   public synchronized Collection<LezioneBean> doRetrieveLezioneByTutor(String tutor)
-          throws ClassNotFoundException, SQLException {
+      throws ClassNotFoundException, SQLException {
     Connection conn = null;
     Collection<LezioneBean> lezioni = new ArrayList<>();
     PreparedStatement stmt = null;
     String query =
-            "SELECT * from lezione L inner join tutorato_didattico T inner join tutor v where L.tutorato = T.idtutorato_didattico AND v.email_tutor = T.tutor_email AND v.email_tutor=? ";
+        "SELECT * from lezione L inner join tutorato_didattico T inner join tutor v where L.tutorato = T.idtutorato_didattico AND v.email_tutor = T.tutor_email AND v.email_tutor=? ";
     try {
       conn = conn();
       stmt = conn.prepareStatement(query);
@@ -198,15 +199,15 @@ public class LezioneDAO implements ILezioneDAO {
       ResultSet rs = stmt.executeQuery();
       while (rs.next()) {
         lezione =
-                new LezioneBean(
-                        rs.getInt("id"),
-                        rs.getInt("tutorato"),
-                        rs.getString("ora_inizio").substring(0, 5),
-                        rs.getString("ora_fine").substring(0, 5),
-                        rs.getDate("data"),
-                        rs.getString("tutor"),
-                        rs.getString("luogo"),
-                        rs.getBoolean("status"));
+            new LezioneBean(
+                rs.getInt("id"),
+                rs.getInt("tutorato"),
+                rs.getString("ora_inizio").substring(0, 5),
+                rs.getString("ora_fine").substring(0, 5),
+                rs.getDate("data"),
+                rs.getString("tutor"),
+                rs.getString("luogo"),
+                rs.getBoolean("status"));
         lezione.setInsegnamento(rs.getString("insegnamento"));
         lezione.setEmailStudente(rs.getString("studente_email"));
         lezioni.add(lezione);
@@ -251,7 +252,7 @@ public class LezioneDAO implements ILezioneDAO {
   // false = Se la somma delle ore delle lezioni non sono uguali alle ore richieste
   @Override
   public synchronized int countOre(Collection<LezioneBean> lezioni, int idTutorato)
-          throws SQLException, ClassNotFoundException {
+      throws SQLException, ClassNotFoundException {
     int uguale = -1;
     int count = 0;
     List<LezioneBean> lezioniS = (List<LezioneBean>) lezioni;
@@ -295,7 +296,7 @@ public class LezioneDAO implements ILezioneDAO {
     boolean utente = false;
     Connection conn = null;
     String query =
-            "INSERT INTO `easyaid`.`lezione` (`tutorato`, `ora_inizio`, `ora_fine`, `data`, `tutor`,`luogo`, `status`) VALUES (?,?,?,?,?,?,'0');";
+        "INSERT INTO `easyaid`.`lezione` (`tutorato`, `ora_inizio`, `ora_fine`, `data`, `tutor`,`luogo`, `status`) VALUES (?,?,?,?,?,?,'0');";
     PreparedStatement stmt = null;
     // Se riesce a connettersi, la connessione è != da null ed entra nello statement
     try {
@@ -348,5 +349,26 @@ public class LezioneDAO implements ILezioneDAO {
     }
 
     return isUpdated;
+  }
+
+  @Override
+  public synchronized boolean deleteLezione(LezioneBean l) throws SQLException {
+    boolean delete = false;
+    Connection conn = null;
+    String query = "DELETE FROM lezione WHERE id = ?";
+    PreparedStatement stmt = null;
+    try {
+      conn = ConnectionPool.conn();
+      stmt = conn.prepareStatement(query);
+      stmt.setInt(1, l.getId());
+      delete = stmt.executeUpdate() == 1;
+      conn.commit();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } finally {
+      if (stmt != null) stmt.close();
+      if (conn != null) conn.close();
+    }
+    return delete;
   }
 }

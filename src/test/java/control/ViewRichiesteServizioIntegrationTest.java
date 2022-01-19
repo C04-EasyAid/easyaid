@@ -16,6 +16,7 @@ import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+//@author Serena Liguori
 class ViewRichiesteServizioIntegrationTest {
   private ViewRichiesteServizioServlet servlet;
   private MockHttpServletRequest request;

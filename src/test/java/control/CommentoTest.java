@@ -24,7 +24,7 @@ import static org.mockito.Mockito.when;
 /**
  * Testing per l'inserimento di un commento.
  *
- * @author Serena Liguori
+ * @author Mariagiovanna Bianco
  */
 class CommentoTest {
   private CommentoServlet servlet;

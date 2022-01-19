@@ -37,7 +37,7 @@ class RegisterIntegrationTest {
     }
 
     @Test
-    void TestInserimentoStudente15() throws ServletException, IOException {
+    void TestInserimentoStudente15() throws ServletException, IOException, SQLException {
         IUserDAO userDAO = new UserDAO();
 
         UserBean persAdmin = new UserBean();
@@ -47,7 +47,7 @@ class RegisterIntegrationTest {
         request.getSession().setAttribute("utente",persAdmin);
         String nome="Lorenzo";
         String cognome="Rossi";
-        String email="l.rossi@studenti.unisa.it";
+        String email="l.rossi1@studenti.unisa.it";
         String password="Lorenzo#rossi1";
         String ruolo="Studente";
         String tipoDisabilita="DSA";
@@ -67,11 +67,12 @@ class RegisterIntegrationTest {
         servlet.setDao(userDAO);
         servlet.doGet(request,response);
 
-        assertEquals("Utente inserito con successo", Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
+        assertEquals("Studente con disabilità/DSA inserito con successo.", Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
+        userDAO.deleteUtente(new UserBean(nome,cognome,email,password,ruolo));
     }
 
     @Test
-    void TestInserimentoTutor13() throws ServletException, IOException {MockitoAnnotations.initMocks(this);
+    void TestInserimentoTutor13() throws ServletException, IOException, SQLException {
         IUserDAO userDAO = new UserDAO();
 
         UserBean persAdmin = new UserBean();
@@ -81,7 +82,7 @@ class RegisterIntegrationTest {
         request.getSession().setAttribute("utente",persAdmin);
         String nome="Lorenzo";
         String cognome="Rossi";
-        String email="l.rossi@studenti.unisa.it";
+        String email="l.rossi1@studenti.unisa.it";
         String password="Lorenzo#rossi1";
         String ruolo="Tutor";
         String dipartimento = "Informatica";
@@ -101,10 +102,11 @@ class RegisterIntegrationTest {
         servlet.doGet(request,response);
 
         assertEquals("Utente inserito con successo", Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
+        userDAO.deleteUtente(new UserBean(nome,cognome,email,password,ruolo));
     }
 
     @Test
-    void TestInserimentoProfessoreReferente11() throws ServletException, IOException {MockitoAnnotations.initMocks(this);
+    void TestInserimentoProfessoreReferente11() throws ServletException, IOException, SQLException {MockitoAnnotations.initMocks(this);
         IUserDAO userDAO = new UserDAO();
 
         UserBean persAdmin = new UserBean();
@@ -115,7 +117,7 @@ class RegisterIntegrationTest {
         request.getSession().setAttribute("utente",persAdmin);
         String nome="Lorenzo";
         String cognome="Rossi";
-        String email="l.rossi@studenti.unisa.it";
+        String email="l.rossi1@studenti.unisa.it";
         String password="Lorenzo#rossi1";
         String ruolo="Professore Referente";
         String dipartimento = "Informatica";
@@ -130,6 +132,8 @@ class RegisterIntegrationTest {
         servlet.doGet(request,response);
 
         assertEquals("Utente inserito con successo", Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
+
+        userDAO.deleteUtente(new UserBean(nome,cognome,email,password,ruolo));
     }
 
 }

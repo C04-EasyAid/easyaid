@@ -193,12 +193,7 @@ public class UserDAO implements IUserDAO {
       if(qualifica.length()<2 || qualifica.length()>50){
         return false;
       }
-      if(oreSvolte instanceof Integer){
-        return false;
-      }
-      if(oreDisponbili instanceof Integer){
-        return false;
-      }
+
       // Se riesce a connettersi, la connessione è != da null ed entra nello statement
       try {
         conn = ConnectionPool.conn();
@@ -344,6 +339,7 @@ public class UserDAO implements IUserDAO {
     return user;
   }
 
+  @Override
   public synchronized boolean deleteUtente(UserBean b)
           throws SQLException {
      boolean delete = false;
@@ -356,6 +352,7 @@ public class UserDAO implements IUserDAO {
         conn = ConnectionPool.conn();
         stmt = conn.prepareStatement(query);
         stmt.setString(1, b.getEmail());
+        System.out.println(stmt);
 
         ResultSet rs = null;
         delete = stmt.executeUpdate()==1;

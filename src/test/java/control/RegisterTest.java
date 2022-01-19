@@ -634,7 +634,7 @@ class RegisterTest {
     servlet.setDao(userDAO);
     servlet.doGet(request,response);
 
-    assertEquals("Utente inserito con successo", Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
+    assertEquals("Studente con disabilità/DSA inserito con successo.", Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
   }
 
   @Test

@@ -11,10 +11,11 @@ import lombok.*;
 @Data
 public class ProfessoreReferenteBean {
   // Variabili del professore referente
-  private String email, dipartimento;
+  private String email;
+  private String dipartimento;
 
   /**
-   * Costruttore
+   * Costruttore.
    *
    * @param email
    * @param dipartimento

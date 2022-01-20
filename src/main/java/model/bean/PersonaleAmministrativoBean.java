@@ -13,7 +13,7 @@ public class PersonaleAmministrativoBean {
   private String emailPersonaleAmministrativo;
 
   /**
-   * Costruttore
+   * Costruttore.
    *
    * @param emailPersonaleAmministrativo
    */

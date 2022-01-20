@@ -19,8 +19,9 @@ public class UserBean implements HttpSessionBindingListener {
   private String email;
   private String password;
   private String ruolo;
+
   /**
-   * Costruttore
+   * Costruttore.
    *
    * @param nome
    * @param cognome

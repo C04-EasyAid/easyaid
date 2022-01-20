@@ -11,11 +11,14 @@ import lombok.*;
 public class StudenteBean {
 
   // Variabili dell'utente
-  private String email, tipoDisabilita, specificheDisturbo;
-  private int oreDisponibili, percentualeDisabilita;
+  private String email;
+  private String tipoDisabilita;
+  private String specificheDisturbo;
+  private int oreDisponibili;
+  private int percentualeDisabilita;
 
   /**
-   * Costruttore
+   * Costruttore.
    *
    * @param email
    * @param tipoDisabilita

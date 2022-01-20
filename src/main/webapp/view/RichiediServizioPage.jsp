@@ -35,7 +35,6 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7N7LGGGWT1"></script>
 </head>
 <body>
-
 <header>
     <%@include file="../fragment/navbar.jsp"%>
 </header>
@@ -73,7 +72,7 @@
                     <div class="card-body" style="height: 20em;">
                         <h4 class="card-title text-light">Supporto Esame</h4>
                         <p class="card-text text-light">Un tutor verrà assegnato per dare supporto per l'esame</p>
-                        <button type="button" class="btn btn-light  text-success" data-bs-toggle="modal" data-bs-target="#richiestaSupportoEsame" style="margin-top: 8.7em;width: 8em;"> Richiedi
+                        <button type="button" class="btn btn-light  text-success" data-bs-toggle="modal" data-bs-target="#richiestaSupportoEsame" onclick="setData()" style="margin-top: 8.7em;width: 8em;"> Richiedi
                         </button>
                     </div>
                 </div>
@@ -90,7 +89,7 @@
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Insegnamento:
-                                                <input type="text" class="form-control" id="insegnamentoS" required></label>
+                                                <input type="text" name="insegnamento" class="form-control" id="insegnamentoS" required></label>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Modalità di
@@ -214,7 +213,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Data:
-                                                <input type="date" name="data" class="form-control" id="data" required>
+                                                <input type="date" name="data" class="form-control" id="data" value="2020-01-01" min="2020-01-01" required>
                                                 </label>
                                             </div>
                                             <div class="mb-3">
@@ -246,18 +245,18 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="../inserisciTutorato" method="get">
+                                <form action="../inserisciTutorato" method="post" onsubmit="return validazioneRichiestaTutorato();">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Insegnamento:
-                                                <input type="text" name="insegnamento" class="form-control" id="recipient-name" required>
+                                                <input type="text" name="insegnamento" class="form-control" id="insegnamento" minlength="3" maxlength="26" required>
                                                 </label>
                                             </div>
 
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Ore Richieste:
-                                                <input type="number" name="ore_richieste" class="form-control" id="message-text" required>
+                                                <input type="number" name="ore_richieste" class="form-control" id="ore_richieste_t" required>
                                                 </label>
                                             </div>
                                             <div class="mb-3">
@@ -313,17 +312,20 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label for="message-text" class="col-form-label">Docente:</label>
-                                                <input type="text" name="docente" class="form-control" id="message-text" required>
+                                                <label for="message-text" class="col-form-label">Docente:
+                                                <input type="text" name="docente" class="form-control" minlength="5" maxlength="20" id="docente_t" required>
+                                                </label>
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="message-text" class="col-form-label">Date disponibili:</label>
-                                                <input type="text" name="date_disponibili" class="form-control" id="message-text" required>
+                                                <label for="message-text" class="col-form-label">Date disponibili:
+                                                <input type="text" oninput="setLine()" name="date_disponibili" class="form-control" id="date_disponibili" required>
+                                                </label>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="message-text" class="col-form-label">Ore disponibili:</label>
-                                                <input type="text" name="ore_disponibili" class="form-control" id="message-text" required>
+                                                <label for="message-text" class="col-form-label">Ore disponibili:
+                                                <input type="text" oninput="setLine()" name="ore_disponibili" class="form-control" id="ore_disponibili" required>
+                                                </label>
                                             </div>
                                         </div>
                                     </div>
@@ -356,6 +358,7 @@
 
 <!-- Template Functions -->
 <script src="../assets/js/functions.js"></script>
+<script src="../js/validazioneInput.js"></script>
 
 </body>
 </html>

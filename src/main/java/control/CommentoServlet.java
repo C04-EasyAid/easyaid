@@ -15,6 +15,7 @@ import model.bean.UserBean;
 import model.dao.ICommentoDAO;
 import model.dao.IStudenteDAO;
 import model.dao.ITutorDAO;
+import model.dao.CommentoDAO;
 import model.dao.StudenteDAO;
 import model.dao.TutorDAO;
 import other.MyLogger;

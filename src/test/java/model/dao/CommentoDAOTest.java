@@ -20,7 +20,7 @@ class CommentoDAOTest {
       Collection<CommentoBean> list = new ArrayList<>();
       list.add(new CommentoBean());
 
-      Collection<CommentoBean> result = commentoDao.doRetrieveCommento(11);
+      Collection<CommentoBean> result = commentoDao.doRetrieveCommento(13);
 
       assertEquals(list.size(),result.size());
 

@@ -19,7 +19,7 @@ import model.dao.TutoratoDidatticoDAO;
 import other.MyLogger;
 
 /**
- * Servlet che permette di visualizzare una singola richiesta di servizio
+ * Servlet che permette di visualizzare una singola richiesta di servizio.
  *
  * @author Martina Giugliano
  */

@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.27, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: easyaid
+-- Host: localhost    Database: easyaid
 -- ------------------------------------------------------
--- Server version	8.0.27
+-- Server version	8.0.18
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -21,7 +21,7 @@
 
 LOCK TABLES `commento` WRITE;
 /*!40000 ALTER TABLE `commento` DISABLE KEYS */;
-INSERT INTO `commento` VALUES (13,11,18,'Va bene, ci sarò!','2021-07-14','10:00','fneri34@studenti.unisa.it','mdibianco45@studenti.unisa.it'),(15,13,21,'Non ci sono problemi!','2021-11-12','10:00','cderio22@studenti.unisa.it','saracapriotti55@studenti.unisa.it'),(16,14,19,'Ci sarò sicuramente!','2021-11-29','9:00','paolorossi10@studenti.unisa.it','paoloserrati23@studenti.unisa.it');
+INSERT INTO `commento` VALUES (15,13,21,'Non ci sono problemi!','2021-11-12','10:00','cderio22@studenti.unisa.it','saracapriotti55@studenti.unisa.it'),(16,14,19,'Ci sarò sicuramente!','2021-11-29','9:00','paolorossi10@studenti.unisa.it','paoloserrati23@studenti.unisa.it');
 /*!40000 ALTER TABLE `commento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -104,6 +104,14 @@ LOCK TABLES `utente` WRITE;
 INSERT INTO `utente` VALUES ('Aldo','Baglio','abaglio9@studenti.unisa.it','839801b3f35880844d9b78264a2ec0c61c9105b6','S'),('Antonio','De Biase','adebiase41@studenti.unisa.it','f19aa987f101ddd8259f66d662240effd8531da5','T'),('Aldo','De Vito','adevito11@unisa.it','cb11a9011ef03a1d1e04113dd014daf76094d1fc','P'),('Carlotta','De Rio','cderio22@studenti.unisa.it','647d1444268ecb94760c9a1a40c5567232641d72','S'),('Carla','Gigli','cgigli91@unisa.it','45c12593547b0593efd909e8e86019f53f6bb405','PA'),('Dario','Belli','dbelli01@unisa.it','d1dece9ec9d5d36e9d249f574e29f965c2ca46ec','P'),('Francesco','Neri','fneri34@studenti.unisa.it','9f96a0aee93f7f0f422dfb8659a08c79a29f8f11','S'),('Giuseppe','Falchi','gfalchi67@unisa.it','77f55bfcbd6c7e771f49ba420ae8513cc5ecb53d','PA'),('Giacomo','Poretti','gporetti89@unisa.it','85e50b92eddaec97e90f217f32059ec3268b72bb','P'),('Giovanni','Storti','gstorti67@unisa.it','6f46aefba6fc38682ae44f8975478662ed5b124a','PA'),('Lorenzo','Rossi','lorenzorossi1@studenti.unisa.it','3c3d48a726baf8c1238e000ba85bb68a591ae98d','T'),('Marco','Verdi','marcoverdi4@studenti.unisa.it','c684e7a333ffc50b6f7c44c536c9711a9eedd29e','S'),('Marco','Di Bianco','mdibianco45@studenti.unisa.it','5de0fc381e87539dfdd6ed2b1105cb687a80586a','T'),('Maurizio','lamberti','mlamberti78@unisa.it','d7952100cc8f77d6dc2b0884d594f0a3f7312f95','P'),('Paolo','Neri','paoloneri45@unisa.it','9ea6e8310c462e6d8ff3af2ac929aebbbc64c9a2','PA'),('Paolo','Rossi','paolorossi10@studenti.unisa.it','c4c564dde0858e4e2dc937e8bc581b19ca693fb5','S'),('Paolo','Serrati','paoloserrati23@studenti.unisa.it','d92ea20bbc0faf2e5a55f30dcbabb3de15e2b1b5','T'),('Riccardo','Distasi','rdistasi@unisa.it','9cf5b6bd570657464275ced548fcdb65f134cc9d','P'),('Sara','Capriotti','saracapriotti55@studenti.unisa.it','ec8f631e4738440b7d091088dea0e80c207de0d2','T');
 /*!40000 ALTER TABLE `utente` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'easyaid'
+--
+
+--
+-- Dumping routines for database 'easyaid'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -114,4 +122,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-15 22:24:26
+-- Dump completed on 2022-01-20 20:43:52

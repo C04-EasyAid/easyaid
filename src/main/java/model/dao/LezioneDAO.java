@@ -1,8 +1,5 @@
 package model.dao;
 
-import model.bean.LezioneBean;
-import model.bean.SupportoEsameBean;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,13 +10,16 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-
+import model.bean.LezioneBean;
+import model.bean.SupportoEsameBean;
 import static model.dao.ConnectionPool.conn;
 
-/*
-@author Serena Liguori
-Classe LezioneDAO
+/**
+ * Classe ILezioneDAO.
+ *
+ * @author Serena Liguori
  */
+
 public class LezioneDAO implements ILezioneDAO {
   // Metodo che restituisce una lezione in base all'id passato come parametro
   @Override

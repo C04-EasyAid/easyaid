@@ -25,7 +25,7 @@ Servlet che permette di visualizzare le lezioni
 public class LezioniServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "LezioniServlet";
-  private ILezioneDAO lezioneDao = new LezioneDao();
+  private ILezioneDAO lezioneDao = new LezioneDAO();
   private IStudenteDAO studenteDao = new StudenteDAO();
   private ITutoratoDidatticoDAO tutoratoDidatticoDAO = new TutoratoDidatticoDAO();
   private ITutorDAO tutorDao = new TutorDAO();

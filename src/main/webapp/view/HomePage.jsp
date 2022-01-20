@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Webestica.com">
     <meta name="description" content="Eduport- LMS, Education and Course Theme">
-
+    <link rel="shortcut icon" href="../image/favicon.ico">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,7 +51,7 @@
                         Piattaforma online di supporto per studenti con disabilità e DSA
                     </p>
                     <div class="d-sm-flex align-items-center justify-content-center justify-content-lg-start">
-                        <a href="#" class="btn btn-lg btn-blue me-2 mb-4 mb-sm-0">
+                        <a href="AboutPage.jsp" class="btn btn-lg btn-blue me-2 mb-4 mb-sm-0">
                             About
                         </a>
                     </div>

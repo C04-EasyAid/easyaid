@@ -1,8 +1,13 @@
 package model.dao;
 
+import java.sql.SQLException;
 import model.bean.StudenteBean;
 
-import java.sql.SQLException;
+/**
+ * Classe IStudenteDAO.
+ *
+ * @author Giovanni Toriello
+ */
 
 public interface IStudenteDAO {
   // Metodo che restituisce lo studente

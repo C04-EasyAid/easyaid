@@ -3,7 +3,7 @@ package model.bean;
 import lombok.*;
 
 /**
- * Classe ProfessoreReferenteBean
+ * Classe ProfessoreReferenteBean.
  *
  * @author Giovanni Toriello
  */
@@ -24,6 +24,6 @@ public class ProfessoreReferenteBean {
     this.dipartimento = dipartimento;
   }
 
-  /** Costruttore Vuoto */
+  // Costruttore Vuoto
   public ProfessoreReferenteBean() {}
 }

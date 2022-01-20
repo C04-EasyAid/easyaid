@@ -3,7 +3,7 @@ package model.bean;
 import lombok.*;
 
 /**
- * Classe TutorBean
+ * Classe TutorBean.
  *
  * @author Roberto Tartaglia Classe TutorBean
  */
@@ -34,6 +34,6 @@ public class TutorBean {
     this.oreDisponibili = oreDisponibili;
   }
 
-  /** Costruttore Vuoto */
+  // Costruttore Vuoto
   public TutorBean() {}
 }

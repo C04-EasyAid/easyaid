@@ -1,20 +1,24 @@
 package model.bean;
 
+import java.util.Date;
+import lombok.*;
+
 /**
- * Classe CommentoBean
+ * Classe CommentoBean.
  *
  * @author Mariagiovanna Bianco
  */
 
-import lombok.*;
-
-import java.util.Date;
-
 @Data
 public class CommentoBean {
   // variabili di istanza
-  private int lezione, tutorato, id;
-  private String testo, ora, studente, tutor;
+  private int lezione;
+  private int tutorato;
+  private int id;
+  private String testo;
+  private String ora;
+  private String studente;
+  private String tutor;
   private Date data;
 
   // Costruttore

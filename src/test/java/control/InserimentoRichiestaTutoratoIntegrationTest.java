@@ -3,9 +3,7 @@ package control;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
 import model.dao.ITutoratoDidatticoDAO;
-import model.dao.IUserDAO;
 import model.dao.TutoratoDidatticoDAO;
-import model.dao.UserDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -35,7 +33,6 @@ class InserimentoRichiestaTutoratoIntegrationTest {
     @Test
     void TestInserimentoRichiestaTutorato1() throws ServletException, IOException, SQLException {
 
-        IUserDAO userDao = new UserDAO();
         ITutoratoDidatticoDAO tutoratoDidatticoDAO = new TutoratoDidatticoDAO();
         UserBean bean = new UserBean();
         bean.setNome("Paolo");

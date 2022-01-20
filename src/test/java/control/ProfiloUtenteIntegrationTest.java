@@ -7,17 +7,13 @@ import model.bean.UserBean;
 import model.dao.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-
 import javax.servlet.ServletException;
 import java.io.IOException;
 import java.sql.SQLException;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 /*
 @author Martina Giugliano
@@ -37,7 +33,7 @@ class ProfiloUtenteIntegrationTest {
 
   // L'utente loggato è un personale amministrativo;vuole visualizzare il profilo di uno studente
   @Test
-  void testProfiloUtente4()
+  void testProfiloUtente1()
       throws ServletException, IOException, SQLException, ClassNotFoundException {
 
     UserBean userLoggato = new UserBean();
@@ -64,7 +60,7 @@ class ProfiloUtenteIntegrationTest {
 
   // L'utente loggato è un personale amministrativo;vuole visualizzare il profilo di un tutor
   @Test
-  void testProfiloUtente5()
+  void testProfiloUtente2()
       throws ServletException, IOException, SQLException, ClassNotFoundException {
 
     UserBean userLoggato = new UserBean();
@@ -92,7 +88,7 @@ class ProfiloUtenteIntegrationTest {
   // L'utente loggato è un personale amministrativo;vuole visualizzare il profilo di un professore
   // referente
   @Test
-  void testProfiloUtente6()
+  void testProfiloUtente3()
       throws ServletException, IOException, SQLException, ClassNotFoundException {
 
     UserBean userLoggato = new UserBean();

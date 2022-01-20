@@ -18,7 +18,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-//@author Serena Liguori
+/*
+@author Serena Liguori
+ */
 class SingolaLezioneIntegrationTest {
   private SingolaLezioneServlet servlet;
   private MockHttpServletRequest request;

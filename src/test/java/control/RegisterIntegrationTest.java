@@ -1,28 +1,21 @@
 package control;
 
-import model.bean.ProfessoreReferenteBean;
-import model.bean.StudenteBean;
-import model.bean.TutorBean;
 import model.bean.UserBean;
 import model.dao.IUserDAO;
 import model.dao.UserDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-
 import javax.servlet.ServletException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Objects;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+
 
 /*
-@author Martina GiuglianO
+@author Martina Giugliano
  */
 class RegisterIntegrationTest {
   private RegisterServlet servlet;
@@ -37,7 +30,7 @@ class RegisterIntegrationTest {
   }
 
   @Test
-  void TestInserimentoStudente15() throws ServletException, IOException, SQLException {
+  void TestInserimentoStudente() throws ServletException, IOException, SQLException {
     IUserDAO userDAO = new UserDAO();
 
     UserBean persAdmin = new UserBean();
@@ -74,7 +67,7 @@ class RegisterIntegrationTest {
   }
 
   @Test
-  void TestInserimentoTutor13() throws ServletException, IOException, SQLException {
+  void TestInserimentoTutor() throws ServletException, IOException, SQLException {
     IUserDAO userDAO = new UserDAO();
 
     UserBean persAdmin = new UserBean();
@@ -109,10 +102,8 @@ class RegisterIntegrationTest {
   }
 
   @Test
-  void TestInserimentoProfessoreReferente11() throws ServletException, IOException, SQLException {
-    MockitoAnnotations.initMocks(this);
+  void TestInserimentoProfessoreReferente() throws ServletException, IOException, SQLException {
     IUserDAO userDAO = new UserDAO();
-
     UserBean persAdmin = new UserBean();
 
     persAdmin.setEmail("cgigli91@unisa.it");

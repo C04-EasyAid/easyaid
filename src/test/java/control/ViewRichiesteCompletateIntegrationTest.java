@@ -30,7 +30,7 @@ class ViewRichiesteCompletateIntegrationTest {
   }
 
   @Test
-  void testVisualizzaRichiesteServizio3()
+  void testVisualizzaRichiesteServizio()
       throws SQLException, ClassNotFoundException, ServletException, IOException {
 
     ISupportoEsameDAO supportoEsameDao = new SupportoEsameDAO();

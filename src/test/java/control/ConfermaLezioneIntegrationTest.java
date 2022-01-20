@@ -17,7 +17,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 
-//@author SerenaLiguori
+/*
+@author SerenaLiguori
+ */
 class ConfermaLezioneIntegrationTest {
 
     private ConfermaLezioneServlet servlet;

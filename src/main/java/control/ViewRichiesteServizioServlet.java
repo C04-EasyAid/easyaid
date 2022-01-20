@@ -18,6 +18,13 @@ import model.dao.SupportoEsameDAO;
 import model.dao.TutoratoDidatticoDAO;
 import other.MyLogger;
 
+/**
+ * Servlet che permette di visualizzare le richieste di servizio.
+ *
+ * @author Riccardo Polidoro
+ *
+ */
+
 @WebServlet("/viewRichiesteServizio")
 public class ViewRichiesteServizioServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();

@@ -2,7 +2,11 @@ package model.bean;
 
 import lombok.*;
 
-/** @author Martina Giugliano Classe Supporto Esame */
+/**
+ * Classe SupportoEsameBean
+ *
+ * @author Martina Giugliano Classe Supporto Esame
+ **/
 @Data
 public class SupportoEsameBean {
   private int id;

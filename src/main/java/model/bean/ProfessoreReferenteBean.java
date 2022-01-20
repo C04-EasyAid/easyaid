@@ -2,7 +2,12 @@ package model.bean;
 
 import lombok.*;
 
-/** @author Giovanni Toriello Classe ProfessoreReferenteBean */
+/**
+ * Classe ProfessoreReferenteBean
+ *
+ * @author Giovanni Toriello
+ */
+
 @Data
 public class ProfessoreReferenteBean {
   // Variabili del professore referente

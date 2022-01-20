@@ -1,5 +1,14 @@
 package control;
 
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Collection;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.bean.CommentoBean;
 import model.bean.LezioneBean;
 import model.bean.UserBean;
@@ -9,19 +18,11 @@ import model.dao.ILezioneDAO;
 import model.dao.LezioneDAO;
 import other.MyLogger;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.Collection;
-
-/*
-@author Mariagiovanna Bianco
-Servlet che permette di visualizzare la singola lezione
+/**
+ * Servlet che permette di visualizzare la singola lezione.
+ *
+ * @author Mariagiovanna Bianco
+ *
  */
 @WebServlet("/SingolaLezione")
 public class SingolaLezioneServlet extends HttpServlet {

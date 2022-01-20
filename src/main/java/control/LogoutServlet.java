@@ -9,8 +9,13 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.ServletException;
 import other.MyLogger;
 
+/**
+ * Servlet che permette di effettuare il logout.
+ *
+ * @author Roberto Tartaglia
+ *
+ */
 
-/** @author Roberto Tartaglia Servlet che permette di effettuare il logout */
 @WebServlet("/logout")
 public class LogoutServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;

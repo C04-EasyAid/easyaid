@@ -13,7 +13,7 @@ import model.bean.LezioneBean;
 import model.bean.UserBean;
 import model.dao.ILezioneDAO;
 import model.dao.ITutoratoDidatticoDAO;
-import model.dao.LezioneDao;
+import model.dao.LezioneDAO;
 import model.dao.TutoratoDidatticoDAO;
 import other.MyLogger;
 
@@ -28,7 +28,7 @@ import other.MyLogger;
 public class ConfermaLezioneServlet extends HttpServlet {
   private static MyLogger log = MyLogger.getInstance();
   private static String myClass = "ConfermaLezioneServlet";
-  private ILezioneDAO lezioneDao = new LezioneDao();
+  private ILezioneDAO lezioneDao = new LezioneDAO();
   private ITutoratoDidatticoDAO tutoratoDidatticoDao = new TutoratoDidatticoDAO();
 
   public void setlezioneDao(ILezioneDAO lezioneDao) {

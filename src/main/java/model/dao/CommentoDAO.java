@@ -65,7 +65,7 @@ public class CommentoDAO implements ICommentoDAO {
   public synchronized boolean insertCommentoTutor(int lezione, String msg, String emailMittente)
       throws SQLException {
     boolean result = false;
-    LezioneDao dao = new LezioneDao();
+    LezioneDAO dao = new LezioneDAO();
     Connection conn = null;
     PreparedStatement stmt = null;
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
@@ -105,7 +105,7 @@ public class CommentoDAO implements ICommentoDAO {
   public synchronized boolean insertCommentoStudente(int lezione, String msg, String emailMittente)
       throws SQLException {
     boolean result = false;
-    LezioneDao dao = new LezioneDao();
+    LezioneDAO dao = new LezioneDAO();
     Connection conn = null;
     PreparedStatement stmt = null;
     GregorianCalendar today = new GregorianCalendar();

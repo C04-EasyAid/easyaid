@@ -6,7 +6,7 @@ import model.bean.UserBean;
 import model.dao.CommentoDAO;
 import model.dao.ICommentoDAO;
 import model.dao.ILezioneDAO;
-import model.dao.LezioneDao;
+import model.dao.LezioneDAO;
 import other.MyLogger;
 
 import javax.servlet.ServletException;
@@ -27,7 +27,7 @@ Servlet che permette di visualizzare la singola lezione
 public class SingolaLezioneServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "SingolaLezioneServlet";
-  private ILezioneDAO lezioneDao = new LezioneDao();
+  private ILezioneDAO lezioneDao = new LezioneDAO();
   private ICommentoDAO commentiDao = new CommentoDAO();
 
   public void setLezioneDao(ILezioneDAO lezioneDao) {

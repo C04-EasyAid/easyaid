@@ -48,7 +48,7 @@ public class LezioneDAO implements ILezioneDAO {
                 rs.getBoolean("status"));
         bean.setId(rs.getInt("id"));
         bean.setInsegnamento(rs.getString("insegnamento"));
-        bean.setEmailStudente(rs.getString("studente_email"));
+        bean.setEmailstudente(rs.getString("studente_email"));
 
         stmt.close();
         conn.close();
@@ -87,7 +87,7 @@ public class LezioneDAO implements ILezioneDAO {
                 rs.getBoolean("status"));
         bean.setId(rs.getInt("id"));
         bean.setInsegnamento(rs.getString("insegnamento"));
-        bean.setEmailStudente(rs.getString("studente_email"));
+        bean.setEmailstudente(rs.getString("studente_email"));
         lezioni.add(bean);
 
       }
@@ -128,7 +128,7 @@ public class LezioneDAO implements ILezioneDAO {
                 rs.getString("luogo"),
                 rs.getBoolean("status"));
         bean.setInsegnamento(rs.getString("insegnamento"));
-        bean.setEmailStudente(rs.getString("studente_email"));
+        bean.setEmailstudente(rs.getString("studente_email"));
         lezioni.add(bean);
 
       }
@@ -170,7 +170,7 @@ public class LezioneDAO implements ILezioneDAO {
                 rs.getString("luogo"),
                 rs.getBoolean("status"));
         lezione.setInsegnamento(rs.getString("insegnamento"));
-        lezione.setEmailStudente(rs.getString("studente_email"));
+        lezione.setEmailstudente(rs.getString("studente_email"));
         lezioni.add(lezione);
 
       }
@@ -213,7 +213,7 @@ public class LezioneDAO implements ILezioneDAO {
                 rs.getBoolean("status"));
         lezione.setId(rs.getInt("id"));
         lezione.setInsegnamento(rs.getString("insegnamento"));
-        lezione.setEmailStudente(rs.getString("studente_email"));
+        lezione.setEmailstudente(rs.getString("studente_email"));
         lezioni.add(lezione);
 
       }

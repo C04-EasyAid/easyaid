@@ -97,6 +97,8 @@ public class ProfiloUtenteServlet extends HttpServlet {
                 e.printStackTrace();
               }
               break;
+            default: System.out.println ("Nessuno dei casi di switch");
+            break;
           }
         } catch (SQLException | ClassNotFoundException e) {
           e.printStackTrace();

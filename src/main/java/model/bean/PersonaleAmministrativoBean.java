@@ -6,7 +6,7 @@ import lombok.*;
  *  Classe PersonaleAmministrativoBean
  *
  * @author Roberto Tartaglia
- * 
+ *
  * */
 @Data
 public class PersonaleAmministrativoBean {

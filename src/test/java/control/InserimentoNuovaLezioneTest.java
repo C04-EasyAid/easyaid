@@ -41,7 +41,7 @@ class InserimentoNuovaLezioneTest {
     IUserDAO userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDao.class);
+    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -93,7 +93,7 @@ class InserimentoNuovaLezioneTest {
     IUserDAO userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDao.class);
+    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -144,7 +144,7 @@ class InserimentoNuovaLezioneTest {
     IUserDAO userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDao.class);
+    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -196,7 +196,7 @@ class InserimentoNuovaLezioneTest {
     IUserDAO userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDao.class);
+    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -248,7 +248,7 @@ class InserimentoNuovaLezioneTest {
     IUserDAO userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDao.class);
+    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -300,7 +300,7 @@ class InserimentoNuovaLezioneTest {
     IUserDAO userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDao.class);
+    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -352,7 +352,7 @@ class InserimentoNuovaLezioneTest {
     IUserDAO userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDao.class);
+    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -404,7 +404,7 @@ class InserimentoNuovaLezioneTest {
     IUserDAO userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDao.class);
+    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -456,7 +456,7 @@ class InserimentoNuovaLezioneTest {
     IUserDAO userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDao.class);
+    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -508,7 +508,7 @@ class InserimentoNuovaLezioneTest {
     IUserDAO userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDao.class);
+    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -560,7 +560,7 @@ class InserimentoNuovaLezioneTest {
     IUserDAO userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDao.class);
+    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -612,7 +612,7 @@ class InserimentoNuovaLezioneTest {
     IUserDAO userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDao.class);
+    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -675,7 +675,7 @@ class InserimentoNuovaLezioneTest {
     IUserDAO userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDao.class);
+    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");

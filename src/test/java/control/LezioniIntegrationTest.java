@@ -1,25 +1,20 @@
 package control;
 
-import model.bean.LezioneBean;
 import model.bean.StudenteBean;
 import model.bean.TutorBean;
 import model.bean.UserBean;
 import model.dao.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
 import javax.servlet.ServletException;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collection;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 /*
 @author Martina Giugliano
@@ -48,7 +43,7 @@ class LezioniIntegrationTest {
 
     servlet.setLezioneDao(lezioneDao);
     servlet.setStudenteDao(studenteDao);
-    servlet.setTutoratoDidatticoDAO(tutoratoDidatticoDao);
+    servlet.settutoratodidatticodao(tutoratoDidatticoDao);
 
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
@@ -70,7 +65,7 @@ class LezioniIntegrationTest {
     UserBean userBean = new UserBean();
 
     servlet.setLezioneDao(lezioneDao);
-    servlet.setTutoratoDidatticoDAO(tutoratoDidatticoDao);
+    servlet.settutoratodidatticodao(tutoratoDidatticoDao);
     servlet.setTutorDao(tutorDao);
 
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");

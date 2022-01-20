@@ -46,7 +46,7 @@ class LezioniTest {
 
     servlet.setLezioneDao(lezioneDao);
     servlet.setStudenteDao(studenteDao);
-    servlet.setTutoratoDidatticoDAO(tutoratoDidatticoDao);
+    servlet.settutoratodidatticodao(tutoratoDidatticoDao);
 
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
@@ -88,7 +88,7 @@ class LezioniTest {
     UserBean userBean = new UserBean();
 
     servlet.setLezioneDao(lezioneDao);
-    servlet.setTutoratoDidatticoDAO(tutoratoDidatticoDao);
+    servlet.settutoratodidatticodao(tutoratoDidatticoDao);
     servlet.setTutorDao(tutorDao);
 
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");

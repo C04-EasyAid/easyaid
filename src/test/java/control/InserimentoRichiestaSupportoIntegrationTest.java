@@ -78,7 +78,7 @@ class InserimentoRichiestaSupportoIntegrationTest {
         supportoEsameBean.setEventualiAusili(eventualiAusili);
         supportoEsameBean.setTipoAssistenza(tipoAssistenza);
         supportoEsameBean.setModalitaEsame(modalitaEsame);
-        servlet.setSupportoEsameDAO(supportoEsameDAO);
+        servlet.setsupportoesameDao(supportoEsameDAO);
         servlet.doGet(request, response);
         assertEquals(
                 "Richiesta di servizio di supporto esame inserita con successo!",

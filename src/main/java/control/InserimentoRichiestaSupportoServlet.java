@@ -25,7 +25,7 @@ public class InserimentoRichiestaSupportoServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "InserimentoRichiestaSupportoServlet";
 
-  public void setSupportoEsameDAO(ISupportoEsameDAO dao) {
+  public void setsupportoesameDao(ISupportoEsameDAO dao) {
     this.dao = dao;
   }
 

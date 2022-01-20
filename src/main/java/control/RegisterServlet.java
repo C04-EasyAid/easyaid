@@ -18,6 +18,7 @@ import other.MyLogger;
  *  @author Roberto Tartaglia
  *
  */
+
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
     private static MyLogger log = MyLogger.getInstance();

@@ -2,7 +2,12 @@ package model.bean;
 
 import lombok.*;
 
-/** @author Roberto Tartaglia Classe TutorBean */
+/**
+ * Classe TutorBean
+ *
+ * @author Roberto Tartaglia Classe TutorBean
+ */
+
 @Data
 public class TutorBean {
   private String emailTutor;

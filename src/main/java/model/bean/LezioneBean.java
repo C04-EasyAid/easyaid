@@ -3,9 +3,12 @@ package model.bean;
 import lombok.Data;
 
 import java.util.Date;
-/*
-@author Serena Liguori
-Classe LezioneBean
+
+/**
+ * Classe LezioneBean
+ *
+ *  @author Serena Liguori
+ *
  */
 @Data
 public class LezioneBean {
@@ -53,6 +56,6 @@ public class LezioneBean {
 
   public LezioneBean() {}
 
-  // Metodi
+
 
 }

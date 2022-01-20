@@ -18,6 +18,12 @@ import model.dao.SupportoEsameDAO;
 import model.dao.TutoratoDidatticoDAO;
 import other.MyLogger;
 
+/**
+ * Servlet che permette di visualizzare le richieste completate.
+ *
+ * @author Riccardo Polidoro
+ *
+ */
 
 @WebServlet("/viewRichiesteCompletate")
 public class ViewRichiesteCompletateServlet extends HttpServlet {

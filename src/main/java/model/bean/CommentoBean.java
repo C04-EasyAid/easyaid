@@ -1,9 +1,11 @@
 package model.bean;
 
-/*
-@author Mariagiovanna Bianco
-Classe CommentoBean
+/**
+ * Classe CommentoBean
+ *
+ * @author Mariagiovanna Bianco
  */
+
 import lombok.*;
 
 import java.util.Date;

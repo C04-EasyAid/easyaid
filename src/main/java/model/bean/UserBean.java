@@ -6,7 +6,12 @@ import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionBindingListener;
 import java.util.Locale;
 
-/** @author Giovanni Toriello Classe UserBean */
+/**
+ * Classe UserBean
+ *
+ * @author Giovanni Toriello
+ */
+
 @Data
 public class UserBean implements HttpSessionBindingListener {
   // Variabili dell'utente

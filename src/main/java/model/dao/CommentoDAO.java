@@ -1,10 +1,5 @@
 package model.dao;
 
-/*
-@author Mariagiovanna Bianco
-Classe CommentoDAO
- */
-
 import model.bean.CommentoBean;
 
 import java.sql.Connection;
@@ -19,6 +14,12 @@ import java.util.Collection;
 import java.util.GregorianCalendar;
 
 import static model.dao.ConnectionPool.conn;
+
+/**
+ * Classe CommentoDAO
+ *
+ * @author Mariagiovanna Bianco
+ */
 
 public class CommentoDAO implements ICommentoDAO {
   // Metodo che restituisce il commento

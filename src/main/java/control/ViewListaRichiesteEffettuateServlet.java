@@ -23,6 +23,7 @@ import other.MyLogger;
  *
  * @author Riccardo Polidoro
  */
+
 @WebServlet("/ListaRichieste")
 public class ViewListaRichiesteEffettuateServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();

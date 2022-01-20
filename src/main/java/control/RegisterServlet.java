@@ -16,8 +16,8 @@ import other.MyLogger;
  * Servlet che permette di effettuare la registrazione di un utente all interno del sistema
  *
  *  @author Roberto Tartaglia
- *
  */
+
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
     private static MyLogger log = MyLogger.getInstance();
@@ -39,16 +39,16 @@ public class RegisterServlet extends HttpServlet {
         HttpSession session = request.getSession();
         UserBean utenteLoggato= (UserBean)session.getAttribute("utente");
         //Creo il bean dell utente che andrà inserito nel DB
-        UserBean utenteTemporaneo= new UserBean();
+        UserBean utenteTemporaneo = new UserBean();
         utenteTemporaneo.setNome(request.getParameter("nome"));
         utenteTemporaneo.setCognome(request.getParameter("cognome"));
         utenteTemporaneo.setEmail(request.getParameter("email"));
         utenteTemporaneo.setPassword(request.getParameter("password"));
         String ruolo = request.getParameter("ruolo");
         int tipoUtente = 0;
-        if(ruolo.equals("Studente")){
-        utenteTemporaneo.setRuolo("S");
-        tipoUtente = 1;
+            if(ruolo.equals("Studente")){
+            utenteTemporaneo.setRuolo("S");
+            tipoUtente = 1;
         }
         if(ruolo.equals("Professore Referente")){
             utenteTemporaneo.setRuolo("P");

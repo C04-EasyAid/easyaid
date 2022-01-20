@@ -33,15 +33,10 @@ public class StudenteDAO implements IStudenteDAO {
         bean.setPercentualeDisabilita(rs.getInt("percentuale_disabilita"));
         bean.setOreDisponibili(rs.getInt("ore_disponibili"));
       }
-
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-      // Chiude la connessione se è diverso da null
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) {
-        conn.close();
-      }
     }
     return bean;
   }

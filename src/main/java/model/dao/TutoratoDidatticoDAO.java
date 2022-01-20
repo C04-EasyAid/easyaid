@@ -55,10 +55,9 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
 
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) conn.close();
     }
+       stmt.close();
+       conn.close();
 
     return list;
   }
@@ -100,12 +99,12 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
         list.add(bean);
       }
 
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) conn.close();
     }
+
 
     return list;
   }
@@ -148,11 +147,10 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
         list.add(bean);
       }
 
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) conn.close();
     }
 
     return list;
@@ -196,12 +194,12 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
         list.add(bean);
       }
 
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) conn.close();
     }
+
 
     return list;
   }
@@ -235,11 +233,11 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
         bean.setDocente(rs.getString("docente"));
       }
       conn.commit();
+
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) conn.close();
     }
 
     return bean;
@@ -265,13 +263,14 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
       stmt.setString(8, Bean.getDocente());
       inserimento = stmt.executeUpdate() == 1;
       con.commit();
+
+      stmt.close();
+      con.close();
     } catch (SQLException e) {
       e.printStackTrace();
       inserimento = false;
-    } finally {
-      if (stmt != null) stmt.close();
-      if (con != null) con.close();
     }
+
     return inserimento;
   }
 
@@ -291,12 +290,13 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
       stmt.setInt(3, idSupporto);
       isUpdated = stmt.executeUpdate() == 1;
       conn.commit();
+
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) conn.close();
     }
+
 
     return isUpdated;
   }
@@ -316,11 +316,11 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
       stmt.setInt(2, idTutorato);
       isUpdated = stmt.executeUpdate() == 1;
       conn.commit();
+
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) conn.close();
     }
 
     return isUpdated;
@@ -341,12 +341,13 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
       stmt.setInt(2, idTutorato);
       isUpdated = stmt.executeUpdate() == 1;
       conn.commit();
+
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) conn.close();
     }
+
 
     return isUpdated;
   }
@@ -363,12 +364,14 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
       stmt.setInt(1, t.getId());
       delete = stmt.executeUpdate() == 1;
       conn.commit();
+
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) conn.close();
     }
+
+
     return delete;
   }
 }

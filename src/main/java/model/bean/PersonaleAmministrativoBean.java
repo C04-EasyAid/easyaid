@@ -2,7 +2,12 @@ package model.bean;
 
 import lombok.*;
 
-/** @author Roberto Tartaglia Classe PersonaleAmministrativoBean */
+/**
+ *  Classe PersonaleAmministrativoBean
+ *
+ * @author Roberto Tartaglia
+ *
+ * */
 @Data
 public class PersonaleAmministrativoBean {
   private String emailPersonaleAmministrativo;

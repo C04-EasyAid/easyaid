@@ -9,7 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.bean.UserBean;
-import model.dao.*;
+import model.dao.IProfessoreReferenteDAO;
+import model.dao.IStudenteDAO;
+import model.dao.ITutorDAO;
+import model.dao.IUserDAO;
+import model.dao.ProfessoreReferenteDAO;
+import model.dao.StudenteDAO;
+import model.dao.TutorDAO;
+import model.dao.UserDAO;
 import other.MyLogger;
 
 /**
@@ -90,6 +97,8 @@ public class ProfiloUtenteServlet extends HttpServlet {
                 e.printStackTrace();
               }
               break;
+            default: System.out.println ("Nessuno dei casi di switch");
+            break;
           }
         } catch (SQLException | ClassNotFoundException e) {
           e.printStackTrace();

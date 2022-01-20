@@ -87,8 +87,8 @@ class ProfiloUtenteTest {
     StudenteBean studente = new StudenteBean();
     studente.setEmail("abaglio9@studenti.unisa.it");
 
-    istudenteDao studenteDao = mock(model.dao.studenteDao.class);
-    iuserDao userDao = mock(UserDAO.class);
+    IStudenteDAO studenteDao = mock(StudenteDAO.class);
+    IUserDAO userDao = mock(UserDAO.class);
 
     servlet.setStudenteDao(studenteDao);
     servlet.setUserdao(userDao);
@@ -118,8 +118,8 @@ class ProfiloUtenteTest {
     TutorBean tutor = new TutorBean();
     tutor.setEmailTutor("lorenzorossi1@studenti.unisa.it");
 
-    itutorDao tutorDao = mock(TutorDAO.class);
-    iuserDao userDao = mock(UserDAO.class);
+    ITutorDAO tutorDao = mock(TutorDAO.class);
+    IUserDAO userDao = mock(UserDAO.class);
 
     servlet.setTutorDao(tutorDao);
     servlet.setUserdao(userDao);
@@ -150,8 +150,8 @@ class ProfiloUtenteTest {
     ProfessoreReferenteBean professore = new ProfessoreReferenteBean();
     professore.setEmail("lorenzorossi1@studenti.unisa.it");
 
-    iprofessorereferenteDao professoreDao = mock(professorereferenteDao.class);
-    iuserDao userDao = mock(UserDAO.class);
+    IProfessoreReferenteDAO professoreDao = mock(ProfessoreReferenteDAO.class);
+    IUserDAO userDao = mock(UserDAO.class);
 
     servlet.setProfessoreDao(professoreDao);
     servlet.setUserdao(userDao);

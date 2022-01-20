@@ -2,8 +2,8 @@ package control;
 
 import model.bean.LezioneBean;
 import model.bean.UserBean;
-import model.dao.ilezioneDao;
-import model.dao.itutoratodidatticoDao;
+import model.dao.ILezioneDAO;
+import model.dao.ITutoratoDidatticoDAO;
 import model.dao.LezioneDAO;
 import model.dao.TutoratoDidatticoDAO;
 import org.junit.jupiter.api.BeforeEach;
@@ -72,8 +72,8 @@ class ConfermaLezioneTest {
     lezione.setTutorato(24);
     request.getSession().setAttribute("lezione", lezione);
 
-    ilezioneDao lezioneDao = mock(LezioneDAO.class);
-    itutoratodidatticoDao tutoratoDao = mock(TutoratoDidatticoDAO.class);
+    ILezioneDAO lezioneDao = mock(LezioneDAO.class);
+    ITutoratoDidatticoDAO tutoratoDao = mock(TutoratoDidatticoDAO.class);
 
     servlet.setlezioneDao(lezioneDao);
     servlet.settutoratodidatticoDao(tutoratoDao);
@@ -108,8 +108,8 @@ class ConfermaLezioneTest {
     lezione.setTutorato(24);
     request.getSession().setAttribute("lezione", lezione);
 
-    ilezioneDao lezioneDao = mock(LezioneDAO.class);
-    itutoratodidatticoDao tutoratoDao = mock(TutoratoDidatticoDAO.class);
+    ILezioneDAO lezioneDao = mock(LezioneDAO.class);
+    ITutoratoDidatticoDAO tutoratoDao = mock(TutoratoDidatticoDAO.class);
 
     servlet.setlezioneDao(lezioneDao);
     servlet.settutoratodidatticoDao(tutoratoDao);

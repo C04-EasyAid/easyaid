@@ -12,10 +12,10 @@ import javax.servlet.http.HttpSession;
 import model.bean.CommentoBean;
 import model.bean.LezioneBean;
 import model.bean.UserBean;
-import model.dao.icommentoDao;
-import model.dao.ilezioneDao;
+import model.dao.ICommentoDAO;
+import model.dao.ILezioneDAO;
+import model.dao.CommentoDAO;
 import model.dao.LezioneDAO;
-import model.dao.commentodao;
 import other.MyLogger;
 
 /**
@@ -28,14 +28,14 @@ import other.MyLogger;
 public class SingolaLezioneServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "SingolaLezioneServlet";
-  private ilezioneDao lezioneDao = new LezioneDAO();
-  private icommentoDao commentiDao = new commentodao();
+  private ILezioneDAO lezioneDao = new LezioneDAO();
+  private ICommentoDAO commentiDao = new CommentoDAO();
 
-  public void setLezioneDao(ilezioneDao lezioneDao) {
+  public void setLezioneDao(ILezioneDAO lezioneDao) {
     this.lezioneDao = lezioneDao;
   }
 
-  public void setCommentiDao(icommentoDao commentiDao) {
+  public void setCommentiDao(ICommentoDAO commentiDao) {
     this.commentiDao = commentiDao;
   }
 

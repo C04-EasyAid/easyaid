@@ -12,11 +12,11 @@ import model.bean.LezioneBean;
 import model.bean.StudenteBean;
 import model.bean.TutorBean;
 import model.bean.UserBean;
-import model.dao.commentodao;
-import model.dao.icommentoDao;
-import model.dao.istudenteDao;
-import model.dao.itutorDao;
-import model.dao.studenteDao;
+import model.dao.CommentoDAO;
+import model.dao.ICommentoDAO;
+import model.dao.IStudenteDAO;
+import model.dao.ITutorDAO;
+import model.dao.StudenteDAO;
 import model.dao.TutorDAO;
 import other.MyLogger;
 
@@ -31,19 +31,19 @@ import other.MyLogger;
 public class CommentoServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "CommentoServlet";
-  private icommentoDao daoC = new commentodao();
-  private itutorDao daoT = new TutorDAO();
-  private istudenteDao daoS = new studenteDao();
+  private ICommentoDAO daoC = new CommentoDAO();
+  private ITutorDAO daoT = new TutorDAO();
+  private IStudenteDAO daoS = new StudenteDAO();
 
-  public void setDaoC(icommentoDao daoC) {
+  public void setDaoC(ICommentoDAO daoC) {
     this.daoC = daoC;
   }
 
-  public void setDaoT(itutorDao daoT) {
+  public void setDaoT(ITutorDAO daoT) {
     this.daoT = daoT;
   }
 
-  public void setDaoS(istudenteDao daoS) {
+  public void setDaoS(IStudenteDAO daoS) {
     this.daoS = daoS;
   }
 

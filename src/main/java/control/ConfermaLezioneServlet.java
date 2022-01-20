@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.bean.LezioneBean;
 import model.bean.UserBean;
-import model.dao.ilezioneDao;
-import model.dao.itutoratodidatticoDao;
+import model.dao.ILezioneDAO;
+import model.dao.ITutoratoDidatticoDAO;
 import model.dao.LezioneDAO;
 import model.dao.TutoratoDidatticoDAO;
 import other.MyLogger;
@@ -28,14 +28,14 @@ import other.MyLogger;
 public class ConfermaLezioneServlet extends HttpServlet {
   private static MyLogger log = MyLogger.getInstance();
   private static String myClass = "ConfermaLezioneServlet";
-  private ilezioneDao lezioneDao = new LezioneDAO();
-  private itutoratodidatticoDao tutoratoDidatticoDao = new TutoratoDidatticoDAO();
+  private ILezioneDAO lezioneDao = new LezioneDAO();
+  private ITutoratoDidatticoDAO tutoratoDidatticoDao = new TutoratoDidatticoDAO();
 
-  public void setlezioneDao(ilezioneDao lezioneDao) {
+  public void setlezioneDao(ILezioneDAO lezioneDao) {
     this.lezioneDao = lezioneDao;
   }
 
-  public void settutoratodidatticoDao(itutoratodidatticoDao tutoratodidatticoDao) {
+  public void settutoratodidatticoDao(ITutoratoDidatticoDAO tutoratodidatticoDao) {
     this.tutoratoDidatticoDao = tutoratodidatticoDao;
   }
 

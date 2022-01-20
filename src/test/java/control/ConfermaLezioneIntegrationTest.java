@@ -2,8 +2,8 @@ package control;
 
 import model.bean.LezioneBean;
 import model.bean.UserBean;
-import model.dao.ilezioneDao;
-import model.dao.itutoratodidatticoDao;
+import model.dao.ILezioneDAO;
+import model.dao.ITutoratoDidatticoDAO;
 import model.dao.LezioneDAO;
 import model.dao.TutoratoDidatticoDAO;
 import org.junit.jupiter.api.BeforeEach;
@@ -48,8 +48,8 @@ class ConfermaLezioneIntegrationTest {
         lezione.setTutorato(18);
         request.getSession().setAttribute("lezione",lezione);
 
-        ilezioneDao lezioneDao = new LezioneDAO();
-        itutoratodidatticoDao tutoratoDao = new TutoratoDidatticoDAO();
+        ILezioneDAO lezioneDao = new LezioneDAO();
+        ITutoratoDidatticoDAO tutoratoDao = new TutoratoDidatticoDAO();
         servlet.setlezioneDao(lezioneDao);
         servlet.settutoratodidatticoDao(tutoratoDao);
         servlet.doGet(request,response);
@@ -71,8 +71,8 @@ class ConfermaLezioneIntegrationTest {
         lezione.setTutorato(18);
         request.getSession().setAttribute("lezione",lezione);
 
-        ilezioneDao lezioneDao = new LezioneDAO();
-        itutoratodidatticoDao tutoratoDao = new TutoratoDidatticoDAO();
+        ILezioneDAO lezioneDao = new LezioneDAO();
+        ITutoratoDidatticoDAO tutoratoDao = new TutoratoDidatticoDAO();
         servlet.setlezioneDao(lezioneDao);
         servlet.settutoratodidatticoDao(tutoratoDao);
 

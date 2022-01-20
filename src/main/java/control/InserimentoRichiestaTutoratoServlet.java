@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
-import model.dao.itutoratodidatticoDao;
+import model.dao.ITutoratoDidatticoDAO;
 import model.dao.TutoratoDidatticoDAO;
 import other.MyLogger;
 
@@ -26,11 +26,11 @@ public class InserimentoRichiestaTutoratoServlet extends HttpServlet {
   private static MyLogger log = MyLogger.getInstance();
   private static String myClass = "InserimentoRichiestaTutoratoServlet";
 
-  public void setDao(itutoratodidatticoDao dao) {
+  public void setDao(ITutoratoDidatticoDAO dao) {
     this.dao = dao;
   }
 
-  private itutoratodidatticoDao dao = new TutoratoDidatticoDAO();
+  private ITutoratoDidatticoDAO dao = new TutoratoDidatticoDAO();
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)

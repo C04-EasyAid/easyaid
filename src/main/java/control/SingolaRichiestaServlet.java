@@ -13,8 +13,8 @@ import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
 import model.dao.ISupportoEsameDAO;
-import model.dao.itutoratodidatticoDao;
-import model.dao.supportoesameDao;
+import model.dao.ITutoratoDidatticoDAO;
+import model.dao.SupportoEsameDAO;
 import model.dao.TutoratoDidatticoDAO;
 import other.MyLogger;
 
@@ -28,10 +28,10 @@ public class SingolaRichiestaServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "SingolaRichiestaServlet";
   @Serial private static final long serialVersionUID = 1L;
-  private itutoratodidatticoDao tutoratoDao = new TutoratoDidatticoDAO();
-  private ISupportoEsameDAO supportoDao = new supportoesameDao();
+  private ITutoratoDidatticoDAO tutoratoDao = new TutoratoDidatticoDAO();
+  private ISupportoEsameDAO supportoDao = new SupportoEsameDAO();
 
-  public void setTutoratoDao(itutoratodidatticoDao tutoratoDao) {
+  public void setTutoratoDao(ITutoratoDidatticoDAO tutoratoDao) {
     this.tutoratoDao = tutoratoDao;
   }
 

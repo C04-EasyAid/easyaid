@@ -2,8 +2,8 @@ package control;
 
 import model.bean.UserBean;
 import model.dao.ISupportoEsameDAO;
-import model.dao.itutoratodidatticoDao;
-import model.dao.supportoesameDao;
+import model.dao.ITutoratoDidatticoDAO;
+import model.dao.SupportoEsameDAO;
 import model.dao.TutoratoDidatticoDAO;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -32,8 +32,8 @@ class ViewRichiesteServizioIntegrationTest {
   void testVisualizzaRichiesteServizio()
       throws SQLException, ClassNotFoundException, ServletException, IOException {
 
-    ISupportoEsameDAO supportoEsameDao = new supportoesameDao();
-    itutoratodidatticoDao tutoratoDidatticoDao = new TutoratoDidatticoDAO();
+    ISupportoEsameDAO supportoEsameDao = new SupportoEsameDAO();
+    ITutoratoDidatticoDAO tutoratoDidatticoDao = new TutoratoDidatticoDAO();
     UserBean bean = new UserBean();
     bean.setNome("Antonio");
     bean.setCognome("De Biase");
@@ -41,8 +41,8 @@ class ViewRichiesteServizioIntegrationTest {
     bean.setPassword("Antonio#DB123");
     bean.setRuolo("T");
     request.getSession().setAttribute("utente", bean);
-    servlet.setEsameDao(supportoEsameDao);
-    servlet.settutoratoDao(tutoratoDidatticoDao);
+    servlet.setEsameDAO(supportoEsameDao);
+    servlet.setTutoratoDAO(tutoratoDidatticoDao);
     servlet.doGet(request, response);
 
     assertEquals("view/BachecaTutorPage.jsp", response.getRedirectedUrl());

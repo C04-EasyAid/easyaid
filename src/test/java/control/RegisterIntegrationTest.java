@@ -1,7 +1,7 @@
 package control;
 
 import model.bean.UserBean;
-import model.dao.iuserDao;
+import model.dao.IUserDAO;
 import model.dao.UserDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,7 +31,7 @@ class RegisterIntegrationTest {
 
   @Test
   void TestInserimentoStudente() throws ServletException, IOException, SQLException {
-    iuserDao userDAO = new UserDAO();
+    IUserDAO userDAO = new UserDAO();
 
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
@@ -68,7 +68,7 @@ class RegisterIntegrationTest {
 
   @Test
   void TestInserimentoTutor() throws ServletException, IOException, SQLException {
-    iuserDao userDAO = new UserDAO();
+    IUserDAO userDAO = new UserDAO();
 
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
@@ -103,7 +103,7 @@ class RegisterIntegrationTest {
 
   @Test
   void TestInserimentoProfessoreReferente() throws ServletException, IOException, SQLException {
-    iuserDao userDAO = new UserDAO();
+    IUserDAO userDAO = new UserDAO();
     UserBean persAdmin = new UserBean();
 
     persAdmin.setEmail("cgigli91@unisa.it");

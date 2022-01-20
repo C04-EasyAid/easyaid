@@ -12,6 +12,11 @@ import lombok.*;
 public class PersonaleAmministrativoBean {
   private String emailPersonaleAmministrativo;
 
+  /**
+   * Costruttore.
+   *
+   * @param emailPersonaleAmministrativo
+   */
   public PersonaleAmministrativoBean(String emailPersonaleAmministrativo) {
     this.emailPersonaleAmministrativo = emailPersonaleAmministrativo;
   }

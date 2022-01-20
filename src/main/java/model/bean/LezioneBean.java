@@ -23,9 +23,8 @@ public class LezioneBean {
   private String emailstudente;
   private Date data;
   private boolean status;
-
   // Costruttore con id
-  public LezioneBean (
+  public LezioneBean(
       int id,
       int tutorato,
       String oraInizio,

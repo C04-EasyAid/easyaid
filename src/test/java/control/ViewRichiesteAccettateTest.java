@@ -4,8 +4,8 @@ import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
 import model.dao.ISupportoEsameDAO;
-import model.dao.itutoratodidatticoDao;
-import model.dao.supportoesameDao;
+import model.dao.ITutoratoDidatticoDAO;
+import model.dao.SupportoEsameDAO;
 import model.dao.TutoratoDidatticoDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -63,8 +63,8 @@ class ViewRichiesteAccettateTest {
   void viewRichiesteAccettateTest3()
       throws ServletException, IOException, SQLException, ClassNotFoundException {
     MockitoAnnotations.initMocks(this);
-    ISupportoEsameDAO supportoEsameDao = mock(supportoesameDao.class);
-    itutoratodidatticoDao tutoratoDidatticoDao = mock(TutoratoDidatticoDAO.class);
+    ISupportoEsameDAO supportoEsameDao = mock(SupportoEsameDAO.class);
+    ITutoratoDidatticoDAO tutoratoDidatticoDao = mock(TutoratoDidatticoDAO.class);
     UserBean bean = new UserBean();
     bean.setEmail("adebiase41@studenti.unisa.it");
     bean.setRuolo("T");

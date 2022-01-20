@@ -3,9 +3,9 @@ package control;
 import model.bean.CommentoBean;
 import model.bean.LezioneBean;
 import model.bean.UserBean;
-import model.dao.commentodao;
-import model.dao.icommentoDao;
-import model.dao.ilezioneDao;
+import model.dao.CommentoDAO;
+import model.dao.ICommentoDAO;
+import model.dao.ILezioneDAO;
 import model.dao.LezioneDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -48,8 +48,8 @@ class SingolaLezioneIntegrationTest {
     lezione.setId(11);
     request.setParameter("lezione", String.valueOf(lezione.getId()));
 
-    ilezioneDao lezioneDao = new LezioneDAO();
-    icommentoDao commentoDao = new commentodao();
+    ILezioneDAO lezioneDao = new LezioneDAO();
+    ICommentoDAO commentoDao = new CommentoDAO();
     servlet.setLezioneDao(lezioneDao);
     servlet.setCommentiDao(commentoDao);
     lezione = lezioneDao.doRetrieveLezioneById(lezione.getId());
@@ -76,8 +76,8 @@ class SingolaLezioneIntegrationTest {
     lezione.setId(11);
     request.setParameter("lezione", String.valueOf(lezione.getId()));
 
-    ilezioneDao lezioneDao = new LezioneDAO();
-    icommentoDao commentoDao = new commentodao();
+    ILezioneDAO lezioneDao = new LezioneDAO();
+    ICommentoDAO commentoDao = new CommentoDAO();
     servlet.setLezioneDao(lezioneDao);
     servlet.setCommentiDao(commentoDao);
     lezione = lezioneDao.doRetrieveLezioneById(lezione.getId());

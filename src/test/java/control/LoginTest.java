@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Objects;
 import model.bean.UserBean;
-import model.dao.iuserDao;
+import model.dao.IUserDAO;
 import model.dao.UserDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -47,7 +47,7 @@ class LoginTest {
     bean.setEmail(email);
     bean.setPassword(password);
 
-    iuserDao userDao = mock(UserDAO.class);
+    IUserDAO userDao = mock(UserDAO.class);
     when(userDao.doRetrieveUtente(bean)).thenReturn(bean);
     servlet.setDao(userDao);
     servlet.doGet(request, response);
@@ -70,7 +70,7 @@ class LoginTest {
     bean.setEmail(email);
     bean.setPassword(password);
 
-    iuserDao userDao = mock(UserDAO.class);
+    IUserDAO userDao = mock(UserDAO.class);
     when(userDao.doRetrieveUtente(bean)).thenReturn(bean);
     servlet.setDao(userDao);
     servlet.doGet(request, response);
@@ -83,7 +83,7 @@ class LoginTest {
   @Test
   void testLogin3() throws IOException, SQLException, ClassNotFoundException {
     MockitoAnnotations.initMocks(this);
-    iuserDao userDao = mock(UserDAO.class);
+    IUserDAO userDao = mock(UserDAO.class);
 
     String email = "abaglio9@studenti.unisa.it";
     request.setParameter("Email", email);

@@ -14,6 +14,12 @@ public class ProfessoreReferenteBean {
   private String email;
   private String dipartimento;
 
+  /**
+   * Costruttore.
+   *
+   * @param email
+   * @param dipartimento
+   */
   public ProfessoreReferenteBean(String email, String dipartimento) {
     this.email = email;
     this.dipartimento = dipartimento;

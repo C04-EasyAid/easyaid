@@ -17,6 +17,15 @@ public class StudenteBean {
   private int oreDisponibili;
   private int percentualeDisabilita;
 
+  /**
+   * Costruttore.
+   *
+   * @param email
+   * @param tipoDisabilita
+   * @param specificheDisturbo
+   * @param oreDisponibili
+   * @param percentualeDisabilita
+   */
   public StudenteBean(
       String email,
       String tipoDisabilita,

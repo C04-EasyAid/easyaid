@@ -2,7 +2,7 @@ package control;
 
 import model.bean.LezioneBean;
 import model.bean.UserBean;
-import model.dao.ilezioneDao;
+import model.dao.ILezioneDAO;
 import model.dao.LezioneDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -37,7 +37,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         void testInserimentoNuovaLezione() throws ParseException, ServletException, IOException {
 
             UserBean userBean = new UserBean();
-            ilezioneDao lezioneDAO = new LezioneDAO();
+            ILezioneDAO lezioneDAO = new LezioneDAO();
             userBean.setNome("Lorenzo");
             userBean.setCognome("Rossi");
             userBean.setEmail("lorenzorossi1@studenti.unisa.it");

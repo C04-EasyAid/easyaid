@@ -4,8 +4,8 @@ import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
 import model.dao.ISupportoEsameDAO;
-import model.dao.itutoratodidatticoDao;
-import model.dao.supportoesameDao;
+import model.dao.ITutoratoDidatticoDAO;
+import model.dao.SupportoEsameDAO;
 import model.dao.TutoratoDidatticoDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -39,7 +39,7 @@ class ApprovazioneRichiestaTest {
   void testApprovazioneRichiesta1() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
 
-    itutoratodidatticoDao tutoratoDAO = mock(TutoratoDidatticoDAO.class);
+    ITutoratoDidatticoDAO tutoratoDAO = mock(TutoratoDidatticoDAO.class);
 
     UserBean userBean = new UserBean();
 
@@ -68,7 +68,7 @@ class ApprovazioneRichiestaTest {
   void testApprovazioneRichiesta2() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
 
-    itutoratodidatticoDao tutoratoDAO = mock(TutoratoDidatticoDAO.class);
+    ITutoratoDidatticoDAO tutoratoDAO = mock(TutoratoDidatticoDAO.class);
 
     UserBean userBean = new UserBean();
 
@@ -97,7 +97,7 @@ class ApprovazioneRichiestaTest {
   void testApprovazioneRichiesta3() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
 
-    ISupportoEsameDAO supportoDAO = mock(supportoesameDao.class);
+    ISupportoEsameDAO supportoDAO = mock(SupportoEsameDAO.class);
 
     UserBean userBean = new UserBean();
 
@@ -126,7 +126,7 @@ class ApprovazioneRichiestaTest {
   void testApprovazioneRichiesta4() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
 
-    ISupportoEsameDAO supportoDAO = mock(supportoesameDao.class);
+    ISupportoEsameDAO supportoDAO = mock(SupportoEsameDAO.class);
 
     UserBean userBean = new UserBean();
 

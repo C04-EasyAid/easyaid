@@ -2,8 +2,8 @@ package control;
 
 import model.bean.UserBean;
 import model.dao.ISupportoEsameDAO;
-import model.dao.itutoratodidatticoDao;
-import model.dao.supportoesameDao;
+import model.dao.ITutoratoDidatticoDAO;
+import model.dao.SupportoEsameDAO;
 import model.dao.TutoratoDidatticoDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -35,8 +35,8 @@ class ViewListaRichiesteEffettuateIntegrationTest {
   @Test
   void testViewListarichiesteEffettuate()
       throws SQLException, ClassNotFoundException, ServletException, IOException {
-    itutoratodidatticoDao tutoratoDao = new TutoratoDidatticoDAO();
-    ISupportoEsameDAO supportoDao = new supportoesameDao();
+    ITutoratoDidatticoDAO tutoratoDao = new TutoratoDidatticoDAO();
+    ISupportoEsameDAO supportoDao = new SupportoEsameDAO();
 
     servlet.setSupportoDao(supportoDao);
     servlet.setTutoratoDao(tutoratoDao);

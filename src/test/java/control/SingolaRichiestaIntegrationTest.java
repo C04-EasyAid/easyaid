@@ -6,7 +6,7 @@ package control;
 
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
-import model.dao.itutoratodidatticoDao;
+import model.dao.ITutoratoDidatticoDAO;
 import model.dao.TutoratoDidatticoDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -35,7 +35,7 @@ class SingolaRichiestaIntegrationTest {
     UserBean bean = new UserBean();
     request.getSession().setAttribute("utente", bean);
 
-    itutoratodidatticoDao tutoratoDao = new TutoratoDidatticoDAO();
+    ITutoratoDidatticoDAO tutoratoDao = new TutoratoDidatticoDAO();
     servlet.setTutoratoDao(tutoratoDao);
 
     TutoratoDidatticoBean esameBean = new TutoratoDidatticoBean();

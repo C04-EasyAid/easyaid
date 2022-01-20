@@ -38,9 +38,9 @@ class LezioniTest {
   void testViewLezioni1()
       throws ServletException, IOException, SQLException, ClassNotFoundException {
     MockitoAnnotations.initMocks(this);
-    ilezioneDao lezioneDao = mock(LezioneDAO.class);
-    istudenteDao studenteDao = mock(model.dao.studenteDao.class);
-    itutoratodidatticoDao tutoratoDidatticoDao = mock(TutoratoDidatticoDAO.class);
+    ILezioneDAO lezioneDao = mock(LezioneDAO.class);
+    IStudenteDAO studenteDao = mock(StudenteDAO.class);
+    ITutoratoDidatticoDAO tutoratoDidatticoDao = mock(TutoratoDidatticoDAO.class);
     StudenteBean studenteBean = new StudenteBean();
     UserBean userBean = new UserBean();
 
@@ -81,9 +81,9 @@ class LezioniTest {
   void testViewLezioni3()
       throws ServletException, IOException, SQLException, ClassNotFoundException {
     MockitoAnnotations.initMocks(this);
-    ilezioneDao lezioneDao = mock(LezioneDAO.class);
-    itutorDao tutorDao = mock(TutorDAO.class);
-    itutoratodidatticoDao tutoratoDidatticoDao = mock(TutoratoDidatticoDAO.class);
+    ILezioneDAO lezioneDao = mock(LezioneDAO.class);
+    ITutorDAO tutorDao = mock(TutorDAO.class);
+    ITutoratoDidatticoDAO tutoratoDidatticoDao = mock(TutoratoDidatticoDAO.class);
     TutorBean tutorBean = new TutorBean();
     UserBean userBean = new UserBean();
 

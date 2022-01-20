@@ -4,8 +4,8 @@ import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
 import model.dao.ISupportoEsameDAO;
-import model.dao.itutoratodidatticoDao;
-import model.dao.supportoesameDao;
+import model.dao.ITutoratoDidatticoDAO;
+import model.dao.SupportoEsameDAO;
 import model.dao.TutoratoDidatticoDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -50,7 +50,7 @@ class SingolaRichiestaTest {
     UserBean bean = new UserBean();
     request.getSession().setAttribute("utente", bean);
 
-    ISupportoEsameDAO supportoDao = mock(supportoesameDao.class);
+    ISupportoEsameDAO supportoDao = mock(SupportoEsameDAO.class);
     servlet.setSupportoDao(supportoDao);
 
     SupportoEsameBean esameBean = new SupportoEsameBean();
@@ -71,7 +71,7 @@ class SingolaRichiestaTest {
     UserBean bean = new UserBean();
     request.getSession().setAttribute("utente", bean);
 
-    itutoratodidatticoDao tutoratoDao = mock(TutoratoDidatticoDAO.class);
+    ITutoratoDidatticoDAO tutoratoDao = mock(TutoratoDidatticoDAO.class);
     servlet.setTutoratoDao(tutoratoDao);
 
     TutoratoDidatticoBean esameBean = new TutoratoDidatticoBean();

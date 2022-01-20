@@ -13,8 +13,8 @@ import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
 import model.dao.ISupportoEsameDAO;
-import model.dao.itutoratodidatticoDao;
-import model.dao.supportoesameDao;
+import model.dao.ITutoratoDidatticoDAO;
+import model.dao.SupportoEsameDAO;
 import model.dao.TutoratoDidatticoDAO;
 import other.MyLogger;
 
@@ -29,15 +29,15 @@ import other.MyLogger;
 public class ViewRichiesteServizioServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "ViewRichiesteServizioServlet";
-  private ISupportoEsameDAO esameDao = new supportoesameDao();
-  private itutoratodidatticoDao tutoratoDao = new TutoratoDidatticoDAO();
+  private ISupportoEsameDAO esameDAO = new SupportoEsameDAO();
+  private ITutoratoDidatticoDAO tutoratoDAO = new TutoratoDidatticoDAO();
 
-  public void setEsameDao(ISupportoEsameDAO esameDao) {
-    this.esameDao = esameDao;
+  public void setEsameDAO(ISupportoEsameDAO esameDAO) {
+    this.esameDAO = esameDAO;
   }
 
-  public void settutoratoDao(itutoratodidatticoDao tutoratoDao) {
-    this.tutoratoDao = tutoratoDao;
+  public void setTutoratoDAO(ITutoratoDidatticoDAO tutoratoDAO) {
+    this.tutoratoDAO = tutoratoDAO;
   }
 
   @Override
@@ -50,9 +50,9 @@ public class ViewRichiesteServizioServlet extends HttpServlet {
       if (userLoggato.isTutor()) {
         try {
           List<SupportoEsameBean> listRichiesteSupportoEsame =
-              esameDao.doRetrieveRichiesteSupportoEsameNonAccettate();
+              esameDAO.doRetrieveRichiesteSupportoEsameNonAccettate();
           List<TutoratoDidatticoBean> listRichiesteTutoratoDidattico =
-              tutoratoDao.doRetrieveRichiesteTutoratoDidatticoNonAccettate();
+              tutoratoDAO.doRetrieveRichiesteTutoratoDidatticoNonAccettate();
           session.setAttribute("richiesteEsamiNonAccettate", listRichiesteSupportoEsame);
           session.setAttribute("richiesteTutoratoNonAccettate", listRichiesteTutoratoDidattico);
 

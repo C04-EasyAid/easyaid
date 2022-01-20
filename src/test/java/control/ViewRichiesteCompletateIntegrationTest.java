@@ -2,8 +2,8 @@ package control;
 
 import model.bean.UserBean;
 import model.dao.ISupportoEsameDAO;
-import model.dao.itutoratodidatticoDao;
-import model.dao.supportoesameDao;
+import model.dao.ITutoratoDidatticoDAO;
+import model.dao.SupportoEsameDAO;
 import model.dao.TutoratoDidatticoDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -33,8 +33,8 @@ class ViewRichiesteCompletateIntegrationTest {
   void testVisualizzaRichiesteServizio()
       throws SQLException, ClassNotFoundException, ServletException, IOException {
 
-    ISupportoEsameDAO supportoEsameDao = new supportoesameDao();
-    itutoratodidatticoDao tutoratoDidatticoDao = new TutoratoDidatticoDAO();
+    ISupportoEsameDAO supportoEsameDao = new SupportoEsameDAO();
+    ITutoratoDidatticoDAO tutoratoDidatticoDao = new TutoratoDidatticoDAO();
     UserBean bean = new UserBean();
     bean.setNome("Aldo");
     bean.setCognome("De Vito");
@@ -42,8 +42,8 @@ class ViewRichiesteCompletateIntegrationTest {
     bean.setPassword("Aldo#Dev#1103");
     bean.setRuolo("P");
     request.getSession().setAttribute("utente", bean);
-    servlet.setesamedao(supportoEsameDao);
-    servlet.settutoratoDao(tutoratoDidatticoDao);
+    servlet.setEsameDAO(supportoEsameDao);
+    servlet.setTutoratoDAO(tutoratoDidatticoDao);
 
     servlet.doGet(request, response);
 

@@ -47,8 +47,8 @@ class ProfiloUtenteIntegrationTest {
     StudenteBean studente = new StudenteBean();
     studente.setEmail("abaglio9@studenti.unisa.it");
 
-    istudenteDao studenteDao = new studenteDao();
-    iuserDao userDao = new UserDAO();
+    IStudenteDAO studenteDao = new StudenteDAO();
+    IUserDAO userDao = new UserDAO();
 
     servlet.setStudenteDao(studenteDao);
     servlet.setUserdao(userDao);
@@ -74,8 +74,8 @@ class ProfiloUtenteIntegrationTest {
     TutorBean tutor = new TutorBean();
     tutor.setEmailTutor("lorenzorossi1@studenti.unisa.it");
 
-    itutorDao tutorDao = new TutorDAO();
-    iuserDao userDao = new UserDAO();
+    ITutorDAO tutorDao = new TutorDAO();
+    IUserDAO userDao = new UserDAO();
 
     servlet.setTutorDao(tutorDao);
     servlet.setUserdao(userDao);
@@ -102,8 +102,8 @@ class ProfiloUtenteIntegrationTest {
     ProfessoreReferenteBean professore = new ProfessoreReferenteBean();
     professore.setEmail("lorenzorossi1@studenti.unisa.it");
 
-    iprofessorereferenteDao professoreDao = mock(professorereferenteDao.class);
-    iuserDao userDao = new UserDAO();
+    IProfessoreReferenteDAO professoreDao = mock(ProfessoreReferenteDAO.class);
+    IUserDAO userDao = new UserDAO();
 
     servlet.setProfessoreDao(professoreDao);
     servlet.setUserdao(userDao);

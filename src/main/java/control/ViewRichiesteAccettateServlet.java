@@ -13,8 +13,8 @@ import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
 import model.dao.ISupportoEsameDAO;
-import model.dao.itutoratodidatticoDao;
-import model.dao.supportoesameDao;
+import model.dao.ITutoratoDidatticoDAO;
+import model.dao.SupportoEsameDAO;
 import model.dao.TutoratoDidatticoDAO;
 import other.MyLogger;
 
@@ -29,14 +29,14 @@ import other.MyLogger;
 public class ViewRichiesteAccettateServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "ViewRichiesteAccettateServlet";
-  private ISupportoEsameDAO supportoDao = new supportoesameDao();
-  private itutoratodidatticoDao tutoratoDao = new TutoratoDidatticoDAO();
+  private ISupportoEsameDAO supportoDao = new SupportoEsameDAO();
+  private ITutoratoDidatticoDAO tutoratoDao = new TutoratoDidatticoDAO();
 
   public void setSupportoDao(ISupportoEsameDAO supportoDao) {
     this.supportoDao = supportoDao;
   }
 
-  public void setTutoratoDao(itutoratodidatticoDao tutoratoDao) {
+  public void setTutoratoDao(ITutoratoDidatticoDAO tutoratoDao) {
     this.tutoratoDao = tutoratoDao;
   }
 

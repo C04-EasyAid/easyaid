@@ -5,7 +5,7 @@
   Time: 16:42
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -16,8 +16,6 @@
     <meta name="author" content="Webestica.com">
     <meta name="description" content="Eduport- LMS, Education and Course Theme">
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,7 +35,6 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7N7LGGGWT1"></script>
 </head>
 <body>
-
 <header>
     <%@include file="../fragment/navbar.jsp"%>
 </header>
@@ -51,7 +48,7 @@
             <div class="alert alert-info d-flex align-items-center" role="alert">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                      class="bi bi-arrow-up-circle-fill flex-shrink-0 me-2" viewBox="0 0 16 16">
-                    <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+                    <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"></path>
                 </svg>
                 <div>
                     <%=alert%>
@@ -75,7 +72,7 @@
                     <div class="card-body" style="height: 20em;">
                         <h4 class="card-title text-light">Supporto Esame</h4>
                         <p class="card-text text-light">Un tutor verrà assegnato per dare supporto per l'esame</p>
-                        <button type="button" class="btn btn-light  text-success" data-bs-toggle="modal" data-bs-target="#richiestaSupportoEsame" style="margin-top: 8.7em;width: 8em;"> Richiedi
+                        <button type="button" class="btn btn-light  text-success" data-bs-toggle="modal" data-bs-target="#richiestaSupportoEsame" onclick="setData()" style="margin-top: 8.7em;width: 8em;"> Richiedi
                         </button>
                     </div>
                 </div>
@@ -83,30 +80,31 @@
                     <div class="modal-dialog modal-xl">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="richiestaSupportoEsame">Richiesta Supporto Esame</h5>
+                                <h5 class="modal-title" id="SupportoEsame">Richiesta Supporto Esame</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="../inserisciSupporto" method="get" onsubmit="return validazioneRichiestaSupporto();">
+                                <form action="../inserisciSupporto" method="post" onsubmit="return validazioneRichiestaSupporto();">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label for="message-text" class="col-form-label">Insegnamento:</label>
-                                                <input type="text" name="insegnamento" class="form-control" id="recipient-name" required>
+                                                <label for="message-text" class="col-form-label">Insegnamento:
+                                                <input type="text" name="insegnamento" class="form-control" id="insegnamentoS" required></label>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Modalità di
-                                                    Esame:</label>
+                                                    Esame:
                                                 <select name="modalita_esame" style=" width:19.6em" class="form-control">
                                                     <option value="">Seleziona Modalità</option>
                                                     <option value="Scritto"> Scritto</option>
                                                     <option value="Orale"> Orale</option>
                                                     <option value="Scritto e orale"> Scritto e orale</option>
                                                 </select>
+                                                </label>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Tipo di
-                                                    Assistenza:</label>
+                                                    Assistenza:
                                                 <select name="tipo_di_assistenza" style=" width:19.6em" class="form-control">
                                                     <option value="">Seleziona Assistenza</option>
                                                     <option value="Nessuno"> Nessuna Assistenza</option>
@@ -118,10 +116,11 @@
                                                     <option value="OSA">OSA</option>
                                                     <option value="Interprete L.I.S">Interprete L.I.S</option>
                                                 </select>
+                                                </label>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Eventuali
-                                                    Ausili:</label>
+                                                    Ausili:
                                                 <select name="eventuali_ausili" style=" width:19.6em" class="form-control">
                                                     <option value="">Seleziona Ausili</option>
                                                     <option value="Nessuno"> Nessun Ausilio</option>
@@ -148,19 +147,22 @@
                                                     </option>
                                                     <option value="Utilizzo di cuffie">Utilizzo di cuffie</option>
                                                 </select>
+                                                </label>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="message-text" class="col-form-label">Ore Richieste:</label>
-                                                <input type="number" name="ore_richieste" class="form-control" id="message-text" required>
+                                                <label for="message-text" class="col-form-label">Ore Richieste:
+                                                <input type="number" name="ore_richieste" class="form-control" id="ore_richieste" required>
+                                                </label>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label for="message-text" class="col-form-label">Docente:</label>
-                                                <input type="text" name="docente" class="form-control" id="message-text" required>
+                                                <label for="message-text" class="col-form-label">Docente:
+                                                <input type="text" name="docente" class="form-control" id="docente" required>
+                                                </label>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="message-text" class="col-form-label">Dipartimento:</label>
+                                                <label for="message-text" class="col-form-label">Dipartimento:
                                                 <select name="dipartimento" style=" width:19.6em" class="form-control">
                                                     <option value=""> Seleziona Dipartimento</option>
                                                     <option value="Fisica/DIF"> Fisica/DIF</option>
@@ -207,18 +209,22 @@
                                                     <option value="Studi Umanistici/DIPSUM"> Studi Umanistici/DIPSUM
                                                     </option>
                                                 </select>
+                                                </label>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="message-text" class="col-form-label">Data:</label>
-                                                <input type="date" name="data" class="form-control" id="message-text" required>
+                                                <label for="message-text" class="col-form-label">Data:
+                                                <input type="date" name="data" class="form-control" id="data" value="2020-01-01" min="2020-01-01" required>
+                                                </label>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="message-text" class="col-form-label">Ora:</label>
-                                                <input type="time" name="ora" class="form-control" id="message-text" required>
+                                                <label for="message-text" class="col-form-label">Ora:
+                                                <input type="time" name="ora" class="form-control" id="ora" required>
+                                                </label>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="message-text" class="col-form-label">Luogo:</label>
-                                                <input type="text" name="luogo" class="form-control" id="message-text" required>
+                                                <label for="message-text" class="col-form-label">Luogo:
+                                                <input type="text" name="luogo" class="form-control" id="luogo" required>
+                                                </label>
                                             </div>
                                         </div>
                                     </div>
@@ -235,24 +241,26 @@
                     <div class="modal-dialog modal-xl">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="richiestaTutoratoDidattico">Richiesta Tutorato Didattico</h5>
+                                <h5 class="modal-title" id="TutoratoDidattico">Richiesta Tutorato Didattico</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="../inserisciTutorato" method="get">
+                                <form action="../inserisciTutorato" method="post" onsubmit="return validazioneRichiestaTutorato();">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label for="message-text" class="col-form-label">Insegnamento:</label>
-                                                <input type="text" name="insegnamento" class="form-control" id="recipient-name" required>
+                                                <label for="message-text" class="col-form-label">Insegnamento:
+                                                <input type="text" name="insegnamento" class="form-control" id="insegnamento" minlength="3" maxlength="26" required>
+                                                </label>
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="message-text" class="col-form-label">Ore Richieste:</label>
-                                                <input type="number" name="ore_richieste" class="form-control" id="message-text" required>
+                                                <label for="message-text" class="col-form-label">Ore Richieste:
+                                                <input type="number" name="ore_richieste" class="form-control" id="ore_richieste_t" required>
+                                                </label>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="message-text" class="col-form-label">Dipartimento:</label>
+                                                <label for="message-text" class="col-form-label">Dipartimento:
                                                 <select name="dipartimento" style=" width:19.6em" class="form-control">
                                                     <option value=null> Seleziona Dipartimento</option>
                                                     <option value="Fisica/DIF"> Fisica/DIF</option>
@@ -299,21 +307,25 @@
                                                     <option value="Studi Umanistici/DIPSUM"> Studi Umanistici/DIPSUM
                                                     </option>
                                                 </select>
+                                                </label>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label for="message-text" class="col-form-label">Docente:</label>
-                                                <input type="text" name="docente" class="form-control" id="message-text" required>
+                                                <label for="message-text" class="col-form-label">Docente:
+                                                <input type="text" name="docente" class="form-control" minlength="5" maxlength="20" id="docente_t" required>
+                                                </label>
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="message-text" class="col-form-label">Date disponibili:</label>
-                                                <input type="text" name="date_disponibili" class="form-control" id="message-text" required>
+                                                <label for="message-text" class="col-form-label">Date disponibili:
+                                                <input type="text" oninput="setLine()" name="date_disponibili" class="form-control" id="date_disponibili" required>
+                                                </label>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="message-text" class="col-form-label">Ore disponibili:</label>
-                                                <input type="text" name="ore_disponibili" class="form-control" id="message-text" required>
+                                                <label for="message-text" class="col-form-label">Ore disponibili:
+                                                <input type="text" oninput="setLine()" name="ore_disponibili" class="form-control" id="ore_disponibili" required>
+                                                </label>
                                             </div>
                                         </div>
                                     </div>
@@ -346,6 +358,7 @@
 
 <!-- Template Functions -->
 <script src="../assets/js/functions.js"></script>
+<script src="../js/validazioneInput.js"></script>
 
 </body>
 </html>

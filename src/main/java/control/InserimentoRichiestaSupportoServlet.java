@@ -51,15 +51,14 @@ public class InserimentoRichiestaSupportoServlet extends HttpServlet {
       try {
         if (!dao.InserimentoSupportoEsame(bean)) {
           session.setAttribute("alertMsg", "L’operazione non è andata a buon fine.");
-          resp.sendRedirect("view/HomePage.jsp");
+          resp.sendRedirect("view/RichiediServizioPage.jsp");
         } else {
           session.setAttribute(
               "alertMsg", "Richiesta di servizio di supporto esame inserita con successo!");
-          resp.sendRedirect("view/HomePage.jsp");
+          resp.sendRedirect("view/RichiediServizioPage.jsp");
         }
       } catch (SQLException e) {
         log.error(myClass, "Catturata eccezione nella Servlet", e);
-        e.printStackTrace();
       }
     } else {
       session.setAttribute("alertMsg", "Permessi non concessi all'utente");
@@ -70,6 +69,6 @@ public class InserimentoRichiestaSupportoServlet extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
-    super.doPost(req, resp);
+    doGet(req, resp);
   }
 }

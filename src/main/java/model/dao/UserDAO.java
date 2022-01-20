@@ -44,18 +44,14 @@ public class UserDAO implements IUserDAO {
         user.setPassword(rs.getString("password"));
         user.setRuolo(rs.getString("ruolo"));
       }
+      stmt.close();
+      conn.close();
 
     } catch (SQLException e) {
       e.printStackTrace();
       // Chiude la connessione se è diverso da null
-    } finally {
-      if (stmt != null) {
-        stmt.close();
-      }
-      if (conn != null) {
-        conn.close();
-      }
     }
+
     return user;
   }
   // Metodo che restituisce true se è l'utente è stato inserito
@@ -100,18 +96,15 @@ public class UserDAO implements IUserDAO {
       // Esegue la query
       utente = stmt.executeUpdate() == 1;
       conn.commit();
+
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       utente = false;
       e.printStackTrace();
       // Chiude la connessione se è diverso da null
-    } finally {
-      if (stmt != null) {
-        stmt.close();
-      }
-      if (conn != null) {
-        conn.close();
-      }
     }
+
     return utente;
   }
   // Metodo che restituisce true se è lo studente è stato inserito
@@ -149,19 +142,17 @@ public class UserDAO implements IUserDAO {
         ResultSet rs = null;
         studente = stmt.executeUpdate() == 1;
         conn.commit();
+        stmt.close();
+        conn.close();
       } catch (SQLException e) {
         studente = false;
         e.printStackTrace();
         // Chiude la connessione se è diverso da null
-      } finally {
-        if (stmt != null) {
-          stmt.close();
-        }
-        if (conn != null) {
-          conn.close();
-        }
       }
-    }
+        }
+
+
+
     return studente;
   }
 
@@ -201,18 +192,16 @@ public class UserDAO implements IUserDAO {
         ResultSet rs = null;
         tutor = stmt.executeUpdate() == 1;
         conn.commit();
+
+        stmt.close();
+        conn.close();
+
       } catch (SQLException e) {
         tutor = false;
         e.printStackTrace();
         // Chiude la connessione se è diverso da null
-      } finally {
-        if (stmt != null) {
-          stmt.close();
-        }
-        if (conn != null) {
-          conn.close();
-        }
       }
+
     }
     return tutor;
   }
@@ -243,18 +232,16 @@ public class UserDAO implements IUserDAO {
         ResultSet rs = null;
         prof = stmt.executeUpdate() == 1;
         conn.commit();
+
+        stmt.close();
+        conn.close();
+
       } catch (SQLException e) {
         prof = false;
         e.printStackTrace();
         // Chiude la connessione se è diverso da null
-      } finally {
-        if (stmt != null) {
-          stmt.close();
-        }
-        if (conn != null) {
-          conn.close();
-        }
       }
+
     }
     return prof;
   }
@@ -281,15 +268,12 @@ public class UserDAO implements IUserDAO {
         bean.setRuolo(rs.getString("ruolo"));
         utenti.add(bean);
       }
+      stmt.close();
+      conn.close();
+
+
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) {
-        stmt.close();
-      }
-      if (conn != null) {
-        conn.close();
-      }
     }
     return utenti;
   }
@@ -317,18 +301,13 @@ public class UserDAO implements IUserDAO {
         user.setPassword(rs.getString("password"));
         user.setRuolo(rs.getString("ruolo"));
       }
-
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
       // Chiude la connessione se è diverso da null
-    } finally {
-      if (stmt != null) {
-        stmt.close();
-      }
-      if (conn != null) {
-        conn.close();
-      }
     }
+
     return user;
   }
 
@@ -349,16 +328,13 @@ public class UserDAO implements IUserDAO {
       ResultSet rs = null;
       delete = stmt.executeUpdate() == 1;
       conn.commit();
+
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) {
-        stmt.close();
-      }
-      if (conn != null) {
-        conn.close();
-      }
     }
+
     return delete;
   }
 }

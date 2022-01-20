@@ -140,6 +140,7 @@ class UserDAOTest {
     list.add(new UserBean());
     list.add(new UserBean());
     list.add(new UserBean());
+    list.add(new UserBean());
 
     List<UserBean> result = (List<UserBean>) dao.doRetrieveAll();
 

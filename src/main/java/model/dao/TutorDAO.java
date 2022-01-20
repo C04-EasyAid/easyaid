@@ -26,14 +26,12 @@ public class TutorDAO implements ITutorDAO {
         tutor.setOreSvolte(rs.getInt("ore_svolte"));
         tutor.setQualifica(rs.getString("qualifica"));
       }
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) {
-        conn.close();
-      }
     }
+
     return tutor;
   }
 }

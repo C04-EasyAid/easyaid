@@ -56,16 +56,12 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
         list.add(bean);
       }
 
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) {
-        stmt.close();
-      }
-      if (conn != null) {
-        conn.close();
-      }
     }
+
 
     return list;
   }
@@ -112,11 +108,11 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
         list.add(bean);
       }
 
+      stmt.close();
+      conn.close();
+
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) conn.close();
     }
 
     return list;
@@ -163,16 +159,12 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
         list.add(bean);
       }
 
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) {
-        stmt.close();
-      }
-      if (conn != null) {
-        conn.close();
-      }
     }
+
 
     return list;
   }
@@ -218,11 +210,10 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
         list.add(bean);
       }
 
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) conn.close();
     }
 
     return list;
@@ -260,16 +251,13 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
         bean.setTutorEmail(rs.getString("tutor_email"));
         bean.setProfEmail(rs.getString("prof_refe_email"));
       }
+
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) {
-        stmt.close();
-      }
-      if (conn != null) {
-        conn.close();
-      }
     }
+
 
     return bean;
   }
@@ -298,17 +286,14 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
       stmt.setInt(12, 0);
       inserimento = stmt.executeUpdate() == 1;
       con.commit();
+
+      stmt.close();
+      con.close();
     } catch (SQLException e) {
       e.printStackTrace();
       inserimento = false;
-    } finally {
-      if (stmt != null) {
-        stmt.close();
-      }
-      if (con != null) {
-        con.close();
-      }
     }
+
     return inserimento;
   }
 
@@ -327,16 +312,13 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
       stmt.setInt(3, idSupporto);
       isUpdated = stmt.executeUpdate() == 1;
       conn.commit();
+
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) {
-        stmt.close();
-      }
-      if (conn != null) {
-        conn.close();
-      }
     }
+
 
     return isUpdated;
   }
@@ -355,11 +337,11 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
       stmt.setInt(2, idSupporto);
       isUpdated = stmt.executeUpdate() == 1;
       conn.commit();
+
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) conn.close();
     }
 
     return isUpdated;
@@ -377,12 +359,13 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
       stmt.setInt(1, s.getId());
       delete = stmt.executeUpdate() == 1;
       conn.commit();
+
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) conn.close();
     }
+
     return delete;
   }
 }

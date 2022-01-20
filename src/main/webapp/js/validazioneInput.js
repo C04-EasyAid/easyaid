@@ -82,15 +82,23 @@ function inserimentoLezione() {
     return true;
 }
 function validazioneRichiestaSupporto(){
-    var insegnamento = document.getElementById();
-    var oreRichieste = document.getElementById();
-    var docente = document.getElementById();
-    var luogo = document.getElementById();
+    var UserDate = document.getElementById("data").value;
+    console.log("DATA:-->"+UserDate);
+    var insegnamento = document.getElementById("insegnamento");
+    var oreRichieste = document.getElementById("ore_richieste");
+    var docente = document.getElementById("docente");
+    var luogo = document.getElementById("luogo");
+    var ToDate = new Date();
     var check = true;
     var insegnamentoreg = /^[A-Za-z]+$/;
     var oreRichiestereg = /^[1-9][0-9]?$|^100$/;
     var docentereg = /^[A-Za-z]+$/;
     var luogoreg = /^[a-zA-Z0-9_.-]*$/;
+
+    if (new Date(UserDate).getTime() <= ToDate.getTime()) {
+        check=false;
+    }
+
     if(!insegnamentoreg.test(insegnamento.value)){
         check = false;
         insegnamento.focus();
@@ -114,5 +122,18 @@ function validazioneRichiestaSupporto(){
     if(!check){
         return false;
     }
+    return true;
+}
+
+function validaData() {
+    var UserDate = document.getElementById("data").value;
+    var ToDate = new Date();
+
+    if (new Date(UserDate).getTime() <= ToDate.getTime()) {
+        alert("The Date must be Bigger or Equal to today date");
+        return false;
+    }
+    else
+        alert("ciacia");
     return true;
 }

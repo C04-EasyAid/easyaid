@@ -4,8 +4,8 @@ import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
 import model.dao.ISupportoEsameDAO;
-import model.dao.ITutoratoDidatticoDAO;
-import model.dao.SupportoEsameDAO;
+import model.dao.itutoratodidatticoDao;
+import model.dao.supportoesameDao;
 import model.dao.TutoratoDidatticoDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -41,8 +41,8 @@ class ViewListaRichiesteEffettuateTest {
   void testViewListarichiesteEffettuate1()
       throws SQLException, ClassNotFoundException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    ITutoratoDidatticoDAO tutoratoDao = mock(TutoratoDidatticoDAO.class);
-    ISupportoEsameDAO supportoDao = mock(SupportoEsameDAO.class);
+    itutoratodidatticoDao tutoratoDao = mock(TutoratoDidatticoDAO.class);
+    ISupportoEsameDAO supportoDao = mock(supportoesameDao.class);
 
     servlet.setSupportoDao(supportoDao);
     servlet.setTutoratoDao(tutoratoDao);

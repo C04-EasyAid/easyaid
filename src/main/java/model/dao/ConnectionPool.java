@@ -26,7 +26,7 @@ public class ConnectionPool {
     }
   }
 
-  private static synchronized Connection createDBConnection() throws SQLException {
+  private static synchronized Connection createdbconnection() throws SQLException {
     Connection newConnection = null;
     String ip = "localhost";
     String port = "3306";
@@ -66,7 +66,7 @@ public class ConnectionPool {
         connection = conn();
       }
     } else {
-      connection = createDBConnection();
+      connection = createdbconnection();
     }
 
     return connection;

@@ -1,7 +1,7 @@
 package control;
 
 import model.bean.UserBean;
-import model.dao.IUserDAO;
+import model.dao.iuserDao;
 import model.dao.UserDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -38,7 +38,7 @@ class ViewListaUtentiTest {
   void testViewListaUtenti1()
       throws SQLException, ClassNotFoundException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    iuserDao userDao = mock(UserDAO.class);
 
     servlet.setUserDao(userDao);
     UserBean personaleAdm = new UserBean();

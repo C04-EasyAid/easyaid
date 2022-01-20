@@ -12,7 +12,7 @@ import model.bean.TutorBean;
  * @author Roberto Tartaglia
  */
 
-public class TutorDAO implements ITutorDAO {
+public class TutorDAO implements itutorDao {
   @Override
   public synchronized TutorBean doRetrieveByEmail(String email)
       throws SQLException, ClassNotFoundException {

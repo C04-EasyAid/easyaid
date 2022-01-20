@@ -38,10 +38,10 @@ class InserimentoNuovaLezioneTest {
   @Test
   void testInserimentoNuovaLezione1() throws ParseException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    iuserDao userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    ilezioneDao lezioneDAO = mock(LezioneDAO.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -90,10 +90,10 @@ class InserimentoNuovaLezioneTest {
   @Test
   void testInserimentoNuovaLezione2() throws ParseException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    iuserDao userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    ilezioneDao lezioneDAO = mock(LezioneDAO.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -141,10 +141,10 @@ class InserimentoNuovaLezioneTest {
   @Test
   void testInserimentoNuovaLezione3() throws ParseException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    iuserDao userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    ilezioneDao lezioneDAO = mock(LezioneDAO.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -193,10 +193,10 @@ class InserimentoNuovaLezioneTest {
   @Test
   void testInserimentoNuovaLezione4() throws ParseException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    iuserDao userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    ilezioneDao lezioneDAO = mock(LezioneDAO.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -245,10 +245,10 @@ class InserimentoNuovaLezioneTest {
   @Test
   void testInserimentoNuovaLezione5() throws ParseException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    iuserDao userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    ilezioneDao lezioneDAO = mock(LezioneDAO.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -297,10 +297,10 @@ class InserimentoNuovaLezioneTest {
   @Test
   void testInserimentoNuovaLezione6() throws ParseException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    iuserDao userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    ilezioneDao lezioneDAO = mock(LezioneDAO.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -349,10 +349,10 @@ class InserimentoNuovaLezioneTest {
   @Test
   void testInserimentoNuovaLezione7() throws ParseException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    iuserDao userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    ilezioneDao lezioneDAO = mock(LezioneDAO.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -401,10 +401,10 @@ class InserimentoNuovaLezioneTest {
   @Test
   void testInserimentoNuovaLezione8() throws ParseException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    iuserDao userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    ilezioneDao lezioneDAO = mock(LezioneDAO.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -453,10 +453,10 @@ class InserimentoNuovaLezioneTest {
   @Test
   void testInserimentoNuovaLezione9() throws ParseException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    iuserDao userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    ilezioneDao lezioneDAO = mock(LezioneDAO.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -505,10 +505,10 @@ class InserimentoNuovaLezioneTest {
   @Test
   void testInserimentoNuovaLezione10() throws ParseException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    iuserDao userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    ilezioneDao lezioneDAO = mock(LezioneDAO.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -557,10 +557,10 @@ class InserimentoNuovaLezioneTest {
   @Test
   void testInserimentoNuovaLezione11() throws ParseException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    iuserDao userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    ilezioneDao lezioneDAO = mock(LezioneDAO.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -609,10 +609,10 @@ class InserimentoNuovaLezioneTest {
   @Test
   void testInserimentoNuovaLezione12() throws ParseException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    iuserDao userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    ilezioneDao lezioneDAO = mock(LezioneDAO.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -672,10 +672,10 @@ class InserimentoNuovaLezioneTest {
   @Test
   void testInserimentoNuovaLezione14() throws ParseException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    iuserDao userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    ilezioneDao lezioneDAO = mock(LezioneDAO.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");

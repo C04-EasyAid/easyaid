@@ -3,7 +3,7 @@ package control;
 import model.bean.SupportoEsameBean;
 import model.bean.UserBean;
 import model.dao.ISupportoEsameDAO;
-import model.dao.SupportoEsameDAO;
+import model.dao.supportoesameDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -32,7 +32,7 @@ class InserimentoRichiestaSupportoIntegrationTest {
 
     @Test
     void InserimentoSupportoTest() throws ServletException, IOException, SQLException {
-        ISupportoEsameDAO supportoEsameDAO = new SupportoEsameDAO();
+        ISupportoEsameDAO supportoEsameDAO = new supportoesameDao();
         UserBean bean = new UserBean();
         bean.setNome("Paolo");
         bean.setCognome("Rossi");

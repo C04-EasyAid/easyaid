@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 
 class CommentoDAOTest {
 
-  private final CommentoDAO commentoDao = new CommentoDAO();
+  private final commentodao commentoDao = new commentodao();
 
 
     @Test

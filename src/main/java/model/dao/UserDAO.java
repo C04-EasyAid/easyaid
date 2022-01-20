@@ -1,6 +1,5 @@
 package model.dao;
 
-import javax.validation.constraints.Email;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,7 +19,7 @@ import static other.Utils.generatePwd;
  *
  * @author Giovanni Toriello
  */
-public class UserDAO implements IUserDAO {
+public class UserDAO implements iuserDao {
   // Metodo che restituisce l'utente dal database
   @Override
   public synchronized UserBean doRetrieveUtente(UserBean b)

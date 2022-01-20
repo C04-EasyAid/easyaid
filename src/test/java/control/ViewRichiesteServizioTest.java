@@ -4,8 +4,8 @@ import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
 import model.dao.ISupportoEsameDAO;
-import model.dao.ITutoratoDidatticoDAO;
-import model.dao.SupportoEsameDAO;
+import model.dao.itutoratodidatticoDao;
+import model.dao.supportoesameDao;
 import model.dao.TutoratoDidatticoDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -64,16 +64,16 @@ class ViewRichiesteServizioTest {
   void testVisualizzaRichiesteServizio3()
       throws SQLException, ClassNotFoundException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    ISupportoEsameDAO supportoEsameDao = mock(SupportoEsameDAO.class);
-    ITutoratoDidatticoDAO tutoratoDidatticoDao = mock(TutoratoDidatticoDAO.class);
+    ISupportoEsameDAO supportoEsameDao = mock(supportoesameDao.class);
+    itutoratodidatticoDao tutoratoDidatticoDao = mock(TutoratoDidatticoDAO.class);
     UserBean bean = new UserBean();
     bean.setRuolo("T");
     request.getSession().setAttribute("utente", bean);
     List<SupportoEsameBean> listSupporto = new ArrayList<>();
     List<TutoratoDidatticoBean> listTutorati = new ArrayList<>();
 
-    servlet.setEsameDAO(supportoEsameDao);
-    servlet.setTutoratoDAO(tutoratoDidatticoDao);
+    servlet.setEsameDao(supportoEsameDao);
+    servlet.settutoratoDao(tutoratoDidatticoDao);
 
     when(supportoEsameDao.doRetrieveRichiesteSupportoEsameNonAccettate()).thenReturn(listSupporto);
     when(tutoratoDidatticoDao.doRetrieveRichiesteTutoratoDidatticoNonAccettate())

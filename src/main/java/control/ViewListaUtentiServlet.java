@@ -1,14 +1,14 @@
 package control;
 
 import java.io.IOException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.bean.UserBean;
-import model.dao.IUserDAO;
+import model.dao.iuserDao;
 import model.dao.UserDAO;
 import other.MyLogger;
 
@@ -22,9 +22,9 @@ import other.MyLogger;
 public class ViewListaUtentiServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "ViewListaUtentiServlet";
-  private IUserDAO userDao = new UserDAO();
+  private iuserDao userDao = new UserDAO();
 
-  public void setUserDao(IUserDAO userDao) {
+  public void setUserDao(iuserDao userDao) {
     this.userDao = userDao;
   }
 

@@ -13,7 +13,7 @@ import model.bean.TutoratoDidatticoBean;
  *
  * @author Martina Giugliano
  */
-public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
+public class TutoratoDidatticoDAO implements itutoratodidatticoDao {
 
   /**
    * Metodo che restituisce le richieste di Tutorato Didattico effettuate tramite e-mail studente.

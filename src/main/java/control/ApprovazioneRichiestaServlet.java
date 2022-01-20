@@ -12,8 +12,8 @@ import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
 import model.dao.ISupportoEsameDAO;
-import model.dao.ITutoratoDidatticoDAO;
-import model.dao.SupportoEsameDAO;
+import model.dao.itutoratodidatticoDao;
+import model.dao.supportoesameDao;
 import model.dao.TutoratoDidatticoDAO;
 import other.MyLogger;
 
@@ -28,8 +28,8 @@ import other.MyLogger;
 public class ApprovazioneRichiestaServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "ApprovazioneRichiestaServlet";
-  ITutoratoDidatticoDAO tutoratodao = new TutoratoDidatticoDAO();
-  ISupportoEsameDAO supportodao = new SupportoEsameDAO();
+  itutoratodidatticoDao tutoratodao = new TutoratoDidatticoDAO();
+  ISupportoEsameDAO supportodao = new supportoesameDao();
 
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -37,7 +37,7 @@ public class ApprovazioneRichiestaServlet extends HttpServlet {
     super.doPost(req, resp);
   }
 
-  public void setTutoratodao(ITutoratoDidatticoDAO tutoratodao) {
+  public void setTutoratodao(itutoratodidatticoDao tutoratodao) {
     this.tutoratodao = tutoratodao;
   }
 

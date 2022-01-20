@@ -1,8 +1,6 @@
 package control;
 
-import junit.framework.TestCase;
 import model.bean.SupportoEsameBean;
-import model.bean.TutorBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
 import model.dao.*;
@@ -34,7 +32,7 @@ class ApprovazioneRichiestaIntegrationTest {
   @Test
   void ApprovazioneRichiestaTutoratoIntegrationTest()
       throws ServletException, IOException, SQLException {
-    IUserDAO user = new UserDAO();
+    iuserDao user = new UserDAO();
     String email = "rdistasi@unisa.it";
     request.setParameter("Email", email);
     String password = "R#Distasi#908";
@@ -44,7 +42,7 @@ class ApprovazioneRichiestaIntegrationTest {
     bean.setPassword(password);
     bean.setRuolo("P");
     request.getSession().setAttribute("utente", bean);
-    ITutoratoDidatticoDAO tutoratoDao = new TutoratoDidatticoDAO();
+    itutoratodidatticoDao tutoratoDao = new TutoratoDidatticoDAO();
     TutoratoDidatticoBean tutorato = new TutoratoDidatticoBean();
     tutorato.setId(14);
     tutoratoDao.approvaRichiesta(tutorato.getId(), bean.getEmail());
@@ -54,7 +52,7 @@ class ApprovazioneRichiestaIntegrationTest {
   @Test
   void ApprovazioneRichiestaSupportoIntegrationTest()
       throws ServletException, IOException, SQLException {
-    IUserDAO user = new UserDAO();
+    iuserDao user = new UserDAO();
     String email = "rdistasi@unisa.it";
     request.setParameter("Email", email);
     String password = "R#Distasi#908";
@@ -64,7 +62,7 @@ class ApprovazioneRichiestaIntegrationTest {
     bean.setPassword(password);
     bean.setRuolo("P");
     request.getSession().setAttribute("utente", bean);
-    ISupportoEsameDAO supportoDAO = new SupportoEsameDAO();
+    ISupportoEsameDAO supportoDAO = new supportoesameDao();
     SupportoEsameBean supporto = new SupportoEsameBean();
     supporto.setId(15);
     supportoDAO.approvaRichiesta(supporto.getId(), bean.getEmail());

@@ -2,9 +2,8 @@ package control;
 /* @author Martina Giugliano Testing per l'inserimento di una richiesta di tutorato didattico */
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
-import model.dao.ITutoratoDidatticoDAO;
-import model.dao.IUserDAO;
-import model.dao.TutorDAO;
+import model.dao.itutoratodidatticoDao;
+import model.dao.iuserDao;
 import model.dao.UserDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -37,8 +36,8 @@ class InserimentoRichiestaTutoratoTest {
   @Test
   void TestInserimentoRichiestaTutorato1() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ITutoratoDidatticoDAO tutoratoDidatticoDAO = mock(ITutoratoDidatticoDAO.class);
+    iuserDao userDao = mock(UserDAO.class);
+    itutoratodidatticoDao tutoratoDidatticoDAO = mock(itutoratodidatticoDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -82,8 +81,8 @@ class InserimentoRichiestaTutoratoTest {
   @Test
   void TestInserimentoRichiestaTutorato2() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ITutoratoDidatticoDAO tutoratoDidatticoDAO = mock(ITutoratoDidatticoDAO.class);
+    iuserDao userDao = mock(UserDAO.class);
+    itutoratodidatticoDao tutoratoDidatticoDAO = mock(itutoratodidatticoDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -127,8 +126,8 @@ class InserimentoRichiestaTutoratoTest {
   @Test
   void TestInserimentoRichiestaTutorato3() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ITutoratoDidatticoDAO tutoratoDidatticoDAO = mock(ITutoratoDidatticoDAO.class);
+    iuserDao userDao = mock(UserDAO.class);
+    itutoratodidatticoDao tutoratoDidatticoDAO = mock(itutoratodidatticoDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -172,8 +171,8 @@ class InserimentoRichiestaTutoratoTest {
   @Test
   void TestInserimentoRichiestaTutorato4() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ITutoratoDidatticoDAO tutoratoDidatticoDAO = mock(ITutoratoDidatticoDAO.class);
+    iuserDao userDao = mock(UserDAO.class);
+    itutoratodidatticoDao tutoratoDidatticoDAO = mock(itutoratodidatticoDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -217,8 +216,8 @@ class InserimentoRichiestaTutoratoTest {
   @Test
   void TestInserimentoRichiestaTutorato5() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ITutoratoDidatticoDAO tutoratoDidatticoDAO = mock(ITutoratoDidatticoDAO.class);
+    iuserDao userDao = mock(UserDAO.class);
+    itutoratodidatticoDao tutoratoDidatticoDAO = mock(itutoratodidatticoDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -262,8 +261,8 @@ class InserimentoRichiestaTutoratoTest {
   @Test
   void TestInserimentoRichiestaTutorato6() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ITutoratoDidatticoDAO tutoratoDidatticoDAO = mock(ITutoratoDidatticoDAO.class);
+    iuserDao userDao = mock(UserDAO.class);
+    itutoratodidatticoDao tutoratoDidatticoDAO = mock(itutoratodidatticoDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -307,8 +306,8 @@ class InserimentoRichiestaTutoratoTest {
   @Test
   void TestInserimentoRichiestaTutorato7() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ITutoratoDidatticoDAO tutoratoDidatticoDAO = mock(ITutoratoDidatticoDAO.class);
+    iuserDao userDao = mock(UserDAO.class);
+    itutoratodidatticoDao tutoratoDidatticoDAO = mock(itutoratodidatticoDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -352,8 +351,8 @@ class InserimentoRichiestaTutoratoTest {
   @Test
   void TestInserimentoRichiestaTutorato8() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ITutoratoDidatticoDAO tutoratoDidatticoDAO = mock(ITutoratoDidatticoDAO.class);
+    iuserDao userDao = mock(UserDAO.class);
+    itutoratodidatticoDao tutoratoDidatticoDAO = mock(itutoratodidatticoDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -397,8 +396,8 @@ class InserimentoRichiestaTutoratoTest {
   @Test
   void TestInserimentoRichiestaTutorato9() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ITutoratoDidatticoDAO tutoratoDidatticoDAO = mock(ITutoratoDidatticoDAO.class);
+    iuserDao userDao = mock(UserDAO.class);
+    itutoratodidatticoDao tutoratoDidatticoDAO = mock(itutoratodidatticoDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -442,8 +441,8 @@ class InserimentoRichiestaTutoratoTest {
   @Test
   void TestInserimentoRichiestaTutorato10() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ITutoratoDidatticoDAO tutoratoDidatticoDAO = mock(ITutoratoDidatticoDAO.class);
+    iuserDao userDao = mock(UserDAO.class);
+    itutoratodidatticoDao tutoratoDidatticoDAO = mock(itutoratodidatticoDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -487,8 +486,8 @@ class InserimentoRichiestaTutoratoTest {
   @Test
   void TestInserimentoRichiestaTutorato11() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ITutoratoDidatticoDAO tutoratoDidatticoDAO = mock(ITutoratoDidatticoDAO.class);
+    iuserDao userDao = mock(UserDAO.class);
+    itutoratodidatticoDao tutoratoDidatticoDAO = mock(itutoratodidatticoDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -532,8 +531,8 @@ class InserimentoRichiestaTutoratoTest {
   @Test
   void TestInserimentoRichiestaTutorato12() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ITutoratoDidatticoDAO tutoratoDidatticoDAO = mock(ITutoratoDidatticoDAO.class);
+    iuserDao userDao = mock(UserDAO.class);
+    itutoratodidatticoDao tutoratoDidatticoDAO = mock(itutoratodidatticoDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -577,8 +576,8 @@ class InserimentoRichiestaTutoratoTest {
   @Test
   void TestInserimentoRichiestaTutorato13() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ITutoratoDidatticoDAO tutoratoDidatticoDAO = mock(ITutoratoDidatticoDAO.class);
+    iuserDao userDao = mock(UserDAO.class);
+    itutoratodidatticoDao tutoratoDidatticoDAO = mock(itutoratodidatticoDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -622,8 +621,8 @@ class InserimentoRichiestaTutoratoTest {
   @Test
   void TestInserimentoRichiestaTutorato14() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ITutoratoDidatticoDAO tutoratoDidatticoDAO = mock(ITutoratoDidatticoDAO.class);
+    iuserDao userDao = mock(UserDAO.class);
+    itutoratodidatticoDao tutoratoDidatticoDAO = mock(itutoratodidatticoDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -667,8 +666,8 @@ class InserimentoRichiestaTutoratoTest {
   @Test
   void TestInserimentoRichiestaTutorato15() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ITutoratoDidatticoDAO tutoratoDidatticoDAO = mock(ITutoratoDidatticoDAO.class);
+    iuserDao userDao = mock(UserDAO.class);
+    itutoratodidatticoDao tutoratoDidatticoDAO = mock(itutoratodidatticoDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");

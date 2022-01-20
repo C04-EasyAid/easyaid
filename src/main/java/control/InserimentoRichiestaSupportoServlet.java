@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import model.bean.SupportoEsameBean;
 import model.bean.UserBean;
 import model.dao.ISupportoEsameDAO;
-import model.dao.SupportoEsameDAO;
+import model.dao.supportoesameDao;
 import other.MyLogger;
 
 /**
@@ -29,7 +29,7 @@ public class InserimentoRichiestaSupportoServlet extends HttpServlet {
     this.dao = dao;
   }
 
-  private ISupportoEsameDAO dao = new SupportoEsameDAO();
+  private ISupportoEsameDAO dao = new supportoesameDao();
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)

@@ -20,15 +20,6 @@ public class UserBean implements HttpSessionBindingListener {
   private String password;
   private String ruolo;
 
-  /**
-   * Costruttore.
-   *
-   * @param nome
-   * @param cognome
-   * @param email
-   * @param password
-   * @param ruolo
-   */
   public UserBean(String nome, String cognome, String email, String password, String ruolo) {
     this.nome = nome;
     this.cognome = cognome;
@@ -45,16 +36,19 @@ public class UserBean implements HttpSessionBindingListener {
     boolean isStudent = this.getRuolo().equals("S");
     return isStudent;
   }
+
   // Restituisce vero se l'utente è un Tutor
   public boolean isTutor() {
     boolean isTutor = this.getRuolo().equals("T");
     return isTutor;
   }
+
   // Restituisce vero se l'utente è un Professore Referente
   public boolean isProfessoreReferente() {
     boolean isProf = this.getRuolo().equals("P");
     return isProf;
   }
+
   // Restituisce vero se l'utente è un Personale Amministrativo
   public boolean isPersonaleAmministrativo() {
     boolean isPers = this.getRuolo().equals("PA");

@@ -13,8 +13,8 @@ import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
 import model.dao.ISupportoEsameDAO;
-import model.dao.ITutoratoDidatticoDAO;
-import model.dao.SupportoEsameDAO;
+import model.dao.itutoratodidatticoDao;
+import model.dao.supportoesameDao;
 import model.dao.TutoratoDidatticoDAO;
 import other.MyLogger;
 
@@ -29,15 +29,15 @@ import other.MyLogger;
 public class ViewRichiesteCompletateServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "ViewRichiesteCompletateServlet";
-  private ISupportoEsameDAO esameDAO = new SupportoEsameDAO();
-  private ITutoratoDidatticoDAO tutoratoDAO = new TutoratoDidatticoDAO();
+  private ISupportoEsameDAO esameDao = new supportoesameDao();
+  private itutoratodidatticoDao tutoratoDao = new TutoratoDidatticoDAO();
 
-  public void setEsameDAO(ISupportoEsameDAO esameDAO) {
-    this.esameDAO = esameDAO;
+  public void setesamedao(ISupportoEsameDAO esameDao) {
+    this.esameDao = esameDao;
   }
 
-  public void setTutoratoDAO(ITutoratoDidatticoDAO tutoratoDAO) {
-    this.tutoratoDAO = tutoratoDAO;
+  public void settutoratoDao(itutoratodidatticoDao tutoratoDao) {
+    this.tutoratoDao = tutoratoDao;
   }
 
   @Override
@@ -51,9 +51,9 @@ public class ViewRichiesteCompletateServlet extends HttpServlet {
 
         try {
           List<SupportoEsameBean> listRichiesteSupportoEsame =
-              esameDAO.doRetrieveAllRichiesteSupportoEsameCompletate();
+              esameDao.doRetrieveAllRichiesteSupportoEsameCompletate();
           List<TutoratoDidatticoBean> listRichiesteTutoratoDidattico =
-              tutoratoDAO.doRetrieveAllRichiesteTutoratoDidatticoCompletate();
+              tutoratoDao.doRetrieveAllRichiesteTutoratoDidatticoCompletate();
           session.setAttribute("richiesteEsamiCompletate", listRichiesteSupportoEsame);
           session.setAttribute("richiesteTutoratoCompletate", listRichiesteTutoratoDidattico);
 

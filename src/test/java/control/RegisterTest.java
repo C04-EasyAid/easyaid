@@ -3,7 +3,7 @@ package control;
 import model.bean.ProfessoreReferenteBean;
 import model.bean.StudenteBean;
 import model.bean.TutorBean;
-import model.dao.IUserDAO;
+import model.dao.iuserDao;
 import org.junit.jupiter.api.BeforeEach;
 import model.bean.UserBean;
 import model.dao.UserDAO;
@@ -38,7 +38,7 @@ class RegisterTest {
   @Test
   void TestInserimentoStudente1() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
     persAdmin.setPassword("C#Gigli#9109");
@@ -90,7 +90,7 @@ class RegisterTest {
   @Test
   void TestInserimentoStudente2() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
@@ -143,7 +143,7 @@ class RegisterTest {
   @Test
   void TestInserimentoStudente3() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
@@ -196,7 +196,7 @@ class RegisterTest {
   @Test
   void TestInserimentoStudente4() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
@@ -249,7 +249,7 @@ class RegisterTest {
   @Test
   void TestInserimentoStudente5() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
@@ -302,7 +302,7 @@ class RegisterTest {
   @Test
   void TestInserimentoStudente6() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
@@ -355,7 +355,7 @@ class RegisterTest {
   @Test
   void TestInserimentoStudente7() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
@@ -408,7 +408,7 @@ class RegisterTest {
   @Test
   void TestInserimentoStudente8() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
@@ -461,7 +461,7 @@ class RegisterTest {
   @Test
   void TestInserimentoStudente9() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
@@ -514,7 +514,7 @@ class RegisterTest {
   @Test
   void TestInserimentoStudente10() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
@@ -567,7 +567,7 @@ class RegisterTest {
   @Test
   void TestInserimentoStudente12() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
@@ -620,7 +620,7 @@ class RegisterTest {
   @Test
   void TestInserimentoStudente14() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
@@ -673,7 +673,7 @@ class RegisterTest {
   @Test
   void TestInserimentoStudente15() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -726,7 +726,7 @@ class RegisterTest {
   @Test
   void TestInserimentoTutor1() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -774,7 +774,7 @@ class RegisterTest {
   @Test
   void TestInserimentoTutor2() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -822,7 +822,7 @@ class RegisterTest {
   @Test
   void TestInserimentoTutor3() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -870,7 +870,7 @@ class RegisterTest {
   @Test
   void TestInserimentoTutor4() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -918,7 +918,7 @@ class RegisterTest {
   @Test
   void TestInserimentoTutor5() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -966,7 +966,7 @@ class RegisterTest {
   @Test
   void TestInserimentoTutor6() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1014,7 +1014,7 @@ class RegisterTest {
   @Test
   void TestInserimentoTutor7() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1062,7 +1062,7 @@ class RegisterTest {
   @Test
   void TestInserimentoTutor8() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1110,7 +1110,7 @@ class RegisterTest {
   @Test
   void TestInserimentoTutor9() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1158,7 +1158,7 @@ class RegisterTest {
   @Test
   void TestInserimentoTutor10() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1206,7 +1206,7 @@ class RegisterTest {
   @Test
   void TestInserimentoTutor11() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1254,7 +1254,7 @@ class RegisterTest {
   @Test
   void TestInserimentoTutor12() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1302,7 +1302,7 @@ class RegisterTest {
   @Test
   void TestInserimentoTutor13() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1350,7 +1350,7 @@ class RegisterTest {
   @Test
   void TestInserimentoProfessoreReferente1() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1391,7 +1391,7 @@ class RegisterTest {
   @Test
   void TestInserimentoProfessoreReferente2() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1432,7 +1432,7 @@ class RegisterTest {
   @Test
   void TestInserimentoProfessoreReferente3() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1473,7 +1473,7 @@ class RegisterTest {
   @Test
   void TestInserimentoProfessoreReferente4() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1514,7 +1514,7 @@ class RegisterTest {
   @Test
   void TestInserimentoProfessoreReferente5() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1555,7 +1555,7 @@ class RegisterTest {
   @Test
   void TestInserimentoProfessoreReferente6() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1596,7 +1596,7 @@ class RegisterTest {
   @Test
   void TestInserimentoProfessoreReferente7() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1637,7 +1637,7 @@ class RegisterTest {
   @Test
   void TestInserimentoProfessoreReferente8() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1678,7 +1678,7 @@ class RegisterTest {
   @Test
   void TestInserimentoProfessoreReferente9() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1719,7 +1719,7 @@ class RegisterTest {
   @Test
   void TestInserimentoProfessoreReferente10() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1760,7 +1760,7 @@ class RegisterTest {
   @Test
   void TestInserimentoProfessoreReferente11() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    iuserDao userDAO = mock(UserDAO.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();

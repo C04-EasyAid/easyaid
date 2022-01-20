@@ -2,18 +2,16 @@ package model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.ResultSet;
 import model.bean.ProfessoreReferenteBean;
-import model.bean.TutorBean;
-import static model.dao.ConnectionPool.conn;
 
 /**
  * Classe ProfessoreReferenteDAO.
  *
  * @author Roberto Tartaglia
  */
-public class ProfessoreReferenteDAO implements IProfessoreReferenteDAO {
+public class professorereferenteDao implements iprofessorereferenteDao {
   @Override
   public synchronized ProfessoreReferenteBean doRetrieveByEmail(String email)
       throws SQLException, ClassNotFoundException {

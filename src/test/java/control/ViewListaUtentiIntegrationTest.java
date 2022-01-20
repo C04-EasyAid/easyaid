@@ -1,7 +1,7 @@
 package control;
 
 import model.bean.UserBean;
-import model.dao.IUserDAO;
+import model.dao.iuserDao;
 import model.dao.UserDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,7 +34,7 @@ class ViewListaUtentiIntegrationTest {
   void testViewListaUtenti()
       throws SQLException, ClassNotFoundException, ServletException, IOException {
 
-    IUserDAO userDao = new UserDAO();
+    iuserDao userDao = new UserDAO();
     servlet.setUserDao(userDao);
     UserBean personaleAdm = new UserBean();
     personaleAdm.setNome("Carla");

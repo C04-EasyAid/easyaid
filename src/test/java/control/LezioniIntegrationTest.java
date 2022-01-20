@@ -31,9 +31,9 @@ class LezioniIntegrationTest {
   @Test
   void testViewLezioni1()
       throws ServletException, IOException, SQLException, ClassNotFoundException {
-    ILezioneDAO lezioneDao = new LezioneDAO();
-    IStudenteDAO studenteDao = new StudenteDAO();
-    ITutoratoDidatticoDAO tutoratoDidatticoDao = new TutoratoDidatticoDAO();
+    ilezioneDao lezioneDao = new LezioneDAO();
+    istudenteDao studenteDao = new studenteDao();
+    itutoratodidatticoDao tutoratoDidatticoDao = new TutoratoDidatticoDAO();
     UserBean userBean = new UserBean();
 
     servlet.setLezioneDao(lezioneDao);
@@ -53,9 +53,9 @@ class LezioniIntegrationTest {
   @Test
   void testViewLezioni2()
       throws ServletException, IOException, SQLException, ClassNotFoundException {
-    ILezioneDAO lezioneDao = new LezioneDAO();
-    ITutorDAO tutorDao = new TutorDAO();
-    ITutoratoDidatticoDAO tutoratoDidatticoDao = new TutoratoDidatticoDAO();
+    ilezioneDao lezioneDao = new LezioneDAO();
+    itutorDao tutorDao = new TutorDAO();
+    itutoratodidatticoDao tutoratoDidatticoDao = new TutoratoDidatticoDAO();
     UserBean userBean = new UserBean();
 
     servlet.setLezioneDao(lezioneDao);

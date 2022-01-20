@@ -2,7 +2,7 @@ package control;
 
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
-import model.dao.ITutoratoDidatticoDAO;
+import model.dao.itutoratodidatticoDao;
 import model.dao.TutoratoDidatticoDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -33,7 +33,7 @@ class InserimentoRichiestaTutoratoIntegrationTest {
     @Test
     void TestInserimentoRichiestaTutorato1() throws ServletException, IOException, SQLException {
 
-        ITutoratoDidatticoDAO tutoratoDidatticoDAO = new TutoratoDidatticoDAO();
+        itutoratodidatticoDao tutoratoDidatticoDAO = new TutoratoDidatticoDAO();
         UserBean bean = new UserBean();
         bean.setNome("Paolo");
         bean.setCognome("Rossi");

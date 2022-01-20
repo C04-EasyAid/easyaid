@@ -13,12 +13,12 @@ import model.bean.LezioneBean;
 import model.bean.StudenteBean;
 import model.bean.TutorBean;
 import model.bean.UserBean;
-import model.dao.ILezioneDAO;
-import model.dao.IStudenteDAO;
-import model.dao.ITutorDAO;
-import model.dao.ITutoratoDidatticoDAO;
+import model.dao.ilezioneDao;
+import model.dao.istudenteDao;
+import model.dao.itutorDao;
+import model.dao.itutoratodidatticoDao;
 import model.dao.LezioneDAO;
-import model.dao.StudenteDAO;
+import model.dao.studenteDao;
 import model.dao.TutorDAO;
 import model.dao.TutoratoDidatticoDAO;
 import other.MyLogger;
@@ -32,24 +32,24 @@ import other.MyLogger;
 public class LezioniServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "LezioniServlet";
-  private ILezioneDAO lezioneDao = new LezioneDAO();
-  private IStudenteDAO studenteDao = new StudenteDAO();
-  private ITutoratoDidatticoDAO tutoratodidatticoDao = new TutoratoDidatticoDAO();
-  private ITutorDAO tutorDao = new TutorDAO();
+  private ilezioneDao lezioneDao = new LezioneDAO();
+  private istudenteDao studenteDao = new studenteDao();
+  private itutoratodidatticoDao tutoratodidatticoDao = new TutoratoDidatticoDAO();
+  private itutorDao tutorDao = new TutorDAO();
 
-  public void setLezioneDao(ILezioneDAO lezioneDao) {
+  public void setLezioneDao(ilezioneDao lezioneDao) {
     this.lezioneDao = lezioneDao;
   }
 
-  public void setStudenteDao(IStudenteDAO studenteDao) {
+  public void setStudenteDao(istudenteDao studenteDao) {
     this.studenteDao = studenteDao;
   }
 
-  public void settutoratodidatticodao(ITutoratoDidatticoDAO tutoratodidatticoDao) {
+  public void settutoratodidatticodao(itutoratodidatticoDao tutoratodidatticoDao) {
     this.tutoratodidatticoDao = tutoratodidatticoDao;
   }
 
-  public void setTutorDao(ITutorDAO tutorDao) {
+  public void setTutorDao(itutorDao tutorDao) {
     this.tutorDao = tutorDao;
   }
 

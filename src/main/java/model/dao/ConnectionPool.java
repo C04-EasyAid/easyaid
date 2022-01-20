@@ -6,6 +6,13 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Classe ConnectionPool.
+ *
+ * @author Giovanni Toriello
+ */
+
+
 public class ConnectionPool {
 
   private static List<Connection> freeDbConnections;

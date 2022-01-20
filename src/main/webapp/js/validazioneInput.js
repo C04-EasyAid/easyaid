@@ -57,18 +57,14 @@ function changeInput()
 function inserimentoCommento(){
     var commentovalid = /^[a-zA-Z][-_a-zA-Z0-9]{2,250}$/
     var commento_form = document.getElementById("commento");
-    var commento_check = true;
-    if(!commento_valid.test(commento_form.value) || commento_form.value=='')
+    let commento_check = true;
+    if(!commentovalid.test(commento_form.value) || commento_form.value==='')
     {
         commento_check=false;
         commento_form.focus();
         commento_form.style.background='#f08080';
     }
-    if(!commento_check)
-    {
-        return (false);
-    }
-    return (true);
+    return commento_check;
 }
 
 function inserimentoLezione() {

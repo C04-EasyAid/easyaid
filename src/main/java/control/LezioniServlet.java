@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Collection;
 
 import model.bean.LezioneBean;
@@ -26,7 +25,7 @@ Servlet che permette di visualizzare le lezioni
 public class LezioniServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "LezioniServlet";
-  private ILezioneDAO lezioneDao = new LezioneDAO();
+  private ILezioneDAO lezioneDao = new LezioneDao();
   private IStudenteDAO studenteDao = new StudenteDAO();
   private ITutoratoDidatticoDAO tutoratoDidatticoDAO = new TutoratoDidatticoDAO();
   private ITutorDAO tutorDao = new TutorDAO();

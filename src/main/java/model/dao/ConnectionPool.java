@@ -73,6 +73,8 @@ public class ConnectionPool {
   }
 
   public static synchronized void releaseConnection(Connection connection) throws SQLException {
-    if (connection != null) freeDbConnections.add(connection);
+    if (connection != null) {
+      freeDbConnections.add(connection);
+    }
   }
 }

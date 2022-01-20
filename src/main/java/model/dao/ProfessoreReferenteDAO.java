@@ -1,13 +1,11 @@
 package model.dao;
 
-import model.bean.ProfessoreReferenteBean;
-import model.bean.TutorBean;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import model.bean.ProfessoreReferenteBean;
+import model.bean.TutorBean;
 import static model.dao.ConnectionPool.conn;
 
 /**

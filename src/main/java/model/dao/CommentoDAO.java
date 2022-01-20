@@ -1,7 +1,5 @@
 package model.dao;
 
-import model.bean.CommentoBean;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,11 +10,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.GregorianCalendar;
-
+import model.bean.CommentoBean;
 import static model.dao.ConnectionPool.conn;
 
 /**
- * Classe CommentoDAO
+ * Classe CommentoDAO.
  *
  * @author Mariagiovanna Bianco
  */

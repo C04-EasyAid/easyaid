@@ -17,7 +17,7 @@ public class TutorBean {
   private int oreDisponibili;
 
   /**
-   * Costruttore
+   * Costruttore.
    *
    * @param emailTutor
    * @param dipartimento

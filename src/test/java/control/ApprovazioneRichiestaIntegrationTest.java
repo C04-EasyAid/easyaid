@@ -15,7 +15,7 @@ import javax.servlet.ServletException;
 import java.io.IOException;
 import java.sql.SQLException;
 /**
- * Testing di integrazione per il Login.
+ * Testing di integrazione per l' approvazione di una richiesta di servizio.
  *
  * @author Giovanni Toriello
  */

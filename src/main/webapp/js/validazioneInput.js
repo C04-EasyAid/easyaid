@@ -129,7 +129,7 @@ function validazioneRichiestaTutorato(){
     }
     if(!check)
         return false;
-    return false;
+    return true;
 }
 
 function validazioneRichiestaSupporto(){

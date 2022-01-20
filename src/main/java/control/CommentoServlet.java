@@ -57,7 +57,7 @@ public class CommentoServlet extends HttpServlet {
     if (user != null) {
       String msg = request.getParameter("commento");
       LezioneBean lezione = (LezioneBean) session.getAttribute("lezione");
-      if (msg != null && msg.length() < 250 && msg.length() > 1 && lezione.getId() != 0) {
+      if (msg != null && msg.length() <= 250 && msg.length() > 1 && lezione.getId() != 0) {
         if (user.isStudente()) {
           StudenteBean bean = null;
           try {
@@ -105,7 +105,7 @@ public class CommentoServlet extends HttpServlet {
         }
         response.sendRedirect("view/LezionePage.jsp");
       } else {
-        response.sendRedirect("view/LoginPage.jsp");
+        response.sendRedirect("view/LezionePage.jsp");
       }
     }
   }

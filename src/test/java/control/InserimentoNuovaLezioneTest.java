@@ -41,7 +41,7 @@ class InserimentoNuovaLezioneTest {
     IUserDAO userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    ILezioneDAO lezioneDAO = mock(LezioneDao.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -73,7 +73,7 @@ class InserimentoNuovaLezioneTest {
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDAO(lezioneDAO);
+      servlet.setLezioneDao(lezioneDAO);
       servlet.doGet(request, response);
       assertEquals(
           "Lezione Inserita",
@@ -93,7 +93,7 @@ class InserimentoNuovaLezioneTest {
     IUserDAO userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    ILezioneDAO lezioneDAO = mock(LezioneDao.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -124,7 +124,7 @@ class InserimentoNuovaLezioneTest {
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDAO(lezioneDAO);
+      servlet.setLezioneDao(lezioneDAO);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -144,7 +144,7 @@ class InserimentoNuovaLezioneTest {
     IUserDAO userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    ILezioneDAO lezioneDAO = mock(LezioneDao.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -176,7 +176,7 @@ class InserimentoNuovaLezioneTest {
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDAO(lezioneDAO);
+      servlet.setLezioneDao(lezioneDAO);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -196,7 +196,7 @@ class InserimentoNuovaLezioneTest {
     IUserDAO userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    ILezioneDAO lezioneDAO = mock(LezioneDao.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -228,7 +228,7 @@ class InserimentoNuovaLezioneTest {
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDAO(lezioneDAO);
+      servlet.setLezioneDao(lezioneDAO);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -248,7 +248,7 @@ class InserimentoNuovaLezioneTest {
     IUserDAO userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    ILezioneDAO lezioneDAO = mock(LezioneDao.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -280,7 +280,7 @@ class InserimentoNuovaLezioneTest {
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDAO(lezioneDAO);
+      servlet.setLezioneDao(lezioneDAO);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -300,7 +300,7 @@ class InserimentoNuovaLezioneTest {
     IUserDAO userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    ILezioneDAO lezioneDAO = mock(LezioneDao.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -332,7 +332,7 @@ class InserimentoNuovaLezioneTest {
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDAO(lezioneDAO);
+      servlet.setLezioneDao(lezioneDAO);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -352,7 +352,7 @@ class InserimentoNuovaLezioneTest {
     IUserDAO userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    ILezioneDAO lezioneDAO = mock(LezioneDao.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -384,7 +384,7 @@ class InserimentoNuovaLezioneTest {
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDAO(lezioneDAO);
+      servlet.setLezioneDao(lezioneDAO);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -404,7 +404,7 @@ class InserimentoNuovaLezioneTest {
     IUserDAO userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    ILezioneDAO lezioneDAO = mock(LezioneDao.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -436,7 +436,7 @@ class InserimentoNuovaLezioneTest {
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDAO(lezioneDAO);
+      servlet.setLezioneDao(lezioneDAO);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -456,7 +456,7 @@ class InserimentoNuovaLezioneTest {
     IUserDAO userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    ILezioneDAO lezioneDAO = mock(LezioneDao.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -488,7 +488,7 @@ class InserimentoNuovaLezioneTest {
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDAO(lezioneDAO);
+      servlet.setLezioneDao(lezioneDAO);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -508,7 +508,7 @@ class InserimentoNuovaLezioneTest {
     IUserDAO userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    ILezioneDAO lezioneDAO = mock(LezioneDao.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -540,7 +540,7 @@ class InserimentoNuovaLezioneTest {
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDAO(lezioneDAO);
+      servlet.setLezioneDao(lezioneDAO);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -560,7 +560,7 @@ class InserimentoNuovaLezioneTest {
     IUserDAO userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    ILezioneDAO lezioneDAO = mock(LezioneDao.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -592,7 +592,7 @@ class InserimentoNuovaLezioneTest {
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDAO(lezioneDAO);
+      servlet.setLezioneDao(lezioneDAO);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -612,7 +612,7 @@ class InserimentoNuovaLezioneTest {
     IUserDAO userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    ILezioneDAO lezioneDAO = mock(LezioneDao.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -644,7 +644,7 @@ class InserimentoNuovaLezioneTest {
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDAO(lezioneDAO);
+      servlet.setLezioneDao(lezioneDAO);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -675,7 +675,7 @@ class InserimentoNuovaLezioneTest {
     IUserDAO userDao = mock(UserDAO.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    ILezioneDAO lezioneDAO = mock(LezioneDao.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -706,7 +706,7 @@ class InserimentoNuovaLezioneTest {
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDAO(lezioneDAO);
+      servlet.setLezioneDao(lezioneDAO);
       servlet.doGet(request, response);
       assertEquals("view/LezioniTutorPage.jsp", response.getRedirectedUrl());
     } catch (SQLException e) {

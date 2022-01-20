@@ -6,7 +6,6 @@ Classe CommentoDAO
  */
 
 import model.bean.CommentoBean;
-import model.bean.LezioneBean;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -66,7 +65,7 @@ public class CommentoDAO implements ICommentoDAO {
   public synchronized boolean insertCommentoTutor(int lezione, String msg, String emailMittente)
       throws SQLException {
     boolean result = false;
-    LezioneDAO dao = new LezioneDAO();
+    LezioneDao dao = new LezioneDao();
     Connection conn = null;
     PreparedStatement stmt = null;
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
@@ -106,7 +105,7 @@ public class CommentoDAO implements ICommentoDAO {
   public synchronized boolean insertCommentoStudente(int lezione, String msg, String emailMittente)
       throws SQLException {
     boolean result = false;
-    LezioneDAO dao = new LezioneDAO();
+    LezioneDao dao = new LezioneDao();
     Connection conn = null;
     PreparedStatement stmt = null;
     GregorianCalendar today = new GregorianCalendar();

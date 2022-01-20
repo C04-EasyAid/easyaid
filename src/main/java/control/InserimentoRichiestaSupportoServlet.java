@@ -1,13 +1,13 @@
 package control;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.sql.SQLException;
 import model.bean.SupportoEsameBean;
 import model.bean.UserBean;
 import model.dao.ISupportoEsameDAO;
@@ -15,9 +15,11 @@ import model.dao.SupportoEsameDAO;
 import other.MyLogger;
 
 /**
- * @author Riccardo Polidoro Servlet che permette l'inserimento di una richiesta di supporto esame
- *     all'interno del DB
+ * Servlet che permette l'inserimento di una richiesta di supporto esame all'interno del DB.
+ *
+ * @author Riccardo Polidoro
  */
+
 @WebServlet("/inserisciSupporto")
 public class InserimentoRichiestaSupportoServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();

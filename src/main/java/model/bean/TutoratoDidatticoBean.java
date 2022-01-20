@@ -2,7 +2,12 @@ package model.bean;
 
 import lombok.*;
 
-/* @author Martina Giugliano Classe Tutorato Didattico */
+/**
+ * ClasseTutoratoDidatticoBean
+ *
+ * @author Martina Giugliano
+ */
+
 @Data
 public class TutoratoDidatticoBean {
   private int id;
@@ -18,7 +23,7 @@ public class TutoratoDidatticoBean {
   private String tutorEmail;
   private String profEmail;
 
-  /* Costruttore vuoto. */
+  // Costruttore vuoto
   public TutoratoDidatticoBean() {}
 
   /**

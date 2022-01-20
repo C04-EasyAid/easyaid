@@ -13,7 +13,7 @@ import model.dao.UserDAO;
 import other.MyLogger;
 
 /**
- * Servlet che permette di effettuare la registrazione di un utente all interno del sistema
+ * Servlet che permette di effettuare la registrazione di un utente all interno del sistema.
  *
  *  @author Roberto Tartaglia
  */

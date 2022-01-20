@@ -1,8 +1,5 @@
 package model.dao;
 
-import model.bean.LezioneBean;
-import model.bean.SupportoEsameBean;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,13 +10,16 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-
+import model.bean.LezioneBean;
+import model.bean.SupportoEsameBean;
 import static model.dao.ConnectionPool.conn;
 
-/*
-@author Serena Liguori
-Classe LezioneDAO
+/**
+ * Classe ILezioneDAO.
+ *
+ * @author Serena Liguori
  */
+
 public class LezioneDAO implements ILezioneDAO {
   // Metodo che restitiusce una lezione in base all'id passato come parametro
   @Override
@@ -47,7 +47,7 @@ public class LezioneDAO implements ILezioneDAO {
                 rs.getString("luogo"),
                 rs.getBoolean("status"));
         bean.setInsegnamento(rs.getString("insegnamento"));
-        bean.setEmailStudente(rs.getString("studente_email"));
+        bean.setEmailstudente(rs.getString("studente_email"));
       }
     } catch (SQLException e) {
 
@@ -86,7 +86,7 @@ public class LezioneDAO implements ILezioneDAO {
                 rs.getString("luogo"),
                 rs.getBoolean("status"));
         bean.setInsegnamento(rs.getString("insegnamento"));
-        bean.setEmailStudente(rs.getString("studente_email"));
+        bean.setEmailstudente(rs.getString("studente_email"));
         lezioni.add(bean);
       }
     } catch (SQLException e) {
@@ -126,7 +126,7 @@ public class LezioneDAO implements ILezioneDAO {
                 rs.getString("luogo"),
                 rs.getBoolean("status"));
         bean.setInsegnamento(rs.getString("insegnamento"));
-        bean.setEmailStudente(rs.getString("studente_email"));
+        bean.setEmailstudente(rs.getString("studente_email"));
         lezioni.add(bean);
       }
     } catch (SQLException e) {
@@ -167,7 +167,7 @@ public class LezioneDAO implements ILezioneDAO {
                 rs.getString("luogo"),
                 rs.getBoolean("status"));
         lezione.setInsegnamento(rs.getString("insegnamento"));
-        lezione.setEmailStudente(rs.getString("studente_email"));
+        lezione.setEmailstudente(rs.getString("studente_email"));
         lezioni.add(lezione);
       }
     } catch (SQLException e) {
@@ -209,7 +209,7 @@ public class LezioneDAO implements ILezioneDAO {
                 rs.getString("luogo"),
                 rs.getBoolean("status"));
         lezione.setInsegnamento(rs.getString("insegnamento"));
-        lezione.setEmailStudente(rs.getString("studente_email"));
+        lezione.setEmailstudente(rs.getString("studente_email"));
         lezioni.add(lezione);
       }
     } catch (SQLException e) {

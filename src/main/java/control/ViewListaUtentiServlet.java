@@ -13,7 +13,7 @@ import model.dao.UserDAO;
 import other.MyLogger;
 
 /**
- * Servlet che permette di visualizzare la lista di utenti
+ * Servlet che permette di visualizzare la lista di utenti.
  *
  *  @author Roberto Tartaglia
  *

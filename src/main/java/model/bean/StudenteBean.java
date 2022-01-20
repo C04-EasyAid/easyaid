@@ -3,7 +3,7 @@ package model.bean;
 import lombok.*;
 
 /**
- * Classe StudenteBean
+ * Classe StudenteBean.
  *
  * @author Giovanni Toriello
  * */

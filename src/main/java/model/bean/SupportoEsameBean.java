@@ -3,7 +3,7 @@ package model.bean;
 import lombok.*;
 
 /**
- * Classe SupportoEsameBean
+ * Classe SupportoEsameBean.
  *
  * @author Martina Giugliano Classe Supporto Esame
  **/

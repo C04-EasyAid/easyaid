@@ -1,10 +1,5 @@
 package model.dao;
 
-import model.bean.ProfessoreReferenteBean;
-import model.bean.StudenteBean;
-import model.bean.TutorBean;
-import model.bean.UserBean;
-
 import javax.validation.constraints.Email;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,10 +9,17 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+import model.bean.ProfessoreReferenteBean;
+import model.bean.StudenteBean;
+import model.bean.TutorBean;
+import model.bean.UserBean;
 import static other.Utils.generatePwd;
 
-/** @author Giovanni Toriello Classe UserDAO */
+/**
+ * Classe UserDAO.
+ *
+ * @author Giovanni Toriello
+ */
 public class UserDAO implements IUserDAO {
   // Metodo che restituisce l'utente dal database
   @Override

@@ -9,7 +9,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import static model.dao.ConnectionPool.conn;
-/** @author Roberto Tartaglia Classe ProfessoreReferenteDAO */
+
+/**
+ * Classe ProfessoreReferenteDAO.
+ *
+ * @author Roberto Tartaglia
+ */
 public class ProfessoreReferenteDAO implements IProfessoreReferenteDAO {
   @Override
   public synchronized ProfessoreReferenteBean doRetrieveByEmail(String email)

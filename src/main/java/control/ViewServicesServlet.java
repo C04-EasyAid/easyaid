@@ -11,7 +11,7 @@ import model.bean.StudenteBean;
 import other.MyLogger;
 
 /**
- * Servlet per restituire la lista dei servizi allo studente
+ * Servlet per restituire la lista dei servizi allo studente.
  *
  *  @author Riccardo Polidoro
  *
@@ -28,7 +28,9 @@ public class ViewServicesServlet extends HttpServlet {
     HttpSession session = req.getSession();
     StudenteBean bean = (StudenteBean) session.getAttribute("studente");
 
-    if (bean != null) resp.sendRedirect("view/RichiediServizioPage.jsp");
+    if (bean != null) {
+      resp.sendRedirect("view/RichiediServizioPage.jsp");
+    }
     else {
       session.setAttribute("alertMsg", "Permessi non concessi all'utente");
       resp.sendRedirect("view/HomePage.jsp");

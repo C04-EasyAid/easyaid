@@ -3,7 +3,7 @@ package model.bean;
 import lombok.*;
 
 /**
- *  Classe PersonaleAmministrativoBean
+ *  Classe PersonaleAmministrativoBean.
  *
  * @author Roberto Tartaglia
  *
@@ -21,6 +21,6 @@ public class PersonaleAmministrativoBean {
     this.emailPersonaleAmministrativo = emailPersonaleAmministrativo;
   }
 
-  /** Costruttore Vuoto */
+  // Costruttore Vuoto
   public PersonaleAmministrativoBean() {}
 }

@@ -1,9 +1,14 @@
 package model.dao;
 
-import model.bean.SupportoEsameBean;
-
 import java.sql.SQLException;
 import java.util.List;
+import model.bean.SupportoEsameBean;
+
+/**
+ * Classe ISupportoEsameDAO.
+ *
+ * @author Martina Giugliano
+ */
 
 public interface ISupportoEsameDAO {
   List<SupportoEsameBean> doRetrieveAllByStudente(String emailStudente)

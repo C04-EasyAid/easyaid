@@ -4,7 +4,6 @@ import model.bean.LezioneBean;
 import model.bean.UserBean;
 import model.dao.ILezioneDAO;
 import model.dao.ITutoratoDidatticoDAO;
-import model.dao.LezioneDAO;
 import model.dao.TutoratoDidatticoDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,7 +16,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 
-//@author SerenaLiguori
+/*
+@author SerenaLiguori
+ */
 class ConfermaLezioneIntegrationTest {
 
     private ConfermaLezioneServlet servlet;

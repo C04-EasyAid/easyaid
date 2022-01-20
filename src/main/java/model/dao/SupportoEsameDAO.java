@@ -10,8 +10,9 @@ import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 
 /**
- * @author Martina Giugliano DAO Supporto esame per gestire i dati del Database relativo al supporto
- *     esame.
+ * Classe SupportoEsameDAO.
+ *
+ * @author Martina Giugliano
  */
 public class SupportoEsameDAO implements ISupportoEsameDAO {
 

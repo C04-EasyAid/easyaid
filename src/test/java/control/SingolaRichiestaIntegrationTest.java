@@ -10,16 +10,11 @@ import model.dao.ITutoratoDidatticoDAO;
 import model.dao.TutoratoDidatticoDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-
 import java.io.IOException;
 import java.sql.SQLException;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 class SingolaRichiestaIntegrationTest {
   private SingolaRichiestaServlet servlet;
@@ -35,7 +30,7 @@ class SingolaRichiestaIntegrationTest {
 
   // L'utente è loggato,può visualizzare le informazioni relative alla richiesta di supporto esame
   @Test
-  void testSingolaRichiesta3() throws IOException, SQLException, ClassNotFoundException {
+  void testSingolaRichiesta() throws IOException, SQLException, ClassNotFoundException {
 
     UserBean bean = new UserBean();
     request.getSession().setAttribute("utente", bean);

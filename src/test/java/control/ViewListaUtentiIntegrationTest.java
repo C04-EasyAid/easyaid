@@ -5,21 +5,17 @@ import model.dao.IUserDAO;
 import model.dao.UserDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-
 import javax.servlet.ServletException;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collection;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
-/** @author Martina Giugliano */
+/*
+@author Martina Giugliano
+ */
 class ViewListaUtentiIntegrationTest {
   private ViewListaUtentiServlet servlet;
   private MockHttpServletRequest request;
@@ -35,11 +31,10 @@ class ViewListaUtentiIntegrationTest {
   // L'utente loggato è un personale amministrativo,dunque può vedere la lista degli utenti del
   // sistema
   @Test
-  void testViewListaUtenti1()
+  void testViewListaUtenti()
       throws SQLException, ClassNotFoundException, ServletException, IOException {
 
     IUserDAO userDao = new UserDAO();
-
     servlet.setUserDao(userDao);
     UserBean personaleAdm = new UserBean();
     personaleAdm.setNome("Carla");

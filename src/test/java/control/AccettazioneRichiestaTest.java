@@ -135,7 +135,7 @@ class AccettazioneRichiestaTest {
   }
 
   @Test
-  void testAccettazioneRichiesta4() throws ServletException, IOException {
+  void TestAccettazioneRichiesta4() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
 
     ISupportoEsameDAO supportoDao = mock(SupportoEsameDAO.class);
@@ -165,7 +165,7 @@ class AccettazioneRichiestaTest {
   }
 
   @Test
-  void testAccettazioneRichiesta5() throws ServletException, IOException {
+  void TestAccettazioneRichiesta5() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
 
     ISupportoEsameDAO supportoDao = mock(SupportoEsameDAO.class);
@@ -202,7 +202,7 @@ class AccettazioneRichiestaTest {
   }
 
   @Test
-  void testAccettazioneRichiesta6() throws ServletException, IOException {
+  void TestAccettazioneRichiesta6() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
 
     ISupportoEsameDAO supportoDao = mock(SupportoEsameDAO.class);

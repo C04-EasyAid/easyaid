@@ -1,7 +1,5 @@
 package control;
 
-import model.bean.SupportoEsameBean;
-import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
 import model.dao.ISupportoEsameDAO;
 import model.dao.ITutoratoDidatticoDAO;
@@ -9,7 +7,6 @@ import model.dao.SupportoEsameDAO;
 import model.dao.TutoratoDidatticoDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import javax.servlet.ServletException;
@@ -17,7 +14,9 @@ import java.io.IOException;
 import java.sql.SQLException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-//@author Serena Liguori
+/*
+@author Serena Liguori
+ */
 class ViewRichiesteAccettateIntegrationTest {
   private ViewRichiesteAccettateServlet servlet;
   private MockHttpServletRequest request;
@@ -31,7 +30,7 @@ class ViewRichiesteAccettateIntegrationTest {
   }
 
   @Test
-  void viewRichiesteAccettateTest3()
+  void viewRichiesteAccettateTest()
       throws ServletException, IOException, SQLException, ClassNotFoundException {
 
     ISupportoEsameDAO supportoEsameDao = new SupportoEsameDAO();

@@ -27,7 +27,7 @@ class AccettazioneRichiestaIntegrationTest {
   }
 
   @Test
-  void testAccettazioneRichiesta6() throws ServletException, IOException {
+  void testAccettazioneRichiesta() throws ServletException, IOException {
     ISupportoEsameDAO supportoDao = new SupportoEsameDAO();
     UserBean bean = new UserBean();
     bean.setNome("Lorenzo");

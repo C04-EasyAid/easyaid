@@ -1,12 +1,8 @@
 package control;
 
 import model.bean.LezioneBean;
-import model.bean.TutorBean;
 import model.bean.UserBean;
 import model.dao.ILezioneDAO;
-import model.dao.IUserDAO;
-import model.dao.LezioneDAO;
-import model.dao.UserDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -16,7 +12,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Collection;
 import java.util.Date;
 import java.util.Objects;
 
@@ -38,7 +33,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         }
 
         @Test
-        void testInserimentoNuovaLezione1() throws ParseException, ServletException, IOException {
+        void testInserimentoNuovaLezione() throws ParseException, ServletException, IOException {
 
             UserBean userBean = new UserBean();
             ILezioneDAO lezioneDAO = new LezioneDAO();

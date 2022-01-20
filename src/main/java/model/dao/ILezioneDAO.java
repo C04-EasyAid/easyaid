@@ -1,9 +1,14 @@
 package model.dao;
 
-import model.bean.LezioneBean;
-
 import java.sql.SQLException;
 import java.util.Collection;
+import model.bean.LezioneBean;
+
+/**
+ * Classe ILezioneDAO.
+ *
+ * @author Serena Liguori
+ */
 
 public interface ILezioneDAO {
   // Metodo che restitiusce una lezione in base all'id passato come parametro

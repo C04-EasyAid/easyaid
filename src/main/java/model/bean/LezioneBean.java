@@ -1,18 +1,26 @@
 package model.bean;
 
+import java.util.Date;
 import lombok.Data;
 
-import java.util.Date;
-/*
-@author Serena Liguori
-Classe LezioneBean
+/**
+ * Classe LezioneBean.
+ *
+ *  @author Serena Liguori
+ *
  */
+
 @Data
 public class LezioneBean {
   // Variabili d'istanza
   private String luogo;
-  private int id, tutorato;
-  private String oraInizio, oraFine, tutor, insegnamento, emailStudente;
+  private int id;
+  private int tutorato;
+  private String oraInizio;
+  private String oraFine;
+  private String tutor;
+  private String insegnamento;
+  private String emailstudente;
   private Date data;
   private boolean status;
   // Costruttore con id
@@ -53,6 +61,6 @@ public class LezioneBean {
 
   public LezioneBean() {}
 
-  // Metodi
+
 
 }

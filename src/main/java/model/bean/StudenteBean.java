@@ -2,7 +2,11 @@ package model.bean;
 
 import lombok.*;
 
-/** @author Giovanni Toriello Classe StudenteBean */
+/**
+ * Classe StudenteBean.
+ *
+ * @author Giovanni Toriello
+ * */
 @Data
 public class StudenteBean {
 
@@ -32,6 +36,6 @@ public class StudenteBean {
     this.percentualeDisabilita = percentualeDisabilita;
   }
 
-  /** Costruttore vuoto */
+  //Costruttore vuoto
   public StudenteBean() {}
 }

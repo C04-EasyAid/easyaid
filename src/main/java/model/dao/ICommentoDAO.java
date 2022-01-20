@@ -1,9 +1,14 @@
 package model.dao;
 
-import model.bean.CommentoBean;
-
 import java.sql.SQLException;
 import java.util.Collection;
+import model.bean.CommentoBean;
+
+/**
+ * Classe ICommentoDAO.
+ *
+ * @author Mariagiovanna Bianco
+ */
 
 public interface ICommentoDAO {
   // Metodo che restituisce il commento

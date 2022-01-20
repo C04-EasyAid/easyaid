@@ -131,9 +131,9 @@
                                     </ul>
                                     <%}%>
                                     <div class="panel-body">
-                                        <form action="../CommentoServlet" onsubmit="inserimentoCommento();" method="get">
+                                        <form action="../CommentoServlet" method="post" onsubmit="return inserimentoCommento();">
                                             <input type="text" name="commento" class="form-control" placeholder="scrivi un commento..."
-                                                   rows="3">
+                                                                         rows="3" id="commento" maxlength="250" required>
                                             <br>
 
                                             <button type="submit" class="btn btn-outline-info">Commenta</button>
@@ -179,6 +179,7 @@
 
 <!-- Template Functions -->
 <script src="../assets/js/functions.js"></script>
+<script src="../js/validazioneInput.js"></script>
 <footer>
     <%@include file="../fragment/footer.html" %>
 </footer>

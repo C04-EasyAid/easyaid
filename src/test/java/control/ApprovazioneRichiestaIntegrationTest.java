@@ -32,7 +32,7 @@ class ApprovazioneRichiestaIntegrationTest {
   }
 
   @Test
-  void ApprovazioneRichiestaTutoratoIntegrationTest1()
+  void ApprovazioneRichiestaTutoratoIntegrationTest()
       throws ServletException, IOException, SQLException {
     IUserDAO user = new UserDAO();
     String email = "rdistasi@unisa.it";
@@ -52,7 +52,7 @@ class ApprovazioneRichiestaIntegrationTest {
   }
 
   @Test
-  void ApprovazioneRichiestaSupportoIntegrationTest1()
+  void ApprovazioneRichiestaSupportoIntegrationTest()
       throws ServletException, IOException, SQLException {
     IUserDAO user = new UserDAO();
     String email = "rdistasi@unisa.it";

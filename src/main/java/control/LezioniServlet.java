@@ -17,6 +17,7 @@ import model.dao.ILezioneDAO;
 import model.dao.IStudenteDAO;
 import model.dao.ITutorDAO;
 import model.dao.ITutoratoDidatticoDAO;
+import model.dao.LezioneDAO;
 import model.dao.StudenteDAO;
 import model.dao.TutorDAO;
 import model.dao.TutoratoDidatticoDAO;

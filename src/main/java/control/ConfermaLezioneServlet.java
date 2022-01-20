@@ -14,6 +14,7 @@ import model.bean.UserBean;
 import model.dao.ILezioneDAO;
 import model.dao.ITutoratoDidatticoDAO;
 import model.dao.TutoratoDidatticoDAO;
+import model.dao.LezioneDAO;
 import other.MyLogger;
 
 /**

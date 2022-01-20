@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import model.bean.LezioneBean;
 import model.bean.UserBean;
 import model.dao.ILezioneDAO;
+import model.dao.LezioneDAO;
 import other.MyLogger;
 
 /**

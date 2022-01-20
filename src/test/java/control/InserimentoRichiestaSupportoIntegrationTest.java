@@ -3,9 +3,7 @@ package control;
 import model.bean.SupportoEsameBean;
 import model.bean.UserBean;
 import model.dao.ISupportoEsameDAO;
-import model.dao.IUserDAO;
 import model.dao.SupportoEsameDAO;
-import model.dao.UserDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -34,7 +32,6 @@ class InserimentoRichiestaSupportoIntegrationTest {
 
     @Test
     void InserimentoSupportoTest() throws ServletException, IOException, SQLException {
-        IUserDAO userDao = new UserDAO();
         ISupportoEsameDAO supportoEsameDAO = new SupportoEsameDAO();
         UserBean bean = new UserBean();
         bean.setNome("Paolo");
@@ -53,7 +50,6 @@ class InserimentoRichiestaSupportoIntegrationTest {
         String dipartimento = "Informarica";
         String insegnamento = "Programmazione I";
         String docente = "Distasi";
-        String email = bean.getEmail();
         request.setParameter("dipartimento", dipartimento);
         request.setParameter("insegnamento", insegnamento);
         request.setParameter("data", data);

@@ -3,10 +3,8 @@ package control;
 import model.bean.CommentoBean;
 import model.bean.LezioneBean;
 import model.bean.UserBean;
-import model.dao.CommentoDAO;
 import model.dao.ICommentoDAO;
 import model.dao.ILezioneDAO;
-import model.dao.LezioneDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -18,7 +16,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-//@author Serena Liguori
+/*
+@author Serena Liguori
+ */
 class SingolaLezioneIntegrationTest {
   private SingolaLezioneServlet servlet;
   private MockHttpServletRequest request;

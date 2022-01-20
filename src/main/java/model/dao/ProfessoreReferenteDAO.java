@@ -31,14 +31,13 @@ public class ProfessoreReferenteDAO implements IProfessoreReferenteDAO {
         tutor.setEmail(email);
         tutor.setDipartimento(rs.getString("dipartimento"));
       }
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) {
-        conn.close();
-      }
     }
+
+
     return tutor;
   }
 }

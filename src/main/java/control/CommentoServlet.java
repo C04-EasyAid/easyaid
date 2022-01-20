@@ -12,7 +12,6 @@ import model.bean.LezioneBean;
 import model.bean.StudenteBean;
 import model.bean.TutorBean;
 import model.bean.UserBean;
-import model.dao.CommentoDAO;
 import model.dao.ICommentoDAO;
 import model.dao.IStudenteDAO;
 import model.dao.ITutorDAO;

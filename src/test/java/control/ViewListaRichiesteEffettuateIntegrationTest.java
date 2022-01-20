@@ -1,7 +1,5 @@
 package control;
 
-import model.bean.SupportoEsameBean;
-import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
 import model.dao.ISupportoEsameDAO;
 import model.dao.ITutoratoDidatticoDAO;
@@ -9,19 +7,13 @@ import model.dao.SupportoEsameDAO;
 import model.dao.TutoratoDidatticoDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-
 import javax.servlet.ServletException;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 /*
 @author Martina Giugliano
@@ -41,7 +33,7 @@ class ViewListaRichiesteEffettuateIntegrationTest {
   // L'utente loggato alla piattaforma è uno studente e può vedere la lista delle richieste
   // effettuate
   @Test
-  void testViewListarichiesteEffettuate1()
+  void testViewListarichiesteEffettuate()
       throws SQLException, ClassNotFoundException, ServletException, IOException {
     ITutoratoDidatticoDAO tutoratoDao = new TutoratoDidatticoDAO();
     ISupportoEsameDAO supportoDao = new SupportoEsameDAO();

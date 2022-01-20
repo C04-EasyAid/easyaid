@@ -1,20 +1,16 @@
 package control;
 
-import model.bean.StudenteBean;
-import model.bean.TutorBean;
 import model.bean.UserBean;
 import model.dao.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-
 import javax.servlet.ServletException;
 import java.io.IOException;
 import java.sql.SQLException;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
+
 
 /*
 @author Martina Giugliano
@@ -38,7 +34,6 @@ class LezioniIntegrationTest {
     ILezioneDAO lezioneDao = new LezioneDAO();
     IStudenteDAO studenteDao = new StudenteDAO();
     ITutoratoDidatticoDAO tutoratoDidatticoDao = new TutoratoDidatticoDAO();
-    StudenteBean studenteBean = new StudenteBean();
     UserBean userBean = new UserBean();
 
     servlet.setLezioneDao(lezioneDao);
@@ -56,12 +51,11 @@ class LezioniIntegrationTest {
   }
   // L'utente loggato è un tutor,dunque può vedere la lista delle lezioni
   @Test
-  void testViewLezioni3()
+  void testViewLezioni2()
       throws ServletException, IOException, SQLException, ClassNotFoundException {
     ILezioneDAO lezioneDao = new LezioneDAO();
     ITutorDAO tutorDao = new TutorDAO();
     ITutoratoDidatticoDAO tutoratoDidatticoDao = new TutoratoDidatticoDAO();
-    TutorBean tutorBean = new TutorBean();
     UserBean userBean = new UserBean();
 
     servlet.setLezioneDao(lezioneDao);

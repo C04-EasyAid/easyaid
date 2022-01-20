@@ -30,7 +30,7 @@ class CommentoIntegrationTest {
   }
 
   @Test
-  void testInserimentoCommentoTutor3() throws ServletException, IOException, SQLException {
+  void testInserimentoCommentoTutor() throws ServletException, IOException, SQLException {
     UserBean userBean = new UserBean();
 
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
@@ -59,7 +59,7 @@ class CommentoIntegrationTest {
   }
 
   @Test
-  void testInserimentoCommentoStudente3() throws ServletException, IOException, SQLException {
+  void testInserimentoCommentoStudente() throws ServletException, IOException, SQLException {
     UserBean userBean = new UserBean();
 
     userBean.setEmail("abaglio9@studenti.unisa.it");

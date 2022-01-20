@@ -140,11 +140,10 @@ class UserDAOTest {
     list.add(new UserBean());
     list.add(new UserBean());
     list.add(new UserBean());
-    list.add(new UserBean());
 
     List<UserBean> result = (List<UserBean>) dao.doRetrieveAll();
 
-    assertEquals(result.size(), list.size());
+    assertEquals(list.size(),result.size());
   }
 
   @Test

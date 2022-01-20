@@ -137,9 +137,9 @@ class LezioneDAOTest {
     @Test
     void doRetrieveTutoratoByLezione1() throws SQLException {
 
-        int lezione = 17;
+        int lezione = 13;
 
-        int expectedTutorato = 23;
+        int expectedTutorato = 21;
 
         int result = lezioneDao.doRetrieveTutoratoByLezione(lezione);
 
@@ -227,7 +227,7 @@ class LezioneDAOTest {
     @Test
     void confermaLezione1() throws SQLException {
 
-       int idLezione = 18;
+       int idLezione = 14;
 
        assertEquals(true,lezioneDao.confermaLezione(idLezione));
 

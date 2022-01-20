@@ -6,7 +6,7 @@ import model.bean.UserBean;
 import model.dao.CommentoDAO;
 import model.dao.ICommentoDAO;
 import model.dao.ILezioneDAO;
-import model.dao.LezioneDao;
+import model.dao.LezioneDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -46,7 +46,7 @@ class SingolaLezioneIntegrationTest {
     lezione.setId(11);
     request.setParameter("lezione", String.valueOf(lezione.getId()));
 
-    ILezioneDAO lezioneDao = new LezioneDao();
+    ILezioneDAO lezioneDao = new LezioneDAO();
     ICommentoDAO commentoDao = new CommentoDAO();
     servlet.setLezioneDao(lezioneDao);
     servlet.setCommentiDao(commentoDao);
@@ -74,7 +74,7 @@ class SingolaLezioneIntegrationTest {
     lezione.setId(11);
     request.setParameter("lezione", String.valueOf(lezione.getId()));
 
-    ILezioneDAO lezioneDao = new LezioneDao();
+    ILezioneDAO lezioneDao = new LezioneDAO();
     ICommentoDAO commentoDao = new CommentoDAO();
     servlet.setLezioneDao(lezioneDao);
     servlet.setCommentiDao(commentoDao);

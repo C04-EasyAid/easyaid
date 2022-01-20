@@ -68,7 +68,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
                 lezioneBean.setOraFine(oraFine);
                 lezioneBean.setData(date);
 
-                servlet.setLezioneDAO(lezioneDAO);
+                servlet.setLezioneDao(lezioneDAO);
                 servlet.doGet(request, response);
                 assertEquals(
                         "Lezione Inserita",

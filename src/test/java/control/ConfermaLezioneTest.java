@@ -75,8 +75,8 @@ class ConfermaLezioneTest {
     ILezioneDAO lezioneDao = mock(LezioneDAO.class);
     ITutoratoDidatticoDAO tutoratoDao = mock(TutoratoDidatticoDAO.class);
 
-    servlet.setLezioneDAO(lezioneDao);
-    servlet.setTutoratoDidatticoDAO(tutoratoDao);
+    servlet.setlezioneDao(lezioneDao);
+    servlet.settutoratodidatticoDao(tutoratoDao);
 
     Collection<LezioneBean> lezioni = new ArrayList<>();
     lezioni.add(new LezioneBean());
@@ -111,8 +111,8 @@ class ConfermaLezioneTest {
     ILezioneDAO lezioneDao = mock(LezioneDAO.class);
     ITutoratoDidatticoDAO tutoratoDao = mock(TutoratoDidatticoDAO.class);
 
-    servlet.setLezioneDAO(lezioneDao);
-    servlet.setTutoratoDidatticoDAO(tutoratoDao);
+    servlet.setlezioneDao(lezioneDao);
+    servlet.settutoratodidatticoDao(tutoratoDao);
 
     Collection<LezioneBean> lezioni = new ArrayList<>();
     lezioni.add(new LezioneBean());

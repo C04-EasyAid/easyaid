@@ -1,13 +1,13 @@
 package control;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.sql.SQLException;
 import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
@@ -17,7 +17,13 @@ import model.dao.SupportoEsameDAO;
 import model.dao.TutoratoDidatticoDAO;
 import other.MyLogger;
 
-/** @author Martina Giugliano Servlet che permette di approvare una richiesta di servizio */
+/**
+ * Servlet che permette di approvare una richiesta di servizio.
+ *
+ * @author Martina Giugliano
+ *
+ */
+
 @WebServlet("/ApprovazioneRichiesta")
 public class ApprovazioneRichiestaServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();

@@ -1,21 +1,32 @@
 package control;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 import model.bean.LezioneBean;
 import model.bean.StudenteBean;
 import model.bean.TutorBean;
 import model.bean.UserBean;
-import model.dao.*;
+import model.dao.CommentoDAO;
+import model.dao.ICommentoDAO;
+import model.dao.IStudenteDAO;
+import model.dao.ITutorDAO;
+import model.dao.StudenteDAO;
+import model.dao.TutorDAO;
 import other.MyLogger;
 
-import java.sql.SQLException;
-/** @author Serena Liguori Servlet che permette di inserire i commenti per una lezione */
+
+/**
+ * Servlet che permette di inserire i commenti per una lezione.
+ *
+ * @author Serena Liguori
+ */
+
 @WebServlet("/CommentoServlet")
 public class CommentoServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();

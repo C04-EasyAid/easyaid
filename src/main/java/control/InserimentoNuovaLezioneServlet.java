@@ -1,36 +1,38 @@
 package control;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.bean.LezioneBean;
 import model.bean.UserBean;
 import model.dao.ILezioneDAO;
 import model.dao.LezioneDAO;
 import other.MyLogger;
 
-/*
-@author Mariagiovanna Bianco
-Servlet che permette di inserire una nuova lezione
-*/
+/**
+ * Servlet che permette di inserire una nuova lezione.
+ *
+ * @author Mariagiovanna Bianco
+ *
+ */
 
 @WebServlet("/InserimentoLezione")
 public class InserimentoNuovaLezioneServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "InserimentoLezioneServlet";
-  private ILezioneDAO lezioneDAO = new LezioneDAO();
+  private ILezioneDAO lezioneDao = new LezioneDAO();
 
-  public void setLezioneDAO(ILezioneDAO lezioneDAO) {
-    this.lezioneDAO = lezioneDAO;
+  public void setLezioneDao(ILezioneDAO lezioneDao) {
+    this.lezioneDao = lezioneDao;
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -52,14 +54,14 @@ public class InserimentoNuovaLezioneServlet extends HttpServlet {
         lezioneBean.setOraInizio(oraInizio);
         lezioneBean.setOraFine(oraFine);
         lezioneBean.setData(date);
-        Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
+        Collection<LezioneBean> lezioni = lezioneDao.doRetrieveLezioniCompletateById(idTutorato);
         lezioni.add(lezioneBean);
-        if (lezioneDAO.countOre(lezioni, idTutorato) <= 1) {
-          lezioneDAO.insertNewLezione(lezioneBean);
+        if (lezioneDao.countOre(lezioni, idTutorato) <= 1) {
+          lezioneDao.insertNewLezione(lezioneBean);
           session.setAttribute("alertMsg", "Lezione Inserita");
           response.sendRedirect(request.getContextPath() + "/LezioniServlet");
         }
-        if (lezioneDAO.countOre(lezioni, idTutorato) == 2) {
+        if (lezioneDao.countOre(lezioni, idTutorato) == 2) {
           session.setAttribute("alertMsg", "La lezione supera le ore richieste");
           response.sendRedirect("view/LezioniTutorPage.jsp");
         }

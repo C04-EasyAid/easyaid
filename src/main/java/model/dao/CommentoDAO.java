@@ -6,7 +6,6 @@ Classe CommentoDAO
  */
 
 import model.bean.CommentoBean;
-import model.bean.LezioneBean;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

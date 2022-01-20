@@ -1,22 +1,22 @@
 package control;
 
-import model.bean.*;
-import model.dao.IUserDAO;
-import model.dao.UserDAO;
-import other.MyLogger;
-
+import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
+import model.bean.*;
+import model.dao.IUserDAO;
+import model.dao.UserDAO;
+import other.MyLogger;
 
 /**
- * @author Roberto Tartaglia
- * Servlet che permette di effettuare la registrazione
- * di un utente all interno del sistema
+ * Servlet che permette di effettuare la registrazione di un utente all interno del sistema
+ *
+ *  @author Roberto Tartaglia
+ *
  */
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {

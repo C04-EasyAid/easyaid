@@ -1,25 +1,27 @@
 package control;
 
-import model.bean.TutoratoDidatticoBean;
-import model.bean.UserBean;
-import model.dao.ITutoratoDidatticoDAO;
-import model.dao.TutoratoDidatticoDAO;
-import other.MyLogger;
-
+import java.io.IOException;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.sql.SQLException;
+import model.bean.TutoratoDidatticoBean;
+import model.bean.UserBean;
+import model.dao.ITutoratoDidatticoDAO;
+import model.dao.TutoratoDidatticoDAO;
+import other.MyLogger;
+
+/**
+ * Servlet che permette l'inserimento di una richiesta di tutorato didattico nel DB.
+ *
+ * @author Riccardo Polidoro
+ */
 
 @WebServlet("/inserisciTutorato")
-/*
- * @author Riccardo Polidoro Servlet che permette l'inserimento di una richiesta di tutorato
- *     didattico nel DB
- */
+
 public class InserimentoRichiestaTutoratoServlet extends HttpServlet {
   private static MyLogger log = MyLogger.getInstance();
   private static String myClass = "InserimentoRichiestaTutoratoServlet";
@@ -68,6 +70,6 @@ public class InserimentoRichiestaTutoratoServlet extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
-    super.doPost(req, resp);
+    doGet(req, resp);
   }
 }

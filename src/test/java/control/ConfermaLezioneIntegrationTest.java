@@ -48,8 +48,8 @@ class ConfermaLezioneIntegrationTest {
 
         ILezioneDAO lezioneDao = new LezioneDAO();
         ITutoratoDidatticoDAO tutoratoDao = new TutoratoDidatticoDAO();
-        servlet.setLezioneDAO(lezioneDao);
-        servlet.setTutoratoDidatticoDAO(tutoratoDao);
+        servlet.setlezioneDao(lezioneDao);
+        servlet.settutoratodidatticoDao(tutoratoDao);
         servlet.doGet(request,response);
 
         assertEquals("view/LezioniTutorPage.jsp",response.getRedirectedUrl());
@@ -71,8 +71,8 @@ class ConfermaLezioneIntegrationTest {
 
         ILezioneDAO lezioneDao = new LezioneDAO();
         ITutoratoDidatticoDAO tutoratoDao = new TutoratoDidatticoDAO();
-        servlet.setLezioneDAO(lezioneDao);
-        servlet.setTutoratoDidatticoDAO(tutoratoDao);
+        servlet.setlezioneDao(lezioneDao);
+        servlet.settutoratodidatticoDao(tutoratoDao);
 
         servlet.doGet(request,response);
 

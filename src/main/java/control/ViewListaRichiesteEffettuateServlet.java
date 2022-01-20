@@ -1,5 +1,14 @@
 package control;
 
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
@@ -9,19 +18,10 @@ import model.dao.SupportoEsameDAO;
 import model.dao.TutoratoDidatticoDAO;
 import other.MyLogger;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
-
 /**
- * @author Riccardo Polidoro Servlet che permette di restituire la lista delle richieste effettuate
- *     allo studente
+ * Servlet che permette di restituire la lista delle richieste effettuate allo studente
+ *
+ * @author Riccardo Polidoro
  */
 @WebServlet("/ListaRichieste")
 public class ViewListaRichiesteEffettuateServlet extends HttpServlet {

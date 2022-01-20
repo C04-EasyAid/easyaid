@@ -81,7 +81,7 @@ class InserimentoSupportoTest {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setSupportoEsameDAO(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDAO);
     servlet.doGet(request, response);
     assertEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -138,7 +138,7 @@ class InserimentoSupportoTest {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setSupportoEsameDAO(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDAO);
     servlet.doGet(request, response);
     assertEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -195,7 +195,7 @@ class InserimentoSupportoTest {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setSupportoEsameDAO(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDAO);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -252,7 +252,7 @@ class InserimentoSupportoTest {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setSupportoEsameDAO(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDAO);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -309,7 +309,7 @@ class InserimentoSupportoTest {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setSupportoEsameDAO(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDAO);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -366,7 +366,7 @@ class InserimentoSupportoTest {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setSupportoEsameDAO(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDAO);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -424,7 +424,7 @@ class InserimentoSupportoTest {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setSupportoEsameDAO(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDAO);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -481,7 +481,7 @@ class InserimentoSupportoTest {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setSupportoEsameDAO(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDAO);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -538,7 +538,7 @@ class InserimentoSupportoTest {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setSupportoEsameDAO(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDAO);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -596,7 +596,7 @@ class InserimentoSupportoTest {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setSupportoEsameDAO(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDAO);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -654,7 +654,7 @@ class InserimentoSupportoTest {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setSupportoEsameDAO(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDAO);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -712,7 +712,7 @@ class InserimentoSupportoTest {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setSupportoEsameDAO(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDAO);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -769,7 +769,7 @@ class InserimentoSupportoTest {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setSupportoEsameDAO(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDAO);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -826,7 +826,7 @@ class InserimentoSupportoTest {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setSupportoEsameDAO(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDAO);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -883,7 +883,7 @@ class InserimentoSupportoTest {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setSupportoEsameDAO(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDAO);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -940,7 +940,7 @@ class InserimentoSupportoTest {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setSupportoEsameDAO(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDAO);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -997,7 +997,7 @@ class InserimentoSupportoTest {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setSupportoEsameDAO(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDAO);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -1054,7 +1054,7 @@ class InserimentoSupportoTest {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setSupportoEsameDAO(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDAO);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -1111,7 +1111,7 @@ class InserimentoSupportoTest {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setSupportoEsameDAO(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDAO);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -1168,7 +1168,7 @@ class InserimentoSupportoTest {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setSupportoEsameDAO(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDAO);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -1225,7 +1225,7 @@ class InserimentoSupportoTest {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setSupportoEsameDAO(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDAO);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",

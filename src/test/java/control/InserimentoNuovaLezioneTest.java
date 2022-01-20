@@ -73,7 +73,7 @@ class InserimentoNuovaLezioneTest {
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDAO(lezioneDAO);
+      servlet.setLezioneDao(lezioneDAO);
       servlet.doGet(request, response);
       assertEquals(
           "Lezione Inserita",
@@ -124,7 +124,7 @@ class InserimentoNuovaLezioneTest {
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDAO(lezioneDAO);
+      servlet.setLezioneDao(lezioneDAO);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -176,7 +176,7 @@ class InserimentoNuovaLezioneTest {
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDAO(lezioneDAO);
+      servlet.setLezioneDao(lezioneDAO);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -228,7 +228,7 @@ class InserimentoNuovaLezioneTest {
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDAO(lezioneDAO);
+      servlet.setLezioneDao(lezioneDAO);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -280,7 +280,7 @@ class InserimentoNuovaLezioneTest {
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDAO(lezioneDAO);
+      servlet.setLezioneDao(lezioneDAO);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -332,7 +332,7 @@ class InserimentoNuovaLezioneTest {
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDAO(lezioneDAO);
+      servlet.setLezioneDao(lezioneDAO);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -384,7 +384,7 @@ class InserimentoNuovaLezioneTest {
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDAO(lezioneDAO);
+      servlet.setLezioneDao(lezioneDAO);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -436,7 +436,7 @@ class InserimentoNuovaLezioneTest {
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDAO(lezioneDAO);
+      servlet.setLezioneDao(lezioneDAO);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -488,7 +488,7 @@ class InserimentoNuovaLezioneTest {
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDAO(lezioneDAO);
+      servlet.setLezioneDao(lezioneDAO);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -540,7 +540,7 @@ class InserimentoNuovaLezioneTest {
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDAO(lezioneDAO);
+      servlet.setLezioneDao(lezioneDAO);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -592,7 +592,7 @@ class InserimentoNuovaLezioneTest {
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDAO(lezioneDAO);
+      servlet.setLezioneDao(lezioneDAO);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -644,7 +644,7 @@ class InserimentoNuovaLezioneTest {
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDAO(lezioneDAO);
+      servlet.setLezioneDao(lezioneDAO);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -706,7 +706,7 @@ class InserimentoNuovaLezioneTest {
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDAO(lezioneDAO);
+      servlet.setLezioneDao(lezioneDAO);
       servlet.doGet(request, response);
       assertEquals("view/LezioniTutorPage.jsp", response.getRedirectedUrl());
     } catch (SQLException e) {

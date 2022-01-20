@@ -1,13 +1,13 @@
 package control;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.sql.SQLException;
 import model.bean.SupportoEsameBean;
 import model.bean.UserBean;
 import model.dao.ISupportoEsameDAO;
@@ -15,15 +15,17 @@ import model.dao.SupportoEsameDAO;
 import other.MyLogger;
 
 /**
- * @author Riccardo Polidoro Servlet che permette l'inserimento di una richiesta di supporto esame
- *     all'interno del DB
+ * Servlet che permette l'inserimento di una richiesta di supporto esame all'interno del DB.
+ *
+ * @author Riccardo Polidoro
  */
+
 @WebServlet("/inserisciSupporto")
 public class InserimentoRichiestaSupportoServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "InserimentoRichiestaSupportoServlet";
 
-  public void setSupportoEsameDAO(ISupportoEsameDAO dao) {
+  public void setsupportoesameDao(ISupportoEsameDAO dao) {
     this.dao = dao;
   }
 
@@ -51,15 +53,14 @@ public class InserimentoRichiestaSupportoServlet extends HttpServlet {
       try {
         if (!dao.InserimentoSupportoEsame(bean)) {
           session.setAttribute("alertMsg", "L’operazione non è andata a buon fine.");
-          resp.sendRedirect("view/HomePage.jsp");
+          resp.sendRedirect("view/RichiediServizioPage.jsp");
         } else {
           session.setAttribute(
               "alertMsg", "Richiesta di servizio di supporto esame inserita con successo!");
-          resp.sendRedirect("view/HomePage.jsp");
+          resp.sendRedirect("view/RichiediServizioPage.jsp");
         }
       } catch (SQLException e) {
         log.error(myClass, "Catturata eccezione nella Servlet", e);
-        e.printStackTrace();
       }
     } else {
       session.setAttribute("alertMsg", "Permessi non concessi all'utente");
@@ -70,6 +71,6 @@ public class InserimentoRichiestaSupportoServlet extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
-    super.doPost(req, resp);
+    doGet(req, resp);
   }
 }

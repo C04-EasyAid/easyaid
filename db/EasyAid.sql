@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `easyaid` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `easyaid`;
--- MySQL dump 10.13  Distrib 8.0.27, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: easyaid
+-- Host: localhost    Database: easyaid
 -- ------------------------------------------------------
--- Server version	8.0.27
+-- Server version	8.0.18
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -25,14 +25,14 @@ DROP TABLE IF EXISTS `commento`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `commento` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `lezione` int NOT NULL,
-  `tutorato` int NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `lezione` int(11) NOT NULL,
+  `tutorato` int(11) NOT NULL,
   `testo` varchar(250) NOT NULL,
   `data` date NOT NULL,
   `ora` varchar(100) NOT NULL,
-  `studente` varchar(100) NOT NULL,
-  `tutor` varchar(100) NOT NULL,
+  `studente` varchar(100) DEFAULT NULL,
+  `tutor` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`,`lezione`,`tutorato`),
   KEY `idlezione_idx` (`lezione`),
   KEY `idtutorato_idx` (`tutorato`),
@@ -42,7 +42,7 @@ CREATE TABLE `commento` (
   CONSTRAINT `idtutorato` FOREIGN KEY (`tutorato`) REFERENCES `lezione` (`tutorato`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `studente` FOREIGN KEY (`studente`) REFERENCES `studente` (`email_studente`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tutore` FOREIGN KEY (`tutor`) REFERENCES `tutor` (`email_tutor`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -53,13 +53,13 @@ DROP TABLE IF EXISTS `lezione`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lezione` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `tutorato` int NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tutorato` int(11) NOT NULL,
   `ora_inizio` varchar(100) NOT NULL,
   `ora_fine` varchar(100) NOT NULL,
   `data` date NOT NULL,
   `tutor` varchar(100) NOT NULL,
-  `status` tinyint NOT NULL,
+  `status` tinyint(4) NOT NULL,
   `luogo` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `e-mail_idx` (`tutor`),
@@ -67,7 +67,7 @@ CREATE TABLE `lezione` (
   KEY `idtutorato_didattico_idx` (`tutorato`),
   CONSTRAINT `idtutorato_didattico` FOREIGN KEY (`tutorato`) REFERENCES `tutorato_didattico` (`idtutorato_didattico`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tutor` FOREIGN KEY (`tutor`) REFERENCES `tutorato_didattico` (`tutor_email`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -111,8 +111,8 @@ CREATE TABLE `studente` (
   `email_studente` varchar(100) NOT NULL,
   `tipo_di_disabilita` varchar(100) NOT NULL,
   `specifiche_disturbo` varchar(100) DEFAULT NULL,
-  `percentuale_disabilita` int DEFAULT NULL,
-  `ore_disponibili` int NOT NULL,
+  `percentuale_disabilita` int(11) DEFAULT NULL,
+  `ore_disponibili` int(11) NOT NULL,
   PRIMARY KEY (`email_studente`),
   KEY `email_idx` (`email_studente`),
   CONSTRAINT `email` FOREIGN KEY (`email_studente`) REFERENCES `utente` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -127,15 +127,15 @@ DROP TABLE IF EXISTS `supporto_esame`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `supporto_esame` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `data` date NOT NULL,
   `ora` varchar(45) NOT NULL,
-  `ore_richieste` int NOT NULL,
+  `ore_richieste` int(11) NOT NULL,
   `docente` varchar(100) NOT NULL,
   `modalita_esame` varchar(100) NOT NULL,
   `eventuali_ausili` varchar(100) NOT NULL,
   `tipo_di_assistenza` varchar(100) NOT NULL,
-  `status` tinyint NOT NULL,
+  `status` tinyint(4) NOT NULL,
   `insegnamento` varchar(100) NOT NULL,
   `commento` varchar(250) DEFAULT NULL,
   `luogo` varchar(100) NOT NULL,
@@ -150,7 +150,7 @@ CREATE TABLE `supporto_esame` (
   CONSTRAINT `prof_refe_key` FOREIGN KEY (`prof_refe_email`) REFERENCES `professore_referente` (`email_prof_refe`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `studente_key` FOREIGN KEY (`studente_email`) REFERENCES `studente` (`email_studente`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tutor_key` FOREIGN KEY (`tutor_email`) REFERENCES `tutor` (`email_tutor`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=123 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -164,8 +164,8 @@ CREATE TABLE `tutor` (
   `email_tutor` varchar(100) NOT NULL,
   `dipartimento` varchar(100) NOT NULL,
   `qualifica` varchar(100) NOT NULL,
-  `ore_svolte` int NOT NULL,
-  `ore_disponibili` int NOT NULL,
+  `ore_svolte` int(11) NOT NULL,
+  `ore_disponibili` int(11) NOT NULL,
   PRIMARY KEY (`email_tutor`),
   CONSTRAINT `tutor_ibfk_1` FOREIGN KEY (`email_tutor`) REFERENCES `utente` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -179,12 +179,12 @@ DROP TABLE IF EXISTS `tutorato_didattico`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tutorato_didattico` (
-  `idtutorato_didattico` int NOT NULL AUTO_INCREMENT,
+  `idtutorato_didattico` int(11) NOT NULL AUTO_INCREMENT,
   `date_disponibili` varchar(100) NOT NULL,
   `ore_disponibili` varchar(45) NOT NULL,
-  `ore_richieste` int NOT NULL,
+  `ore_richieste` int(11) NOT NULL,
   `commento` varchar(250) DEFAULT NULL,
-  `status` tinyint NOT NULL,
+  `status` tinyint(4) NOT NULL,
   `insegnamento` varchar(100) NOT NULL,
   `dipartimento` varchar(100) NOT NULL,
   `studente_email` varchar(100) NOT NULL,
@@ -198,7 +198,7 @@ CREATE TABLE `tutorato_didattico` (
   CONSTRAINT `e-mail_prof_refe` FOREIGN KEY (`prof_refe_email`) REFERENCES `professore_referente` (`email_prof_refe`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `e-mail_studente` FOREIGN KEY (`studente_email`) REFERENCES `studente` (`email_studente`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `e-mail_tutor` FOREIGN KEY (`tutor_email`) REFERENCES `tutor` (`email_tutor`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -217,6 +217,14 @@ CREATE TABLE `utente` (
   PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping events for database 'easyaid'
+--
+
+--
+-- Dumping routines for database 'easyaid'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -227,4 +235,4 @@ CREATE TABLE `utente` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-19 16:22:15
+-- Dump completed on 2022-01-20 20:39:51

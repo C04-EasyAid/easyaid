@@ -21,7 +21,7 @@ import static model.dao.ConnectionPool.conn;
 Classe LezioneDAO
  */
 public class LezioneDAO implements ILezioneDAO {
-  // Metodo che restitiusce una lezione in base all'id passato come parametro
+  // Metodo che restituisce una lezione in base all'id passato come parametro
   @Override
   public synchronized LezioneBean doRetrieveLezioneById(int id)
       throws ClassNotFoundException, SQLException {
@@ -46,17 +46,17 @@ public class LezioneDAO implements ILezioneDAO {
                 rs.getString("tutor"),
                 rs.getString("luogo"),
                 rs.getBoolean("status"));
+        bean.setId(rs.getInt("id"));
         bean.setInsegnamento(rs.getString("insegnamento"));
         bean.setEmailStudente(rs.getString("studente_email"));
-      }
-    } catch (SQLException e) {
 
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) {
+        stmt.close();
         conn.close();
       }
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
+
     return bean;
   }
 
@@ -85,18 +85,20 @@ public class LezioneDAO implements ILezioneDAO {
                 rs.getString("tutor"),
                 rs.getString("luogo"),
                 rs.getBoolean("status"));
+        bean.setId(rs.getInt("id"));
         bean.setInsegnamento(rs.getString("insegnamento"));
         bean.setEmailStudente(rs.getString("studente_email"));
         lezioni.add(bean);
+
       }
+
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) {
-        conn.close();
-      }
     }
+
+
     return lezioni;
   }
 
@@ -128,15 +130,16 @@ public class LezioneDAO implements ILezioneDAO {
         bean.setInsegnamento(rs.getString("insegnamento"));
         bean.setEmailStudente(rs.getString("studente_email"));
         lezioni.add(bean);
+
       }
+
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) {
-        conn.close();
-      }
     }
+
+
     return lezioni;
   }
   // Metodo che restituisce tutte le lezioni di un determinato studente il quale è stato passato
@@ -169,15 +172,15 @@ public class LezioneDAO implements ILezioneDAO {
         lezione.setInsegnamento(rs.getString("insegnamento"));
         lezione.setEmailStudente(rs.getString("studente_email"));
         lezioni.add(lezione);
+
       }
+
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) {
-        conn.close();
-      }
     }
+
     return lezioni;
   }
 
@@ -208,18 +211,19 @@ public class LezioneDAO implements ILezioneDAO {
                 rs.getString("tutor"),
                 rs.getString("luogo"),
                 rs.getBoolean("status"));
+        lezione.setId(rs.getInt("id"));
         lezione.setInsegnamento(rs.getString("insegnamento"));
         lezione.setEmailStudente(rs.getString("studente_email"));
         lezioni.add(lezione);
+
       }
+
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) {
-        conn.close();
-      }
     }
+
     return lezioni;
   }
 
@@ -234,17 +238,15 @@ public class LezioneDAO implements ILezioneDAO {
       stmt = conn.prepareStatement(query);
       stmt.setInt(1, lezione);
       ResultSet rs = stmt.executeQuery();
-      if (rs.next()) {
+      if (rs.next())
         idTutorato = rs.getInt("tutorato");
-      }
+
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) {
-        conn.close();
-      }
     }
+
     return idTutorato;
   }
   // Metodo che restituisce un booleano
@@ -313,18 +315,14 @@ public class LezioneDAO implements ILezioneDAO {
       // Esegue la query
       utente = stmt.executeUpdate() == 1;
       conn.commit();
+
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       utente = false;
       e.printStackTrace();
-      // Chiude la connessione se è diverso da null
-    } finally {
-      if (stmt != null) {
-        stmt.close();
-      }
-      if (conn != null) {
-        conn.close();
-      }
     }
+
     return utente;
   }
 
@@ -341,12 +339,14 @@ public class LezioneDAO implements ILezioneDAO {
       stmt.setInt(1, idLezione);
       isUpdated = stmt.executeUpdate() == 1;
       conn.commit();
+
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) conn.close();
     }
+
+
 
     return isUpdated;
   }
@@ -363,12 +363,14 @@ public class LezioneDAO implements ILezioneDAO {
       stmt.setInt(1, l.getId());
       delete = stmt.executeUpdate() == 1;
       conn.commit();
+
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) conn.close();
     }
+
+
     return delete;
   }
 }

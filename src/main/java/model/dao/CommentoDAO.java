@@ -45,16 +45,16 @@ public class CommentoDAO implements ICommentoDAO {
                 rs.getString("ora"),
                 rs.getString("studente"),
                 rs.getString("tutor"));
+        bean.setId(rs.getInt("id"));
         commenti.add(bean);
       }
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
-
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) {
-        conn.close();
-      }
+       e.printStackTrace();
     }
+
+
     return commenti;
   }
 
@@ -83,17 +83,17 @@ public class CommentoDAO implements ICommentoDAO {
       stmt.setString(4, data);
       stmt.setString(5, ora);
       stmt.setString(6, emailMittente);
+
       result = stmt.executeUpdate() == 1;
-      System.out.println("" + stmt);
       conn.commit();
+
+      stmt.close();
+      conn.close();
+
     } catch (SQLException e) {
       result = false;
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) {
-        conn.close();
-      }
     }
+
 
     return result;
   }
@@ -124,18 +124,14 @@ public class CommentoDAO implements ICommentoDAO {
       stmt.setString(4, data);
       stmt.setString(5, ora);
       stmt.setString(6, emailMittente);
-      System.out.println("" + stmt);
       result = stmt.executeUpdate() == 1;
       conn.commit();
+
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       result = false;
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) {
-        conn.close();
-      }
     }
-
     return result;
   }
 
@@ -151,12 +147,13 @@ public class CommentoDAO implements ICommentoDAO {
       stmt.setInt(1, b.getId());
       delete = stmt.executeUpdate() == 1;
       conn.commit();
+
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) conn.close();
     }
+
     return delete;
   }
 }

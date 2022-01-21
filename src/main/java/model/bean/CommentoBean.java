@@ -11,7 +11,7 @@ import lombok.*;
 
 @Data
 public class CommentoBean {
-  // variabili di istanza
+
   private int lezione;
   private int tutorato;
   private int id;
@@ -21,7 +21,6 @@ public class CommentoBean {
   private String tutor;
   private Date data;
 
-  // Costruttore
   public CommentoBean(
       int lezione,
       int tutorato,
@@ -39,6 +38,5 @@ public class CommentoBean {
     this.tutor = tutor;
   }
 
-  // Costruttore vuoto
   public CommentoBean() {}
 }

@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import model.bean.StudenteBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
@@ -33,7 +32,9 @@ public class InserimentoRichiestaTutoratoServlet extends HttpServlet {
   public void setDao(ITutoratoDidatticoDAO dao) {
     this.dao = dao;
   }
-  public void setstudenteDao(IStudenteDAO studenteDao ) { this.studenteDao = studenteDao; }
+  public void setstudenteDao(IStudenteDAO studenteDao) {
+    this.studenteDao = studenteDao;
+  }
 
   private ITutoratoDidatticoDAO dao = new TutoratoDidatticoDAO();
   private IStudenteDAO studenteDao = new StudenteDAO();

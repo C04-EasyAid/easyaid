@@ -7,6 +7,11 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" import="model.bean.UserBean" %>
 <%@ page import="java.util.Collection" %>
+<% if(session.getAttribute("utente")==null){
+    response.sendRedirect("./LoginPage.jsp");
+    return;
+}
+%>
 <%
     Collection<UserBean> utenti = (Collection<UserBean>) session.getAttribute("usrList");
     int studenti = 0;

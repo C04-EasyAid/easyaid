@@ -12,7 +12,7 @@ import lombok.Data;
 
 @Data
 public class LezioneBean {
-  // Variabili d'istanza
+
   private String luogo;
   private int id;
   private int tutorato;
@@ -23,7 +23,7 @@ public class LezioneBean {
   private String emailstudente;
   private Date data;
   private boolean status;
-  // Costruttore con id
+
   public LezioneBean(
       int id,
       int tutorato,
@@ -42,7 +42,7 @@ public class LezioneBean {
     this.luogo = luogo;
     this.status = status;
   }
-  // Costruttore
+
   public LezioneBean(
       int tutorato,
       String oraInizio,
@@ -59,7 +59,7 @@ public class LezioneBean {
     this.luogo = luogo;
     this.status = status;
   }
-  // Costruttore vuoto
+
 
   public LezioneBean() {}
 

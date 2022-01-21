@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import model.bean.StudenteBean;
 import model.bean.SupportoEsameBean;
 import model.bean.UserBean;
@@ -23,7 +22,6 @@ import other.MyLogger;
  *
  * @author Riccardo Polidoro
  */
-
 @WebServlet("/inserisciSupporto")
 public class InserimentoRichiestaSupportoServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
@@ -33,11 +31,12 @@ public class InserimentoRichiestaSupportoServlet extends HttpServlet {
     this.dao = dao;
   }
 
-  public void setstudenteDao(IStudenteDAO studenteDao ) { this.studenteDao = studenteDao; }
+  public void setstudenteDao(IStudenteDAO studenteDao) {
+    this.studenteDao = studenteDao;
+  }
 
   private ISupportoEsameDAO dao = new SupportoEsameDAO();
   private IStudenteDAO studenteDao = new StudenteDAO();
-
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -60,18 +59,19 @@ public class InserimentoRichiestaSupportoServlet extends HttpServlet {
       bean.setStudenteEmail(user.getEmail());
       try {
         StudenteBean studente = studenteDao.doRetrieveByEmail(user.getEmail());
-        if(Integer.parseInt(req.getParameter("ore_richieste"))<studente.getOreDisponibili()){
-        if (!dao.InserimentoSupportoEsame(bean)) {
-          session.setAttribute("alertMsg", "L’operazione non è andata a buon fine.");
-          resp.sendRedirect("view/RichiediServizioPage.jsp");
-        } else {
-          studenteDao.updateOreDisponibili(Integer.parseInt(req.getParameter("ore_richieste")),user.getEmail());
-          session.setAttribute(
-              "alertMsg", "Richiesta di servizio di supporto esame inserita con successo!");
+        if (Integer.parseInt(req.getParameter("ore_richieste")) < studente.getOreDisponibili()) {
+          if (!dao.InserimentoSupportoEsame(bean)) {
+            session.setAttribute("alertMsg", "L’operazione non è andata a buon fine.");
+            resp.sendRedirect("view/RichiediServizioPage.jsp");
+          } else {
+            studenteDao.updateOreDisponibili(
+                Integer.parseInt(req.getParameter("ore_richieste")), user.getEmail());
+            session.setAttribute(
+                "alertMsg", "Richiesta di servizio di supporto esame inserita con successo!");
 
-          resp.sendRedirect("view/RichiediServizioPage.jsp");
-        }
-        }else{
+            resp.sendRedirect("view/RichiediServizioPage.jsp");
+          }
+        } else {
           session.setAttribute("alertMsg", "L’operazione non è andata a buon fine.");
           resp.sendRedirect("view/RichiediServizioPage.jsp");
         }

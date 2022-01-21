@@ -11,7 +11,12 @@ import javax.servlet.http.HttpSession;
 import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
-import model.dao.*;
+import model.dao.ISupportoEsameDAO;
+import model.dao.ITutorDAO;
+import model.dao.ITutoratoDidatticoDAO;
+import model.dao.SupportoEsameDAO;
+import model.dao.TutorDAO;
+import model.dao.TutoratoDidatticoDAO;
 import other.MyLogger;
 
 /**
@@ -43,7 +48,9 @@ public class ApprovazioneRichiestaServlet extends HttpServlet {
     this.supportodao = supportodao;
   }
 
-  public void setTutordao(ITutorDAO tutordao) { this.tutordao = tutordao; }
+  public void setTutordao(ITutorDAO tutordao) {
+    this.tutordao = tutordao;
+  }
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -56,7 +63,7 @@ public class ApprovazioneRichiestaServlet extends HttpServlet {
     if (tutorato != null) {
       try {
         tutoratodao.approvaRichiesta(tutorato.getId(), prof.getEmail());
-        tutordao.updateOreSvolte(tutorato.getOreRichieste(),tutorato.getTutorEmail());
+        tutordao.updateOreSvolte(tutorato.getOreRichieste(), tutorato.getTutorEmail());
         session.setAttribute("alertMsg", "Richiesta approvata con successo");
         resp.sendRedirect("view/HomePage.jsp");
       } catch (SQLException e) {
@@ -66,7 +73,7 @@ public class ApprovazioneRichiestaServlet extends HttpServlet {
     } else if (supporto != null) {
       try {
         supportodao.approvaRichiesta(supporto.getId(), prof.getEmail());
-        tutordao.updateOreSvolte(supporto.getOreRichieste(),supporto.getTutorEmail());
+        tutordao.updateOreSvolte(supporto.getOreRichieste(), supporto.getTutorEmail());
         session.setAttribute("alertMsg", "Richiesta approvata con successo");
         resp.sendRedirect("view/HomePage.jsp");
       } catch (SQLException e) {

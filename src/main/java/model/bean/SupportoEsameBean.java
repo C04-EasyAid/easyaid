@@ -29,6 +29,7 @@ public class SupportoEsameBean {
   /** Costruttore vuoto. */
   public SupportoEsameBean() {}
 
+  /** Costruttore. */
   public SupportoEsameBean(
       int id,
       String data,

@@ -1,13 +1,12 @@
 package model.dao;
 
+import static model.dao.ConnectionPool.conn;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Locale;
 import model.bean.StudenteBean;
-
-import static model.dao.ConnectionPool.conn;
 
 /**
  * Classe StudenteDAO.
@@ -59,18 +58,18 @@ public class StudenteDAO implements IStudenteDAO {
     Connection conn = null;
     String query = "UPDATE studente SET ore_disponibili=ore_disponibili-? WHERE email_studente = ?";
     PreparedStatement stmt = null;
-    try{
+    try {
       conn = ConnectionPool.conn();
       stmt = conn.prepareStatement(query);
-      stmt.setInt(1,oreRichieste);
-      stmt.setString(2,emailStudente);
+      stmt.setInt(1, oreRichieste);
+      stmt.setString(2, emailStudente);
 
       updated = stmt.executeUpdate() == 1;
       conn.commit();
 
       stmt.close();
       conn.close();
-    }catch (SQLException e) {
+    } catch (SQLException e) {
       updated = true;
       e.printStackTrace();
     }

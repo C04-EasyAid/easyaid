@@ -86,7 +86,7 @@ class LezioneDAOTest {
 
     @Test
     void doRetrieveLezioneByStudente1() throws SQLException, ClassNotFoundException {
-        String emailStudente = "marcoverdi4@studenti.unisa.it";
+        String emailStudente = "paolorossi10@studenti.unisa.it";
 
         List<LezioneBean> expected = new ArrayList<>();
         expected.add(new LezioneBean());
@@ -111,7 +111,7 @@ class LezioneDAOTest {
 
     @Test
     void doRetrieveLezioneByTutor1() throws SQLException, ClassNotFoundException {
-        String emailTutor = "adebiase41@studenti.unisa.it";
+        String emailTutor = "mdibianco45@studenti.unisa.it";
 
         List<LezioneBean> expected = new ArrayList<>();
         expected.add(new LezioneBean());

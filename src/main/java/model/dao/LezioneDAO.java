@@ -11,7 +11,6 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import model.bean.LezioneBean;
-import model.bean.SupportoEsameBean;
 
 import static model.dao.ConnectionPool.conn;
 

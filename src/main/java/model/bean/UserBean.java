@@ -10,7 +10,6 @@ import lombok.*;
  *
  * @author Giovanni Toriello
  */
-
 @Data
 public class UserBean implements HttpSessionBindingListener {
   // Variabili dell'utente
@@ -19,7 +18,6 @@ public class UserBean implements HttpSessionBindingListener {
   private String email;
   private String password;
   private String ruolo;
-
 
   public UserBean(String nome, String cognome, String email, String password, String ruolo) {
     this.nome = nome;

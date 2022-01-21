@@ -1,11 +1,9 @@
 package control;
 /* @author Martina Giugliano Testing per l'inserimento di una richiesta di tutorato didattico */
+import model.bean.StudenteBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
-import model.dao.ITutoratoDidatticoDAO;
-import model.dao.IUserDAO;
-import model.dao.TutorDAO;
-import model.dao.UserDAO;
+import model.dao.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
@@ -39,6 +37,8 @@ class InserimentoRichiestaTutoratoTest {
     MockitoAnnotations.initMocks(this);
     IUserDAO userDao = mock(UserDAO.class);
     ITutoratoDidatticoDAO tutoratoDidatticoDAO = mock(ITutoratoDidatticoDAO.class);
+    IStudenteDAO studenteDAO = mock(StudenteDAO.class);
+
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -49,7 +49,7 @@ class InserimentoRichiestaTutoratoTest {
     String dateDisponibili = "Martedi,Mercoledì";
     String oreDisponibili = "14:00-16:00,18:00-20:00";
     String docente = "Distasi";
-    int oreRichieste = 20;
+    int oreRichieste = 5;
     String email = bean.getEmail();
     request.setParameter("date_disponibili", dateDisponibili);
     request.setParameter("ore_disponibili", oreDisponibili);
@@ -66,12 +66,17 @@ class InserimentoRichiestaTutoratoTest {
     tutoratoDidatticoBean.setInsegnamento(insegnamento);
     tutoratoDidatticoBean.setStatus(0);
     tutoratoDidatticoBean.setOreDisponibili(oreDisponibili);
+
+    StudenteBean studente = new StudenteBean();
+    studente.setOreDisponibili(22);
     try {
+      when(studenteDAO.doRetrieveByEmail(email)).thenReturn(studente);
       when(tutoratoDidatticoDAO.InserimentoTutoratoDidattico(tutoratoDidatticoBean))
           .thenReturn(true);
     } catch (SQLException e) {
       e.printStackTrace();
     }
+    servlet.setstudenteDao(studenteDAO);
     servlet.setDao(tutoratoDidatticoDAO);
     servlet.doGet(request, response);
     assertEquals(

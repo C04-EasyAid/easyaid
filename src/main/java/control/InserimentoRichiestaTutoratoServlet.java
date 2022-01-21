@@ -8,9 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import model.bean.StudenteBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
+import model.dao.IStudenteDAO;
 import model.dao.ITutoratoDidatticoDAO;
+import model.dao.StudenteDAO;
 import model.dao.TutoratoDidatticoDAO;
 import other.MyLogger;
 
@@ -29,8 +33,10 @@ public class InserimentoRichiestaTutoratoServlet extends HttpServlet {
   public void setDao(ITutoratoDidatticoDAO dao) {
     this.dao = dao;
   }
+  public void setstudenteDao(IStudenteDAO studenteDao ) { this.studenteDao = studenteDao; }
 
   private ITutoratoDidatticoDAO dao = new TutoratoDidatticoDAO();
+  private IStudenteDAO studenteDao = new StudenteDAO();
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -49,12 +55,19 @@ public class InserimentoRichiestaTutoratoServlet extends HttpServlet {
       bean.setStudenteEmail(user.getEmail());
       // bean.setDocente(req.getParameter("docente");
       try {
-        if (!dao.InserimentoTutoratoDidattico(bean)) {
-          session.setAttribute("alertMsg", "L’operazione non è andata a buon fine.");
-          resp.sendRedirect("view/RichiediServizioPage.jsp");
+        StudenteBean studente = studenteDao.doRetrieveByEmail(user.getEmail());
+        if (Integer.parseInt(req.getParameter("ore_richieste")) < studente.getOreDisponibili()) {
+          if (!dao.InserimentoTutoratoDidattico(bean)) {
+            session.setAttribute("alertMsg", "L’operazione non è andata a buon fine.");
+            resp.sendRedirect("view/RichiediServizioPage.jsp");
+          } else {
+            studenteDao.updateOreDisponibili(Integer.parseInt(req.getParameter("ore_richieste")),user.getEmail());
+            session.setAttribute(
+                "alertMsg", "Richiesta di servizio di tutorato didattico inserita con successo!");
+            resp.sendRedirect("view/RichiediServizioPage.jsp");
+          }
         } else {
-          session.setAttribute(
-              "alertMsg", "Richiesta di servizio di tutorato didattico inserita con successo!");
+          session.setAttribute("alertMsg", "L’operazione non è andata a buon fine.");
           resp.sendRedirect("view/RichiediServizioPage.jsp");
         }
       } catch (SQLException e) {

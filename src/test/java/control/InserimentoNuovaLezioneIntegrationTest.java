@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -34,7 +35,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         }
 
         @Test
-        void testInserimentoNuovaLezione() throws ParseException, ServletException, IOException {
+        void testInserimentoNuovaLezione() throws ParseException, ServletException, IOException, ClassNotFoundException {
 
             UserBean userBean = new UserBean();
             ILezioneDAO lezioneDAO = new LezioneDAO();
@@ -63,12 +64,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
                 lezioneBean.setOraInizio(oraInizio);
                 lezioneBean.setOraFine(oraFine);
                 lezioneBean.setData(date);
+                lezioneBean.setLuogo(luogo);
 
                 servlet.setLezioneDao(lezioneDAO);
                 servlet.doGet(request, response);
                 assertEquals(
                         "Lezione Inserita",
                         Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
+                List<LezioneBean> list = (List<LezioneBean>) lezioneDAO.doRetrieveLezioniById(idTutorato);
+                lezioneBean = list.get(list.size()-1);
                 lezioneDAO.deleteLezione(lezioneBean);
             } catch (SQLException e) {
                 e.printStackTrace();

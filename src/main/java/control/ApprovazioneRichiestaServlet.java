@@ -11,10 +11,7 @@ import javax.servlet.http.HttpSession;
 import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
-import model.dao.ISupportoEsameDAO;
-import model.dao.ITutoratoDidatticoDAO;
-import model.dao.SupportoEsameDAO;
-import model.dao.TutoratoDidatticoDAO;
+import model.dao.*;
 import other.MyLogger;
 
 /**
@@ -28,8 +25,9 @@ import other.MyLogger;
 public class ApprovazioneRichiestaServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "ApprovazioneRichiestaServlet";
-  ITutoratoDidatticoDAO tutoratodao = new TutoratoDidatticoDAO();
-  ISupportoEsameDAO supportodao = new SupportoEsameDAO();
+  private ITutoratoDidatticoDAO tutoratodao = new TutoratoDidatticoDAO();
+  private ISupportoEsameDAO supportodao = new SupportoEsameDAO();
+  private ITutorDAO tutordao = new TutorDAO();
 
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -45,6 +43,8 @@ public class ApprovazioneRichiestaServlet extends HttpServlet {
     this.supportodao = supportodao;
   }
 
+  public void setTutordao(ITutorDAO tutordao) { this.tutordao = tutordao; }
+
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
@@ -56,6 +56,7 @@ public class ApprovazioneRichiestaServlet extends HttpServlet {
     if (tutorato != null) {
       try {
         tutoratodao.approvaRichiesta(tutorato.getId(), prof.getEmail());
+        tutordao.updateOreSvolte(tutorato.getOreRichieste(),tutorato.getTutorEmail());
         session.setAttribute("alertMsg", "Richiesta approvata con successo");
         resp.sendRedirect("view/HomePage.jsp");
       } catch (SQLException e) {
@@ -65,6 +66,7 @@ public class ApprovazioneRichiestaServlet extends HttpServlet {
     } else if (supporto != null) {
       try {
         supportodao.approvaRichiesta(supporto.getId(), prof.getEmail());
+        tutordao.updateOreSvolte(supporto.getOreRichieste(),supporto.getTutorEmail());
         session.setAttribute("alertMsg", "Richiesta approvata con successo");
         resp.sendRedirect("view/HomePage.jsp");
       } catch (SQLException e) {

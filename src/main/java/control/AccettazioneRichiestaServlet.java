@@ -11,10 +11,7 @@ import javax.servlet.http.HttpSession;
 import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
-import model.dao.ISupportoEsameDAO;
-import model.dao.ITutoratoDidatticoDAO;
-import model.dao.SupportoEsameDAO;
-import model.dao.TutoratoDidatticoDAO;
+import model.dao.*;
 import other.MyLogger;
 
 
@@ -29,6 +26,7 @@ import other.MyLogger;
 public class AccettazioneRichiestaServlet extends HttpServlet {
   private ITutoratoDidatticoDAO tutoratodao = new TutoratoDidatticoDAO();
   private ISupportoEsameDAO supportodao = new SupportoEsameDAO();
+  private ITutorDAO tutordao = new TutorDAO();
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "AccettazioneRichiestaServlet";
 
@@ -39,6 +37,8 @@ public class AccettazioneRichiestaServlet extends HttpServlet {
   public void setSupportodao(ISupportoEsameDAO supportodao) {
     this.supportodao = supportodao;
   }
+
+  public void setTutordao(ITutorDAO tutordao) { this.tutordao=tutordao; }
 
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -55,10 +55,19 @@ public class AccettazioneRichiestaServlet extends HttpServlet {
     String commento = req.getParameter("commento");
     TutoratoDidatticoBean tutorato = (TutoratoDidatticoBean) session.getAttribute("tutorato");
     SupportoEsameBean supporto = (SupportoEsameBean) session.getAttribute("supporto");
+    int oreDisponibilitutor = 0;
 
-    if (tutorato != null) {
+    try {
+       oreDisponibilitutor = tutordao.doRetrieveByEmail(tutor.getEmail()).getOreDisponibili();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } catch (ClassNotFoundException e) {
+      e.printStackTrace();
+    }
+    if (tutorato != null && tutorato.getOreRichieste()<oreDisponibilitutor) {
       try {
         tutoratodao.accettaRichiesta(tutorato.getId(), tutor.getEmail(), commento);
+        tutordao.updateOreDisponibili(tutorato.getOreRichieste(),tutor.getEmail());
         session.setAttribute("alertMsg", "Richiesta accettata con successo");
         resp.sendRedirect("viewRichiesteServizio");
       } catch (SQLException e) {
@@ -68,7 +77,7 @@ public class AccettazioneRichiestaServlet extends HttpServlet {
         e.printStackTrace();
       }
     }
-    if (supporto != null) {
+    if (supporto != null && supporto.getOreRichieste()<oreDisponibilitutor) {
       try {
         supportodao.accettaRichiesta(supporto.getId(), tutor.getEmail(), commento);
         session.setAttribute("alertMsg", "Richiesta accettata con successo");

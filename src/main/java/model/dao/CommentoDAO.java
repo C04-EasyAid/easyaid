@@ -72,7 +72,8 @@ public class CommentoDAO implements ICommentoDAO {
     String data = String.valueOf(LocalDate.now());
     int idTutorato = dao.doRetrieveTutoratoByLezione(lezione);
     String query =
-        "INSERT INTO easyaid.commento (lezione, tutorato, testo, data, ora, tutor) VALUES (?,?,?,?,?,?);";
+        "INSERT INTO easyaid.commento " +
+                "(lezione, tutorato, testo, data, ora, tutor) VALUES (?,?,?,?,?,?);";
     try {
       conn = conn();
       stmt = conn.prepareStatement(query);
@@ -113,7 +114,8 @@ public class CommentoDAO implements ICommentoDAO {
     String data = String.valueOf(LocalDate.now());
     int idTutorato = dao.doRetrieveTutoratoByLezione(lezione);
     String query =
-        "INSERT INTO easyaid.commento (lezione, tutorato, testo, data, ora, studente) VALUES (?,?,?,?,?,?);";
+        "INSERT INTO easyaid.commento" +
+                " (lezione, tutorato, testo, data, ora, studente) VALUES (?,?,?,?,?,?);";
     try {
       conn = conn();
       stmt = conn.prepareStatement(query);

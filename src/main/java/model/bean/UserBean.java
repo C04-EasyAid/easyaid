@@ -1,8 +1,8 @@
 package model.bean;
 
+import java.util.Locale;
 import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionBindingListener;
-import java.util.Locale;
 import lombok.*;
 
 /**

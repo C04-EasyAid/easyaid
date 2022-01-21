@@ -16,15 +16,7 @@ public class TutorBean {
   private int oreSvolte;
   private int oreDisponibili;
 
-  /**
-   * Costruttore.
-   *
-   * @param emailTutor
-   * @param dipartimento
-   * @param qualifica
-   * @param oreSvolte
-   * @param oreDisponibili
-   */
+
   public TutorBean(
       String emailTutor, String dipartimento, String qualifica, int oreSvolte, int oreDisponibili) {
     this.emailTutor = emailTutor;

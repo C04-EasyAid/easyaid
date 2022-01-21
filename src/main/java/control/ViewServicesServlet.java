@@ -30,8 +30,7 @@ public class ViewServicesServlet extends HttpServlet {
 
     if (bean != null) {
       resp.sendRedirect("view/RichiediServizioPage.jsp");
-    }
-    else {
+    } else {
       session.setAttribute("alertMsg", "Permessi non concessi all'utente");
       resp.sendRedirect("view/HomePage.jsp");
     }

@@ -44,4 +44,39 @@ public class StudenteDAO implements IStudenteDAO {
     }
     return bean;
   }
+
+  /**
+   * Metodo che aggiorane le ore disponibili di uno studente quando effettua una richiesta di servizio.
+   * @param oreRichieste: le ore richieste per il servizio di tutorato/supporto esame.
+   * @param emailStudente: l'email dello studente che ha richiesto il servizio.
+   * @return true= se l'operazione è andata a buon fine,else altrimenti.
+   * @throws SQLException
+   */
+
+  @Override
+  public synchronized boolean updateOreDisponibili(int oreRichieste,String emailStudente) throws SQLException {
+    boolean updated = false;
+    Connection conn = null;
+    String query = "UPDATE studente SET ore_disponibili=ore_disponibili-? WHERE email_studente = ?";
+    PreparedStatement stmt = null;
+    try{
+      conn = ConnectionPool.conn();
+      stmt = conn.prepareStatement(query);
+      stmt.setInt(1,oreRichieste);
+      stmt.setString(2,emailStudente);
+
+      updated = stmt.executeUpdate() == 1;
+      conn.commit();
+
+      stmt.close();
+      conn.close();
+    }catch (SQLException e) {
+      updated = true;
+      e.printStackTrace();
+    }
+
+    return updated;
+  }
+
+
 }

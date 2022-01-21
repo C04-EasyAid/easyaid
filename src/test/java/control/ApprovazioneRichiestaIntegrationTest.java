@@ -47,7 +47,6 @@ class ApprovazioneRichiestaIntegrationTest {
     ITutoratoDidatticoDAO tutoratoDao = new TutoratoDidatticoDAO();
     TutoratoDidatticoBean tutorato = new TutoratoDidatticoBean();
     tutorato.setId(14);
-    tutoratoDao.approvaRichiesta(tutorato.getId(), bean.getEmail());
     servlet.doGet(request, response);
   }
 
@@ -67,7 +66,6 @@ class ApprovazioneRichiestaIntegrationTest {
     ISupportoEsameDAO supportoDAO = new SupportoEsameDAO();
     SupportoEsameBean supporto = new SupportoEsameBean();
     supporto.setId(15);
-    supportoDAO.approvaRichiesta(supporto.getId(), bean.getEmail());
     servlet.doGet(request, response);
   }
 }

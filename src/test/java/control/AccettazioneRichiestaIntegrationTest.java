@@ -3,7 +3,9 @@ package control;
 import model.bean.SupportoEsameBean;
 import model.bean.UserBean;
 import model.dao.ISupportoEsameDAO;
+import model.dao.ITutorDAO;
 import model.dao.SupportoEsameDAO;
+import model.dao.TutorDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -29,6 +31,7 @@ class AccettazioneRichiestaIntegrationTest {
   @Test
   void testAccettazioneRichiesta() throws ServletException, IOException {
     ISupportoEsameDAO supportoDao = new SupportoEsameDAO();
+    ITutorDAO tutorDao = new TutorDAO();
     UserBean bean = new UserBean();
     bean.setNome("Lorenzo");
     bean.setCognome("Rossi");
@@ -42,6 +45,7 @@ class AccettazioneRichiestaIntegrationTest {
     String msg = "ok va bene";
     request.setParameter("commento", msg);
     servlet.setSupportodao(supportoDao);
+    servlet.setTutordao(tutorDao);
     servlet.doGet(request, response);
 
     assertEquals(

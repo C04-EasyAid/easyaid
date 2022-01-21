@@ -61,7 +61,7 @@ class RegisterIntegrationTest {
     servlet.doGet(request, response);
 
     assertEquals(
-        "Studente con disabilità/DSA inserito con successo.",
+        "Utente inserito con successo",
         Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
     userDAO.deleteUtente(new UserBean(nome, cognome, email, password, ruolo));
   }

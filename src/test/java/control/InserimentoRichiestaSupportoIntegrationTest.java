@@ -2,7 +2,9 @@ package control;
 
 import model.bean.SupportoEsameBean;
 import model.bean.UserBean;
+import model.dao.IStudenteDAO;
 import model.dao.ISupportoEsameDAO;
+import model.dao.StudenteDAO;
 import model.dao.SupportoEsameDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,6 +13,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
 import javax.servlet.ServletException;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Objects;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -31,8 +34,9 @@ class InserimentoRichiestaSupportoIntegrationTest {
     }
 
     @Test
-    void InserimentoSupportoTest() throws ServletException, IOException, SQLException {
+    void InserimentoSupportoTest() throws ServletException, IOException, SQLException, ClassNotFoundException {
         ISupportoEsameDAO supportoEsameDAO = new SupportoEsameDAO();
+        IStudenteDAO studenteDAO = new StudenteDAO();
         UserBean bean = new UserBean();
         bean.setNome("Paolo");
         bean.setCognome("Rossi");
@@ -42,12 +46,12 @@ class InserimentoRichiestaSupportoIntegrationTest {
         request.getSession().setAttribute("utente", bean);
         String data = "2021-12-11";
         String ora = "16:00";
-        int oreRichieste = 3;
+        int oreRichieste = 2;
         String modalitaEsame = "Scritto";
         String eventualiAusili = "Tempo Aggiuntivo";
         String tipoAssistenza = "Tutor Lettore";
         String luogo = "Edificio F3 Aula 18";
-        String dipartimento = "Informarica";
+        String dipartimento = "Informatica";
         String insegnamento = "Programmazione I";
         String docente = "Distasi";
         request.setParameter("dipartimento", dipartimento);
@@ -79,7 +83,11 @@ class InserimentoRichiestaSupportoIntegrationTest {
         assertEquals(
                 "Richiesta di servizio di supporto esame inserita con successo!",
                 Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
+
+        List<SupportoEsameBean> list = supportoEsameDAO.doRetrieveAllByStudente(bean.getEmail());
+        supportoEsameBean = list.get(list.size()-1);
         supportoEsameDAO.deleteSupporto(supportoEsameBean);
+        studenteDAO.updateOreDisponibili(-oreRichieste,bean.getEmail());
     }
 
 }

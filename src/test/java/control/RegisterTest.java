@@ -675,6 +675,7 @@ class RegisterTest {
     MockitoAnnotations.initMocks(this);
     IUserDAO userDAO = mock(UserDAO.class);
 
+
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
@@ -719,7 +720,7 @@ class RegisterTest {
     servlet.doGet(request, response);
 
     assertEquals(
-        "Studente con disabilità/DSA inserito con successo.",
+        "Utente inserito con successo",
         Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
   }
 

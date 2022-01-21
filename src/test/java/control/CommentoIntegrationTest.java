@@ -9,6 +9,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
 import javax.servlet.ServletException;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Objects;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -30,7 +31,7 @@ class CommentoIntegrationTest {
   }
 
   @Test
-  void testInserimentoCommentoTutor() throws ServletException, IOException, SQLException {
+  void testInserimentoCommentoTutor() throws ServletException, IOException, SQLException, ClassNotFoundException {
     UserBean userBean = new UserBean();
 
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
@@ -38,7 +39,7 @@ class CommentoIntegrationTest {
     userBean.setRuolo("T");
 
     LezioneBean lezione = new LezioneBean();
-    lezione.setId(16);
+    lezione.setId(13);
     request.getSession().setAttribute("utente", userBean);
     request.getSession().setAttribute("lezione", lezione);
     String msg = "Ok,Ci sarò!";
@@ -48,18 +49,20 @@ class CommentoIntegrationTest {
     ITutorDAO tutorDao = new TutorDAO();
     servlet.setDaoC(commentoDao);
     servlet.setDaoT(tutorDao);
-    commentoDao.insertCommentoTutor(lezione.getId(), msg, userBean.getEmail());
     servlet.doGet(request, response);
 
-    CommentoBean commento = new CommentoBean();
     assertEquals(
         "Commento inserito con successo",
         Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
-        commentoDao.deleteCommento(new CommentoBean());
+
+
+    List<CommentoBean> list = (List<CommentoBean>) commentoDao.doRetrieveCommento(lezione.getId());
+    CommentoBean commento = list.get(list.size()-1);
+    commentoDao.deleteCommento(commento);
   }
 
   @Test
-  void testInserimentoCommentoStudente() throws ServletException, IOException, SQLException {
+  void testInserimentoCommentoStudente() throws ServletException, IOException, SQLException, ClassNotFoundException {
     UserBean userBean = new UserBean();
 
     userBean.setEmail("abaglio9@studenti.unisa.it");
@@ -67,7 +70,7 @@ class CommentoIntegrationTest {
     userBean.setRuolo("S");
 
     LezioneBean lezione = new LezioneBean();
-    lezione.setId(4);
+    lezione.setId(13);
     request.getSession().setAttribute("utente", userBean);
     request.getSession().setAttribute("lezione", lezione);
     String msg = "Ok,Ci sarò!";
@@ -77,11 +80,16 @@ class CommentoIntegrationTest {
     IStudenteDAO studenteDAO = new StudenteDAO();
     servlet.setDaoC(commentoDao);
     servlet.setDaoS(studenteDAO);
-    commentoDao.insertCommentoStudente(lezione.getId(), msg, userBean.getEmail());
     servlet.doGet(request, response);
 
     assertEquals(
         "Commento inserito con successo",
         Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
+
+
+    List<CommentoBean> list = (List<CommentoBean>) commentoDao.doRetrieveCommento(lezione.getId());
+    CommentoBean commento = list.get(list.size()-1);
+    commentoDao.deleteCommento(commento);
+
   }
 }

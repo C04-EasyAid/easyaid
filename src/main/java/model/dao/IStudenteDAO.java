@@ -12,4 +12,6 @@ import model.bean.StudenteBean;
 public interface IStudenteDAO {
   // Metodo che restituisce lo studente
   StudenteBean doRetrieveByEmail(String email) throws SQLException;
+
+  boolean updateOreDisponibili(int oreRichieste,String emailStudente) throws SQLException;
 }

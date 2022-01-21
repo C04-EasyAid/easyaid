@@ -117,10 +117,12 @@ class InserimentoNuovaLezioneTest {
       lezioneBean.setOraInizio(oraInizio);
       lezioneBean.setOraFine(oraFine);
       lezioneBean.setData(date);
+      lezioneBean.setLuogo(luogo);
       Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
       lezioni.add(lezioneBean);
       try {
         when(lezioneDAO.countOre(lezioni, idTutorato)).thenReturn(2);
+        when(lezioneDAO.insertNewLezione(lezioneBean)).thenReturn(false);
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
@@ -220,6 +222,7 @@ class InserimentoNuovaLezioneTest {
       lezioneBean.setOraInizio(oraInizio);
       lezioneBean.setOraFine(oraFine);
       lezioneBean.setData(date);
+      lezioneBean.setLuogo(luogo);
       Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
       lezioni.add(lezioneBean);
       try {
@@ -272,6 +275,7 @@ class InserimentoNuovaLezioneTest {
       lezioneBean.setOraInizio(oraInizio);
       lezioneBean.setOraFine(oraFine);
       lezioneBean.setData(date);
+      lezioneBean.setLuogo(luogo);
       Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
       lezioni.add(lezioneBean);
       try {
@@ -324,6 +328,7 @@ class InserimentoNuovaLezioneTest {
       lezioneBean.setOraInizio(oraInizio);
       lezioneBean.setOraFine(oraFine);
       lezioneBean.setData(date);
+      lezioneBean.setLuogo(luogo);
       Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
       lezioni.add(lezioneBean);
       try {
@@ -376,6 +381,7 @@ class InserimentoNuovaLezioneTest {
       lezioneBean.setOraInizio(oraInizio);
       lezioneBean.setOraFine(oraFine);
       lezioneBean.setData(date);
+      lezioneBean.setLuogo(luogo);
       Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
       lezioni.add(lezioneBean);
       try {
@@ -428,6 +434,7 @@ class InserimentoNuovaLezioneTest {
       lezioneBean.setOraInizio(oraInizio);
       lezioneBean.setOraFine(oraFine);
       lezioneBean.setData(date);
+      lezioneBean.setLuogo(luogo);
       Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
       lezioni.add(lezioneBean);
       try {
@@ -480,6 +487,7 @@ class InserimentoNuovaLezioneTest {
       lezioneBean.setOraInizio(oraInizio);
       lezioneBean.setOraFine(oraFine);
       lezioneBean.setData(date);
+      lezioneBean.setLuogo(luogo);
       Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
       lezioni.add(lezioneBean);
       try {
@@ -532,6 +540,7 @@ class InserimentoNuovaLezioneTest {
       lezioneBean.setOraInizio(oraInizio);
       lezioneBean.setOraFine(oraFine);
       lezioneBean.setData(date);
+      lezioneBean.setLuogo(luogo);
       Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
       lezioni.add(lezioneBean);
       try {
@@ -584,6 +593,7 @@ class InserimentoNuovaLezioneTest {
       lezioneBean.setOraInizio(oraInizio);
       lezioneBean.setOraFine(oraFine);
       lezioneBean.setData(date);
+      lezioneBean.setLuogo(luogo);
       Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
       lezioni.add(lezioneBean);
       try {
@@ -636,6 +646,7 @@ class InserimentoNuovaLezioneTest {
       lezioneBean.setOraInizio(oraInizio);
       lezioneBean.setOraFine(oraFine);
       lezioneBean.setData(date);
+      lezioneBean.setLuogo(luogo);
       Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
       lezioni.add(lezioneBean);
       try {
@@ -699,6 +710,7 @@ class InserimentoNuovaLezioneTest {
       lezioneBean.setOraInizio(oraInizio);
       lezioneBean.setOraFine(oraFine);
       lezioneBean.setData(date);
+      lezioneBean.setLuogo(luogo);
       Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
       lezioni.add(lezioneBean);
       try {

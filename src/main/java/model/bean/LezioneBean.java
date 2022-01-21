@@ -39,6 +39,7 @@ public class LezioneBean {
     this.oraFine = oraFine;
     this.tutor = tutor;
     this.data = data;
+    this.luogo = luogo;
     this.status = status;
   }
   // Costruttore
@@ -55,6 +56,7 @@ public class LezioneBean {
     this.oraFine = oraFine;
     this.tutor = tutor;
     this.data = data;
+    this.luogo = luogo;
     this.status = status;
   }
   // Costruttore vuoto

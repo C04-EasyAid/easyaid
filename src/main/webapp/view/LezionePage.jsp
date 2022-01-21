@@ -77,6 +77,8 @@
                                 <p class="fw-bold">Insegnamento:</p>
                                 <p><%=lezione.getInsegnamento()%>
                                 </p>
+                                <p class="fw-bold">Luogo:</p>
+                                <p><%=lezione.getLuogo()%></p>
                                 <!-- Button trigger modal -->
                                 <% if(user.isTutor() && !lezione.isStatus()){%>
                                 <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#confermaLezione">Conferma Lezione</button><%}%>

@@ -1,16 +1,20 @@
 package control;
 
-import java.io.IOException;
+import model.bean.ProfessoreReferenteBean;
+import model.bean.StudenteBean;
+import model.bean.TutorBean;
+import model.bean.UserBean;
+import model.dao.IUserDAO;
+import model.dao.UserDAO;
+import other.MyLogger;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.bean.*;
-import model.dao.IUserDAO;
-import model.dao.UserDAO;
-import other.MyLogger;
+import java.io.IOException;
 
 /**
  * Servlet che permette di effettuare la registrazione di un utente all interno del sistema.

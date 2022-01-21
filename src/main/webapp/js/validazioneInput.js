@@ -141,7 +141,7 @@ function validazioneRichiestaSupporto(){
     var insegnamentoreg = /^[a-zA-Z\s]*$/;
     var oreRichiestereg = /^[1-9][0-9]?$|^100$/;
     var docentereg = /^[a-zA-Z\s]*$/;
-    var luogoreg = /^[a-zA-Z0-9_.-]*$/;
+    var luogoreg = /^[a-zA-Z0-9\s_.-]*$/;
 
     if(!insegnamentoreg.test(insegnamento.value)){
         check = false;

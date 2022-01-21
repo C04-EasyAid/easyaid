@@ -47,4 +47,4 @@ Please refer to the Installation Manual present in the product documentation (_2
 
 ## 🌐 Features
 
-Please refer to the User Manual present in the product documentation (2021_MU_C04_EasyAid_Annunziata-Nocera_V1.0.pdf) for the list of all the functions present and the instructions on how to perform them for each actor. 
+Please refer to the User Manual present in the product documentation (_2021_MU_C04_EasyAid_Annunziata-Nocera_V1.0.pdf_) for the list of all the functions present and the instructions on how to perform them for each actor. 

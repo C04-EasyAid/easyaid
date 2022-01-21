@@ -5,13 +5,13 @@
   </h3>
 </div>
 
-##  Introduction
+##  🦽 Introduction
 
 Easy Aid is a web application that aims to facilitate the provision of specific services for university students with disabilities and SLD, through the automation of long bureaucratic procedures.
 
 It was created during the Software Project Management and Software Engineering exams of the University of Salerno.
 
-## Stakeholder	 
+## 👩🏻‍💻 Stakeholder
 <div align="center">
   
 |Name|Position|Project Role|Contact Information|
@@ -29,25 +29,22 @@ It was created during the Software Project Management and Software Engineering e
   
 </div>
 
-## Documentation
+## 🗂️ Documentation
 
 * The javadoc of the project (both product and management) is contained in the _doc_ folder
 * The project documentation (both product and management) is contained in the _deliverables_ folder
 
-## Main technologies used
+## 🛠️ Main technologies used 
 
 * <a href="https://www.oracle.com/java/technologies/javase/16-0-2-relnotes.html">Java™ SE Development Kit 16.0.2 (JDK 16.0.2)</a>
 * <a href="https://themes.getbootstrap.com/preview/?theme_id=103332">Bootstrap Theme: Eduport – LMS, Education and Course Theme</a>
 * <a href="https://junit.org/junit5/">JUnit 5</a>
 * <a href="https://gradle.org/">Gradle</a>
 
-## Installation
+## 💻 Installation
 
-### Requirements
-* <a href="https://tomcat.apache.org/download-90.cgi">Apache Tomcat 9</a>, which provides an HTTP web server environment in which Java code can run
-* <a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a>, which is one of the top-choice IDE for software developers
-* <a href="https://git-scm.com/">git</a>, which is a free and open source distributed version control system
-* <a href="https://www.mysql.com/it/">MySQL</a>, which is a relational database management system
+Please refer to the Installation Manual present in the product documentation (_2021_MI_C04_EasyAid_Annunziata-Nocera_V1.0.pdf_) for the installation of the web application.
 
-### Steps to follow
-1. Create the the _easyaid_ database (the default user and password must both be root) by running the SQL script contained in <a href="https://github.com/C04-EasyAid/easyaid/blob/master/db/EasyAid.sql">_db/EasyAid.sql_</a>
+## 🌐 Features
+
+Please refer to the User Manual present in the product documentation (2021_MU_C04_EasyAid_Annunziata-Nocera_V1.0.pdf) for the list of all the functions present and the instructions on how to perform them for each actor. 

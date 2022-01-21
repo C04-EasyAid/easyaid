@@ -2,20 +2,20 @@ package model.bean;
 
 import lombok.*;
 
-/** @author Roberto Tartaglia Classe PersonaleAmministrativoBean */
+/**
+ *  Classe PersonaleAmministrativoBean.
+ *
+ * @author Roberto Tartaglia
+ *
+ * */
 @Data
 public class PersonaleAmministrativoBean {
   private String emailPersonaleAmministrativo;
 
-  /**
-   * Costruttore
-   *
-   * @param emailPersonaleAmministrativo
-   */
   public PersonaleAmministrativoBean(String emailPersonaleAmministrativo) {
     this.emailPersonaleAmministrativo = emailPersonaleAmministrativo;
   }
 
-  /** Costruttore Vuoto */
+  // Costruttore Vuoto
   public PersonaleAmministrativoBean() {}
 }

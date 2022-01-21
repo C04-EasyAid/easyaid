@@ -1,9 +1,14 @@
 package model.dao;
 
-import model.bean.SupportoEsameBean;
-
 import java.sql.SQLException;
 import java.util.List;
+import model.bean.SupportoEsameBean;
+
+/**
+ * Classe ISupportoEsameDAO.
+ *
+ * @author Martina Giugliano
+ */
 
 public interface ISupportoEsameDAO {
   List<SupportoEsameBean> doRetrieveAllByStudente(String emailStudente)
@@ -25,4 +30,6 @@ public interface ISupportoEsameDAO {
   boolean accettaRichiesta(int idSupporto, String emailTutor, String commento) throws SQLException;
 
   boolean approvaRichiesta(int idSupporto, String emailProf) throws SQLException;
+
+  boolean deleteSupporto(SupportoEsameBean s) throws SQLException;
 }

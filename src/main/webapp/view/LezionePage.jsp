@@ -9,6 +9,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
+<% if(session.getAttribute("utente")==null){
+    response.sendRedirect("./LoginPage.jsp");
+    return;
+}
+%>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -19,6 +24,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3mipmap34MD+dH/1fQ784/j6cY/iQUITOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="shortcut icon" href="../image/favicon.ico">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
@@ -58,6 +64,20 @@
                     <p class="card-description">
                         Tutor <code>&lt;<%=lezione.getTutor()%>&gt;</code></p>
                     <div class="row">
+                        <%if (alert != null) {%>
+                        <!-- Toast Alert Message -->
+                        <div class="alert alert-info d-flex align-items-center" role="alert">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                 class="bi bi-arrow-up-circle-fill flex-shrink-0 me-2" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+                            </svg>
+                            <div>
+                                <%=alert%>
+                            </div>
+                        </div>
+                        <!-- End Toast Alert Message -->
+                        <% session.removeAttribute("alertMsg");
+                        }%>
                         <div class="col-md-6">
                             <address>
                                 <p class="fw-bold">Data:</p>
@@ -76,6 +96,8 @@
                                 <p class="fw-bold">Insegnamento:</p>
                                 <p><%=lezione.getInsegnamento()%>
                                 </p>
+                                <p class="fw-bold">Luogo:</p>
+                                <p><%=lezione.getLuogo()%></p>
                                 <!-- Button trigger modal -->
                                 <% if(user.isTutor() && !lezione.isStatus()){%>
                                 <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#confermaLezione">Conferma Lezione</button><%}%>
@@ -131,9 +153,9 @@
                                     </ul>
                                     <%}%>
                                     <div class="panel-body">
-                                        <form action="../CommentoServlet" onsubmit="inserimentoCommento();" method="get">
+                                        <form action="../CommentoServlet" method="post" onsubmit="return inserimentoCommento();">
                                             <input type="text" name="commento" class="form-control" placeholder="scrivi un commento..."
-                                                   rows="3">
+                                                                         rows="3" id="commento" maxlength="250" required>
                                             <br>
 
                                             <button type="submit" class="btn btn-outline-info">Commenta</button>
@@ -179,6 +201,7 @@
 
 <!-- Template Functions -->
 <script src="../assets/js/functions.js"></script>
+<script src="../js/validazioneInput.js"></script>
 <footer>
     <%@include file="../fragment/footer.html" %>
 </footer>

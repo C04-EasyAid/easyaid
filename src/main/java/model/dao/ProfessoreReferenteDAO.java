@@ -1,15 +1,18 @@
 package model.dao;
 
-import model.bean.ProfessoreReferenteBean;
-import model.bean.TutorBean;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import model.bean.ProfessoreReferenteBean;
+import model.bean.TutorBean;
 import static model.dao.ConnectionPool.conn;
-/** @author Roberto Tartaglia Classe ProfessoreReferenteDAO */
+
+/**
+ * Classe ProfessoreReferenteDAO.
+ *
+ * @author Roberto Tartaglia
+ */
 public class ProfessoreReferenteDAO implements IProfessoreReferenteDAO {
   @Override
   public synchronized ProfessoreReferenteBean doRetrieveByEmail(String email)
@@ -26,14 +29,13 @@ public class ProfessoreReferenteDAO implements IProfessoreReferenteDAO {
         tutor.setEmail(email);
         tutor.setDipartimento(rs.getString("dipartimento"));
       }
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) {
-        conn.close();
-      }
     }
+
+
     return tutor;
   }
 }

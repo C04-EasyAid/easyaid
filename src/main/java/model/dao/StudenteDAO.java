@@ -1,20 +1,17 @@
 package model.dao;
 
-import model.bean.StudenteBean;
-
+import static model.dao.ConnectionPool.conn;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Locale;
-
-import static model.dao.ConnectionPool.conn;
-
-
+import model.bean.StudenteBean;
 
 /**
- *  @author Giovanni Toriello Classe StudenteDAO
+ * Classe StudenteDAO.
  *
+ * @author Giovanni Toriello
  */
 
 public class StudenteDAO implements IStudenteDAO {
@@ -39,17 +36,45 @@ public class StudenteDAO implements IStudenteDAO {
         bean.setPercentualeDisabilita(rs.getInt("percentuale_disabilita"));
         bean.setOreDisponibili(rs.getInt("ore_disponibili"));
       }
-
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-      // Chiude la connessione se è diverso da null
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) {
-        conn.close();
-      }
     }
     return bean;
+  }
+
+  /**
+   * Metodo che aggiorane le ore disponibili di uno studente quando effettua una richiesta di servizio.
+   * @param oreRichieste: le ore richieste per il servizio di tutorato/supporto esame.
+   * @param emailStudente: l'email dello studente che ha richiesto il servizio.
+   * @return true= se l'operazione è andata a buon fine,else altrimenti.
+   * @throws SQLException
+   */
+
+  @Override
+  public synchronized boolean updateOreDisponibili(int oreRichieste,String emailStudente) throws SQLException {
+    boolean updated = false;
+    Connection conn = null;
+    String query = "UPDATE studente SET ore_disponibili=ore_disponibili-? WHERE email_studente = ?";
+    PreparedStatement stmt = null;
+    try {
+      conn = ConnectionPool.conn();
+      stmt = conn.prepareStatement(query);
+      stmt.setInt(1, oreRichieste);
+      stmt.setString(2, emailStudente);
+
+      updated = stmt.executeUpdate() == 1;
+      conn.commit();
+
+      stmt.close();
+      conn.close();
+    } catch (SQLException e) {
+      updated = true;
+      e.printStackTrace();
+    }
+
+    return updated;
   }
 
 

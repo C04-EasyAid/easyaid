@@ -1,5 +1,14 @@
 package control;
 
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
@@ -9,16 +18,11 @@ import model.dao.SupportoEsameDAO;
 import model.dao.TutoratoDidatticoDAO;
 import other.MyLogger;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
-
+/**
+ * Servlet che permette di visualizzare le richieste completate.
+ *
+ * @author Riccardo Polidoro
+ */
 @WebServlet("/viewRichiesteCompletate")
 public class ViewRichiesteCompletateServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
@@ -58,11 +62,11 @@ public class ViewRichiesteCompletateServlet extends HttpServlet {
           e.printStackTrace();
         }
       } else {
-        session.setAttribute("alertMsg","Permessi non concessi all'utente");
+        session.setAttribute("alertMsg", "Permessi non concessi all'utente");
         resp.sendRedirect("view/HomePage.jsp");
       }
     } else {
-      session.setAttribute("alertMsg","Permessi non concessi all'utente");
+      session.setAttribute("alertMsg", "Permessi non concessi all'utente");
       resp.sendRedirect("view/LoginPage.jsp");
     }
   }

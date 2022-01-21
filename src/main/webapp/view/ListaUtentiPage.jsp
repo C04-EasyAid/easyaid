@@ -7,6 +7,11 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" import="model.bean.UserBean" %>
 <%@ page import="java.util.Collection" %>
+<% if(session.getAttribute("utente")==null){
+    response.sendRedirect("./LoginPage.jsp");
+    return;
+}
+%>
 <%
     Collection<UserBean> utenti = (Collection<UserBean>) session.getAttribute("usrList");
     int studenti = 0;
@@ -40,6 +45,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3mipmap34MD+dH/1fQ784/j6cY/iQUITOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="shortcut icon" href="../image/favicon.ico">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">

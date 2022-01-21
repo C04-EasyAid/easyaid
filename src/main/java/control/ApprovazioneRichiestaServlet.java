@@ -1,32 +1,42 @@
 package control;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.sql.SQLException;
 import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
 import model.dao.ISupportoEsameDAO;
+import model.dao.ITutorDAO;
 import model.dao.ITutoratoDidatticoDAO;
 import model.dao.SupportoEsameDAO;
+import model.dao.TutorDAO;
 import model.dao.TutoratoDidatticoDAO;
 import other.MyLogger;
 
-/** @author Martina Giugliano Servlet che permette di approvare una richiesta di servizio */
+/**
+ * Servlet che permette di approvare una richiesta di servizio.
+ *
+ * @author Martina Giugliano
+ *
+ */
+
 @WebServlet("/ApprovazioneRichiesta")
 public class ApprovazioneRichiestaServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "ApprovazioneRichiestaServlet";
-  ITutoratoDidatticoDAO tutoratodao = new TutoratoDidatticoDAO();
-  ISupportoEsameDAO supportodao = new SupportoEsameDAO();
+  private ITutoratoDidatticoDAO tutoratodao = new TutoratoDidatticoDAO();
+  private ISupportoEsameDAO supportodao = new SupportoEsameDAO();
+  private ITutorDAO tutordao = new TutorDAO();
+
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-          throws ServletException, IOException {
+      throws ServletException, IOException {
     super.doPost(req, resp);
   }
 
@@ -38,9 +48,13 @@ public class ApprovazioneRichiestaServlet extends HttpServlet {
     this.supportodao = supportodao;
   }
 
+  public void setTutordao(ITutorDAO tutordao) {
+    this.tutordao = tutordao;
+  }
+
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-          throws ServletException, IOException {
+      throws ServletException, IOException {
     log.info(myClass, "Collegamento alla Servlet...");
     HttpSession session = req.getSession();
     UserBean prof = (UserBean) session.getAttribute("utente");
@@ -49,6 +63,7 @@ public class ApprovazioneRichiestaServlet extends HttpServlet {
     if (tutorato != null) {
       try {
         tutoratodao.approvaRichiesta(tutorato.getId(), prof.getEmail());
+        tutordao.updateOreSvolte(tutorato.getOreRichieste(), tutorato.getTutorEmail());
         session.setAttribute("alertMsg", "Richiesta approvata con successo");
         resp.sendRedirect("view/HomePage.jsp");
       } catch (SQLException e) {
@@ -58,6 +73,7 @@ public class ApprovazioneRichiestaServlet extends HttpServlet {
     } else if (supporto != null) {
       try {
         supportodao.approvaRichiesta(supporto.getId(), prof.getEmail());
+        tutordao.updateOreSvolte(supporto.getOreRichieste(), supporto.getTutorEmail());
         session.setAttribute("alertMsg", "Richiesta approvata con successo");
         resp.sendRedirect("view/HomePage.jsp");
       } catch (SQLException e) {

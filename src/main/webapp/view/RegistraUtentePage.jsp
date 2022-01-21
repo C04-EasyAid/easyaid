@@ -10,6 +10,11 @@
     String inserimento = (String) request.getParameter("inserimento");
 
 %>
+<% if(session.getAttribute("utente")==null){
+    response.sendRedirect("./LoginPage.jsp");
+    return;
+}
+%>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -22,7 +27,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3mipmap34MD+dH/1fQ784/j6cY/iQUITOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Favicon -->
-    <link rel="shortcut icon" href="../assets/images/favicon.ico">
+    <link rel="shortcut icon" href="../image/favicon.ico">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
@@ -53,10 +58,11 @@
     <section class="pt-0">
         <div class="container">
             <div class="row">
-                <%if(alert!=null) {%>
+                <%if (alert != null) {%>
                 <!-- Toast Alert Message -->
                 <div class="alert alert-info d-flex align-items-center" role="alert">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-up-circle-fill flex-shrink-0 me-2" viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                         class="bi bi-arrow-up-circle-fill flex-shrink-0 me-2" viewBox="0 0 16 16">
                         <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
                     </svg>
                     <div>
@@ -64,7 +70,8 @@
                     </div>
                 </div>
                 <!-- End Toast Alert Message -->
-                <% session.removeAttribute("alertMsg");}%>
+                <% session.removeAttribute("alertMsg");
+                }%>
                 <div class="col-3">
                     <br>
                     <%@ include file="../fragment/DashboardAdmin.jsp" %>
@@ -78,12 +85,14 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <br>
-                                        <h1 class="h3 mb-2 mb-sm-2">Registrazione <%=inserimento%></h1>
+                                        <h1 class="h3 mb-2 mb-sm-2">Registrazione <%=inserimento%>
+                                        </h1>
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <form action="../register" method="post" class="row g-4 align-items-center" autocomplete="off" onsubmit="return validateInserimento();">
-                                    
+                                    <form action="../register" method="post" class="row g-4 align-items-center"
+                                          autocomplete="off" onsubmit="return validateInserimento();">
+
                                         <input type="hidden" name="ruolo" value="<%=inserimento%>"/>
 
                                         <div class="row">
@@ -97,7 +106,7 @@
                                                            placeholder="Cognome" required>
                                                     <p class="fw-bold">Email:</p>
                                                     <input type="email" name="email" class="form-control"
-                                                           placeholder="Email" id="email"required>
+                                                           placeholder="Email" id="email" required>
                                                     <p class="fw-bold">Password:</p>
                                                     <input type="password" name="password" class="form-control"
                                                            placeholder="Password" id="password" required>
@@ -113,20 +122,20 @@
                                                     <div>
                                                         <div class="form-check">
                                                             <input name="tipoDisabilita" value="Disabile" type="radio"
-                                                                   id="disabile"
-                                                                   checked onclick="changeInput()">
+                                                                   id="disabile">
                                                             <label for="disabile">Disabile</label>
                                                         </div>
                                                         <div class="form-check">
                                                             <input name="tipoDisabilita" value="Dsa" type="radio"
-                                                                   id="dsa" onclick="changeInput()">
+                                                                   id="dsa">
                                                             <label for="dsa">DSA</label>
                                                         </div>
                                                     </div>
                                                     </p>
                                                     <p class="fw-bold">Specifiche Disturbo:</p>
                                                     <input type="text" name="specificheDisturbo" class="form-control"
-                                                           placeholder="Specifiche Disturbo" value="nessuno" id="specifica" required>
+                                                           placeholder="Specifiche Disturbo" value="nessuno"
+                                                           id="specifica" required>
                                                     </p>
                                                     <p class="fw-bold">Percentuale Disabilità:</p>
                                                     <input type="text" name="percentualeDisabilita" class="form-control"

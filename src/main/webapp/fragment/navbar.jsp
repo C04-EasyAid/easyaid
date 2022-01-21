@@ -80,7 +80,7 @@
                 </li>
                 <!-- Nav About -->
                 <li class="nav-item">
-                    <a class="nav-link text-black" href="#" id="demoMenu" aria-haspopup="true" aria-expanded="false">About</a>
+                    <a class="nav-link text-black" href="AboutPage.jsp" id="demoMenu" aria-haspopup="true" aria-expanded="false">About</a>
                 </li>
                 <!-- Nav Nome Cognome -->
                 <li class="nav-item">

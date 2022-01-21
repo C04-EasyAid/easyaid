@@ -2,7 +2,11 @@ package model.bean;
 
 import lombok.*;
 
-/** @author Martina Giugliano Classe Supporto Esame */
+/**
+ * Classe SupportoEsameBean.
+ *
+ * @author Martina Giugliano Classe Supporto Esame
+ **/
 @Data
 public class SupportoEsameBean {
   private int id;
@@ -25,26 +29,7 @@ public class SupportoEsameBean {
   /** Costruttore vuoto. */
   public SupportoEsameBean() {}
 
-  /**
-   * Costruttore.
-   *
-   * @param id
-   * @param data
-   * @param ora
-   * @param oreRichieste
-   * @param docente
-   * @param modalitaEsame
-   * @param eventualiAusili
-   * @param tipoAssistenza
-   * @param status
-   * @param insegnamento
-   * @param commento
-   * @param luogo
-   * @param dipartimento
-   * @param studenteEmail
-   * @param tutorEmail
-   * @param profEmail
-   */
+  /** Costruttore. */
   public SupportoEsameBean(
       int id,
       String data,

@@ -1,12 +1,17 @@
 package model.dao;
 
+import java.sql.SQLException;
+import java.util.Collection;
 import model.bean.ProfessoreReferenteBean;
 import model.bean.StudenteBean;
 import model.bean.TutorBean;
 import model.bean.UserBean;
 
-import java.sql.SQLException;
-import java.util.Collection;
+/**
+ * Classe IUserDAO.
+ *
+ * @author Giovanni Toriello
+ */
 
 public interface IUserDAO {
   // Metodo che restituisce l'utente dal database
@@ -29,4 +34,6 @@ public interface IUserDAO {
 
   // Metodo che restituisce l'utente dal database tramite Email
   UserBean doRetrieveUtenteByEmail(String email) throws SQLException, ClassNotFoundException;
+
+  boolean deleteUtente(UserBean b) throws SQLException;
 }

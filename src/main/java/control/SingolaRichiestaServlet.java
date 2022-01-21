@@ -1,5 +1,14 @@
 package control;
 
+import java.io.IOException;
+import java.io.Serial;
+import java.sql.SQLException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
@@ -9,18 +18,10 @@ import model.dao.SupportoEsameDAO;
 import model.dao.TutoratoDidatticoDAO;
 import other.MyLogger;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.io.Serial;
-import java.sql.SQLException;
-
 /**
- * @author Martina Giugliano Servlet che permette di visualizzare una singola richiesta di servizio
+ * Servlet che permette di visualizzare una singola richiesta di servizio.
+ *
+ * @author Martina Giugliano
  */
 @WebServlet("/SingolaRichiestaServlet")
 public class SingolaRichiestaServlet extends HttpServlet {
@@ -62,7 +63,8 @@ public class SingolaRichiestaServlet extends HttpServlet {
         } catch (SQLException | ClassNotFoundException e) {
           e.printStackTrace();
         }
-      } if (request.getParameter("idSupporto") != null) {
+      }
+      if (request.getParameter("idSupporto") != null) {
 
         idSupporto = Integer.parseInt(request.getParameter("idSupporto"));
         try {
@@ -75,7 +77,7 @@ public class SingolaRichiestaServlet extends HttpServlet {
         }
       }
     } else {
-      session.setAttribute("alertMsg","Permessi non concessi all'utente");
+      session.setAttribute("alertMsg", "Permessi non concessi all'utente");
       response.sendRedirect("view/LoginPage.jsp");
     }
   }

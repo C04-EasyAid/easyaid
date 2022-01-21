@@ -135,7 +135,7 @@ class AccettazioneRichiestaTest {
   }
 
   @Test
-  void testAccettazioneRichiesta4() throws ServletException, IOException {
+  void TestAccettazioneRichiesta4() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
 
     ISupportoEsameDAO supportoDao = mock(SupportoEsameDAO.class);
@@ -165,7 +165,7 @@ class AccettazioneRichiestaTest {
   }
 
   @Test
-  void testAccettazioneRichiesta5() throws ServletException, IOException {
+  void TestAccettazioneRichiesta5() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
 
     ISupportoEsameDAO supportoDao = mock(SupportoEsameDAO.class);
@@ -202,34 +202,32 @@ class AccettazioneRichiestaTest {
   }
 
   @Test
-  void testAccettazioneRichiesta6() throws ServletException, IOException {
-      MockitoAnnotations.initMocks(this);
+  void TestAccettazioneRichiesta6() throws ServletException, IOException {
+    MockitoAnnotations.initMocks(this);
 
-      ISupportoEsameDAO supportoDao = mock(SupportoEsameDAO.class);
+    ISupportoEsameDAO supportoDao = mock(SupportoEsameDAO.class);
 
-      UserBean userBean = new UserBean();
+    UserBean userBean = new UserBean();
 
-      userBean.setEmail("lorenzorossi1@studenti.unisa.it");
+    userBean.setEmail("lorenzorossi1@studenti.unisa.it");
 
-      SupportoEsameBean supportoEsameBean = new SupportoEsameBean();
-      supportoEsameBean.setId(5);
-      request.getSession().setAttribute("utente", userBean);
-      request.getSession().setAttribute("supporto", supportoEsameBean);
-      String msg ="ok va bene";
-      request.setParameter("commento", msg);
-      servlet.setSupportodao(supportoDao);
-      try {
-          when(supportoDao.accettaRichiesta(supportoEsameBean.getId(), userBean.getEmail(), msg))
-                  .thenReturn(true);
-      } catch (SQLException e) {
-          e.printStackTrace();
-      }
-      servlet.doGet(request, response);
+    SupportoEsameBean supportoEsameBean = new SupportoEsameBean();
+    supportoEsameBean.setId(5);
+    request.getSession().setAttribute("utente", userBean);
+    request.getSession().setAttribute("supporto", supportoEsameBean);
+    String msg = "ok va bene";
+    request.setParameter("commento", msg);
+    servlet.setSupportodao(supportoDao);
+    try {
+      when(supportoDao.accettaRichiesta(supportoEsameBean.getId(), userBean.getEmail(), msg))
+          .thenReturn(true);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    servlet.doGet(request, response);
 
-      assertEquals(
-              "Richiesta accettata con successo",
-              Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
+    assertEquals(
+        "Richiesta accettata con successo",
+        Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
   }
-
-
 }

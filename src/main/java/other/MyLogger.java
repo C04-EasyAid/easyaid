@@ -1,17 +1,17 @@
 package other;
 
-import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 /**
- *  @author Giovanni Toriello Classe Singleton MyLogger
+ *  Classe Singleton MyLogger.
  *
+ * @author Giovanni Toriello
  */
-
 public class MyLogger {
   private static MyLogger instance = null;
   private static String logName = "Logger:";

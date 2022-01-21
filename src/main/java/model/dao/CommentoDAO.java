@@ -1,12 +1,5 @@
 package model.dao;
 
-/*
-@author Mariagiovanna Bianco
-Classe CommentoDAO
- */
-
-import model.bean.CommentoBean;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,8 +10,14 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.GregorianCalendar;
-
+import model.bean.CommentoBean;
 import static model.dao.ConnectionPool.conn;
+
+/**
+ * Classe CommentoDAO.
+ *
+ * @author Mariagiovanna Bianco
+ */
 
 public class CommentoDAO implements ICommentoDAO {
   // Metodo che restituisce il commento
@@ -45,16 +44,16 @@ public class CommentoDAO implements ICommentoDAO {
                 rs.getString("ora"),
                 rs.getString("studente"),
                 rs.getString("tutor"));
+        bean.setId(rs.getInt("id"));
         commenti.add(bean);
       }
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
-
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) {
-        conn.close();
-      }
+       e.printStackTrace();
     }
+
+
     return commenti;
   }
 
@@ -73,7 +72,8 @@ public class CommentoDAO implements ICommentoDAO {
     String data = String.valueOf(LocalDate.now());
     int idTutorato = dao.doRetrieveTutoratoByLezione(lezione);
     String query =
-        "INSERT INTO easyaid.commento (lezione, tutorato, testo, data, ora, tutor) VALUES (?,?,?,?,?,?);";
+        "INSERT INTO easyaid.commento " +
+                "(lezione, tutorato, testo, data, ora, tutor) VALUES (?,?,?,?,?,?);";
     try {
       conn = conn();
       stmt = conn.prepareStatement(query);
@@ -83,17 +83,17 @@ public class CommentoDAO implements ICommentoDAO {
       stmt.setString(4, data);
       stmt.setString(5, ora);
       stmt.setString(6, emailMittente);
+
       result = stmt.executeUpdate() == 1;
-      System.out.println("" + stmt);
       conn.commit();
+
+      stmt.close();
+      conn.close();
+
     } catch (SQLException e) {
       result = false;
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) {
-        conn.close();
-      }
     }
+
 
     return result;
   }
@@ -114,7 +114,8 @@ public class CommentoDAO implements ICommentoDAO {
     String data = String.valueOf(LocalDate.now());
     int idTutorato = dao.doRetrieveTutoratoByLezione(lezione);
     String query =
-        "INSERT INTO easyaid.commento (lezione, tutorato, testo, data, ora, studente) VALUES (?,?,?,?,?,?);";
+        "INSERT INTO easyaid.commento" +
+                " (lezione, tutorato, testo, data, ora, studente) VALUES (?,?,?,?,?,?);";
     try {
       conn = conn();
       stmt = conn.prepareStatement(query);
@@ -124,18 +125,36 @@ public class CommentoDAO implements ICommentoDAO {
       stmt.setString(4, data);
       stmt.setString(5, ora);
       stmt.setString(6, emailMittente);
-      System.out.println("" + stmt);
       result = stmt.executeUpdate() == 1;
       conn.commit();
+
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       result = false;
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) {
-        conn.close();
-      }
+    }
+    return result;
+  }
+
+  @Override
+  public synchronized boolean deleteCommento(CommentoBean b) throws SQLException {
+    boolean delete = false;
+    Connection conn = null;
+    String query = "DELETE FROM commento WHERE id = ?";
+    PreparedStatement stmt = null;
+    try {
+      conn = ConnectionPool.conn();
+      stmt = conn.prepareStatement(query);
+      stmt.setInt(1, b.getId());
+      delete = stmt.executeUpdate() == 1;
+      conn.commit();
+
+      stmt.close();
+      conn.close();
+    } catch (SQLException e) {
+      e.printStackTrace();
     }
 
-    return result;
+    return delete;
   }
 }

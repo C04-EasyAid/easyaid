@@ -2,7 +2,12 @@ package model.bean;
 
 import lombok.*;
 
-/* @author Martina Giugliano Classe Tutorato Didattico */
+/**
+ * ClasseTutoratoDidatticoBean.
+ *
+ * @author Martina Giugliano
+ */
+
 @Data
 public class TutoratoDidatticoBean {
   private int id;
@@ -18,7 +23,7 @@ public class TutoratoDidatticoBean {
   private String tutorEmail;
   private String profEmail;
 
-  /* Costruttore vuoto. */
+  // Costruttore vuoto
   public TutoratoDidatticoBean() {}
 
   /**
@@ -29,7 +34,8 @@ public class TutoratoDidatticoBean {
    * @param oreDisponibili le ore in cui lo studente è disponibile
    * @param oreRichieste le ore di tutorato didattico richieste dallo studente
    * @param commento il commento inserito dal tutor che ha accettato la richiesta di tutorato
-   * @param status lo status della richiesta di tutorato:0=non accettata,1=accettata,2=completata,3=approvata
+   * @param status lo status della richiesta di tutorato:0=non
+   *     accettata,1=accettata,2=completata,3=approvata
    * @param insegnamento l'insegnamento per il quale si richiede il turato
    * @param dipartimento il dipartimento presso il quale lo studente è iscritto
    * @param studenteEmail l'e-mail dello studente che fa richiesta di tutorato
@@ -37,18 +43,18 @@ public class TutoratoDidatticoBean {
    * @param profEmail l'e-mail del professore referente che approvato la richiesta
    */
   public TutoratoDidatticoBean(
-          int id,
-          String dateDisponibili,
-          String oreDisponibili,
-          int oreRichieste,
-          String commento,
-          int status,
-          String insegnamento,
-          String dipartimento,
-          String studenteEmail,
-          String tutorEmail,
-          String profEmail,
-          String docente) {
+      int id,
+      String dateDisponibili,
+      String oreDisponibili,
+      int oreRichieste,
+      String commento,
+      int status,
+      String insegnamento,
+      String dipartimento,
+      String studenteEmail,
+      String tutorEmail,
+      String profEmail,
+      String docente) {
     this.id = id;
     this.dateDisponibili = dateDisponibili;
     this.oreDisponibili = oreDisponibili;

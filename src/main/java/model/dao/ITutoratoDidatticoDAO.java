@@ -1,9 +1,14 @@
 package model.dao;
 
-import model.bean.TutoratoDidatticoBean;
-
 import java.sql.SQLException;
 import java.util.List;
+import model.bean.TutoratoDidatticoBean;
+
+/**
+ * Classe ITutoratoDidatticoDAO.
+ *
+ * @author Martina Giugliano
+ */
 
 public interface ITutoratoDidatticoDAO {
   List<TutoratoDidatticoBean> doRetrieveAllByStudente(String emailStudente)
@@ -27,4 +32,6 @@ public interface ITutoratoDidatticoDAO {
   boolean approvaRichiesta(int idTutorato, String emailProf) throws SQLException;
 
   boolean completaRichiesta(int idTutorato, String emailTutor) throws SQLException;
+
+  boolean deleteTutorato(TutoratoDidatticoBean t) throws SQLException;
 }

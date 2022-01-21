@@ -8,6 +8,11 @@
 --%>
 <%@ page import="model.bean.LezioneBean" %>
 <%@ page import="java.util.Collection" %>
+<% if(session.getAttribute("utente")==null){
+    response.sendRedirect("./LoginPage.jsp");
+    return;
+}
+%>
 <!DOCTYPE html>
 <html lang="it">
 <head>

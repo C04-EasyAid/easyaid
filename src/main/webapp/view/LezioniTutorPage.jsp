@@ -13,6 +13,11 @@
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Collection" %>
 <%@ page import="model.dao.LezioneDAO" %>
+<% if(session.getAttribute("utente")==null){
+    response.sendRedirect("./LoginPage.jsp");
+    return;
+}
+%>
 <!DOCTYPE html>
 <html lang="it">
 <head>

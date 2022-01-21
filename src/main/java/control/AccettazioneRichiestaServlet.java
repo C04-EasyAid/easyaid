@@ -69,11 +69,11 @@ public class AccettazioneRichiestaServlet extends HttpServlet {
         tutoratodao.accettaRichiesta(tutorato.getId(), tutor.getEmail(), commento);
         tutordao.updateOreDisponibili(tutorato.getOreRichieste(),tutor.getEmail());
         session.setAttribute("alertMsg", "Richiesta accettata con successo");
-        resp.sendRedirect("view/HomePage.jsp");
+        resp.sendRedirect("viewRichiesteServizio");
       } catch (SQLException e) {
         log.error(myClass, "Catturata eccezione nella Servlet", e);
         session.setAttribute("alertMsg", "L'operazione non è andata a buon fine");
-        resp.sendRedirect("view/HomePage.jsp");
+        resp.sendRedirect("viewRichiesteServizio");
         e.printStackTrace();
       }
     }
@@ -81,11 +81,11 @@ public class AccettazioneRichiestaServlet extends HttpServlet {
       try {
         supportodao.accettaRichiesta(supporto.getId(), tutor.getEmail(), commento);
         session.setAttribute("alertMsg", "Richiesta accettata con successo");
-        resp.sendRedirect("view/HomePage.jsp");
+        resp.sendRedirect("viewRichiesteServizio");
       } catch (SQLException e) {
         log.error(myClass, "Catturata eccezione nella Servlet", e);
         session.setAttribute("alertMsg", "L'operazione non è andata a buon fine");
-        resp.sendRedirect("view/HomePage.jsp");
+        resp.sendRedirect("viewRichiesteServizio");
         e.printStackTrace();
       }
     }

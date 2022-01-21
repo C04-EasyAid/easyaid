@@ -91,8 +91,9 @@ function validazioneRichiestaTutorato(){
     var docente = document.getElementById("docente_t");
     var docentereg = /^[a-zA-Z\s]*$/;
     var datereg = /^[a-zA-Z-\s]*$/;
-    var orereg= /^[0-9-\s]*$/;
+    var orereg= /^[0-9-:\s]*$/;
     var date_disponibili= document.getElementById("date_disponibili");
+    date_disponibili.value=date_disponibili.value.replaceAll('ì','i');
     var ore_disponibili =document.getElementById("ore_disponibili");
     let check = true;
     if(!date_disponibili.value.includes("lunedi") && !date_disponibili.value.includes("martedi") && !date_disponibili.value.includes("mercoledi")&& !date_disponibili.value.includes("giovedi")&& !date_disponibili.value.includes("venerdi") )

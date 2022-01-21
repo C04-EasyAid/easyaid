@@ -32,7 +32,8 @@ public class InserimentoRichiestaSupportoServlet extends HttpServlet {
     this.dao = dao;
   }
 
-  public void setstudenteDao(IStudenteDAO studenteDao ) { this.studenteDao = studenteDao; }
+  public void setstudenteDao(IStudenteDAO studenteDao)
+  { this.studenteDao = studenteDao; }
 
   private ISupportoEsameDAO dao = new SupportoEsameDAO();
   private IStudenteDAO studenteDao = new StudenteDAO();
@@ -59,18 +60,18 @@ public class InserimentoRichiestaSupportoServlet extends HttpServlet {
       bean.setStudenteEmail(user.getEmail());
       try {
         StudenteBean studente = studenteDao.doRetrieveByEmail(user.getEmail());
-        if(Integer.parseInt(req.getParameter("ore_richieste"))<studente.getOreDisponibili()){
+        if (Integer.parseInt(req.getParameter("ore_richieste")) < studente.getOreDisponibili()) {
         if (!dao.InserimentoSupportoEsame(bean)) {
           session.setAttribute("alertMsg", "L’operazione non è andata a buon fine.");
           resp.sendRedirect("view/RichiediServizioPage.jsp");
         } else {
-          studenteDao.updateOreDisponibili(Integer.parseInt(req.getParameter("ore_richieste")),user.getEmail());
+          studenteDao.updateOreDisponibili(Integer.parseInt(req.getParameter("ore_richieste")), user.getEmail());
           session.setAttribute(
               "alertMsg", "Richiesta di servizio di supporto esame inserita con successo!");
 
           resp.sendRedirect("view/RichiediServizioPage.jsp");
         }
-        }else{
+        } else {
           session.setAttribute("alertMsg", "L’operazione non è andata a buon fine.");
           resp.sendRedirect("view/RichiediServizioPage.jsp");
         }

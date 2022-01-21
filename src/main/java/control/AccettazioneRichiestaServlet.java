@@ -11,7 +11,12 @@ import javax.servlet.http.HttpSession;
 import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
-import model.dao.*;
+import model.dao.ISupportoEsameDAO;
+import model.dao.ITutorDAO;
+import model.dao.ITutoratoDidatticoDAO;
+import model.dao.SupportoEsameDAO;
+import model.dao.TutorDAO;
+import model.dao.TutoratoDidatticoDAO;
 import other.MyLogger;
 
 
@@ -69,7 +74,7 @@ public class AccettazioneRichiestaServlet extends HttpServlet {
     if (tutorato != null && tutorato.getOreRichieste() < oreDisponibilitutor) {
       try {
         tutoratodao.accettaRichiesta(tutorato.getId(), tutor.getEmail(), commento);
-        tutordao.updateOreDisponibili(tutorato.getOreRichieste(),tutor.getEmail());
+        tutordao.updateOreDisponibili(tutorato.getOreRichieste(), tutor.getEmail());
         session.setAttribute("alertMsg", "Richiesta accettata con successo");
         resp.sendRedirect("viewRichiesteServizio");
       } catch (SQLException e) {

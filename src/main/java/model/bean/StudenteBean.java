@@ -17,6 +17,7 @@ public class StudenteBean {
   private int oreDisponibili;
   private int percentualeDisabilita;
 
+  /**Costruttore. */
   public StudenteBean(
       String email,
       String tipoDisabilita,
@@ -30,6 +31,6 @@ public class StudenteBean {
     this.percentualeDisabilita = percentualeDisabilita;
   }
 
-  //Costruttore vuoto
+  /**Costruttore vuoto. */
   public StudenteBean() {}
 }

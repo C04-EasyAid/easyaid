@@ -12,13 +12,14 @@ import lombok.*;
  */
 @Data
 public class UserBean implements HttpSessionBindingListener {
-  // Variabili dell'utente
+
   private String nome;
   private String cognome;
   private String email;
   private String password;
   private String ruolo;
 
+  /** Costruttore. */
   public UserBean(String nome, String cognome, String email, String password, String ruolo) {
     this.nome = nome;
     this.cognome = cognome;
@@ -27,7 +28,7 @@ public class UserBean implements HttpSessionBindingListener {
     this.ruolo = ruolo.toUpperCase(Locale.ROOT);
   }
 
-  // Costruttore Vuoto
+  /** Costruttore Vuoto. */
   public UserBean() {}
 
   // Restituisce vero se l'utente è uno Studente

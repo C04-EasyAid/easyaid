@@ -21,6 +21,7 @@ public class CommentoBean {
   private String tutor;
   private Date data;
 
+  /**Costruttore. */
   public CommentoBean(
       int lezione,
       int tutorato,
@@ -37,6 +38,6 @@ public class CommentoBean {
     this.studente = studente;
     this.tutor = tutor;
   }
-
+  /**Costruttore vuoto. */
   public CommentoBean() {}
 }

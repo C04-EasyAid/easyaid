@@ -72,8 +72,8 @@ class ViewRichiesteServizioTest {
     List<SupportoEsameBean> listSupporto = new ArrayList<>();
     List<TutoratoDidatticoBean> listTutorati = new ArrayList<>();
 
-    servlet.setEsameDAO(supportoEsameDao);
-    servlet.setTutoratoDAO(tutoratoDidatticoDao);
+    servlet.setEsameDao(supportoEsameDao);
+    servlet.setTutoratoDao(tutoratoDidatticoDao);
 
     when(supportoEsameDao.doRetrieveRichiesteSupportoEsameNonAccettate()).thenReturn(listSupporto);
     when(tutoratoDidatticoDao.doRetrieveRichiesteTutoratoDidatticoNonAccettate())

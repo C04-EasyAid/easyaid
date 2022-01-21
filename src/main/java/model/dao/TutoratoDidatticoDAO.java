@@ -56,8 +56,8 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-       stmt.close();
-       conn.close();
+    stmt.close();
+    conn.close();
 
     return list;
   }
@@ -104,7 +104,6 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-
 
     return list;
   }
@@ -200,7 +199,6 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
       e.printStackTrace();
     }
 
-
     return list;
   }
 
@@ -248,8 +246,9 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
     boolean inserimento = false;
     Connection con = null;
     String query =
-        "INSERT INTO tutorato_didattico(date_disponibili, ore_disponibili, ore_richieste, insegnamento, dipartimento, studente_email, status, docente) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        "INSERT INTO tutorato_didattico(date_disponibili, ore_disponibili, ore_richieste," +
+                " insegnamento, dipartimento, studente_email, status, docente) "
+            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     PreparedStatement stmt = null;
     try {
       con = ConnectionPool.conn();
@@ -281,8 +280,8 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
     boolean isUpdated = false;
     Connection conn = null;
     String query =
-        "UPDATE tutorato_didattico SET status=1,commento=?,tutor_email=? " +
-                "WHERE idtutorato_didattico=?";
+        "UPDATE tutorato_didattico SET status=1,commento=?,tutor_email=? "
+            + "WHERE idtutorato_didattico=?";
     PreparedStatement stmt = null;
     try {
       conn = ConnectionPool.conn();
@@ -298,7 +297,6 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-
 
     return isUpdated;
   }
@@ -350,7 +348,6 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
       e.printStackTrace();
     }
 
-
     return isUpdated;
   }
 
@@ -372,7 +369,6 @@ public class TutoratoDidatticoDAO implements ITutoratoDidatticoDAO {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-
 
     return delete;
   }

@@ -156,9 +156,7 @@ public class UserDAO implements IUserDAO {
         e.printStackTrace();
         // Chiude la connessione se è diverso da null
       }
-        }
-
-
+    }
 
     return studente;
   }
@@ -208,7 +206,6 @@ public class UserDAO implements IUserDAO {
         e.printStackTrace();
         // Chiude la connessione se è diverso da null
       }
-
     }
     return tutor;
   }
@@ -248,7 +245,6 @@ public class UserDAO implements IUserDAO {
         e.printStackTrace();
         // Chiude la connessione se è diverso da null
       }
-
     }
     return prof;
   }
@@ -277,7 +273,6 @@ public class UserDAO implements IUserDAO {
       }
       stmt.close();
       conn.close();
-
 
     } catch (SQLException e) {
       e.printStackTrace();

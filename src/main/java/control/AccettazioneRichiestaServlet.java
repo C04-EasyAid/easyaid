@@ -19,14 +19,11 @@ import model.dao.TutorDAO;
 import model.dao.TutoratoDidatticoDAO;
 import other.MyLogger;
 
-
 /**
  * Servlet che permette di accettare una richiesta di servizio.
  *
  * @author Martina Giugliano
- *
  */
-
 @WebServlet("/AccettazioneRichiesta")
 public class AccettazioneRichiestaServlet extends HttpServlet {
   private ITutoratoDidatticoDAO tutoratodao = new TutoratoDidatticoDAO();
@@ -65,7 +62,7 @@ public class AccettazioneRichiestaServlet extends HttpServlet {
     int oreDisponibilitutor = 0;
 
     try {
-       oreDisponibilitutor = tutordao.doRetrieveByEmail(tutor.getEmail()).getOreDisponibili();
+      oreDisponibilitutor = tutordao.doRetrieveByEmail(tutor.getEmail()).getOreDisponibili();
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (ClassNotFoundException e) {

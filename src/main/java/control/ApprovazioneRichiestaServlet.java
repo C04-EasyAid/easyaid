@@ -43,7 +43,9 @@ public class ApprovazioneRichiestaServlet extends HttpServlet {
     this.supportodao = supportodao;
   }
 
-  public void setTutordao(ITutorDAO tutordao) { this.tutordao = tutordao; }
+  public void setTutordao(ITutorDAO tutordao) {
+    this.tutordao = tutordao;
+  }
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)

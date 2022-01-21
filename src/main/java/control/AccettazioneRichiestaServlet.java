@@ -38,7 +38,9 @@ public class AccettazioneRichiestaServlet extends HttpServlet {
     this.supportodao = supportodao;
   }
 
-  public void setTutordao(ITutorDAO tutordao) { this.tutordao=tutordao; }
+  public void setTutordao(ITutorDAO tutordao) {
+    this.tutordao = tutordao;
+  }
 
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -64,7 +66,7 @@ public class AccettazioneRichiestaServlet extends HttpServlet {
     } catch (ClassNotFoundException e) {
       e.printStackTrace();
     }
-    if (tutorato != null && tutorato.getOreRichieste()<oreDisponibilitutor) {
+    if (tutorato != null && tutorato.getOreRichieste() < oreDisponibilitutor) {
       try {
         tutoratodao.accettaRichiesta(tutorato.getId(), tutor.getEmail(), commento);
         tutordao.updateOreDisponibili(tutorato.getOreRichieste(),tutor.getEmail());
@@ -77,7 +79,7 @@ public class AccettazioneRichiestaServlet extends HttpServlet {
         e.printStackTrace();
       }
     }
-    if (supporto != null && supporto.getOreRichieste()<oreDisponibilitutor) {
+    if (supporto != null && supporto.getOreRichieste() < oreDisponibilitutor) {
       try {
         supportodao.accettaRichiesta(supporto.getId(), tutor.getEmail(), commento);
         session.setAttribute("alertMsg", "Richiesta accettata con successo");

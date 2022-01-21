@@ -14,6 +14,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
+<% if(session.getAttribute("utente")==null){
+    response.sendRedirect("./LoginPage.jsp");
+    return;
+}
+%>
 <html lang="it">
 <head>
     <meta charset="utf-8">

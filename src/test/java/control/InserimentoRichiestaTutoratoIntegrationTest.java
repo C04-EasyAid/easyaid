@@ -2,7 +2,9 @@ package control;
 
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
+import model.dao.IStudenteDAO;
 import model.dao.ITutoratoDidatticoDAO;
+import model.dao.StudenteDAO;
 import model.dao.TutoratoDidatticoDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,6 +36,7 @@ class InserimentoRichiestaTutoratoIntegrationTest {
     void TestInserimentoRichiestaTutorato1() throws ServletException, IOException, SQLException {
 
         ITutoratoDidatticoDAO tutoratoDidatticoDAO = new TutoratoDidatticoDAO();
+        IStudenteDAO studenteDao = new StudenteDAO();
         UserBean bean = new UserBean();
         bean.setNome("Paolo");
         bean.setCognome("Rossi");
@@ -46,7 +49,7 @@ class InserimentoRichiestaTutoratoIntegrationTest {
         String dateDisponibili = "Martedi,Mercoledì";
         String oreDisponibili = "14:00-16:00,18:00-20:00";
         String docente = "Distasi";
-        int oreRichieste = 20;
+        int oreRichieste = 5;
         String email = bean.getEmail();
         request.setParameter("date_disponibili", dateDisponibili);
         request.setParameter("ore_disponibili", oreDisponibili);
@@ -65,10 +68,14 @@ class InserimentoRichiestaTutoratoIntegrationTest {
         tutoratoDidatticoBean.setOreDisponibili(oreDisponibili);
 
         servlet.setDao(tutoratoDidatticoDAO);
+        servlet.setstudenteDao(studenteDao);
         servlet.doGet(request, response);
         assertEquals(
                 "Richiesta di servizio di tutorato didattico inserita con successo!",
                 Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
+
+
         tutoratoDidatticoDAO.deleteTutorato(tutoratoDidatticoBean);
+        studenteDao.updateOreDisponibili(-oreRichieste,email);
     }
 }

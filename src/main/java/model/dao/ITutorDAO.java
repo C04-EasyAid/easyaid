@@ -11,4 +11,8 @@ import model.bean.TutorBean;
 
 public interface ITutorDAO {
   TutorBean doRetrieveByEmail(String email) throws SQLException, ClassNotFoundException;
+
+  boolean updateOreDisponibili(int oreRichieste,String emailTutor) throws SQLException;
+
+  boolean updateOreSvolte(int oreRichieste,String emailTutor) throws SQLException;
 }

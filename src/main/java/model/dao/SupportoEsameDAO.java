@@ -268,7 +268,8 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
     boolean inserimento = false;
     Connection con = null;
     String query =
-        "INSERT INTO supporto_esame(data, ora, ore_richieste, docente, modalita_esame, eventuali_ausili, tipo_di_assistenza, insegnamento, luogo, dipartimento, studente_email, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        "INSERT INTO supporto_esame" +
+                "(data, ora, ore_richieste, docente, modalita_esame, eventuali_ausili, tipo_di_assistenza, insegnamento, luogo, dipartimento, studente_email, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     PreparedStatement stmt = null;
     try {
       con = ConnectionPool.conn();

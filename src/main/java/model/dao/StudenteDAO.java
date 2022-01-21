@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Locale;
 import model.bean.StudenteBean;
+
 import static model.dao.ConnectionPool.conn;
 
 /**

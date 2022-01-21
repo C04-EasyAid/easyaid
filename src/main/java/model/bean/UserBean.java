@@ -1,8 +1,8 @@
 package model.bean;
 
+import java.util.Locale;
 import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionBindingListener;
-import java.util.Locale;
 import lombok.*;
 
 /**
@@ -20,15 +20,7 @@ public class UserBean implements HttpSessionBindingListener {
   private String password;
   private String ruolo;
 
-  /**
-   * Costruttore.
-   *
-   * @param nome
-   * @param cognome
-   * @param email
-   * @param password
-   * @param ruolo
-   */
+
   public UserBean(String nome, String cognome, String email, String password, String ruolo) {
     this.nome = nome;
     this.cognome = cognome;

@@ -64,7 +64,9 @@ public class RegisterServlet extends HttpServlet {
         }
         //Se l'utente loggato è personale amministrativo allora procedo all inserimento dell utente
         if (utenteLoggato != null) {
-            //PROVVISORIO TIPO INTERO!! Dalla request prendo il parametro id ed in base al valore registro l utente
+            /*PROVVISORIO TIPO INTERO!!
+            Dalla request prendo il parametro id ed in base al valore registro l'utente
+            */
             //1-studente 3-tutor 2-professore referente
             try {
                 switch (tipoUtente) {

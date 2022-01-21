@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 import model.bean.LezioneBean;
 import model.bean.SupportoEsameBean;
+
 import static model.dao.ConnectionPool.conn;
 
 /**
@@ -298,7 +299,8 @@ public class LezioneDAO implements ILezioneDAO {
     boolean utente = false;
     Connection conn = null;
     String query =
-        "INSERT INTO `easyaid`.`lezione` (`tutorato`, `ora_inizio`, `ora_fine`, `data`, `tutor`,`luogo`, `status`) VALUES (?,?,?,?,?,?,'0');";
+        "INSERT INTO `easyaid`.`lezione`" +
+                " (`tutorato`, `ora_inizio`, `ora_fine`, `data`, `tutor`,`luogo`, `status`) VALUES (?,?,?,?,?,?,'0');";
     PreparedStatement stmt = null;
     // Se riesce a connettersi, la connessione è != da null ed entra nello statement
     try {

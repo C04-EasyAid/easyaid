@@ -14,6 +14,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
 import javax.servlet.ServletException;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Objects;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -33,7 +34,7 @@ class InserimentoRichiestaTutoratoIntegrationTest {
     }
 
     @Test
-    void TestInserimentoRichiestaTutorato1() throws ServletException, IOException, SQLException {
+    void TestInserimentoRichiestaTutorato1() throws ServletException, IOException, SQLException, ClassNotFoundException {
 
         ITutoratoDidatticoDAO tutoratoDidatticoDAO = new TutoratoDidatticoDAO();
         IStudenteDAO studenteDao = new StudenteDAO();
@@ -74,7 +75,8 @@ class InserimentoRichiestaTutoratoIntegrationTest {
                 "Richiesta di servizio di tutorato didattico inserita con successo!",
                 Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
 
-
+        List<TutoratoDidatticoBean> list = tutoratoDidatticoDAO.doRetrieveAllByStudente(bean.getEmail());
+        tutoratoDidatticoBean = list.get(list.size()-1);
         tutoratoDidatticoDAO.deleteTutorato(tutoratoDidatticoBean);
         studenteDao.updateOreDisponibili(-oreRichieste,email);
     }

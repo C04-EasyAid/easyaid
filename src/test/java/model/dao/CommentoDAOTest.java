@@ -43,8 +43,8 @@ class CommentoDAOTest {
     }
   @Test
   void insertCommentoTutor2() throws SQLException, ClassNotFoundException {
-    String emailTutor = "mdibianco45@studenti.unisa.it";
-    String testo = "Perfetto.Ci vediamo a lezione!";
+    String emailTutor = "";
+    String testo = "";
     int lezione = 0;
 
 

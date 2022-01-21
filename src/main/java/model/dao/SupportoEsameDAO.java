@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.bean.SupportoEsameBean;
-import model.bean.TutoratoDidatticoBean;
 
 /**
  * Classe SupportoEsameDAO.

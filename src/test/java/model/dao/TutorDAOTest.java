@@ -35,4 +35,44 @@ class TutorDAOTest {
     assertEquals(0, tutor.getOreSvolte());
     assertEquals(0, tutor.getOreDisponibili());
   }
+
+  @Test
+  void updateOreDisponibili1() throws SQLException {
+
+    int oreRichieste = 2;
+    String email = "saracapriotti55@studenti.unisa.it";
+
+    assertEquals(true,tutorDao.updateOreDisponibili(oreRichieste,email));
+
+    tutorDao.updateOreDisponibili(-oreRichieste,email);
+  }
+
+  @Test
+  void updateOreDisponibili2() throws SQLException {
+
+    int oreRichieste = 2;
+    String email = "";
+
+    assertEquals(false,tutorDao.updateOreDisponibili(oreRichieste,email));
+  }
+
+  @Test
+  void updateOreSvolte1() throws SQLException {
+    int oreRichieste = 2;
+    String email = "saracapriotti55@studenti.unisa.it";
+
+    assertEquals(true,tutorDao.updateOreSvolte(oreRichieste,email));
+
+    tutorDao.updateOreSvolte(-oreRichieste,email);
+  }
+
+  @Test
+  void updateOreSvolte2() throws SQLException {
+    int oreRichieste = 2;
+    String email = "";
+
+    assertEquals(false,tutorDao.updateOreSvolte(oreRichieste,email));
+
+  }
+
 }

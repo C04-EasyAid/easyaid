@@ -55,7 +55,7 @@ function changeInput()
 }
 
 function inserimentoCommento(){
-    var commentovalid = /^[a-zA-Z][-_a-zA-Z0-9]{2,250}$/
+    var commentovalid = /^[a-zA-Z\s][-_a-zA-Z0-9]{2,250}$/
     var commento_form = document.getElementById("commento");
     let commento_check = true;
     if(!commentovalid.test(commento_form.value) || commento_form.value==='')
@@ -88,13 +88,13 @@ function setLine()
 function validazioneRichiestaTutorato(){
     var insegnamento = document.getElementById("insegnamento");
     var insegnamentoreg = /^[a-zA-Z\s]*$/;
-    var docente = document.getElementById("docenteT");
+    var docente = document.getElementById("docente_t");
     var docentereg = /^[a-zA-Z\s]*$/;
     var datereg = /^[a-zA-Z-\s]*$/;
     var orereg= /^[0-9-\s]*$/;
     var date_disponibili= document.getElementById("date_disponibili");
     var ore_disponibili =document.getElementById("ore_disponibili");
-    let check =true;
+    let check = true;
     if(!date_disponibili.value.includes("lunedi") && !date_disponibili.value.includes("martedi") && !date_disponibili.value.includes("mercoledi")&& !date_disponibili.value.includes("giovedi")&& !date_disponibili.value.includes("venerdi") )
     {
         date_disponibili.focus();
@@ -115,20 +115,21 @@ function validazioneRichiestaTutorato(){
         ore_disponibili.focus();
         ore_disponibili.style.background='#f08080';
     }
-    if(docentereg.test(docente.value))
+    if(!docentereg.test(docente.value))
     {
         check=false;
         docente.focus();
         docente.style.background='#f08080';
     }
-
-    if(insegnamentoreg.test(insegnamento.value))
+    if(!insegnamentoreg.test(insegnamento.value))
     {
         check=false;
         insegnamento.focus();
         insegnamento.style.background='#f08080';
     }
-    return check
+    if(!check)
+        return false;
+    return true;
 }
 
 function validazioneRichiestaSupporto(){

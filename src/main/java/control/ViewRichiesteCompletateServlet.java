@@ -22,9 +22,7 @@ import other.MyLogger;
  * Servlet che permette di visualizzare le richieste completate.
  *
  * @author Riccardo Polidoro
- *
  */
-
 @WebServlet("/viewRichiesteCompletate")
 public class ViewRichiesteCompletateServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();

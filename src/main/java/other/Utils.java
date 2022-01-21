@@ -11,7 +11,7 @@ import java.security.NoSuchAlgorithmException;
  */
 
 public class Utils {
-  // Algoritmo di criptazione della password
+  /** Algoritmo di criptazione della password. */
   public static String generatePwd(String passwordToHash) {
     String generatedPassword = null;
     String salt = "easyaid";

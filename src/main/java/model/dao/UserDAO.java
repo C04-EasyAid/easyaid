@@ -123,8 +123,12 @@ public class UserDAO implements IUserDAO {
       return false;
     }
     if (!s.getTipoDisabilita().matches("[a-zA-Z]+")
-        || !s.getSpecificheDisturbo().matches("[a-zA-Z]+")) return false;
-    if (s.getPercentualeDisabilita() > 100) return false;
+        || !s.getSpecificheDisturbo().matches("[a-zA-Z]+")) {
+      return false;
+    }
+    if (s.getPercentualeDisabilita() > 100) {
+      return false;
+    }
     // Viene prima inserito l'utente generico (UserBean);
     // Se il metodo restituisce true continua per inserire lo studente
     if (insertUtente(b)) {

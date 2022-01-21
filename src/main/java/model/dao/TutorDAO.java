@@ -49,16 +49,16 @@ public class TutorDAO implements ITutorDAO {
    */
 
   @Override
-  public synchronized boolean updateOreDisponibili(int oreRichieste,String emailTutor) throws SQLException {
+  public synchronized boolean updateOreDisponibili(int oreRichieste, String emailTutor) throws SQLException {
     boolean updated = false;
     Connection conn = null;
     String query = "UPDATE tutor SET ore_disponibili=ore_disponibili-? WHERE email_tutor = ?";
     PreparedStatement stmt = null;
-    try{
+    try {
       conn = ConnectionPool.conn();
       stmt = conn.prepareStatement(query);
-      stmt.setInt(1,oreRichieste);
-      stmt.setString(2,emailTutor);
+      stmt.setInt(1, oreRichieste);
+      stmt.setString(2, emailTutor);
 
       updated = stmt.executeUpdate() == 1;
       conn.commit();
@@ -66,7 +66,7 @@ public class TutorDAO implements ITutorDAO {
 
       stmt.close();
       conn.close();
-    }catch (SQLException e) {
+    } catch (SQLException e) {
       updated = true;
       e.printStackTrace();
     }
@@ -83,23 +83,23 @@ public class TutorDAO implements ITutorDAO {
    */
 
   @Override
-  public synchronized boolean updateOreSvolte(int oreRichieste,String emailTutor) throws SQLException {
+  public synchronized boolean updateOreSvolte(int oreRichieste, String emailTutor) throws SQLException {
     boolean updated = false;
     Connection conn = null;
     String query = "UPDATE tutor SET ore_svolte=ore_svolte-? WHERE email_tutor = ?";
     PreparedStatement stmt = null;
-    try{
+    try {
       conn = ConnectionPool.conn();
       stmt = conn.prepareStatement(query);
-      stmt.setInt(1,oreRichieste);
-      stmt.setString(2,emailTutor);
+      stmt.setInt(1, oreRichieste);
+      stmt.setString(2, emailTutor);
 
       updated = stmt.executeUpdate() == 1;
       conn.commit();
 
       stmt.close();
       conn.close();
-    }catch (SQLException e) {
+    } catch (SQLException e) {
       updated = true;
       e.printStackTrace();
     }

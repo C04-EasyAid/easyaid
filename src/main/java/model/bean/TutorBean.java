@@ -16,7 +16,7 @@ public class TutorBean {
   private int oreSvolte;
   private int oreDisponibili;
 
-
+  /** Costruttore. */
   public TutorBean(
       String emailTutor, String dipartimento, String qualifica, int oreSvolte, int oreDisponibili) {
     this.emailTutor = emailTutor;
@@ -26,6 +26,6 @@ public class TutorBean {
     this.oreDisponibili = oreDisponibili;
   }
 
-  // Costruttore Vuoto
+  /** Costruttore Vuoto. */
   public TutorBean() {}
 }

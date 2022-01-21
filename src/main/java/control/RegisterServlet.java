@@ -42,7 +42,6 @@ public class RegisterServlet extends HttpServlet {
         log.info(myClass, "Collegamento alla Servlet...");
         HttpSession session = request.getSession();
         UserBean utenteLoggato = (UserBean) session.getAttribute("utente");
-        //Creo il bean dell utente che andrà inserito nel DB
         UserBean utenteTemporaneo = new UserBean();
         utenteTemporaneo.setNome(request.getParameter("nome"));
         utenteTemporaneo.setCognome(request.getParameter("cognome"));

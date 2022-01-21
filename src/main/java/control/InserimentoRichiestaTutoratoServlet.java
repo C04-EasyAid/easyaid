@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import model.bean.StudenteBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
@@ -23,9 +22,7 @@ import other.MyLogger;
  *
  * @author Riccardo Polidoro
  */
-
 @WebServlet("/inserisciTutorato")
-
 public class InserimentoRichiestaTutoratoServlet extends HttpServlet {
   private static MyLogger log = MyLogger.getInstance();
   private static String myClass = "InserimentoRichiestaTutoratoServlet";
@@ -33,7 +30,10 @@ public class InserimentoRichiestaTutoratoServlet extends HttpServlet {
   public void setDao(ITutoratoDidatticoDAO dao) {
     this.dao = dao;
   }
-  public void setstudenteDao(IStudenteDAO studenteDao ) { this.studenteDao = studenteDao; }
+
+  public void setstudenteDao(IStudenteDAO studenteDao) {
+    this.studenteDao = studenteDao;
+  }
 
   private ITutoratoDidatticoDAO dao = new TutoratoDidatticoDAO();
   private IStudenteDAO studenteDao = new StudenteDAO();
@@ -61,7 +61,8 @@ public class InserimentoRichiestaTutoratoServlet extends HttpServlet {
             session.setAttribute("alertMsg", "L’operazione non è andata a buon fine.");
             resp.sendRedirect("view/RichiediServizioPage.jsp");
           } else {
-            studenteDao.updateOreDisponibili(Integer.parseInt(req.getParameter("ore_richieste")),user.getEmail());
+            studenteDao.updateOreDisponibili(
+                Integer.parseInt(req.getParameter("ore_richieste")), user.getEmail());
             session.setAttribute(
                 "alertMsg", "Richiesta di servizio di tutorato didattico inserita con successo!");
             resp.sendRedirect("view/RichiediServizioPage.jsp");

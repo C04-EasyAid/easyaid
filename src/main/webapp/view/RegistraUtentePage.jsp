@@ -213,7 +213,7 @@
                                                     </p>
                                                     <p class="fw-bold">Ore Svolte:</p>
                                                     <input type="text" name="oreDisponibiliTutor" class="form-control"
-                                                           placeholder="Ore Svolte" required>
+                                                           placeholder="Ore Svolte" maxlength="2" required>
                                                     </p>
                                                 </address>
                                             </div>

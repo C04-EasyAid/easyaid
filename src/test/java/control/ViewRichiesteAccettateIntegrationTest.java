@@ -36,6 +36,9 @@ class ViewRichiesteAccettateIntegrationTest {
 
     IsupportoEsameDao supportoEsameDao = new SupportoEsameDao();
     ItutoratoDidatticoDao tutoratoDidatticoDao = new TutoratoDidatticoDao();
+    servlet.setSupportoDao(supportoEsameDao);
+    servlet.setTutoratoDao(tutoratoDidatticoDao);
+
     UserBean bean = new UserBean();
     bean.setNome("Antonio");
     bean.setCognome("De Biase");
@@ -43,8 +46,7 @@ class ViewRichiesteAccettateIntegrationTest {
     bean.setPassword("Antonio#DB123");
     bean.setRuolo("T");
     request.getSession().setAttribute("utente", bean);
-    servlet.setSupportoDao(supportoEsameDao);
-    servlet.setTutoratoDao(tutoratoDidatticoDao);
+
     servlet.doGet(request, response);
 
     assertEquals("view/RichiesteAccettatePage.jsp", response.getRedirectedUrl());

@@ -151,14 +151,16 @@ class UserDaoTest {
     String email = "adevito11@unisa.it";
     String nome = "Aldo";
     String cognome = "De Vito";
-    String password = Utils.generatePwd("Aldo#Dev#1103");
-    String ruolo = "P";
+
 
     UserBean bean = dao.doRetrieveUtenteByEmail(email);
 
     assertEquals(email, bean.getEmail());
     assertEquals(nome, bean.getNome());
     assertEquals(cognome, bean.getCognome());
+
+    String password = Utils.generatePwd("Aldo#Dev#1103");
+    String ruolo = "P";
     assertEquals(password, bean.getPassword());
     assertEquals(ruolo, bean.getRuolo());
   }

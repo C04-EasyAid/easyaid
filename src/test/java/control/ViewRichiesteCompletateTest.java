@@ -67,14 +67,14 @@ class ViewRichiesteCompletateTest {
     MockitoAnnotations.initMocks(this);
     IsupportoEsameDao supportoEsameDao = mock(SupportoEsameDao.class);
     ItutoratoDidatticoDao tutoratoDidatticoDao = mock(TutoratoDidatticoDao.class);
+    servlet.setEsameDao(supportoEsameDao);
+    servlet.setTutoratoDao(tutoratoDidatticoDao);
+
     UserBean bean = new UserBean();
     bean.setRuolo("P");
     request.getSession().setAttribute("utente", bean);
     List<SupportoEsameBean> listSupporto = new ArrayList<>();
     List<TutoratoDidatticoBean> listTutorati = new ArrayList<>();
-
-    servlet.setEsameDao(supportoEsameDao);
-    servlet.setTutoratoDao(tutoratoDidatticoDao);
 
     when(supportoEsameDao.doRetrieveAllRichiesteSupportoEsameCompletate()).thenReturn(listSupporto);
     when(tutoratoDidatticoDao.doRetrieveAllRichiesteTutoratoDidatticoCompletate())

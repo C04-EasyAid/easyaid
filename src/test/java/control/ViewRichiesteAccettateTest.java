@@ -64,6 +64,9 @@ class ViewRichiesteAccettateTest {
     MockitoAnnotations.initMocks(this);
     IsupportoEsameDao supportoEsameDao = mock(SupportoEsameDao.class);
     ItutoratoDidatticoDao tutoratoDidatticoDao = mock(TutoratoDidatticoDao.class);
+    servlet.setSupportoDao(supportoEsameDao);
+    servlet.setTutoratoDao(tutoratoDidatticoDao);
+
     UserBean bean = new UserBean();
     bean.setEmail("adebiase41@studenti.unisa.it");
     bean.setRuolo("T");
@@ -71,9 +74,6 @@ class ViewRichiesteAccettateTest {
 
     List<SupportoEsameBean> listSupporto = new ArrayList<>();
     List<TutoratoDidatticoBean> listTutorati = new ArrayList<>();
-
-    servlet.setSupportoDao(supportoEsameDao);
-    servlet.setTutoratoDao(tutoratoDidatticoDao);
 
     when(supportoEsameDao.doRetrieveAllByTutor(bean.getEmail())).thenReturn(listSupporto);
     when(tutoratoDidatticoDao.doRetrieveAllByTutor(bean.getEmail())).thenReturn(listTutorati);

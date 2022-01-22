@@ -34,6 +34,8 @@ class ViewRichiesteServizioIntegrationTest {
 
     IsupportoEsameDao supportoEsameDao = new SupportoEsameDao();
     ItutoratoDidatticoDao tutoratoDidatticoDao = new TutoratoDidatticoDao();
+    servlet.setEsameDao(supportoEsameDao);
+    servlet.setTutoratoDao(tutoratoDidatticoDao);
     UserBean bean = new UserBean();
     bean.setNome("Antonio");
     bean.setCognome("De Biase");
@@ -41,8 +43,7 @@ class ViewRichiesteServizioIntegrationTest {
     bean.setPassword("Antonio#DB123");
     bean.setRuolo("T");
     request.getSession().setAttribute("utente", bean);
-    servlet.setEsameDao(supportoEsameDao);
-    servlet.setTutoratoDao(tutoratoDidatticoDao);
+
     servlet.doGet(request, response);
 
     assertEquals("view/BachecaTutorPage.jsp", response.getRedirectedUrl());

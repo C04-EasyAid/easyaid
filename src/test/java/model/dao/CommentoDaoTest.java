@@ -36,11 +36,13 @@ class CommentoDaoTest {
 
       assertEquals(true, commentoDao.insertCommentoTutor(lezione, testo, emailTutor));
 
-      ArrayList<CommentoBean> list = (ArrayList<CommentoBean>) commentoDao.doRetrieveCommento(lezione);
+      ArrayList<CommentoBean> list =
+              (ArrayList<CommentoBean>) commentoDao.doRetrieveCommento(lezione);
       CommentoBean commento = list.get(list.size() - 1);
       commentoDao.deleteCommento(commento);
 
     }
+
   @Test
   void insertCommentoTutor2() throws SQLException, ClassNotFoundException {
     String emailTutor = "";
@@ -63,7 +65,8 @@ class CommentoDaoTest {
 
 
       assertEquals(true, commentoDao.insertCommentoStudente(lezione, testo, emailStudente));
-      ArrayList<CommentoBean> list = (ArrayList<CommentoBean>) commentoDao.doRetrieveCommento(lezione);
+      ArrayList<CommentoBean> list =
+              (ArrayList<CommentoBean>) commentoDao.doRetrieveCommento(lezione);
       CommentoBean commento = list.get(list.size() - 1);
       commentoDao.deleteCommento(commento);
 
@@ -91,7 +94,8 @@ class CommentoDaoTest {
 
 
       commentoDao.insertCommentoStudente(lezione, testo, emailStudente);
-      ArrayList<CommentoBean> list = (ArrayList<CommentoBean>) commentoDao.doRetrieveCommento(lezione);
+      ArrayList<CommentoBean> list =
+              (ArrayList<CommentoBean>) commentoDao.doRetrieveCommento(lezione);
       CommentoBean commento = list.get(list.size() - 1);
       assertEquals(true, commentoDao.deleteCommento(commento));
 

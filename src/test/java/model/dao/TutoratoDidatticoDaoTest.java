@@ -8,7 +8,7 @@ import java.util.List;
 import model.bean.TutoratoDidatticoBean;
 import org.junit.jupiter.api.Test;
 
-class TutoratoDidatticoDAOTest {
+class TutoratoDidatticoDaoTest {
 
     private final TutoratoDidatticoDao dao = new TutoratoDidatticoDao();
 
@@ -69,7 +69,8 @@ class TutoratoDidatticoDAOTest {
         expected.add(new TutoratoDidatticoBean());
         expected.add(new TutoratoDidatticoBean());
 
-        List<TutoratoDidatticoBean> result = dao.doRetrieveAllRichiesteTutoratoDidatticoCompletate();
+        List<TutoratoDidatticoBean> result =
+                dao.doRetrieveAllRichiesteTutoratoDidatticoCompletate();
 
         assertEquals(expected.size(), result.size());
 

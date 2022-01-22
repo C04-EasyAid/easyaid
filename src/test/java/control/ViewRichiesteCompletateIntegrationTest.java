@@ -34,6 +34,9 @@ class ViewRichiesteCompletateIntegrationTest {
 
     IsupportoEsameDao supportoEsameDao = new SupportoEsameDao();
     ItutoratoDidatticoDao tutoratoDidatticoDao = new TutoratoDidatticoDao();
+    servlet.setEsameDao(supportoEsameDao);
+    servlet.setTutoratoDao(tutoratoDidatticoDao);
+
     UserBean bean = new UserBean();
     bean.setNome("Aldo");
     bean.setCognome("De Vito");
@@ -41,8 +44,6 @@ class ViewRichiesteCompletateIntegrationTest {
     bean.setPassword("Aldo#Dev#1103");
     bean.setRuolo("P");
     request.getSession().setAttribute("utente", bean);
-    servlet.setEsameDao(supportoEsameDao);
-    servlet.setTutoratoDao(tutoratoDidatticoDao);
 
     servlet.doGet(request, response);
 

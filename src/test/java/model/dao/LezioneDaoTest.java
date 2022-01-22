@@ -197,7 +197,8 @@ class LezioneDaoTest {
 
         assertEquals(true, lezioneDao.insertNewLezione(lezione));
 
-        ArrayList<LezioneBean> lezioni = (ArrayList<LezioneBean>) lezioneDao.doRetrieveLezioniById(tutorato);
+        ArrayList<LezioneBean> lezioni =
+                (ArrayList<LezioneBean>) lezioneDao.doRetrieveLezioniById(tutorato);
         lezione = lezioni.get(lezioni.size() - 1);
         lezioneDao.deleteLezione(lezione);
     }
@@ -260,7 +261,8 @@ class LezioneDaoTest {
 
         lezioneDao.insertNewLezione(lezione);
 
-        ArrayList<LezioneBean> lezioni = (ArrayList<LezioneBean>) lezioneDao.doRetrieveLezioniById(tutorato);
+        ArrayList<LezioneBean> lezioni =
+                (ArrayList<LezioneBean>) lezioneDao.doRetrieveLezioniById(tutorato);
         lezione = lezioni.get(lezioni.size() - 1);
 
         assertEquals(true, lezioneDao.deleteLezione(lezione));

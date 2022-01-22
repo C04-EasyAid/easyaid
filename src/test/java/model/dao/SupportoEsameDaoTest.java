@@ -8,7 +8,7 @@ import java.util.List;
 import model.bean.SupportoEsameBean;
 import org.junit.jupiter.api.Test;
 
-class SupportoEsameDAOTest {
+class SupportoEsameDaoTest {
 
     private final SupportoEsameDao dao = new SupportoEsameDao();
 

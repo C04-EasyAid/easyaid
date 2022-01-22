@@ -1,24 +1,35 @@
 package control;
-/* @author Martina Giugliano Testing per l'inserimento di una richiesta di tutorato didattico */
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Objects;
+import javax.servlet.ServletException;
 import model.bean.StudenteBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
-import model.dao.*;
+import model.dao.IstudenteDao;
+import model.dao.ItutoratoDidatticoDao;
+import model.dao.IuserDao;
+import model.dao.StudenteDao;
+import model.dao.TutoratoDidatticoDao;
+import model.dao.UserDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-import javax.servlet.ServletException;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.Objects;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
+/**
+ * Testing per l'inserimento di una richiesta di tutorato didattico.
+ *
+ * @author Martina Giugliano
+ *
+ */
 class InserimentoRichiestaTutoratoTest {
 
   private InserimentoRichiestaTutoratoServlet servlet;
@@ -33,11 +44,11 @@ class InserimentoRichiestaTutoratoTest {
   }
 
   @Test
-  void TestInserimentoRichiestaTutorato1() throws ServletException, IOException {
+  void testinserimentorichiestaTutorato1() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
     IuserDao userDao = mock(UserDao.class);
-    ItutoratoDidatticoDao tutoratoDidatticoDAO = mock(ItutoratoDidatticoDao.class);
-    IstudenteDao studenteDAO = mock(StudenteDao.class);
+    ItutoratoDidatticoDao tutoratoDidatticoDao = mock(TutoratoDidatticoDao.class);
+    IstudenteDao studenteDao = mock(StudenteDao.class);
 
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
@@ -50,7 +61,6 @@ class InserimentoRichiestaTutoratoTest {
     String oreDisponibili = "14:00-16:00,18:00-20:00";
     String docente = "Distasi";
     int oreRichieste = 5;
-    String email = bean.getEmail();
     request.setParameter("date_disponibili", dateDisponibili);
     request.setParameter("ore_disponibili", oreDisponibili);
     request.setParameter("ore_richieste", String.valueOf(oreRichieste));
@@ -59,6 +69,7 @@ class InserimentoRichiestaTutoratoTest {
     request.setParameter("docente", docente);
     TutoratoDidatticoBean tutoratoDidatticoBean = new TutoratoDidatticoBean();
     tutoratoDidatticoBean.setDocente(docente);
+    String email = bean.getEmail();
     tutoratoDidatticoBean.setStudenteEmail(email);
     tutoratoDidatticoBean.setDateDisponibili(dateDisponibili);
     tutoratoDidatticoBean.setDipartimento(dipartimento);
@@ -70,14 +81,14 @@ class InserimentoRichiestaTutoratoTest {
     StudenteBean studente = new StudenteBean();
     studente.setOreDisponibili(22);
     try {
-      when(studenteDAO.doRetrieveByEmail(email)).thenReturn(studente);
-      when(tutoratoDidatticoDAO.inserimentoTutoratoDidattico(tutoratoDidatticoBean))
+      when(studenteDao.doRetrieveByEmail(email)).thenReturn(studente);
+      when(tutoratoDidatticoDao.inserimentoTutoratoDidattico(tutoratoDidatticoBean))
           .thenReturn(true);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setstudenteDao(studenteDAO);
-    servlet.setDao(tutoratoDidatticoDAO);
+    servlet.setstudenteDao(studenteDao);
+    servlet.setDao(tutoratoDidatticoDao);
     servlet.doGet(request, response);
     assertEquals(
         "Richiesta di servizio di tutorato didattico inserita con successo!",
@@ -85,10 +96,10 @@ class InserimentoRichiestaTutoratoTest {
   }
 
   @Test
-  void TestInserimentoRichiestaTutorato2() throws ServletException, IOException {
+  void testinserimentorichiestaTutorato2() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
     IuserDao userDao = mock(UserDao.class);
-    ItutoratoDidatticoDao tutoratoDidatticoDAO = mock(ItutoratoDidatticoDao.class);
+    ItutoratoDidatticoDao tutoratoDidatticoDao = mock(ItutoratoDidatticoDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -100,7 +111,6 @@ class InserimentoRichiestaTutoratoTest {
     String oreDisponibili = "14:00-16:00,18:00-20:00";
     String docente = "Distasi";
     int oreRichieste = 20;
-    String email = bean.getEmail();
     request.setParameter("date_disponibili", dateDisponibili);
     request.setParameter("ore_disponibili", oreDisponibili);
     request.setParameter("ore_richieste", String.valueOf(oreRichieste));
@@ -109,6 +119,7 @@ class InserimentoRichiestaTutoratoTest {
     request.setParameter("docente", docente);
     TutoratoDidatticoBean tutoratoDidatticoBean = new TutoratoDidatticoBean();
     tutoratoDidatticoBean.setDocente(docente);
+    String email = bean.getEmail();
     tutoratoDidatticoBean.setStudenteEmail(email);
     tutoratoDidatticoBean.setDateDisponibili(dateDisponibili);
     tutoratoDidatticoBean.setDipartimento(dipartimento);
@@ -117,12 +128,12 @@ class InserimentoRichiestaTutoratoTest {
     tutoratoDidatticoBean.setStatus(0);
     tutoratoDidatticoBean.setOreDisponibili(oreDisponibili);
     try {
-      when(tutoratoDidatticoDAO.inserimentoTutoratoDidattico(tutoratoDidatticoBean))
+      when(tutoratoDidatticoDao.inserimentoTutoratoDidattico(tutoratoDidatticoBean))
           .thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(tutoratoDidatticoDAO);
+    servlet.setDao(tutoratoDidatticoDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di tutorato didattico inserita con successo!",
@@ -130,10 +141,10 @@ class InserimentoRichiestaTutoratoTest {
   }
 
   @Test
-  void TestInserimentoRichiestaTutorato3() throws ServletException, IOException {
+  void testinserimentorichiestaTutorato3() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
     IuserDao userDao = mock(UserDao.class);
-    ItutoratoDidatticoDao tutoratoDidatticoDAO = mock(ItutoratoDidatticoDao.class);
+    ItutoratoDidatticoDao tutoratoDidatticoDao = mock(ItutoratoDidatticoDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -145,7 +156,6 @@ class InserimentoRichiestaTutoratoTest {
     String oreDisponibili = "14:00-16:00,18:00-20:00";
     String docente = "Distasi";
     int oreRichieste = 20;
-    String email = bean.getEmail();
     request.setParameter("date_disponibili", dateDisponibili);
     request.setParameter("ore_disponibili", oreDisponibili);
     request.setParameter("ore_richieste", String.valueOf(oreRichieste));
@@ -154,6 +164,7 @@ class InserimentoRichiestaTutoratoTest {
     request.setParameter("docente", docente);
     TutoratoDidatticoBean tutoratoDidatticoBean = new TutoratoDidatticoBean();
     tutoratoDidatticoBean.setDocente(docente);
+    String email = bean.getEmail();
     tutoratoDidatticoBean.setStudenteEmail(email);
     tutoratoDidatticoBean.setDateDisponibili(dateDisponibili);
     tutoratoDidatticoBean.setDipartimento(dipartimento);
@@ -162,12 +173,12 @@ class InserimentoRichiestaTutoratoTest {
     tutoratoDidatticoBean.setStatus(0);
     tutoratoDidatticoBean.setOreDisponibili(oreDisponibili);
     try {
-      when(tutoratoDidatticoDAO.inserimentoTutoratoDidattico(tutoratoDidatticoBean))
+      when(tutoratoDidatticoDao.inserimentoTutoratoDidattico(tutoratoDidatticoBean))
           .thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(tutoratoDidatticoDAO);
+    servlet.setDao(tutoratoDidatticoDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di tutorato didattico inserita con successo!",
@@ -175,10 +186,10 @@ class InserimentoRichiestaTutoratoTest {
   }
 
   @Test
-  void TestInserimentoRichiestaTutorato4() throws ServletException, IOException {
+  void testinserimentorichiestaTutorato4() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
     IuserDao userDao = mock(UserDao.class);
-    ItutoratoDidatticoDao tutoratoDidatticoDAO = mock(ItutoratoDidatticoDao.class);
+    ItutoratoDidatticoDao tutoratoDidatticoDao = mock(ItutoratoDidatticoDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -190,7 +201,7 @@ class InserimentoRichiestaTutoratoTest {
     String oreDisponibili = "14:00-16:00,18:00-20:00";
     String docente = "Distasi";
     int oreRichieste = 20;
-    String email = bean.getEmail();
+
     request.setParameter("date_disponibili", dateDisponibili);
     request.setParameter("ore_disponibili", oreDisponibili);
     request.setParameter("ore_richieste", String.valueOf(oreRichieste));
@@ -199,6 +210,7 @@ class InserimentoRichiestaTutoratoTest {
     request.setParameter("docente", docente);
     TutoratoDidatticoBean tutoratoDidatticoBean = new TutoratoDidatticoBean();
     tutoratoDidatticoBean.setDocente(docente);
+    String email = bean.getEmail();
     tutoratoDidatticoBean.setStudenteEmail(email);
     tutoratoDidatticoBean.setDateDisponibili(dateDisponibili);
     tutoratoDidatticoBean.setDipartimento(dipartimento);
@@ -207,12 +219,12 @@ class InserimentoRichiestaTutoratoTest {
     tutoratoDidatticoBean.setStatus(0);
     tutoratoDidatticoBean.setOreDisponibili(oreDisponibili);
     try {
-      when(tutoratoDidatticoDAO.inserimentoTutoratoDidattico(tutoratoDidatticoBean))
+      when(tutoratoDidatticoDao.inserimentoTutoratoDidattico(tutoratoDidatticoBean))
           .thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(tutoratoDidatticoDAO);
+    servlet.setDao(tutoratoDidatticoDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di tutorato didattico inserita con successo!",
@@ -220,10 +232,10 @@ class InserimentoRichiestaTutoratoTest {
   }
 
   @Test
-  void TestInserimentoRichiestaTutorato5() throws ServletException, IOException {
+  void testinserimentorichiestaTutorato5() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
     IuserDao userDao = mock(UserDao.class);
-    ItutoratoDidatticoDao tutoratoDidatticoDAO = mock(ItutoratoDidatticoDao.class);
+    ItutoratoDidatticoDao tutoratoDidatticoDao = mock(ItutoratoDidatticoDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -235,7 +247,6 @@ class InserimentoRichiestaTutoratoTest {
     String oreDisponibili = "14:00-16:00,18:00-20:00";
     String docente = "Distasi";
     int oreRichieste = 20;
-    String email = bean.getEmail();
     request.setParameter("date_disponibili", dateDisponibili);
     request.setParameter("ore_disponibili", oreDisponibili);
     request.setParameter("ore_richieste", String.valueOf(oreRichieste));
@@ -244,6 +255,7 @@ class InserimentoRichiestaTutoratoTest {
     request.setParameter("docente", docente);
     TutoratoDidatticoBean tutoratoDidatticoBean = new TutoratoDidatticoBean();
     tutoratoDidatticoBean.setDocente(docente);
+    String email = bean.getEmail();
     tutoratoDidatticoBean.setStudenteEmail(email);
     tutoratoDidatticoBean.setDateDisponibili(dateDisponibili);
     tutoratoDidatticoBean.setDipartimento(dipartimento);
@@ -252,12 +264,12 @@ class InserimentoRichiestaTutoratoTest {
     tutoratoDidatticoBean.setStatus(0);
     tutoratoDidatticoBean.setOreDisponibili(oreDisponibili);
     try {
-      when(tutoratoDidatticoDAO.inserimentoTutoratoDidattico(tutoratoDidatticoBean))
+      when(tutoratoDidatticoDao.inserimentoTutoratoDidattico(tutoratoDidatticoBean))
           .thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(tutoratoDidatticoDAO);
+    servlet.setDao(tutoratoDidatticoDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di tutorato didattico inserita con successo!",
@@ -265,10 +277,10 @@ class InserimentoRichiestaTutoratoTest {
   }
 
   @Test
-  void TestInserimentoRichiestaTutorato6() throws ServletException, IOException {
+  void testinserimentorichiestaTutorato6() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
     IuserDao userDao = mock(UserDao.class);
-    ItutoratoDidatticoDao tutoratoDidatticoDAO = mock(ItutoratoDidatticoDao.class);
+    ItutoratoDidatticoDao tutoratoDidatticoDao = mock(ItutoratoDidatticoDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -280,7 +292,6 @@ class InserimentoRichiestaTutoratoTest {
     String oreDisponibili = "14:00-16:00,18:00-20:00";
     String docente = "Distasi";
     int oreRichieste = 0;
-    String email = bean.getEmail();
     request.setParameter("date_disponibili", dateDisponibili);
     request.setParameter("ore_disponibili", oreDisponibili);
     request.setParameter("ore_richieste", String.valueOf(oreRichieste));
@@ -289,6 +300,7 @@ class InserimentoRichiestaTutoratoTest {
     request.setParameter("docente", docente);
     TutoratoDidatticoBean tutoratoDidatticoBean = new TutoratoDidatticoBean();
     tutoratoDidatticoBean.setDocente(docente);
+    String email = bean.getEmail();
     tutoratoDidatticoBean.setStudenteEmail(email);
     tutoratoDidatticoBean.setDateDisponibili(dateDisponibili);
     tutoratoDidatticoBean.setDipartimento(dipartimento);
@@ -297,12 +309,12 @@ class InserimentoRichiestaTutoratoTest {
     tutoratoDidatticoBean.setStatus(0);
     tutoratoDidatticoBean.setOreDisponibili(oreDisponibili);
     try {
-      when(tutoratoDidatticoDAO.inserimentoTutoratoDidattico(tutoratoDidatticoBean))
+      when(tutoratoDidatticoDao.inserimentoTutoratoDidattico(tutoratoDidatticoBean))
           .thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(tutoratoDidatticoDAO);
+    servlet.setDao(tutoratoDidatticoDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di tutorato didattico inserita con successo!",
@@ -310,10 +322,10 @@ class InserimentoRichiestaTutoratoTest {
   }
 
   @Test
-  void TestInserimentoRichiestaTutorato7() throws ServletException, IOException {
+  void testinserimentorichiestaTutorato7() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
     IuserDao userDao = mock(UserDao.class);
-    ItutoratoDidatticoDao tutoratoDidatticoDAO = mock(ItutoratoDidatticoDao.class);
+    ItutoratoDidatticoDao tutoratoDidatticoDao = mock(ItutoratoDidatticoDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -325,7 +337,6 @@ class InserimentoRichiestaTutoratoTest {
     String oreDisponibili = "14:00-16:00,18:00-20:00";
     String docente = "Distasi";
     int oreRichieste = 30;
-    String email = bean.getEmail();
     request.setParameter("date_disponibili", dateDisponibili);
     request.setParameter("ore_disponibili", oreDisponibili);
     request.setParameter("ore_richieste", String.valueOf(oreRichieste));
@@ -334,6 +345,7 @@ class InserimentoRichiestaTutoratoTest {
     request.setParameter("docente", docente);
     TutoratoDidatticoBean tutoratoDidatticoBean = new TutoratoDidatticoBean();
     tutoratoDidatticoBean.setDocente(docente);
+    String email = bean.getEmail();
     tutoratoDidatticoBean.setStudenteEmail(email);
     tutoratoDidatticoBean.setDateDisponibili(dateDisponibili);
     tutoratoDidatticoBean.setDipartimento(dipartimento);
@@ -342,12 +354,12 @@ class InserimentoRichiestaTutoratoTest {
     tutoratoDidatticoBean.setStatus(0);
     tutoratoDidatticoBean.setOreDisponibili(oreDisponibili);
     try {
-      when(tutoratoDidatticoDAO.inserimentoTutoratoDidattico(tutoratoDidatticoBean))
+      when(tutoratoDidatticoDao.inserimentoTutoratoDidattico(tutoratoDidatticoBean))
           .thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(tutoratoDidatticoDAO);
+    servlet.setDao(tutoratoDidatticoDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di tutorato didattico inserita con successo!",
@@ -355,10 +367,10 @@ class InserimentoRichiestaTutoratoTest {
   }
 
   @Test
-  void TestInserimentoRichiestaTutorato8() throws ServletException, IOException {
+  void testinserimentorichiestaTutorato8() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
     IuserDao userDao = mock(UserDao.class);
-    ItutoratoDidatticoDao tutoratoDidatticoDAO = mock(ItutoratoDidatticoDao.class);
+    ItutoratoDidatticoDao tutoratoDidatticoDao = mock(ItutoratoDidatticoDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -370,7 +382,7 @@ class InserimentoRichiestaTutoratoTest {
     String oreDisponibili = "14:00-16:00,18:00-20:00";
     String docente = "Distasi";
     int oreRichieste = 20;
-    String email = bean.getEmail();
+
     request.setParameter("date_disponibili", dateDisponibili);
     request.setParameter("ore_disponibili", oreDisponibili);
     request.setParameter("ore_richieste", String.valueOf(oreRichieste));
@@ -379,6 +391,7 @@ class InserimentoRichiestaTutoratoTest {
     request.setParameter("docente", docente);
     TutoratoDidatticoBean tutoratoDidatticoBean = new TutoratoDidatticoBean();
     tutoratoDidatticoBean.setDocente(docente);
+    String email = bean.getEmail();
     tutoratoDidatticoBean.setStudenteEmail(email);
     tutoratoDidatticoBean.setDateDisponibili(dateDisponibili);
     tutoratoDidatticoBean.setDipartimento(dipartimento);
@@ -387,12 +400,12 @@ class InserimentoRichiestaTutoratoTest {
     tutoratoDidatticoBean.setStatus(0);
     tutoratoDidatticoBean.setOreDisponibili(oreDisponibili);
     try {
-      when(tutoratoDidatticoDAO.inserimentoTutoratoDidattico(tutoratoDidatticoBean))
+      when(tutoratoDidatticoDao.inserimentoTutoratoDidattico(tutoratoDidatticoBean))
           .thenThrow(new SQLException());
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(tutoratoDidatticoDAO);
+    servlet.setDao(tutoratoDidatticoDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di tutorato didattico inserita con successo!",
@@ -400,10 +413,10 @@ class InserimentoRichiestaTutoratoTest {
   }
 
   @Test
-  void TestInserimentoRichiestaTutorato9() throws ServletException, IOException {
+  void testinserimentorichiestaTutorato9() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
     IuserDao userDao = mock(UserDao.class);
-    ItutoratoDidatticoDao tutoratoDidatticoDAO = mock(ItutoratoDidatticoDao.class);
+    ItutoratoDidatticoDao tutoratoDidatticoDao = mock(ItutoratoDidatticoDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -415,7 +428,7 @@ class InserimentoRichiestaTutoratoTest {
     String oreDisponibili = "14:00-16:00,18:00-20:00";
     String docente = "Distasi";
     int oreRichieste = 20;
-    String email = bean.getEmail();
+
     request.setParameter("date_disponibili", dateDisponibili);
     request.setParameter("ore_disponibili", oreDisponibili);
     request.setParameter("ore_richieste", String.valueOf(oreRichieste));
@@ -424,6 +437,7 @@ class InserimentoRichiestaTutoratoTest {
     request.setParameter("docente", docente);
     TutoratoDidatticoBean tutoratoDidatticoBean = new TutoratoDidatticoBean();
     tutoratoDidatticoBean.setDocente(docente);
+    String email = bean.getEmail();
     tutoratoDidatticoBean.setStudenteEmail(email);
     tutoratoDidatticoBean.setDateDisponibili(dateDisponibili);
     tutoratoDidatticoBean.setDipartimento(dipartimento);
@@ -432,12 +446,12 @@ class InserimentoRichiestaTutoratoTest {
     tutoratoDidatticoBean.setStatus(0);
     tutoratoDidatticoBean.setOreDisponibili(oreDisponibili);
     try {
-      when(tutoratoDidatticoDAO.inserimentoTutoratoDidattico(tutoratoDidatticoBean))
+      when(tutoratoDidatticoDao.inserimentoTutoratoDidattico(tutoratoDidatticoBean))
           .thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(tutoratoDidatticoDAO);
+    servlet.setDao(tutoratoDidatticoDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di tutorato didattico inserita con successo!",
@@ -445,10 +459,10 @@ class InserimentoRichiestaTutoratoTest {
   }
 
   @Test
-  void TestInserimentoRichiestaTutorato10() throws ServletException, IOException {
+  void testinserimentorichiestaTutorato10() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
     IuserDao userDao = mock(UserDao.class);
-    ItutoratoDidatticoDao tutoratoDidatticoDAO = mock(ItutoratoDidatticoDao.class);
+    ItutoratoDidatticoDao tutoratoDidatticoDao = mock(ItutoratoDidatticoDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -460,7 +474,7 @@ class InserimentoRichiestaTutoratoTest {
     String oreDisponibili = "14:00-16:00,18:00-20:00";
     String docente = "Distasi";
     int oreRichieste = 20;
-    String email = bean.getEmail();
+
     request.setParameter("date_disponibili", dateDisponibili);
     request.setParameter("ore_disponibili", oreDisponibili);
     request.setParameter("ore_richieste", String.valueOf(oreRichieste));
@@ -469,6 +483,7 @@ class InserimentoRichiestaTutoratoTest {
     request.setParameter("docente", docente);
     TutoratoDidatticoBean tutoratoDidatticoBean = new TutoratoDidatticoBean();
     tutoratoDidatticoBean.setDocente(docente);
+    String email = bean.getEmail();
     tutoratoDidatticoBean.setStudenteEmail(email);
     tutoratoDidatticoBean.setDateDisponibili(dateDisponibili);
     tutoratoDidatticoBean.setDipartimento(dipartimento);
@@ -477,12 +492,12 @@ class InserimentoRichiestaTutoratoTest {
     tutoratoDidatticoBean.setStatus(0);
     tutoratoDidatticoBean.setOreDisponibili(oreDisponibili);
     try {
-      when(tutoratoDidatticoDAO.inserimentoTutoratoDidattico(tutoratoDidatticoBean))
+      when(tutoratoDidatticoDao.inserimentoTutoratoDidattico(tutoratoDidatticoBean))
           .thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(tutoratoDidatticoDAO);
+    servlet.setDao(tutoratoDidatticoDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di tutorato didattico inserita con successo!",
@@ -490,10 +505,10 @@ class InserimentoRichiestaTutoratoTest {
   }
 
   @Test
-  void TestInserimentoRichiestaTutorato11() throws ServletException, IOException {
+  void testinserimentorichiestaTutorato11() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
     IuserDao userDao = mock(UserDao.class);
-    ItutoratoDidatticoDao tutoratoDidatticoDAO = mock(ItutoratoDidatticoDao.class);
+    ItutoratoDidatticoDao tutoratoDidatticoDao = mock(ItutoratoDidatticoDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -505,7 +520,6 @@ class InserimentoRichiestaTutoratoTest {
     String oreDisponibili = "08";
     String docente = "Distasi";
     int oreRichieste = 20;
-    String email = bean.getEmail();
     request.setParameter("date_disponibili", dateDisponibili);
     request.setParameter("ore_disponibili", oreDisponibili);
     request.setParameter("ore_richieste", String.valueOf(oreRichieste));
@@ -514,6 +528,7 @@ class InserimentoRichiestaTutoratoTest {
     request.setParameter("docente", docente);
     TutoratoDidatticoBean tutoratoDidatticoBean = new TutoratoDidatticoBean();
     tutoratoDidatticoBean.setDocente(docente);
+    String email = bean.getEmail();
     tutoratoDidatticoBean.setStudenteEmail(email);
     tutoratoDidatticoBean.setDateDisponibili(dateDisponibili);
     tutoratoDidatticoBean.setDipartimento(dipartimento);
@@ -522,12 +537,12 @@ class InserimentoRichiestaTutoratoTest {
     tutoratoDidatticoBean.setStatus(0);
     tutoratoDidatticoBean.setOreDisponibili(oreDisponibili);
     try {
-      when(tutoratoDidatticoDAO.inserimentoTutoratoDidattico(tutoratoDidatticoBean))
+      when(tutoratoDidatticoDao.inserimentoTutoratoDidattico(tutoratoDidatticoBean))
           .thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(tutoratoDidatticoDAO);
+    servlet.setDao(tutoratoDidatticoDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di tutorato didattico inserita con successo!",
@@ -535,10 +550,10 @@ class InserimentoRichiestaTutoratoTest {
   }
 
   @Test
-  void TestInserimentoRichiestaTutorato12() throws ServletException, IOException {
+  void testinserimentorichiestaTutorato12() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
     IuserDao userDao = mock(UserDao.class);
-    ItutoratoDidatticoDao tutoratoDidatticoDAO = mock(ItutoratoDidatticoDao.class);
+    ItutoratoDidatticoDao tutoratoDidatticoDao = mock(ItutoratoDidatticoDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -550,7 +565,7 @@ class InserimentoRichiestaTutoratoTest {
     String oreDisponibili = "14#:00-16#00,18#00-20:00";
     String docente = "Distasi";
     int oreRichieste = 20;
-    String email = bean.getEmail();
+
     request.setParameter("date_disponibili", dateDisponibili);
     request.setParameter("ore_disponibili", oreDisponibili);
     request.setParameter("ore_richieste", String.valueOf(oreRichieste));
@@ -559,6 +574,7 @@ class InserimentoRichiestaTutoratoTest {
     request.setParameter("docente", docente);
     TutoratoDidatticoBean tutoratoDidatticoBean = new TutoratoDidatticoBean();
     tutoratoDidatticoBean.setDocente(docente);
+    String email = bean.getEmail();
     tutoratoDidatticoBean.setStudenteEmail(email);
     tutoratoDidatticoBean.setDateDisponibili(dateDisponibili);
     tutoratoDidatticoBean.setDipartimento(dipartimento);
@@ -567,12 +583,12 @@ class InserimentoRichiestaTutoratoTest {
     tutoratoDidatticoBean.setStatus(0);
     tutoratoDidatticoBean.setOreDisponibili(oreDisponibili);
     try {
-      when(tutoratoDidatticoDAO.inserimentoTutoratoDidattico(tutoratoDidatticoBean))
+      when(tutoratoDidatticoDao.inserimentoTutoratoDidattico(tutoratoDidatticoBean))
           .thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(tutoratoDidatticoDAO);
+    servlet.setDao(tutoratoDidatticoDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di tutorato didattico inserita con successo!",
@@ -580,10 +596,10 @@ class InserimentoRichiestaTutoratoTest {
   }
 
   @Test
-  void TestInserimentoRichiestaTutorato13() throws ServletException, IOException {
+  void testinserimentorichiestaTutorato13() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
     IuserDao userDao = mock(UserDao.class);
-    ItutoratoDidatticoDao tutoratoDidatticoDAO = mock(ItutoratoDidatticoDao.class);
+    ItutoratoDidatticoDao tutoratoDidatticoDao = mock(ItutoratoDidatticoDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -595,7 +611,6 @@ class InserimentoRichiestaTutoratoTest {
     String oreDisponibili = "14:00-16:00,18:00-20:00";
     String docente = "D";
     int oreRichieste = 20;
-    String email = bean.getEmail();
     request.setParameter("date_disponibili", dateDisponibili);
     request.setParameter("ore_disponibili", oreDisponibili);
     request.setParameter("ore_richieste", String.valueOf(oreRichieste));
@@ -604,6 +619,7 @@ class InserimentoRichiestaTutoratoTest {
     request.setParameter("docente", docente);
     TutoratoDidatticoBean tutoratoDidatticoBean = new TutoratoDidatticoBean();
     tutoratoDidatticoBean.setDocente(docente);
+    String email = bean.getEmail();
     tutoratoDidatticoBean.setStudenteEmail(email);
     tutoratoDidatticoBean.setDateDisponibili(dateDisponibili);
     tutoratoDidatticoBean.setDipartimento(dipartimento);
@@ -612,12 +628,12 @@ class InserimentoRichiestaTutoratoTest {
     tutoratoDidatticoBean.setStatus(0);
     tutoratoDidatticoBean.setOreDisponibili(oreDisponibili);
     try {
-      when(tutoratoDidatticoDAO.inserimentoTutoratoDidattico(tutoratoDidatticoBean))
+      when(tutoratoDidatticoDao.inserimentoTutoratoDidattico(tutoratoDidatticoBean))
           .thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(tutoratoDidatticoDAO);
+    servlet.setDao(tutoratoDidatticoDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di tutorato didattico inserita con successo!",
@@ -625,10 +641,10 @@ class InserimentoRichiestaTutoratoTest {
   }
 
   @Test
-  void TestInserimentoRichiestaTutorato14() throws ServletException, IOException {
+  void testinserimentorichiestaTutorato14() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
     IuserDao userDao = mock(UserDao.class);
-    ItutoratoDidatticoDao tutoratoDidatticoDAO = mock(ItutoratoDidatticoDao.class);
+    ItutoratoDidatticoDao tutoratoDidatticoDao = mock(ItutoratoDidatticoDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -640,7 +656,6 @@ class InserimentoRichiestaTutoratoTest {
     String oreDisponibili = "14:00-16:00,18:00-20:00";
     String docente = "Distahthgfhfghgfhsi";
     int oreRichieste = 20;
-    String email = bean.getEmail();
     request.setParameter("date_disponibili", dateDisponibili);
     request.setParameter("ore_disponibili", oreDisponibili);
     request.setParameter("ore_richieste", String.valueOf(oreRichieste));
@@ -649,6 +664,7 @@ class InserimentoRichiestaTutoratoTest {
     request.setParameter("docente", docente);
     TutoratoDidatticoBean tutoratoDidatticoBean = new TutoratoDidatticoBean();
     tutoratoDidatticoBean.setDocente(docente);
+    String email = bean.getEmail();
     tutoratoDidatticoBean.setStudenteEmail(email);
     tutoratoDidatticoBean.setDateDisponibili(dateDisponibili);
     tutoratoDidatticoBean.setDipartimento(dipartimento);
@@ -657,12 +673,12 @@ class InserimentoRichiestaTutoratoTest {
     tutoratoDidatticoBean.setStatus(0);
     tutoratoDidatticoBean.setOreDisponibili(oreDisponibili);
     try {
-      when(tutoratoDidatticoDAO.inserimentoTutoratoDidattico(tutoratoDidatticoBean))
+      when(tutoratoDidatticoDao.inserimentoTutoratoDidattico(tutoratoDidatticoBean))
           .thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(tutoratoDidatticoDAO);
+    servlet.setDao(tutoratoDidatticoDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di tutorato didattico inserita con successo!",
@@ -670,10 +686,10 @@ class InserimentoRichiestaTutoratoTest {
   }
 
   @Test
-  void TestInserimentoRichiestaTutorato15() throws ServletException, IOException {
+  void testinserimentorichiestaTutorato15() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
     IuserDao userDao = mock(UserDao.class);
-    ItutoratoDidatticoDao tutoratoDidatticoDAO = mock(ItutoratoDidatticoDao.class);
+    ItutoratoDidatticoDao tutoratoDidatticoDao = mock(ItutoratoDidatticoDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -685,7 +701,6 @@ class InserimentoRichiestaTutoratoTest {
     String oreDisponibili = "14:00-16:00,18:00-20:00";
     String docente = "Dista#si";
     int oreRichieste = 20;
-    String email = bean.getEmail();
     request.setParameter("date_disponibili", dateDisponibili);
     request.setParameter("ore_disponibili", oreDisponibili);
     request.setParameter("ore_richieste", String.valueOf(oreRichieste));
@@ -694,6 +709,7 @@ class InserimentoRichiestaTutoratoTest {
     request.setParameter("docente", docente);
     TutoratoDidatticoBean tutoratoDidatticoBean = new TutoratoDidatticoBean();
     tutoratoDidatticoBean.setDocente(docente);
+    String email = bean.getEmail();
     tutoratoDidatticoBean.setStudenteEmail(email);
     tutoratoDidatticoBean.setDateDisponibili(dateDisponibili);
     tutoratoDidatticoBean.setDipartimento(dipartimento);
@@ -702,12 +718,12 @@ class InserimentoRichiestaTutoratoTest {
     tutoratoDidatticoBean.setStatus(0);
     tutoratoDidatticoBean.setOreDisponibili(oreDisponibili);
     try {
-      when(tutoratoDidatticoDAO.inserimentoTutoratoDidattico(tutoratoDidatticoBean))
+      when(tutoratoDidatticoDao.inserimentoTutoratoDidattico(tutoratoDidatticoBean))
           .thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(tutoratoDidatticoDAO);
+    servlet.setDao(tutoratoDidatticoDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di tutorato didattico inserita con successo!",
@@ -716,7 +732,7 @@ class InserimentoRichiestaTutoratoTest {
 
   // Permessi non concessi all'utente
   @Test
-  void TestInserimentoRichiestaTutorato16() throws ServletException, IOException {
+  void testinserimentorichiestaTutorato16() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");

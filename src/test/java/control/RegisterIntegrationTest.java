@@ -1,5 +1,11 @@
 package control;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Objects;
+import javax.servlet.ServletException;
 import model.bean.UserBean;
 import model.dao.IuserDao;
 import model.dao.UserDao;
@@ -7,16 +13,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-import javax.servlet.ServletException;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.Objects;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-/*
-@author Martina Giugliano
+/**
+ * Test di integrazione per la funzionalità: inserimento professore referente,
+ * inserimento studente e inserimento tutor.
+ *
+ *@author Martina Giugliano
+ *
  */
+
 class RegisterIntegrationTest {
   private RegisterServlet servlet;
   private MockHttpServletRequest request;
@@ -30,8 +36,7 @@ class RegisterIntegrationTest {
   }
 
   @Test
-  void TestInserimentoStudente() throws ServletException, IOException, SQLException {
-    IuserDao userDAO = new UserDao();
+  void testinserimentoStudente() throws ServletException, IOException, SQLException {
 
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
@@ -57,18 +62,18 @@ class RegisterIntegrationTest {
     request.setParameter("specificheDisturbo", specificheDisturbo);
     request.setParameter("percentualeDisabilita", percentualeDisabilita);
 
-    servlet.setDao(userDAO);
+    IuserDao userDao = new UserDao();
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertEquals(
         "Utente inserito con successo",
         Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
-    userDAO.deleteUtente(new UserBean(nome, cognome, email, password, ruolo));
+    userDao.deleteUtente(new UserBean(nome, cognome, email, password, ruolo));
   }
 
   @Test
-  void TestInserimentoTutor() throws ServletException, IOException, SQLException {
-    IuserDao userDAO = new UserDao();
+  void testinserimentoTutor() throws ServletException, IOException, SQLException {
 
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
@@ -92,18 +97,19 @@ class RegisterIntegrationTest {
     request.setParameter("qualifica", qualifica);
     request.setParameter("oreDisponibiliTutor", oreDisponibili);
 
-    servlet.setDao(userDAO);
+    IuserDao userDao = new UserDao();
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertEquals(
         "Utente inserito con successo",
         Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
-    userDAO.deleteUtente(new UserBean(nome, cognome, email, password, ruolo));
+    userDao.deleteUtente(new UserBean(nome, cognome, email, password, ruolo));
   }
 
   @Test
-  void TestInserimentoProfessoreReferente() throws ServletException, IOException, SQLException {
-    IuserDao userDAO = new UserDao();
+  void testinserimentoProfessorereferente() throws ServletException, IOException, SQLException {
+
     UserBean persAdmin = new UserBean();
 
     persAdmin.setEmail("cgigli91@unisa.it");
@@ -123,13 +129,14 @@ class RegisterIntegrationTest {
     request.setParameter("ruolo", ruolo);
     request.setParameter("dipartimentoProf", dipartimento);
 
-    servlet.setDao(userDAO);
+    IuserDao userDao = new UserDao();
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertEquals(
         "Utente inserito con successo",
         Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
 
-    userDAO.deleteUtente(new UserBean(nome, cognome, email, password, ruolo));
+    userDao.deleteUtente(new UserBean(nome, cognome, email, password, ruolo));
   }
 }

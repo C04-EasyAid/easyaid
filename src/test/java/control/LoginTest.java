@@ -84,6 +84,7 @@ class LoginTest {
   void testLogin3() throws IOException, SQLException, ClassNotFoundException {
     MockitoAnnotations.initMocks(this);
     IuserDao userDao = mock(UserDao.class);
+    servlet.setDao(userDao);
 
     String email = "abaglio9@studenti.unisa.it";
     request.setParameter("Email", email);
@@ -95,7 +96,6 @@ class LoginTest {
 
     when(userDao.doRetrieveUtente(bean)).thenReturn(bean);
 
-    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertEquals("view/HomePage.jsp", response.getRedirectedUrl());

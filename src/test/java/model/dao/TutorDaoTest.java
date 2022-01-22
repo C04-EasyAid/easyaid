@@ -1,9 +1,8 @@
 package model.dao;
 
+import java.sql.SQLException;
 import model.bean.TutorBean;
 import org.junit.jupiter.api.Test;
-
-import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -41,9 +40,9 @@ class TutorDaoTest {
     int oreRichieste = 2;
     String email = "saracapriotti55@studenti.unisa.it";
 
-    assertEquals(true,tutorDao.updateOreDisponibili(oreRichieste,email));
+    assertEquals(true,tutorDao.updateOreDisponibili(oreRichieste, email));
 
-    tutorDao.updateOreDisponibili(-oreRichieste,email);
+    tutorDao.updateOreDisponibili(-oreRichieste, email);
   }
 
   @Test
@@ -52,7 +51,7 @@ class TutorDaoTest {
     int oreRichieste = 2;
     String email = "";
 
-    assertEquals(false,tutorDao.updateOreDisponibili(oreRichieste,email));
+    assertEquals(false,tutorDao.updateOreDisponibili(oreRichieste, email));
   }
 
   @Test
@@ -60,9 +59,9 @@ class TutorDaoTest {
     int oreRichieste = 2;
     String email = "saracapriotti55@studenti.unisa.it";
 
-    assertEquals(true,tutorDao.updateOreSvolte(oreRichieste,email));
+    assertEquals(true,tutorDao.updateOreSvolte(oreRichieste, email));
 
-    tutorDao.updateOreSvolte(-oreRichieste,email);
+    tutorDao.updateOreSvolte(-oreRichieste, email);
   }
 
   @Test
@@ -70,7 +69,7 @@ class TutorDaoTest {
     int oreRichieste = 2;
     String email = "";
 
-    assertEquals(false,tutorDao.updateOreSvolte(oreRichieste,email));
+    assertEquals(false,tutorDao.updateOreSvolte(oreRichieste, email));
 
   }
 

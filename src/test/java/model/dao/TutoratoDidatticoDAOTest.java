@@ -1,11 +1,10 @@
 package model.dao;
 
-import model.bean.TutoratoDidatticoBean;
-import org.junit.jupiter.api.Test;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import model.bean.TutoratoDidatticoBean;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -25,7 +24,7 @@ class TutoratoDidatticoDAOTest {
 
        List<TutoratoDidatticoBean> result = dao.doRetrieveAllByStudente(email);
 
-       assertEquals(expected.size(),result.size());
+       assertEquals(expected.size(), result.size());
     }
 
     @Test
@@ -35,7 +34,7 @@ class TutoratoDidatticoDAOTest {
 
         List<TutoratoDidatticoBean> result = dao.doRetrieveAllByStudente(email);
 
-        assertEquals(expected,result);
+        assertEquals(expected, result);
     }
 
     @Test
@@ -49,7 +48,7 @@ class TutoratoDidatticoDAOTest {
 
         List<TutoratoDidatticoBean> result = dao.doRetrieveAllByTutor(email);
 
-        assertEquals(expected.size(),result.size());
+        assertEquals(expected.size(), result.size());
 
     }
 
@@ -60,30 +59,32 @@ class TutoratoDidatticoDAOTest {
 
         List<TutoratoDidatticoBean> result = dao.doRetrieveAllByTutor(email);
 
-        assertEquals(expected,result);
+        assertEquals(expected, result);
     }
 
     @Test
-    void doRetrieveAllRichiesteTutoratoDidatticoCompletate() throws SQLException, ClassNotFoundException {
+    void doRetrieveAllRichiesteTutoratoDidatticoCompletate()
+            throws SQLException, ClassNotFoundException {
         List<TutoratoDidatticoBean> expected = new ArrayList<>();
         expected.add(new TutoratoDidatticoBean());
         expected.add(new TutoratoDidatticoBean());
 
         List<TutoratoDidatticoBean> result = dao.doRetrieveAllRichiesteTutoratoDidatticoCompletate();
 
-        assertEquals(expected.size(),result.size());
+        assertEquals(expected.size(), result.size());
 
     }
 
 
     @Test
-    void doRetrieveRichiesteTutoratoDidatticoNonAccettate() throws SQLException, ClassNotFoundException {
+    void doRetrieveRichiesteTutoratoDidatticoNonAccettate()
+            throws SQLException, ClassNotFoundException {
         List<TutoratoDidatticoBean> expected = new ArrayList<>();
         expected.add(new TutoratoDidatticoBean());
 
         List<TutoratoDidatticoBean> result = dao.doRetrieveRichiesteTutoratoDidatticoNonAccettate();
 
-        assertEquals(expected.size(),result.size());
+        assertEquals(expected.size(), result.size());
 
     }
 
@@ -95,7 +96,7 @@ class TutoratoDidatticoDAOTest {
 
         TutoratoDidatticoBean result = dao.doRetriveById(14);
 
-        assertEquals(expected.getId(),result.getId());
+        assertEquals(expected.getId(), result.getId());
 
     }
 
@@ -106,7 +107,7 @@ class TutoratoDidatticoDAOTest {
 
         TutoratoDidatticoBean result = dao.doRetriveById(0);
 
-        assertEquals(expected,result);
+        assertEquals(expected, result);
     }
 
     @Test
@@ -129,9 +130,9 @@ class TutoratoDidatticoDAOTest {
         tutoratoDidatticoBean.setStatus(0);
         tutoratoDidatticoBean.setOreDisponibili(oreDisponibili);
 
-        assertEquals(true,dao.inserimentoTutoratoDidattico(tutoratoDidatticoBean));
+        assertEquals(true, dao.inserimentoTutoratoDidattico(tutoratoDidatticoBean));
         List<TutoratoDidatticoBean> list = dao.doRetrieveAllByStudente(email);
-        tutoratoDidatticoBean = list.get(list.size()-1);
+        tutoratoDidatticoBean = list.get(list.size() - 1);
         dao.deleteTutorato(tutoratoDidatticoBean);
 
     }
@@ -156,14 +157,14 @@ class TutoratoDidatticoDAOTest {
         tutoratoDidatticoBean.setStatus(0);
         tutoratoDidatticoBean.setOreDisponibili(oreDisponibili);
 
-        assertEquals(true,dao.inserimentoTutoratoDidattico(tutoratoDidatticoBean));
+        assertEquals(true, dao.inserimentoTutoratoDidattico(tutoratoDidatticoBean));
         List<TutoratoDidatticoBean> list = dao.doRetrieveAllByStudente(email);
-        tutoratoDidatticoBean = list.get(list.size()-1);
+        tutoratoDidatticoBean = list.get(list.size() - 1);
 
         String emailTutor = "adebiase41@studenti.unisa.it";
         String commento = "Ok,va bene!";
 
-        assertEquals(true,dao.accettaRichiesta(tutoratoDidatticoBean.getId(),emailTutor,commento));
+        assertEquals(true, dao.accettaRichiesta(tutoratoDidatticoBean.getId(), emailTutor, commento));
 
         dao.deleteTutorato(tutoratoDidatticoBean);
     }
@@ -189,16 +190,16 @@ class TutoratoDidatticoDAOTest {
         tutoratoDidatticoBean.setStatus(0);
         tutoratoDidatticoBean.setOreDisponibili(oreDisponibili);
 
-        assertEquals(true,dao.inserimentoTutoratoDidattico(tutoratoDidatticoBean));
+        assertEquals(true, dao.inserimentoTutoratoDidattico(tutoratoDidatticoBean));
         List<TutoratoDidatticoBean> list = dao.doRetrieveAllByStudente(email);
-        tutoratoDidatticoBean = list.get(list.size()-1);
+        tutoratoDidatticoBean = list.get(list.size() - 1);
 
         String emailTutor = "adebiase41@studenti.unisa.it";
         String commento = "Ok,va bene!";
-        String emailProf ="gporetti89@unisa.it";
+        String emailProf = "gporetti89@unisa.it";
 
-        dao.accettaRichiesta(tutoratoDidatticoBean.getId(),emailTutor,commento);
-        assertEquals(true, dao.approvaRichiesta(tutoratoDidatticoBean.getId(),emailProf));
+        dao.accettaRichiesta(tutoratoDidatticoBean.getId(), emailTutor, commento);
+        assertEquals(true, dao.approvaRichiesta(tutoratoDidatticoBean.getId(), emailProf));
 
         dao.deleteTutorato(tutoratoDidatticoBean);
 
@@ -224,15 +225,15 @@ class TutoratoDidatticoDAOTest {
         tutoratoDidatticoBean.setStatus(0);
         tutoratoDidatticoBean.setOreDisponibili(oreDisponibili);
 
-        assertEquals(true,dao.inserimentoTutoratoDidattico(tutoratoDidatticoBean));
+        assertEquals(true, dao.inserimentoTutoratoDidattico(tutoratoDidatticoBean));
         List<TutoratoDidatticoBean> list = dao.doRetrieveAllByStudente(email);
-        tutoratoDidatticoBean = list.get(list.size()-1);
+        tutoratoDidatticoBean = list.get(list.size() - 1);
 
         String emailTutor = "adebiase41@studenti.unisa.it";
         String commento = "Ok,va bene!";
 
-        dao.accettaRichiesta(tutoratoDidatticoBean.getId(),emailTutor,commento);
-        assertEquals(true,dao.completaRichiesta(tutoratoDidatticoBean.getId(),emailTutor));
+        dao.accettaRichiesta(tutoratoDidatticoBean.getId(), emailTutor, commento);
+        assertEquals(true,dao.completaRichiesta(tutoratoDidatticoBean.getId(), emailTutor));
 
         dao.deleteTutorato(tutoratoDidatticoBean);
 
@@ -261,7 +262,7 @@ class TutoratoDidatticoDAOTest {
         dao.inserimentoTutoratoDidattico(tutoratoDidatticoBean);
         List<TutoratoDidatticoBean> list = dao.doRetrieveAllByStudente(email);
         tutoratoDidatticoBean = list.get(list.size()-1);
-        assertEquals(true,dao.deleteTutorato(tutoratoDidatticoBean));
+        assertEquals(true, dao.deleteTutorato(tutoratoDidatticoBean));
 
     }
 
@@ -271,7 +272,7 @@ class TutoratoDidatticoDAOTest {
 
         TutoratoDidatticoBean bean = new TutoratoDidatticoBean();
 
-        assertEquals(false,dao.deleteTutorato(bean));
+        assertEquals(false, dao.deleteTutorato(bean));
 
     }
 

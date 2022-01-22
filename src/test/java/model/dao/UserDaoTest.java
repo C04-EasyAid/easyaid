@@ -1,15 +1,14 @@
 package model.dao;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import model.bean.ProfessoreReferenteBean;
 import model.bean.StudenteBean;
 import model.bean.TutorBean;
 import model.bean.UserBean;
 import org.junit.jupiter.api.Test;
 import other.Utils;
-
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -143,7 +142,7 @@ class UserDaoTest {
 
     List<UserBean> result = (List<UserBean>) dao.doRetrieveAll();
 
-    assertEquals(list.size(),result.size());
+    assertEquals(list.size(), result.size());
   }
 
   @Test

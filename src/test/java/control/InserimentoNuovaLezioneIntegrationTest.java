@@ -20,12 +20,11 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
 
- /**
-  * Test di integrazione per la funzionalità: inserimento nuova lezione.
-  *
-  * @author Martina Giugliano
-  *
-  */
+    /**
+    * Test di integrazione per la funzionalità: inserimento nuova lezione.
+    *
+    * @author Martina Giugliano
+    */
     class InserimentoNuovaLezioneIntegrationTest {
         private InserimentoNuovaLezioneServlet servlet;
         private MockHttpServletRequest request;

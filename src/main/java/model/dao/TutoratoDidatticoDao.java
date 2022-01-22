@@ -19,9 +19,13 @@ public class TutoratoDidatticoDao implements ItutoratoDidatticoDao {
    * Metodo che restituisce le richieste di Tutorato Didattico effettuate tramite e-mail studente.
    *
    * @param emailStudente
+   *       email dello studente.
    * @return
-   * @throws SQLException:eccezione accesso al db.
+   *        lista di richieste di tutorato.
+   * @throws SQLException
+   *        eccezione accesso al db.
    * @throws ClassNotFoundException
+   *        eccezione classe non trovata.
    */
   @Override
   public synchronized List<TutoratoDidatticoBean> doRetrieveAllByStudente(String emailStudente)
@@ -63,10 +67,14 @@ public class TutoratoDidatticoDao implements ItutoratoDidatticoDao {
   }
 
   /**
-   * Metodo per restituire le richieste accettate da un tutor
-   * @return la lista delle richieste di tutorato didattico accettate dal tutor
-   * @throws SQLException:Eccezione accesso al db
-   * @throws ClassNotFoundException:eccezione classe non trovata
+   * Metodo per restituire le richieste accettate da un tutor.
+   *
+   * @return
+   *        la lista delle richieste di tutorato didattico accettate dal tutor.
+   * @throws SQLException
+   *        eccezione accesso al db.
+   * @throws ClassNotFoundException
+   *        eccezione classe non trovata.
    */
   @Override
   public synchronized List<TutoratoDidatticoBean> doRetrieveAllByTutor(String emailTutor)
@@ -110,9 +118,12 @@ public class TutoratoDidatticoDao implements ItutoratoDidatticoDao {
    * Metodo che restituisce la lista delle richieste di tutorato didattico completate da tutti i
    * tutor nel sistema.
    *
-   * @return la lista delle richieste di tutorato didattico completate dai tutor
-   * @throws SQLException:eccezione accesso al db
-   * @throws ClassNotFoundException:eccezione classe non trovata
+   * @return
+   *        la lista delle richieste di tutorato didattico completate dai tutor.
+   * @throws SQLException
+   *        eccezione accesso al db.
+   * @throws ClassNotFoundException
+   *        eccezione classe non trovata.
    */
   @Override
   public synchronized List<TutoratoDidatticoBean>
@@ -155,12 +166,15 @@ public class TutoratoDidatticoDao implements ItutoratoDidatticoDao {
 
   /**
    * Metodo che restituisce la lista di tutte le richieste di tutorato didattico non ancora
-   * accettate da nessun tutor
+   * accettate da nessun tutor.
    *
-   * @return la lista di tutte le richieste di tutorato didattico non ancora accettate da nessun
-   *     tutor
-   * @throws SQLException:eccezione accesso al db
-   * @throws ClassNotFoundException:eccezione classe non trovata
+   * @return
+   *        la lista di tutte le richieste di tutorato didattico non ancora accettate da nessun
+   *        tutor.
+   * @throws SQLException
+   *        eccezione accesso al db.
+   * @throws ClassNotFoundException
+   *        eccezione classe non trovata.
    */
   @Override
   public synchronized List<TutoratoDidatticoBean> doRetrieveRichiesteTutoratoDidatticoNonAccettate()

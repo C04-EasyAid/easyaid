@@ -1,7 +1,7 @@
 package model.bean;
 
 import java.util.Date;
-import lombok.*;
+import lombok.Data;
 
 /**
  * Classe CommentoBean.
@@ -38,7 +38,12 @@ public class CommentoBean {
     this.studente = studente;
     this.tutor = tutor;
   }
-  /**Costruttore vuoto. */
+
+  /**
+   * Costruttore vuoto.
+   *
+   */
+
   public CommentoBean() {
 
   }

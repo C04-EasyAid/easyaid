@@ -134,6 +134,7 @@ public class RegisterServlet extends HttpServlet {
                             + "inserimento=Tutor");
                     case 3 -> response.sendRedirect("view/RegistraUtentePage.jsp?"
                             + "inserimento=Professore Referente");
+                    default -> System.out.println();
                 }
             }
         } else {

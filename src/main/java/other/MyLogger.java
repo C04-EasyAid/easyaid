@@ -34,6 +34,9 @@ public class MyLogger {
     }
     return instance;
   }
+  /**
+   * Metodo per visualizzare un messaggio sulla console.
+   */
 
   public void info(String myclass, String msg) {
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
@@ -41,6 +44,10 @@ public class MyLogger {
     String data = String.valueOf(LocalDate.now());
     log.info("[" + data + " " + ora + "]" + "[" + myclass + "] " + msg);
   }
+
+  /**
+ * Metodo per visualizzare un messaggio sulla console.
+ */
 
   public void error(String myclass, String msg, Exception ce) {
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");

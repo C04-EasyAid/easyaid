@@ -5,13 +5,13 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
+ *  Classe Utils.
  *
- * @author Giovanni Toriello Classe Utils
- *
+ * @author Giovanni Toriello
  */
 
 public class Utils {
-  // Algoritmo di criptazione della password
+  /** Algoritmo di criptazione della password. */
   public static String generatePwd(String passwordToHash) {
     String generatedPassword = null;
     String salt = "easyaid";

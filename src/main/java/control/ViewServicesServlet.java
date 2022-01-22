@@ -1,17 +1,21 @@
 package control;
 
-import model.bean.StudenteBean;
-import other.MyLogger;
-
+import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
+import model.bean.StudenteBean;
+import other.MyLogger;
 
-/** @author Riccardo Polidoro Servlet per restituire la lista dei servizi allo studente */
+/**
+ * Servlet per restituire la lista dei servizi allo studente.
+ *
+ *  @author Riccardo Polidoro
+ *
+ */
 @WebServlet("/viewServices")
 public class ViewServicesServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
@@ -24,8 +28,9 @@ public class ViewServicesServlet extends HttpServlet {
     HttpSession session = req.getSession();
     StudenteBean bean = (StudenteBean) session.getAttribute("studente");
 
-    if (bean != null) resp.sendRedirect("view/RichiediServizioPage.jsp");
-    else {
+    if (bean != null) {
+      resp.sendRedirect("view/RichiediServizioPage.jsp");
+    } else {
       session.setAttribute("alertMsg", "Permessi non concessi all'utente");
       resp.sendRedirect("view/HomePage.jsp");
     }

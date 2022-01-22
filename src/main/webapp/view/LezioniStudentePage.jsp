@@ -8,6 +8,11 @@
 --%>
 <%@ page import="model.bean.LezioneBean" %>
 <%@ page import="java.util.Collection" %>
+<% if(session.getAttribute("utente")==null){
+    response.sendRedirect("./LoginPage.jsp");
+    return;
+}
+%>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -16,6 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Webestica.com">
     <meta name="description" content="Eduport- LMS, Education and Course Theme">
+    <link rel="shortcut icon" href="../image/favicon.ico">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="../assets/images/favicon.ico">

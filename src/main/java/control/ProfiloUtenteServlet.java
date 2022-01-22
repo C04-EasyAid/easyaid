@@ -1,19 +1,31 @@
 package control;
 
-import model.bean.UserBean;
-import model.dao.*;
-import other.MyLogger;
-
+import java.io.IOException;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.sql.SQLException;
+import model.bean.UserBean;
+import model.dao.IProfessoreReferenteDAO;
+import model.dao.IStudenteDAO;
+import model.dao.ITutorDAO;
+import model.dao.IUserDAO;
+import model.dao.ProfessoreReferenteDAO;
+import model.dao.StudenteDAO;
+import model.dao.TutorDAO;
+import model.dao.UserDAO;
+import other.MyLogger;
 
-/** @author Giovanni Toriello Servlet che permette di visualizzare il profilo utente */
+/**
+ * Servlet che permette di visualizzare il profilo utente.
+ *
+ * @author Giovanni Toriello
+ *
+ */
+
 @WebServlet(name = "UserProfile", urlPatterns = "/UserProfile")
 public class ProfiloUtenteServlet extends HttpServlet {
   private static MyLogger log = MyLogger.getInstance();
@@ -85,17 +97,19 @@ public class ProfiloUtenteServlet extends HttpServlet {
                 e.printStackTrace();
               }
               break;
+            default: System.out.println("Nessuno dei casi di switch");
+            break;
           }
         } catch (SQLException | ClassNotFoundException e) {
           e.printStackTrace();
         }
 
       } else {
-        request.getSession().setAttribute("alertMsg","Operazione non andata a buon fine");
+        request.getSession().setAttribute("alertMsg", "Operazione non andata a buon fine");
         response.sendRedirect("view/ListaUtentiPage.jsp");
-        }
+      }
     } else {
-      request.getSession().setAttribute("alertMsg","Permessi non concessi all'utente");
+      request.getSession().setAttribute("alertMsg", "Permessi non concessi all'utente");
       response.sendRedirect("view/HomePage.jsp");
     }
   }

@@ -9,8 +9,9 @@ import java.util.List;
 import model.bean.SupportoEsameBean;
 
 /**
- * @author Martina Giugliano DAO Supporto esame per gestire i dati del Database relativo al supporto
- *     esame.
+ * Classe SupportoEsameDAO.
+ *
+ * @author Martina Giugliano
  */
 public class SupportoEsameDAO implements ISupportoEsameDAO {
 
@@ -55,16 +56,12 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
         list.add(bean);
       }
 
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null){
-        stmt.close();
-      }
-      if (conn != null){
-        conn.close();
-      }
     }
+
 
     return list;
   }
@@ -111,11 +108,11 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
         list.add(bean);
       }
 
+      stmt.close();
+      conn.close();
+
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) conn.close();
     }
 
     return list;
@@ -162,16 +159,12 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
         list.add(bean);
       }
 
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null){
-        stmt.close();
-      }
-      if (conn != null){
-        conn.close();
-      }
     }
+
 
     return list;
   }
@@ -217,11 +210,10 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
         list.add(bean);
       }
 
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) conn.close();
     }
 
     return list;
@@ -259,16 +251,13 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
         bean.setTutorEmail(rs.getString("tutor_email"));
         bean.setProfEmail(rs.getString("prof_refe_email"));
       }
+
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null){
-        stmt.close();
-      }
-      if (conn != null){
-        conn.close();
-      }
     }
+
 
     return bean;
   }
@@ -278,7 +267,8 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
     boolean inserimento = false;
     Connection con = null;
     String query =
-        "INSERT INTO supporto_esame(data, ora, ore_richieste, docente, modalita_esame, eventuali_ausili, tipo_di_assistenza, insegnamento, luogo, dipartimento, studente_email, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        "INSERT INTO supporto_esame" +
+                "(data, ora, ore_richieste, docente, modalita_esame, eventuali_ausili, tipo_di_assistenza, insegnamento, luogo, dipartimento, studente_email, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     PreparedStatement stmt = null;
     try {
       con = ConnectionPool.conn();
@@ -297,17 +287,14 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
       stmt.setInt(12, 0);
       inserimento = stmt.executeUpdate() == 1;
       con.commit();
+
+      stmt.close();
+      con.close();
     } catch (SQLException e) {
       e.printStackTrace();
       inserimento = false;
-    } finally {
-      if (stmt != null){
-        stmt.close();
-      }
-      if (con != null){
-        con.close();
-      }
     }
+
     return inserimento;
   }
 
@@ -326,16 +313,13 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
       stmt.setInt(3, idSupporto);
       isUpdated = stmt.executeUpdate() == 1;
       conn.commit();
+
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null){
-        stmt.close();
-      }
-      if (conn != null){
-        conn.close();
-      }
     }
+
 
     return isUpdated;
   }
@@ -354,13 +338,35 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
       stmt.setInt(2, idSupporto);
       isUpdated = stmt.executeUpdate() == 1;
       conn.commit();
+
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) conn.close();
     }
 
     return isUpdated;
+  }
+
+  @Override
+  public synchronized boolean deleteSupporto(SupportoEsameBean s) throws SQLException {
+    boolean delete = false;
+    Connection conn = null;
+    String query = "DELETE FROM supporto_esame WHERE id = ?";
+    PreparedStatement stmt = null;
+    try {
+      conn = ConnectionPool.conn();
+      stmt = conn.prepareStatement(query);
+      stmt.setInt(1, s.getId());
+      delete = stmt.executeUpdate() == 1;
+      conn.commit();
+
+      stmt.close();
+      conn.close();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+
+    return delete;
   }
 }

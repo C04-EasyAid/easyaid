@@ -1,5 +1,14 @@
 package control;
 
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
@@ -9,29 +18,24 @@ import model.dao.SupportoEsameDAO;
 import model.dao.TutoratoDidatticoDAO;
 import other.MyLogger;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
-
+/**
+ * Servlet che permette di visualizzare le richieste di servizio.
+ *
+ * @author Riccardo Polidoro
+ */
 @WebServlet("/viewRichiesteServizio")
 public class ViewRichiesteServizioServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "ViewRichiesteServizioServlet";
-  private ISupportoEsameDAO esameDAO = new SupportoEsameDAO();
-  private ITutoratoDidatticoDAO tutoratoDAO = new TutoratoDidatticoDAO();
+  private ISupportoEsameDAO esameDao = new SupportoEsameDAO();
+  private ITutoratoDidatticoDAO tutoratoDao = new TutoratoDidatticoDAO();
 
-  public void setEsameDAO(ISupportoEsameDAO esameDAO) {
-    this.esameDAO = esameDAO;
+  public void setEsameDao(ISupportoEsameDAO esameDao) {
+    this.esameDao = esameDao;
   }
 
-  public void setTutoratoDAO(ITutoratoDidatticoDAO tutoratoDAO) {
-    this.tutoratoDAO = tutoratoDAO;
+  public void setTutoratoDao(ITutoratoDidatticoDAO tutoratoDao) {
+    this.tutoratoDao = tutoratoDao;
   }
 
   @Override
@@ -44,9 +48,9 @@ public class ViewRichiesteServizioServlet extends HttpServlet {
       if (userLoggato.isTutor()) {
         try {
           List<SupportoEsameBean> listRichiesteSupportoEsame =
-              esameDAO.doRetrieveRichiesteSupportoEsameNonAccettate();
+              esameDao.doRetrieveRichiesteSupportoEsameNonAccettate();
           List<TutoratoDidatticoBean> listRichiesteTutoratoDidattico =
-              tutoratoDAO.doRetrieveRichiesteTutoratoDidatticoNonAccettate();
+              tutoratoDao.doRetrieveRichiesteTutoratoDidatticoNonAccettate();
           session.setAttribute("richiesteEsamiNonAccettate", listRichiesteSupportoEsame);
           session.setAttribute("richiesteTutoratoNonAccettate", listRichiesteTutoratoDidattico);
 
@@ -57,11 +61,11 @@ public class ViewRichiesteServizioServlet extends HttpServlet {
           e.printStackTrace();
         }
       } else {
-        session.setAttribute("alertMsg","Permessi non concessi all'utente");
+        session.setAttribute("alertMsg", "Permessi non concessi all'utente");
         resp.sendRedirect("view/HomePage.jsp");
       }
     } else {
-      session.setAttribute("alertMsg","Permessi non concessi all'utente");
+      session.setAttribute("alertMsg", "Permessi non concessi all'utente");
       resp.sendRedirect("view/LoginPage.jsp");
     }
   }

@@ -17,12 +17,10 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
 /**
- *Testing per il Login.
+ * Testing per il Login.
  *
  * @author Giovanni Toriello
- *
  */
-
 class LoginTest {
 
   private LoginServlet servlet;
@@ -91,7 +89,7 @@ class LoginTest {
     request.setParameter("Email", email);
     String password = "Aldo#Baglio45";
     request.setParameter("Password", password);
-    UserBean bean=new UserBean();
+    UserBean bean = new UserBean();
     bean.setEmail(email);
     bean.setPassword(password);
 

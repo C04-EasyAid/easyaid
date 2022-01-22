@@ -9,6 +9,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8"%>
+<% if(session.getAttribute("utente")==null){
+    response.sendRedirect("./LoginPage.jsp");
+    return;
+}
+%>
 <html>
 <!DOCTYPE html>
 <html lang="it">
@@ -18,6 +23,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Webestica.com">
     <meta name="description" content="Eduport- LMS, Education and Course Theme">
+    <link rel="shortcut icon" href="../image/favicon.ico">
 
 
     <!-- Google Font -->
@@ -53,7 +59,7 @@
                             <div class="card-header bg-transparent border-bottom">
                                 <h3 class="mb-0">Lista Delle Richieste Effettuate</h3>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body p-4">
                                 <div class="table-responsive border-0">
                                     <table class="table table-dark-gray align-middle p-4 mb-0 table-hover">
                                         <thead style="background-color: #17a2b8 !important;">
@@ -85,7 +91,6 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td><%=b.getDateDisponibili()%></td>
                                             <td><%=b.getOreDisponibili()%></td>
                                             <td><%=b.getOreRichieste()%></td>
                                             <%if(b.getStatus()==0){  %>
@@ -144,7 +149,7 @@
                                             <%if(b.getStatus()==0){  %>
                                             <td><a href="#" class="badge bg-danger">Non accettata</a></td>
                                             <%}else{%>
-                                            <td><a href="#" class="badge bg-success"><i class="fas fa-circle me-2 small fw-bold"></i>Accettata</a></td>
+                                            <td><a href="#" class="badge bg-success">Accettata</a></td>
                                             <% } %>
                                             <td ><a class="btn btn-outline-info" href="../SingolaRichiestaServlet?idSupporto=<%=b.getId()%>" role="button">Visualizza</a> </td>
                                         </tr>

@@ -13,6 +13,11 @@
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Collection" %>
 <%@ page import="model.dao.LezioneDAO" %>
+<% if(session.getAttribute("utente")==null){
+    response.sendRedirect("./LoginPage.jsp");
+    return;
+}
+%>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -21,6 +26,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Webestica.com">
     <meta name="description" content="Eduport- LMS, Education and Course Theme">
+    <link rel="shortcut icon" href="../image/favicon.ico">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="../assets/images/favicon.ico">
@@ -41,7 +47,7 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7N7LGGGWT1%22%3E"></script>
-    <title></title>
+    <title>EasyAid</title>
 </head>
 <body>
 <header>

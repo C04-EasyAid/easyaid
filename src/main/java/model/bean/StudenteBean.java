@@ -2,23 +2,22 @@ package model.bean;
 
 import lombok.*;
 
-/** @author Giovanni Toriello Classe StudenteBean */
+/**
+ * Classe StudenteBean.
+ *
+ * @author Giovanni Toriello
+ * */
 @Data
 public class StudenteBean {
 
   // Variabili dell'utente
-  private String email, tipoDisabilita, specificheDisturbo;
-  private int oreDisponibili, percentualeDisabilita;
+  private String email;
+  private String tipoDisabilita;
+  private String specificheDisturbo;
+  private int oreDisponibili;
+  private int percentualeDisabilita;
 
-  /**
-   * Costruttore
-   *
-   * @param email
-   * @param tipoDisabilita
-   * @param specificheDisturbo
-   * @param oreDisponibili
-   * @param percentualeDisabilita
-   */
+  /**Costruttore. */
   public StudenteBean(
       String email,
       String tipoDisabilita,
@@ -32,6 +31,6 @@ public class StudenteBean {
     this.percentualeDisabilita = percentualeDisabilita;
   }
 
-  /** Costruttore vuoto */
+  /**Costruttore vuoto. */
   public StudenteBean() {}
 }

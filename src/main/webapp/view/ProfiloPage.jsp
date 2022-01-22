@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3mipmap34MD+dH/1fQ784/j6cY/iQUITOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="shortcut icon" href="../image/favicon.ico">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
@@ -54,9 +55,10 @@
             <!-- Title -->
 
             <div class="row g-4">
+                <%if(user.isPersonaleAmministrativo()){%>
                 <div class="col-3">
                     <%@ include file="../fragment/DashboardAdmin.jsp" %>
-                </div>
+                </div><%}%>
                 <div class="col-xxl-7">
                     <div class="row">
                         <div class="col-12 mb-3">

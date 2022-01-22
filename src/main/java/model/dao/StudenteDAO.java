@@ -7,13 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Locale;
 import model.bean.StudenteBean;
-import model.bean.UserBean;
-
-
 
 /**
- *  @author Giovanni Toriello Classe StudenteDAO
+ * Classe StudenteDAO.
  *
+ * @author Giovanni Toriello
  */
 
 public class StudenteDAO implements IStudenteDAO {
@@ -38,53 +36,46 @@ public class StudenteDAO implements IStudenteDAO {
         bean.setPercentualeDisabilita(rs.getInt("percentuale_disabilita"));
         bean.setOreDisponibili(rs.getInt("ore_disponibili"));
       }
-
+      stmt.close();
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-      // Chiude la connessione se è diverso da null
-    } finally {
-      if (stmt != null) stmt.close();
-      if (conn != null) {
-        conn.close();
-      }
     }
     return bean;
   }
 
-  // Metodo che restituisce true se è lo studente è stato inserito
-  public synchronized boolean insertStudente(StudenteBean s, UserBean b) throws SQLException {
-    boolean studente = false;
-    UserDAO userDao = new UserDAO();
-    if (userDao.insertUtente(b)) {
-      Connection conn = null;
-      String query = "INSERT INTO studente VALUES (?,?,?,?,?)";
-      PreparedStatement stmt = null;
-      try {
-        conn = ConnectionPool.conn();
-        stmt = conn.prepareStatement(query);
-        // Setta i paremetri nella query
-        stmt.setString(1, s.getEmail());
-        stmt.setString(2, s.getTipoDisabilita());
-        stmt.setString(3, s.getSpecificheDisturbo());
-        stmt.setInt(4, s.getPercentualeDisabilita());
-        stmt.setInt(5, s.getOreDisponibili());
-        // Esegue la query
-        ResultSet rs = null;
-        studente = stmt.executeUpdate() == 1;
-        conn.commit();
-      } catch (SQLException e) {
-        studente = false;
-        e.printStackTrace();
-        // Chiude la connessione se è diverso da null
-      } finally {
-        if (stmt != null) {
-          stmt.close();
-        }
-        if (conn != null) {
-          conn.close();
-        }
-      }
+  /**
+   * Metodo che aggiorane le ore disponibili di uno studente quando effettua una richiesta di servizio.
+   * @param oreRichieste: le ore richieste per il servizio di tutorato/supporto esame.
+   * @param emailStudente: l'email dello studente che ha richiesto il servizio.
+   * @return true= se l'operazione è andata a buon fine,else altrimenti.
+   * @throws SQLException
+   */
+
+  @Override
+  public synchronized boolean updateOreDisponibili(int oreRichieste,String emailStudente) throws SQLException {
+    boolean updated = false;
+    Connection conn = null;
+    String query = "UPDATE studente SET ore_disponibili=ore_disponibili-? WHERE email_studente = ?";
+    PreparedStatement stmt = null;
+    try {
+      conn = ConnectionPool.conn();
+      stmt = conn.prepareStatement(query);
+      stmt.setInt(1, oreRichieste);
+      stmt.setString(2, emailStudente);
+
+      updated = stmt.executeUpdate() == 1;
+      conn.commit();
+
+      stmt.close();
+      conn.close();
+    } catch (SQLException e) {
+      updated = true;
+      e.printStackTrace();
     }
-    return studente;
+
+    return updated;
   }
+
+
 }

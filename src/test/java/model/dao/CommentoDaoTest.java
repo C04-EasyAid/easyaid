@@ -10,9 +10,9 @@ import org.junit.jupiter.api.Test;
 
 
 
-class CommentoDAOTest {
+class CommentoDaoTest {
 
-  private final CommentoDAO commentoDao = new CommentoDAO();
+  private final CommentoDao commentoDao = new CommentoDao();
 
 
     @Test

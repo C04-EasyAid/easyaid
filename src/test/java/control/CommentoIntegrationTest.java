@@ -45,8 +45,8 @@ class CommentoIntegrationTest {
     String msg = "Ok,Ci sarò!";
     request.setParameter("commento", msg);
 
-    ICommentoDAO commentoDao = new CommentoDAO();
-    ITutorDAO tutorDao = new TutorDAO();
+    IcommentoDao commentoDao = new CommentoDao();
+    ItutorDao tutorDao = new TutorDao();
     servlet.setDaoC(commentoDao);
     servlet.setDaoT(tutorDao);
     servlet.doGet(request, response);
@@ -76,8 +76,8 @@ class CommentoIntegrationTest {
     String msg = "Ok,Ci sarò!";
     request.setParameter("commento", msg);
 
-    ICommentoDAO commentoDao = new CommentoDAO();
-    IStudenteDAO studenteDAO = new StudenteDAO();
+    IcommentoDao commentoDao = new CommentoDao();
+    IstudenteDao studenteDAO = new StudenteDao();
     servlet.setDaoC(commentoDao);
     servlet.setDaoS(studenteDAO);
     servlet.doGet(request, response);

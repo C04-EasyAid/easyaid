@@ -3,10 +3,10 @@ package control;
 import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
-import model.dao.ISupportoEsameDAO;
-import model.dao.ITutoratoDidatticoDAO;
-import model.dao.SupportoEsameDAO;
-import model.dao.TutoratoDidatticoDAO;
+import model.dao.IsupportoEsameDao;
+import model.dao.ItutoratoDidatticoDao;
+import model.dao.SupportoEsameDao;
+import model.dao.TutoratoDidatticoDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
@@ -64,8 +64,8 @@ class ViewRichiesteServizioTest {
   void testVisualizzaRichiesteServizio3()
       throws SQLException, ClassNotFoundException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    ISupportoEsameDAO supportoEsameDao = mock(SupportoEsameDAO.class);
-    ITutoratoDidatticoDAO tutoratoDidatticoDao = mock(TutoratoDidatticoDAO.class);
+    IsupportoEsameDao supportoEsameDao = mock(SupportoEsameDao.class);
+    ItutoratoDidatticoDao tutoratoDidatticoDao = mock(TutoratoDidatticoDao.class);
     UserBean bean = new UserBean();
     bean.setRuolo("T");
     request.getSession().setAttribute("utente", bean);

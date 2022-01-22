@@ -3,10 +3,10 @@ package control;
 import model.bean.CommentoBean;
 import model.bean.LezioneBean;
 import model.bean.UserBean;
-import model.dao.CommentoDAO;
-import model.dao.ICommentoDAO;
-import model.dao.ILezioneDAO;
-import model.dao.LezioneDAO;
+import model.dao.CommentoDao;
+import model.dao.IcommentoDao;
+import model.dao.IlezioneDao;
+import model.dao.LezioneDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
@@ -75,8 +75,8 @@ class SingolaLezioneTest {
     lezioneBean.setId(5);
     request.setParameter("lezione", String.valueOf(lezioneBean.getId()));
 
-    ILezioneDAO lezioneDao = mock(LezioneDAO.class);
-    ICommentoDAO commentoDao = mock(CommentoDAO.class);
+    IlezioneDao lezioneDao = mock(LezioneDao.class);
+    IcommentoDao commentoDao = mock(CommentoDao.class);
 
     servlet.setLezioneDao(lezioneDao);
     servlet.setCommentiDao(commentoDao);
@@ -111,8 +111,8 @@ class SingolaLezioneTest {
     lezioneBean.setId(5);
     request.setParameter("lezione", String.valueOf(lezioneBean.getId()));
 
-    ILezioneDAO lezioneDao = mock(LezioneDAO.class);
-    ICommentoDAO commentoDao = mock(CommentoDAO.class);
+    IlezioneDao lezioneDao = mock(LezioneDao.class);
+    IcommentoDao commentoDao = mock(CommentoDao.class);
 
     servlet.setLezioneDao(lezioneDao);
     servlet.setCommentiDao(commentoDao);

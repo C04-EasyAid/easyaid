@@ -1,5 +1,7 @@
 package model.dao;
 
+import static model.dao.ConnectionPool.conn;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,15 +14,13 @@ import java.util.Collection;
 import java.util.GregorianCalendar;
 import model.bean.CommentoBean;
 
-import static model.dao.ConnectionPool.conn;
-
 /**
  * Classe CommentoDAO.
  *
  * @author Mariagiovanna Bianco
  */
 
-public class CommentoDAO implements ICommentoDAO {
+public class CommentoDao implements IcommentoDao {
   // Metodo che restituisce il commento
   @Override
   public synchronized Collection<CommentoBean> doRetrieveCommento(int id)
@@ -65,7 +65,7 @@ public class CommentoDAO implements ICommentoDAO {
   public synchronized boolean insertCommentoTutor(int lezione, String msg, String emailMittente)
       throws SQLException {
     boolean result = false;
-    LezioneDAO dao = new LezioneDAO();
+    LezioneDao dao = new LezioneDao();
     Connection conn = null;
     PreparedStatement stmt = null;
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
@@ -73,8 +73,8 @@ public class CommentoDAO implements ICommentoDAO {
     String data = String.valueOf(LocalDate.now());
     int idTutorato = dao.doRetrieveTutoratoByLezione(lezione);
     String query =
-        "INSERT INTO easyaid.commento " +
-                "(lezione, tutorato, testo, data, ora, tutor) VALUES (?,?,?,?,?,?);";
+        "INSERT INTO easyaid.commento "
+                + "(lezione, tutorato, testo, data, ora, tutor) VALUES (?,?,?,?,?,?);";
     try {
       conn = conn();
       stmt = conn.prepareStatement(query);
@@ -106,7 +106,7 @@ public class CommentoDAO implements ICommentoDAO {
   public synchronized boolean insertCommentoStudente(int lezione, String msg, String emailMittente)
       throws SQLException {
     boolean result = false;
-    LezioneDAO dao = new LezioneDAO();
+    LezioneDao dao = new LezioneDao();
     Connection conn = null;
     PreparedStatement stmt = null;
     GregorianCalendar today = new GregorianCalendar();
@@ -115,8 +115,8 @@ public class CommentoDAO implements ICommentoDAO {
     String data = String.valueOf(LocalDate.now());
     int idTutorato = dao.doRetrieveTutoratoByLezione(lezione);
     String query =
-        "INSERT INTO easyaid.commento" +
-                " (lezione, tutorato, testo, data, ora, studente) VALUES (?,?,?,?,?,?);";
+        "INSERT INTO easyaid.commento"
+                + " (lezione, tutorato, testo, data, ora, studente) VALUES (?,?,?,?,?,?);";
     try {
       conn = conn();
       stmt = conn.prepareStatement(query);

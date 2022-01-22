@@ -11,10 +11,10 @@ import javax.servlet.http.HttpSession;
 import model.bean.StudenteBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
-import model.dao.IStudenteDAO;
-import model.dao.ITutoratoDidatticoDAO;
-import model.dao.StudenteDAO;
-import model.dao.TutoratoDidatticoDAO;
+import model.dao.IstudenteDao;
+import model.dao.ItutoratoDidatticoDao;
+import model.dao.StudenteDao;
+import model.dao.TutoratoDidatticoDao;
 import other.MyLogger;
 
 /**
@@ -27,16 +27,16 @@ public class InserimentoRichiestaTutoratoServlet extends HttpServlet {
   private static MyLogger log = MyLogger.getInstance();
   private static String myClass = "InserimentoRichiestaTutoratoServlet";
 
-  public void setDao(ITutoratoDidatticoDAO dao) {
+  public void setDao(ItutoratoDidatticoDao dao) {
     this.dao = dao;
   }
 
-  public void setstudenteDao(IStudenteDAO studenteDao) {
+  public void setstudenteDao(IstudenteDao studenteDao) {
     this.studenteDao = studenteDao;
   }
 
-  private ITutoratoDidatticoDAO dao = new TutoratoDidatticoDAO();
-  private IStudenteDAO studenteDao = new StudenteDAO();
+  private ItutoratoDidatticoDao dao = new TutoratoDidatticoDao();
+  private IstudenteDao studenteDao = new StudenteDao();
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -57,7 +57,7 @@ public class InserimentoRichiestaTutoratoServlet extends HttpServlet {
       try {
         StudenteBean studente = studenteDao.doRetrieveByEmail(user.getEmail());
         if (Integer.parseInt(req.getParameter("ore_richieste")) < studente.getOreDisponibili()) {
-          if (!dao.InserimentoTutoratoDidattico(bean)) {
+          if (!dao.inserimentoTutoratoDidattico(bean)) {
             session.setAttribute("alertMsg", "L’operazione non è andata a buon fine.");
             resp.sendRedirect("view/RichiediServizioPage.jsp");
           } else {

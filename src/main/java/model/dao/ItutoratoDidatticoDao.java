@@ -10,7 +10,7 @@ import model.bean.TutoratoDidatticoBean;
  * @author Martina Giugliano
  */
 
-public interface ITutoratoDidatticoDAO {
+public interface ItutoratoDidatticoDao {
   List<TutoratoDidatticoBean> doRetrieveAllByStudente(String emailStudente)
       throws SQLException, ClassNotFoundException;
 
@@ -25,7 +25,7 @@ public interface ITutoratoDidatticoDAO {
 
   TutoratoDidatticoBean doRetriveById(int id) throws SQLException, ClassNotFoundException;
 
-  boolean InserimentoTutoratoDidattico(TutoratoDidatticoBean Bean) throws SQLException;
+  boolean inserimentoTutoratoDidattico(TutoratoDidatticoBean bean) throws SQLException;
 
   boolean accettaRichiesta(int idSupporto, String emailTutor, String commento) throws SQLException;
 

@@ -12,10 +12,10 @@ import javax.servlet.http.HttpSession;
 import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
-import model.dao.ISupportoEsameDAO;
-import model.dao.ITutoratoDidatticoDAO;
-import model.dao.SupportoEsameDAO;
-import model.dao.TutoratoDidatticoDAO;
+import model.dao.IsupportoEsameDao;
+import model.dao.ItutoratoDidatticoDao;
+import model.dao.SupportoEsameDao;
+import model.dao.TutoratoDidatticoDao;
 import other.MyLogger;
 
 /**
@@ -29,14 +29,14 @@ import other.MyLogger;
 public class ViewRichiesteAccettateServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "ViewRichiesteAccettateServlet";
-  private ISupportoEsameDAO supportoDao = new SupportoEsameDAO();
-  private ITutoratoDidatticoDAO tutoratoDao = new TutoratoDidatticoDAO();
+  private IsupportoEsameDao supportoDao = new SupportoEsameDao();
+  private ItutoratoDidatticoDao tutoratoDao = new TutoratoDidatticoDao();
 
-  public void setSupportoDao(ISupportoEsameDAO supportoDao) {
+  public void setSupportoDao(IsupportoEsameDao supportoDao) {
     this.supportoDao = supportoDao;
   }
 
-  public void setTutoratoDao(ITutoratoDidatticoDAO tutoratoDao) {
+  public void setTutoratoDao(ItutoratoDidatticoDao tutoratoDao) {
     this.tutoratoDao = tutoratoDao;
   }
 

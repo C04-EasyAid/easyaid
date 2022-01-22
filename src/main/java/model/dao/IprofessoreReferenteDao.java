@@ -9,7 +9,7 @@ import model.bean.ProfessoreReferenteBean;
  * @author Roberto Tartaglia
  */
 
-public interface IProfessoreReferenteDAO {
+public interface IprofessoreReferenteDao {
   ProfessoreReferenteBean doRetrieveByEmail(String email)
       throws SQLException, ClassNotFoundException;
 }

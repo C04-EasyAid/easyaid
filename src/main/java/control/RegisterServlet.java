@@ -7,13 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import model.bean.ProfessoreReferenteBean;
 import model.bean.StudenteBean;
 import model.bean.TutorBean;
 import model.bean.UserBean;
-import model.dao.IUserDAO;
-import model.dao.UserDAO;
+import model.dao.IuserDao;
+import model.dao.UserDao;
 import other.MyLogger;
 
 /**
@@ -28,11 +27,11 @@ public class RegisterServlet extends HttpServlet {
     private static String myClass = "RegisterServlet";
     private static final long serialVersionUID = 1L;
 
-    public void setDao(IUserDAO dao) {
+    public void setDao(IuserDao dao) {
         this.dao = dao;
     }
 
-    private IUserDAO dao = new UserDAO();
+    private IuserDao dao = new UserDao();
 
     public RegisterServlet() {
         super();
@@ -41,8 +40,6 @@ public class RegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         log.info(myClass, "Collegamento alla Servlet...");
-        HttpSession session = request.getSession();
-        UserBean utenteLoggato = (UserBean) session.getAttribute("utente");
         UserBean utenteTemporaneo = new UserBean();
         utenteTemporaneo.setNome(request.getParameter("nome"));
         utenteTemporaneo.setCognome(request.getParameter("cognome"));
@@ -62,6 +59,8 @@ public class RegisterServlet extends HttpServlet {
             utenteTemporaneo.setRuolo("T");
             tipoUtente = 2;
         }
+        HttpSession session = request.getSession();
+        UserBean utenteLoggato = (UserBean) session.getAttribute("utente");
         //Se l'utente loggato è personale amministrativo allora procedo all inserimento dell utente
         if (utenteLoggato != null) {
             /*PROVVISORIO TIPO INTERO!!
@@ -72,20 +71,22 @@ public class RegisterServlet extends HttpServlet {
                 switch (tipoUtente) {
                     case 1 -> {
                         StudenteBean studente = new StudenteBean();
-                        studente.setOreDisponibili(Integer.parseInt(request.getParameter("oreDisponibiliStudente")));
-                        studente.setPercentualeDisabilita(Integer.parseInt(request.getParameter("percentualeDisabilita")));
+                        studente.setOreDisponibili(Integer.parseInt(request.getParameter(""
+                                + "oreDisponibiliStudente")));
+                        studente.setPercentualeDisabilita(Integer.parseInt(request.getParameter(""
+                                + "percentualeDisabilita")));
                         studente.setEmail(utenteTemporaneo.getEmail());
                         studente.setTipoDisabilita(request.getParameter("tipoDisabilita"));
                         studente.setSpecificheDisturbo(request.getParameter("specificheDisturbo"));
-                        System.out.println(studente);
-                        System.out.println(utenteTemporaneo);
                         if (!dao.insertStudente(studente, utenteTemporaneo)) {
                             session.setAttribute("alertMsg", "Errore nell'inserimento studente");
-                            response.sendRedirect("view/RegistraUtentePage.jsp?inserimento=Studente");
+                            response.sendRedirect("view/RegistraUtentePage.jsp?"
+                                    + "inserimento=Studente");
                             return;
                         } else {
                             session.setAttribute("alertMsg", "Utente inserito con successo");
-                            response.sendRedirect("view/RegistraUtentePage.jsp?inserimento=Studente");
+                            response.sendRedirect("view/RegistraUtentePage.jsp?"
+                                    + "inserimento=Studente");
                             return;
                         }
                     }
@@ -94,7 +95,8 @@ public class RegisterServlet extends HttpServlet {
                         tutor.setQualifica(request.getParameter("qualifica"));
                         tutor.setDipartimento(request.getParameter("dipartimentoTutor"));
                         tutor.setEmailTutor(utenteTemporaneo.getEmail());
-                        tutor.setOreDisponibili(Integer.parseInt(request.getParameter("oreDisponibiliTutor")));
+                        tutor.setOreDisponibili(Integer.parseInt(request.getParameter(""
+                                + "oreDisponibiliTutor")));
                         tutor.setOreSvolte(0);
                         if (!dao.insertTutor(tutor, utenteTemporaneo)) {
                             session.setAttribute("alertMsg", "Errore nell'inserimento tutor");
@@ -107,13 +109,17 @@ public class RegisterServlet extends HttpServlet {
                     case 3 -> {
                         ProfessoreReferenteBean professoreReferente = new ProfessoreReferenteBean();
                         professoreReferente.setEmail(utenteTemporaneo.getEmail());
-                        professoreReferente.setDipartimento(request.getParameter("dipartimentoProf"));
+                        professoreReferente.setDipartimento(request.getParameter(""
+                                + "dipartimentoProf"));
                         if (!dao.insertProfessoreReferente(professoreReferente, utenteTemporaneo)) {
-                            session.setAttribute("alertMsg", "Errore nell'inserimento professore referente");
-                            response.sendRedirect("view/RegistraUtentePage.jsp?inserimento=Professore Referente");
+                            session.setAttribute("alertMsg", "Errore nell'inserimento "
+                                    + "professore referente");
+                            response.sendRedirect("view/RegistraUtentePage.jsp?"
+                                    + "inserimento=Professore Referente");
                         } else {
                             session.setAttribute("alertMsg", "Utente inserito con successo");
-                            response.sendRedirect("view/RegistraUtentePage.jsp?inserimento=Professore Referente");
+                            response.sendRedirect("view/RegistraUtentePage.jsp?"
+                                    + "inserimento=Professore Referente");
                         }
                     }
                     default -> throw new IllegalStateException("Unexpected value: " + tipoUtente);
@@ -122,9 +128,12 @@ public class RegisterServlet extends HttpServlet {
                 log.error(myClass, "Catturata eccezione nella Servlet", e);
                 session.setAttribute("alertMsg", "Errore nell'inserimento dell'utente");
                 switch (tipoUtente) {
-                    case 1 -> response.sendRedirect("view/RegistraUtentePage.jsp?inserimento=Studente");
-                    case 2 -> response.sendRedirect("view/RegistraUtentePage.jsp?inserimento=Tutor");
-                    case 3 -> response.sendRedirect("view/RegistraUtentePage.jsp?inserimento=Professore Referente");
+                    case 1 -> response.sendRedirect("view/RegistraUtentePage.jsp?"
+                            + "inserimento=Studente");
+                    case 2 -> response.sendRedirect("view/RegistraUtentePage.jsp?"
+                            + "inserimento=Tutor");
+                    case 3 -> response.sendRedirect("view/RegistraUtentePage.jsp?"
+                            + "inserimento=Professore Referente");
                 }
             }
         } else {

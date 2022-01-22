@@ -11,8 +11,6 @@ import java.util.List;
  *
  * @author Giovanni Toriello
  */
-
-
 public class ConnectionPool {
 
   private static List<Connection> freeDbConnections;
@@ -26,7 +24,7 @@ public class ConnectionPool {
     }
   }
 
-  private static synchronized Connection createDBConnection() throws SQLException {
+  private static synchronized Connection createdbconnection() throws SQLException {
     Connection newConnection = null;
     String ip = "localhost";
     String port = "3306";
@@ -42,7 +40,9 @@ public class ConnectionPool {
                 + port
                 + "/"
                 + db
-                + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false",
+                + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode="
+                + "false&serverTimezone=UTC&allowPublicKeyRetrieval="
+                + "true&useSSL=false",
             username,
             password);
 
@@ -66,7 +66,7 @@ public class ConnectionPool {
         connection = conn();
       }
     } else {
-      connection = createDBConnection();
+      connection = createdbconnection();
     }
 
     return connection;

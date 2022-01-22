@@ -1,8 +1,8 @@
 package control;
 
 import model.bean.UserBean;
-import model.dao.IUserDAO;
-import model.dao.UserDAO;
+import model.dao.IuserDao;
+import model.dao.UserDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -34,7 +34,7 @@ class ViewListaUtentiIntegrationTest {
   void testViewListaUtenti()
       throws SQLException, ClassNotFoundException, ServletException, IOException {
 
-    IUserDAO userDao = new UserDAO();
+    IuserDao userDao = new UserDao();
     servlet.setUserDao(userDao);
     UserBean personaleAdm = new UserBean();
     personaleAdm.setNome("Carla");

@@ -1,8 +1,8 @@
 package control;
 
 import model.bean.UserBean;
-import model.dao.IUserDAO;
-import model.dao.UserDAO;
+import model.dao.IuserDao;
+import model.dao.UserDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -31,7 +31,7 @@ class RegisterIntegrationTest {
 
   @Test
   void TestInserimentoStudente() throws ServletException, IOException, SQLException {
-    IUserDAO userDAO = new UserDAO();
+    IuserDao userDAO = new UserDao();
 
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
@@ -68,7 +68,7 @@ class RegisterIntegrationTest {
 
   @Test
   void TestInserimentoTutor() throws ServletException, IOException, SQLException {
-    IUserDAO userDAO = new UserDAO();
+    IuserDao userDAO = new UserDao();
 
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
@@ -103,7 +103,7 @@ class RegisterIntegrationTest {
 
   @Test
   void TestInserimentoProfessoreReferente() throws ServletException, IOException, SQLException {
-    IUserDAO userDAO = new UserDAO();
+    IuserDao userDAO = new UserDao();
     UserBean persAdmin = new UserBean();
 
     persAdmin.setEmail("cgigli91@unisa.it");

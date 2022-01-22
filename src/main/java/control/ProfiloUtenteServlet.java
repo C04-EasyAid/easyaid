@@ -9,14 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.bean.UserBean;
-import model.dao.IProfessoreReferenteDAO;
-import model.dao.IStudenteDAO;
-import model.dao.ITutorDAO;
-import model.dao.IUserDAO;
-import model.dao.ProfessoreReferenteDAO;
-import model.dao.StudenteDAO;
-import model.dao.TutorDAO;
-import model.dao.UserDAO;
+import model.dao.IprofessoreReferenteDao;
+import model.dao.IstudenteDao;
+import model.dao.ItutorDao;
+import model.dao.IuserDao;
+import model.dao.ProfessoreReferenteDao;
+import model.dao.StudenteDao;
+import model.dao.TutorDao;
+import model.dao.UserDao;
 import other.MyLogger;
 
 /**
@@ -30,24 +30,24 @@ import other.MyLogger;
 public class ProfiloUtenteServlet extends HttpServlet {
   private static MyLogger log = MyLogger.getInstance();
   private static String myClass = "ProfiloUtenteServlet";
-  private ITutorDAO tutorDao = new TutorDAO();
-  private IStudenteDAO studenteDao = new StudenteDAO();
-  private IUserDAO userdao = new UserDAO();
-  private IProfessoreReferenteDAO professoreDao = new ProfessoreReferenteDAO();
+  private ItutorDao tutorDao = new TutorDao();
+  private IstudenteDao studenteDao = new StudenteDao();
+  private IuserDao userdao = new UserDao();
+  private IprofessoreReferenteDao professoreDao = new ProfessoreReferenteDao();
 
-  public void setTutorDao(ITutorDAO tutorDao) {
+  public void setTutorDao(ItutorDao tutorDao) {
     this.tutorDao = tutorDao;
   }
 
-  public void setStudenteDao(IStudenteDAO studenteDao) {
+  public void setStudenteDao(IstudenteDao studenteDao) {
     this.studenteDao = studenteDao;
   }
 
-  public void setUserdao(IUserDAO userdao) {
+  public void setUserdao(IuserDao userdao) {
     this.userdao = userdao;
   }
 
-  public void setProfessoreDao(IProfessoreReferenteDAO professoreDao) {
+  public void setProfessoreDao(IprofessoreReferenteDao professoreDao) {
     this.professoreDao = professoreDao;
   }
 

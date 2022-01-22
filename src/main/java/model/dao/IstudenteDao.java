@@ -9,7 +9,7 @@ import model.bean.StudenteBean;
  * @author Giovanni Toriello
  */
 
-public interface IStudenteDAO {
+public interface IstudenteDao {
   // Metodo che restituisce lo studente
   StudenteBean doRetrieveByEmail(String email) throws SQLException;
 

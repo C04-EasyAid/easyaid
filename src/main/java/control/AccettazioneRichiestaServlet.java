@@ -11,12 +11,12 @@ import javax.servlet.http.HttpSession;
 import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
-import model.dao.ISupportoEsameDAO;
-import model.dao.ITutorDAO;
-import model.dao.ITutoratoDidatticoDAO;
-import model.dao.SupportoEsameDAO;
-import model.dao.TutorDAO;
-import model.dao.TutoratoDidatticoDAO;
+import model.dao.IsupportoEsameDao;
+import model.dao.ItutorDao;
+import model.dao.ItutoratoDidatticoDao;
+import model.dao.SupportoEsameDao;
+import model.dao.TutorDao;
+import model.dao.TutoratoDidatticoDao;
 import other.MyLogger;
 
 /**
@@ -26,21 +26,21 @@ import other.MyLogger;
  */
 @WebServlet("/AccettazioneRichiesta")
 public class AccettazioneRichiestaServlet extends HttpServlet {
-  private ITutoratoDidatticoDAO tutoratodao = new TutoratoDidatticoDAO();
-  private ISupportoEsameDAO supportodao = new SupportoEsameDAO();
-  private ITutorDAO tutordao = new TutorDAO();
+  private ItutoratoDidatticoDao tutoratodao = new TutoratoDidatticoDao();
+  private IsupportoEsameDao supportodao = new SupportoEsameDao();
+  private ItutorDao tutordao = new TutorDao();
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "AccettazioneRichiestaServlet";
 
-  public void setTutoratodao(ITutoratoDidatticoDAO tutoratodao) {
+  public void setTutoratodao(ItutoratoDidatticoDao tutoratodao) {
     this.tutoratodao = tutoratodao;
   }
 
-  public void setSupportodao(ISupportoEsameDAO supportodao) {
+  public void setSupportodao(IsupportoEsameDao supportodao) {
     this.supportodao = supportodao;
   }
 
-  public void setTutordao(ITutorDAO tutordao) {
+  public void setTutordao(ItutorDao tutordao) {
     this.tutordao = tutordao;
   }
 

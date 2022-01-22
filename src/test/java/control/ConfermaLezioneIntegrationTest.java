@@ -2,10 +2,10 @@ package control;
 
 import model.bean.LezioneBean;
 import model.bean.UserBean;
-import model.dao.ILezioneDAO;
-import model.dao.ITutoratoDidatticoDAO;
-import model.dao.LezioneDAO;
-import model.dao.TutoratoDidatticoDAO;
+import model.dao.IlezioneDao;
+import model.dao.ItutoratoDidatticoDao;
+import model.dao.LezioneDao;
+import model.dao.TutoratoDidatticoDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -48,8 +48,8 @@ class ConfermaLezioneIntegrationTest {
         lezione.setTutorato(18);
         request.getSession().setAttribute("lezione",lezione);
 
-        ILezioneDAO lezioneDao = new LezioneDAO();
-        ITutoratoDidatticoDAO tutoratoDao = new TutoratoDidatticoDAO();
+        IlezioneDao lezioneDao = new LezioneDao();
+        ItutoratoDidatticoDao tutoratoDao = new TutoratoDidatticoDao();
         servlet.setlezioneDao(lezioneDao);
         servlet.settutoratodidatticoDao(tutoratoDao);
         servlet.doGet(request,response);
@@ -71,8 +71,8 @@ class ConfermaLezioneIntegrationTest {
         lezione.setTutorato(18);
         request.getSession().setAttribute("lezione",lezione);
 
-        ILezioneDAO lezioneDao = new LezioneDAO();
-        ITutoratoDidatticoDAO tutoratoDao = new TutoratoDidatticoDAO();
+        IlezioneDao lezioneDao = new LezioneDao();
+        ItutoratoDidatticoDao tutoratoDao = new TutoratoDidatticoDao();
         servlet.setlezioneDao(lezioneDao);
         servlet.settutoratodidatticoDao(tutoratoDao);
 

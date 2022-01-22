@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.bean.UserBean;
-import model.dao.IUserDAO;
-import model.dao.UserDAO;
+import model.dao.IuserDao;
+import model.dao.UserDao;
 import other.MyLogger;
 
 /**
@@ -23,9 +23,9 @@ public class LoginServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
   private static MyLogger log = MyLogger.getInstance();
   private static String myClass = "LoginServlet";
-  private IUserDAO dao = new UserDAO();
+  private IuserDao dao = new UserDao();
 
-  public void setDao(IUserDAO dao) {
+  public void setDao(IuserDao dao) {
     this.dao = dao;
   }
 

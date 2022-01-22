@@ -9,7 +9,7 @@ import model.bean.TutorBean;
  * @author Roberto Tartaglia
  */
 
-public interface ITutorDAO {
+public interface ItutorDao {
   TutorBean doRetrieveByEmail(String email) throws SQLException, ClassNotFoundException;
 
   boolean updateOreDisponibili(int oreRichieste, String emailTutor) throws SQLException;

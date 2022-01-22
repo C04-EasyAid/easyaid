@@ -7,9 +7,9 @@ import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class StudenteDAOTest {
+class StudenteDaoTest {
 
-  private final StudenteDAO dao = new StudenteDAO();
+  private final StudenteDao dao = new StudenteDao();
 
   @Test
   void doRetrieveByEmail1() throws SQLException, ClassNotFoundException {

@@ -13,7 +13,7 @@ import model.bean.UserBean;
  * @author Giovanni Toriello
  */
 
-public interface IUserDAO {
+public interface IuserDao {
   // Metodo che restituisce l'utente dal database
   UserBean doRetrieveUtente(UserBean b) throws SQLException, ClassNotFoundException;
 

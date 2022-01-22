@@ -10,7 +10,7 @@ import model.bean.LezioneBean;
  * @author Serena Liguori
  */
 
-public interface ILezioneDAO {
+public interface IlezioneDao {
   // Metodo che restitiusce una lezione in base all'id passato come parametro
   LezioneBean doRetrieveLezioneById(int id) throws ClassNotFoundException, SQLException;
 

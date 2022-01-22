@@ -2,8 +2,8 @@ package control;
 
 import model.bean.LezioneBean;
 import model.bean.UserBean;
-import model.dao.ILezioneDAO;
-import model.dao.LezioneDAO;
+import model.dao.IlezioneDao;
+import model.dao.LezioneDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -38,7 +38,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         void testInserimentoNuovaLezione() throws ParseException, ServletException, IOException, ClassNotFoundException {
 
             UserBean userBean = new UserBean();
-            ILezioneDAO lezioneDAO = new LezioneDAO();
+            IlezioneDao lezioneDAO = new LezioneDao();
             userBean.setNome("Lorenzo");
             userBean.setCognome("Rossi");
             userBean.setEmail("lorenzorossi1@studenti.unisa.it");

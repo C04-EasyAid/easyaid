@@ -157,7 +157,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Ore Richieste:
-                                                <input type="number" name="ore_richieste" class="form-control" id="ore_richieste" required>
+                                                <input type="number" name="ore_richieste" min="1" max="5" class="form-control" id="ore_richieste" required>
                                                 </label>
                                             </div>
                                         </div>

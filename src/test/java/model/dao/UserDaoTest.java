@@ -10,7 +10,7 @@ import model.bean.UserBean;
 import org.junit.jupiter.api.Test;
 import other.Utils;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class UserDaoTest {
   private final UserDao dao = new UserDao();

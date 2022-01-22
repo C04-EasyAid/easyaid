@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import model.bean.TutorBean;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TutorDaoTest {
 

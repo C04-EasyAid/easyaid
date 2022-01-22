@@ -1,17 +1,17 @@
 package model.dao;
 
-/**
- * Test ProfessoreReferenteDAO.
- *
- *  @author Giovanni Toriello
- */
-
 import java.sql.SQLException;
 import model.bean.ProfessoreReferenteBean;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
+/**
+ * Test ProfessoreReferenteDAO.
+ *
+ *  @author Giovanni Toriello
+ */
 
 class ProfessoreReferenteDaoTest {
   private final ProfessoreReferenteDao dao = new ProfessoreReferenteDao();

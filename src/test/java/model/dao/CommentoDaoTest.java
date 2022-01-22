@@ -62,7 +62,7 @@ class CommentoDaoTest {
       int lezione = 11;
 
 
-      assertEquals(true,commentoDao.insertCommentoStudente(lezione, testo, emailStudente));
+      assertEquals(true, commentoDao.insertCommentoStudente(lezione, testo, emailStudente));
       ArrayList<CommentoBean> list = (ArrayList<CommentoBean>) commentoDao.doRetrieveCommento(lezione);
       CommentoBean commento = list.get(list.size() - 1);
       commentoDao.deleteCommento(commento);

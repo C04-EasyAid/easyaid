@@ -51,7 +51,7 @@ class StudenteDaoTest {
     int oreRichieste = 5;
     String email = "";
 
-    assertEquals(false,dao.updateOreDisponibili(oreRichieste,email));
+    assertEquals(false, dao.updateOreDisponibili(oreRichieste, email));
   }
 
 }

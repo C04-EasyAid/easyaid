@@ -8,7 +8,8 @@ import java.util.List;
 import model.bean.LezioneBean;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class LezioneDaoTest {
 
@@ -57,7 +58,7 @@ class LezioneDaoTest {
 
 
         Collection<LezioneBean> result = lezioneDao.doRetrieveLezioniById(idTutorato);
-        assertEquals(expected,result);
+        assertEquals(expected, result);
     }
 
     @Test
@@ -162,7 +163,7 @@ class LezioneDaoTest {
 
         Collection<LezioneBean> lezioni = new ArrayList<>();
 
-        assertThrows(IndexOutOfBoundsException.class, ()->lezioneDao.countOre(lezioni,0));
+        assertThrows(IndexOutOfBoundsException.class, () -> lezioneDao.countOre(lezioni, 0));
 
     }
 
@@ -194,7 +195,7 @@ class LezioneDaoTest {
         lezione.setTutor(tutor);
         lezione.setLuogo(luogo);
 
-        assertEquals(true,lezioneDao.insertNewLezione(lezione));
+        assertEquals(true, lezioneDao.insertNewLezione(lezione));
 
         ArrayList<LezioneBean> lezioni = (ArrayList<LezioneBean>) lezioneDao.doRetrieveLezioniById(tutorato);
         lezione = lezioni.get(lezioni.size() - 1);
@@ -218,7 +219,7 @@ class LezioneDaoTest {
         lezione.setTutor(tutor);
         lezione.setLuogo(luogo);
 
-        assertEquals(false,lezioneDao.insertNewLezione(lezione));
+        assertEquals(false, lezioneDao.insertNewLezione(lezione));
 
     }
 
@@ -228,7 +229,7 @@ class LezioneDaoTest {
 
        int idLezione = 14;
 
-       assertEquals(true,lezioneDao.confermaLezione(idLezione));
+       assertEquals(true, lezioneDao.confermaLezione(idLezione));
 
     }
 
@@ -237,7 +238,7 @@ class LezioneDaoTest {
 
         int idLezione = 0;
 
-        assertEquals(false,lezioneDao.confermaLezione(idLezione));
+        assertEquals(false, lezioneDao.confermaLezione(idLezione));
 
     }
 
@@ -260,7 +261,7 @@ class LezioneDaoTest {
         lezioneDao.insertNewLezione(lezione);
 
         ArrayList<LezioneBean> lezioni = (ArrayList<LezioneBean>) lezioneDao.doRetrieveLezioniById(tutorato);
-        lezione = lezioni.get(lezioni.size()-1);
+        lezione = lezioni.get(lezioni.size() - 1);
 
         assertEquals(true, lezioneDao.deleteLezione(lezione));
 

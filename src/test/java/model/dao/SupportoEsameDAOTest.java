@@ -6,7 +6,7 @@ import java.util.List;
 import model.bean.SupportoEsameBean;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SupportoEsameDAOTest {
 
@@ -113,7 +113,7 @@ class SupportoEsameDAOTest {
         bean.setInsegnamento(insegnamento);
         bean.setDocente(docente);
 
-        assertEquals(true,dao.inserimentoSupportoEsame(bean));
+        assertEquals(true, dao.inserimentoSupportoEsame(bean));
 
         List<SupportoEsameBean> list = dao.doRetrieveAllByStudente(email);
         SupportoEsameBean supportoEsameBean = list.get(list.size() - 1);
@@ -243,7 +243,7 @@ class SupportoEsameDAOTest {
 
         String emailProf = "mlamberti78@unisa.it";
 
-        assertEquals(false,dao.approvaRichiesta(bean.getId(), emailProf));
+        assertEquals(false, dao.approvaRichiesta(bean.getId(), emailProf));
     }
 
     @Test
@@ -278,7 +278,7 @@ class SupportoEsameDAOTest {
 
         List<SupportoEsameBean> list = dao.doRetrieveAllByStudente(email);
         SupportoEsameBean supportoEsameBean = list.get(list.size() - 1);
-        assertEquals(true,dao.deleteSupporto(supportoEsameBean));
+        assertEquals(true, dao.deleteSupporto(supportoEsameBean));
 
     }
 
@@ -289,7 +289,7 @@ class SupportoEsameDAOTest {
         String email = "abaglio9@studenti.unisa.it";
         SupportoEsameBean bean = new SupportoEsameBean();
 
-        assertEquals(false,dao.deleteSupporto(bean));
+        assertEquals(false, dao.deleteSupporto(bean));
 
     }
 

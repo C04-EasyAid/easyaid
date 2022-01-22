@@ -22,7 +22,7 @@ class CommentoDaoTest {
 
       Collection<CommentoBean> result = commentoDao.doRetrieveCommento(13);
 
-      assertEquals(list.size(),result.size());
+      assertEquals(list.size(), result.size());
 
     }
 
@@ -34,10 +34,10 @@ class CommentoDaoTest {
       int lezione = 11;
 
 
-      assertEquals(true,commentoDao.insertCommentoTutor(lezione,testo,emailTutor));
+      assertEquals(true, commentoDao.insertCommentoTutor(lezione, testo, emailTutor));
 
       ArrayList<CommentoBean> list = (ArrayList<CommentoBean>) commentoDao.doRetrieveCommento(lezione);
-      CommentoBean commento = list.get(list.size()-1);
+      CommentoBean commento = list.get(list.size() - 1);
       commentoDao.deleteCommento(commento);
 
     }
@@ -48,7 +48,7 @@ class CommentoDaoTest {
     int lezione = 0;
 
 
-    assertEquals(false,commentoDao.insertCommentoTutor(lezione,testo,emailTutor));
+    assertEquals(false, commentoDao.insertCommentoTutor(lezione, testo, emailTutor));
 
 
 
@@ -62,9 +62,9 @@ class CommentoDaoTest {
       int lezione = 11;
 
 
-      assertEquals(true,commentoDao.insertCommentoStudente(lezione,testo,emailStudente));
+      assertEquals(true,commentoDao.insertCommentoStudente(lezione, testo, emailStudente));
       ArrayList<CommentoBean> list = (ArrayList<CommentoBean>) commentoDao.doRetrieveCommento(lezione);
-      CommentoBean commento = list.get(list.size()-1);
+      CommentoBean commento = list.get(list.size() - 1);
       commentoDao.deleteCommento(commento);
 
     }
@@ -77,7 +77,7 @@ class CommentoDaoTest {
     int lezione = 0;
 
 
-    assertEquals(false,commentoDao.insertCommentoStudente(lezione,testo,emailStudente));
+    assertEquals(false, commentoDao.insertCommentoStudente(lezione, testo, emailStudente));
 
 
   }
@@ -90,10 +90,10 @@ class CommentoDaoTest {
       int lezione = 11;
 
 
-      commentoDao.insertCommentoStudente(lezione,testo,emailStudente);
+      commentoDao.insertCommentoStudente(lezione, testo, emailStudente);
       ArrayList<CommentoBean> list = (ArrayList<CommentoBean>) commentoDao.doRetrieveCommento(lezione);
-      CommentoBean commento = list.get(list.size()-1);
-      assertEquals(true,commentoDao.deleteCommento(commento));
+      CommentoBean commento = list.get(list.size() - 1);
+      assertEquals(true, commentoDao.deleteCommento(commento));
 
 
     }
@@ -106,9 +106,9 @@ class CommentoDaoTest {
     int lezione = 0;
 
 
-    commentoDao.insertCommentoStudente(lezione,testo,emailStudente);
+    commentoDao.insertCommentoStudente(lezione, testo, emailStudente);
     CommentoBean commento = new CommentoBean();
-    assertEquals(false,commentoDao.deleteCommento(commento));
+    assertEquals(false, commentoDao.deleteCommento(commento));
 
 
   }

@@ -1,9 +1,8 @@
 package model.dao;
 
+import java.sql.SQLException;
 import model.bean.StudenteBean;
 import org.junit.jupiter.api.Test;
-
-import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -41,9 +40,9 @@ class StudenteDaoTest {
     int oreRichieste = 5;
     String email = "paolorossi10@studenti.unisa.it";
 
-    assertEquals(true,dao.updateOreDisponibili(oreRichieste,email));
+    assertEquals(true, dao.updateOreDisponibili(oreRichieste, email));
 
-    dao.updateOreDisponibili(-oreRichieste,email);
+    dao.updateOreDisponibili(-oreRichieste, email);
   }
 
   @Test

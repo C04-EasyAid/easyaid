@@ -1,11 +1,10 @@
 package model.dao;
 
-import model.bean.SupportoEsameBean;
-import org.junit.jupiter.api.Test;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import model.bean.SupportoEsameBean;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,7 +21,7 @@ class SupportoEsameDAOTest {
 
         List<SupportoEsameBean> result = dao.doRetrieveAllByStudente(email);
 
-        assertEquals(expected.size(),result.size());
+        assertEquals(expected.size(), result.size());
 
     }
 
@@ -35,32 +34,34 @@ class SupportoEsameDAOTest {
 
         List<SupportoEsameBean> result = dao.doRetrieveAllByTutor(email);
 
-        assertEquals(expected.size(),result.size());
+        assertEquals(expected.size(), result.size());
 
     }
 
 
 
     @Test
-    void doRetrieveAllRichiesteSupportoEsameCompletate() throws SQLException, ClassNotFoundException {
+    void doRetrieveAllRichiesteSupportoEsameCompletate()
+            throws SQLException, ClassNotFoundException {
 
         List<SupportoEsameBean> expected = new ArrayList<>();
         expected.add(new SupportoEsameBean());
 
         List<SupportoEsameBean> result = dao.doRetrieveAllRichiesteSupportoEsameCompletate();
 
-        assertEquals(expected.size(),result.size());
+        assertEquals(expected.size(), result.size());
     }
 
     @Test
-    void doRetrieveRichiesteSupportoEsameNonAccettate() throws SQLException, ClassNotFoundException {
+    void doRetrieveRichiesteSupportoEsameNonAccettate()
+            throws SQLException, ClassNotFoundException {
         List<SupportoEsameBean> expected = new ArrayList<>();
         expected.add(new SupportoEsameBean());
 
 
         List<SupportoEsameBean> result = dao.doRetrieveRichiesteSupportoEsameNonAccettate();
 
-        assertEquals(expected.size(),result.size());
+        assertEquals(expected.size(), result.size());
     }
 
     @Test
@@ -71,7 +72,7 @@ class SupportoEsameDAOTest {
 
         SupportoEsameBean result = dao.doRetriveById(15);
 
-        assertEquals(expected.getId(),result.getId());
+        assertEquals(expected.getId(), result.getId());
     }
 
     @Test
@@ -81,7 +82,7 @@ class SupportoEsameDAOTest {
 
         SupportoEsameBean result = dao.doRetriveById(0);
 
-        assertEquals(null,result);
+        assertEquals(null, result);
     }
 
     @Test
@@ -115,7 +116,7 @@ class SupportoEsameDAOTest {
         assertEquals(true,dao.inserimentoSupportoEsame(bean));
 
         List<SupportoEsameBean> list = dao.doRetrieveAllByStudente(email);
-        SupportoEsameBean supportoEsameBean = list.get(list.size()-1);
+        SupportoEsameBean supportoEsameBean = list.get(list.size() - 1);
         dao.deleteSupporto(supportoEsameBean);
 
     }
@@ -127,7 +128,7 @@ class SupportoEsameDAOTest {
         SupportoEsameBean bean = new SupportoEsameBean();
 
 
-        assertEquals(false,dao.inserimentoSupportoEsame(bean));
+        assertEquals(false, dao.inserimentoSupportoEsame(bean));
 
     }
 
@@ -164,9 +165,9 @@ class SupportoEsameDAOTest {
         String commento = "ok,va bene!";
 
         List<SupportoEsameBean> list = dao.doRetrieveAllByStudente(email);
-        SupportoEsameBean supportoEsameBean = list.get(list.size()-1);
+        SupportoEsameBean supportoEsameBean = list.get(list.size() - 1);
 
-        assertEquals(true, dao.accettaRichiesta(supportoEsameBean.getId(),emailTutor,commento));
+        assertEquals(true, dao.accettaRichiesta(supportoEsameBean.getId(), emailTutor, commento));
 
         dao.deleteSupporto(supportoEsameBean);
     }
@@ -185,7 +186,7 @@ class SupportoEsameDAOTest {
 
 
 
-        assertEquals(false, dao.accettaRichiesta(bean.getId(),emailTutor,commento));
+        assertEquals(false, dao.accettaRichiesta(bean.getId(), emailTutor, commento));
 
     }
 
@@ -225,10 +226,10 @@ class SupportoEsameDAOTest {
         String emailProf = "mlamberti78@unisa.it";
 
         List<SupportoEsameBean> list = dao.doRetrieveAllByStudente(email);
-        SupportoEsameBean supportoEsameBean = list.get(list.size()-1);
+        SupportoEsameBean supportoEsameBean = list.get(list.size() - 1);
 
-        dao.accettaRichiesta(supportoEsameBean.getId(),emailTutor,commento);
-        assertEquals(true,dao.approvaRichiesta(supportoEsameBean.getId(),emailProf));
+        dao.accettaRichiesta(supportoEsameBean.getId(), emailTutor, commento);
+        assertEquals(true, dao.approvaRichiesta(supportoEsameBean.getId(), emailProf));
 
         dao.deleteSupporto(supportoEsameBean);
 
@@ -242,7 +243,7 @@ class SupportoEsameDAOTest {
 
         String emailProf = "mlamberti78@unisa.it";
 
-        assertEquals(false,dao.approvaRichiesta(bean.getId(),emailProf));
+        assertEquals(false,dao.approvaRichiesta(bean.getId(), emailProf));
     }
 
     @Test
@@ -276,7 +277,7 @@ class SupportoEsameDAOTest {
         dao.inserimentoSupportoEsame(bean);
 
         List<SupportoEsameBean> list = dao.doRetrieveAllByStudente(email);
-        SupportoEsameBean supportoEsameBean = list.get(list.size()-1);
+        SupportoEsameBean supportoEsameBean = list.get(list.size() - 1);
         assertEquals(true,dao.deleteSupporto(supportoEsameBean));
 
     }

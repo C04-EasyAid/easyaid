@@ -233,7 +233,7 @@ class TutoratoDidatticoDAOTest {
         String commento = "Ok,va bene!";
 
         dao.accettaRichiesta(tutoratoDidatticoBean.getId(), emailTutor, commento);
-        assertEquals(true,dao.completaRichiesta(tutoratoDidatticoBean.getId(), emailTutor));
+        assertEquals(true, dao.completaRichiesta(tutoratoDidatticoBean.getId(), emailTutor));
 
         dao.deleteTutorato(tutoratoDidatticoBean);
 
@@ -261,7 +261,7 @@ class TutoratoDidatticoDAOTest {
 
         dao.inserimentoTutoratoDidattico(tutoratoDidatticoBean);
         List<TutoratoDidatticoBean> list = dao.doRetrieveAllByStudente(email);
-        tutoratoDidatticoBean = list.get(list.size()-1);
+        tutoratoDidatticoBean = list.get(list.size() - 1);
         assertEquals(true, dao.deleteTutorato(tutoratoDidatticoBean));
 
     }

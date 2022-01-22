@@ -46,8 +46,8 @@ class ViewProfiloUtenteIntegrationTest {
     StudenteBean studente = new StudenteBean();
     studente.setEmail("abaglio9@studenti.unisa.it");
 
-    IStudenteDAO studenteDao = new StudenteDAO();
-    IUserDAO userDao = new UserDAO();
+    IstudenteDao studenteDao = new StudenteDao();
+    IuserDao userDao = new UserDao();
 
     servlet.setStudenteDao(studenteDao);
     servlet.setUserdao(userDao);
@@ -73,8 +73,8 @@ class ViewProfiloUtenteIntegrationTest {
     TutorBean tutor = new TutorBean();
     tutor.setEmailTutor("lorenzorossi1@studenti.unisa.it");
 
-    ITutorDAO tutorDao = new TutorDAO();
-    IUserDAO userDao = new UserDAO();
+    ItutorDao tutorDao = new TutorDao();
+    IuserDao userDao = new UserDao();
 
     servlet.setTutorDao(tutorDao);
     servlet.setUserdao(userDao);
@@ -101,8 +101,8 @@ class ViewProfiloUtenteIntegrationTest {
     ProfessoreReferenteBean professore = new ProfessoreReferenteBean();
     professore.setEmail("lorenzorossi1@studenti.unisa.it");
 
-    IProfessoreReferenteDAO professoreDao = new ProfessoreReferenteDAO();
-    IUserDAO userDao = new UserDAO();
+    IprofessoreReferenteDao professoreDao = new ProfessoreReferenteDao();
+    IuserDao userDao = new UserDao();
 
     servlet.setProfessoreDao(professoreDao);
     servlet.setUserdao(userDao);

@@ -126,11 +126,14 @@ public class SupportoEsameDao implements IsupportoEsameDao {
 
   /**
    * Metodo che restituisce la lista delle richieste di supporto esame completate da tutti i tutor
-   * nel sistema
+   * nel sistema.
    *
-   * @return la lista delle richieste di supporto esame completate dai tutor
-   * @throws SQLException:eccezione accesso al db
-   * @throws ClassNotFoundException:eccezione classe non trovata
+   * @return
+   *        la lista delle richieste di supporto esame completate dai tutor.
+   * @throws SQLException
+   *        eccezione accesso al db.
+   * @throws ClassNotFoundException
+   *        eccezione classe non trovata.
    */
   @Override
   public synchronized List<SupportoEsameBean> doRetrieveAllRichiesteSupportoEsameCompletate()
@@ -177,11 +180,14 @@ public class SupportoEsameDao implements IsupportoEsameDao {
 
   /**
    * Metodo che restituisce la lista di tutte le richieste di supporto esame non ancora accettate da
-   * nessun tutor
+   * nessun tutor.
    *
-   * @return la lista di tutte le richieste di supporto esame non ancora accettate da nessun tutor
-   * @throws SQLException:eccezione accesso al db
-   * @throws ClassNotFoundException:eccezione classe non trovata
+   * @return
+   *        la lista di tutte le richieste di supporto esame non ancora accettate da nessun tutor.
+   * @throws SQLException
+   *        eccezione accesso al db.
+   * @throws ClassNotFoundException
+   *        eccezione classe non trovata.
    */
   @Override
   public synchronized List<SupportoEsameBean> doRetrieveRichiesteSupportoEsameNonAccettate()

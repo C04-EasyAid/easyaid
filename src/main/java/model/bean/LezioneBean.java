@@ -22,6 +22,10 @@ public class LezioneBean {
   private Date data;
   private boolean status;
 
+  /**
+   * costruttore.
+   */
+
   public LezioneBean(
       int id,
       int tutorato,
@@ -41,6 +45,10 @@ public class LezioneBean {
     this.status = status;
   }
 
+  /**
+   * costruttore.
+   */
+
   public LezioneBean(
       int tutorato,
       String oraInizio,
@@ -57,6 +65,10 @@ public class LezioneBean {
     this.luogo = luogo;
     this.status = status;
   }
+
+  /**
+   * costruttore.
+   */
 
   public LezioneBean() {}
 }

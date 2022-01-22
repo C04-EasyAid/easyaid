@@ -48,8 +48,11 @@ public class StudenteDao implements IstudenteDao {
   /**
    * Metodo che aggiorane le ore disponibili di uno studente quando effettua una richiesta di
    * servizio.
-   * @return true= se l'operazione è andata a buon fine, else altrimenti.
-   * @throws SQLException:eccezione
+   *
+   * @return
+   *        true= se l'operazione è andata a buon fine, else altrimenti.
+    * @throws SQLException
+   *                      eccezione
    */
   @Override
   public synchronized boolean updateOreDisponibili(int oreRichieste, String emailStudente)

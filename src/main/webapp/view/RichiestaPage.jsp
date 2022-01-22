@@ -196,7 +196,7 @@ else if(supporto!=null){
                 <form action="../AccettazioneRichiesta" method="get">
                     <div class="mb-3">
                         <label for="message-text" class="col-form-label">Commento:</label>
-                        <textarea class="form-control" name="commento" id="message-text"></textarea>
+                        <textarea class="form-control" name="commento" maxlength="100" id="message-text"></textarea>
                     </div>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-outline-info">Conferma</button>

@@ -1,5 +1,12 @@
 package control;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Objects;
+import javax.servlet.ServletException;
 import model.bean.SupportoEsameBean;
 import model.bean.UserBean;
 import model.dao.IstudenteDao;
@@ -10,14 +17,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-import javax.servlet.ServletException;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
-import java.util.Objects;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
+
+
 
 /**
+ * Test di integrazione per la funzionalità: inserimento richiesta supporto.
+ *
  * @author Mariagiovanna Bianco
  */
 
@@ -34,9 +40,11 @@ class InserimentoRichiestaSupportoIntegrationTest {
     }
 
     @Test
-    void InserimentoSupportoTest() throws ServletException, IOException, SQLException, ClassNotFoundException {
-        IsupportoEsameDao supportoEsameDAO = new SupportoEsameDao();
-        IstudenteDao studenteDAO = new StudenteDao();
+    void inserimentoSupportotest() throws ServletException, IOException, SQLException,
+            ClassNotFoundException {
+        IsupportoEsameDao supportoesameDao = new SupportoEsameDao();
+        servlet.setsupportoesameDao(supportoesameDao);
+
         UserBean bean = new UserBean();
         bean.setNome("Paolo");
         bean.setCognome("Rossi");
@@ -78,16 +86,17 @@ class InserimentoRichiestaSupportoIntegrationTest {
         supportoEsameBean.setEventualiAusili(eventualiAusili);
         supportoEsameBean.setTipoAssistenza(tipoAssistenza);
         supportoEsameBean.setModalitaEsame(modalitaEsame);
-        servlet.setsupportoesameDao(supportoEsameDAO);
         servlet.doGet(request, response);
         assertEquals(
                 "Richiesta di servizio di supporto esame inserita con successo!",
                 Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
 
-        List<SupportoEsameBean> list = supportoEsameDAO.doRetrieveAllByStudente(bean.getEmail());
-        supportoEsameBean = list.get(list.size()-1);
-        supportoEsameDAO.deleteSupporto(supportoEsameBean);
-        studenteDAO.updateOreDisponibili(-oreRichieste,bean.getEmail());
+        List<SupportoEsameBean> list = supportoesameDao.doRetrieveAllByStudente(bean.getEmail());
+        supportoEsameBean = list.get(list.size() - 1);
+        supportoesameDao.deleteSupporto(supportoEsameBean);
+
+        IstudenteDao studenteDao = new StudenteDao();
+        studenteDao.updateOreDisponibili(-oreRichieste, bean.getEmail());
     }
 
 }

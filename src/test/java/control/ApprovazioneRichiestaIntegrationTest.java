@@ -1,17 +1,24 @@
 package control;
 
+import java.io.IOException;
+import java.sql.SQLException;
+import javax.servlet.ServletException;
 import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
-import model.dao.*;
+import model.dao.IsupportoEsameDao;
+import model.dao.ItutoratoDidatticoDao;
+import model.dao.IuserDao;
+import model.dao.SupportoEsameDao;
+import model.dao.TutoratoDidatticoDao;
+import model.dao.UserDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-import javax.servlet.ServletException;
-import java.io.IOException;
-import java.sql.SQLException;
+
+
 /**
  * Testing di integrazione per l' approvazione di una richiesta di servizio.
  *
@@ -30,7 +37,7 @@ class ApprovazioneRichiestaIntegrationTest {
   }
 
   @Test
-  void ApprovazioneRichiestaTutoratoIntegrationTest()
+  void approvazioneRichiestaTutoratoIntegrationTest()
       throws ServletException, IOException, SQLException {
     IuserDao user = new UserDao();
     String email = "rdistasi@unisa.it";
@@ -49,7 +56,7 @@ class ApprovazioneRichiestaIntegrationTest {
   }
 
   @Test
-  void ApprovazioneRichiestaSupportoIntegrationTest()
+  void approvazioneRichiestaSupportoIntegrationTest()
       throws ServletException, IOException, SQLException {
     IuserDao user = new UserDao();
     String email = "rdistasi@unisa.it";
@@ -61,7 +68,7 @@ class ApprovazioneRichiestaIntegrationTest {
     bean.setPassword(password);
     bean.setRuolo("P");
     request.getSession().setAttribute("utente", bean);
-    IsupportoEsameDao supportoDAO = new SupportoEsameDao();
+    IsupportoEsameDao supportoDao = new SupportoEsameDao();
     SupportoEsameBean supporto = new SupportoEsameBean();
     supporto.setId(15);
     servlet.doGet(request, response);

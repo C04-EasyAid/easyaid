@@ -1,5 +1,7 @@
 package model.dao;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +11,6 @@ import model.bean.TutorBean;
 import model.bean.UserBean;
 import org.junit.jupiter.api.Test;
 import other.Utils;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class UserDaoTest {
   private final UserDao dao = new UserDao();

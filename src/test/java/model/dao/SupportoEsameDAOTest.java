@@ -1,12 +1,12 @@
 package model.dao;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.bean.SupportoEsameBean;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SupportoEsameDAOTest {
 

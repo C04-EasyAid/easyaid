@@ -1,5 +1,7 @@
 package control;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.io.IOException;
 import javax.servlet.ServletException;
 import model.bean.StudenteBean;
@@ -8,8 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class VisualizzaServiziTest {
   private ViewServicesServlet servlet;

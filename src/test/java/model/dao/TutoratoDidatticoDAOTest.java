@@ -1,12 +1,12 @@
 package model.dao;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.bean.TutoratoDidatticoBean;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TutoratoDidatticoDAOTest {
 
@@ -164,7 +164,8 @@ class TutoratoDidatticoDAOTest {
         String emailTutor = "adebiase41@studenti.unisa.it";
         String commento = "Ok,va bene!";
 
-        assertEquals(true, dao.accettaRichiesta(tutoratoDidatticoBean.getId(), emailTutor, commento));
+        assertEquals(true, dao.accettaRichiesta(tutoratoDidatticoBean.getId(),
+                emailTutor, commento));
 
         dao.deleteTutorato(tutoratoDidatticoBean);
     }

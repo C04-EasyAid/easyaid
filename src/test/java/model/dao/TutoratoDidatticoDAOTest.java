@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TutoratoDidatticoDAOTest {
 
-    private final TutoratoDidatticoDAO dao = new TutoratoDidatticoDAO();
+    private final TutoratoDidatticoDao dao = new TutoratoDidatticoDao();
 
     @Test
     void doRetrieveAllByStudente1() throws SQLException, ClassNotFoundException {
@@ -129,7 +129,7 @@ class TutoratoDidatticoDAOTest {
         tutoratoDidatticoBean.setStatus(0);
         tutoratoDidatticoBean.setOreDisponibili(oreDisponibili);
 
-        assertEquals(true,dao.InserimentoTutoratoDidattico(tutoratoDidatticoBean));
+        assertEquals(true,dao.inserimentoTutoratoDidattico(tutoratoDidatticoBean));
         List<TutoratoDidatticoBean> list = dao.doRetrieveAllByStudente(email);
         tutoratoDidatticoBean = list.get(list.size()-1);
         dao.deleteTutorato(tutoratoDidatticoBean);
@@ -156,7 +156,7 @@ class TutoratoDidatticoDAOTest {
         tutoratoDidatticoBean.setStatus(0);
         tutoratoDidatticoBean.setOreDisponibili(oreDisponibili);
 
-        assertEquals(true,dao.InserimentoTutoratoDidattico(tutoratoDidatticoBean));
+        assertEquals(true,dao.inserimentoTutoratoDidattico(tutoratoDidatticoBean));
         List<TutoratoDidatticoBean> list = dao.doRetrieveAllByStudente(email);
         tutoratoDidatticoBean = list.get(list.size()-1);
 
@@ -189,7 +189,7 @@ class TutoratoDidatticoDAOTest {
         tutoratoDidatticoBean.setStatus(0);
         tutoratoDidatticoBean.setOreDisponibili(oreDisponibili);
 
-        assertEquals(true,dao.InserimentoTutoratoDidattico(tutoratoDidatticoBean));
+        assertEquals(true,dao.inserimentoTutoratoDidattico(tutoratoDidatticoBean));
         List<TutoratoDidatticoBean> list = dao.doRetrieveAllByStudente(email);
         tutoratoDidatticoBean = list.get(list.size()-1);
 
@@ -224,7 +224,7 @@ class TutoratoDidatticoDAOTest {
         tutoratoDidatticoBean.setStatus(0);
         tutoratoDidatticoBean.setOreDisponibili(oreDisponibili);
 
-        assertEquals(true,dao.InserimentoTutoratoDidattico(tutoratoDidatticoBean));
+        assertEquals(true,dao.inserimentoTutoratoDidattico(tutoratoDidatticoBean));
         List<TutoratoDidatticoBean> list = dao.doRetrieveAllByStudente(email);
         tutoratoDidatticoBean = list.get(list.size()-1);
 
@@ -258,7 +258,7 @@ class TutoratoDidatticoDAOTest {
         tutoratoDidatticoBean.setStatus(0);
         tutoratoDidatticoBean.setOreDisponibili(oreDisponibili);
 
-        dao.InserimentoTutoratoDidattico(tutoratoDidatticoBean);
+        dao.inserimentoTutoratoDidattico(tutoratoDidatticoBean);
         List<TutoratoDidatticoBean> list = dao.doRetrieveAllByStudente(email);
         tutoratoDidatticoBean = list.get(list.size()-1);
         assertEquals(true,dao.deleteTutorato(tutoratoDidatticoBean));

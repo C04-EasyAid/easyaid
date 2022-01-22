@@ -27,15 +27,15 @@ import other.MyLogger;
 public class ViewRichiesteServizioServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "ViewRichiesteServizioServlet";
-  private ISupportoEsameDAO esameDAO = new SupportoEsameDAO();
-  private ITutoratoDidatticoDAO tutoratoDAO = new TutoratoDidatticoDAO();
+  private ISupportoEsameDAO esameDao = new SupportoEsameDAO();
+  private ITutoratoDidatticoDAO tutoratoDao = new TutoratoDidatticoDAO();
 
-  public void setEsameDAO(ISupportoEsameDAO esameDAO) {
-    this.esameDAO = esameDAO;
+  public void setEsameDao(ISupportoEsameDAO esameDao) {
+    this.esameDao = esameDao;
   }
 
-  public void setTutoratoDAO(ITutoratoDidatticoDAO tutoratoDAO) {
-    this.tutoratoDAO = tutoratoDAO;
+  public void setTutoratoDao(ITutoratoDidatticoDAO tutoratoDao) {
+    this.tutoratoDao = tutoratoDao;
   }
 
   @Override
@@ -48,9 +48,9 @@ public class ViewRichiesteServizioServlet extends HttpServlet {
       if (userLoggato.isTutor()) {
         try {
           List<SupportoEsameBean> listRichiesteSupportoEsame =
-              esameDAO.doRetrieveRichiesteSupportoEsameNonAccettate();
+              esameDao.doRetrieveRichiesteSupportoEsameNonAccettate();
           List<TutoratoDidatticoBean> listRichiesteTutoratoDidattico =
-              tutoratoDAO.doRetrieveRichiesteTutoratoDidatticoNonAccettate();
+              tutoratoDao.doRetrieveRichiesteTutoratoDidatticoNonAccettate();
           session.setAttribute("richiesteEsamiNonAccettate", listRichiesteSupportoEsame);
           session.setAttribute("richiesteTutoratoNonAccettate", listRichiesteTutoratoDidattico);
 

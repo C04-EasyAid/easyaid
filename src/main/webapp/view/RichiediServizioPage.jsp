@@ -44,7 +44,7 @@
 <header>
     <%@include file="../fragment/navbar.jsp"%>
 </header>
-<div class="bg-info rounded-3 p-4 p-sm-5" style="margin-top: 10em;margin-bottom: 14em;">
+<div class="bg-info rounded-3 p-4 p-sm-5" style="background: rgb(20, 250, 231);">
     <!-- Title -->
     <h2 class="mb-3 text-center text-light ">Richiedi uno dei seguenti servizi</h2>
     <div class="container-fluid d-flex align-items-center justify-content-center">
@@ -64,7 +64,7 @@
             <% session.removeAttribute("alertMsg");
             }%>
             <div class="col-sm-6">
-                <div id="card-tutorato" class="card text-center" style="background: linear-gradient(rgb(15, 169, 231), rgb(6, 106, 147)); ">
+                <div id="card-tutorato" class="card text-center" style="background:linear-gradient(rgb(20, 250, 231), rgb(6, 106, 147)); ">
                     <div class="card-body" style="height: 20em;">
                         <h3 class="card-title text-light">Tutorato Didattico</h3>
                         <p class="card-text text-light">Un tutor verrà assegnato per svolgere l'attività di tutorato</p>
@@ -74,7 +74,7 @@
                 </div>
             </div>
             <div class="col-sm-6">
-                <div id="card-supporto" class="card text-center" style="background: linear-gradient(rgb(15, 169, 231), rgb(6, 106, 147));">
+                <div id="card-supporto" class="card text-center" style="background:linear-gradient(rgb(20, 250, 231), rgb(6, 106, 147));">
                     <div class="card-body" style="height: 20em;">
                         <h4 class="card-title text-light">Supporto Esame</h4>
                         <p class="card-text text-light">Un tutor verrà assegnato per dare supporto per l'esame</p>

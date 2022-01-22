@@ -121,7 +121,7 @@
 
                     <!-- Title -->
                     <div class="card card-body shadow p-4 mb-4">
-                    <h1 class="mb-0">About EasyAid</h1><br>
+                    <h1 class="mb-0" style="color: #59cfcd;">About EasyAid</h1><br>
 
                     <h4>Coordinated project for Software Project Management and Software Engineering courses</h4>
 
@@ -139,7 +139,7 @@
                     <p>Gli studenti saranno supportati con dei tutorati didattici. Le lezioni saranno con un tutor che aiuterà lo studente nel percorso di apprendimento</p><br><br><h4 class="mb-3">Supporto Esame</h4>
 
                     <p>Il supporto per gli esami sarà un servizio con lo scopo di aiutare gli studenti  durante lo svolgimento di esami, supportati da tutor ed eventuali ausili se fossero necessari.
-                    </p><br><p class="quotes fs-2 text-center">
+                    </p><br><p class="quotes fs-2 text-center" style="color: #59cfcd;">
                     United we stand, divided we fall.
                 </p><br><!-- Personal info -->
                     <ul class="list-group list-group-borderless">

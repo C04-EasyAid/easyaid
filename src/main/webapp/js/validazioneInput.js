@@ -125,7 +125,16 @@ function validazioneRichiestaSupporto() {
     const oreRichiestereg = /^[1-9][0-9]?$|^100$/;
     const docentereg = /^[a-zA-Z\s]*$/;
     const luogoreg = /^[a-zA-Z0-9\s_.-]*$/;
+    var oggi = new Date();
+    var data_input=document.getElementById("data");
+    var data = new Date(data_input.value);
 
+//best to use .getTime() to compare dates
+    if(data.getTime() < oggi.getTime()){
+        check=false;
+        data_input.focus()
+        data_input.style.background = '#f08080';
+    }
     if (!insegnamentoreg.test(insegnamento.value)) {
         check = false;
         insegnamento.focus();

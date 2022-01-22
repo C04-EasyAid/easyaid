@@ -1,5 +1,7 @@
 package model.dao;
 
+import static other.Utils.generatePwd;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,20 +10,18 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import model.bean.ProfessoreReferenteBean;
 import model.bean.StudenteBean;
 import model.bean.TutorBean;
 import model.bean.UserBean;
 
-import static other.Utils.generatePwd;
 
 /**
  * Classe UserDAO.
  *
  * @author Giovanni Toriello
  */
-public class UserDAO implements IUserDAO {
+public class UserDao implements IuserDao {
   // Metodo che restituisce l'utente dal database
   @Override
   public synchronized UserBean doRetrieveUtente(UserBean b)
@@ -58,6 +58,7 @@ public class UserDAO implements IUserDAO {
     return user;
   }
   // Metodo che restituisce true se è l'utente è stato inserito
+
   @Override
   public synchronized boolean insertUtente(UserBean b) throws SQLException {
     boolean utente = false;
@@ -68,23 +69,22 @@ public class UserDAO implements IUserDAO {
     // Se riesce a connettersi, la connessione è != da null ed entra nello statement
     try {
       String nome = b.getNome();
-      String cognome = b.getCognome();
-      String email = b.getEmail();
-      String password = b.getPassword();
       if (nome.length() > 26 || nome.length() < 2) {
         return false;
       }
+      String email = b.getEmail();
       String expressionPlus = "^[\\w\\-]([\\.\\w])+[\\w]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
-      Pattern pPlus = Pattern.compile(expressionPlus, Pattern.CASE_INSENSITIVE);
-      Matcher mPlus = pPlus.matcher(email);
-      boolean matchFoundPlus = mPlus.matches();
+      Pattern pplus = Pattern.compile(expressionPlus, Pattern.CASE_INSENSITIVE);
+      Matcher mplus = pplus.matcher(email);
+      boolean matchFoundPlus = mplus.matches();
       if (!matchFoundPlus) {
         return false;
       }
+      String cognome = b.getCognome();
       if (cognome.length() > 26 || cognome.length() < 2) {
         return false;
       }
-
+      String password = b.getPassword();
       if (password.length() < 12) {
         return false;
       }
@@ -116,9 +116,9 @@ public class UserDAO implements IUserDAO {
   public synchronized boolean insertStudente(StudenteBean s, UserBean b) throws SQLException {
     boolean studente = false;
     String expressionPlus = "^[\\w\\-]([\\.\\w])+[\\w]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
-    Pattern pPlus = Pattern.compile(expressionPlus, Pattern.CASE_INSENSITIVE);
-    Matcher mPlus = pPlus.matcher(s.getEmail());
-    boolean matchFoundPlus = mPlus.matches();
+    Pattern pplus = Pattern.compile(expressionPlus, Pattern.CASE_INSENSITIVE);
+    Matcher mplus = pplus.matcher(s.getEmail());
+    boolean matchFoundPlus = mplus.matches();
     if (!matchFoundPlus) {
       return false;
     }

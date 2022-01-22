@@ -43,7 +43,7 @@ public class TutorDao implements ItutorDao {
    * Metodo per aggiornare le ore disponibili di un tutor che accetta una richiesta di supporto.
    *
    * @return true = l'operazione è andata a buon fine,false altrimenti.
-   * @throws SQLException
+   * @throws SQLException: eccezzione dell'accesso al db.
    */
   @Override
   public synchronized boolean updateOreDisponibili(int oreRichieste, String emailTutor)

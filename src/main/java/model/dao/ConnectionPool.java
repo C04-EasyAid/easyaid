@@ -52,6 +52,14 @@ public class ConnectionPool {
     return newConnection;
   }
 
+  /**
+   * Metodo che restituisce connessione al database.
+   *
+   * @return
+   *        connection.
+   * @throws SQLException
+   *                     eccezione all'accesso al db.
+   */
   public static synchronized Connection conn() throws SQLException {
     Connection connection;
 
@@ -60,7 +68,9 @@ public class ConnectionPool {
       freeDbConnections.remove(0);
 
       try {
-        if (connection.isClosed()) connection = conn();
+        if (connection.isClosed()) {
+          connection = conn();
+        }
       } catch (SQLException e) {
         connection.close();
         connection = conn();
@@ -72,6 +82,12 @@ public class ConnectionPool {
     return connection;
   }
 
+  /**
+   * Metodo che chiude la connessione al db.
+   *
+   * @throws SQLException
+   *                     eccezione dell'accesso al db.
+   */
   public static synchronized void releaseConnection(Connection connection) throws SQLException {
     if (connection != null) {
       freeDbConnections.add(connection);

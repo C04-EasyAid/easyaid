@@ -19,7 +19,7 @@ public class TutoratoDidatticoDao implements ItutoratoDidatticoDao {
    * Metodo che restituisce le richieste di Tutorato Didattico effettuate tramite e-mail studente.
    *
    * @param emailStudente
-   * @return
+   * @return lista di richieste di tutorato.
    * @throws SQLException:eccezione accesso al db.
    * @throws ClassNotFoundException
    */

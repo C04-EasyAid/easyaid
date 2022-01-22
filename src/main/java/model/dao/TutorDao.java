@@ -11,7 +11,7 @@ import model.bean.TutorBean;
  *
  * @author Roberto Tartaglia
  */
-public class TutorDAO implements ITutorDAO {
+public class TutorDao implements ItutorDao {
   @Override
   public synchronized TutorBean doRetrieveByEmail(String email)
       throws SQLException, ClassNotFoundException {
@@ -42,8 +42,6 @@ public class TutorDAO implements ITutorDAO {
   /**
    * Metodo per aggiornare le ore disponibili di un tutor che accetta una richiesta di supporto.
    *
-   * @param oreRichieste: le ore della richiesta di tutorato didattico/supporto esame.
-   * @param emailTutor: l'email del tutor per cui aggiornare le ore disponibili.
    * @return true = l'operazione è andata a buon fine,false altrimenti.
    * @throws SQLException
    */
@@ -75,11 +73,8 @@ public class TutorDAO implements ITutorDAO {
 
   /**
    * Metodo che aggiorna le ore svolte di un tutor per una richiesta completata.
-   *
-   * @param oreRichieste: le ore della richiesta di tutorato didattico/supporto esame.
-   * @param emailTutor: l'email del tutor per cui aggiornare le ore disponibili.
    * @return true = l'operazione è andata a buon fine,false altrimenti.
-   * @throws SQLException
+   * @throws SQLException:Eccezione accesso al db
    */
   @Override
   public synchronized boolean updateOreSvolte(int oreRichieste, String emailTutor)

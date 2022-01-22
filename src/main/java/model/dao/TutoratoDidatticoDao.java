@@ -6,45 +6,41 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import model.bean.SupportoEsameBean;
+import model.bean.TutoratoDidatticoBean;
 
 /**
- * Classe SupportoEsameDAO.
+ * Classe TutoratoDidatticoDAO.
  *
  * @author Martina Giugliano
  */
-public class SupportoEsameDAO implements ISupportoEsameDAO {
+public class TutoratoDidatticoDao implements ItutoratoDidatticoDao {
 
   /**
-   * Metodo che restituisce le richieste di supporto esame effettuate tramite e-mail studente.
+   * Metodo che restituisce le richieste di Tutorato Didattico effettuate tramite e-mail studente.
    *
    * @param emailStudente
    * @return
-   * @throws SQLException
+   * @throws SQLException:eccezione accesso al db.
    * @throws ClassNotFoundException
    */
   @Override
-  public synchronized List<SupportoEsameBean> doRetrieveAllByStudente(String emailStudente)
+  public synchronized List<TutoratoDidatticoBean> doRetrieveAllByStudente(String emailStudente)
       throws SQLException, ClassNotFoundException {
     Connection conn = null;
-    String query = "SELECT * FROM supporto_esame WHERE studente_email=?";
+    String query = "SELECT * FROM tutorato_didattico WHERE studente_email=?";
     PreparedStatement stmt = null;
-    List<SupportoEsameBean> list = new ArrayList<>();
+    List<TutoratoDidatticoBean> list = new ArrayList<>();
+
     try {
       conn = ConnectionPool.conn();
       stmt = conn.prepareStatement(query);
       stmt.setString(1, emailStudente);
       ResultSet rs = stmt.executeQuery();
       while (rs.next()) {
-        SupportoEsameBean bean = new SupportoEsameBean();
-        bean.setId(rs.getInt("id"));
-        bean.setData(rs.getString("data"));
-        bean.setOra(rs.getString("ora"));
-        bean.setDocente(rs.getString("docente"));
-        bean.setModalitaEsame(rs.getString("modalita_esame"));
-        bean.setEventualiAusili(rs.getString("eventuali_ausili"));
-        bean.setTipoAssistenza(rs.getString("tipo_di_assistenza"));
-        bean.setLuogo(rs.getString("luogo"));
+        TutoratoDidatticoBean bean = new TutoratoDidatticoBean();
+        bean.setId(rs.getInt("idtutorato_didattico"));
+        bean.setDateDisponibili(rs.getString("date_disponibili"));
+        bean.setOreDisponibili(rs.getString("ore_disponibili"));
         bean.setOreRichieste(rs.getInt("ore_richieste"));
         bean.setCommento(rs.getString("commento"));
         bean.setStatus(rs.getInt("status"));
@@ -53,50 +49,42 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
         bean.setStudenteEmail(rs.getString("studente_email"));
         bean.setTutorEmail(rs.getString("tutor_email"));
         bean.setProfEmail(rs.getString("prof_refe_email"));
+        bean.setDocente(rs.getString("docente"));
         list.add(bean);
       }
 
-      stmt.close();
-      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
     }
-
+    stmt.close();
+    conn.close();
 
     return list;
   }
 
   /**
    * Metodo per restituire le richieste accettate da un tutor
-   *
-   * @param emailTutor:e-mail del tutor che ha accettato la richiesta di supporto esame
-   * @return la lista delle richieste di supporto esame accettate dal tutor
+   * @return la lista delle richieste di tutorato didattico accettate dal tutor
    * @throws SQLException:Eccezione accesso al db
    * @throws ClassNotFoundException:eccezione classe non trovata
    */
   @Override
-  public synchronized List<SupportoEsameBean> doRetrieveAllByTutor(String emailTutor)
+  public synchronized List<TutoratoDidatticoBean> doRetrieveAllByTutor(String emailTutor)
       throws SQLException, ClassNotFoundException {
     Connection conn = null;
-    String query = "SELECT * FROM supporto_esame WHERE tutor_email=?";
+    String query = "SELECT * FROM tutorato_didattico WHERE tutor_email=?";
     PreparedStatement stmt = null;
-    List<SupportoEsameBean> list = new ArrayList<>();
-
+    List<TutoratoDidatticoBean> list = new ArrayList<>();
     try {
       conn = ConnectionPool.conn();
       stmt = conn.prepareStatement(query);
       stmt.setString(1, emailTutor);
       ResultSet rs = stmt.executeQuery();
       while (rs.next()) {
-        SupportoEsameBean bean = new SupportoEsameBean();
-        bean.setId(rs.getInt("id"));
-        bean.setData(rs.getString("data"));
-        bean.setOra(rs.getString("ora"));
-        bean.setDocente(rs.getString("docente"));
-        bean.setModalitaEsame(rs.getString("modalita_esame"));
-        bean.setEventualiAusili(rs.getString("eventuali_ausili"));
-        bean.setTipoAssistenza(rs.getString("tipo_di_assistenza"));
-        bean.setLuogo(rs.getString("luogo"));
+        TutoratoDidatticoBean bean = new TutoratoDidatticoBean();
+        bean.setId(rs.getInt("idtutorato_didattico"));
+        bean.setDateDisponibili(rs.getString("date_disponibili"));
+        bean.setOreDisponibili(rs.getString("ore_disponibili"));
         bean.setOreRichieste(rs.getInt("ore_richieste"));
         bean.setCommento(rs.getString("commento"));
         bean.setStatus(rs.getInt("status"));
@@ -105,12 +93,12 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
         bean.setStudenteEmail(rs.getString("studente_email"));
         bean.setTutorEmail(rs.getString("tutor_email"));
         bean.setProfEmail(rs.getString("prof_refe_email"));
+        bean.setDocente(rs.getString("docente"));
         list.add(bean);
       }
 
       stmt.close();
       conn.close();
-
     } catch (SQLException e) {
       e.printStackTrace();
     }
@@ -119,35 +107,31 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
   }
 
   /**
-   * Metodo che restituisce la lista delle richieste di supporto esame completate da tutti i tutor
-   * nel sistema
+   * Metodo che restituisce la lista delle richieste di tutorato didattico completate da tutti i
+   * tutor nel sistema.
    *
-   * @return la lista delle richieste di supporto esame completate dai tutor
-   * @throws SQLException::Eccezione accesso al db
+   * @return la lista delle richieste di tutorato didattico completate dai tutor
+   * @throws SQLException:eccezione accesso al db
    * @throws ClassNotFoundException:eccezione classe non trovata
    */
   @Override
-  public synchronized List<SupportoEsameBean> doRetrieveAllRichiesteSupportoEsameCompletate()
-      throws SQLException, ClassNotFoundException {
+  public synchronized List<TutoratoDidatticoBean>
+      doRetrieveAllRichiesteTutoratoDidatticoCompletate()
+          throws SQLException, ClassNotFoundException {
     Connection conn = null;
-    String query = "SELECT * FROM supporto_esame WHERE status=2";
+    String query = "SELECT * FROM tutorato_didattico WHERE status=2";
     PreparedStatement stmt = null;
-    List<SupportoEsameBean> list = new ArrayList<>();
+    List<TutoratoDidatticoBean> list = new ArrayList<>();
 
     try {
       conn = ConnectionPool.conn();
       stmt = conn.prepareStatement(query);
       ResultSet rs = stmt.executeQuery();
       while (rs.next()) {
-        SupportoEsameBean bean = new SupportoEsameBean();
-        bean.setId(rs.getInt("id"));
-        bean.setData(rs.getString("data"));
-        bean.setOra(rs.getString("ora"));
-        bean.setDocente(rs.getString("docente"));
-        bean.setModalitaEsame(rs.getString("modalita_esame"));
-        bean.setEventualiAusili(rs.getString("eventuali_ausili"));
-        bean.setTipoAssistenza(rs.getString("tipo_di_assistenza"));
-        bean.setLuogo(rs.getString("luogo"));
+        TutoratoDidatticoBean bean = new TutoratoDidatticoBean();
+        bean.setId(rs.getInt("idtutorato_didattico"));
+        bean.setDateDisponibili(rs.getString("date_disponibili"));
+        bean.setOreDisponibili(rs.getString("ore_disponibili"));
         bean.setOreRichieste(rs.getInt("ore_richieste"));
         bean.setCommento(rs.getString("commento"));
         bean.setStatus(rs.getInt("status"));
@@ -156,6 +140,7 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
         bean.setStudenteEmail(rs.getString("studente_email"));
         bean.setTutorEmail(rs.getString("tutor_email"));
         bean.setProfEmail(rs.getString("prof_refe_email"));
+        bean.setDocente(rs.getString("docente"));
         list.add(bean);
       }
 
@@ -164,41 +149,36 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-
 
     return list;
   }
 
   /**
-   * Metodo che restituisce la lista di tutte le richieste di supporto esame non ancora accettate da
-   * nessun tutor
+   * Metodo che restituisce la lista di tutte le richieste di tutorato didattico non ancora
+   * accettate da nessun tutor
    *
-   * @return la lista di tutte le richieste di supporto esame non ancora accettate da nessun tutor
-   * @throws SQLException :Eccezione accesso al db
+   * @return la lista di tutte le richieste di tutorato didattico non ancora accettate da nessun
+   *     tutor
+   * @throws SQLException:eccezione accesso al db
    * @throws ClassNotFoundException:eccezione classe non trovata
    */
   @Override
-  public synchronized List<SupportoEsameBean> doRetrieveRichiesteSupportoEsameNonAccettate()
+  public synchronized List<TutoratoDidatticoBean> doRetrieveRichiesteTutoratoDidatticoNonAccettate()
       throws SQLException, ClassNotFoundException {
     Connection conn = null;
-    String query = "SELECT * FROM supporto_esame WHERE status=0";
+    String query = "SELECT * FROM tutorato_didattico WHERE status=0";
     PreparedStatement stmt = null;
-    List<SupportoEsameBean> list = new ArrayList<>();
+    List<TutoratoDidatticoBean> list = new ArrayList<>();
 
     try {
       conn = ConnectionPool.conn();
       stmt = conn.prepareStatement(query);
       ResultSet rs = stmt.executeQuery();
       while (rs.next()) {
-        SupportoEsameBean bean = new SupportoEsameBean();
-        bean.setId(rs.getInt("id"));
-        bean.setData(rs.getString("data"));
-        bean.setOra(rs.getString("ora"));
-        bean.setDocente(rs.getString("docente"));
-        bean.setModalitaEsame(rs.getString("modalita_esame"));
-        bean.setEventualiAusili(rs.getString("eventuali_ausili"));
-        bean.setTipoAssistenza(rs.getString("tipo_di_assistenza"));
-        bean.setLuogo(rs.getString("luogo"));
+        TutoratoDidatticoBean bean = new TutoratoDidatticoBean();
+        bean.setId(rs.getInt("idtutorato_didattico"));
+        bean.setDateDisponibili(rs.getString("date_disponibili"));
+        bean.setOreDisponibili(rs.getString("ore_disponibili"));
         bean.setOreRichieste(rs.getInt("ore_richieste"));
         bean.setCommento(rs.getString("commento"));
         bean.setStatus(rs.getInt("status"));
@@ -207,6 +187,7 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
         bean.setStudenteEmail(rs.getString("studente_email"));
         bean.setTutorEmail(rs.getString("tutor_email"));
         bean.setProfEmail(rs.getString("prof_refe_email"));
+        bean.setDocente(rs.getString("docente"));
         list.add(bean);
       }
 
@@ -220,28 +201,23 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
   }
 
   @Override
-  public synchronized SupportoEsameBean doRetriveById(int id)
+  public synchronized TutoratoDidatticoBean doRetriveById(int id)
       throws SQLException, ClassNotFoundException {
     Connection conn = null;
-    String query = "SELECT * FROM supporto_esame where id=?";
-    SupportoEsameBean bean = null;
+    String query = "SELECT * FROM tutorato_didattico where idtutorato_didattico=?";
     PreparedStatement stmt = null;
-
+    TutoratoDidatticoBean bean = null;
     try {
       conn = ConnectionPool.conn();
       stmt = conn.prepareStatement(query);
       stmt.setInt(1, id);
       ResultSet rs = stmt.executeQuery();
       if (rs.next()) {
-        bean = new SupportoEsameBean();
-        bean.setId(rs.getInt("id"));
-        bean.setData(rs.getString("data"));
-        bean.setOra(rs.getString("ora"));
-        bean.setDocente(rs.getString("docente"));
-        bean.setModalitaEsame(rs.getString("modalita_esame"));
-        bean.setEventualiAusili(rs.getString("eventuali_ausili"));
-        bean.setTipoAssistenza(rs.getString("tipo_di_assistenza"));
-        bean.setLuogo(rs.getString("luogo"));
+        bean = new TutoratoDidatticoBean();
+        bean.setId(id);
+        bean.setId(rs.getInt("idtutorato_didattico"));
+        bean.setDateDisponibili(rs.getString("date_disponibili"));
+        bean.setOreDisponibili(rs.getString("ore_disponibili"));
         bean.setOreRichieste(rs.getInt("ore_richieste"));
         bean.setCommento(rs.getString("commento"));
         bean.setStatus(rs.getInt("status"));
@@ -250,7 +226,9 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
         bean.setStudenteEmail(rs.getString("studente_email"));
         bean.setTutorEmail(rs.getString("tutor_email"));
         bean.setProfEmail(rs.getString("prof_refe_email"));
+        bean.setDocente(rs.getString("docente"));
       }
+      conn.commit();
 
       stmt.close();
       conn.close();
@@ -258,33 +236,29 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
       e.printStackTrace();
     }
 
-
     return bean;
   }
 
   @Override
-  public synchronized boolean InserimentoSupportoEsame(SupportoEsameBean Bean) throws SQLException {
+  public boolean inserimentoTutoratoDidattico(TutoratoDidatticoBean bean) throws SQLException {
     boolean inserimento = false;
     Connection con = null;
     String query =
-        "INSERT INTO supporto_esame" +
-                "(data, ora, ore_richieste, docente, modalita_esame, eventuali_ausili, tipo_di_assistenza, insegnamento, luogo, dipartimento, studente_email, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        "INSERT INTO tutorato_didattico(date_disponibili, ore_disponibili, ore_richieste,"
+            + " insegnamento, dipartimento, studente_email, status, docente) "
+            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     PreparedStatement stmt = null;
     try {
       con = ConnectionPool.conn();
       stmt = con.prepareStatement(query);
-      stmt.setString(1, Bean.getData());
-      stmt.setString(2, Bean.getOra());
-      stmt.setInt(3, Bean.getOreRichieste());
-      stmt.setString(4, Bean.getDocente());
-      stmt.setString(5, Bean.getModalitaEsame());
-      stmt.setString(6, Bean.getEventualiAusili());
-      stmt.setString(7, Bean.getTipoAssistenza());
-      stmt.setString(8, Bean.getInsegnamento());
-      stmt.setString(9, Bean.getLuogo());
-      stmt.setString(10, Bean.getDipartimento());
-      stmt.setString(11, Bean.getStudenteEmail());
-      stmt.setInt(12, 0);
+      stmt.setString(1, bean.getDateDisponibili());
+      stmt.setString(2, bean.getOreDisponibili());
+      stmt.setInt(3, bean.getOreRichieste());
+      stmt.setString(4, bean.getInsegnamento());
+      stmt.setString(5, bean.getDipartimento());
+      stmt.setString(6, bean.getStudenteEmail());
+      stmt.setInt(7, 0);
+      stmt.setString(8, bean.getDocente());
       inserimento = stmt.executeUpdate() == 1;
       con.commit();
 
@@ -303,7 +277,9 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
       throws SQLException {
     boolean isUpdated = false;
     Connection conn = null;
-    String query = "UPDATE supporto_esame SET status=1,commento=?,tutor_email=? WHERE id=?";
+    String query =
+        "UPDATE tutorato_didattico SET status=1,commento=?,tutor_email=? "
+            + "WHERE idtutorato_didattico=?";
     PreparedStatement stmt = null;
     try {
       conn = ConnectionPool.conn();
@@ -320,22 +296,22 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
       e.printStackTrace();
     }
 
-
     return isUpdated;
   }
 
   @Override
-  public synchronized boolean approvaRichiesta(int idSupporto, String emailProf)
+  public synchronized boolean approvaRichiesta(int idTutorato, String emailProf)
       throws SQLException {
     boolean isUpdated = false;
     Connection conn = null;
-    String query = "UPDATE supporto_esame SET status=3,prof_refe_email=? WHERE id=?";
+    String query =
+        "UPDATE tutorato_didattico SET status=3,prof_refe_email=? WHERE idtutorato_didattico=?";
     PreparedStatement stmt = null;
     try {
       conn = ConnectionPool.conn();
       stmt = conn.prepareStatement(query);
       stmt.setString(1, emailProf);
-      stmt.setInt(2, idSupporto);
+      stmt.setInt(2, idTutorato);
       isUpdated = stmt.executeUpdate() == 1;
       conn.commit();
 
@@ -349,15 +325,40 @@ public class SupportoEsameDAO implements ISupportoEsameDAO {
   }
 
   @Override
-  public synchronized boolean deleteSupporto(SupportoEsameBean s) throws SQLException {
-    boolean delete = false;
+  public synchronized boolean completaRichiesta(int idTutorato, String emailTutor)
+      throws SQLException {
+    boolean isUpdated = false;
     Connection conn = null;
-    String query = "DELETE FROM supporto_esame WHERE id = ?";
+    String query =
+        "UPDATE tutorato_didattico SET status=2,tutor_email=? WHERE idtutorato_didattico=?";
     PreparedStatement stmt = null;
     try {
       conn = ConnectionPool.conn();
       stmt = conn.prepareStatement(query);
-      stmt.setInt(1, s.getId());
+      stmt.setString(1, emailTutor);
+      stmt.setInt(2, idTutorato);
+      isUpdated = stmt.executeUpdate() == 1;
+      conn.commit();
+
+      stmt.close();
+      conn.close();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+
+    return isUpdated;
+  }
+
+  @Override
+  public synchronized boolean deleteTutorato(TutoratoDidatticoBean t) throws SQLException {
+    boolean delete = false;
+    Connection conn = null;
+    String query = "DELETE FROM tutorato_didattico WHERE idtutorato_didattico = ?";
+    PreparedStatement stmt = null;
+    try {
+      conn = ConnectionPool.conn();
+      stmt = conn.prepareStatement(query);
+      stmt.setInt(1, t.getId());
       delete = stmt.executeUpdate() == 1;
       conn.commit();
 

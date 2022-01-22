@@ -84,6 +84,7 @@ function validazioneRichiestaTutorato() {
     date_disponibili.value = date_disponibili.value.replaceAll('ì', 'i');
     const ore_disponibili = document.getElementById("ore_disponibili");
     let check = true;
+    date_disponibili.value=date_disponibili.value.toLowerCase();
     if (!date_disponibili.value.includes("lunedi") && !date_disponibili.value.includes("martedi") && !date_disponibili.value.includes("mercoledi") && !date_disponibili.value.includes("giovedi") && !date_disponibili.value.includes("venerdi")) {
         date_disponibili.focus();
         date_disponibili.style.background = '#f08080';

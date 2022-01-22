@@ -41,7 +41,7 @@ class CommentoTest {
   @Test
   void testInserimentoCommentoTutor1() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
 
@@ -56,8 +56,8 @@ class CommentoTest {
     String msg = null;
     request.setParameter("commento", msg);
 
-    ICommentoDAO commentoDao = mock(CommentoDAO.class);
-    ITutorDAO tutorDao = mock(TutorDAO.class);
+    IcommentoDao commentoDao = mock(CommentoDao.class);
+    ItutorDao tutorDao = mock(TutorDao.class);
     servlet.setDaoC(commentoDao);
     servlet.setDaoT(tutorDao);
     try {
@@ -77,7 +77,7 @@ class CommentoTest {
   @Test
   void testInserimentoCommentoTutor2() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
 
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
@@ -100,8 +100,8 @@ class CommentoTest {
             + "uoNwaR71TJt0KtgL3jFdt565NjencLofL5rDRP1GYsAitGLG572jTKFKTCbTa";
     request.setParameter("commento", msg);
 
-    ICommentoDAO commentoDao = mock(CommentoDAO.class);
-    ITutorDAO tutorDao = mock(TutorDAO.class);
+    IcommentoDao commentoDao = mock(CommentoDao.class);
+    ItutorDao tutorDao = mock(TutorDao.class);
 
     servlet.setDaoC(commentoDao);
     servlet.setDaoT(tutorDao);
@@ -122,7 +122,7 @@ class CommentoTest {
   @Test
   void testInserimentoCommentoTutor3() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
 
@@ -137,8 +137,8 @@ class CommentoTest {
     String msg = "Ok,Ci sarò!";
     request.setParameter("commento", msg);
 
-    ICommentoDAO commentoDao = mock(CommentoDAO.class);
-    ITutorDAO tutorDao = mock(TutorDAO.class);
+    IcommentoDao commentoDao = mock(CommentoDao.class);
+    ItutorDao tutorDao = mock(TutorDao.class);
     servlet.setDaoC(commentoDao);
     servlet.setDaoT(tutorDao);
     try {
@@ -167,7 +167,7 @@ class CommentoTest {
   @Test
   void testInserimentoCommentoTutor5() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
 
@@ -182,8 +182,8 @@ class CommentoTest {
     String msg = "Ok,Ci sarò!";
     request.setParameter("commento", msg);
 
-    ICommentoDAO commentoDao = mock(CommentoDAO.class);
-    ITutorDAO tutorDao = mock(TutorDAO.class);
+    IcommentoDao commentoDao = mock(CommentoDao.class);
+    ItutorDao tutorDao = mock(TutorDao.class);
     servlet.setDaoC(commentoDao);
     servlet.setDaoT(tutorDao);
     try {
@@ -201,7 +201,7 @@ class CommentoTest {
   @Test
   void testInserimentoCommentoStudente1() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
     UserBean userBean = new UserBean();
     StudenteBean studenteBean = new StudenteBean();
     LezioneBean lezione = new LezioneBean();
@@ -210,8 +210,8 @@ class CommentoTest {
     request.getSession().setAttribute("lezione", lezione);
     String msg = null;
     request.setParameter("commento", msg);
-    ICommentoDAO commentoDao = mock(CommentoDAO.class);
-    IStudenteDAO studenteDAO = mock(StudenteDAO.class);
+    IcommentoDao commentoDao = mock(CommentoDao.class);
+    IstudenteDao studenteDAO = mock(StudenteDao.class);
     servlet.setDaoC(commentoDao);
     servlet.setDaoS(studenteDAO);
     try {
@@ -230,7 +230,7 @@ class CommentoTest {
   @Test
   void testInserimentoCommentoStudente2() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
     UserBean userBean = new UserBean();
     StudenteBean studenteBean = new StudenteBean();
 
@@ -251,8 +251,8 @@ class CommentoTest {
             + "KEUwYx1tiOc79U28NVA9t9cr6psAMdsOu5syHkenamjUTafSTVC4u5PQWC7denLZO99i5lkzy"
             + "uoNwaR71TJt0KtgL3jFdt565NjencLofL5rDRP1GYsAitGLG572jTKFKTCbTa";
     request.setParameter("commento", msg);
-    ICommentoDAO commentoDao = mock(CommentoDAO.class);
-    IStudenteDAO studenteDAO = mock(StudenteDAO.class);
+    IcommentoDao commentoDao = mock(CommentoDao.class);
+    IstudenteDao studenteDAO = mock(StudenteDao.class);
     servlet.setDaoC(commentoDao);
     servlet.setDaoS(studenteDAO);
     try {
@@ -271,7 +271,7 @@ class CommentoTest {
   @Test
   void testInserimentoCommentoStudente3() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
     UserBean userBean = new UserBean();
     StudenteBean studenteBean = new StudenteBean();
 
@@ -286,8 +286,8 @@ class CommentoTest {
     String msg = "Ok,Ci sarò!";
     request.setParameter("commento", msg);
 
-    ICommentoDAO commentoDao = mock(CommentoDAO.class);
-    IStudenteDAO studenteDAO = mock(StudenteDAO.class);
+    IcommentoDao commentoDao = mock(CommentoDao.class);
+    IstudenteDao studenteDAO = mock(StudenteDao.class);
     servlet.setDaoC(commentoDao);
     servlet.setDaoS(studenteDAO);
     try {
@@ -307,7 +307,7 @@ class CommentoTest {
   @Test
   void testInserimentoCommentoStudente4() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
     UserBean userBean = new UserBean();
     StudenteBean studenteBean = new StudenteBean();
 
@@ -328,8 +328,8 @@ class CommentoTest {
             + "KEUwYx1tiOc79U28NVA9t9cr6psAMdsOu5syHkenamjUTafSTVC4u5PQWC7denLZO99i5lkzy"
             + "uoNwaR71TJt0KtgL3jFdt565NjencLofL5rDRP1GYsAitGLG572jTKFKTCbTa";
     request.setParameter("commento", msg);
-    ICommentoDAO commentoDao = mock(CommentoDAO.class);
-    IStudenteDAO studenteDAO = mock(StudenteDAO.class);
+    IcommentoDao commentoDao = mock(CommentoDao.class);
+    IstudenteDao studenteDAO = mock(StudenteDao.class);
     servlet.setDaoC(commentoDao);
     servlet.setDaoS(studenteDAO);
     try {
@@ -346,7 +346,7 @@ class CommentoTest {
   @Test
   void testInserimentoCommentoStudente5() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
     UserBean userBean = new UserBean();
     StudenteBean studenteBean = new StudenteBean();
 
@@ -360,8 +360,8 @@ class CommentoTest {
     request.getSession().setAttribute("lezione", lezione);
     String msg = "";
     request.setParameter("commento", msg);
-    ICommentoDAO commentoDao = mock(CommentoDAO.class);
-    IStudenteDAO studenteDAO = mock(StudenteDAO.class);
+    IcommentoDao commentoDao = mock(CommentoDao.class);
+    IstudenteDao studenteDAO = mock(StudenteDao.class);
     servlet.setDaoC(commentoDao);
     servlet.setDaoS(studenteDAO);
     try {

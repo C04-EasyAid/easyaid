@@ -1,10 +1,10 @@
 package control;
 
 import model.bean.UserBean;
-import model.dao.ISupportoEsameDAO;
-import model.dao.ITutoratoDidatticoDAO;
-import model.dao.SupportoEsameDAO;
-import model.dao.TutoratoDidatticoDAO;
+import model.dao.IsupportoEsameDao;
+import model.dao.ItutoratoDidatticoDao;
+import model.dao.SupportoEsameDao;
+import model.dao.TutoratoDidatticoDao;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -32,8 +32,8 @@ class ViewRichiesteServizioIntegrationTest {
   void testVisualizzaRichiesteServizio()
       throws SQLException, ClassNotFoundException, ServletException, IOException {
 
-    ISupportoEsameDAO supportoEsameDao = new SupportoEsameDAO();
-    ITutoratoDidatticoDAO tutoratoDidatticoDao = new TutoratoDidatticoDAO();
+    IsupportoEsameDao supportoEsameDao = new SupportoEsameDao();
+    ItutoratoDidatticoDao tutoratoDidatticoDao = new TutoratoDidatticoDao();
     UserBean bean = new UserBean();
     bean.setNome("Antonio");
     bean.setCognome("De Biase");

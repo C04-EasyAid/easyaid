@@ -3,10 +3,10 @@ package control;
 import model.bean.CommentoBean;
 import model.bean.LezioneBean;
 import model.bean.UserBean;
-import model.dao.CommentoDAO;
-import model.dao.ICommentoDAO;
-import model.dao.ILezioneDAO;
-import model.dao.LezioneDAO;
+import model.dao.CommentoDao;
+import model.dao.IcommentoDao;
+import model.dao.IlezioneDao;
+import model.dao.LezioneDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -48,8 +48,8 @@ class SingolaLezioneIntegrationTest {
     lezione.setId(11);
     request.setParameter("lezione", String.valueOf(lezione.getId()));
 
-    ILezioneDAO lezioneDao = new LezioneDAO();
-    ICommentoDAO commentoDao = new CommentoDAO();
+    IlezioneDao lezioneDao = new LezioneDao();
+    IcommentoDao commentoDao = new CommentoDao();
     servlet.setLezioneDao(lezioneDao);
     servlet.setCommentiDao(commentoDao);
     lezione = lezioneDao.doRetrieveLezioneById(lezione.getId());
@@ -76,8 +76,8 @@ class SingolaLezioneIntegrationTest {
     lezione.setId(11);
     request.setParameter("lezione", String.valueOf(lezione.getId()));
 
-    ILezioneDAO lezioneDao = new LezioneDAO();
-    ICommentoDAO commentoDao = new CommentoDAO();
+    IlezioneDao lezioneDao = new LezioneDao();
+    IcommentoDao commentoDao = new CommentoDao();
     servlet.setLezioneDao(lezioneDao);
     servlet.setCommentiDao(commentoDao);
     lezione = lezioneDao.doRetrieveLezioneById(lezione.getId());

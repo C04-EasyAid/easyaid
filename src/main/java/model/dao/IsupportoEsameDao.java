@@ -10,7 +10,7 @@ import model.bean.SupportoEsameBean;
  * @author Martina Giugliano
  */
 
-public interface ISupportoEsameDAO {
+public interface IsupportoEsameDao {
   List<SupportoEsameBean> doRetrieveAllByStudente(String emailStudente)
       throws SQLException, ClassNotFoundException;
 
@@ -25,7 +25,7 @@ public interface ISupportoEsameDAO {
 
   SupportoEsameBean doRetriveById(int id) throws SQLException, ClassNotFoundException;
 
-  boolean InserimentoSupportoEsame(SupportoEsameBean Bean) throws SQLException;
+  boolean inserimentoSupportoEsame(SupportoEsameBean bean) throws SQLException;
 
   boolean accettaRichiesta(int idSupporto, String emailTutor, String commento) throws SQLException;
 

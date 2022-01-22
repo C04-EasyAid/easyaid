@@ -39,5 +39,7 @@ public class CommentoBean {
     this.tutor = tutor;
   }
   /**Costruttore vuoto. */
-  public CommentoBean() {}
+  public CommentoBean() {
+
+  }
 }

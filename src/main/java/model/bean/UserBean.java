@@ -1,9 +1,10 @@
 package model.bean;
 
+
 import java.util.Locale;
 import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionBindingListener;
-import lombok.*;
+import lombok.Data;
 
 /**
  * Classe UserBean.
@@ -37,16 +38,19 @@ public class UserBean implements HttpSessionBindingListener {
     return isStudent;
   }
   // Restituisce vero se l'utente è un Tutor
+
   public boolean isTutor() {
     boolean isTutor = this.getRuolo().equals("T");
     return isTutor;
   }
   // Restituisce vero se l'utente è un Professore Referente
+
   public boolean isProfessoreReferente() {
     boolean isProf = this.getRuolo().equals("P");
     return isProf;
   }
   // Restituisce vero se l'utente è un Personale Amministrativo
+
   public boolean isPersonaleAmministrativo() {
     boolean isPers = this.getRuolo().equals("PA");
     return isPers;

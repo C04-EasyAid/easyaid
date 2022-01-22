@@ -11,7 +11,7 @@ import model.bean.ProfessoreReferenteBean;
  *
  * @author Roberto Tartaglia
  */
-public class ProfessoreReferenteDAO implements IProfessoreReferenteDAO {
+public class ProfessoreReferenteDao implements IprofessoreReferenteDao {
   @Override
   public synchronized ProfessoreReferenteBean doRetrieveByEmail(String email)
       throws SQLException, ClassNotFoundException {

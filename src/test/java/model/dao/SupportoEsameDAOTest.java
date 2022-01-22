@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SupportoEsameDAOTest {
 
-    private final SupportoEsameDAO dao = new SupportoEsameDAO();
+    private final SupportoEsameDao dao = new SupportoEsameDao();
 
     @Test
     void doRetrieveAllByStudente() throws SQLException, ClassNotFoundException {
@@ -112,7 +112,7 @@ class SupportoEsameDAOTest {
         bean.setInsegnamento(insegnamento);
         bean.setDocente(docente);
 
-        assertEquals(true,dao.InserimentoSupportoEsame(bean));
+        assertEquals(true,dao.inserimentoSupportoEsame(bean));
 
         List<SupportoEsameBean> list = dao.doRetrieveAllByStudente(email);
         SupportoEsameBean supportoEsameBean = list.get(list.size()-1);
@@ -127,7 +127,7 @@ class SupportoEsameDAOTest {
         SupportoEsameBean bean = new SupportoEsameBean();
 
 
-        assertEquals(false,dao.InserimentoSupportoEsame(bean));
+        assertEquals(false,dao.inserimentoSupportoEsame(bean));
 
     }
 
@@ -158,7 +158,7 @@ class SupportoEsameDAOTest {
         bean.setDipartimento(dipartimento);
         bean.setInsegnamento(insegnamento);
         bean.setDocente(docente);
-        dao.InserimentoSupportoEsame(bean);
+        dao.inserimentoSupportoEsame(bean);
 
         String emailTutor = "lorenzorossi1@studenti.unisa.it";
         String commento = "ok,va bene!";
@@ -218,7 +218,7 @@ class SupportoEsameDAOTest {
         bean.setDipartimento(dipartimento);
         bean.setInsegnamento(insegnamento);
         bean.setDocente(docente);
-        dao.InserimentoSupportoEsame(bean);
+        dao.inserimentoSupportoEsame(bean);
 
         String emailTutor = "lorenzorossi1@studenti.unisa.it";
         String commento = "ok,va bene!";
@@ -273,7 +273,7 @@ class SupportoEsameDAOTest {
         bean.setInsegnamento(insegnamento);
         bean.setDocente(docente);
 
-        dao.InserimentoSupportoEsame(bean);
+        dao.inserimentoSupportoEsame(bean);
 
         List<SupportoEsameBean> list = dao.doRetrieveAllByStudente(email);
         SupportoEsameBean supportoEsameBean = list.get(list.size()-1);

@@ -21,6 +21,11 @@ public class MyLogger {
     super();
   }
 
+  /**
+   * Metodo che restituisce l'istanza della classe Singleton.
+   *
+   * @return instance:instanza della classe Singleton.
+   */
   public static MyLogger getInstance() {
     if (instance == null) {
       instance = new MyLogger();

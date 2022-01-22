@@ -2,10 +2,10 @@ package control;
 
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
-import model.dao.IStudenteDAO;
-import model.dao.ITutoratoDidatticoDAO;
-import model.dao.StudenteDAO;
-import model.dao.TutoratoDidatticoDAO;
+import model.dao.IstudenteDao;
+import model.dao.ItutoratoDidatticoDao;
+import model.dao.StudenteDao;
+import model.dao.TutoratoDidatticoDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -36,8 +36,8 @@ class InserimentoRichiestaTutoratoIntegrationTest {
     @Test
     void TestInserimentoRichiestaTutorato1() throws ServletException, IOException, SQLException, ClassNotFoundException {
 
-        ITutoratoDidatticoDAO tutoratoDidatticoDAO = new TutoratoDidatticoDAO();
-        IStudenteDAO studenteDao = new StudenteDAO();
+        ItutoratoDidatticoDao tutoratoDidatticoDAO = new TutoratoDidatticoDao();
+        IstudenteDao studenteDao = new StudenteDao();
         UserBean bean = new UserBean();
         bean.setNome("Paolo");
         bean.setCognome("Rossi");

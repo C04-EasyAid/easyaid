@@ -11,9 +11,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class LezioneDAOTest {
+class LezioneDaoTest {
 
-    private final LezioneDAO lezioneDao = new LezioneDAO();
+    private final LezioneDao lezioneDao = new LezioneDao();
 
     @Test
     void doRetrieveLezioneById1() throws SQLException, ClassNotFoundException {

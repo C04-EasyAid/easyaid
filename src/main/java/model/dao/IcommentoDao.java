@@ -10,7 +10,7 @@ import model.bean.CommentoBean;
  * @author Mariagiovanna Bianco
  */
 
-public interface ICommentoDAO {
+public interface IcommentoDao {
   // Metodo che restituisce il commento
   Collection<CommentoBean> doRetrieveCommento(int id) throws ClassNotFoundException, SQLException;
 

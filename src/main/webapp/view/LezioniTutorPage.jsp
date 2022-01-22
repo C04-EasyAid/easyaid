@@ -12,7 +12,7 @@
 <%@ page import="model.bean.LezioneBean" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Collection" %>
-<%@ page import="model.dao.LezioneDAO" %>
+<%@ page import="model.dao.LezioneDao" %>
 <% if(session.getAttribute("utente")==null){
     response.sendRedirect("./LoginPage.jsp");
     return;

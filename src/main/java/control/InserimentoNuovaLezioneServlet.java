@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.bean.LezioneBean;
 import model.bean.UserBean;
-import model.dao.ILezioneDAO;
-import model.dao.LezioneDAO;
+import model.dao.IlezioneDao;
+import model.dao.LezioneDao;
 import other.MyLogger;
 
 /**
@@ -29,9 +29,9 @@ import other.MyLogger;
 public class InserimentoNuovaLezioneServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "InserimentoLezioneServlet";
-  private ILezioneDAO lezioneDao = new LezioneDAO();
+  private IlezioneDao lezioneDao = new LezioneDao();
 
-  public void setLezioneDao(ILezioneDAO lezioneDao) {
+  public void setLezioneDao(IlezioneDao lezioneDao) {
     this.lezioneDao = lezioneDao;
   }
 

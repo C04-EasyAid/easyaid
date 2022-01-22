@@ -13,8 +13,8 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class UserDAOTest {
-  private final UserDAO dao = new UserDAO();
+class UserDaoTest {
+  private final UserDao dao = new UserDao();
 
   @Test
   void doRetrieveUtente() throws SQLException, ClassNotFoundException {

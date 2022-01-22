@@ -1,9 +1,7 @@
 <%@ page import="model.bean.UserBean" %>
 <%@ page import="model.bean.TutorBean" %>
-<%@ page import="model.dao.UserDao" %>
 <%@ page import="model.bean.StudenteBean" %>
 <%@ page import="model.bean.ProfessoreReferenteBean" %>
-<%@ page import="model.dao.TutorDao" %><%--
 <%--
   Created by IntelliJ IDEA.
   User: Giovanni Toriello

@@ -6,13 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-<%@ page import="model.bean.UserBean" %>
 <%@ page import="model.bean.TutoratoDidatticoBean" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page import="model.bean.LezioneBean" %>
-<%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Collection" %>
-<%@ page import="model.dao.LezioneDao" %>
 <% if(session.getAttribute("utente")==null){
     response.sendRedirect("./LoginPage.jsp");
     return;
@@ -170,11 +166,11 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="oraInizio" class="col-form-label">Ora Inizio:</label>
-                                    <input type="time" name="oraInizio" class="form-control" id="oraInizio">
+                                    <input type="time" name="oraInizio" value="00:00" class="form-control" id="oraInizio">
                                 </div>
                                 <div class="mb-3">
                                     <label for="ora" class="col-form-label">Ora Fine:</label>
-                                    <input type="time" name="oraFine" class="form-control" id="ora">
+                                    <input type="time" name="oraFine" value="00:00" class="form-control" id="ora">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -184,7 +180,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="luogo" class="col-form-label">Luogo:</label>
-                                    <input type="text" name="luogo" class="form-control" id="luogo" minlength="2" maxlength="250">
+                                    <input type="text" name="luogo" class="form-control" id="luogo" minlength="2" maxlength="250" required>
                                 </div>
                             </div>
                         </div>
@@ -197,6 +193,7 @@
             </div>
         </div>
     </div>
+</form>
     <!-- Back to top -->
     <div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
 

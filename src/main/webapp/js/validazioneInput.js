@@ -12,8 +12,12 @@ function validate() {
 }
 
 function validateInserimento() {
-    const pass_valid = "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{12,}$/";
+    const pass_valid = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d[\]{};.:=<>_+^#$@!%*?&]{12,30}$/;
     const email_valid = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
+    const qualificareg = /^[a-zA-Z\s]*$/;
+    const qualifica_form=document.getElementById("qualifica");
+    const nome =document.getElementById("nome");
+    const cognome =document.getElementById("cognome");
     const email_form = document.getElementById("email");
     const pass_form = document.getElementById("password");
     let check = true;
@@ -26,6 +30,24 @@ function validateInserimento() {
         check = false;
         pass_form.focus();
         pass_form.style.background = '#f08080';
+    }
+    if(!qualificareg.test(qualifica_form.value))
+    {
+        check = false;
+        qualifica_form.focus();
+        qualifica_form.style.background = '#f08080';
+    }
+    if(!qualificareg.test(nome.value))
+    {
+        check=false;
+        nome.focus();
+        nome.style.background = '#f08080';
+    }
+    if(!qualificareg.test(cognome.value))
+    {
+        check=false;
+        cognome.focus();
+        cognome.style.background = '#f08080';
     }
     return check;
 

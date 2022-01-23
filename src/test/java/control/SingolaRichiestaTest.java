@@ -1,24 +1,23 @@
 package control;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.io.IOException;
+import java.sql.SQLException;
 import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
-import model.dao.ISupportoEsameDAO;
-import model.dao.ITutoratoDidatticoDAO;
-import model.dao.SupportoEsameDAO;
-import model.dao.TutoratoDidatticoDAO;
+import model.dao.IsupportoEsameDao;
+import model.dao.ItutoratoDidatticoDao;
+import model.dao.SupportoEsameDao;
+import model.dao.TutoratoDidatticoDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-
-import java.io.IOException;
-import java.sql.SQLException;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 class SingolaRichiestaTest {
 
@@ -50,7 +49,7 @@ class SingolaRichiestaTest {
     UserBean bean = new UserBean();
     request.getSession().setAttribute("utente", bean);
 
-    ISupportoEsameDAO supportoDao = mock(SupportoEsameDAO.class);
+    IsupportoEsameDao supportoDao = mock(SupportoEsameDao.class);
     servlet.setSupportoDao(supportoDao);
 
     SupportoEsameBean esameBean = new SupportoEsameBean();
@@ -71,7 +70,7 @@ class SingolaRichiestaTest {
     UserBean bean = new UserBean();
     request.getSession().setAttribute("utente", bean);
 
-    ITutoratoDidatticoDAO tutoratoDao = mock(TutoratoDidatticoDAO.class);
+    ItutoratoDidatticoDao tutoratoDao = mock(TutoratoDidatticoDao.class);
     servlet.setTutoratoDao(tutoratoDao);
 
     TutoratoDidatticoBean esameBean = new TutoratoDidatticoBean();

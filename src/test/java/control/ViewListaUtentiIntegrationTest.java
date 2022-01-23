@@ -1,17 +1,17 @@
 package control;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import javax.servlet.ServletException;
 import model.bean.UserBean;
-import model.dao.IUserDAO;
-import model.dao.UserDAO;
+import model.dao.IuserDao;
+import model.dao.UserDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-import javax.servlet.ServletException;
-import java.io.IOException;
-import java.sql.SQLException;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /*
 @author Martina Giugliano
@@ -34,7 +34,7 @@ class ViewListaUtentiIntegrationTest {
   void testViewListaUtenti()
       throws SQLException, ClassNotFoundException, ServletException, IOException {
 
-    IUserDAO userDao = new UserDAO();
+    IuserDao userDao = new UserDao();
     servlet.setUserDao(userDao);
     UserBean personaleAdm = new UserBean();
     personaleAdm.setNome("Carla");

@@ -1,25 +1,33 @@
 package control;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
+import javax.servlet.ServletException;
 import model.bean.LezioneBean;
 import model.bean.StudenteBean;
 import model.bean.TutorBean;
 import model.bean.UserBean;
-import model.dao.*;
+import model.dao.IlezioneDao;
+import model.dao.IstudenteDao;
+import model.dao.ItutorDao;
+import model.dao.ItutoratoDidatticoDao;
+import model.dao.LezioneDao;
+import model.dao.StudenteDao;
+import model.dao.TutorDao;
+import model.dao.TutoratoDidatticoDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-import javax.servlet.ServletException;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collection;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 class LezioniTest {
   private LezioniServlet servlet;
@@ -38,20 +46,20 @@ class LezioniTest {
   void testViewLezioni1()
       throws ServletException, IOException, SQLException, ClassNotFoundException {
     MockitoAnnotations.initMocks(this);
-    ILezioneDAO lezioneDao = mock(LezioneDAO.class);
-    IStudenteDAO studenteDao = mock(StudenteDAO.class);
-    ITutoratoDidatticoDAO tutoratoDidatticoDao = mock(TutoratoDidatticoDAO.class);
-    StudenteBean studenteBean = new StudenteBean();
-    UserBean userBean = new UserBean();
+    IlezioneDao lezioneDao = mock(LezioneDao.class);
+    IstudenteDao studenteDao = mock(StudenteDao.class);
+    ItutoratoDidatticoDao tutoratoDidatticoDao = mock(TutoratoDidatticoDao.class);
 
     servlet.setLezioneDao(lezioneDao);
     servlet.setStudenteDao(studenteDao);
     servlet.settutoratodidatticodao(tutoratoDidatticoDao);
 
+    UserBean userBean = new UserBean();
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("S");
 
+    StudenteBean studenteBean = new StudenteBean();
     when(studenteDao.doRetrieveByEmail(userBean.getEmail())).thenReturn(studenteBean);
     Collection<LezioneBean> list = new ArrayList<>();
     list.add(new LezioneBean());
@@ -81,20 +89,19 @@ class LezioniTest {
   void testViewLezioni3()
       throws ServletException, IOException, SQLException, ClassNotFoundException {
     MockitoAnnotations.initMocks(this);
-    ILezioneDAO lezioneDao = mock(LezioneDAO.class);
-    ITutorDAO tutorDao = mock(TutorDAO.class);
-    ITutoratoDidatticoDAO tutoratoDidatticoDao = mock(TutoratoDidatticoDAO.class);
-    TutorBean tutorBean = new TutorBean();
-    UserBean userBean = new UserBean();
-
+    IlezioneDao lezioneDao = mock(LezioneDao.class);
+    ItutorDao tutorDao = mock(TutorDao.class);
+    ItutoratoDidatticoDao tutoratoDidatticoDao = mock(TutoratoDidatticoDao.class);
     servlet.setLezioneDao(lezioneDao);
     servlet.settutoratodidatticodao(tutoratoDidatticoDao);
     servlet.setTutorDao(tutorDao);
 
+    UserBean userBean = new UserBean();
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
 
+    TutorBean tutorBean = new TutorBean();
     when(tutorDao.doRetrieveByEmail(userBean.getEmail())).thenReturn(tutorBean);
     Collection<LezioneBean> list = new ArrayList<>();
     list.add(new LezioneBean());

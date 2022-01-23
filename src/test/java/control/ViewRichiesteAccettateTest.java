@@ -1,27 +1,26 @@
 package control;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.servlet.ServletException;
 import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
-import model.dao.ISupportoEsameDAO;
-import model.dao.ITutoratoDidatticoDAO;
-import model.dao.SupportoEsameDAO;
-import model.dao.TutoratoDidatticoDAO;
+import model.dao.IsupportoEsameDao;
+import model.dao.ItutoratoDidatticoDao;
+import model.dao.SupportoEsameDao;
+import model.dao.TutoratoDidatticoDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-
-import javax.servlet.ServletException;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 class ViewRichiesteAccettateTest {
 
@@ -63,8 +62,11 @@ class ViewRichiesteAccettateTest {
   void viewRichiesteAccettateTest3()
       throws ServletException, IOException, SQLException, ClassNotFoundException {
     MockitoAnnotations.initMocks(this);
-    ISupportoEsameDAO supportoEsameDao = mock(SupportoEsameDAO.class);
-    ITutoratoDidatticoDAO tutoratoDidatticoDao = mock(TutoratoDidatticoDAO.class);
+    IsupportoEsameDao supportoEsameDao = mock(SupportoEsameDao.class);
+    ItutoratoDidatticoDao tutoratoDidatticoDao = mock(TutoratoDidatticoDao.class);
+    servlet.setSupportoDao(supportoEsameDao);
+    servlet.setTutoratoDao(tutoratoDidatticoDao);
+
     UserBean bean = new UserBean();
     bean.setEmail("adebiase41@studenti.unisa.it");
     bean.setRuolo("T");
@@ -72,9 +74,6 @@ class ViewRichiesteAccettateTest {
 
     List<SupportoEsameBean> listSupporto = new ArrayList<>();
     List<TutoratoDidatticoBean> listTutorati = new ArrayList<>();
-
-    servlet.setSupportoDao(supportoEsameDao);
-    servlet.setTutoratoDao(tutoratoDidatticoDao);
 
     when(supportoEsameDao.doRetrieveAllByTutor(bean.getEmail())).thenReturn(listSupporto);
     when(tutoratoDidatticoDao.doRetrieveAllByTutor(bean.getEmail())).thenReturn(listTutorati);

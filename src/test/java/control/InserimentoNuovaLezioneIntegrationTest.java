@@ -1,14 +1,7 @@
 package control;
 
-import model.bean.LezioneBean;
-import model.bean.UserBean;
-import model.dao.ILezioneDAO;
-import model.dao.LezioneDAO;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.mock.web.MockHttpServletResponse;
-import javax.servlet.ServletException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -16,12 +9,22 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import javax.servlet.ServletException;
+import model.bean.LezioneBean;
+import model.bean.UserBean;
+import model.dao.IlezioneDao;
+import model.dao.LezioneDao;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.mock.web.MockHttpServletResponse;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/*
-@author Martina Giugliano
- */
+    /**
+    * Test di integrazione per la funzionalità: inserimento nuova lezione.
+    *
+    * @author Martina Giugliano
+    */
     class InserimentoNuovaLezioneIntegrationTest {
         private InserimentoNuovaLezioneServlet servlet;
         private MockHttpServletRequest request;
@@ -35,10 +38,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         }
 
         @Test
-        void testInserimentoNuovaLezione() throws ParseException, ServletException, IOException, ClassNotFoundException {
+        void testInserimentoNuovaLezione() throws ParseException, ServletException, IOException,
+                ClassNotFoundException {
 
             UserBean userBean = new UserBean();
-            ILezioneDAO lezioneDAO = new LezioneDAO();
+            IlezioneDao lezioneDao = new LezioneDao();
             userBean.setNome("Lorenzo");
             userBean.setCognome("Rossi");
             userBean.setEmail("lorenzorossi1@studenti.unisa.it");
@@ -66,14 +70,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
                 lezioneBean.setData(date);
                 lezioneBean.setLuogo(luogo);
 
-                servlet.setLezioneDao(lezioneDAO);
+                servlet.setLezioneDao(lezioneDao);
                 servlet.doGet(request, response);
                 assertEquals(
                         "Lezione Inserita",
                         Objects.requireNonNull(request.getSession()).getAttribute("alertMsg"));
-                List<LezioneBean> list = (List<LezioneBean>) lezioneDAO.doRetrieveLezioniById(idTutorato);
-                lezioneBean = list.get(list.size()-1);
-                lezioneDAO.deleteLezione(lezioneBean);
+                List<LezioneBean> list =
+                        (List<LezioneBean>) lezioneDao.doRetrieveLezioniById(idTutorato);
+                lezioneBean = list.get(list.size() - 1);
+                lezioneDao.deleteLezione(lezioneBean);
             } catch (SQLException e) {
                 e.printStackTrace();
             }

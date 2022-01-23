@@ -1,18 +1,19 @@
 package control;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import javax.servlet.ServletException;
 import model.bean.UserBean;
-import model.dao.ISupportoEsameDAO;
-import model.dao.ITutoratoDidatticoDAO;
-import model.dao.SupportoEsameDAO;
-import model.dao.TutoratoDidatticoDAO;
+import model.dao.IsupportoEsameDao;
+import model.dao.ItutoratoDidatticoDao;
+import model.dao.SupportoEsameDao;
+import model.dao.TutoratoDidatticoDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-import javax.servlet.ServletException;
-import java.io.IOException;
-import java.sql.SQLException;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /*
 @author Serena Liguori
@@ -33,8 +34,11 @@ class ViewRichiesteAccettateIntegrationTest {
   void viewRichiesteAccettateTest()
       throws ServletException, IOException, SQLException, ClassNotFoundException {
 
-    ISupportoEsameDAO supportoEsameDao = new SupportoEsameDAO();
-    ITutoratoDidatticoDAO tutoratoDidatticoDao = new TutoratoDidatticoDAO();
+    IsupportoEsameDao supportoEsameDao = new SupportoEsameDao();
+    ItutoratoDidatticoDao tutoratoDidatticoDao = new TutoratoDidatticoDao();
+    servlet.setSupportoDao(supportoEsameDao);
+    servlet.setTutoratoDao(tutoratoDidatticoDao);
+
     UserBean bean = new UserBean();
     bean.setNome("Antonio");
     bean.setCognome("De Biase");
@@ -42,8 +46,7 @@ class ViewRichiesteAccettateIntegrationTest {
     bean.setPassword("Antonio#DB123");
     bean.setRuolo("T");
     request.getSession().setAttribute("utente", bean);
-    servlet.setSupportoDao(supportoEsameDao);
-    servlet.setTutoratoDao(tutoratoDidatticoDao);
+
     servlet.doGet(request, response);
 
     assertEquals("view/RichiesteAccettatePage.jsp", response.getRedirectedUrl());

@@ -1,6 +1,6 @@
 package model.bean;
 
-import lombok.*;
+import lombok.Data;
 
 /**
  * Classe ProfessoreReferenteBean.

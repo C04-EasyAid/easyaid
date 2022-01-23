@@ -1,28 +1,33 @@
 package control;
-/** @author Martina Giugliano Testing per l'approvazione di una richiesta */
-import model.bean.SupportoEsameBean;
-import model.bean.TutoratoDidatticoBean;
-import model.bean.UserBean;
-import model.dao.ISupportoEsameDAO;
-import model.dao.ITutoratoDidatticoDAO;
-import model.dao.SupportoEsameDAO;
-import model.dao.TutoratoDidatticoDAO;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.MockitoAnnotations;
-import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.mock.web.MockHttpServletResponse;
-
-import javax.servlet.ServletException;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Objects;
+import javax.servlet.ServletException;
+import model.bean.SupportoEsameBean;
+import model.bean.TutoratoDidatticoBean;
+import model.bean.UserBean;
+import model.dao.IsupportoEsameDao;
+import model.dao.ItutoratoDidatticoDao;
+import model.dao.SupportoEsameDao;
+import model.dao.TutoratoDidatticoDao;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.MockitoAnnotations;
+import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.mock.web.MockHttpServletResponse;
+
+/**
+ * Testing per l'approvazione di una richiesta.
+ *
+ * @author Martina Giugliano
+ *
+ */
 class ApprovazioneRichiestaTest {
   private ApprovazioneRichiestaServlet servlet;
   private MockHttpServletRequest request;
@@ -39,7 +44,8 @@ class ApprovazioneRichiestaTest {
   void testApprovazioneRichiesta1() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
 
-    ITutoratoDidatticoDAO tutoratoDAO = mock(TutoratoDidatticoDAO.class);
+    ItutoratoDidatticoDao tutoratoDao = mock(TutoratoDidatticoDao.class);
+    servlet.setTutoratodao(tutoratoDao);
 
     UserBean userBean = new UserBean();
 
@@ -50,9 +56,8 @@ class ApprovazioneRichiestaTest {
     request.getSession().setAttribute("utente", userBean);
     request.getSession().setAttribute("tutorato", tutoratoDidatticoBean);
 
-    servlet.setTutoratodao(tutoratoDAO);
     try {
-      when(tutoratoDAO.approvaRichiesta(tutoratoDidatticoBean.getId(), userBean.getEmail()))
+      when(tutoratoDao.approvaRichiesta(tutoratoDidatticoBean.getId(), userBean.getEmail()))
           .thenThrow(new SQLException());
     } catch (SQLException e) {
       e.printStackTrace();
@@ -68,7 +73,8 @@ class ApprovazioneRichiestaTest {
   void testApprovazioneRichiesta2() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
 
-    ITutoratoDidatticoDAO tutoratoDAO = mock(TutoratoDidatticoDAO.class);
+    ItutoratoDidatticoDao tutoratoDao = mock(TutoratoDidatticoDao.class);
+    servlet.setTutoratodao(tutoratoDao);
 
     UserBean userBean = new UserBean();
 
@@ -79,9 +85,8 @@ class ApprovazioneRichiestaTest {
     request.getSession().setAttribute("utente", userBean);
     request.getSession().setAttribute("tutorato", tutoratoDidatticoBean);
 
-    servlet.setTutoratodao(tutoratoDAO);
     try {
-      when(tutoratoDAO.approvaRichiesta(tutoratoDidatticoBean.getId(), userBean.getEmail()))
+      when(tutoratoDao.approvaRichiesta(tutoratoDidatticoBean.getId(), userBean.getEmail()))
           .thenReturn(true);
     } catch (SQLException e) {
       e.printStackTrace();
@@ -97,7 +102,8 @@ class ApprovazioneRichiestaTest {
   void testApprovazioneRichiesta3() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
 
-    ISupportoEsameDAO supportoDAO = mock(SupportoEsameDAO.class);
+    IsupportoEsameDao supportoDao = mock(SupportoEsameDao.class);
+    servlet.setSupportodao(supportoDao);
 
     UserBean userBean = new UserBean();
 
@@ -108,9 +114,8 @@ class ApprovazioneRichiestaTest {
     request.getSession().setAttribute("utente", userBean);
     request.getSession().setAttribute("supporto", supportoEsameBean);
 
-    servlet.setSupportodao(supportoDAO);
     try {
-      when(supportoDAO.approvaRichiesta(supportoEsameBean.getId(), userBean.getEmail()))
+      when(supportoDao.approvaRichiesta(supportoEsameBean.getId(), userBean.getEmail()))
           .thenThrow(new SQLException());
     } catch (SQLException e) {
       e.printStackTrace();
@@ -126,7 +131,8 @@ class ApprovazioneRichiestaTest {
   void testApprovazioneRichiesta4() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
 
-    ISupportoEsameDAO supportoDAO = mock(SupportoEsameDAO.class);
+    IsupportoEsameDao supportoDao = mock(SupportoEsameDao.class);
+    servlet.setSupportodao(supportoDao);
 
     UserBean userBean = new UserBean();
 
@@ -137,9 +143,9 @@ class ApprovazioneRichiestaTest {
     request.getSession().setAttribute("utente", userBean);
     request.getSession().setAttribute("supporto", supportoEsameBean);
 
-    servlet.setSupportodao(supportoDAO);
+
     try {
-      when(supportoDAO.approvaRichiesta(supportoEsameBean.getId(), userBean.getEmail()))
+      when(supportoDao.approvaRichiesta(supportoEsameBean.getId(), userBean.getEmail()))
           .thenReturn(true);
     } catch (SQLException e) {
       e.printStackTrace();

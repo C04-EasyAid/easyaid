@@ -1,22 +1,23 @@
 package control;
 
-import model.bean.CommentoBean;
-import model.bean.LezioneBean;
-import model.bean.UserBean;
-import model.dao.CommentoDAO;
-import model.dao.ICommentoDAO;
-import model.dao.ILezioneDAO;
-import model.dao.LezioneDAO;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.mock.web.MockHttpServletResponse;
-import javax.servlet.ServletException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import javax.servlet.ServletException;
+import model.bean.CommentoBean;
+import model.bean.LezioneBean;
+import model.bean.UserBean;
+import model.dao.CommentoDao;
+import model.dao.IcommentoDao;
+import model.dao.IlezioneDao;
+import model.dao.LezioneDao;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.mock.web.MockHttpServletResponse;
 
 /*
 @author Serena Liguori
@@ -48,8 +49,8 @@ class SingolaLezioneIntegrationTest {
     lezione.setId(11);
     request.setParameter("lezione", String.valueOf(lezione.getId()));
 
-    ILezioneDAO lezioneDao = new LezioneDAO();
-    ICommentoDAO commentoDao = new CommentoDAO();
+    IlezioneDao lezioneDao = new LezioneDao();
+    IcommentoDao commentoDao = new CommentoDao();
     servlet.setLezioneDao(lezioneDao);
     servlet.setCommentiDao(commentoDao);
     lezione = lezioneDao.doRetrieveLezioneById(lezione.getId());
@@ -76,8 +77,8 @@ class SingolaLezioneIntegrationTest {
     lezione.setId(11);
     request.setParameter("lezione", String.valueOf(lezione.getId()));
 
-    ILezioneDAO lezioneDao = new LezioneDAO();
-    ICommentoDAO commentoDao = new CommentoDAO();
+    IlezioneDao lezioneDao = new LezioneDao();
+    IcommentoDao commentoDao = new CommentoDao();
     servlet.setLezioneDao(lezioneDao);
     servlet.setCommentiDao(commentoDao);
     lezione = lezioneDao.doRetrieveLezioneById(lezione.getId());

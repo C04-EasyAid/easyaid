@@ -1,28 +1,37 @@
 package control;
 
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Objects;
+import javax.servlet.ServletException;
 import model.bean.ProfessoreReferenteBean;
 import model.bean.StudenteBean;
 import model.bean.TutorBean;
-import model.dao.IUserDAO;
-import org.junit.jupiter.api.BeforeEach;
 import model.bean.UserBean;
-import model.dao.UserDAO;
+import model.dao.IuserDao;
+import model.dao.UserDao;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-import javax.servlet.ServletException;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.Objects;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-/** @author Giovanni Toriello Testing per l'inserimento di uno Studente */
+
+/**
+ *  Testing  di unità per la funzioanlità: inserimento studente,
+ *  inserimento tutor e inserimento professore referente.
+ *
+ *  @author Giovanni Toriello
+ *
+ */
+
 class RegisterTest {
   private RegisterServlet servlet;
   private MockHttpServletRequest request;
@@ -36,9 +45,11 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoStudente1() throws ServletException, IOException {
+  void testinserimentoStudente1() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    servlet.setDao(userDao);
+
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
     persAdmin.setPassword("C#Gigli#9109");
@@ -72,9 +83,8 @@ class RegisterTest {
     request.setParameter("specificheDisturbo", specificheDisturbo);
     request.setParameter("percentualeDisabilita", percentualeDisabilita);
 
-    servlet.setDao(userDAO);
     try {
-      when(userDAO.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (ClassNotFoundException e) {
@@ -88,9 +98,10 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoStudente2() throws ServletException, IOException {
+  void testinserimentoStudente2() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    servlet.setDao(userDao);
 
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
@@ -125,9 +136,8 @@ class RegisterTest {
     request.setParameter("specificheDisturbo", specificheDisturbo);
     request.setParameter("percentualeDisabilita", percentualeDisabilita);
 
-    servlet.setDao(userDAO);
     try {
-      when(userDAO.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (ClassNotFoundException e) {
@@ -141,9 +151,10 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoStudente3() throws ServletException, IOException {
+  void testinserimentoStudente3() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    servlet.setDao(userDao);
 
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
@@ -178,9 +189,9 @@ class RegisterTest {
     request.setParameter("specificheDisturbo", specificheDisturbo);
     request.setParameter("percentualeDisabilita", percentualeDisabilita);
 
-    servlet.setDao(userDAO);
+
     try {
-      when(userDAO.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (ClassNotFoundException e) {
@@ -194,9 +205,10 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoStudente4() throws ServletException, IOException {
+  void testinserimentoStudente4() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    servlet.setDao(userDao);
 
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
@@ -231,9 +243,9 @@ class RegisterTest {
     request.setParameter("specificheDisturbo", specificheDisturbo);
     request.setParameter("percentualeDisabilita", percentualeDisabilita);
 
-    servlet.setDao(userDAO);
+
     try {
-      when(userDAO.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (ClassNotFoundException e) {
@@ -247,9 +259,10 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoStudente5() throws ServletException, IOException {
+  void testinserimentoStudente5() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    servlet.setDao(userDao);
 
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
@@ -284,9 +297,9 @@ class RegisterTest {
     request.setParameter("specificheDisturbo", specificheDisturbo);
     request.setParameter("percentualeDisabilita", percentualeDisabilita);
 
-    servlet.setDao(userDAO);
+
     try {
-      when(userDAO.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (ClassNotFoundException e) {
@@ -300,9 +313,10 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoStudente6() throws ServletException, IOException {
+  void testinserimentoStudente6() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    servlet.setDao(userDao);
 
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
@@ -337,9 +351,9 @@ class RegisterTest {
     request.setParameter("specificheDisturbo", specificheDisturbo);
     request.setParameter("percentualeDisabilita", percentualeDisabilita);
 
-    servlet.setDao(userDAO);
+
     try {
-      when(userDAO.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (ClassNotFoundException e) {
@@ -353,9 +367,10 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoStudente7() throws ServletException, IOException {
+  void testinserimentoStudente7() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    servlet.setDao(userDao);
 
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
@@ -390,9 +405,9 @@ class RegisterTest {
     request.setParameter("specificheDisturbo", specificheDisturbo);
     request.setParameter("percentualeDisabilita", percentualeDisabilita);
 
-    servlet.setDao(userDAO);
+
     try {
-      when(userDAO.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (ClassNotFoundException e) {
@@ -406,9 +421,10 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoStudente8() throws ServletException, IOException {
+  void testinserimentoStudente8() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    servlet.setDao(userDao);
 
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
@@ -443,9 +459,9 @@ class RegisterTest {
     request.setParameter("specificheDisturbo", specificheDisturbo);
     request.setParameter("percentualeDisabilita", percentualeDisabilita);
 
-    servlet.setDao(userDAO);
+
     try {
-      when(userDAO.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (ClassNotFoundException e) {
@@ -459,9 +475,10 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoStudente9() throws ServletException, IOException {
+  void testinserimentoStudente9() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    servlet.setDao(userDao);
 
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
@@ -496,9 +513,9 @@ class RegisterTest {
     request.setParameter("specificheDisturbo", specificheDisturbo);
     request.setParameter("percentualeDisabilita", percentualeDisabilita);
 
-    servlet.setDao(userDAO);
+
     try {
-      when(userDAO.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (ClassNotFoundException e) {
@@ -512,9 +529,10 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoStudente10() throws ServletException, IOException {
+  void testinserimentoStudente10() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    servlet.setDao(userDao);
 
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
@@ -549,9 +567,9 @@ class RegisterTest {
     request.setParameter("specificheDisturbo", specificheDisturbo);
     request.setParameter("percentualeDisabilita", percentualeDisabilita);
 
-    servlet.setDao(userDAO);
+
     try {
-      when(userDAO.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (ClassNotFoundException e) {
@@ -565,9 +583,10 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoStudente12() throws ServletException, IOException {
+  void testinserimentoStudente12() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    servlet.setDao(userDao);
 
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
@@ -602,9 +621,9 @@ class RegisterTest {
     request.setParameter("specificheDisturbo", specificheDisturbo);
     request.setParameter("percentualeDisabilita", percentualeDisabilita);
 
-    servlet.setDao(userDAO);
+
     try {
-      when(userDAO.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (ClassNotFoundException e) {
@@ -618,9 +637,10 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoStudente14() throws ServletException, IOException {
+  void testinserimentoStudente14() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    servlet.setDao(userDao);
 
     UserBean persAdmin = new UserBean();
     persAdmin.setEmail("cgigli91@unisa.it");
@@ -655,9 +675,9 @@ class RegisterTest {
     request.setParameter("specificheDisturbo", specificheDisturbo);
     request.setParameter("percentualeDisabilita", percentualeDisabilita);
 
-    servlet.setDao(userDAO);
+
     try {
-      when(userDAO.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertStudente(studente, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (ClassNotFoundException e) {
@@ -671,9 +691,9 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoStudente15() throws ServletException, IOException {
+  void testinserimentoStudente15() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
 
 
     UserBean persAdmin = new UserBean();
@@ -710,13 +730,13 @@ class RegisterTest {
             Integer.parseInt(percentualeDisabilita));
 
     try {
-      when(userDAO.insertStudente(studente, utenteTemporaneo)).thenReturn(true);
+      when(userDao.insertStudente(studente, utenteTemporaneo)).thenReturn(true);
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (ClassNotFoundException e) {
       e.printStackTrace();
     }
-    servlet.setDao(userDAO);
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertEquals(
@@ -725,9 +745,9 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoTutor1() throws ServletException, IOException {
+  void testinserimentoTutor1() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -760,11 +780,11 @@ class RegisterTest {
     tutor.setOreDisponibili(Integer.parseInt(oreDisponibili));
 
     try {
-      when(userDAO.insertTutor(tutor, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertTutor(tutor, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(userDAO);
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertNotEquals(
@@ -773,9 +793,9 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoTutor2() throws ServletException, IOException {
+  void testinserimentoTutor2() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -808,11 +828,11 @@ class RegisterTest {
     tutor.setOreDisponibili(Integer.parseInt(oreDisponibili));
 
     try {
-      when(userDAO.insertTutor(tutor, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertTutor(tutor, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(userDAO);
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertNotEquals(
@@ -821,9 +841,9 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoTutor3() throws ServletException, IOException {
+  void testinserimentoTutor3() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -856,11 +876,11 @@ class RegisterTest {
     tutor.setOreDisponibili(Integer.parseInt(oreDisponibili));
 
     try {
-      when(userDAO.insertTutor(tutor, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertTutor(tutor, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(userDAO);
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertNotEquals(
@@ -869,9 +889,9 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoTutor4() throws ServletException, IOException {
+  void testinserimentoTutor4() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -904,11 +924,11 @@ class RegisterTest {
     tutor.setOreDisponibili(Integer.parseInt(oreDisponibili));
 
     try {
-      when(userDAO.insertTutor(tutor, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertTutor(tutor, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(userDAO);
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertNotEquals(
@@ -917,9 +937,9 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoTutor5() throws ServletException, IOException {
+  void testinserimentoTutor5() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -952,11 +972,11 @@ class RegisterTest {
     tutor.setOreDisponibili(Integer.parseInt(oreDisponibili));
 
     try {
-      when(userDAO.insertTutor(tutor, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertTutor(tutor, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(userDAO);
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertNotEquals(
@@ -965,9 +985,9 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoTutor6() throws ServletException, IOException {
+  void testinserimentoTutor6() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1000,11 +1020,11 @@ class RegisterTest {
     tutor.setOreDisponibili(Integer.parseInt(oreDisponibili));
 
     try {
-      when(userDAO.insertTutor(tutor, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertTutor(tutor, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(userDAO);
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertNotEquals(
@@ -1013,9 +1033,9 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoTutor7() throws ServletException, IOException {
+  void testinserimentoTutor7() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1048,11 +1068,11 @@ class RegisterTest {
     tutor.setOreDisponibili(Integer.parseInt(oreDisponibili));
 
     try {
-      when(userDAO.insertTutor(tutor, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertTutor(tutor, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(userDAO);
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertNotEquals(
@@ -1061,9 +1081,9 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoTutor8() throws ServletException, IOException {
+  void testinserimentoTutor8() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1096,11 +1116,11 @@ class RegisterTest {
     tutor.setOreDisponibili(Integer.parseInt(oreDisponibili));
 
     try {
-      when(userDAO.insertTutor(tutor, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertTutor(tutor, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(userDAO);
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertNotEquals(
@@ -1109,9 +1129,9 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoTutor9() throws ServletException, IOException {
+  void testinserimentoTutor9() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1144,11 +1164,11 @@ class RegisterTest {
     tutor.setOreDisponibili(Integer.parseInt(oreDisponibili));
 
     try {
-      when(userDAO.insertTutor(tutor, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertTutor(tutor, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(userDAO);
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertNotEquals(
@@ -1157,9 +1177,9 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoTutor10() throws ServletException, IOException {
+  void testinserimentoTutor10() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1192,11 +1212,11 @@ class RegisterTest {
     tutor.setOreDisponibili(Integer.parseInt(oreDisponibili));
 
     try {
-      when(userDAO.insertTutor(tutor, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertTutor(tutor, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(userDAO);
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertNotEquals(
@@ -1205,9 +1225,9 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoTutor11() throws ServletException, IOException {
+  void testinserimentoTutor11() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1240,11 +1260,11 @@ class RegisterTest {
     tutor.setOreDisponibili(Integer.parseInt(oreDisponibili));
 
     try {
-      when(userDAO.insertTutor(tutor, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertTutor(tutor, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(userDAO);
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertNotEquals(
@@ -1253,9 +1273,9 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoTutor12() throws ServletException, IOException {
+  void testinserimentoTutor12() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1288,11 +1308,11 @@ class RegisterTest {
     tutor.setOreDisponibili(Integer.parseInt(oreDisponibili));
 
     try {
-      when(userDAO.insertTutor(tutor, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertTutor(tutor, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(userDAO);
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertNotEquals(
@@ -1301,9 +1321,9 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoTutor13() throws ServletException, IOException {
+  void testinserimentoTutor13() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1336,11 +1356,11 @@ class RegisterTest {
     tutor.setOreDisponibili(Integer.parseInt(oreDisponibili));
 
     try {
-      when(userDAO.insertTutor(tutor, utenteTemporaneo)).thenReturn(true);
+      when(userDao.insertTutor(tutor, utenteTemporaneo)).thenReturn(true);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(userDAO);
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertEquals(
@@ -1349,9 +1369,9 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoProfessoreReferente1() throws ServletException, IOException {
+  void testinserimentoProfessorereferente1() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1377,11 +1397,11 @@ class RegisterTest {
     prof.setDipartimento(dipartimento);
 
     try {
-      when(userDAO.insertProfessoreReferente(prof, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertProfessoreReferente(prof, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(userDAO);
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertNotEquals(
@@ -1390,9 +1410,9 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoProfessoreReferente2() throws ServletException, IOException {
+  void testinserimentoProfessorereferente2() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1418,11 +1438,11 @@ class RegisterTest {
     prof.setDipartimento(dipartimento);
 
     try {
-      when(userDAO.insertProfessoreReferente(prof, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertProfessoreReferente(prof, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(userDAO);
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertNotEquals(
@@ -1431,9 +1451,9 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoProfessoreReferente3() throws ServletException, IOException {
+  void testinserimentoProfessorereferente3() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1459,11 +1479,11 @@ class RegisterTest {
     prof.setDipartimento(dipartimento);
 
     try {
-      when(userDAO.insertProfessoreReferente(prof, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertProfessoreReferente(prof, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(userDAO);
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertNotEquals(
@@ -1472,9 +1492,9 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoProfessoreReferente4() throws ServletException, IOException {
+  void testinserimentoProfessorereferente4() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1500,11 +1520,11 @@ class RegisterTest {
     prof.setDipartimento(dipartimento);
 
     try {
-      when(userDAO.insertProfessoreReferente(prof, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertProfessoreReferente(prof, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(userDAO);
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertNotEquals(
@@ -1513,9 +1533,9 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoProfessoreReferente5() throws ServletException, IOException {
+  void testinserimentoProfessorereferente5() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1541,11 +1561,11 @@ class RegisterTest {
     prof.setDipartimento(dipartimento);
 
     try {
-      when(userDAO.insertProfessoreReferente(prof, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertProfessoreReferente(prof, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(userDAO);
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertNotEquals(
@@ -1554,9 +1574,9 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoProfessoreReferente6() throws ServletException, IOException {
+  void testinserimentoProfessorereferente6() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1582,11 +1602,11 @@ class RegisterTest {
     prof.setDipartimento(dipartimento);
 
     try {
-      when(userDAO.insertProfessoreReferente(prof, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertProfessoreReferente(prof, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(userDAO);
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertNotEquals(
@@ -1595,9 +1615,9 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoProfessoreReferente7() throws ServletException, IOException {
+  void testinserimentoProfessorereferente7() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1623,11 +1643,11 @@ class RegisterTest {
     prof.setDipartimento(dipartimento);
 
     try {
-      when(userDAO.insertProfessoreReferente(prof, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertProfessoreReferente(prof, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(userDAO);
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertNotEquals(
@@ -1636,9 +1656,9 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoProfessoreReferente8() throws ServletException, IOException {
+  void testinserimentoProfessorereferente8() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1664,11 +1684,11 @@ class RegisterTest {
     prof.setDipartimento(dipartimento);
 
     try {
-      when(userDAO.insertProfessoreReferente(prof, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertProfessoreReferente(prof, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(userDAO);
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertNotEquals(
@@ -1677,9 +1697,9 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoProfessoreReferente9() throws ServletException, IOException {
+  void testinserimentoProfessorereferente9() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1705,11 +1725,11 @@ class RegisterTest {
     prof.setDipartimento(dipartimento);
 
     try {
-      when(userDAO.insertProfessoreReferente(prof, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertProfessoreReferente(prof, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(userDAO);
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertNotEquals(
@@ -1718,9 +1738,9 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoProfessoreReferente10() throws ServletException, IOException {
+  void testinserimentoProfessorereferente10() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1746,11 +1766,11 @@ class RegisterTest {
     prof.setDipartimento(dipartimento);
 
     try {
-      when(userDAO.insertProfessoreReferente(prof, utenteTemporaneo)).thenReturn(false);
+      when(userDao.insertProfessoreReferente(prof, utenteTemporaneo)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(userDAO);
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertNotEquals(
@@ -1759,9 +1779,9 @@ class RegisterTest {
   }
 
   @Test
-  void TestInserimentoProfessoreReferente11() throws ServletException, IOException {
+  void testinserimentoProfessorereferente11() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDAO = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
 
     UserBean persAdmin = new UserBean();
     UserBean bean = new UserBean();
@@ -1787,11 +1807,11 @@ class RegisterTest {
     prof.setDipartimento(dipartimento);
 
     try {
-      when(userDAO.insertProfessoreReferente(prof, utenteTemporaneo)).thenReturn(true);
+      when(userDao.insertProfessoreReferente(prof, utenteTemporaneo)).thenReturn(true);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setDao(userDAO);
+    servlet.setDao(userDao);
     servlet.doGet(request, response);
 
     assertEquals(

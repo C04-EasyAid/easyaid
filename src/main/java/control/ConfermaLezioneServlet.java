@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.bean.LezioneBean;
 import model.bean.UserBean;
-import model.dao.ILezioneDAO;
-import model.dao.ITutoratoDidatticoDAO;
-import model.dao.LezioneDAO;
-import model.dao.TutoratoDidatticoDAO;
+import model.dao.IlezioneDao;
+import model.dao.ItutoratoDidatticoDao;
+import model.dao.LezioneDao;
+import model.dao.TutoratoDidatticoDao;
 import other.MyLogger;
 
 /**
@@ -28,14 +28,14 @@ import other.MyLogger;
 public class ConfermaLezioneServlet extends HttpServlet {
   private static MyLogger log = MyLogger.getInstance();
   private static String myClass = "ConfermaLezioneServlet";
-  private ILezioneDAO lezioneDao = new LezioneDAO();
-  private ITutoratoDidatticoDAO tutoratoDidatticoDao = new TutoratoDidatticoDAO();
+  private IlezioneDao lezioneDao = new LezioneDao();
+  private ItutoratoDidatticoDao tutoratoDidatticoDao = new TutoratoDidatticoDao();
 
-  public void setlezioneDao(ILezioneDAO lezioneDao) {
+  public void setlezioneDao(IlezioneDao lezioneDao) {
     this.lezioneDao = lezioneDao;
   }
 
-  public void settutoratodidatticoDao(ITutoratoDidatticoDAO tutoratodidatticoDao) {
+  public void settutoratodidatticoDao(ItutoratoDidatticoDao tutoratodidatticoDao) {
     this.tutoratoDidatticoDao = tutoratodidatticoDao;
   }
 
@@ -52,9 +52,8 @@ public class ConfermaLezioneServlet extends HttpServlet {
         Collection<LezioneBean> lezioni =
             lezioneDao.doRetrieveLezioniCompletateById(lezioneBean.getTutorato());
         if (lezioneDao.countOre(lezioni, 0) == 0) {
-          System.out.println("ueueue");
           tutoratoDidatticoDao.completaRichiesta(lezioneBean.getTutorato(), user.getEmail());
-          session.setAttribute("alertMsg", "Richiesta Confermata");
+          session.setAttribute("alertMsg", "Richiesta Completata");
           resp.sendRedirect("view/LezioniTutorPage.jsp");
         } else {
           session.setAttribute("alertMsg", "Lezione Confermata");

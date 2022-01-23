@@ -1,23 +1,22 @@
 package control;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
+import javax.servlet.ServletException;
 import model.bean.UserBean;
-import model.dao.IUserDAO;
-import model.dao.UserDAO;
+import model.dao.IuserDao;
+import model.dao.UserDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-
-import javax.servlet.ServletException;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collection;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 class ViewListaUtentiTest {
 
@@ -38,7 +37,7 @@ class ViewListaUtentiTest {
   void testViewListaUtenti1()
       throws SQLException, ClassNotFoundException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
 
     servlet.setUserDao(userDao);
     UserBean personaleAdm = new UserBean();

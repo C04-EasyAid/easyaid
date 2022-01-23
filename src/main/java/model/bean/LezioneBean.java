@@ -6,10 +6,8 @@ import lombok.Data;
 /**
  * Classe LezioneBean.
  *
- *  @author Serena Liguori
- *
+ * @author Serena Liguori
  */
-
 @Data
 public class LezioneBean {
 
@@ -23,6 +21,10 @@ public class LezioneBean {
   private String emailstudente;
   private Date data;
   private boolean status;
+
+  /**
+   * costruttore.
+   */
 
   public LezioneBean(
       int id,
@@ -43,6 +45,10 @@ public class LezioneBean {
     this.status = status;
   }
 
+  /**
+   * costruttore.
+   */
+
   public LezioneBean(
       int tutorato,
       String oraInizio,
@@ -60,9 +66,9 @@ public class LezioneBean {
     this.status = status;
   }
 
+  /**
+   * costruttore.
+   */
 
   public LezioneBean() {}
-
-
-
 }

@@ -12,10 +12,10 @@ import javax.servlet.http.HttpSession;
 import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
-import model.dao.ISupportoEsameDAO;
-import model.dao.ITutoratoDidatticoDAO;
-import model.dao.SupportoEsameDAO;
-import model.dao.TutoratoDidatticoDAO;
+import model.dao.IsupportoEsameDao;
+import model.dao.ItutoratoDidatticoDao;
+import model.dao.SupportoEsameDao;
+import model.dao.TutoratoDidatticoDao;
 import other.MyLogger;
 
 /**
@@ -27,15 +27,15 @@ import other.MyLogger;
 public class ViewRichiesteCompletateServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "ViewRichiesteCompletateServlet";
-  private ISupportoEsameDAO esameDAO = new SupportoEsameDAO();
-  private ITutoratoDidatticoDAO tutoratoDAO = new TutoratoDidatticoDAO();
+  private IsupportoEsameDao esameDao = new SupportoEsameDao();
+  private ItutoratoDidatticoDao tutoratoDao = new TutoratoDidatticoDao();
 
-  public void setEsameDAO(ISupportoEsameDAO esameDAO) {
-    this.esameDAO = esameDAO;
+  public void setEsameDao(IsupportoEsameDao esameDao) {
+    this.esameDao = esameDao;
   }
 
-  public void setTutoratoDAO(ITutoratoDidatticoDAO tutoratoDAO) {
-    this.tutoratoDAO = tutoratoDAO;
+  public void setTutoratoDao(ItutoratoDidatticoDao tutoratoDao) {
+    this.tutoratoDao = tutoratoDao;
   }
 
   @Override
@@ -49,9 +49,9 @@ public class ViewRichiesteCompletateServlet extends HttpServlet {
 
         try {
           List<SupportoEsameBean> listRichiesteSupportoEsame =
-              esameDAO.doRetrieveAllRichiesteSupportoEsameCompletate();
+              esameDao.doRetrieveAllRichiesteSupportoEsameCompletate();
           List<TutoratoDidatticoBean> listRichiesteTutoratoDidattico =
-              tutoratoDAO.doRetrieveAllRichiesteTutoratoDidatticoCompletate();
+              tutoratoDao.doRetrieveAllRichiesteTutoratoDidatticoCompletate();
           session.setAttribute("richiesteEsamiCompletate", listRichiesteSupportoEsame);
           session.setAttribute("richiesteTutoratoCompletate", listRichiesteTutoratoDidattico);
 

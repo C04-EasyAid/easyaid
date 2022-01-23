@@ -1,19 +1,19 @@
 package control;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import javax.servlet.ServletException;
 import model.bean.UserBean;
-import model.dao.ISupportoEsameDAO;
-import model.dao.ITutoratoDidatticoDAO;
-import model.dao.SupportoEsameDAO;
-import model.dao.TutoratoDidatticoDAO;
+import model.dao.IsupportoEsameDao;
+import model.dao.ItutoratoDidatticoDao;
+import model.dao.SupportoEsameDao;
+import model.dao.TutoratoDidatticoDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-import javax.servlet.ServletException;
-import java.io.IOException;
-import java.sql.SQLException;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /*
 @author Martina Giugliano
@@ -35,8 +35,8 @@ class ViewListaRichiesteEffettuateIntegrationTest {
   @Test
   void testViewListarichiesteEffettuate()
       throws SQLException, ClassNotFoundException, ServletException, IOException {
-    ITutoratoDidatticoDAO tutoratoDao = new TutoratoDidatticoDAO();
-    ISupportoEsameDAO supportoDao = new SupportoEsameDAO();
+    ItutoratoDidatticoDao tutoratoDao = new TutoratoDidatticoDao();
+    IsupportoEsameDao supportoDao = new SupportoEsameDao();
 
     servlet.setSupportoDao(supportoDao);
     servlet.setTutoratoDao(tutoratoDao);

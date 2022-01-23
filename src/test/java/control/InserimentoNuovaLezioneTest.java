@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -15,7 +16,10 @@ import javax.servlet.ServletException;
 import model.bean.LezioneBean;
 import model.bean.TutorBean;
 import model.bean.UserBean;
-import model.dao.*;
+import model.dao.IlezioneDao;
+import model.dao.IuserDao;
+import model.dao.LezioneDao;
+import model.dao.UserDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
@@ -36,12 +40,13 @@ class InserimentoNuovaLezioneTest {
   }
 
   @Test
-  void testInserimentoNuovaLezione1() throws ParseException, ServletException, IOException {
+  void testInserimentonuovalezione1() throws ParseException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+
+    IuserDao userDao = mock(UserDao.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    IlezioneDao lezioneDao = mock(LezioneDao.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -65,15 +70,15 @@ class InserimentoNuovaLezioneTest {
       lezioneBean.setOraInizio(oraInizio);
       lezioneBean.setOraFine(oraFine);
       lezioneBean.setData(date);
-      Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
+      Collection<LezioneBean> lezioni = lezioneDao.doRetrieveLezioniCompletateById(idTutorato);
       lezioni.add(lezioneBean);
       try {
-        when(lezioneDAO.countOre(lezioni, idTutorato)).thenReturn(1);
-        when(lezioneDAO.insertNewLezione(lezioneBean)).thenReturn(true);
+        when(lezioneDao.countOre(lezioni, idTutorato)).thenReturn(1);
+        when(lezioneDao.insertNewLezione(lezioneBean)).thenReturn(true);
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDao(lezioneDAO);
+      servlet.setLezioneDao(lezioneDao);
       servlet.doGet(request, response);
       assertEquals(
           "Lezione Inserita",
@@ -88,12 +93,12 @@ class InserimentoNuovaLezioneTest {
   }
 
   @Test
-  void testInserimentoNuovaLezione2() throws ParseException, ServletException, IOException {
+  void testInserimentonuovalezione2() throws ParseException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    IlezioneDao lezioneDao = mock(LezioneDao.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -118,15 +123,15 @@ class InserimentoNuovaLezioneTest {
       lezioneBean.setOraFine(oraFine);
       lezioneBean.setData(date);
       lezioneBean.setLuogo(luogo);
-      Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
+      Collection<LezioneBean> lezioni = lezioneDao.doRetrieveLezioniCompletateById(idTutorato);
       lezioni.add(lezioneBean);
       try {
-        when(lezioneDAO.countOre(lezioni, idTutorato)).thenReturn(2);
-        when(lezioneDAO.insertNewLezione(lezioneBean)).thenReturn(false);
+        when(lezioneDao.countOre(lezioni, idTutorato)).thenReturn(2);
+        when(lezioneDao.insertNewLezione(lezioneBean)).thenReturn(false);
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDao(lezioneDAO);
+      servlet.setLezioneDao(lezioneDao);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -141,12 +146,12 @@ class InserimentoNuovaLezioneTest {
   }
 
   @Test
-  void testInserimentoNuovaLezione3() throws ParseException, ServletException, IOException {
+  void testInserimentonuovalezione3() throws ParseException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    IlezioneDao lezioneDao = mock(LezioneDao.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -170,15 +175,15 @@ class InserimentoNuovaLezioneTest {
       lezioneBean.setOraInizio(oraInizio);
       lezioneBean.setOraFine(oraFine);
       lezioneBean.setData(date);
-      Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
+      Collection<LezioneBean> lezioni = lezioneDao.doRetrieveLezioniCompletateById(idTutorato);
       lezioni.add(lezioneBean);
       try {
-        when(lezioneDAO.countOre(lezioni, idTutorato)).thenReturn(1);
-        when(lezioneDAO.insertNewLezione(lezioneBean)).thenReturn(false);
+        when(lezioneDao.countOre(lezioni, idTutorato)).thenReturn(1);
+        when(lezioneDao.insertNewLezione(lezioneBean)).thenReturn(false);
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDao(lezioneDAO);
+      servlet.setLezioneDao(lezioneDao);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -193,12 +198,12 @@ class InserimentoNuovaLezioneTest {
   }
 
   @Test
-  void testInserimentoNuovaLezione4() throws ParseException, ServletException, IOException {
+  void testInserimentonuovalezione4() throws ParseException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    IlezioneDao lezioneDao = mock(LezioneDao.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -223,15 +228,15 @@ class InserimentoNuovaLezioneTest {
       lezioneBean.setOraFine(oraFine);
       lezioneBean.setData(date);
       lezioneBean.setLuogo(luogo);
-      Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
+      Collection<LezioneBean> lezioni = lezioneDao.doRetrieveLezioniCompletateById(idTutorato);
       lezioni.add(lezioneBean);
       try {
-        when(lezioneDAO.countOre(lezioni, idTutorato)).thenReturn(1);
-        when(lezioneDAO.insertNewLezione(lezioneBean)).thenThrow(new SQLException());
+        when(lezioneDao.countOre(lezioni, idTutorato)).thenReturn(1);
+        when(lezioneDao.insertNewLezione(lezioneBean)).thenThrow(new SQLException());
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDao(lezioneDAO);
+      servlet.setLezioneDao(lezioneDao);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -246,12 +251,12 @@ class InserimentoNuovaLezioneTest {
   }
 
   @Test
-  void testInserimentoNuovaLezione5() throws ParseException, ServletException, IOException {
+  void testInserimentonuovalezione5() throws ParseException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    IlezioneDao lezioneDao = mock(LezioneDao.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -276,15 +281,15 @@ class InserimentoNuovaLezioneTest {
       lezioneBean.setOraFine(oraFine);
       lezioneBean.setData(date);
       lezioneBean.setLuogo(luogo);
-      Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
+      Collection<LezioneBean> lezioni = lezioneDao.doRetrieveLezioniCompletateById(idTutorato);
       lezioni.add(lezioneBean);
       try {
-        when(lezioneDAO.countOre(lezioni, idTutorato)).thenReturn(1);
-        when(lezioneDAO.insertNewLezione(lezioneBean)).thenThrow(new SQLException());
+        when(lezioneDao.countOre(lezioni, idTutorato)).thenReturn(1);
+        when(lezioneDao.insertNewLezione(lezioneBean)).thenThrow(new SQLException());
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDao(lezioneDAO);
+      servlet.setLezioneDao(lezioneDao);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -299,12 +304,12 @@ class InserimentoNuovaLezioneTest {
   }
 
   @Test
-  void testInserimentoNuovaLezione6() throws ParseException, ServletException, IOException {
+  void testInserimentonuovalezione6() throws ParseException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    IlezioneDao lezioneDao = mock(LezioneDao.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -329,15 +334,15 @@ class InserimentoNuovaLezioneTest {
       lezioneBean.setOraFine(oraFine);
       lezioneBean.setData(date);
       lezioneBean.setLuogo(luogo);
-      Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
+      Collection<LezioneBean> lezioni = lezioneDao.doRetrieveLezioniCompletateById(idTutorato);
       lezioni.add(lezioneBean);
       try {
-        when(lezioneDAO.countOre(lezioni, idTutorato)).thenReturn(1);
-        when(lezioneDAO.insertNewLezione(lezioneBean)).thenThrow(new SQLException());
+        when(lezioneDao.countOre(lezioni, idTutorato)).thenReturn(1);
+        when(lezioneDao.insertNewLezione(lezioneBean)).thenThrow(new SQLException());
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDao(lezioneDAO);
+      servlet.setLezioneDao(lezioneDao);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -352,12 +357,12 @@ class InserimentoNuovaLezioneTest {
   }
 
   @Test
-  void testInserimentoNuovaLezione7() throws ParseException, ServletException, IOException {
+  void testInserimentonuovalezione7() throws ParseException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    IlezioneDao lezioneDao = mock(LezioneDao.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -382,15 +387,15 @@ class InserimentoNuovaLezioneTest {
       lezioneBean.setOraFine(oraFine);
       lezioneBean.setData(date);
       lezioneBean.setLuogo(luogo);
-      Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
+      Collection<LezioneBean> lezioni = lezioneDao.doRetrieveLezioniCompletateById(idTutorato);
       lezioni.add(lezioneBean);
       try {
-        when(lezioneDAO.countOre(lezioni, idTutorato)).thenReturn(1);
-        when(lezioneDAO.insertNewLezione(lezioneBean)).thenThrow(new SQLException());
+        when(lezioneDao.countOre(lezioni, idTutorato)).thenReturn(1);
+        when(lezioneDao.insertNewLezione(lezioneBean)).thenThrow(new SQLException());
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDao(lezioneDAO);
+      servlet.setLezioneDao(lezioneDao);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -405,12 +410,12 @@ class InserimentoNuovaLezioneTest {
   }
 
   @Test
-  void testInserimentoNuovaLezione8() throws ParseException, ServletException, IOException {
+  void testInserimentonuovalezione8() throws ParseException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    IlezioneDao lezioneDao = mock(LezioneDao.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -435,15 +440,15 @@ class InserimentoNuovaLezioneTest {
       lezioneBean.setOraFine(oraFine);
       lezioneBean.setData(date);
       lezioneBean.setLuogo(luogo);
-      Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
+      Collection<LezioneBean> lezioni = lezioneDao.doRetrieveLezioniCompletateById(idTutorato);
       lezioni.add(lezioneBean);
       try {
-        when(lezioneDAO.countOre(lezioni, idTutorato)).thenReturn(1);
-        when(lezioneDAO.insertNewLezione(lezioneBean)).thenThrow(new SQLException());
+        when(lezioneDao.countOre(lezioni, idTutorato)).thenReturn(1);
+        when(lezioneDao.insertNewLezione(lezioneBean)).thenThrow(new SQLException());
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDao(lezioneDAO);
+      servlet.setLezioneDao(lezioneDao);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -458,12 +463,12 @@ class InserimentoNuovaLezioneTest {
   }
 
   @Test
-  void testInserimentoNuovaLezione9() throws ParseException, ServletException, IOException {
+  void testInserimentonuovalezione9() throws ParseException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    IlezioneDao lezioneDao = mock(LezioneDao.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -488,15 +493,15 @@ class InserimentoNuovaLezioneTest {
       lezioneBean.setOraFine(oraFine);
       lezioneBean.setData(date);
       lezioneBean.setLuogo(luogo);
-      Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
+      Collection<LezioneBean> lezioni = lezioneDao.doRetrieveLezioniCompletateById(idTutorato);
       lezioni.add(lezioneBean);
       try {
-        when(lezioneDAO.countOre(lezioni, idTutorato)).thenReturn(1);
-        when(lezioneDAO.insertNewLezione(lezioneBean)).thenThrow(new SQLException());
+        when(lezioneDao.countOre(lezioni, idTutorato)).thenReturn(1);
+        when(lezioneDao.insertNewLezione(lezioneBean)).thenThrow(new SQLException());
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDao(lezioneDAO);
+      servlet.setLezioneDao(lezioneDao);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -511,12 +516,12 @@ class InserimentoNuovaLezioneTest {
   }
 
   @Test
-  void testInserimentoNuovaLezione10() throws ParseException, ServletException, IOException {
+  void testInserimentonuovalezione10() throws ParseException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    IlezioneDao lezioneDao = mock(LezioneDao.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -541,15 +546,15 @@ class InserimentoNuovaLezioneTest {
       lezioneBean.setOraFine(oraFine);
       lezioneBean.setData(date);
       lezioneBean.setLuogo(luogo);
-      Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
+      Collection<LezioneBean> lezioni = lezioneDao.doRetrieveLezioniCompletateById(idTutorato);
       lezioni.add(lezioneBean);
       try {
-        when(lezioneDAO.countOre(lezioni, idTutorato)).thenReturn(1);
-        when(lezioneDAO.insertNewLezione(lezioneBean)).thenThrow(new SQLException());
+        when(lezioneDao.countOre(lezioni, idTutorato)).thenReturn(1);
+        when(lezioneDao.insertNewLezione(lezioneBean)).thenThrow(new SQLException());
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDao(lezioneDAO);
+      servlet.setLezioneDao(lezioneDao);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -564,12 +569,12 @@ class InserimentoNuovaLezioneTest {
   }
 
   @Test
-  void testInserimentoNuovaLezione11() throws ParseException, ServletException, IOException {
+  void testInserimentonuovalezione11() throws ParseException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    IlezioneDao lezioneDao = mock(LezioneDao.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -594,15 +599,15 @@ class InserimentoNuovaLezioneTest {
       lezioneBean.setOraFine(oraFine);
       lezioneBean.setData(date);
       lezioneBean.setLuogo(luogo);
-      Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
+      Collection<LezioneBean> lezioni = lezioneDao.doRetrieveLezioniCompletateById(idTutorato);
       lezioni.add(lezioneBean);
       try {
-        when(lezioneDAO.countOre(lezioni, idTutorato)).thenReturn(1);
-        when(lezioneDAO.insertNewLezione(lezioneBean)).thenThrow(new SQLException());
+        when(lezioneDao.countOre(lezioni, idTutorato)).thenReturn(1);
+        when(lezioneDao.insertNewLezione(lezioneBean)).thenThrow(new SQLException());
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDao(lezioneDAO);
+      servlet.setLezioneDao(lezioneDao);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -617,12 +622,12 @@ class InserimentoNuovaLezioneTest {
   }
 
   @Test
-  void testInserimentoNuovaLezione12() throws ParseException, ServletException, IOException {
+  void testInserimentonuovalezione12() throws ParseException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    IlezioneDao lezioneDao = mock(LezioneDao.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -647,15 +652,15 @@ class InserimentoNuovaLezioneTest {
       lezioneBean.setOraFine(oraFine);
       lezioneBean.setData(date);
       lezioneBean.setLuogo(luogo);
-      Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
+      Collection<LezioneBean> lezioni = lezioneDao.doRetrieveLezioniCompletateById(idTutorato);
       lezioni.add(lezioneBean);
       try {
-        when(lezioneDAO.countOre(lezioni, idTutorato)).thenReturn(1);
-        when(lezioneDAO.insertNewLezione(lezioneBean)).thenThrow(new SQLException());
+        when(lezioneDao.countOre(lezioni, idTutorato)).thenReturn(1);
+        when(lezioneDao.insertNewLezione(lezioneBean)).thenThrow(new SQLException());
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDao(lezioneDAO);
+      servlet.setLezioneDao(lezioneDao);
       servlet.doGet(request, response);
       assertNotEquals(
           "Lezione Inserita",
@@ -671,7 +676,7 @@ class InserimentoNuovaLezioneTest {
 
   // L'utente non ha ipermessi necessari
   @Test
-  void testInserimentoNuovaLezione13() throws ServletException, IOException {
+  void testInserimentonuovalezione13() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
 
     servlet.doGet(request, response);
@@ -681,12 +686,12 @@ class InserimentoNuovaLezioneTest {
 
   // Errore nel metodo countOre per le lezioni
   @Test
-  void testInserimentoNuovaLezione14() throws ParseException, ServletException, IOException {
+  void testInserimentonuovalezione14() throws ParseException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
+    IuserDao userDao = mock(UserDao.class);
     UserBean userBean = new UserBean();
     TutorBean tutorBean = new TutorBean();
-    ILezioneDAO lezioneDAO = mock(LezioneDAO.class);
+    IlezioneDao lezioneDao = mock(LezioneDao.class);
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");
@@ -711,14 +716,14 @@ class InserimentoNuovaLezioneTest {
       lezioneBean.setOraFine(oraFine);
       lezioneBean.setData(date);
       lezioneBean.setLuogo(luogo);
-      Collection<LezioneBean> lezioni = lezioneDAO.doRetrieveLezioniCompletateById(idTutorato);
+      Collection<LezioneBean> lezioni = lezioneDao.doRetrieveLezioniCompletateById(idTutorato);
       lezioni.add(lezioneBean);
       try {
-        when(lezioneDAO.countOre(lezioni, idTutorato)).thenReturn(2);
+        when(lezioneDao.countOre(lezioni, idTutorato)).thenReturn(2);
       } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
-      servlet.setLezioneDao(lezioneDAO);
+      servlet.setLezioneDao(lezioneDao);
       servlet.doGet(request, response);
       assertEquals("view/LezioniTutorPage.jsp", response.getRedirectedUrl());
     } catch (SQLException e) {

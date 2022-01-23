@@ -90,8 +90,8 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <form action="../register" method="post" class="row g-4 align-items-center"
-                                          autocomplete="off" onsubmit="return validateInserimento();">
+                                    <form action="../register" method="get" class="row g-4 align-items-center" accept-charset="utf-8"
+                                          autocomplete="off" onsubmit="return validateInserimento()">
 
                                         <input type="hidden" name="ruolo" value="<%=inserimento%>"/>
 
@@ -100,10 +100,10 @@
                                                 <address>
                                                     <p class="fw-bold">Nome:</p>
                                                     <input type="text" name="nome" class="form-control"
-                                                           placeholder="Nome" minlength="3" required>
+                                                           placeholder="Nome" id="nome" minlength="3" required>
                                                     <p class="fw-bold">Cognome:</p>
                                                     <input type="text" name="cognome" class="form-control"
-                                                           placeholder="Cognome" required>
+                                                           placeholder="Cognome" id="cognome" required>
                                                     <p class="fw-bold">Email:</p>
                                                     <input type="email" name="email" class="form-control"
                                                            placeholder="Email" id="email" required>
@@ -205,7 +205,7 @@
                                                     </p>
                                                     <p class="fw-bold">Qualifica:</p>
                                                     <input type="text" name="qualifica" class="form-control"
-                                                           placeholder="Qualifica" required>
+                                                           placeholder="Qualifica" id="qualifica" required>
                                                     </p>
                                                     <p class="fw-bold">Ore Disponibili:</p>
                                                     <input type="text" nam="dipartimentoTutor" class="form-control"

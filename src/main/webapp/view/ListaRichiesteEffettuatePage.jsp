@@ -87,12 +87,16 @@
                                                         <img src="../image/<%=x%>.jpg" class="rounded" alt="">
                                                     </div>
                                                     <div class="mb-0 ms-2">
+                                                        <%if(b.getTutorEmail()!= null){%>
                                                         <h6><p class="card-description"><br><code>&lt;<%=b.getTutorEmail()%>&gt;</code></p></h6>
+                                                        <%}else{%>
+                                                        <h6><p class="card-description"><br><code>&lt;non ancora assegnato&gt;</code></p></h6>
+                                                        <%}%>
                                                     </div>
                                                 </div>
                                             </td>
+                                            <td><%=b.getDateDisponibili().toUpperCase(java.util.Locale.ROOT)%></td>
                                             <td><%=b.getOreDisponibili()%></td>
-                                            <td><%=b.getOreRichieste()%></td>
                                             <%if(b.getStatus()==0){  %>
                                             <td><a href="#" class="badge bg-danger">Non accettata</a></td>
                                             <%}else{%>

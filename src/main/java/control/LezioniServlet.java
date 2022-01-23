@@ -13,14 +13,14 @@ import model.bean.LezioneBean;
 import model.bean.StudenteBean;
 import model.bean.TutorBean;
 import model.bean.UserBean;
-import model.dao.ILezioneDAO;
-import model.dao.IStudenteDAO;
-import model.dao.ITutorDAO;
-import model.dao.ITutoratoDidatticoDAO;
-import model.dao.LezioneDAO;
-import model.dao.StudenteDAO;
-import model.dao.TutorDAO;
-import model.dao.TutoratoDidatticoDAO;
+import model.dao.IlezioneDao;
+import model.dao.IstudenteDao;
+import model.dao.ItutorDao;
+import model.dao.ItutoratoDidatticoDao;
+import model.dao.LezioneDao;
+import model.dao.StudenteDao;
+import model.dao.TutorDao;
+import model.dao.TutoratoDidatticoDao;
 import other.MyLogger;
 
 /**
@@ -32,24 +32,24 @@ import other.MyLogger;
 public class LezioniServlet extends HttpServlet {
   private static final MyLogger log = MyLogger.getInstance();
   private static final String myClass = "LezioniServlet";
-  private ILezioneDAO lezioneDao = new LezioneDAO();
-  private IStudenteDAO studenteDao = new StudenteDAO();
-  private ITutoratoDidatticoDAO tutoratodidatticoDao = new TutoratoDidatticoDAO();
-  private ITutorDAO tutorDao = new TutorDAO();
+  private IlezioneDao lezioneDao = new LezioneDao();
+  private IstudenteDao studenteDao = new StudenteDao();
+  private ItutoratoDidatticoDao tutoratodidatticoDao = new TutoratoDidatticoDao();
+  private ItutorDao tutorDao = new TutorDao();
 
-  public void setLezioneDao(ILezioneDAO lezioneDao) {
+  public void setLezioneDao(IlezioneDao lezioneDao) {
     this.lezioneDao = lezioneDao;
   }
 
-  public void setStudenteDao(IStudenteDAO studenteDao) {
+  public void setStudenteDao(IstudenteDao studenteDao) {
     this.studenteDao = studenteDao;
   }
 
-  public void settutoratodidatticodao(ITutoratoDidatticoDAO tutoratodidatticoDao) {
+  public void settutoratodidatticodao(ItutoratoDidatticoDao tutoratodidatticoDao) {
     this.tutoratodidatticoDao = tutoratodidatticoDao;
   }
 
-  public void setTutorDao(ITutorDAO tutorDao) {
+  public void setTutorDao(ItutorDao tutorDao) {
     this.tutorDao = tutorDao;
   }
 

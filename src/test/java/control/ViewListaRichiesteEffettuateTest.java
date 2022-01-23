@@ -1,27 +1,27 @@
 package control;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.servlet.ServletException;
 import model.bean.SupportoEsameBean;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
-import model.dao.ISupportoEsameDAO;
-import model.dao.ITutoratoDidatticoDAO;
-import model.dao.SupportoEsameDAO;
-import model.dao.TutoratoDidatticoDAO;
+import model.dao.IsupportoEsameDao;
+import model.dao.ItutoratoDidatticoDao;
+import model.dao.SupportoEsameDao;
+import model.dao.TutoratoDidatticoDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-import javax.servlet.ServletException;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 class ViewListaRichiesteEffettuateTest {
   private ViewListaRichiesteEffettuateServlet servlet;
@@ -41,8 +41,8 @@ class ViewListaRichiesteEffettuateTest {
   void testViewListarichiesteEffettuate1()
       throws SQLException, ClassNotFoundException, ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    ITutoratoDidatticoDAO tutoratoDao = mock(TutoratoDidatticoDAO.class);
-    ISupportoEsameDAO supportoDao = mock(SupportoEsameDAO.class);
+    ItutoratoDidatticoDao tutoratoDao = mock(TutoratoDidatticoDao.class);
+    IsupportoEsameDao supportoDao = mock(SupportoEsameDao.class);
 
     servlet.setSupportoDao(supportoDao);
     servlet.setTutoratoDao(tutoratoDao);

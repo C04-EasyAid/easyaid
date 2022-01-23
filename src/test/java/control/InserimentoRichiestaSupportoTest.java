@@ -1,25 +1,34 @@
 package control;
-/* @author Martina Giugliano Testing per l'inserimento di una richiesta di supporto esame */
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Objects;
+import javax.servlet.ServletException;
 import model.bean.SupportoEsameBean;
-import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
-import model.dao.*;
+import model.dao.IsupportoEsameDao;
+import model.dao.IuserDao;
+import model.dao.SupportoEsameDao;
+import model.dao.UserDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-import javax.servlet.ServletException;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.Objects;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
-class InserimentoSupportoTest {
+/**
+ * Testing di unità per l'inserimento di una richiesta di supporto esame.
+ *
+ * @author Martina Giugliano
+ *
+ */
+class InserimentoRichiestaSupportoTest {
   private InserimentoRichiestaSupportoServlet servlet;
   private MockHttpServletRequest request;
   private MockHttpServletResponse response;
@@ -32,10 +41,11 @@ class InserimentoSupportoTest {
   }
 
   @Test
-  void InserimentoSupportoTest() throws ServletException, IOException {
+  void inserimentoSupportotest() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ISupportoEsameDAO supportoEsameDAO = mock(SupportoEsameDAO.class);
+
+    IuserDao userDao = mock(UserDao.class);
+    IsupportoEsameDao supportoEsameDao = mock(SupportoEsameDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -77,11 +87,11 @@ class InserimentoSupportoTest {
     supportoEsameBean.setTipoAssistenza(tipoAssistenza);
     supportoEsameBean.setModalitaEsame(modalitaEsame);
     try {
-      when(supportoEsameDAO.InserimentoSupportoEsame(supportoEsameBean)).thenReturn(true);
+      when(supportoEsameDao.inserimentoSupportoEsame(supportoEsameBean)).thenReturn(true);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setsupportoesameDao(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDao);
     servlet.doGet(request, response);
     assertEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -89,10 +99,10 @@ class InserimentoSupportoTest {
   }
 
   @Test
-  void InserimentoSupportoTest1() throws ServletException, IOException {
+  void inserimentoSupportotest1() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ISupportoEsameDAO supportoEsameDAO = mock(SupportoEsameDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    IsupportoEsameDao supportoEsamedao = mock(SupportoEsameDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -134,11 +144,11 @@ class InserimentoSupportoTest {
     supportoEsameBean.setTipoAssistenza(tipoAssistenza);
     supportoEsameBean.setModalitaEsame(modalitaEsame);
     try {
-      when(supportoEsameDAO.InserimentoSupportoEsame(supportoEsameBean)).thenReturn(true);
+      when(supportoEsamedao.inserimentoSupportoEsame(supportoEsameBean)).thenReturn(true);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setsupportoesameDao(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsamedao);
     servlet.doGet(request, response);
     assertEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -146,10 +156,10 @@ class InserimentoSupportoTest {
   }
 
   @Test
-  void InserimentoSupportoTest2() throws ServletException, IOException {
+  void inserimentoSupportotest2() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ISupportoEsameDAO supportoEsameDAO = mock(SupportoEsameDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    IsupportoEsameDao supportoEsamedao = mock(SupportoEsameDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -191,11 +201,11 @@ class InserimentoSupportoTest {
     supportoEsameBean.setTipoAssistenza(tipoAssistenza);
     supportoEsameBean.setModalitaEsame(modalitaEsame);
     try {
-      when(supportoEsameDAO.InserimentoSupportoEsame(supportoEsameBean)).thenReturn(false);
+      when(supportoEsamedao.inserimentoSupportoEsame(supportoEsameBean)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setsupportoesameDao(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsamedao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -203,10 +213,10 @@ class InserimentoSupportoTest {
   }
 
   @Test
-  void InserimentoSupportoTest3() throws ServletException, IOException {
+  void inserimentoSupportotest3() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ISupportoEsameDAO supportoEsameDAO = mock(SupportoEsameDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    IsupportoEsameDao supportoEsameDao = mock(SupportoEsameDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -248,11 +258,11 @@ class InserimentoSupportoTest {
     supportoEsameBean.setTipoAssistenza(tipoAssistenza);
     supportoEsameBean.setModalitaEsame(modalitaEsame);
     try {
-      when(supportoEsameDAO.InserimentoSupportoEsame(supportoEsameBean)).thenReturn(false);
+      when(supportoEsameDao.inserimentoSupportoEsame(supportoEsameBean)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setsupportoesameDao(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -260,10 +270,10 @@ class InserimentoSupportoTest {
   }
 
   @Test
-  void InserimentoSupportoTest4() throws ServletException, IOException {
+  void inserimentoSupportotest4() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ISupportoEsameDAO supportoEsameDAO = mock(SupportoEsameDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    IsupportoEsameDao supportoEsameDao = mock(SupportoEsameDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -305,11 +315,11 @@ class InserimentoSupportoTest {
     supportoEsameBean.setTipoAssistenza(tipoAssistenza);
     supportoEsameBean.setModalitaEsame(modalitaEsame);
     try {
-      when(supportoEsameDAO.InserimentoSupportoEsame(supportoEsameBean)).thenReturn(false);
+      when(supportoEsameDao.inserimentoSupportoEsame(supportoEsameBean)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setsupportoesameDao(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -317,10 +327,10 @@ class InserimentoSupportoTest {
   }
 
   @Test
-  void InserimentoSupportoTest5() throws ServletException, IOException {
+  void inserimentoSupportotest5() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ISupportoEsameDAO supportoEsameDAO = mock(SupportoEsameDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    IsupportoEsameDao supportoEsameDao = mock(SupportoEsameDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -362,11 +372,11 @@ class InserimentoSupportoTest {
     supportoEsameBean.setTipoAssistenza(tipoAssistenza);
     supportoEsameBean.setModalitaEsame(modalitaEsame);
     try {
-      when(supportoEsameDAO.InserimentoSupportoEsame(supportoEsameBean)).thenReturn(false);
+      when(supportoEsameDao.inserimentoSupportoEsame(supportoEsameBean)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setsupportoesameDao(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -374,10 +384,10 @@ class InserimentoSupportoTest {
   }
 
   @Test
-  void InserimentoSupportoTest6() throws ServletException, IOException {
+  void inserimentoSupportotest6() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ISupportoEsameDAO supportoEsameDAO = mock(SupportoEsameDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    IsupportoEsameDao supportoEsameDao = mock(SupportoEsameDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -419,12 +429,12 @@ class InserimentoSupportoTest {
     supportoEsameBean.setTipoAssistenza(tipoAssistenza);
     supportoEsameBean.setModalitaEsame(modalitaEsame);
     try {
-      when(supportoEsameDAO.InserimentoSupportoEsame(supportoEsameBean))
+      when(supportoEsameDao.inserimentoSupportoEsame(supportoEsameBean))
           .thenThrow(new SQLException());
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setsupportoesameDao(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -432,10 +442,10 @@ class InserimentoSupportoTest {
   }
 
   @Test
-  void InserimentoSupportoTest7() throws ServletException, IOException {
+  void inserimentoSupportotest7() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ISupportoEsameDAO supportoEsameDAO = mock(SupportoEsameDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    IsupportoEsameDao supportoEsameDao = mock(SupportoEsameDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -477,11 +487,11 @@ class InserimentoSupportoTest {
     supportoEsameBean.setTipoAssistenza(tipoAssistenza);
     supportoEsameBean.setModalitaEsame(modalitaEsame);
     try {
-      when(supportoEsameDAO.InserimentoSupportoEsame(supportoEsameBean)).thenReturn(false);
+      when(supportoEsameDao.inserimentoSupportoEsame(supportoEsameBean)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setsupportoesameDao(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -489,10 +499,10 @@ class InserimentoSupportoTest {
   }
 
   @Test
-  void InserimentoSupportoTest8() throws ServletException, IOException {
+  void inserimentoSupportotest8() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ISupportoEsameDAO supportoEsameDAO = mock(SupportoEsameDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    IsupportoEsameDao supportoEsameDao = mock(SupportoEsameDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -534,11 +544,11 @@ class InserimentoSupportoTest {
     supportoEsameBean.setTipoAssistenza(tipoAssistenza);
     supportoEsameBean.setModalitaEsame(modalitaEsame);
     try {
-      when(supportoEsameDAO.InserimentoSupportoEsame(supportoEsameBean)).thenReturn(false);
+      when(supportoEsameDao.inserimentoSupportoEsame(supportoEsameBean)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setsupportoesameDao(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -546,10 +556,10 @@ class InserimentoSupportoTest {
   }
 
   @Test
-  void InserimentoSupportoTest9() throws ServletException, IOException {
+  void inserimentoSupportotest9() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ISupportoEsameDAO supportoEsameDAO = mock(SupportoEsameDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    IsupportoEsameDao supportoEsameDao = mock(SupportoEsameDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -591,12 +601,12 @@ class InserimentoSupportoTest {
     supportoEsameBean.setTipoAssistenza(tipoAssistenza);
     supportoEsameBean.setModalitaEsame(modalitaEsame);
     try {
-      when(supportoEsameDAO.InserimentoSupportoEsame(supportoEsameBean))
+      when(supportoEsameDao.inserimentoSupportoEsame(supportoEsameBean))
           .thenThrow(new SQLException());
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setsupportoesameDao(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -604,10 +614,10 @@ class InserimentoSupportoTest {
   }
 
   @Test
-  void InserimentoSupportoTest10() throws ServletException, IOException {
+  void inserimentoSupportotest10() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ISupportoEsameDAO supportoEsameDAO = mock(SupportoEsameDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    IsupportoEsameDao supportoEsameDao = mock(SupportoEsameDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -649,12 +659,12 @@ class InserimentoSupportoTest {
     supportoEsameBean.setTipoAssistenza(tipoAssistenza);
     supportoEsameBean.setModalitaEsame(modalitaEsame);
     try {
-      when(supportoEsameDAO.InserimentoSupportoEsame(supportoEsameBean))
+      when(supportoEsameDao.inserimentoSupportoEsame(supportoEsameBean))
           .thenThrow(new SQLException());
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setsupportoesameDao(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -662,10 +672,10 @@ class InserimentoSupportoTest {
   }
 
   @Test
-  void InserimentoSupportoTest11() throws ServletException, IOException {
+  void inserimentoSupportotest11() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ISupportoEsameDAO supportoEsameDAO = mock(SupportoEsameDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    IsupportoEsameDao supportoEsameDao = mock(SupportoEsameDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -707,12 +717,12 @@ class InserimentoSupportoTest {
     supportoEsameBean.setTipoAssistenza(tipoAssistenza);
     supportoEsameBean.setModalitaEsame(modalitaEsame);
     try {
-      when(supportoEsameDAO.InserimentoSupportoEsame(supportoEsameBean))
+      when(supportoEsameDao.inserimentoSupportoEsame(supportoEsameBean))
           .thenThrow(new SQLException());
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setsupportoesameDao(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -720,10 +730,10 @@ class InserimentoSupportoTest {
   }
 
   @Test
-  void InserimentoSupportoTest12() throws ServletException, IOException {
+  void inserimentoSupportotest12() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ISupportoEsameDAO supportoEsameDAO = mock(SupportoEsameDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    IsupportoEsameDao supportoEsameDao = mock(SupportoEsameDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -765,11 +775,11 @@ class InserimentoSupportoTest {
     supportoEsameBean.setTipoAssistenza(tipoAssistenza);
     supportoEsameBean.setModalitaEsame(modalitaEsame);
     try {
-      when(supportoEsameDAO.InserimentoSupportoEsame(supportoEsameBean)).thenReturn(false);
+      when(supportoEsameDao.inserimentoSupportoEsame(supportoEsameBean)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setsupportoesameDao(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -777,10 +787,10 @@ class InserimentoSupportoTest {
   }
 
   @Test
-  void InserimentoSupportoTest13() throws ServletException, IOException {
+  void inserimentoSupportotest13() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ISupportoEsameDAO supportoEsameDAO = mock(SupportoEsameDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    IsupportoEsameDao supportoEsameDao = mock(SupportoEsameDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -822,11 +832,11 @@ class InserimentoSupportoTest {
     supportoEsameBean.setTipoAssistenza(tipoAssistenza);
     supportoEsameBean.setModalitaEsame(modalitaEsame);
     try {
-      when(supportoEsameDAO.InserimentoSupportoEsame(supportoEsameBean)).thenReturn(false);
+      when(supportoEsameDao.inserimentoSupportoEsame(supportoEsameBean)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setsupportoesameDao(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -834,10 +844,10 @@ class InserimentoSupportoTest {
   }
 
   @Test
-  void InserimentoSupportoTest14() throws ServletException, IOException {
+  void inserimentoSupportotest14() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ISupportoEsameDAO supportoEsameDAO = mock(SupportoEsameDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    IsupportoEsameDao supportoEsameDao = mock(SupportoEsameDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -879,11 +889,11 @@ class InserimentoSupportoTest {
     supportoEsameBean.setTipoAssistenza(tipoAssistenza);
     supportoEsameBean.setModalitaEsame(modalitaEsame);
     try {
-      when(supportoEsameDAO.InserimentoSupportoEsame(supportoEsameBean)).thenReturn(false);
+      when(supportoEsameDao.inserimentoSupportoEsame(supportoEsameBean)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setsupportoesameDao(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -891,10 +901,10 @@ class InserimentoSupportoTest {
   }
 
   @Test
-  void InserimentoSupportoTest15() throws ServletException, IOException {
+  void inserimentoSupportotest15() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ISupportoEsameDAO supportoEsameDAO = mock(SupportoEsameDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    IsupportoEsameDao supportoEsameDao = mock(SupportoEsameDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -936,11 +946,11 @@ class InserimentoSupportoTest {
     supportoEsameBean.setTipoAssistenza(tipoAssistenza);
     supportoEsameBean.setModalitaEsame(modalitaEsame);
     try {
-      when(supportoEsameDAO.InserimentoSupportoEsame(supportoEsameBean)).thenReturn(false);
+      when(supportoEsameDao.inserimentoSupportoEsame(supportoEsameBean)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setsupportoesameDao(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -948,10 +958,10 @@ class InserimentoSupportoTest {
   }
 
   @Test
-  void InserimentoSupportoTest16() throws ServletException, IOException {
+  void inserimentoSupportotest16() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ISupportoEsameDAO supportoEsameDAO = mock(SupportoEsameDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    IsupportoEsameDao supportoEsameDao = mock(SupportoEsameDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -993,11 +1003,11 @@ class InserimentoSupportoTest {
     supportoEsameBean.setTipoAssistenza(tipoAssistenza);
     supportoEsameBean.setModalitaEsame(modalitaEsame);
     try {
-      when(supportoEsameDAO.InserimentoSupportoEsame(supportoEsameBean)).thenReturn(false);
+      when(supportoEsameDao.inserimentoSupportoEsame(supportoEsameBean)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setsupportoesameDao(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -1005,10 +1015,10 @@ class InserimentoSupportoTest {
   }
 
   @Test
-  void InserimentoSupportoTest17() throws ServletException, IOException {
+  void inserimentoSupportotest17() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ISupportoEsameDAO supportoEsameDAO = mock(SupportoEsameDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    IsupportoEsameDao supportoEsameDao = mock(SupportoEsameDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -1050,11 +1060,11 @@ class InserimentoSupportoTest {
     supportoEsameBean.setTipoAssistenza(tipoAssistenza);
     supportoEsameBean.setModalitaEsame(modalitaEsame);
     try {
-      when(supportoEsameDAO.InserimentoSupportoEsame(supportoEsameBean)).thenReturn(false);
+      when(supportoEsameDao.inserimentoSupportoEsame(supportoEsameBean)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setsupportoesameDao(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -1062,10 +1072,10 @@ class InserimentoSupportoTest {
   }
 
   @Test
-  void InserimentoSupportoTest18() throws ServletException, IOException {
+  void inserimentoSupportotest18() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ISupportoEsameDAO supportoEsameDAO = mock(SupportoEsameDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    IsupportoEsameDao supportoEsameDao = mock(SupportoEsameDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -1107,11 +1117,11 @@ class InserimentoSupportoTest {
     supportoEsameBean.setTipoAssistenza(tipoAssistenza);
     supportoEsameBean.setModalitaEsame(modalitaEsame);
     try {
-      when(supportoEsameDAO.InserimentoSupportoEsame(supportoEsameBean)).thenReturn(false);
+      when(supportoEsameDao.inserimentoSupportoEsame(supportoEsameBean)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setsupportoesameDao(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -1119,10 +1129,10 @@ class InserimentoSupportoTest {
   }
 
   @Test
-  void InserimentoSupportoTest19() throws ServletException, IOException {
+  void inserimentoSupportotest19() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ISupportoEsameDAO supportoEsameDAO = mock(SupportoEsameDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    IsupportoEsameDao supportoEsameDao = mock(SupportoEsameDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -1164,11 +1174,11 @@ class InserimentoSupportoTest {
     supportoEsameBean.setTipoAssistenza(tipoAssistenza);
     supportoEsameBean.setModalitaEsame(modalitaEsame);
     try {
-      when(supportoEsameDAO.InserimentoSupportoEsame(supportoEsameBean)).thenReturn(false);
+      when(supportoEsameDao.inserimentoSupportoEsame(supportoEsameBean)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setsupportoesameDao(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -1176,10 +1186,10 @@ class InserimentoSupportoTest {
   }
 
   @Test
-  void InserimentoSupportoTest20() throws ServletException, IOException {
+  void inserimentoSupportotest20() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
-    IUserDAO userDao = mock(UserDAO.class);
-    ISupportoEsameDAO supportoEsameDAO = mock(SupportoEsameDAO.class);
+    IuserDao userDao = mock(UserDao.class);
+    IsupportoEsameDao supportoEsameDao = mock(SupportoEsameDao.class);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");
     bean.setPassword("Paolo#Rossi10");
@@ -1221,11 +1231,11 @@ class InserimentoSupportoTest {
     supportoEsameBean.setTipoAssistenza(tipoAssistenza);
     supportoEsameBean.setModalitaEsame(modalitaEsame);
     try {
-      when(supportoEsameDAO.InserimentoSupportoEsame(supportoEsameBean)).thenReturn(false);
+      when(supportoEsameDao.inserimentoSupportoEsame(supportoEsameBean)).thenReturn(false);
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    servlet.setsupportoesameDao(supportoEsameDAO);
+    servlet.setsupportoesameDao(supportoEsameDao);
     servlet.doGet(request, response);
     assertNotEquals(
         "Richiesta di servizio di supporto esame inserita con successo!",
@@ -1234,7 +1244,7 @@ class InserimentoSupportoTest {
 
   // permessi non concessi all'utente
   @Test
-  void InserimentoSupportotest21() throws ServletException, IOException {
+  void inserimentoSupportotest21() throws ServletException, IOException {
     MockitoAnnotations.initMocks(this);
     UserBean bean = new UserBean();
     bean.setEmail("paolorossi10@studenti.unisa.it");

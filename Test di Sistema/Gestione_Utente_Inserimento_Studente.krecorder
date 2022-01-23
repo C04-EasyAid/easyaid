@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+	<title>Gestione Utente</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Gestione Utente</td></tr>
+</thead>
+<tbody>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">TC_GU_2.15</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp<datalist><option>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=inputPassword5<datalist><option>id=inputPassword5</option><option>name=Password</option><option>xpath=//input[@id='inputPassword5']</option><option>xpath=//div[2]/div/input</option><option>css=#inputPassword5</option></datalist></td><td>C#Gigli#9109</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td>cgigli91@unisa.it</td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email'])[1]/following::button[2]</option><option>xpath=//*/text()[normalize-space(.)='Login']/parent::*</option><option>xpath=//div[3]/div/button</option><option>css=button.btn.btn-info.mb-0</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Elenco Utenti<datalist><option>link=Elenco Utenti</option><option>xpath=//a[contains(text(),'Elenco Utenti')]</option><option>xpath=//div[@id='navbarCollapse']/ul[2]/li[2]/ul/li/a</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Home'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='CG'])[1]/preceding::a[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='CG'])[2]/preceding::a[4]</option><option>xpath=//*/text()[normalize-space(.)='Elenco Utenti']/parent::*</option><option>xpath=//a[contains(@href, '../ViewListaUsers')]</option><option>xpath=//li[2]/ul/li/a</option><option>css=a.dropdown-item.text-black</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Inserimento Studente<datalist><option>link=Inserimento Studente</option><option>xpath=//a[contains(text(),'Inserimento Studente')]</option><option>xpath=//div[@id='offcanvasNavbar']/div/div/div/a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/following::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Tutor'])[1]/preceding::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Professore'])[1]/preceding::a[2]</option><option>xpath=//*/text()[normalize-space(.)='Inserimento Studente']/parent::*</option><option>xpath=//a[contains(@href, 'RegistraUtentePage.jsp?inserimento=Studente')]</option><option>xpath=//a[2]</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=nome<datalist><option>name=nome</option><option>xpath=//input[@name='nome']</option><option>xpath=//address/input</option><option>css=input[name="nome"]</option></datalist></td><td>Lorenzo</td>
+</tr>
+<tr><td>type</td><td>name=cognome<datalist><option>name=cognome</option><option>xpath=//input[@name='cognome']</option><option>xpath=//input[2]</option><option>css=input[name="cognome"]</option></datalist></td><td>Rossi</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=email</option><option>xpath=//input[@id='email']</option><option>xpath=//div/input</option><option>css=#email</option></datalist></td><td>l.rossi@studenti.unisa.it</td>
+</tr>
+<tr><td>type</td><td>id=password<datalist><option>id=password</option><option>name=password</option><option>xpath=//input[@id='password']</option><option>xpath=//input[3]</option><option>css=#password</option></datalist></td><td>Lorenzo#rossi1</td>
+</tr>
+<tr><td>click</td><td>id=dsa<datalist><option>id=dsa</option><option>xpath=//input[@id='dsa']</option><option>xpath=//div[2]/input</option><option>css=#dsa</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=percentualeDisabilita<datalist><option>name=percentualeDisabilita</option><option>xpath=//input[@name='percentualeDisabilita']</option><option>xpath=//div[2]/address/input[2]</option><option>css=input[name="percentualeDisabilita"]</option></datalist></td><td>30</td>
+</tr>
+<tr><td>type</td><td>name=oreDisponibiliStudente<datalist><option>name=oreDisponibiliStudente</option><option>xpath=//input[@name='oreDisponibiliStudente']</option><option>xpath=//div[2]/address/input[3]</option><option>css=input[name="oreDisponibiliStudente"]</option></datalist></td><td>30</td>
+</tr>
+<tr><td>click</td><td>id=specifica<datalist><option>id=specifica</option><option>name=specificheDisturbo</option><option>xpath=//input[@id='specifica']</option><option>xpath=//div[2]/address/input</option><option>css=#specifica</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=specifica<datalist><option>id=specifica</option><option>name=specificheDisturbo</option><option>xpath=//input[@id='specifica']</option><option>xpath=//div[2]/address/input</option><option>css=#specifica</option></datalist></td><td>Dislessia</td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='DSA'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Disabile'])[1]/following::button[1]</option><option>xpath=//*/text()[normalize-space(.)='Inserisci']/parent::*</option><option>xpath=//div[2]/button</option><option>css=button.btn.btn-outline-info</option></datalist></td><td></td>
+</tr>
+<tr><td>verifyTextNotPresent</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::div[6]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::div[6]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Carla Gigli'])[3]/following::div[6]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/preceding::div[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Studente'])[1]/preceding::div[1]</option><option>xpath=//section[2]/div/div/div/div</option><option>css=div.alert.alert-info.d-flex.align-items-center &gt; div</option></datalist></td><td>Errore nell'inserimento studente</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">TC_GU_2.14</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp<datalist><option>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=inputPassword5<datalist><option>id=inputPassword5</option><option>name=Password</option><option>xpath=//input[@id='inputPassword5']</option><option>xpath=//div[2]/div/input</option><option>css=#inputPassword5</option></datalist></td><td>C#Gigli#9109</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td>cgigli91@unisa.it</td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email'])[1]/following::button[2]</option><option>xpath=//*/text()[normalize-space(.)='Login']/parent::*</option><option>xpath=//div[3]/div/button</option><option>css=button.btn.btn-info.mb-0</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Elenco Utenti<datalist><option>link=Elenco Utenti</option><option>xpath=//a[contains(text(),'Elenco Utenti')]</option><option>xpath=//div[@id='navbarCollapse']/ul[2]/li[2]/ul/li/a</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Home'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='CG'])[1]/preceding::a[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='CG'])[2]/preceding::a[4]</option><option>xpath=//*/text()[normalize-space(.)='Elenco Utenti']/parent::*</option><option>xpath=//a[contains(@href, '../ViewListaUsers')]</option><option>xpath=//li[2]/ul/li/a</option><option>css=a.dropdown-item.text-black</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Inserimento Studente<datalist><option>link=Inserimento Studente</option><option>xpath=//a[contains(text(),'Inserimento Studente')]</option><option>xpath=//div[@id='offcanvasNavbar']/div/div/div/a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/following::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Tutor'])[1]/preceding::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Professore'])[1]/preceding::a[2]</option><option>xpath=//*/text()[normalize-space(.)='Inserimento Studente']/parent::*</option><option>xpath=//a[contains(@href, 'RegistraUtentePage.jsp?inserimento=Studente')]</option><option>xpath=//a[2]</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=nome<datalist><option>name=nome</option><option>xpath=//input[@name='nome']</option><option>xpath=//address/input</option><option>css=input[name="nome"]</option></datalist></td><td>Lorenzo</td>
+</tr>
+<tr><td>type</td><td>name=cognome<datalist><option>name=cognome</option><option>xpath=//input[@name='cognome']</option><option>xpath=//input[2]</option><option>css=input[name="cognome"]</option></datalist></td><td>Rossi</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=email</option><option>xpath=//input[@id='email']</option><option>xpath=//div/input</option><option>css=#email</option></datalist></td><td>l.rossi@studenti.unisa.it</td>
+</tr>
+<tr><td>type</td><td>id=password<datalist><option>id=password</option><option>name=password</option><option>xpath=//input[@id='password']</option><option>xpath=//input[3]</option><option>css=#password</option></datalist></td><td>Lorenzo#rossi1</td>
+</tr>
+<tr><td>click</td><td>id=dsa<datalist><option>id=dsa</option><option>xpath=//input[@id='dsa']</option><option>xpath=//div[2]/input</option><option>css=#dsa</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=percentualeDisabilita<datalist><option>name=percentualeDisabilita</option><option>xpath=//input[@name='percentualeDisabilita']</option><option>xpath=//div[2]/address/input[2]</option><option>css=input[name="percentualeDisabilita"]</option></datalist></td><td>30</td>
+</tr>
+<tr><td>type</td><td>name=oreDisponibiliStudente<datalist><option>name=oreDisponibiliStudente</option><option>xpath=//input[@name='oreDisponibiliStudente']</option><option>xpath=//div[2]/address/input[3]</option><option>css=input[name="oreDisponibiliStudente"]</option></datalist></td><td>30</td>
+</tr>
+<tr><td>type</td><td>id=specifica<datalist><option>id=specifica</option><option>name=specificheDisturbo</option><option>xpath=//input[@id='specifica']</option><option>xpath=//div[2]/address/input</option><option>css=#specifica</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='DSA'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Disabile'])[1]/following::button[1]</option><option>xpath=//*/text()[normalize-space(.)='Inserisci']/parent::*</option><option>xpath=//div[2]/button</option><option>css=button.btn.btn-outline-info</option></datalist></td><td></td>
+</tr>
+<tr><td>verifyTextNotPresent</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::div[6]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::div[6]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Carla Gigli'])[3]/following::div[6]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/preceding::div[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Studente'])[1]/preceding::div[1]</option><option>xpath=//section[2]/div/div/div/div</option><option>css=div.alert.alert-info.d-flex.align-items-center &gt; div</option></datalist></td><td>Utente inserito con successo</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">TC_GU_2.13</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp<datalist><option>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=inputPassword5<datalist><option>id=inputPassword5</option><option>name=Password</option><option>xpath=//input[@id='inputPassword5']</option><option>xpath=//div[2]/div/input</option><option>css=#inputPassword5</option></datalist></td><td>C#Gigli#9109</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td>cgigli91@unisa.it</td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email'])[1]/following::button[2]</option><option>xpath=//*/text()[normalize-space(.)='Login']/parent::*</option><option>xpath=//div[3]/div/button</option><option>css=button.btn.btn-info.mb-0</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Elenco Utenti<datalist><option>link=Elenco Utenti</option><option>xpath=//a[contains(text(),'Elenco Utenti')]</option><option>xpath=//div[@id='navbarCollapse']/ul[2]/li[2]/ul/li/a</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Home'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='CG'])[1]/preceding::a[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='CG'])[2]/preceding::a[4]</option><option>xpath=//*/text()[normalize-space(.)='Elenco Utenti']/parent::*</option><option>xpath=//a[contains(@href, '../ViewListaUsers')]</option><option>xpath=//li[2]/ul/li/a</option><option>css=a.dropdown-item.text-black</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Inserimento Studente<datalist><option>link=Inserimento Studente</option><option>xpath=//a[contains(text(),'Inserimento Studente')]</option><option>xpath=//div[@id='offcanvasNavbar']/div/div/div/a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/following::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Tutor'])[1]/preceding::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Professore'])[1]/preceding::a[2]</option><option>xpath=//*/text()[normalize-space(.)='Inserimento Studente']/parent::*</option><option>xpath=//a[contains(@href, 'RegistraUtentePage.jsp?inserimento=Studente')]</option><option>xpath=//a[2]</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=nome<datalist><option>name=nome</option><option>xpath=//input[@name='nome']</option><option>xpath=//address/input</option><option>css=input[name="nome"]</option></datalist></td><td>Lorenzo</td>
+</tr>
+<tr><td>type</td><td>name=cognome<datalist><option>name=cognome</option><option>xpath=//input[@name='cognome']</option><option>xpath=//input[2]</option><option>css=input[name="cognome"]</option></datalist></td><td>Rossi</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=email</option><option>xpath=//input[@id='email']</option><option>xpath=//div/input</option><option>css=#email</option></datalist></td><td>l.rossi@studenti.unisa.it</td>
+</tr>
+<tr><td>type</td><td>id=password<datalist><option>id=password</option><option>name=password</option><option>xpath=//input[@id='password']</option><option>xpath=//input[3]</option><option>css=#password</option></datalist></td><td>Lorenzo#rossi1</td>
+</tr>
+<tr><td>click</td><td>id=dsa<datalist><option>id=dsa</option><option>xpath=//input[@id='dsa']</option><option>xpath=//div[2]/input</option><option>css=#dsa</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=percentualeDisabilita<datalist><option>name=percentualeDisabilita</option><option>xpath=//input[@name='percentualeDisabilita']</option><option>xpath=//div[2]/address/input[2]</option><option>css=input[name="percentualeDisabilita"]</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=oreDisponibiliStudente<datalist><option>name=oreDisponibiliStudente</option><option>xpath=//input[@name='oreDisponibiliStudente']</option><option>xpath=//div[2]/address/input[3]</option><option>css=input[name="oreDisponibiliStudente"]</option></datalist></td><td>30</td>
+</tr>
+<tr><td>type</td><td>id=specifica<datalist><option>id=specifica</option><option>name=specificheDisturbo</option><option>xpath=//input[@id='specifica']</option><option>xpath=//div[2]/address/input</option><option>css=#specifica</option></datalist></td><td>Dislessia</td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='DSA'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Disabile'])[1]/following::button[1]</option><option>xpath=//*/text()[normalize-space(.)='Inserisci']/parent::*</option><option>xpath=//div[2]/button</option><option>css=button.btn.btn-outline-info</option></datalist></td><td></td>
+</tr>
+<tr><td>verifyTextNotPresent</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::div[6]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::div[6]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Carla Gigli'])[3]/following::div[6]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/preceding::div[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Studente'])[1]/preceding::div[1]</option><option>xpath=//section[2]/div/div/div/div</option><option>css=div.alert.alert-info.d-flex.align-items-center &gt; div</option></datalist></td><td>Utente inserito con successo</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">TC_GU_2.12</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp<datalist><option>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=inputPassword5<datalist><option>id=inputPassword5</option><option>name=Password</option><option>xpath=//input[@id='inputPassword5']</option><option>xpath=//div[2]/div/input</option><option>css=#inputPassword5</option></datalist></td><td>C#Gigli#9109</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td>cgigli91@unisa.it</td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email'])[1]/following::button[2]</option><option>xpath=//*/text()[normalize-space(.)='Login']/parent::*</option><option>xpath=//div[3]/div/button</option><option>css=button.btn.btn-info.mb-0</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Elenco Utenti<datalist><option>link=Elenco Utenti</option><option>xpath=//a[contains(text(),'Elenco Utenti')]</option><option>xpath=//div[@id='navbarCollapse']/ul[2]/li[2]/ul/li/a</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Home'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='CG'])[1]/preceding::a[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='CG'])[2]/preceding::a[4]</option><option>xpath=//*/text()[normalize-space(.)='Elenco Utenti']/parent::*</option><option>xpath=//a[contains(@href, '../ViewListaUsers')]</option><option>xpath=//li[2]/ul/li/a</option><option>css=a.dropdown-item.text-black</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Inserimento Studente<datalist><option>link=Inserimento Studente</option><option>xpath=//a[contains(text(),'Inserimento Studente')]</option><option>xpath=//div[@id='offcanvasNavbar']/div/div/div/a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/following::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Tutor'])[1]/preceding::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Professore'])[1]/preceding::a[2]</option><option>xpath=//*/text()[normalize-space(.)='Inserimento Studente']/parent::*</option><option>xpath=//a[contains(@href, 'RegistraUtentePage.jsp?inserimento=Studente')]</option><option>xpath=//a[2]</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=nome<datalist><option>name=nome</option><option>xpath=//input[@name='nome']</option><option>xpath=//address/input</option><option>css=input[name="nome"]</option></datalist></td><td>Lorenzo</td>
+</tr>
+<tr><td>type</td><td>name=cognome<datalist><option>name=cognome</option><option>xpath=//input[@name='cognome']</option><option>xpath=//input[2]</option><option>css=input[name="cognome"]</option></datalist></td><td>Rossi</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=email</option><option>xpath=//input[@id='email']</option><option>xpath=//div/input</option><option>css=#email</option></datalist></td><td>l.rossi@studenti.unisa.it</td>
+</tr>
+<tr><td>type</td><td>id=password<datalist><option>id=password</option><option>name=password</option><option>xpath=//input[@id='password']</option><option>xpath=//input[3]</option><option>css=#password</option></datalist></td><td>Lorenzo#rossi1</td>
+</tr>
+<tr><td>click</td><td>id=null<datalist><option>id=dsa</option><option>xpath=//input[@id='dsa']</option><option>xpath=//div[2]/input</option><option>css=#dsa</option><option>id=null</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=percentualeDisabilita<datalist><option>name=percentualeDisabilita</option><option>xpath=//input[@name='percentualeDisabilita']</option><option>xpath=//div[2]/address/input[2]</option><option>css=input[name="percentualeDisabilita"]</option></datalist></td><td>30</td>
+</tr>
+<tr><td>type</td><td>name=oreDisponibiliStudente<datalist><option>name=oreDisponibiliStudente</option><option>xpath=//input[@name='oreDisponibiliStudente']</option><option>xpath=//div[2]/address/input[3]</option><option>css=input[name="oreDisponibiliStudente"]</option></datalist></td><td>30</td>
+</tr>
+<tr><td>type</td><td>id=specifica<datalist><option>id=specifica</option><option>name=specificheDisturbo</option><option>xpath=//input[@id='specifica']</option><option>xpath=//div[2]/address/input</option><option>css=#specifica</option></datalist></td><td>Dislessia</td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='DSA'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Disabile'])[1]/following::button[1]</option><option>xpath=//*/text()[normalize-space(.)='Inserisci']/parent::*</option><option>xpath=//div[2]/button</option><option>css=button.btn.btn-outline-info</option></datalist></td><td></td>
+</tr>
+<tr><td>verifyTextNotPresent</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::div[6]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::div[6]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Carla Gigli'])[3]/following::div[6]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/preceding::div[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Studente'])[1]/preceding::div[1]</option><option>xpath=//section[2]/div/div/div/div</option><option>css=div.alert.alert-info.d-flex.align-items-center &gt; div</option></datalist></td><td>Utente inserito con successo</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">TC_GU_2.11</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp<datalist><option>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=inputPassword5<datalist><option>id=inputPassword5</option><option>name=Password</option><option>xpath=//input[@id='inputPassword5']</option><option>xpath=//div[2]/div/input</option><option>css=#inputPassword5</option></datalist></td><td>C#Gigli#9109</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td>cgigli91@unisa.it</td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email'])[1]/following::button[2]</option><option>xpath=//*/text()[normalize-space(.)='Login']/parent::*</option><option>xpath=//div[3]/div/button</option><option>css=button.btn.btn-info.mb-0</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Elenco Utenti<datalist><option>link=Elenco Utenti</option><option>xpath=//a[contains(text(),'Elenco Utenti')]</option><option>xpath=//div[@id='navbarCollapse']/ul[2]/li[2]/ul/li/a</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Home'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='CG'])[1]/preceding::a[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='CG'])[2]/preceding::a[4]</option><option>xpath=//*/text()[normalize-space(.)='Elenco Utenti']/parent::*</option><option>xpath=//a[contains(@href, '../ViewListaUsers')]</option><option>xpath=//li[2]/ul/li/a</option><option>css=a.dropdown-item.text-black</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Inserimento Studente<datalist><option>link=Inserimento Studente</option><option>xpath=//a[contains(text(),'Inserimento Studente')]</option><option>xpath=//div[@id='offcanvasNavbar']/div/div/div/a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/following::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Tutor'])[1]/preceding::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Professore'])[1]/preceding::a[2]</option><option>xpath=//*/text()[normalize-space(.)='Inserimento Studente']/parent::*</option><option>xpath=//a[contains(@href, 'RegistraUtentePage.jsp?inserimento=Studente')]</option><option>xpath=//a[2]</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=nome<datalist><option>name=nome</option><option>xpath=//input[@name='nome']</option><option>xpath=//address/input</option><option>css=input[name="nome"]</option></datalist></td><td>Lorenzo</td>
+</tr>
+<tr><td>type</td><td>name=cognome<datalist><option>name=cognome</option><option>xpath=//input[@name='cognome']</option><option>xpath=//input[2]</option><option>css=input[name="cognome"]</option></datalist></td><td>Rossi</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=email</option><option>xpath=//input[@id='email']</option><option>xpath=//div/input</option><option>css=#email</option></datalist></td><td>l.rossi@studenti.unisa.it</td>
+</tr>
+<tr><td>type</td><td>id=password<datalist><option>id=password</option><option>name=password</option><option>xpath=//input[@id='password']</option><option>xpath=//input[3]</option><option>css=#password</option></datalist></td><td>Lorenzo#rossi1</td>
+</tr>
+<tr><td>click</td><td>id=dsa<datalist><option>id=dsa</option><option>xpath=//input[@id='dsa']</option><option>xpath=//div[2]/input</option><option>css=#dsa</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=percentualeDisabilita<datalist><option>name=percentualeDisabilita</option><option>xpath=//input[@name='percentualeDisabilita']</option><option>xpath=//div[2]/address/input[2]</option><option>css=input[name="percentualeDisabilita"]</option></datalist></td><td>25</td>
+</tr>
+<tr><td>type</td><td>name=oreDisponibiliStudente<datalist><option>name=oreDisponibiliStudente</option><option>xpath=//input[@name='oreDisponibiliStudente']</option><option>xpath=//div[2]/address/input[3]</option><option>css=input[name="oreDisponibiliStudente"]</option></datalist></td><td>trenta</td>
+</tr>
+<tr><td>type</td><td>id=specifica<datalist><option>id=specifica</option><option>name=specificheDisturbo</option><option>xpath=//input[@id='specifica']</option><option>xpath=//div[2]/address/input</option><option>css=#specifica</option></datalist></td><td>Dislessia</td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='DSA'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Disabile'])[1]/following::button[1]</option><option>xpath=//*/text()[normalize-space(.)='Inserisci']/parent::*</option><option>xpath=//div[2]/button</option><option>css=button.btn.btn-outline-info</option></datalist></td><td></td>
+</tr>
+<tr><td>verifyTextNotPresent</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::div[6]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::div[6]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Carla Gigli'])[3]/following::div[6]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/preceding::div[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Studente'])[1]/preceding::div[1]</option><option>xpath=//section[2]/div/div/div/div</option><option>css=div.alert.alert-info.d-flex.align-items-center &gt; div</option></datalist></td><td>Utente inserito con successo</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">TC_GU_2.10</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp<datalist><option>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=inputPassword5<datalist><option>id=inputPassword5</option><option>name=Password</option><option>xpath=//input[@id='inputPassword5']</option><option>xpath=//div[2]/div/input</option><option>css=#inputPassword5</option></datalist></td><td>C#Gigli#9109</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td>cgigli91@unisa.it</td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email'])[1]/following::button[2]</option><option>xpath=//*/text()[normalize-space(.)='Login']/parent::*</option><option>xpath=//div[3]/div/button</option><option>css=button.btn.btn-info.mb-0</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Elenco Utenti<datalist><option>link=Elenco Utenti</option><option>xpath=//a[contains(text(),'Elenco Utenti')]</option><option>xpath=//div[@id='navbarCollapse']/ul[2]/li[2]/ul/li/a</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Home'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='CG'])[1]/preceding::a[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='CG'])[2]/preceding::a[4]</option><option>xpath=//*/text()[normalize-space(.)='Elenco Utenti']/parent::*</option><option>xpath=//a[contains(@href, '../ViewListaUsers')]</option><option>xpath=//li[2]/ul/li/a</option><option>css=a.dropdown-item.text-black</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Inserimento Studente<datalist><option>link=Inserimento Studente</option><option>xpath=//a[contains(text(),'Inserimento Studente')]</option><option>xpath=//div[@id='offcanvasNavbar']/div/div/div/a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/following::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Tutor'])[1]/preceding::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Professore'])[1]/preceding::a[2]</option><option>xpath=//*/text()[normalize-space(.)='Inserimento Studente']/parent::*</option><option>xpath=//a[contains(@href, 'RegistraUtentePage.jsp?inserimento=Studente')]</option><option>xpath=//a[2]</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=nome<datalist><option>name=nome</option><option>xpath=//input[@name='nome']</option><option>xpath=//address/input</option><option>css=input[name="nome"]</option></datalist></td><td>Lorenzo</td>
+</tr>
+<tr><td>type</td><td>name=cognome<datalist><option>name=cognome</option><option>xpath=//input[@name='cognome']</option><option>xpath=//input[2]</option><option>css=input[name="cognome"]</option></datalist></td><td>Rossi</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=email</option><option>xpath=//input[@id='email']</option><option>xpath=//div/input</option><option>css=#email</option></datalist></td><td>l.rossi@studenti.unisa.it</td>
+</tr>
+<tr><td>type</td><td>id=password<datalist><option>id=password</option><option>name=password</option><option>xpath=//input[@id='password']</option><option>xpath=//input[3]</option><option>css=#password</option></datalist></td><td>lorenzorossi1</td>
+</tr>
+<tr><td>click</td><td>id=dsa<datalist><option>id=dsa</option><option>xpath=//input[@id='dsa']</option><option>xpath=//div[2]/input</option><option>css=#dsa</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=percentualeDisabilita<datalist><option>name=percentualeDisabilita</option><option>xpath=//input[@name='percentualeDisabilita']</option><option>xpath=//div[2]/address/input[2]</option><option>css=input[name="percentualeDisabilita"]</option></datalist></td><td>25</td>
+</tr>
+<tr><td>type</td><td>name=oreDisponibiliStudente<datalist><option>name=oreDisponibiliStudente</option><option>xpath=//input[@name='oreDisponibiliStudente']</option><option>xpath=//div[2]/address/input[3]</option><option>css=input[name="oreDisponibiliStudente"]</option></datalist></td><td>30</td>
+</tr>
+<tr><td>type</td><td>id=specifica<datalist><option>id=specifica</option><option>name=specificheDisturbo</option><option>xpath=//input[@id='specifica']</option><option>xpath=//div[2]/address/input</option><option>css=#specifica</option></datalist></td><td>Dislessia</td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='DSA'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Disabile'])[1]/following::button[1]</option><option>xpath=//*/text()[normalize-space(.)='Inserisci']/parent::*</option><option>xpath=//div[2]/button</option><option>css=button.btn.btn-outline-info</option></datalist></td><td></td>
+</tr>
+<tr><td>verifyText</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::div[6]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::div[6]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Carla Gigli'])[3]/following::div[6]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/preceding::div[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Studente'])[1]/preceding::div[1]</option><option>xpath=//section[2]/div/div/div/div</option><option>css=div.alert.alert-info.d-flex.align-items-center &gt; div</option></datalist></td><td>Errore nell'inserimento studente</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">TC_GU_2.9</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp<datalist><option>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=inputPassword5<datalist><option>id=inputPassword5</option><option>name=Password</option><option>xpath=//input[@id='inputPassword5']</option><option>xpath=//div[2]/div/input</option><option>css=#inputPassword5</option></datalist></td><td>C#Gigli#9109</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td>cgigli91@unisa.it</td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email'])[1]/following::button[2]</option><option>xpath=//*/text()[normalize-space(.)='Login']/parent::*</option><option>xpath=//div[3]/div/button</option><option>css=button.btn.btn-info.mb-0</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Elenco Utenti<datalist><option>link=Elenco Utenti</option><option>xpath=//a[contains(text(),'Elenco Utenti')]</option><option>xpath=//div[@id='navbarCollapse']/ul[2]/li[2]/ul/li/a</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Home'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='CG'])[1]/preceding::a[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='CG'])[2]/preceding::a[4]</option><option>xpath=//*/text()[normalize-space(.)='Elenco Utenti']/parent::*</option><option>xpath=//a[contains(@href, '../ViewListaUsers')]</option><option>xpath=//li[2]/ul/li/a</option><option>css=a.dropdown-item.text-black</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Inserimento Studente<datalist><option>link=Inserimento Studente</option><option>xpath=//a[contains(text(),'Inserimento Studente')]</option><option>xpath=//div[@id='offcanvasNavbar']/div/div/div/a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/following::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Tutor'])[1]/preceding::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Professore'])[1]/preceding::a[2]</option><option>xpath=//*/text()[normalize-space(.)='Inserimento Studente']/parent::*</option><option>xpath=//a[contains(@href, 'RegistraUtentePage.jsp?inserimento=Studente')]</option><option>xpath=//a[2]</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=nome<datalist><option>name=nome</option><option>xpath=//input[@name='nome']</option><option>xpath=//address/input</option><option>css=input[name="nome"]</option></datalist></td><td>Lorenzo</td>
+</tr>
+<tr><td>type</td><td>name=cognome<datalist><option>name=cognome</option><option>xpath=//input[@name='cognome']</option><option>xpath=//input[2]</option><option>css=input[name="cognome"]</option></datalist></td><td>Rossi</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=email</option><option>xpath=//input[@id='email']</option><option>xpath=//div/input</option><option>css=#email</option></datalist></td><td>l.rossi@studenti.unisa.it</td>
+</tr>
+<tr><td>type</td><td>id=password<datalist><option>id=password</option><option>name=password</option><option>xpath=//input[@id='password']</option><option>xpath=//input[3]</option><option>css=#password</option></datalist></td><td>lrossi</td>
+</tr>
+<tr><td>click</td><td>id=dsa<datalist><option>id=dsa</option><option>xpath=//input[@id='dsa']</option><option>xpath=//div[2]/input</option><option>css=#dsa</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=percentualeDisabilita<datalist><option>name=percentualeDisabilita</option><option>xpath=//input[@name='percentualeDisabilita']</option><option>xpath=//div[2]/address/input[2]</option><option>css=input[name="percentualeDisabilita"]</option></datalist></td><td>25</td>
+</tr>
+<tr><td>type</td><td>name=oreDisponibiliStudente<datalist><option>name=oreDisponibiliStudente</option><option>xpath=//input[@name='oreDisponibiliStudente']</option><option>xpath=//div[2]/address/input[3]</option><option>css=input[name="oreDisponibiliStudente"]</option></datalist></td><td>30</td>
+</tr>
+<tr><td>type</td><td>id=specifica<datalist><option>id=specifica</option><option>name=specificheDisturbo</option><option>xpath=//input[@id='specifica']</option><option>xpath=//div[2]/address/input</option><option>css=#specifica</option></datalist></td><td>Dislessia</td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='DSA'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Disabile'])[1]/following::button[1]</option><option>xpath=//*/text()[normalize-space(.)='Inserisci']/parent::*</option><option>xpath=//div[2]/button</option><option>css=button.btn.btn-outline-info</option></datalist></td><td></td>
+</tr>
+<tr><td>verifyText</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::div[6]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::div[6]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Carla Gigli'])[3]/following::div[6]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/preceding::div[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Studente'])[1]/preceding::div[1]</option><option>xpath=//section[2]/div/div/div/div</option><option>css=div.alert.alert-info.d-flex.align-items-center &gt; div</option></datalist></td><td>Errore nell'inserimento studente</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">TC_GU_2.8</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp<datalist><option>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=inputPassword5<datalist><option>id=inputPassword5</option><option>name=Password</option><option>xpath=//input[@id='inputPassword5']</option><option>xpath=//div[2]/div/input</option><option>css=#inputPassword5</option></datalist></td><td>C#Gigli#9109</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td>cgigli91@unisa.it</td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email'])[1]/following::button[2]</option><option>xpath=//*/text()[normalize-space(.)='Login']/parent::*</option><option>xpath=//div[3]/div/button</option><option>css=button.btn.btn-info.mb-0</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Elenco Utenti<datalist><option>link=Elenco Utenti</option><option>xpath=//a[contains(text(),'Elenco Utenti')]</option><option>xpath=//div[@id='navbarCollapse']/ul[2]/li[2]/ul/li/a</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Home'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='CG'])[1]/preceding::a[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='CG'])[2]/preceding::a[4]</option><option>xpath=//*/text()[normalize-space(.)='Elenco Utenti']/parent::*</option><option>xpath=//a[contains(@href, '../ViewListaUsers')]</option><option>xpath=//li[2]/ul/li/a</option><option>css=a.dropdown-item.text-black</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Inserimento Studente<datalist><option>link=Inserimento Studente</option><option>xpath=//a[contains(text(),'Inserimento Studente')]</option><option>xpath=//div[@id='offcanvasNavbar']/div/div/div/a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/following::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Tutor'])[1]/preceding::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Professore'])[1]/preceding::a[2]</option><option>xpath=//*/text()[normalize-space(.)='Inserimento Studente']/parent::*</option><option>xpath=//a[contains(@href, 'RegistraUtentePage.jsp?inserimento=Studente')]</option><option>xpath=//a[2]</option></datalist></td><td></td>
+</tr>
+<tr><td>open</td><td>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/RegistraUtentePage.jsp?inserimento=Studente<datalist><option>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/RegistraUtentePage.jsp?inserimento=Studente</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=nome<datalist><option>name=nome</option><option>xpath=//input[@name='nome']</option><option>xpath=//address/input</option><option>css=input[name="nome"]</option></datalist></td><td>Lorenzo</td>
+</tr>
+<tr><td>type</td><td>name=cognome<datalist><option>name=cognome</option><option>xpath=//input[@name='cognome']</option><option>xpath=//input[2]</option><option>css=input[name="cognome"]</option></datalist></td><td>Rossi</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=email</option><option>xpath=//input[@id='email']</option><option>xpath=//div/input</option><option>css=#email</option></datalist></td><td>l.rossi@studenti.unisa.it</td>
+</tr>
+<tr><td>type</td><td>id=password<datalist><option>id=password</option><option>name=password</option><option>xpath=//input[@id='password']</option><option>xpath=//input[3]</option><option>css=#password</option></datalist></td><td>Lorenzo#rossi1</td>
+</tr>
+<tr><td>click</td><td>id=dsa<datalist><option>id=dsa</option><option>xpath=//input[@id='dsa']</option><option>xpath=//div[2]/input</option><option>css=#dsa</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=percentualeDisabilita<datalist><option>name=percentualeDisabilita</option><option>xpath=//input[@name='percentualeDisabilita']</option><option>xpath=//div[2]/address/input[2]</option><option>css=input[name="percentualeDisabilita"]</option></datalist></td><td>25</td>
+</tr>
+<tr><td>type</td><td>name=oreDisponibiliStudente<datalist><option>name=oreDisponibiliStudente</option><option>xpath=//input[@name='oreDisponibiliStudente']</option><option>xpath=//div[2]/address/input[3]</option><option>css=input[name="oreDisponibiliStudente"]</option></datalist></td><td>30</td>
+</tr>
+<tr><td>type</td><td>id=specifica<datalist><option>id=specifica</option><option>name=specificheDisturbo</option><option>xpath=//input[@id='specifica']</option><option>xpath=//div[2]/address/input</option><option>css=#specifica</option></datalist></td><td>Dislessia</td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='DSA'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Disabile'])[1]/following::button[1]</option><option>xpath=//*/text()[normalize-space(.)='Inserisci']/parent::*</option><option>xpath=//div[2]/button</option><option>css=button.btn.btn-outline-info</option></datalist></td><td></td>
+</tr>
+<tr><td>verifyText</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::div[6]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::div[6]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Carla Gigli'])[3]/following::div[6]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/preceding::div[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Studente'])[1]/preceding::div[1]</option><option>xpath=//section[2]/div/div/div/div</option><option>css=div.alert.alert-info.d-flex.align-items-center &gt; div</option></datalist></td><td>Errore nell'inserimento studente</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">TC_GU_2.7</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp<datalist><option>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=inputPassword5<datalist><option>id=inputPassword5</option><option>name=Password</option><option>xpath=//input[@id='inputPassword5']</option><option>xpath=//div[2]/div/input</option><option>css=#inputPassword5</option></datalist></td><td>C#Gigli#9109</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td>cgigli91@unisa.it</td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email'])[1]/following::button[2]</option><option>xpath=//*/text()[normalize-space(.)='Login']/parent::*</option><option>xpath=//div[3]/div/button</option><option>css=button.btn.btn-info.mb-0</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Elenco Utenti<datalist><option>link=Elenco Utenti</option><option>xpath=//a[contains(text(),'Elenco Utenti')]</option><option>xpath=//div[@id='navbarCollapse']/ul[2]/li[2]/ul/li/a</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Home'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='CG'])[1]/preceding::a[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='CG'])[2]/preceding::a[4]</option><option>xpath=//*/text()[normalize-space(.)='Elenco Utenti']/parent::*</option><option>xpath=//a[contains(@href, '../ViewListaUsers')]</option><option>xpath=//li[2]/ul/li/a</option><option>css=a.dropdown-item.text-black</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Inserimento Studente<datalist><option>link=Inserimento Studente</option><option>xpath=//a[contains(text(),'Inserimento Studente')]</option><option>xpath=//div[@id='offcanvasNavbar']/div/div/div/a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/following::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Tutor'])[1]/preceding::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Professore'])[1]/preceding::a[2]</option><option>xpath=//*/text()[normalize-space(.)='Inserimento Studente']/parent::*</option><option>xpath=//a[contains(@href, 'RegistraUtentePage.jsp?inserimento=Studente')]</option><option>xpath=//a[2]</option></datalist></td><td></td>
+</tr>
+<tr><td>open</td><td>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/RegistraUtentePage.jsp?inserimento=Studente<datalist><option>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/RegistraUtentePage.jsp?inserimento=Studente</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=nome<datalist><option>name=nome</option><option>xpath=//input[@name='nome']</option><option>xpath=//address/input</option><option>css=input[name="nome"]</option></datalist></td><td>Lorenzo</td>
+</tr>
+<tr><td>type</td><td>name=cognome<datalist><option>name=cognome</option><option>xpath=//input[@name='cognome']</option><option>xpath=//input[2]</option><option>css=input[name="cognome"]</option></datalist></td><td>Rossi</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=email</option><option>xpath=//input[@id='email']</option><option>xpath=//div/input</option><option>css=#email</option></datalist></td><td>l.rossi@studenti.unisa.it</td>
+</tr>
+<tr><td>type</td><td>id=password<datalist><option>id=password</option><option>name=password</option><option>xpath=//input[@id='password']</option><option>xpath=//input[3]</option><option>css=#password</option></datalist></td><td>Lorenzo#rossi1</td>
+</tr>
+<tr><td>click</td><td>id=dsa<datalist><option>id=dsa</option><option>xpath=//input[@id='dsa']</option><option>xpath=//div[2]/input</option><option>css=#dsa</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=percentualeDisabilita<datalist><option>name=percentualeDisabilita</option><option>xpath=//input[@name='percentualeDisabilita']</option><option>xpath=//div[2]/address/input[2]</option><option>css=input[name="percentualeDisabilita"]</option></datalist></td><td>25</td>
+</tr>
+<tr><td>type</td><td>name=oreDisponibiliStudente<datalist><option>name=oreDisponibiliStudente</option><option>xpath=//input[@name='oreDisponibiliStudente']</option><option>xpath=//div[2]/address/input[3]</option><option>css=input[name="oreDisponibiliStudente"]</option></datalist></td><td>30</td>
+</tr>
+<tr><td>type</td><td>id=specifica<datalist><option>id=specifica</option><option>name=specificheDisturbo</option><option>xpath=//input[@id='specifica']</option><option>xpath=//div[2]/address/input</option><option>css=#specifica</option></datalist></td><td>Dislessia</td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='DSA'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Disabile'])[1]/following::button[1]</option><option>xpath=//*/text()[normalize-space(.)='Inserisci']/parent::*</option><option>xpath=//div[2]/button</option><option>css=button.btn.btn-outline-info</option></datalist></td><td></td>
+</tr>
+<tr><td>verifyText</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::div[6]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::div[6]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Carla Gigli'])[3]/following::div[6]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/preceding::div[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Studente'])[1]/preceding::div[1]</option><option>xpath=//section[2]/div/div/div/div</option><option>css=div.alert.alert-info.d-flex.align-items-center &gt; div</option></datalist></td><td>Errore nell'inserimento studente</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">TC_GU_2.6</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp<datalist><option>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=inputPassword5<datalist><option>id=inputPassword5</option><option>name=Password</option><option>xpath=//input[@id='inputPassword5']</option><option>xpath=//div[2]/div/input</option><option>css=#inputPassword5</option></datalist></td><td>C#Gigli#9109</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td>cgigli91@unisa.it</td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email'])[1]/following::button[2]</option><option>xpath=//*/text()[normalize-space(.)='Login']/parent::*</option><option>xpath=//div[3]/div/button</option><option>css=button.btn.btn-info.mb-0</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Elenco Utenti<datalist><option>link=Elenco Utenti</option><option>xpath=//a[contains(text(),'Elenco Utenti')]</option><option>xpath=//div[@id='navbarCollapse']/ul[2]/li[2]/ul/li/a</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Home'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='CG'])[1]/preceding::a[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='CG'])[2]/preceding::a[4]</option><option>xpath=//*/text()[normalize-space(.)='Elenco Utenti']/parent::*</option><option>xpath=//a[contains(@href, '../ViewListaUsers')]</option><option>xpath=//li[2]/ul/li/a</option><option>css=a.dropdown-item.text-black</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Inserimento Studente<datalist><option>link=Inserimento Studente</option><option>xpath=//a[contains(text(),'Inserimento Studente')]</option><option>xpath=//div[@id='offcanvasNavbar']/div/div/div/a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/following::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Tutor'])[1]/preceding::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Professore'])[1]/preceding::a[2]</option><option>xpath=//*/text()[normalize-space(.)='Inserimento Studente']/parent::*</option><option>xpath=//a[contains(@href, 'RegistraUtentePage.jsp?inserimento=Studente')]</option><option>xpath=//a[2]</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=nome<datalist><option>name=nome</option><option>xpath=//input[@name='nome']</option><option>xpath=//address/input</option><option>css=input[name="nome"]</option></datalist></td><td>Lorenzo</td>
+</tr>
+<tr><td>type</td><td>name=cognome<datalist><option>name=cognome</option><option>xpath=//input[@name='cognome']</option><option>xpath=//input[2]</option><option>css=input[name="cognome"]</option></datalist></td><td>Rossi#@?^&amp;%</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=email</option><option>xpath=//input[@id='email']</option><option>xpath=//div/input</option><option>css=#email</option></datalist></td><td>l.rossi@studenti.unisa.it</td>
+</tr>
+<tr><td>type</td><td>id=password<datalist><option>id=password</option><option>name=password</option><option>xpath=//input[@id='password']</option><option>xpath=//input[3]</option><option>css=#password</option></datalist></td><td>Lorenzo#rossi1</td>
+</tr>
+<tr><td>click</td><td>id=dsa<datalist><option>id=dsa</option><option>xpath=//input[@id='dsa']</option><option>xpath=//div[2]/input</option><option>css=#dsa</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=percentualeDisabilita<datalist><option>name=percentualeDisabilita</option><option>xpath=//input[@name='percentualeDisabilita']</option><option>xpath=//div[2]/address/input[2]</option><option>css=input[name="percentualeDisabilita"]</option></datalist></td><td>25</td>
+</tr>
+<tr><td>type</td><td>name=oreDisponibiliStudente<datalist><option>name=oreDisponibiliStudente</option><option>xpath=//input[@name='oreDisponibiliStudente']</option><option>xpath=//div[2]/address/input[3]</option><option>css=input[name="oreDisponibiliStudente"]</option></datalist></td><td>30</td>
+</tr>
+<tr><td>type</td><td>id=specifica<datalist><option>id=specifica</option><option>name=specificheDisturbo</option><option>xpath=//input[@id='specifica']</option><option>xpath=//div[2]/address/input</option><option>css=#specifica</option></datalist></td><td>Dislessia</td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='DSA'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Disabile'])[1]/following::button[1]</option><option>xpath=//*/text()[normalize-space(.)='Inserisci']/parent::*</option><option>xpath=//div[2]/button</option><option>css=button.btn.btn-outline-info</option></datalist></td><td></td>
+</tr>
+<tr><td>verifyText</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::div[6]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::div[6]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Carla Gigli'])[3]/following::div[6]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/preceding::div[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Studente'])[1]/preceding::div[1]</option><option>xpath=//section[2]/div/div/div/div</option><option>css=div.alert.alert-info.d-flex.align-items-center &gt; div</option></datalist></td><td>Errore nell'inserimento studente</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">TC_GU_2.5</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp<datalist><option>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=inputPassword5<datalist><option>id=inputPassword5</option><option>name=Password</option><option>xpath=//input[@id='inputPassword5']</option><option>xpath=//div[2]/div/input</option><option>css=#inputPassword5</option></datalist></td><td>C#Gigli#9109</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td>cgigli91@unisa.it</td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email'])[1]/following::button[2]</option><option>xpath=//*/text()[normalize-space(.)='Login']/parent::*</option><option>xpath=//div[3]/div/button</option><option>css=button.btn.btn-info.mb-0</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Elenco Utenti<datalist><option>link=Elenco Utenti</option><option>xpath=//a[contains(text(),'Elenco Utenti')]</option><option>xpath=//div[@id='navbarCollapse']/ul[2]/li[2]/ul/li/a</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Home'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='CG'])[1]/preceding::a[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='CG'])[2]/preceding::a[4]</option><option>xpath=//*/text()[normalize-space(.)='Elenco Utenti']/parent::*</option><option>xpath=//a[contains(@href, '../ViewListaUsers')]</option><option>xpath=//li[2]/ul/li/a</option><option>css=a.dropdown-item.text-black</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Inserimento Studente<datalist><option>link=Inserimento Studente</option><option>xpath=//a[contains(text(),'Inserimento Studente')]</option><option>xpath=//div[@id='offcanvasNavbar']/div/div/div/a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/following::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Tutor'])[1]/preceding::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Professore'])[1]/preceding::a[2]</option><option>xpath=//*/text()[normalize-space(.)='Inserimento Studente']/parent::*</option><option>xpath=//a[contains(@href, 'RegistraUtentePage.jsp?inserimento=Studente')]</option><option>xpath=//a[2]</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=nome<datalist><option>name=nome</option><option>xpath=//input[@name='nome']</option><option>xpath=//address/input</option><option>css=input[name="nome"]</option></datalist></td><td>Lorenzo</td>
+</tr>
+<tr><td>type</td><td>name=cognome<datalist><option>name=cognome</option><option>xpath=//input[@name='cognome']</option><option>xpath=//input[2]</option><option>css=input[name="cognome"]</option></datalist></td><td>Rossilalsdladladsladadasdfg</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=email</option><option>xpath=//input[@id='email']</option><option>xpath=//div/input</option><option>css=#email</option></datalist></td><td>l.rossi@studenti.unisa.it</td>
+</tr>
+<tr><td>type</td><td>id=password<datalist><option>id=password</option><option>name=password</option><option>xpath=//input[@id='password']</option><option>xpath=//input[3]</option><option>css=#password</option></datalist></td><td>Lorenzo#rossi1</td>
+</tr>
+<tr><td>click</td><td>id=dsa<datalist><option>id=dsa</option><option>xpath=//input[@id='dsa']</option><option>xpath=//div[2]/input</option><option>css=#dsa</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=percentualeDisabilita<datalist><option>name=percentualeDisabilita</option><option>xpath=//input[@name='percentualeDisabilita']</option><option>xpath=//div[2]/address/input[2]</option><option>css=input[name="percentualeDisabilita"]</option></datalist></td><td>25</td>
+</tr>
+<tr><td>type</td><td>name=oreDisponibiliStudente<datalist><option>name=oreDisponibiliStudente</option><option>xpath=//input[@name='oreDisponibiliStudente']</option><option>xpath=//div[2]/address/input[3]</option><option>css=input[name="oreDisponibiliStudente"]</option></datalist></td><td>30</td>
+</tr>
+<tr><td>type</td><td>id=specifica<datalist><option>id=specifica</option><option>name=specificheDisturbo</option><option>xpath=//input[@id='specifica']</option><option>xpath=//div[2]/address/input</option><option>css=#specifica</option></datalist></td><td>Dislessia</td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='DSA'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Disabile'])[1]/following::button[1]</option><option>xpath=//*/text()[normalize-space(.)='Inserisci']/parent::*</option><option>xpath=//div[2]/button</option><option>css=button.btn.btn-outline-info</option></datalist></td><td></td>
+</tr>
+<tr><td>verifyText</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::div[6]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::div[6]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Carla Gigli'])[3]/following::div[6]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/preceding::div[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Studente'])[1]/preceding::div[1]</option><option>xpath=//section[2]/div/div/div/div</option><option>css=div.alert.alert-info.d-flex.align-items-center &gt; div</option></datalist></td><td>Errore nell'inserimento studente</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">TC_GU_2.4</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp<datalist><option>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=inputPassword5<datalist><option>id=inputPassword5</option><option>name=Password</option><option>xpath=//input[@id='inputPassword5']</option><option>xpath=//div[2]/div/input</option><option>css=#inputPassword5</option></datalist></td><td>C#Gigli#9109</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td>cgigli91@unisa.it</td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email'])[1]/following::button[2]</option><option>xpath=//*/text()[normalize-space(.)='Login']/parent::*</option><option>xpath=//div[3]/div/button</option><option>css=button.btn.btn-info.mb-0</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Elenco Utenti<datalist><option>link=Elenco Utenti</option><option>xpath=//a[contains(text(),'Elenco Utenti')]</option><option>xpath=//div[@id='navbarCollapse']/ul[2]/li[2]/ul/li/a</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Home'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='CG'])[1]/preceding::a[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='CG'])[2]/preceding::a[4]</option><option>xpath=//*/text()[normalize-space(.)='Elenco Utenti']/parent::*</option><option>xpath=//a[contains(@href, '../ViewListaUsers')]</option><option>xpath=//li[2]/ul/li/a</option><option>css=a.dropdown-item.text-black</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Inserimento Studente<datalist><option>link=Inserimento Studente</option><option>xpath=//a[contains(text(),'Inserimento Studente')]</option><option>xpath=//div[@id='offcanvasNavbar']/div/div/div/a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/following::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Tutor'])[1]/preceding::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Professore'])[1]/preceding::a[2]</option><option>xpath=//*/text()[normalize-space(.)='Inserimento Studente']/parent::*</option><option>xpath=//a[contains(@href, 'RegistraUtentePage.jsp?inserimento=Studente')]</option><option>xpath=//a[2]</option></datalist></td><td></td>
+</tr>
+<tr><td>open</td><td>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/RegistraUtentePage.jsp?inserimento=Studente<datalist><option>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/RegistraUtentePage.jsp?inserimento=Studente</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=nome<datalist><option>name=nome</option><option>xpath=//input[@name='nome']</option><option>xpath=//address/input</option><option>css=input[name="nome"]</option></datalist></td><td>Lorenzo</td>
+</tr>
+<tr><td>type</td><td>name=cognome<datalist><option>name=cognome</option><option>xpath=//input[@name='cognome']</option><option>xpath=//input[2]</option><option>css=input[name="cognome"]</option></datalist></td><td>R</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=email</option><option>xpath=//input[@id='email']</option><option>xpath=//div/input</option><option>css=#email</option></datalist></td><td>l.rossi@studenti.unisa.it</td>
+</tr>
+<tr><td>type</td><td>id=password<datalist><option>id=password</option><option>name=password</option><option>xpath=//input[@id='password']</option><option>xpath=//input[3]</option><option>css=#password</option></datalist></td><td>Lorenzo#rossi1</td>
+</tr>
+<tr><td>click</td><td>id=dsa<datalist><option>id=dsa</option><option>xpath=//input[@id='dsa']</option><option>xpath=//div[2]/input</option><option>css=#dsa</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=percentualeDisabilita<datalist><option>name=percentualeDisabilita</option><option>xpath=//input[@name='percentualeDisabilita']</option><option>xpath=//div[2]/address/input[2]</option><option>css=input[name="percentualeDisabilita"]</option></datalist></td><td>25</td>
+</tr>
+<tr><td>type</td><td>name=oreDisponibiliStudente<datalist><option>name=oreDisponibiliStudente</option><option>xpath=//input[@name='oreDisponibiliStudente']</option><option>xpath=//div[2]/address/input[3]</option><option>css=input[name="oreDisponibiliStudente"]</option></datalist></td><td>30</td>
+</tr>
+<tr><td>type</td><td>id=specifica<datalist><option>id=specifica</option><option>name=specificheDisturbo</option><option>xpath=//input[@id='specifica']</option><option>xpath=//div[2]/address/input</option><option>css=#specifica</option></datalist></td><td>Dislessia</td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='DSA'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Disabile'])[1]/following::button[1]</option><option>xpath=//*/text()[normalize-space(.)='Inserisci']/parent::*</option><option>xpath=//div[2]/button</option><option>css=button.btn.btn-outline-info</option></datalist></td><td></td>
+</tr>
+<tr><td>verifyText</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::div[6]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::div[6]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Carla Gigli'])[3]/following::div[6]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/preceding::div[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Studente'])[1]/preceding::div[1]</option><option>xpath=//section[2]/div/div/div/div</option><option>css=div.alert.alert-info.d-flex.align-items-center &gt; div</option></datalist></td><td>Errore nell'inserimento studente</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">TC_GU_2.3</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp<datalist><option>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=inputPassword5<datalist><option>id=inputPassword5</option><option>name=Password</option><option>xpath=//input[@id='inputPassword5']</option><option>xpath=//div[2]/div/input</option><option>css=#inputPassword5</option></datalist></td><td>C#Gigli#9109</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td>cgigli91@unisa.it</td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email'])[1]/following::button[2]</option><option>xpath=//*/text()[normalize-space(.)='Login']/parent::*</option><option>xpath=//div[3]/div/button</option><option>css=button.btn.btn-info.mb-0</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Elenco Utenti<datalist><option>link=Elenco Utenti</option><option>xpath=//a[contains(text(),'Elenco Utenti')]</option><option>xpath=//div[@id='navbarCollapse']/ul[2]/li[2]/ul/li/a</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Home'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='CG'])[1]/preceding::a[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='CG'])[2]/preceding::a[4]</option><option>xpath=//*/text()[normalize-space(.)='Elenco Utenti']/parent::*</option><option>xpath=//a[contains(@href, '../ViewListaUsers')]</option><option>xpath=//li[2]/ul/li/a</option><option>css=a.dropdown-item.text-black</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Inserimento Studente<datalist><option>link=Inserimento Studente</option><option>xpath=//a[contains(text(),'Inserimento Studente')]</option><option>xpath=//div[@id='offcanvasNavbar']/div/div/div/a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/following::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Tutor'])[1]/preceding::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Professore'])[1]/preceding::a[2]</option><option>xpath=//*/text()[normalize-space(.)='Inserimento Studente']/parent::*</option><option>xpath=//a[contains(@href, 'RegistraUtentePage.jsp?inserimento=Studente')]</option><option>xpath=//a[2]</option></datalist></td><td></td>
+</tr>
+<tr><td>open</td><td>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/RegistraUtentePage.jsp?inserimento=Studente<datalist><option>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/RegistraUtentePage.jsp?inserimento=Studente</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=nome<datalist><option>name=nome</option><option>xpath=//input[@name='nome']</option><option>xpath=//address/input</option><option>css=input[name="nome"]</option></datalist></td><td>Lorenzo#</td>
+</tr>
+<tr><td>type</td><td>name=cognome<datalist><option>name=cognome</option><option>xpath=//input[@name='cognome']</option><option>xpath=//input[2]</option><option>css=input[name="cognome"]</option></datalist></td><td>Rossi</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=email</option><option>xpath=//input[@id='email']</option><option>xpath=//div/input</option><option>css=#email</option></datalist></td><td>l.rossi@studenti.unisa.it</td>
+</tr>
+<tr><td>type</td><td>id=password<datalist><option>id=password</option><option>name=password</option><option>xpath=//input[@id='password']</option><option>xpath=//input[3]</option><option>css=#password</option></datalist></td><td>Lorenzo#rossi1</td>
+</tr>
+<tr><td>click</td><td>id=dsa<datalist><option>id=dsa</option><option>xpath=//input[@id='dsa']</option><option>xpath=//div[2]/input</option><option>css=#dsa</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=percentualeDisabilita<datalist><option>name=percentualeDisabilita</option><option>xpath=//input[@name='percentualeDisabilita']</option><option>xpath=//div[2]/address/input[2]</option><option>css=input[name="percentualeDisabilita"]</option></datalist></td><td>25</td>
+</tr>
+<tr><td>type</td><td>name=oreDisponibiliStudente<datalist><option>name=oreDisponibiliStudente</option><option>xpath=//input[@name='oreDisponibiliStudente']</option><option>xpath=//div[2]/address/input[3]</option><option>css=input[name="oreDisponibiliStudente"]</option></datalist></td><td>30</td>
+</tr>
+<tr><td>type</td><td>id=specifica<datalist><option>id=specifica</option><option>name=specificheDisturbo</option><option>xpath=//input[@id='specifica']</option><option>xpath=//div[2]/address/input</option><option>css=#specifica</option></datalist></td><td>Dislessia</td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='DSA'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Disabile'])[1]/following::button[1]</option><option>xpath=//*/text()[normalize-space(.)='Inserisci']/parent::*</option><option>xpath=//div[2]/button</option><option>css=button.btn.btn-outline-info</option></datalist></td><td></td>
+</tr>
+<tr><td>verifyText</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::div[6]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::div[6]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Carla Gigli'])[3]/following::div[6]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/preceding::div[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Studente'])[1]/preceding::div[1]</option><option>xpath=//section[2]/div/div/div/div</option><option>css=div.alert.alert-info.d-flex.align-items-center &gt; div</option></datalist></td><td>Errore nell'inserimento studente</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">TC_GU_2.2</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp<datalist><option>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=inputPassword5<datalist><option>id=inputPassword5</option><option>name=Password</option><option>xpath=//input[@id='inputPassword5']</option><option>xpath=//div[2]/div/input</option><option>css=#inputPassword5</option></datalist></td><td>C#Gigli#9109</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td>cgigli91@unisa.it</td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email'])[1]/following::button[2]</option><option>xpath=//*/text()[normalize-space(.)='Login']/parent::*</option><option>xpath=//div[3]/div/button</option><option>css=button.btn.btn-info.mb-0</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Elenco Utenti<datalist><option>link=Elenco Utenti</option><option>xpath=//a[contains(text(),'Elenco Utenti')]</option><option>xpath=//div[@id='navbarCollapse']/ul[2]/li[2]/ul/li/a</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Home'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='CG'])[1]/preceding::a[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='CG'])[2]/preceding::a[4]</option><option>xpath=//*/text()[normalize-space(.)='Elenco Utenti']/parent::*</option><option>xpath=//a[contains(@href, '../ViewListaUsers')]</option><option>xpath=//li[2]/ul/li/a</option><option>css=a.dropdown-item.text-black</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Inserimento Studente<datalist><option>link=Inserimento Studente</option><option>xpath=//a[contains(text(),'Inserimento Studente')]</option><option>xpath=//div[@id='offcanvasNavbar']/div/div/div/a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/following::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Tutor'])[1]/preceding::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Professore'])[1]/preceding::a[2]</option><option>xpath=//*/text()[normalize-space(.)='Inserimento Studente']/parent::*</option><option>xpath=//a[contains(@href, 'RegistraUtentePage.jsp?inserimento=Studente')]</option><option>xpath=//a[2]</option></datalist></td><td></td>
+</tr>
+<tr><td>open</td><td>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/RegistraUtentePage.jsp?inserimento=Studente<datalist><option>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/RegistraUtentePage.jsp?inserimento=Studente</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=nome<datalist><option>name=nome</option><option>xpath=//input[@name='nome']</option><option>xpath=//address/input</option><option>css=input[name="nome"]</option></datalist></td><td>LorenzoRossidfasdadadartyuklo</td>
+</tr>
+<tr><td>type</td><td>name=cognome<datalist><option>name=cognome</option><option>xpath=//input[@name='cognome']</option><option>xpath=//input[2]</option><option>css=input[name="cognome"]</option></datalist></td><td>Rossi</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=email</option><option>xpath=//input[@id='email']</option><option>xpath=//div/input</option><option>css=#email</option></datalist></td><td>l.rossi@studenti.unisa.it</td>
+</tr>
+<tr><td>type</td><td>id=password<datalist><option>id=password</option><option>name=password</option><option>xpath=//input[@id='password']</option><option>xpath=//input[3]</option><option>css=#password</option></datalist></td><td>Lorenzo#rossi1</td>
+</tr>
+<tr><td>click</td><td>id=dsa<datalist><option>id=dsa</option><option>xpath=//input[@id='dsa']</option><option>xpath=//div[2]/input</option><option>css=#dsa</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=percentualeDisabilita<datalist><option>name=percentualeDisabilita</option><option>xpath=//input[@name='percentualeDisabilita']</option><option>xpath=//div[2]/address/input[2]</option><option>css=input[name="percentualeDisabilita"]</option></datalist></td><td>25</td>
+</tr>
+<tr><td>type</td><td>name=oreDisponibiliStudente<datalist><option>name=oreDisponibiliStudente</option><option>xpath=//input[@name='oreDisponibiliStudente']</option><option>xpath=//div[2]/address/input[3]</option><option>css=input[name="oreDisponibiliStudente"]</option></datalist></td><td>30</td>
+</tr>
+<tr><td>type</td><td>id=specifica<datalist><option>id=specifica</option><option>name=specificheDisturbo</option><option>xpath=//input[@id='specifica']</option><option>xpath=//div[2]/address/input</option><option>css=#specifica</option></datalist></td><td>Dislessia</td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='DSA'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Disabile'])[1]/following::button[1]</option><option>xpath=//*/text()[normalize-space(.)='Inserisci']/parent::*</option><option>xpath=//div[2]/button</option><option>css=button.btn.btn-outline-info</option></datalist></td><td></td>
+</tr>
+<tr><td>verifyText</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::div[6]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::div[6]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Carla Gigli'])[3]/following::div[6]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/preceding::div[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Studente'])[1]/preceding::div[1]</option><option>xpath=//section[2]/div/div/div/div</option><option>css=div.alert.alert-info.d-flex.align-items-center &gt; div</option></datalist></td><td>Errore nell'inserimento studente</td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email'])[1]/following::button[2]</option><option>xpath=//*/text()[normalize-space(.)='Login']/parent::*</option><option>xpath=//div[3]/div/button</option><option>css=button.btn.btn-info.mb-0</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">TC_GU_2.1</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp<datalist><option>http://localhost:8001/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=inputPassword5<datalist><option>id=inputPassword5</option><option>name=Password</option><option>xpath=//input[@id='inputPassword5']</option><option>xpath=//div[2]/div/input</option><option>css=#inputPassword5</option></datalist></td><td>C#Gigli#9109</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td>cgigli91@unisa.it</td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email'])[1]/following::button[2]</option><option>xpath=//*/text()[normalize-space(.)='Login']/parent::*</option><option>xpath=//div[3]/div/button</option><option>css=button.btn.btn-info.mb-0</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Elenco Utenti<datalist><option>link=Elenco Utenti</option><option>xpath=//a[contains(text(),'Elenco Utenti')]</option><option>xpath=//div[@id='navbarCollapse']/ul[2]/li[2]/ul/li/a</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Home'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='CG'])[1]/preceding::a[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='CG'])[2]/preceding::a[4]</option><option>xpath=//*/text()[normalize-space(.)='Elenco Utenti']/parent::*</option><option>xpath=//a[contains(@href, '../ViewListaUsers')]</option><option>xpath=//li[2]/ul/li/a</option><option>css=a.dropdown-item.text-black</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Inserimento Studente<datalist><option>link=Inserimento Studente</option><option>xpath=//a[contains(text(),'Inserimento Studente')]</option><option>xpath=//div[@id='offcanvasNavbar']/div/div/div/a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/following::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Tutor'])[1]/preceding::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Professore'])[1]/preceding::a[2]</option><option>xpath=//*/text()[normalize-space(.)='Inserimento Studente']/parent::*</option><option>xpath=//a[contains(@href, 'RegistraUtentePage.jsp?inserimento=Studente')]</option><option>xpath=//a[2]</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=nome<datalist><option>name=nome</option><option>xpath=//input[@name='nome']</option><option>xpath=//address/input</option><option>css=input[name="nome"]</option></datalist></td><td>L</td>
+</tr>
+<tr><td>type</td><td>name=cognome<datalist><option>name=cognome</option><option>xpath=//input[@name='cognome']</option><option>xpath=//input[2]</option><option>css=input[name="cognome"]</option></datalist></td><td>Rossi</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=email</option><option>xpath=//input[@id='email']</option><option>xpath=//div/input</option><option>css=#email</option></datalist></td><td>lorenzorossi1@studenti.unisa.it</td>
+</tr>
+<tr><td>type</td><td>id=password<datalist><option>id=password</option><option>name=password</option><option>xpath=//input[@id='password']</option><option>xpath=//input[3]</option><option>css=#password</option></datalist></td><td>Lorenzo#rossi1</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=email</option><option>xpath=//input[@id='email']</option><option>xpath=//div/input</option><option>css=#email</option></datalist></td><td>l.rossi@studenti.unisa.it</td>
+</tr>
+<tr><td>click</td><td>id=dsa<datalist><option>id=dsa</option><option>xpath=//input[@id='dsa']</option><option>xpath=//div[2]/input</option><option>css=#dsa</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=specifica<datalist><option>id=specifica</option><option>name=specificheDisturbo</option><option>xpath=//input[@id='specifica']</option><option>xpath=//div[2]/address/input</option><option>css=#specifica</option></datalist></td><td>Dislessia</td>
+</tr>
+<tr><td>type</td><td>name=percentualeDisabilita<datalist><option>name=percentualeDisabilita</option><option>xpath=//input[@name='percentualeDisabilita']</option><option>xpath=//div[2]/address/input[2]</option><option>css=input[name="percentualeDisabilita"]</option></datalist></td><td>30</td>
+</tr>
+<tr><td>type</td><td>name=oreDisponibiliStudente<datalist><option>name=oreDisponibiliStudente</option><option>xpath=//input[@name='oreDisponibiliStudente']</option><option>xpath=//div[2]/address/input[3]</option><option>css=input[name="oreDisponibiliStudente"]</option></datalist></td><td>25</td>
+</tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='DSA'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Disabile'])[1]/following::button[1]</option><option>xpath=//*/text()[normalize-space(.)='Inserisci']/parent::*</option><option>xpath=//div[2]/button</option><option>css=button.btn.btn-outline-info</option></datalist></td><td></td>
+</tr>
+<tr><td>verifyText</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::div[6]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='cgigli91@unisa.it'])[2]/following::div[6]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Carla Gigli'])[3]/following::div[6]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/preceding::div[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Inserimento Studente'])[1]/preceding::div[1]</option><option>xpath=//section[2]/div/div/div/div</option><option>css=div.alert.alert-info.d-flex.align-items-center &gt; div</option></datalist></td><td>Errore nell'inserimento studente</td>
+</tr>
+</tbody></table>
+</body>
+</html>

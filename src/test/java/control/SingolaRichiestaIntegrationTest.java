@@ -1,20 +1,21 @@
 package control;
 
-/*
-@author Martina Giugliano
- */
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import model.bean.TutoratoDidatticoBean;
 import model.bean.UserBean;
-import model.dao.ITutoratoDidatticoDAO;
-import model.dao.TutoratoDidatticoDAO;
+import model.dao.ItutoratoDidatticoDao;
+import model.dao.TutoratoDidatticoDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-import java.io.IOException;
-import java.sql.SQLException;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
+/*
+@author Martina Giugliano
+ */
 
 class SingolaRichiestaIntegrationTest {
   private SingolaRichiestaServlet servlet;
@@ -35,7 +36,7 @@ class SingolaRichiestaIntegrationTest {
     UserBean bean = new UserBean();
     request.getSession().setAttribute("utente", bean);
 
-    ITutoratoDidatticoDAO tutoratoDao = new TutoratoDidatticoDAO();
+    ItutoratoDidatticoDao tutoratoDao = new TutoratoDidatticoDao();
     servlet.setTutoratoDao(tutoratoDao);
 
     TutoratoDidatticoBean esameBean = new TutoratoDidatticoBean();

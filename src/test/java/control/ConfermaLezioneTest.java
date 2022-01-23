@@ -1,26 +1,33 @@
 package control;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
+import javax.servlet.ServletException;
 import model.bean.LezioneBean;
 import model.bean.UserBean;
-import model.dao.ILezioneDAO;
-import model.dao.ITutoratoDidatticoDAO;
-import model.dao.LezioneDAO;
-import model.dao.TutoratoDidatticoDAO;
+import model.dao.IlezioneDao;
+import model.dao.ItutoratoDidatticoDao;
+import model.dao.LezioneDao;
+import model.dao.TutoratoDidatticoDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-import javax.servlet.ServletException;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collection;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
-//@author Serena Liguori
+/**
+ * Test di integrazione conferma lezione.
+ *
+ * @author Serena Liguori
+ *
+ */
+
 class ConfermaLezioneTest {
 
   private ConfermaLezioneServlet servlet;
@@ -72,8 +79,8 @@ class ConfermaLezioneTest {
     lezione.setTutorato(24);
     request.getSession().setAttribute("lezione", lezione);
 
-    ILezioneDAO lezioneDao = mock(LezioneDAO.class);
-    ITutoratoDidatticoDAO tutoratoDao = mock(TutoratoDidatticoDAO.class);
+    IlezioneDao lezioneDao = mock(LezioneDao.class);
+    ItutoratoDidatticoDao tutoratoDao = mock(TutoratoDidatticoDao.class);
 
     servlet.setlezioneDao(lezioneDao);
     servlet.settutoratodidatticoDao(tutoratoDao);
@@ -108,8 +115,8 @@ class ConfermaLezioneTest {
     lezione.setTutorato(24);
     request.getSession().setAttribute("lezione", lezione);
 
-    ILezioneDAO lezioneDao = mock(LezioneDAO.class);
-    ITutoratoDidatticoDAO tutoratoDao = mock(TutoratoDidatticoDAO.class);
+    IlezioneDao lezioneDao = mock(LezioneDao.class);
+    ItutoratoDidatticoDao tutoratoDao = mock(TutoratoDidatticoDao.class);
 
     servlet.setlezioneDao(lezioneDao);
     servlet.settutoratodidatticoDao(tutoratoDao);

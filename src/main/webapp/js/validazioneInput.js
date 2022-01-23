@@ -12,8 +12,12 @@ function validate() {
 }
 
 function validateInserimento() {
-    const pass_valid = "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{12,}$/";
+    const pass_valid = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d[\]{};.:=<>_+^#$@!%*?&]{12,30}$/;
     const email_valid = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
+    const qualificareg = /^[a-zA-Z\s]*$/;
+    const qualifica_form=document.getElementById("qualifica");
+    const nome =document.getElementById("nome");
+    const cognome =document.getElementById("cognome");
     const email_form = document.getElementById("email");
     const pass_form = document.getElementById("password");
     let check = true;
@@ -26,6 +30,24 @@ function validateInserimento() {
         check = false;
         pass_form.focus();
         pass_form.style.background = '#f08080';
+    }
+    if(!qualificareg.test(qualifica_form.value))
+    {
+        check = false;
+        qualifica_form.focus();
+        qualifica_form.style.background = '#f08080';
+    }
+    if(!qualificareg.test(nome.value))
+    {
+        check=false;
+        nome.focus();
+        nome.style.background = '#f08080';
+    }
+    if(!qualificareg.test(cognome.value))
+    {
+        check=false;
+        cognome.focus();
+        cognome.style.background = '#f08080';
     }
     return check;
 
@@ -44,7 +66,7 @@ function changeInput() {
 }
 
 function inserimentoCommento() {
-    const commentovalid = /^[a-zA-Z\s][-_a-zA-Z0-9]{2,250}$/;
+    const commentovalid = /^[a-zA-Z\s][-_a-zA-ù0-9\s]{2,250}$/;
     const commento_form = document.getElementById("commento");
     let commento_check = true;
     if (!commentovalid.test(commento_form.value) || commento_form.value === '') {
@@ -84,6 +106,7 @@ function validazioneRichiestaTutorato() {
     date_disponibili.value = date_disponibili.value.replaceAll('ì', 'i');
     const ore_disponibili = document.getElementById("ore_disponibili");
     let check = true;
+    date_disponibili.value=date_disponibili.value.toLowerCase();
     if (!date_disponibili.value.includes("lunedi") && !date_disponibili.value.includes("martedi") && !date_disponibili.value.includes("mercoledi") && !date_disponibili.value.includes("giovedi") && !date_disponibili.value.includes("venerdi")) {
         date_disponibili.focus();
         date_disponibili.style.background = '#f08080';

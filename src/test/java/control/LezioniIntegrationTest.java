@@ -1,19 +1,31 @@
 package control;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import javax.servlet.ServletException;
 import model.bean.UserBean;
-import model.dao.*;
+import model.dao.IlezioneDao;
+import model.dao.IstudenteDao;
+import model.dao.ItutorDao;
+import model.dao.ItutoratoDidatticoDao;
+import model.dao.LezioneDao;
+import model.dao.StudenteDao;
+import model.dao.TutorDao;
+import model.dao.TutoratoDidatticoDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-import javax.servlet.ServletException;
-import java.io.IOException;
-import java.sql.SQLException;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-/*
-@author Martina Giugliano
+
+/**
+ * Test di integrazione per la funzionalità: visualizza lista lezioni.
+ *
+ * @author Martina Giugliano
+ *
  */
 class LezioniIntegrationTest {
   private LezioniServlet servlet;
@@ -31,15 +43,15 @@ class LezioniIntegrationTest {
   @Test
   void testViewLezioni1()
       throws ServletException, IOException, SQLException, ClassNotFoundException {
-    ILezioneDAO lezioneDao = new LezioneDAO();
-    IStudenteDAO studenteDao = new StudenteDAO();
-    ITutoratoDidatticoDAO tutoratoDidatticoDao = new TutoratoDidatticoDAO();
-    UserBean userBean = new UserBean();
+    IlezioneDao lezioneDao = new LezioneDao();
+    IstudenteDao studenteDao = new StudenteDao();
+    ItutoratoDidatticoDao tutoratoDidatticoDao = new TutoratoDidatticoDao();
 
     servlet.setLezioneDao(lezioneDao);
     servlet.setStudenteDao(studenteDao);
     servlet.settutoratodidatticodao(tutoratoDidatticoDao);
 
+    UserBean userBean = new UserBean();
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("S");
@@ -50,18 +62,19 @@ class LezioniIntegrationTest {
     assertEquals("view/LezioniStudentePage.jsp", response.getRedirectedUrl());
   }
   // L'utente loggato è un tutor,dunque può vedere la lista delle lezioni
+
   @Test
   void testViewLezioni2()
       throws ServletException, IOException, SQLException, ClassNotFoundException {
-    ILezioneDAO lezioneDao = new LezioneDAO();
-    ITutorDAO tutorDao = new TutorDAO();
-    ITutoratoDidatticoDAO tutoratoDidatticoDao = new TutoratoDidatticoDAO();
-    UserBean userBean = new UserBean();
+    IlezioneDao lezioneDao = new LezioneDao();
+    ItutorDao tutorDao = new TutorDao();
+    ItutoratoDidatticoDao tutoratoDidatticoDao = new TutoratoDidatticoDao();
 
     servlet.setLezioneDao(lezioneDao);
     servlet.settutoratodidatticodao(tutoratoDidatticoDao);
     servlet.setTutorDao(tutorDao);
 
+    UserBean userBean = new UserBean();
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
     userBean.setPassword("Lorenzo#rossi1");
     userBean.setRuolo("T");

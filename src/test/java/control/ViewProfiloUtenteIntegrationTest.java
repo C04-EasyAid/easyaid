@@ -1,19 +1,26 @@
 package control;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import javax.servlet.ServletException;
 import model.bean.ProfessoreReferenteBean;
 import model.bean.StudenteBean;
 import model.bean.TutorBean;
 import model.bean.UserBean;
-import model.dao.*;
+import model.dao.IprofessoreReferenteDao;
+import model.dao.IstudenteDao;
+import model.dao.ItutorDao;
+import model.dao.IuserDao;
+import model.dao.ProfessoreReferenteDao;
+import model.dao.StudenteDao;
+import model.dao.TutorDao;
+import model.dao.UserDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-import javax.servlet.ServletException;
-import java.io.IOException;
-import java.sql.SQLException;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /*
 @author Martina Giugliano
@@ -46,8 +53,8 @@ class ViewProfiloUtenteIntegrationTest {
     StudenteBean studente = new StudenteBean();
     studente.setEmail("abaglio9@studenti.unisa.it");
 
-    IStudenteDAO studenteDao = new StudenteDAO();
-    IUserDAO userDao = new UserDAO();
+    IstudenteDao studenteDao = new StudenteDao();
+    IuserDao userDao = new UserDao();
 
     servlet.setStudenteDao(studenteDao);
     servlet.setUserdao(userDao);
@@ -73,8 +80,8 @@ class ViewProfiloUtenteIntegrationTest {
     TutorBean tutor = new TutorBean();
     tutor.setEmailTutor("lorenzorossi1@studenti.unisa.it");
 
-    ITutorDAO tutorDao = new TutorDAO();
-    IUserDAO userDao = new UserDAO();
+    ItutorDao tutorDao = new TutorDao();
+    IuserDao userDao = new UserDao();
 
     servlet.setTutorDao(tutorDao);
     servlet.setUserdao(userDao);
@@ -101,8 +108,8 @@ class ViewProfiloUtenteIntegrationTest {
     ProfessoreReferenteBean professore = new ProfessoreReferenteBean();
     professore.setEmail("lorenzorossi1@studenti.unisa.it");
 
-    IProfessoreReferenteDAO professoreDao = new ProfessoreReferenteDAO();
-    IUserDAO userDao = new UserDAO();
+    IprofessoreReferenteDao professoreDao = new ProfessoreReferenteDao();
+    IuserDao userDao = new UserDao();
 
     servlet.setProfessoreDao(professoreDao);
     servlet.setUserdao(userDao);

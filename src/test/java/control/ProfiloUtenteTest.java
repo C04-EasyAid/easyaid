@@ -1,23 +1,34 @@
 package control;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import javax.servlet.ServletException;
 import model.bean.ProfessoreReferenteBean;
 import model.bean.StudenteBean;
 import model.bean.TutorBean;
 import model.bean.UserBean;
-import model.dao.*;
+import model.dao.IprofessoreReferenteDao;
+import model.dao.IstudenteDao;
+import model.dao.ItutorDao;
+import model.dao.IuserDao;
+import model.dao.ProfessoreReferenteDao;
+import model.dao.StudenteDao;
+import model.dao.TutorDao;
+import model.dao.UserDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-import javax.servlet.ServletException;
-import java.io.IOException;
-import java.sql.SQLException;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+
+
+
 
 class ProfiloUtenteTest {
 
@@ -87,8 +98,8 @@ class ProfiloUtenteTest {
     StudenteBean studente = new StudenteBean();
     studente.setEmail("abaglio9@studenti.unisa.it");
 
-    IStudenteDAO studenteDao = mock(StudenteDAO.class);
-    IUserDAO userDao = mock(UserDAO.class);
+    IstudenteDao studenteDao = mock(StudenteDao.class);
+    IuserDao userDao = mock(UserDao.class);
 
     servlet.setStudenteDao(studenteDao);
     servlet.setUserdao(userDao);
@@ -118,8 +129,8 @@ class ProfiloUtenteTest {
     TutorBean tutor = new TutorBean();
     tutor.setEmailTutor("lorenzorossi1@studenti.unisa.it");
 
-    ITutorDAO tutorDao = mock(TutorDAO.class);
-    IUserDAO userDao = mock(UserDAO.class);
+    ItutorDao tutorDao = mock(TutorDao.class);
+    IuserDao userDao = mock(UserDao.class);
 
     servlet.setTutorDao(tutorDao);
     servlet.setUserdao(userDao);
@@ -150,8 +161,8 @@ class ProfiloUtenteTest {
     ProfessoreReferenteBean professore = new ProfessoreReferenteBean();
     professore.setEmail("lorenzorossi1@studenti.unisa.it");
 
-    IProfessoreReferenteDAO professoreDao = mock(ProfessoreReferenteDAO.class);
-    IUserDAO userDao = mock(UserDAO.class);
+    IprofessoreReferenteDao professoreDao = mock(ProfessoreReferenteDao.class);
+    IuserDao userDao = mock(UserDao.class);
 
     servlet.setProfessoreDao(professoreDao);
     servlet.setUserdao(userDao);

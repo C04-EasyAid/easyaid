@@ -11,8 +11,6 @@ import java.util.List;
  *
  * @author Giovanni Toriello
  */
-
-
 public class ConnectionPool {
 
   private static List<Connection> freeDbConnections;
@@ -26,7 +24,7 @@ public class ConnectionPool {
     }
   }
 
-  private static synchronized Connection createDBConnection() throws SQLException {
+  private static synchronized Connection createdbconnection() throws SQLException {
     Connection newConnection = null;
     String ip = "localhost";
     String port = "3306";
@@ -42,7 +40,9 @@ public class ConnectionPool {
                 + port
                 + "/"
                 + db
-                + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false",
+                + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode="
+                + "false&serverTimezone=UTC&allowPublicKeyRetrieval="
+                + "true&useSSL=false",
             username,
             password);
 
@@ -52,6 +52,14 @@ public class ConnectionPool {
     return newConnection;
   }
 
+  /**
+   * Metodo che restituisce connessione al database.
+   *
+   * @return
+   *        connection.
+   * @throws SQLException
+   *                     eccezione all'accesso al db.
+   */
   public static synchronized Connection conn() throws SQLException {
     Connection connection;
 
@@ -60,18 +68,26 @@ public class ConnectionPool {
       freeDbConnections.remove(0);
 
       try {
-        if (connection.isClosed()) connection = conn();
+        if (connection.isClosed()) {
+          connection = conn();
+        }
       } catch (SQLException e) {
         connection.close();
         connection = conn();
       }
     } else {
-      connection = createDBConnection();
+      connection = createdbconnection();
     }
 
     return connection;
   }
 
+  /**
+   * Metodo che chiude la connessione al db.
+   *
+   * @throws SQLException
+   *                     eccezione dell'accesso al db.
+   */
   public static synchronized void releaseConnection(Connection connection) throws SQLException {
     if (connection != null) {
       freeDbConnections.add(connection);

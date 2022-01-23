@@ -1,17 +1,26 @@
 package control;
 
-import model.bean.*;
-import model.dao.*;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.mock.web.MockHttpServletResponse;
-import javax.servlet.ServletException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import javax.servlet.ServletException;
+import model.bean.CommentoBean;
+import model.bean.LezioneBean;
+import model.bean.UserBean;
+import model.dao.CommentoDao;
+import model.dao.IcommentoDao;
+import model.dao.IstudenteDao;
+import model.dao.ItutorDao;
+import model.dao.StudenteDao;
+import model.dao.TutorDao;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.mock.web.MockHttpServletResponse;
+
 
 
 /*
@@ -31,7 +40,8 @@ class CommentoIntegrationTest {
   }
 
   @Test
-  void testInserimentoCommentoTutor() throws ServletException, IOException, SQLException, ClassNotFoundException {
+  void testInserimentoCommentoTutor()
+          throws ServletException, IOException, SQLException, ClassNotFoundException {
     UserBean userBean = new UserBean();
 
     userBean.setEmail("lorenzorossi1@studenti.unisa.it");
@@ -45,8 +55,8 @@ class CommentoIntegrationTest {
     String msg = "Ok,Ci sarò!";
     request.setParameter("commento", msg);
 
-    ICommentoDAO commentoDao = new CommentoDAO();
-    ITutorDAO tutorDao = new TutorDAO();
+    IcommentoDao commentoDao = new CommentoDao();
+    ItutorDao tutorDao = new TutorDao();
     servlet.setDaoC(commentoDao);
     servlet.setDaoT(tutorDao);
     servlet.doGet(request, response);
@@ -57,12 +67,13 @@ class CommentoIntegrationTest {
 
 
     List<CommentoBean> list = (List<CommentoBean>) commentoDao.doRetrieveCommento(lezione.getId());
-    CommentoBean commento = list.get(list.size()-1);
+    CommentoBean commento = list.get(list.size() - 1);
     commentoDao.deleteCommento(commento);
   }
 
   @Test
-  void testInserimentoCommentoStudente() throws ServletException, IOException, SQLException, ClassNotFoundException {
+  void testInserimentoCommentoStudente()
+          throws ServletException, IOException, SQLException, ClassNotFoundException {
     UserBean userBean = new UserBean();
 
     userBean.setEmail("abaglio9@studenti.unisa.it");
@@ -76,10 +87,10 @@ class CommentoIntegrationTest {
     String msg = "Ok,Ci sarò!";
     request.setParameter("commento", msg);
 
-    ICommentoDAO commentoDao = new CommentoDAO();
-    IStudenteDAO studenteDAO = new StudenteDAO();
+    IcommentoDao commentoDao = new CommentoDao();
+    IstudenteDao studenteDao = new StudenteDao();
     servlet.setDaoC(commentoDao);
-    servlet.setDaoS(studenteDAO);
+    servlet.setDaoS(studenteDao);
     servlet.doGet(request, response);
 
     assertEquals(
@@ -88,7 +99,7 @@ class CommentoIntegrationTest {
 
 
     List<CommentoBean> list = (List<CommentoBean>) commentoDao.doRetrieveCommento(lezione.getId());
-    CommentoBean commento = list.get(list.size()-1);
+    CommentoBean commento = list.get(list.size() - 1);
     commentoDao.deleteCommento(commento);
 
   }

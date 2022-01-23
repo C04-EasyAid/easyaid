@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+<title>Gestione Autenticazione</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC_GA_1.1</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8080/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp<datalist><option>http://localhost:8080/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td>adebiase42@studenti.unisa.it</td></tr>
+<tr><td>type</td><td>id=inputPassword5<datalist><option>id=inputPassword5</option><option>name=Password</option><option>xpath=//input[@id='inputPassword5']</option><option>xpath=//div[2]/div/input</option><option>css=#inputPassword5</option></datalist></td><td>Antonio#DB123</td></tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email'])[1]/following::button[1]</option><option>xpath=//*/text()[normalize-space(.)='Login']/parent::*</option><option>xpath=//button</option><option>css=button.btn.btn-info.mb-0</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC_GA_1.2</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8080/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp<datalist><option>http://localhost:8080/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td>adebiase41@studenti.unisa.it</td></tr>
+<tr><td>type</td><td>id=inputPassword5<datalist><option>id=inputPassword5</option><option>name=Password</option><option>xpath=//input[@id='inputPassword5']</option><option>xpath=//div[2]/div/input</option><option>css=#inputPassword5</option></datalist></td><td>Antonio#DB12</td></tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email'])[1]/following::button[1]</option><option>xpath=//*/text()[normalize-space(.)='Login']/parent::*</option><option>xpath=//button</option><option>css=button.btn.btn-info.mb-0</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC_GA_1.3</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8080/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp<datalist><option>http://localhost:8080/Gradle___it_unisa_c04_easyaid___easyaid_1_0_SNAPSHOT_war__exploded_/view/LoginPage.jsp</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=Email</option><option>xpath=//input[@id='email']</option><option>xpath=//input</option><option>css=#email</option></datalist></td><td>adebiase41@studenti.unisa.it</td></tr>
+<tr><td>type</td><td>id=inputPassword5<datalist><option>id=inputPassword5</option><option>name=Password</option><option>xpath=//input[@id='inputPassword5']</option><option>xpath=//div[2]/div/input</option><option>css=#inputPassword5</option></datalist></td><td>Antonio#DB123</td></tr>
+<tr><td>click</td><td>xpath=//button[@type='submit']<datalist><option>xpath=//button[@type='submit']</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email'])[1]/following::button[1]</option><option>xpath=//*/text()[normalize-space(.)='Login']/parent::*</option><option>xpath=//button</option><option>css=button.btn.btn-info.mb-0</option></datalist></td><td></td></tr>
+</tbody></table>
+</body>
+</html>

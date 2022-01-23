@@ -1,5 +1,6 @@
 <%@ page import="model.bean.TutoratoDidatticoBean" %>
-<%@ page import="model.bean.SupportoEsameBean" %><%--
+<%@ page import="model.bean.SupportoEsameBean" %>
+<%@ page import="java.util.Locale" %><%--
   Created by IntelliJ IDEA.
   User: Martina Giugliano
   Date: 29/12/2021
@@ -80,7 +81,7 @@
                     <li class="list-inline-item h6 me-3 mb-1 mb-sm-0 text-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
                         <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"></path>
                     </svg>
-                         <%=tutorato.getOreDisponibili().toUpperCase(java.util.Locale.ROOT)%></li>
+                         <%=tutorato.getDateDisponibili().toUpperCase(Locale.ROOT)+" "%><%=tutorato.getOreDisponibili().toUpperCase(java.util.Locale.ROOT)%></li>
                     <li class="list-inline-item h6 me-3 mb-1 mb-sm-0 text-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
                         <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"></path>
                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"></path>
@@ -193,7 +194,7 @@ else if(supporto!=null){
             </div>
 
             <div class="modal-body">Vuoi accettare la richiesta?
-                <form action="../AccettazioneRichiesta" method="get">
+                <form action="../AccettazioneRichiesta" method="get" accept-charset="utf-8">
                     <div class="mb-3">
                         <label for="message-text" class="col-form-label">Commento:</label>
                         <textarea class="form-control" name="commento" maxlength="100" id="message-text"></textarea>

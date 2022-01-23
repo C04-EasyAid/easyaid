@@ -95,8 +95,8 @@
                                                     </div>
                                                 </div>
                                             </td>
+                                            <td><%=b.getDateDisponibili().toUpperCase(java.util.Locale.ROOT)%></td>
                                             <td><%=b.getOreDisponibili()%></td>
-                                            <td><%=b.getOreRichieste()%></td>
                                             <%if(b.getStatus()==0){  %>
                                             <td><a href="#" class="badge bg-danger">Non accettata</a></td>
                                             <%}else{%>

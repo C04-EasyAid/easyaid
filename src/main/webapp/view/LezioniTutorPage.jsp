@@ -144,7 +144,7 @@
         <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
     </svg> </button>
 </div>
-<form action="../InserimentoLezione" onsubmit="return inserimentoLezione();" method="post">
+<form action="../InserimentoLezione" onsubmit="return inserimentoLezione();" method="get" accept-charset="utf-8">
     <div class="modal fade" id="nuovaLezione" tabindex="-1" aria-labelledby="nuovaLezione" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">

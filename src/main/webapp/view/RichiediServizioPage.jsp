@@ -90,7 +90,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="../inserisciSupporto" method="post" onsubmit="return validazioneRichiestaSupporto();">
+                                <form action="../inserisciSupporto" method="get" onsubmit="return validazioneRichiestaSupporto();" accept-charset="utf-8">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3">
@@ -251,7 +251,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="../inserisciTutorato" method="post" onsubmit="return validazioneRichiestaTutorato();">
+                                <form action="../inserisciTutorato" method="get" accept-charset="utf-8" onsubmit="return validazioneRichiestaTutorato();">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3">

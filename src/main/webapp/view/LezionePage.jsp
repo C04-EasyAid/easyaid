@@ -153,7 +153,7 @@
                                     </ul>
                                     <%}%>
                                     <div class="panel-body">
-                                        <form action="../CommentoServlet" method="post" onsubmit="return inserimentoCommento();">
+                                        <form action="../CommentoServlet" method="get" onsubmit="return inserimentoCommento();" accept-charset="utf-8">
                                             <input type="text" name="commento" class="form-control" placeholder="scrivi un commento..."
                                                                          rows="3" id="commento" maxlength="250" required>
                                             <br>

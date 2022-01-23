@@ -68,7 +68,7 @@
                     <div class="row my-5">
                         <div class="col-sm-10 col-xl-8 m-auto">
                             <h1 class="fs-2 text-info">Accedi su EasyAid</h1>
-                            <form action="../login" method="post" onsubmit="return validate();">
+                            <form action="../login" method="get" accept-charset="utf-8" onsubmit="return validate();">
                                 <div class="mb-4">
                                     <label for="email" class="form-label">Email</label>
                                     <div class="input-group input-group-lg">

@@ -90,7 +90,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <form action="../register" method="post" class="row g-4 align-items-center"
+                                    <form action="../register" method="get" class="row g-4 align-items-center" accept-charset="utf-8"
                                           autocomplete="off" onsubmit="return validateInserimento()">
 
                                         <input type="hidden" name="ruolo" value="<%=inserimento%>"/>

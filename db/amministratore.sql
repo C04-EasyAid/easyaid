@@ -27,7 +27,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `utente` WRITE;
 /*!40000 ALTER TABLE `utente` DISABLE KEYS */;
-INSERT INTO `utente` VALUES ('Ester', 'Zingaropoli', 'ezingaropoli@unisa.it', 'E#Zingaropoli#123');
+INSERT INTO `utente` VALUES ('Ester', 'Zingaropoli', 'ezingaropoli@unisa.it', 'E#Zingaropoli#123', 'PA');
 /*!40000 ALTER TABLE `utente` ENABLE KEYS */;
 UNLOCK TABLES;
 

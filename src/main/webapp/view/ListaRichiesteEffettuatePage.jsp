@@ -87,7 +87,11 @@
                                                         <img src="../image/<%=x%>.jpg" class="rounded" alt="">
                                                     </div>
                                                     <div class="mb-0 ms-2">
+                                                        <%if(b.getTutorEmail()!= null){%>
                                                         <h6><p class="card-description"><br><code>&lt;<%=b.getTutorEmail()%>&gt;</code></p></h6>
+                                                        <%}else{%>
+                                                        <h6><p class="card-description"><br><code>&lt;non ancora assegnato&gt;</code></p></h6>
+                                                        <%}%>
                                                     </div>
                                                 </div>
                                             </td>

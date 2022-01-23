@@ -52,9 +52,8 @@ public class ConfermaLezioneServlet extends HttpServlet {
         Collection<LezioneBean> lezioni =
             lezioneDao.doRetrieveLezioniCompletateById(lezioneBean.getTutorato());
         if (lezioneDao.countOre(lezioni, 0) == 0) {
-          System.out.println("ueueue");
           tutoratoDidatticoDao.completaRichiesta(lezioneBean.getTutorato(), user.getEmail());
-          session.setAttribute("alertMsg", "Richiesta Confermata");
+          session.setAttribute("alertMsg", "Richiesta Completata");
           resp.sendRedirect("view/LezioniTutorPage.jsp");
         } else {
           session.setAttribute("alertMsg", "Lezione Confermata");
